@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "datasetKind": "synthetic",
+  "config": { "schemaVersion": 1, "dataVersion": "fixture-1", "title": "Синтетичний мінімальний набір" },
+  "people": [
+    { "id": "I1", "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I1@" }] }
+  ]
+}

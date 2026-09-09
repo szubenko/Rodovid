@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "datasetKind": "synthetic",
+  "config": { "schemaVersion": 1, "dataVersion": "fixture-bad", "title": "Некоректний приклад", "homePersonId": "@I1@" },
+  "people": [{ "id": "I1", "lifeStatus": "probably-alive", "provenance": [] }]
+}

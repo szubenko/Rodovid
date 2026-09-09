@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "datasetKind": "synthetic",
+  "config": {
+    "schemaVersion": 1, "dataVersion": "fixture-1", "title": "Вигаданий родовід для тестів",
+    "homePersonId": "I1", "initialGenerations": 3,
+    "rooms": [{ "personId": "I1", "theme": "paper", "backgroundMediaId": "media-photo" }],
+    "audio": { "musicMediaIds": ["media-audio"], "effectMediaIds": [], "musicEnabled": false, "effectsEnabled": false }
+  },
+  "people": [
+    {
+      "id": "I1", "lifeStatus": "unknown", "portraitId": "media-photo", "photoIds": ["media-photo"],
+      "externalIds": [{ "system": "fixture-profile", "value": "example-1" }],
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I1@" }]
+    },
+    {
+      "id": "I2", "lifeStatus": "deceased",
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I2@", "path": "DEAT[0]" }]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-1", "kind": "spouse", "fromPersonId": "I1", "toPersonId": "I2",
+      "reviewStatus": "accepted", "confidence": "probable", "explanation": "Вигадана оцінка для тесту.",
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@F1@" }]
+    }
+  ],
+  "events": [
+    {
+      "id": "event-birth", "kind": "birth", "participants": [{ "personId": "I1", "role": "subject" }],
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I1@", "path": "BIRT[0]" }]
+    },
+    {
+      "id": "event-marriage", "kind": "marriage",
+      "participants": [{ "personId": "I1", "role": "spouse" }, { "personId": "I2", "role": "spouse" }],
+      "relationshipIds": ["rel-1"], "mediaIds": ["media-scan"],
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@F1@", "path": "MARR[0]" }]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-name-1", "target": { "kind": "person", "id": "I1" }, "field": "name", "isPrimary": true,
+      "value": { "raw": "Тестова /Особа/", "display": "Тестова Особа", "given": "Тестова", "surname": "Особа", "language": "uk" },
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I1@", "path": "NAME[0]" }]
+    },
+    {
+      "id": "claim-name-2", "target": { "kind": "person", "id": "I2" }, "field": "name", "isPrimary": true,
+      "value": { "raw": "Приклад /Вигаданий/", "display": "Приклад Вигаданий" },
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I2@", "path": "NAME[0]" }]
+    },
+    {
+      "id": "claim-date-main", "target": { "kind": "event", "id": "event-birth" }, "field": "date", "isPrimary": true,
+      "value": { "kind": "point", "raw": "1874", "calendar": "unspecified", "qualifier": "exact", "value": { "precision": "year", "year": 1874 } },
+      "confidence": "probable", "explanation": "Основний варіант у синтетичному джерелі.",
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@I1@", "path": "BIRT[0].DATE[0]" }]
+    },
+    {
+      "id": "claim-date-alt", "target": { "kind": "event", "id": "event-birth" }, "field": "date", "isPrimary": false,
+      "value": { "kind": "point", "raw": "ABT 1876", "calendar": "unspecified", "qualifier": "about", "value": { "precision": "year", "year": 1876 } },
+      "confidence": "hypothesis", "explanation": "Альтернативний варіант із другого вигаданого джерела.",
+      "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "claim-date-alt" }]
+    },
+    {
+      "id": "claim-place", "target": { "kind": "event", "id": "event-marriage" }, "field": "place", "isPrimary": true,
+      "value": "place-1",
+      "provenance": [{ "kind": "gedcom", "importId": "fixture-old", "recordId": "@F1@", "path": "MARR[0].PLAC[0]" }]
+    }
+  ],
+  "places": [
+    {
+      "id": "place-1", "originalName": "Вигадане село", "displayName": "Вигадане село", "historicalNames": ["Тестова стара назва"],
+      "country": "Тестова країна", "region": "Тестовий регіон", "district": "Тестовий район",
+      "coordinates": { "latitude": 0, "longitude": 0 }, "description": "Умовна точка, не сімейне місце.",
+      "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "place-1" }]
+    }
+  ],
+  "sources": [
+    {
+      "id": "source-shared", "title": "Вигаданий спільний документ", "archive": "Тестовий архів", "reference": "ТЕСТ/1/2/3",
+      "url": "https://example.org/archive/1", "addedOn": "2026-09-09", "mediaIds": ["media-scan", "media-pdf"],
+      "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "source-shared" }]
+    },
+    {
+      "id": "source-alt", "title": "Вигадане джерело альтернативи", "url": "https://example.org/archive/2",
+      "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "source-alt" }]
+    }
+  ],
+  "media": [
+    { "id": "media-scan", "path": "assets/documents/fixture.png", "mimeType": "image/png", "title": "Умовний скан", "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "media-scan" }] },
+    { "id": "media-pdf", "path": "assets/documents/fixture.pdf", "mimeType": "application/pdf", "title": "Умовний PDF", "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "media-pdf" }] },
+    { "id": "media-photo", "path": "assets/photos/fixture.jpg", "mimeType": "image/jpeg", "title": "Умовне фото", "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "media-photo" }] },
+    { "id": "media-audio", "path": "assets/audio/fixture.mp3", "mimeType": "audio/mpeg", "title": "Умовна музика", "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "media-audio" }] }
+  ],
+  "evidenceLinks": [
+    { "id": "link-person-1", "sourceId": "source-shared", "target": { "kind": "person", "id": "I1" }, "explanation": "Умовний учасник запису.", "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "link-person-1" }] },
+    { "id": "link-person-2", "sourceId": "source-shared", "target": { "kind": "person", "id": "I2" }, "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "link-person-2" }] },
+    { "id": "link-event", "sourceId": "source-shared", "target": { "kind": "event", "id": "event-marriage" }, "fragment": { "mediaId": "media-pdf", "page": 2, "folio": "1 зв.", "recordNumber": "7" }, "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "link-event" }] },
+    { "id": "link-relation", "sourceId": "source-shared", "target": { "kind": "relationship", "id": "rel-1" }, "fragment": { "mediaId": "media-scan", "frame": "3", "region": { "x": 0.1, "y": 0.2, "width": 0.5, "height": 0.3 } }, "transcription": "[Синтетична транскрипція]", "explanation": "Умовний доказ шлюбу.", "quay": { "raw": "3", "value": 3 }, "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "link-relation" }] },
+    { "id": "link-main", "sourceId": "source-shared", "target": { "kind": "claim", "id": "claim-date-main" }, "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "link-main" }] },
+    { "id": "link-alt", "sourceId": "source-alt", "target": { "kind": "claim", "id": "claim-date-alt" }, "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "link-alt" }] }
+  ],
+  "memories": [
+    {
+      "id": "memory-1", "personIds": ["I1", "I2"], "title": "Вигаданий спогад", "markdown": "Це **синтетичний** приклад, а не сімейний матеріал.",
+      "author": "Тестовий автор", "recordedAt": { "kind": "unknown" },
+      "provenance": [{ "kind": "supplement", "file": "fixture-annotations.json", "entryId": "memory-1" }]
+    }
+  ]
+}

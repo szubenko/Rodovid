@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "imports": [
+    { "id": "fixture-old", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
+    { "id": "fixture-new", "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
+  ],
+  "entries": [
+    {
+      "entity": { "kind": "person", "id": "I1" },
+      "origins": [
+        { "importId": "fixture-old", "recordId": "@I1@" },
+        { "importId": "fixture-new", "recordId": "@I42@" }
+      ]
+    },
+    {
+      "entity": { "kind": "claim", "id": "claim-date-main" },
+      "origins": [
+        { "importId": "fixture-old", "recordId": "@I1@", "path": "BIRT[0].DATE[0]" },
+        { "importId": "fixture-new", "recordId": "@I42@", "path": "BIRT[1].DATE[0]" }
+      ]
+    }
+  ]
+}

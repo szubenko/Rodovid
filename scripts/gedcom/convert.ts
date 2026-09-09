@@ -8,6 +8,7 @@ import { children, inspectGedcom } from './parse.ts'
 import { createIdentityRegistry } from './identities.ts'
 import { convertDate } from './dates.ts'
 import { mergeSupplements } from './supplements.ts'
+import { assertPreservedLines } from './baseline.ts'
 
 const individualEvents = new Set('BIRT CHR DEAT BURI CREM ADOP BAPM BARM BASM BLES CHRA CONF FCOM ORDN NATU EMIG IMMI CENS PROB WILL GRAD RETI EVEN RESI OCCU EDUC RELI TITL'.split(' '))
 const familyEvents = new Set('ANUL CENS DIV DIVF ENGA MARB MARC MARR MARL MARS RESI EVEN'.split(' '))
@@ -15,6 +16,16 @@ const eventKinds: Record<string, FamilyEvent['kind']> = {
   BIRT: 'birth', DEAT: 'death', MARR: 'marriage', BAPM: 'baptism', CHR: 'baptism',
   BURI: 'burial', RESI: 'residence',
 }
+// Reviewed exporter metadata paths. Unknown descendants must still be reported;
+// skipping an entire HEAD/CHAN/_EVDEF subtree could hide new source/media data.
+const metadataPaths = new Set([
+  'HEAD', 'HEAD.CHAR', 'HEAD.DATE', 'HEAD.DATE.TIME', 'HEAD.DEST', 'HEAD.FILE',
+  'HEAD.GEDC', 'HEAD.GEDC.FORM', 'HEAD.GEDC.VERS', 'HEAD.SOUR', 'HEAD.SOUR.VERS',
+  'HEAD.SOUR.NAME', 'HEAD.SOUR.CORP', 'HEAD.SOUR.CORP.ADDR', 'HEAD.SOUR.CORP.ADDR.CONT',
+  'HEAD.SOUR.CORP.PHON', 'HEAD.SOUR.CORP.WWW', 'TRLR', 'CHAN', 'CHAN.DATE', 'CHAN.DATE.TIME',
+  '_EVDEF', '_EVDEF.ABBR', '_EVDEF.DATE', '_EVDEF.DESC', '_EVDEF.PLAC', '_EVDEF.ROLE',
+  '_EVDEF.ROLE.SENT', '_EVDEF.ROLE.SENT.CONC', '_EVDEF.SENT', '_EVDEF.SENT.CONC', '_EVDEF.TITL', '_EVDEF.TYPE',
+])
 
 export interface ConversionInput {
   bytes: Uint8Array
@@ -28,6 +39,7 @@ export interface ConversionInput {
 /** Pure offline conversion: no input mutation, current time, filesystem writes or name matching. */
 export function convertGedcom(input: ConversionInput) {
   const inspection = inspectGedcom(input.bytes)
+  assertPreservedLines(input.bytes, inspection.tree)
   const registry = createIdentityRegistry(input.bytes, input.identities)
   const data: FamilyData = {
     schemaVersion: 1, datasetKind: input.datasetKind ?? 'family', config: siteConfigSchema.parse(input.config),
@@ -48,14 +60,17 @@ export function convertGedcom(input: ConversionInput) {
       walk(child, recordId, [path, `${tag}[${index}]`].filter(Boolean).join('.'))
     }
   }
-  function markTree(node: TreeNode) { handled.add(node); node.children.forEach(markTree) }
+  function markMetadata(node: TreeNode, path = node.tag!) {
+    if (metadataPaths.has(path)) handled.add(node)
+    for (const child of node.children) markMetadata(child, `${path}.${child.tag}`)
+  }
   for (const record of inspection.tree.children) {
     if (record.pointer) {
       if (records.has(record.pointer)) throw new Error(`Duplicate GEDCOM record: ${record.pointer}`)
       records.set(record.pointer, record)
-      walk(record, record.pointer)
     }
-    if (['HEAD', 'TRLR', '_EVDEF'].includes(record.tag!)) markTree(record)
+    walk(record, record.pointer ?? record.tag!)
+    if (['HEAD', 'TRLR', '_EVDEF'].includes(record.tag!)) markMetadata(record)
   }
   const gedc = inspection.header && children(inspection.header, 'GEDC')[0]
   const version = gedc && children(gedc, 'VERS')[0]?.value
@@ -140,6 +155,11 @@ export function convertGedcom(input: ConversionInput) {
       }
     }
   }
+  // Check forward family targets before reverse-link consistency, so a missing
+  // person is diagnosed by its original XREF rather than a secondary mismatch.
+  for (const family of inspection.families) {
+    for (const pointer of [...family.husbands, ...family.wives, ...family.childIds]) targetRecord(pointer, 'INDI')
+  }
   for (const source of children(inspection.tree, 'SOUR')) {
     handled.add(source)
     const description = ['AUTH', 'PUBL', 'TEXT'].map((tag) => {
@@ -183,7 +203,7 @@ export function convertGedcom(input: ConversionInput) {
         throw new Error(`Inconsistent reverse ${tag} link: ${node.pointer} -> ${link.value}`)
       }
     }
-    children(node, 'CHAN').forEach(markTree)
+    for (const change of children(node, 'CHAN')) markMetadata(change)
   }
   const rawFamilies: { id: string; recordId: string; husbands: (string | null)[]; wives: (string | null)[]; childIds: (string | null)[] }[] = []
   const familyRelations = new Map<TreeNode, Relationship[]>()
@@ -210,7 +230,7 @@ export function convertGedcom(input: ConversionInput) {
     for (const parent of parents) for (const child of childNodes) relation('parent-child', parent, child)
     data.relationships.push(...relations)
     familyRelations.set(node, relations)
-    children(node, 'CHAN').forEach(markTree)
+    for (const change of children(node, 'CHAN')) markMetadata(change)
   }
   for (const record of inspection.tree.children.filter((node) => ['INDI', 'FAM'].includes(node.tag!))) {
     for (const event of record.children.filter((node) => (record.tag === 'INDI' ? individualEvents : familyEvents).has(node.tag!))) {

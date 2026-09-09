@@ -6,7 +6,9 @@ ROD-002 додає [контракт даних v1](Docs/Rodovid_Data_Contract_v
 налаштування та перевірені синтетичні приклади. ROD-003 додає перевірений
 [парсер GEDCOM](Docs/Rodovid_Gedcom_Parser_Review_2026-09-09.md) і команду звірки.
 ROD-005 додає [перетворення GEDCOM і доповнень на JSON](Docs/Rodovid_Data_Conversion_v1.md)
-зі стабільними ID та явними поясненнями D01–D06. Карта та
+зі стабільними ID та явними поясненнями D01–D06.
+ROD-006 додає [валідацію і звіт підготовки](Docs/Rodovid_Data_Validation_v1.md):
+помилки графа, матеріалів і втрати даних зупиняють підготовку та збірку. Карта та
 кімнати реалізуються наступними [тікетами](Docs/tickets/000-summary.md).
 
 ## Середовище
@@ -52,9 +54,10 @@ Node.js потрібний для розробки та збірки; власн
 | --- | --- |
 | `npm run typecheck` | Строга перевірка TypeScript застосунку, конфігурацій, майбутніх скриптів і E2E-тестів. |
 | `npm run lint` | ESLint для TypeScript/JavaScript, React Hooks і Fast Refresh; попередження вважаються помилками. |
-| `npm run build` | Перевірка типів і статична збірка Vite. |
+| `npm run build` | Валідація даних, перевірка типів і статична збірка Vite. |
 | `npm run data:check-gedcom` | Звірка незміненого базового GEDCOM: SHA-256, усі рядки, кількості й сімейні посилання; звіт у `tmp/gedcom-probe.json`. |
-| `npm run data:convert` | GEDCOM + налаштування + доповнення + журнал ID → `generated/family.json`; звіт `tmp/data-conversion.json`. |
+| `npm run data:convert` | Перетворення й валідація → `generated/family.json`; звіти `tmp/data-conversion.json` та `.json.md`. |
+| `npm run data:validate` | Повна підготовка й перевірка в пам’яті, без запису family.json/журналу ID; ті самі звіти, код 1 за помилки. |
 | `npm test` | Одноразовий запуск Vitest; `src/**/*.test.{ts,tsx}` і `scripts/**/*.test.ts`, середовище Node.js. |
 | `npm run test:watch` | Vitest у режимі спостереження. |
 | `npm run test:e2e` | Playwright: Chromium на комп’ютері й мобільний профіль Pixel 7; окрема збірка та preview на порту 4174. |

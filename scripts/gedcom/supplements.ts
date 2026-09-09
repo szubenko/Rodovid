@@ -4,7 +4,7 @@ import { supplementsSchema } from '../../src/data/supplements.ts'
 
 const group = (claim: Claim) => JSON.stringify([claim.target.kind, claim.target.id, claim.field])
 
-/** Conversion integrity checks. Calendar/graph/content validation follows in ROD-006. */
+/** Shared referential integrity checks; graph/files are checked by validation/validate.ts. */
 export function assertReferences(data: FamilyData) {
   const collections = {
     person: data.people, relationship: data.relationships, claim: data.claims,

@@ -1,9 +1,9 @@
 import { z } from 'zod'
-import { entityIdSchema as id, gedcomIdSchema, personIdSchema } from './ids'
+import { entityIdSchema as id, gedcomIdSchema, personIdSchema } from './ids.ts'
 
 export const identityTargetSchema = z.discriminatedUnion('kind', [
   z.strictObject({ kind: z.literal('person'), id: personIdSchema }),
-  ...(['family', 'relationship', 'event', 'claim', 'place', 'source', 'media', 'memory'] as const)
+  ...(['family', 'relationship', 'event', 'claim', 'place', 'source', 'media', 'memory', 'evidenceLink'] as const)
     .map((kind) => z.strictObject({ kind: z.literal(kind), id })),
 ])
 

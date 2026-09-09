@@ -1,9 +1,9 @@
 import { z } from 'zod'
-import { entityIdSchema as id } from './ids'
+import { entityIdSchema as id } from './ids.ts'
 import {
   claimSchema, confidenceSchema, evidenceLinkSchema, mediaSchema,
   memorySchema, sourceSchema,
-} from './schema'
+} from './schema.ts'
 
 const text = z.string().min(1)
 

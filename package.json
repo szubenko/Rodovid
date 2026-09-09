@@ -9,6 +9,7 @@
   },
   "packageManager": "npm@11.16.0",
   "scripts": {
+    "data:convert": "node scripts/convert-data.ts",
     "data:check-gedcom": "node scripts/check-gedcom.ts",
     "dev": "vite",
     "typecheck": "tsc -b",

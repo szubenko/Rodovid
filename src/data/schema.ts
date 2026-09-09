@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { historicalDateSchema } from './dates'
-import { entityIdSchema as id, gedcomIdSchema, personIdSchema } from './ids'
+import { historicalDateSchema } from './dates.ts'
+import { entityIdSchema as id, gedcomIdSchema, personIdSchema } from './ids.ts'
 
 const text = z.string().min(1)
 const texts = z.array(text).default([])

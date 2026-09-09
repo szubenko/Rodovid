@@ -1,0 +1,56 @@
+0 HEAD
+1 SOUR Synthetic-test
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Тест /Однакове/
+2 GIVN Тест
+2 SURN Однакове
+1 NAME Альтернатива /Однакове/
+1 NOTE @N1@
+1 BIRT
+2 DATE ABT 1900
+2 PLAC Стара назва
+2 SOUR @S1@
+3 PAGE арк. 7, акт 3
+3 QUAY 2
+3 DATA
+4 TEXT Рядок запису
+5 CONT Другий рядок
+5 CONC продовження
+2 NOTE Дата потребує перевірки
+1 BIRT
+2 DATE BET 1899 AND MAR 1901
+1 BAPM
+2 DATE @#DJULIAN@ 12 JAN 1901
+1 RESI
+2 DATE FROM 1920 TO 1930
+1 EVEN Навчання ремеслу
+2 TYPE Освіта
+2 DATE INT 1910 (зі спогаду)
+1 DEAT Y
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Тест /Однакове/
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Дитина /Приклад/
+1 FAMC @F1@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 MARR
+2 DATE 1920
+2 SOUR @S1@
+3 PAGE арк. 9
+0 @S1@ SOUR
+1 TITL Синтетична книга
+1 AUTH Тестовий автор
+1 PUBL Умовне видання
+1 NOTE Джерело тільки для тесту
+0 @N1@ NOTE Спільна нотатка
+1 CONT Другий абзац
+0 TRLR

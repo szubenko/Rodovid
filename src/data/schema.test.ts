@@ -130,7 +130,10 @@ describe('family data contract v1', () => {
 
   it('validates actual settings and keeps annotations separate from GEDCOM facts', () => {
     expect(siteConfigSchema.parse(site).homePersonId).toBe('I1')
-    expect(supplementsSchema.parse(annotations).assessments).toEqual([])
+    const familySupplements = supplementsSchema.parse(annotations)
+    expect(familySupplements.assessments.every((entry) => entry.confidence === 'unassessed')).toBe(true)
+    expect(familySupplements.sources).toEqual([])
+    expect(familySupplements.additionalClaims).toEqual([])
     expect(siteConfigSchema.safeParse({ ...site, currentCenterId: 'I2' }).success).toBe(false)
     expect(supplementsSchema.safeParse({ ...annotations, people: full.people }).success).toBe(false)
     const supplements = supplementsSchema.parse({

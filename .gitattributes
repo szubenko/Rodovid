@@ -1,0 +1,4 @@
+# Reproduce the reviewed RootsMagic export's original bytes on every platform.
+Data/Zubenko.ged text eol=crlf
+# Synthetic fixture transformations use explicit LF boundaries.
+tests/fixtures/conversion/*.ged text eol=lf

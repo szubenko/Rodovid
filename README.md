@@ -5,7 +5,8 @@
 ROD-002 додає [контракт даних v1](Docs/Rodovid_Data_Contract_v1.md), Zod-схеми,
 налаштування та перевірені синтетичні приклади. ROD-003 додає перевірений
 [парсер GEDCOM](Docs/Rodovid_Gedcom_Parser_Review_2026-09-09.md) і команду звірки.
-Перетворення GEDCOM на JSON сайту, карта та
+ROD-005 додає [перетворення GEDCOM і доповнень на JSON](Docs/Rodovid_Data_Conversion_v1.md)
+зі стабільними ID та явними поясненнями D01–D06. Карта та
 кімнати реалізуються наступними [тікетами](Docs/tickets/000-summary.md).
 
 ## Середовище
@@ -53,6 +54,7 @@ Node.js потрібний для розробки та збірки; власн
 | `npm run lint` | ESLint для TypeScript/JavaScript, React Hooks і Fast Refresh; попередження вважаються помилками. |
 | `npm run build` | Перевірка типів і статична збірка Vite. |
 | `npm run data:check-gedcom` | Звірка незміненого базового GEDCOM: SHA-256, усі рядки, кількості й сімейні посилання; звіт у `tmp/gedcom-probe.json`. |
+| `npm run data:convert` | GEDCOM + налаштування + доповнення + журнал ID → `generated/family.json`; звіт `tmp/data-conversion.json`. |
 | `npm test` | Одноразовий запуск Vitest; `src/**/*.test.{ts,tsx}` і `scripts/**/*.test.ts`, середовище Node.js. |
 | `npm run test:watch` | Vitest у режимі спостереження. |
 | `npm run test:e2e` | Playwright: Chromium на комп’ютері й мобільний профіль Pixel 7; окрема збірка та preview на порту 4174. |
@@ -76,7 +78,8 @@ Playwright не використовує вже запущений сервер,
 ## Структура
 
 ```text
-Data/                   незмінені GEDCOM/RootsMagic, site.json, annotations.json
+Data/                   незмінені GEDCOM/RootsMagic, site.json, annotations.json, identities.json
+generated/              відтворюваний family.json; не редагувати вручну, не комітити
 Docs/                   ТЗ, технічні рішення, огляд даних і тікети
 src/
   App.tsx               початковий екран
@@ -88,6 +91,7 @@ tests/e2e/              місце для майбутніх сценаріїв 
 tests/fixtures/         окремі синтетичні приклади контракту
 scripts/gedcom/         адаптер сирого GEDCOM, базова звірка й тести
 scripts/check-gedcom.ts локальна команда перевірки базового експорту
+scripts/convert-data.ts локальне перетворення на JSON
 vite.config.ts          локальні сервери та статична збірка
 vitest.config.ts        окремий набір предметних тестів
 playwright.config.ts    наскрізні перевірки готової збірки

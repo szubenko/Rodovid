@@ -1,6 +1,7 @@
 # Залежності та результати збірки
 node_modules/
 dist/
+generated/
 
 # Звіти й артефакти перевірок
 coverage/

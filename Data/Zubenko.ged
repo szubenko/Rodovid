@@ -1,0 +1,1156 @@
+﻿0 HEAD
+1 SOUR RootsMagic
+2 NAME RootsMagic
+2 CORP RootsMagic, Inc.
+3 ADDR PO Box 495
+4 CONT Springville, UT 84663
+4 CONT USA
+3 PHON 1-800-ROOTSMAGIC
+3 WWW www.RootsMagic.com
+1 DEST RootsMagic
+1 DATE 2 SEP 2026
+1 FILE Zubenko.ged
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+0 @I1@ INDI
+1 NAME Сегрій /Зубенко/
+2 GIVN Сегрій
+2 SURN Зубенко
+1 SEX M
+1 _UID B36A8FAAF4BD49EE9B6262DB396DFF2C490F
+1 _FSFTID PFX8-NJ3
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 21 DEC 1987
+2 PLAC Kazakhstan, Soviet Union
+1 FAMC @F1@
+0 @I2@ INDI
+1 NAME Петр /Зубенко/
+2 GIVN Петр
+2 SURN Зубенко
+1 SEX M
+1 _UID 06040835B153451B9FD2D62B882EBCEE7DE0
+1 _FSFTID PFF9-K8Q
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 1963
+2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I3@ INDI
+1 NAME Ірина Іванівна /Кирницька/
+2 GIVN Ірина Іванівна
+2 SURN Кирницька
+1 SEX F
+1 _UID 670616D000E5464E97E53C1980D347A1D867
+1 _FSFTID PFF9-VHP
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 PLAC Vatutine, Cherkasy, Ukraine
+1 FAMS @F1@
+0 @I4@ INDI
+1 NAME Ольга Петрівна /Дейкало/
+2 GIVN Ольга Петрівна
+2 SURN Дейкало
+1 SEX F
+1 _UID 3448AFC523F1413CA6D30F74A62099D3AF40
+1 _FSFTID PFFS-LRV
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 6 AUG 1929
+2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine
+1 DEAT
+2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine
+1 FAMS @F2@
+1 FAMC @F4@
+0 @I5@ INDI
+1 NAME Яков Макарович /Зубенко/
+2 GIVN Яков Макарович
+2 SURN Зубенко
+1 SEX M
+1 _UID DBA10BB156164106BCA30DFE6F9143BB53B9
+1 _FSFTID PFFS-Y8D
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 12 NOV 1923
+2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine
+1 DEAT
+2 DATE 23 MAR 2022
+2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine
+1 FAMS @F2@
+1 FAMC @F3@
+0 @I6@ INDI
+1 NAME Наталия Семенова /Пластун/
+2 GIVN Наталия Семенова
+2 SURN Пластун
+1 SEX F
+1 _UID 73CA59A20F724EC4BE29852DA1E2A0E36A03
+1 _FSFTID PFFS-2YZ
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 PLAC Чапліївка, Шосткинський, Сумська область, Україна
+1 DEAT
+1 FAMS @F3@
+1 FAMC @F5@
+0 @I7@ INDI
+1 NAME Оксана Миколаївна //
+2 GIVN Оксана Миколаївна
+1 SEX F
+1 _UID E34A5811D28D4EDA83639BC650DFB5D71F3B
+1 _FSFTID PFFS-19F
+1 CHAN
+2 DATE 2 SEP 2026
+1 DEAT
+1 FAMS @F4@
+0 @I8@ INDI
+1 NAME Петро Олександрович /Дейкало/
+2 GIVN Петро Олександрович
+2 SURN Дейкало
+1 SEX M
+1 _UID D39252F416544EF2B4B6D64AD10444958D4D
+1 _FSFTID PFF9-B5D
+1 CHAN
+2 DATE 2 SEP 2026
+1 DEAT
+1 FAMS @F4@
+0 @I9@ INDI
+1 NAME Макар Ільянов /Зубенко/
+2 GIVN Макар Ільянов
+2 SURN Зубенко
+1 SEX M
+1 _UID F2E03C01878A447DB4533D966FC106251655
+1 _FSFTID PFF3-CN2
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 25 MAY 1900
+2 PLAC Чапліївка, Шосткинський, Сумська область, Україна
+1 DEAT
+1 FAMS @F3@
+1 FAMS @F5@
+1 FAMC @F6@
+1 FAMC @F7@
+0 @I10@ INDI
+1 NAME Оленка //
+2 GIVN Оленка
+1 SEX F
+1 _UID C295B66F2FF84CFB85EA41AF358D14D2F10D
+1 _FSFTID PFJL-V4J
+1 CHAN
+2 DATE 2 SEP 2026
+1 DEAT
+1 FAMC @F3@
+0 @I11@ INDI
+1 NAME Агафия Прокофиева /Волинцова/
+2 GIVN Агафия Прокофиева
+2 SURN Волинцова
+1 SEX F
+1 _UID 3C045B98FF4F498AA8E1145FF4866EF62EA9
+1 _FSFTID PFNJ-1Z1
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 1861
+1 DEAT
+2 DATE 11 JUL 1917
+2 PLAC Харківська губернія, Російська імперія
+1 FAMS @F6@
+1 FAMS @F7@
+0 @I12@ INDI
+1 NAME Илия /Феодоров Зубенко/
+2 GIVN Илия
+2 SURN Феодоров Зубенко
+1 SEX M
+1 _UID 0EDDF7AC809F44FDB07F89624D8DC819C310
+1 _FSFTID PFNV-X2B
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 20 JUL 1862
+2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+1 DEAT
+1 FAMS @F6@
+1 FAMS @F7@
+1 FAMC @F8@
+1 FAMC @F9@
+0 @I13@ INDI
+1 NAME Елена /Зубенко/
+2 GIVN Елена
+2 SURN Зубенко
+1 SEX F
+1 _UID 135E560B2C5F436C93F42E2BDF75E6D3F92D
+1 _FSFTID PFJK-1H6
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 13 MAY 1889
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F6@
+1 FAMC @F7@
+0 @I14@ INDI
+1 NAME Никифор /Зубенко/
+2 GIVN Никифор
+2 SURN Зубенко
+1 SEX M
+1 _UID 968F7747303849E9A50F524DDB77EB5A6790
+1 _FSFTID PFJ2-JF1
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 8 FEB 1892
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F6@
+1 FAMC @F7@
+0 @I15@ INDI
+1 NAME Акилина /Зубенко/
+2 GIVN Акилина
+2 SURN Зубенко
+1 SEX F
+1 _UID 641D479FB05C4C1E9417829B88F488650EE7
+1 _FSFTID PFJ2-ZQD
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 11 JUN 1883
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 DEAT
+1 FAMC @F7@
+1 FAMC @F6@
+0 @I16@ INDI
+1 NAME Иван /Зубенко/
+2 GIVN Иван
+2 SURN Зубенко
+1 SEX M
+1 _UID F4BC2CFFD7354BDB870C03D440D16FA29950
+1 _FSFTID PFJ2-2KK
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 22 JUN 1886
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F6@
+1 FAMC @F7@
+0 @I17@ INDI
+1 NAME Трофим /Зубенко/
+2 GIVN Трофим
+2 SURN Зубенко
+1 SEX M
+1 _UID A8E1791A37494C92B9EA0B11F9CA4853975A
+1 _FSFTID PFJ2-3L3
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 22 JUL 1897
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F7@
+1 FAMC @F6@
+0 @I18@ INDI
+1 NAME Мелания /Зубенко/
+2 GIVN Мелания
+2 SURN Зубенко
+1 SEX F
+1 _UID 021B102A61744819BFFF5435233E3853C0EB
+1 _FSFTID PFJK-J3V
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 26 DEC 1894
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F6@
+1 FAMC @F7@
+0 @I19@ INDI
+1 NAME Анна Герасимова /Пальчикова/
+2 GIVN Анна Герасимова
+2 SURN Пальчикова
+1 SEX F
+1 _UID 298F2360120B4FCCB7EEE7ED1D2893CB8F70
+1 _FSFTID PFJ2-SRZ
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 DEAT
+1 FAMS @F8@
+1 FAMS @F9@
+0 @I20@ INDI
+1 NAME Феодор Петров /Зубенко/
+2 GIVN Феодор Петров
+2 SURN Зубенко
+1 SEX M
+1 _UID A911A33D24A24AD08049724DDB8050DA87FE
+1 _FSFTID PFJ2-7SW
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 1834
+1 DEAT
+1 FAMS @F8@
+1 FAMS @F9@
+0 @I21@ INDI
+1 NAME Пантелеимон /Зубенко/
+2 GIVN Пантелеимон
+2 SURN Зубенко
+1 SEX M
+1 _UID 549D97EBA96F4A779A438695E8F7BB502E65
+1 _FSFTID PFVV-JHC
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 26 JUL 1865
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F8@
+1 FAMC @F9@
+0 @I22@ INDI
+1 NAME Григорий /Зубенко/
+2 GIVN Григорий
+2 SURN Зубенко
+1 SEX M
+1 _UID 044338D11BCD4139BD3601BA1E73361A41D9
+1 _FSFTID PFVV-8T2
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 1917
+1 DEAT
+2 DATE 23 JAN 1917
+1 FAMC @F8@
+1 FAMC @F9@
+0 @I23@ INDI
+1 NAME Тимофей /Зубенко/
+2 GIVN Тимофей
+2 SURN Зубенко
+1 SEX M
+1 _UID 79009DEC3FC0488EA6033A0F1466570EA84E
+1 _FSFTID PFVV-7W1
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 1875
+1 DEAT
+2 DATE 8 OCT 1980
+1 FAMC @F8@
+1 FAMC @F9@
+0 @I24@ INDI
+1 NAME Иосиф /Зубенко/
+2 GIVN Иосиф
+2 SURN Зубенко
+1 SEX M
+1 _UID 42115117CDA04337BF083090511B4242193C
+1 _FSFTID PFVV-3JG
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 1891
+1 DEAT
+2 DATE 30 DEC 1982
+1 FAMC @F9@
+1 FAMC @F8@
+0 @I25@ INDI
+1 NAME Анна /Зубенко/
+2 GIVN Анна
+2 SURN Зубенко
+1 SEX F
+1 _UID 7DFC9FBB77774EC78496E878AAAA28ECB865
+1 _FSFTID PFVV-2N5
+1 CHAN
+2 DATE 2 SEP 2026
+1 BIRT
+2 DATE 8 SEP 1860
+2 PLAC Харьковская губерния, Российская империя
+1 DEAT
+1 FAMC @F8@
+1 FAMC @F9@
+0 @F1@ FAM
+1 HUSB @I2@
+1 WIFE @I3@
+1 CHIL @I1@
+0 @F2@ FAM
+1 HUSB @I5@
+1 WIFE @I4@
+1 CHIL @I2@
+0 @F3@ FAM
+1 HUSB @I9@
+1 WIFE @I6@
+1 CHIL @I5@
+1 CHIL @I10@
+0 @F4@ FAM
+1 HUSB @I8@
+1 WIFE @I7@
+1 CHIL @I4@
+0 @F5@ FAM
+1 HUSB @I9@
+1 CHIL @I6@
+0 @F6@ FAM
+1 HUSB @I12@
+1 WIFE @I11@
+1 CHIL @I9@
+1 CHIL @I15@
+1 CHIL @I16@
+1 CHIL @I13@
+1 CHIL @I14@
+1 CHIL @I18@
+1 CHIL @I17@
+1 MARR
+2 DATE 15 JAN 1882
+2 PLAC Харьковская губерния, Российская империя
+0 @F7@ FAM
+1 HUSB @I12@
+1 WIFE @I11@
+1 CHIL @I9@
+1 CHIL @I15@
+1 CHIL @I16@
+1 CHIL @I13@
+1 CHIL @I14@
+1 CHIL @I18@
+1 CHIL @I17@
+1 MARR
+2 DATE 15 JAN 1882
+2 PLAC Харьковская губерния, Российская империя
+0 @F8@ FAM
+1 HUSB @I20@
+1 WIFE @I19@
+1 CHIL @I12@
+1 CHIL @I25@
+1 CHIL @I21@
+1 CHIL @I23@
+1 CHIL @I24@
+1 CHIL @I22@
+1 MARR
+2 DATE 15 FEB 1853
+2 PLAC Харьковская губерния, Российская империя
+0 @F9@ FAM
+1 HUSB @I20@
+1 WIFE @I19@
+1 CHIL @I12@
+1 CHIL @I25@
+1 CHIL @I21@
+1 CHIL @I23@
+1 CHIL @I24@
+1 CHIL @I22@
+1 MARR
+2 DATE 15 FEB 1853
+2 PLAC Харьковская губерния, Российская империя
+0 _EVDEF BIRT
+1 TYPE P
+1 TITL Birth
+1 ABBR Birth
+1 SENT [person] was born< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the birth of [person]< [Date]>< [PlaceDetails]>< [
+3 CONC Place]>.
+1 ROLE Doctor
+2 SENT [ThisPerson] delivered [person]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DEAT
+1 TYPE P
+1 TITL Death
+1 ABBR Death
+1 SENT [person] died< [Desc]>< [Date]>< [person:Age]>< [PlaceDetails]>< [Place
+2 CONC ]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the death of [person]< [Date]>< [PlaceDetails]>< [
+3 CONC Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF CHR
+1 TYPE P
+1 TITL Christen
+1 ABBR Chr
+1 SENT [person] was christened< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the christening of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BURI
+1 TYPE P
+1 TITL Burial
+1 ABBR Burial
+1 SENT [person] was buried< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the burial of [person]< [Date]>< [PlaceDetails]>
+3 CONC < [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CREM
+1 TYPE P
+1 TITL Cremation
+1 ABBR Cremation
+1 SENT [person] was cremated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the cremation of [person]< [Date]>< [PlaceDetail
+3 CONC s]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ADOP
+1 TYPE P
+1 TITL Adoption
+1 ABBR Adoption
+1 SENT [person] was adopted< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the adoption of [person]< [Date]>< [PlaceDetails
+3 CONC ]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BAPM
+1 TYPE P
+1 TITL Baptism
+1 ABBR Baptism
+1 SENT [person] was baptized< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the baptism of [person]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BARM
+1 TYPE P
+1 TITL Bar Mitzvah
+1 ABBR Bar Mitzvah
+1 SENT [person] celebrated his bar mitzvah< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the bar mitzvah of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BASM
+1 TYPE P
+1 TITL Bas Mitzvah
+1 ABBR Bas Mitzvah
+1 SENT [person] celebrated her bas mitzvah< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the bas mitzvah of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF BLES
+1 TYPE P
+1 TITL Blessing
+1 ABBR Blessing
+1 SENT [person] was blessed< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the blessing of [person]< [Date]>< [PlaceDetails
+3 CONC ]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CHRA
+1 TYPE P
+1 TITL Christen (adult)
+1 ABBR Chr (adult)
+1 SENT [person] was christened< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the christening of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CONF
+1 TYPE P
+1 TITL Confirmation
+1 ABBR Confirmation
+1 SENT [person] was confirmed< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the confirmation of [person]< [Date]>< [PlaceDet
+3 CONC ails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF FCOM
+1 TYPE P
+1 TITL First communion
+1 ABBR First comm
+1 SENT [person] received first communion< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the first communion of [person]< [Date]>< [Place
+3 CONC Details]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ORDN
+1 TYPE P
+1 TITL Ordination
+1 ABBR Ordination
+1 SENT [person] was ordained< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the ordination of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF NATU
+1 TYPE P
+1 TITL Naturalization
+1 ABBR Naturalization
+1 SENT [person] was naturalized< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the naturalization of [person]< [Date]>< [PlaceD
+3 CONC etails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF EMIG
+1 TYPE P
+1 TITL Emigration
+1 ABBR Emigration
+1 SENT [person] emigrated< [Date]>< from [Place:plain]>< [PlaceDetails]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the emigration of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF IMMI
+1 TYPE P
+1 TITL Immigration
+1 ABBR Immigration
+1 SENT [person] immigrated< [Date]>< to [Place:plain]>< [PlaceDetails]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the immigration of [person]< [Date]>< [PlaceDeta
+3 CONC ils]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF CENS
+1 TYPE P
+1 TITL Census
+1 ABBR Census
+1 SENT [person] appeared in the census< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] appeared in the household of [person] in the census< [Date
+3 CONC ]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF PROB
+1 TYPE P
+1 TITL Probate
+1 ABBR Probate
+1 SENT [person] had [person:hisher] estate probated< [Date]>< [PlaceDetails]>< [
+2 CONC Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the probate of [person]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF WILL
+1 TYPE P
+1 TITL Will
+1 ABBR Will
+1 SENT [person] signed a will< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the will of [person]< [Date]>< [PlaceDetails]>< [
+3 CONC Place]>.
+1 ROLE Heir
+2 SENT [ThisPerson] was named an heir in the will of [person]< [Date]>< [Place
+3 CONC Details]>< [Place]>.
+1 ROLE Executor
+2 SENT [ThisPerson] was named an executor for the will of [person]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF GRAD
+1 TYPE P
+1 TITL Graduation
+1 ABBR Graduation
+1 SENT [person] graduated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the graduation of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF RETI
+1 TYPE P
+1 TITL Retirement
+1 ABBR Retirement
+1 SENT [person] retired< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the retirement of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DSCR
+1 TYPE P
+1 TITL Description
+1 ABBR Description
+1 SENT [person] was described as [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the appearance of [person] as [Desc]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF EDUC
+1 TYPE P
+1 TITL Education
+1 ABBR Education
+1 SENT [person] was educated < [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the education of [person]< [Date]>< [PlaceDetail
+3 CONC s]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF NATI
+1 TYPE P
+1 TITL Nationality
+1 ABBR Nationality
+1 SENT [person] was [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the nationality of [person] as [Desc]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF OCCU
+1 TYPE P
+1 TITL Occupation
+1 ABBR Occupation
+1 SENT [date] [person] was [Desc:A]< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the occupation of [person]< [Date]> as [Desc:A]< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF PROP
+1 TYPE P
+1 TITL Property
+1 ABBR Property
+1 SENT [person] owned [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the property of [person] as [Desc:A]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF RELI
+1 TYPE P
+1 TITL Religion
+1 ABBR Religion
+1 SENT [person] was [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the religion of [person] as [Desc:A]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF RESI
+1 TYPE P
+1 TITL Residence
+1 ABBR Residence
+1 SENT [person] lived< [Desc]>< [PlaceDetails]>< [Place]>< [Date]>.
+1 ROLE Witness
+2 SENT [ThisPerson] lived in the residence of [person] < [PlaceDetails]>< [Pla
+3 CONC ce]>< [Date]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF SSN
+1 TYPE P
+1 TITL Soc Sec No
+1 ABBR SSN
+1 SENT [person] had Social Security Number [Desc].
+1 PLAC N
+1 DATE N
+1 DESC Y
+0 _EVDEF BAPL
+1 TYPE P
+1 TITL LDS Baptism
+1 ABBR LDS Bapt
+1 SENT [person] was baptized into the LDS Church< [Date]>< [PlaceDetails]>< [P
+2 CONC lace]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the baptism of [person] into the LDS Church< [Da
+3 CONC te]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ENDL
+1 TYPE P
+1 TITL LDS Endowment
+1 ABBR LDS Endow
+1 SENT [person] was endowed< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the endowment of [person]< [Date]>< [PlaceDetail
+3 CONC s]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF SLGC
+1 TYPE P
+1 TITL LDS Seal to parents
+1 ABBR LDS SealPar
+1 SENT [person] was sealed to [person:hisher] parents< [Date]>< [PlaceDetails]
+2 CONC >< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the sealed to parents of [person]< [Date]>< [Pla
+3 CONC ceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF AFN
+1 TYPE P
+1 TITL Ancestral File Number
+1 ABBR AFN
+1 SENT [person] has Ancestral File Number [Desc].
+1 PLAC N
+1 DATE N
+1 DESC Y
+0 _EVDEF REFN
+1 TYPE P
+1 TITL Reference No
+1 ABBR Ref #
+1 SENT [person] has reference number [Desc].
+1 PLAC N
+1 DATE N
+1 DESC Y
+0 _EVDEF CAST
+1 TYPE P
+1 TITL Caste
+1 ABBR Caste
+1 SENT [person] was associated with [Desc]< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the associated with [Desc] of [person]< [Date]>< [
+3 CONC PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF TITL
+1 TYPE P
+1 TITL Title (Nobility)
+1 ABBR Title
+1 SENT [person] held the title of [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF CONL
+1 TYPE P
+1 TITL LDS Confirmation
+1 ABBR LDS Conf
+1 SENT [person] was confirmed a member of the LDS Church< [Date]>< [PlaceDetai
+2 CONC ls]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the confirmation of [person] as a member of the L
+3 CONC DS Church< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF WAC
+1 TYPE P
+1 TITL LDS Initiatory
+1 ABBR LDS Init
+1 SENT [person] received LDS initiatory< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the LDS initiatory of [person]< [Date]>< [PlaceD
+3 CONC etails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARR
+1 TYPE F
+1 TITL Marriage
+1 ABBR Marriage
+1 SENT [couple] <#Couple#was|were> married< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the marriage of [couple]< [Date]>< [PlaceDetails
+3 CONC ]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ANUL
+1 TYPE F
+1 TITL Annulment
+1 ABBR Annulment
+1 SENT [couple] had their marriage annulled< [Date]>< [PlaceDetails]>< [Place]
+2 CONC >.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the annulment of the marriage of [couple]< [Date
+3 CONC ]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DIV
+1 TYPE F
+1 TITL Divorce
+1 ABBR Divorce
+1 SENT [couple] <#Couple#was|were> divorced< [Date]>< [PlaceDetails]>< [Place]
+2 CONC >.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the divorce of [couple]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF DIVF
+1 TYPE F
+1 TITL Divorce filed
+1 ABBR Div. filed
+1 SENT [couple] filed for divorce< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the divorce filing of [couple]< [Date]>< [PlaceD
+3 CONC etails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF ENGA
+1 TYPE F
+1 TITL Engagement
+1 ABBR Engagement
+1 SENT [couple] <#Couple#was|were> engaged< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the engagement of [couple]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARB
+1 TYPE F
+1 TITL Marriage Bann
+1 ABBR Marr Bann
+1 SENT [couple] had marriage banns published< [Date]>< [PlaceDetails]>< [Place
+2 CONC ]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the publishing of the marriage banns of [couple]
+3 CONC <[Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARC
+1 TYPE F
+1 TITL Marriage Contract
+1 ABBR Marr Contract
+1 SENT [couple] signed a marriage contract< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the marriage contract of [couple]< [Date]>< [Pla
+3 CONC ceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARL
+1 TYPE F
+1 TITL Marriage License
+1 ABBR Marr Lic
+1 SENT [couple] obtained a marriage license< [Date]>< [PlaceDetails]>< [Place]
+2 CONC >.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the obtaining of the marriage license by [couple
+3 CONC ]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF MARS
+1 TYPE F
+1 TITL Marriage Settlement
+1 ABBR Marr Settlement
+1 SENT [couple] obtained a marriage settlement< [Date]>< [PlaceDetails]>< [Pla
+2 CONC ce]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the marriage settlement of [couple]< [Date]>< [P
+3 CONC laceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF SLGS
+1 TYPE F
+1 TITL LDS Seal to spouse
+1 ABBR LDS SealSp
+1 SENT [couple] were sealed together< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the sealing of [couple]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF RESI
+1 TYPE F
+1 TITL Residence (family)
+1 ABBR Residence (fam)
+1 SENT [couple] lived < [Desc]>< [PlaceDetails]>< [Place]>< [Date]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF CENS
+1 TYPE F
+1 TITL Census (family)
+1 ABBR Census (fam)
+1 SENT [couple] appeared in the census< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] appeared in the census in the household of [couple]< [Date
+3 CONC ]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Degree
+1 TYPE P
+1 TITL Degree
+1 ABBR Degree
+1 SENT [person] received a< [desc]> degree< [Date]>< [PlaceDetails]>< [Place]>
+2 CONC .
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the degree of [person]< [Date]>< [PlaceDetails]>
+3 CONC < [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Military
+1 TYPE P
+1 TITL Military
+1 ABBR Military
+1 SENT [person] served in the military< [Desc]>< [Date]>< [PlaceDetails]>< [Pl
+2 CONC ace]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the military service of [person]< [Date]>< [Plac
+3 CONC eDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Mission
+1 TYPE P
+1 TITL Mission
+1 ABBR Mission
+1 SENT [person] served a mission< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the mission of [person]< [Date]>< [PlaceDetails]
+3 CONC >< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Stillborn
+1 TYPE P
+1 TITL Stillborn
+1 ABBR Stillborn
+1 SENT [person] was stillborn< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the stillbirth of [person]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Illness
+1 TYPE P
+1 TITL Illness
+1 ABBR Illness
+1 SENT [person] was ill< with [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the illness of [person] with [Desc]< [Date]>< [P
+3 CONC laceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Living
+1 TYPE P
+1 TITL Living
+1 ABBR Living
+1 SENT [person] was living< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Elected
+1 TYPE P
+1 TITL Election
+1 ABBR Elected
+1 SENT [person] was elected< as [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the election of [person] as [Desc]< [Date]>< [Pl
+3 CONC aceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Excomm
+1 TYPE P
+1 TITL Excommunication
+1 ABBR Excomm
+1 SENT [person] was excommunicated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the excommunication of [person]< [Date]>< [Place
+3 CONC Details]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Namesake
+1 TYPE P
+1 TITL Namesake
+1 ABBR Namesake
+1 SENT [person] was named after [Desc]< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Separation
+1 TYPE F
+1 TITL Separation
+1 ABBR Separation
+1 SENT [couple] were separated< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [ThisPerson] witnessed the separation of [couple]< [Date]>< [PlaceDetai
+3 CONC ls]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC N
+0 _EVDEF Alt. Name
+1 TYPE P
+1 TITL Alternate name
+1 ABBR Alt. Name
+1 SENT [person] was also known as [Desc]< [Date]>.
+1 PLAC N
+1 DATE Y
+1 DESC N
+0 _EVDEF _DNA
+1 TYPE P
+1 TITL DNA test
+1 ABBR DNA
+1 SENT [person] had a DNA test performed< [Date]>.
+1 PLAC N
+1 DATE Y
+1 DESC N
+0 _EVDEF Association
+1 TYPE P
+1 TITL Association
+1 ABBR Association
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 _EVDEF Misc
+1 TYPE P
+1 TITL Miscellaneous
+1 ABBR Misc
+1 SENT [person]< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 ROLE Witness
+2 SENT [person]< [Desc]>< [Date]>< [PlaceDetails]>< [Place]>.
+1 PLAC Y
+1 DATE Y
+1 DESC Y
+0 TRLR

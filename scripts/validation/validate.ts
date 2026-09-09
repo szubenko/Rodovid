@@ -1,5 +1,4 @@
-import { open, realpath } from 'node:fs/promises'
-import { isAbsolute, relative, resolve } from 'node:path'
+import { mediaFiles, readAsset } from '../assets.ts'
 import { familyDataSchema } from '../../src/data/schema.ts'
 import type { FamilyData, Relationship } from '../../src/data/schema.ts'
 import type { DatePoint } from '../../src/data/dates.ts'
@@ -161,30 +160,11 @@ function checkDates(data: FamilyData, issues: Diagnostic[]) {
 }
 
 async function checkAssets(data: FamilyData, assetsRoot: string, issues: Diagnostic[]) {
-  for (const media of data.media) {
-    let handle: Awaited<ReturnType<typeof open>> | undefined
-    try {
-      const root = await realpath(assetsRoot)
-      const file = await realpath(resolve(assetsRoot, media.path))
-      const local = relative(root, file)
-      if (isAbsolute(local) || local === '..' || local.startsWith('../') || local.startsWith('..\\')) throw new Error('Файл виходить за межі папки матеріалів')
-      handle = await open(file, 'r')
-      if (!(await handle.stat()).isFile()) throw new Error('Оголошений шлях не є звичайним файлом')
-      const bytes = Buffer.alloc(16)
-      const { bytesRead } = await handle.read(bytes, 0, bytes.length, 0)
-      const signatures: Record<string, boolean> = {
-        'image/jpeg': bytes.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff])),
-        'image/png': bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])),
-        'application/pdf': bytes.toString('ascii', 0, 5) === '%PDF-',
-        'audio/ogg': bytes.toString('ascii', 0, 4) === 'OggS',
-        'audio/wav': bytes.toString('ascii', 0, 4) === 'RIFF' && bytes.toString('ascii', 8, 12) === 'WAVE',
-        'audio/mpeg': bytes.toString('ascii', 0, 3) === 'ID3' || (bytes[0] === 0xff && (bytes[1]! & 0xe0) === 0xe0),
-      }
-      if (bytesRead < 3 || !signatures[media.mimeType]) throw new Error(`Сигнатура не відповідає ${media.mimeType}`)
-    } catch (error) {
+  for (const media of data.media) for (const asset of mediaFiles(media)) {
+    try { await readAsset(assetsRoot, asset) } catch (error) {
       issues.push({ severity: 'error', code: 'INVALID_DECLARED_FILE', message: error instanceof Error ? error.message : String(error),
-        entityIds: [media.id], recordIds: records([media]), path: media.path })
-    } finally { await handle?.close() }
+        entityIds: [media.id], recordIds: records([media]), path: asset.path })
+    }
   }
 }
 

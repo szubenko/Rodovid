@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { staticDataPlugin } from './scripts/static-data-plugin.ts'
 
 export default defineConfig({
-  plugins: [react()],
-  // Публічні матеріали додаватимуться через підготовку даних у ROD-007.
+  plugins: [react(), staticDataPlugin()],
+  // Only declared, validated files are emitted by staticDataPlugin.
   publicDir: false,
+  build: {
+    assetsDir: 'app-assets',
+  },
   server: {
     host: '127.0.0.1',
     port: 5173,

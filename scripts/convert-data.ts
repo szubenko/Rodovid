@@ -7,7 +7,7 @@ import { validateData } from './validation/validate.ts'
 import { failureReport, renderReport } from './validation/report.ts'
 import type { ValidationReport } from './validation/report.ts'
 
-const root = fileURLToPath(new URL('../', import.meta.url))
+const defaultRoot = fileURLToPath(new URL('../', import.meta.url))
 const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`
 
 async function readOptional(path: string) {
@@ -34,6 +34,7 @@ async function saveReport() {
 
 try {
   const { values } = parseArgs({ options: {
+    'project-root': { type: 'string', default: defaultRoot },
     gedcom: { type: 'string', default: 'Data/Zubenko.ged' },
     config: { type: 'string', default: 'Data/site.json' },
     supplements: { type: 'string', default: 'Data/annotations.json' },
@@ -45,7 +46,8 @@ try {
     'init-identities': { type: 'boolean', default: false },
   } })
   if (values['validate-only'] && values['init-identities']) throw new Error('Validation cannot initialize identities')
-  const paths = Object.fromEntries(Object.entries(values).filter(([key]) => !['init-identities', 'validate-only', 'assets-root'].includes(key))
+  const root = resolve(defaultRoot, values['project-root']!)
+  const paths = Object.fromEntries(Object.entries(values).filter(([key]) => !['project-root', 'init-identities', 'validate-only', 'assets-root'].includes(key))
     .map(([key, value]) => [key, resolve(root, value as string)])) as Record<'gedcom' | 'config' | 'supplements' | 'identities' | 'out' | 'report', string>
   const normalized = [...Object.values(paths), `${paths.report}.md`].map((path) => process.platform === 'win32' ? path.toLowerCase() : path)
   if (new Set(normalized).size !== normalized.length) throw new Error('Input and output paths must be distinct')

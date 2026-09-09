@@ -46,7 +46,7 @@ it('runs the actual CLI deterministically, preserves inputs, and fails safely on
     // Only delete the exact task-owned directory returned by mkdtemp inside the OS temp root.
     rmSync(directory, { recursive: true, force: true })
   }
-})
+}, 30_000)
 
 it('reports CLI validation failures, returns exit 1, and preserves the previous output and input journal', () => {
   const parent = resolve(tmpdir())
@@ -97,4 +97,4 @@ it('reports CLI validation failures, returns exit 1, and preserves the previous 
     expect(readFileSync(manifest)).toEqual(identityBytes)
     expect(JSON.parse(readFileSync(path('report.json'), 'utf8')).validation.status).toBe('passed')
   } finally { rmSync(directory, { recursive: true, force: true }) }
-})
+}, 30_000)

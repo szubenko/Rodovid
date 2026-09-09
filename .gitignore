@@ -1,0 +1,50 @@
+# Залежності та результати збірки
+node_modules/
+dist/
+
+# Звіти й артефакти перевірок
+coverage/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# Локальні кеші
+.cache/
+.npm-cache/
+.vite/
+.vitest/
+.eslintcache
+*.tsbuildinfo
+
+# Тимчасові файли та журнали
+tmp/
+temp/
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Локальні змінні середовища; шаблони зберігаємо в Git
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Локальні налаштування публікації
+.vercel/
+
+# Особисті налаштування IDE; спільні конфігурації VS Code зберігаємо
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Службові файли операційної системи
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -180,6 +180,7 @@ export function convertGedcom(input: ConversionInput) {
     const deaths = children(node, 'DEAT').filter((entry) => entry.value === 'Y'
       || (entry.value !== 'N' && entry.children.some((child) => ['DATE', 'PLAC', 'CAUS', 'SOUR'].includes(child.tag!))))
     data.people.push(personSchema.parse({ id: personId, lifeStatus: deaths.length ? 'deceased' : 'unknown',
+      sex: person.sex.length === 1 && ['M', 'F', 'U'].includes(person.sex[0] ?? '') ? person.sex[0] : undefined,
       externalIds: ['_FSFTID', '_UID'].flatMap((tag) => children(node, tag).map((entry) => ({
         system: tag === '_FSFTID' ? 'FamilySearch' : 'RootsMagic-UID', value: literal(entry),
       }))), provenance: [origin(node), ...deaths.map(origin)],

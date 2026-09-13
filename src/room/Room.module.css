@@ -1,0 +1,15 @@
+.room { padding: clamp(0.65rem, 2vw, 1.5rem); margin-bottom: 2rem; border: 8px solid #74503a; border-radius: 0.35rem; background: #e9e0cf; overflow-wrap: anywhere; }
+.sections { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-bottom: 1rem; border-bottom: 3px double #8c3d32; }
+.sections a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-text); }
+.paper { min-width: 0; padding: clamp(0.8rem, 3vw, 1.7rem); margin-bottom: 1rem; background: #fffaf0; border: 1px solid #d7c8b3; box-shadow: 0 2px 6px #382b2310; scroll-margin-top: 1rem; }
+.paper p + p { margin-top: 0.7rem; }
+.paper h3 { font-family: var(--font-heading); font-size: 1.25rem; }
+.paper a { color: var(--color-accent); text-underline-offset: 3px; }
+.paper ul, .paper ol { padding-left: 1.3rem; }
+.paper li { margin-block: 0.5rem; line-height: 1.6; }
+.paper summary { padding-block: 0.7rem; min-height: 44px; cursor: pointer; }
+.kicker { color: var(--color-accent); letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.75rem; }
+.empty { color: var(--color-muted); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.grid .paper { margin: 0; }
+@media (max-width: 650px) { .grid { grid-template-columns: 1fr; } .room { border-width: 4px; } }

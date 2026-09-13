@@ -29,6 +29,7 @@ const assessment = {
 export const personSchema = z.strictObject({
   id: personIdSchema,
   lifeStatus: z.enum(['alive', 'deceased', 'unknown']).default('unknown'),
+  sex: z.enum(['M', 'F', 'U']).optional(),
   externalIds: z.array(z.strictObject({ system: text, value: text })).default([]),
   photoIds: ids,
   portraitId: id.optional(),

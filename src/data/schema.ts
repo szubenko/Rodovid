@@ -152,6 +152,10 @@ export const siteConfigSchema = z.strictObject({
   rooms: z.array(z.strictObject({
     personId: personIdSchema, theme: text.optional(), backgroundMediaId: id.optional(),
   })).default([]),
+  map: z.strictObject({
+    tileUrl: webUrl, attributionText: text, attributionUrl: webUrl,
+    maxZoom: z.number().int().min(1).max(22).default(19),
+  }).optional(),
   audio: z.strictObject({
     musicMediaIds: ids, effectMediaIds: ids,
     musicEnabled: z.boolean().default(false), effectsEnabled: z.boolean().default(false),

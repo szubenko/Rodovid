@@ -1,0 +1,5 @@
+.rodovid-place-marker { display: grid; place-items: center; font-size: 30px; color: #8c3d32; text-shadow: 0 1px 3px #fff; }
+.leaflet-container { color: #382b23; background: #e6dfd2; }
+.leaflet-container .leaflet-control-attribution { font-size: 11px; color: #382b23; background: #fffaf0; }
+.leaflet-container .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; }
+.leaflet-popup-content a { display: inline-flex; min-height: 44px; align-items: center; }

@@ -7,6 +7,7 @@ import { Memories } from './Memories'
 import { PhotoGallery } from './PhotoGallery'
 import { Archive } from './Archive'
 import { ClaimEvidence } from './Evidence'
+import { Places } from './Places'
 
 export function PersonRoom({ personId }: { personId: string }) {
   const family = useFamily()
@@ -36,7 +37,7 @@ export function PersonRoom({ personId }: { personId: string }) {
       <Memories personId={personId} />
       <PhotoGallery personId={personId} />
       <Archive personId={personId} />
-      <section className={styles.paper} id="places"><h2>Місця життя</h2><p className={styles.empty}>Місця подій будуть доступні тут; координати не домислюються.</p></section>
+      <Places personId={personId} />
     </div>
   </article>
 }

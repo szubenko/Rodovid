@@ -97,12 +97,14 @@ src/
   main.tsx              точка входу React
   data/                 Zod-схеми, типи, стабільні ID та предметні тести
   navigation/           Context, завантаження, reducer та історія перегляду
+  graph/                чиста проєкція родинного графа й секторна геометрія
   styles/global.css     базові стилі та CSS variables
 tests/e2e/              сценарії навігації та статичної збірки Playwright
 tests/fixtures/         окремі синтетичні приклади контракту
 scripts/gedcom/         адаптер сирого GEDCOM, базова звірка й тести
 scripts/check-gedcom.ts локальна команда перевірки базового експорту
 scripts/convert-data.ts локальне перетворення на JSON
+scripts/review-graph.ts локальні HTML/PNG для огляду геометрії ROD-010
 vite.config.ts          локальні сервери та статична збірка
 vitest.config.ts        окремий набір предметних тестів
 playwright.config.ts    наскрізні перевірки готової збірки

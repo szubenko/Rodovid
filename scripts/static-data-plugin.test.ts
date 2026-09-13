@@ -55,6 +55,7 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
     expect(family.config.dataVersion).toBe('version-1')
     expect(family.media).toHaveLength(2)
     expect(family.media[0]!.path).toBe(family.media[1]!.path)
+    expect(family.media[0]!.dimensions).toEqual({ width: 1, height: 1 })
     await run()
     expect(await get('dist/data/family.json')).toEqual(first)
     const replacement = Buffer.concat([png, Buffer.from('replacement')])

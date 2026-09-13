@@ -1,0 +1,4 @@
+.pswp__caption { position: absolute; left: 10%; bottom: 1rem; width: 80%; max-height: 5rem; overflow: auto; padding: 0.6rem; text-align: center; color: #fffaf0; background: #20170de8; line-height: 1.5; overflow-wrap: anywhere; }
+.pswp__button { min-width: 44px; min-height: 44px; }
+.pswp--touch .pswp__button--arrow { visibility: visible; display: block; }
+.pswp :focus-visible { outline-color: #fffaf0; }

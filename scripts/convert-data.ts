@@ -7,6 +7,8 @@ import { validateData } from './validation/validate.ts'
 import { failureReport, renderReport } from './validation/report.ts'
 import type { ValidationReport } from './validation/report.ts'
 import { resolveMemoryFiles } from './memory-files.ts'
+import { imageSize } from 'image-size'
+import { readAsset } from './assets.ts'
 
 const defaultRoot = fileURLToPath(new URL('../', import.meta.url))
 const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`
@@ -64,6 +66,12 @@ try {
   validation = await validateData(result.family, { assetsRoot: resolve(root, values['assets-root']!), conversion: result.report })
   await saveReport()
   if (validation.status === 'failed') throw new Error(`Validation failed: ${validation.totals.errors} error(s); see ${paths.report}.md`)
+  for (const media of result.family.media) if (media.mimeType === 'image/png' || media.mimeType === 'image/jpeg') {
+    // readAsset checks PNG/JPEG magic before this parser; other formats never reach it.
+    const metadata = imageSize(await readAsset(resolve(root, values['assets-root']!), media))
+    const rotated = metadata.orientation !== undefined && metadata.orientation >= 5
+    media.dimensions = { width: rotated ? metadata.height : metadata.width, height: rotated ? metadata.width : metadata.height }
+  }
   if (!bytes.equals(await readFile(paths.gedcom))) throw new Error('GEDCOM changed during conversion')
   if (values['validate-only']) {
     console.log(json({ status: validation.status, ...validation.counts, ...validation.totals, report: `${paths.report}.md` }))

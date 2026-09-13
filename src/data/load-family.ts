@@ -29,8 +29,4 @@ export function createFamilyLoader(fetchData: typeof fetch = fetch) {
 
 export const loadFamily = createFamilyLoader()
 
-export function personName(family: FamilyData, personId: string) {
-  const names = family.claims.filter((claim) => claim.field === 'name' && claim.target.id === personId)
-  const name = names.find((claim) => claim.isPrimary) ?? names[0]
-  return name?.field === 'name' ? name.value.display : 'Ім’я невідоме'
-}
+export { personName } from './person-name'

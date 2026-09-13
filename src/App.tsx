@@ -5,6 +5,7 @@ import { personName } from './data/load-family'
 import { FamilyProvider, ViewProvider } from './navigation/Providers'
 import { useFamily, useView } from './navigation/context'
 import { RadialMap } from './graph/RadialMap'
+import { PersonSearch } from './search/PersonSearch'
 import styles from './App.module.css'
 
 function Navigation() {
@@ -66,6 +67,7 @@ function Workspace() {
       <div><p className={styles.eyebrow}>Сімейна історія</p><h1 ref={heading} tabIndex={-1}>{family.config.title}</h1></div>
       <Navigation />
     </header>
+    <PersonSearch key={location.key} />
     <Routes>
       <Route path="/" element={<Navigate to={`/tree/${family.config.homePersonId}`} replace />} />
       <Route path="/tree/:personId" element={<PersonScreen screen="tree" />} />

@@ -1,6 +1,6 @@
 import type { HistoricalDate } from '../data/dates'
 import type { FamilyData, Relationship } from '../data/schema'
-import { personName } from '../data/load-family'
+import { personName } from '../data/person-name'
 import { radialPoint, type LayoutNode, type Point } from './layout'
 
 export function dateYears(date: HistoricalDate): string {

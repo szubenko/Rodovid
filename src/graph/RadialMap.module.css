@@ -1,7 +1,7 @@
 .map { margin-block: 1rem 2rem; }
 .hint, .legend { color: var(--color-muted); font-size: 0.9rem; }
 .hint { max-width: 48rem; }
-.canvas { width: 100%; max-width: 52rem; margin-inline: auto; overflow: clip; }
+.canvas { width: 100%; max-width: 68rem; margin-inline: auto; overflow: clip; background: #efe7d8; }
 .canvas svg { display: block; width: 100%; overflow: visible; touch-action: none; user-select: none; cursor: grab; }
 .canvas svg:active { cursor: grabbing; }
 .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-block: 0.5rem; }
@@ -13,24 +13,31 @@
 .branch { display: grid; gap: 0.5rem; padding: 0.75rem; border: 1px solid #d7c8b3; overflow-wrap: anywhere; }
 .branch span { font-size: 0.9rem; color: var(--color-muted); }
 .node { cursor: pointer; }
-.sector { fill: #eee1c8; stroke: #8c3d32; stroke-width: 2; }
-.node[data-lane='parents'][data-branch='right'] .sector { fill: #f2e8d4; stroke: #77794d; }
-.node[data-lane='spouses'] .sector, .node[data-lane='children'] .sector { fill: #f1e5d0; stroke: #9b723d; }
-.node[data-center='true'] .sector { fill: #e7d3a9; stroke: #a08250; stroke-width: 4; }
+.sector { fill: #e2cfad; stroke: #f9f2e5; stroke-width: 2; }
+.node[data-ring='2'] .sector { fill: #d4bc96; }
+.empty .sector { fill: #eee4d2; }
+.rim { fill: none; stroke: #8c3b30; stroke-width: 4; pointer-events: none; }
+[data-branch='right'] > .rim { stroke: #72734d; }
+[data-lane='spouses'] > .rim, [data-lane='children'] > .rim { stroke: #9d733c; }
+.node[data-center='true'] .sector { fill: #e2cfad; stroke: #b69a70; stroke-width: 1.5; filter: drop-shadow(0 2px 3px #74503a22); }
+.centerInset { fill: none; stroke: #f9f2e5; stroke-width: 1.5; pointer-events: none; }
+.emptyLabel { fill: #6d5c48; font-family: system-ui, sans-serif; pointer-events: none; }
 .node:hover .sector { fill: #e8d2b4; }
 .node:focus-visible { outline: none; }
 .node:focus-visible .sector { stroke: #572019; stroke-width: 5; stroke-dasharray: 6 3; }
 .label, .date, .hidden, .centerCaption { fill: var(--color-text); pointer-events: none; }
-.label { font-family: var(--font-heading); }
-.date { font-size: 12px; }
+.label { font-family: system-ui, sans-serif; }
+.node[data-center='true'] .label { font-family: var(--font-heading); }
+.date { font-family: system-ui, sans-serif; }
 .hidden { font-size: 14px; font-weight: 700; }
-.centerCaption { font-size: 11px; text-anchor: middle; fill: #705534; }
+.centerCaption { font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; text-anchor: middle; fill: #705534; }
 .connection { cursor: pointer; }
 .hit { fill: none; stroke: transparent; stroke-width: 24; stroke-linecap: round; pointer-events: stroke; vector-effect: non-scaling-stroke; }
-.line { fill: none; stroke: #685745; stroke-width: 3; stroke-linecap: round; pointer-events: none; vector-effect: non-scaling-stroke; }
+.line { fill: none; stroke: #685745; stroke-width: 2; stroke-linecap: round; pointer-events: none; vector-effect: non-scaling-stroke; opacity: 0; }
 .connection[data-uncertain='true'] .line { stroke-dasharray: 3 5; }
 .connection[data-selected='true'] .line { stroke: #ab3024; stroke-width: 6; }
-.connection:hover .line { stroke: #ab3024; }
+.connection:hover .line { stroke: #ab3024; opacity: 1; }
+.connection[data-selected='true'] .line, .connection:focus-visible .line { opacity: 1; }
 .connection:focus-visible { outline: none; }
 .connection:focus-visible .hit { stroke: #8c3d3240; }
 .connection:focus-visible .line { stroke: #572019; stroke-width: 5; }
@@ -49,6 +56,7 @@
 .people strong, .people span, .relationships strong, .relationships span { display: block; line-height: 1.5; }
 .people span, .relationships span { font-size: 0.9rem; color: var(--color-muted); }
 .relationships button[aria-pressed='true'] { border: 3px solid var(--color-accent); padding: calc(0.75rem - 2px); }
+@media (max-width: 550px) { .centerCaption { font-size: 7px; letter-spacing: 0.5px; } }
 @media (forced-colors: active) {
   .sector { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .sector, .node:focus-visible .sector { stroke: Highlight; }

@@ -47,7 +47,7 @@ test('collapse is reversible and depth never removes people from the full index'
   expect(await nodes(page).count()).toBeLessThan(fullCount)
   await expect(page.locator(`svg [data-appearance-id="${id}"]`)).toHaveCount(1)
   await generations(page).selectOption('1')
-  await expect(nodes(page)).toHaveCount(1)
+  await expect(nodes(page)).toHaveCount(3)
   await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(25)
   await generations(page).selectOption('6')
   await page.getByRole('button', { name: 'Розгорнути всі гілки' }).click()
@@ -82,7 +82,7 @@ test('Back, Forward, room return and home restore the correct camera, depth and 
   await page.getByRole('link', { name: 'До мене', exact: true }).click()
   await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
   await expect(generations(page)).toHaveValue('3')
-  await expect(nodes(page)).toHaveCount(5)
+  await expect(nodes(page)).toHaveCount(9)
 })
 
 test('mouse dragging never follows a sector or line and wheel keeps page scrolling', async ({ page }) => {
@@ -141,7 +141,7 @@ test('camera input during recentering settles nodes and lines, and the next drag
   await page.clock.install({ time: new Date('2026-09-13T12:00:00Z') })
   await page.clock.pauseAt(new Date('2026-09-13T12:00:01Z'))
   await page.goto('/tree/I1')
-  await expect(nodes(page)).toHaveCount(5)
+  await expect(nodes(page)).toHaveCount(9)
   await page.clock.runFor(1000)
   await page.locator('ul a[href="/tree/I2"]').dispatchEvent('click')
   await expect(page.locator('[data-layer="coordinates"]')).toHaveAttribute('data-transition', 'moving')

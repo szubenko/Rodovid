@@ -17,6 +17,7 @@ export type LayoutNode = Appearance & Point & {
 }
 export type RadialLayout = {
   width: number; height: number; center: Point; centerRadius: number
+  ringRadii: number[]
   nodes: LayoutNode[]
   edges: (Projection['edges'][number] & { from: Point; to: Point })[]
 }
@@ -27,6 +28,7 @@ export type LayoutOptions = {
   /** Inject canvas/SVG font measurement in the renderer; no browser dependency here. */
   measureText?: (text: string, fontSize: number) => number
   fontSize?: number
+  centerFontSize?: number
 }
 
 const radians = (angle: number) => angle * Math.PI / 180
@@ -58,7 +60,7 @@ function centerLabel(text: string, width: number, measure: (text: string) => num
   let line = ''
   for (let index = 0; index < words.length; index++) {
     const word = words[index]!
-    if (lines.length === 2) {
+    if (lines.length === 1) {
       lines.push(fitLabel([line, ...words.slice(index)].filter(Boolean).join(' '), width, measure))
       return lines
     }
@@ -78,12 +80,17 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
   const { width, height } = options
   const center = { x: width / 2, y: height / 2 }
   const radius = Math.min(width, height) / 2 - 16
-  const centerRadius = Math.min(radius * 0.55, Math.max(58, radius * 0.34))
-  const band = (radius - centerRadius) / Math.max(1, projection.generations - 1)
+  const ringCount = Math.max(1, projection.generations - 1)
+  const centerRadius = Math.min(radius * 0.55, Math.max(58, radius * (ringCount >= 3 ? 0.22 : 0.34)))
+  // Radial names need room along the radius, unlike names following an arc.
+  const weights = Array.from({ length: ringCount }, (_, index) => index >= 2 && Math.min(width, height) >= 550 ? 3 : 1)
+  const unit = (radius - centerRadius) / weights.reduce((sum, weight) => sum + weight, 0)
+  const ringRadii = [centerRadius]
+  for (const weight of weights) ringRadii.push(ringRadii.at(-1)! + unit * weight)
   const fontSize = options.fontSize ?? (Math.min(width, height) < 550 ? 12 : 14)
   if (!Number.isFinite(fontSize) || fontSize < 12 || fontSize > 32) throw new RangeError('Font size must be 12–32 pixels')
-  const measure = (text: string) => {
-    const value = (options.measureText ?? estimateTextWidth)(text, fontSize)
+  const measure = (text: string, size = fontSize) => {
+    const value = (options.measureText ?? estimateTextWidth)(text, size)
     if (!Number.isFinite(value) || value < 0) throw new RangeError('Invalid text measurement')
     return value
   }
@@ -96,19 +103,21 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     const span = (rangeEnd - rangeStart) / appearance.slotCount
     const startAngle = appearance.lane === 'center' ? 0 : rangeStart + span * appearance.slotIndex
     const endAngle = appearance.lane === 'center' ? 360 : startAngle + span
-    const innerRadius = appearance.ring === 0 ? 0 : centerRadius + (appearance.ring - 1) * band + Math.min(3, band / 4)
-    const outerRadius = appearance.ring === 0 ? centerRadius : centerRadius + appearance.ring * band
-    const labelRadius = (innerRadius + outerRadius) / 2
+    const band = appearance.ring === 0 ? 0 : ringRadii[appearance.ring]! - ringRadii[appearance.ring - 1]!
+    const innerRadius = appearance.ring === 0 ? 0 : ringRadii[appearance.ring - 1]! + Math.min(3, band / 4)
+    const outerRadius = ringRadii[appearance.ring]!
+    const labelRadius = (innerRadius + outerRadius) / 2 - 2
     const angle = (startAngle + endAngle) / 2
     const labelWidth = appearance.ring === 0 ? centerRadius * 1.5
       : outerRadius - innerRadius < fontSize + 8 ? 0 : Math.max(0, labelRadius * radians(endAngle - startAngle) - 20)
     const fullLabel = options.labels.get(appearance.personId) ?? 'Ім’я невідоме'
-    const centerLines = appearance.ring === 0 ? centerLabel(fullLabel, labelWidth, measure) : []
+    const nodeFontSize = appearance.ring === 0 ? (options.centerFontSize ?? fontSize) : fontSize
+    const centerLines = appearance.ring === 0 ? centerLabel(fullLabel, labelWidth, (text) => measure(text, nodeFontSize)) : []
     const label = appearance.ring === 0 ? centerLines.join(' ') : fitLabel(fullLabel, labelWidth, measure)
     const node: LayoutNode = {
       ...appearance, ...(appearance.ring === 0 ? center : radialPoint(center, labelRadius, angle)),
       startAngle, endAngle, innerRadius, outerRadius, labelRadius, labelWidth,
-      label, fullLabel, labelTruncated: label !== fullLabel, centerLines, fontSize,
+      label, fullLabel, labelTruncated: label !== fullLabel, centerLines, fontSize: nodeFontSize,
       reverseLabel: angle > 90 && angle < 270,
     }
     byId.set(appearance.appearanceId, node)
@@ -119,5 +128,5 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     const to = byId.get(edge.toAppearanceId)!
     return { ...edge, from: { x: from.x, y: from.y }, to: { x: to.x, y: to.y } }
   })
-  return { width, height, center, centerRadius, nodes, edges }
+  return { width, height, center, centerRadius, ringRadii, nodes, edges }
 }

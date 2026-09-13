@@ -30,14 +30,15 @@ export function relationshipName(family: FamilyData, relation: Relationship): st
 }
 
 const point = ({ x, y }: Point) => `${x},${y}`
-export function sectorPath(node: LayoutNode, center: Point): string {
+export type SectorGeometry = Pick<LayoutNode, 'innerRadius' | 'outerRadius' | 'startAngle' | 'endAngle' | 'labelRadius' | 'reverseLabel'>
+export function sectorPath(node: SectorGeometry, center: Point): string {
   const { innerRadius: inner, outerRadius: outer, startAngle: a, endAngle: b } = node
   const p = (radius: number, angle: number) => point(radialPoint(center, radius, angle))
   const large = b - a > 180 ? 1 : 0
   return `M${p(inner, a)} L${p(outer, a)} A${outer},${outer} 0 ${large} 1 ${p(outer, b)} L${p(inner, b)} A${inner},${inner} 0 ${large} 0 ${p(inner, a)} Z`
 }
 
-export function labelArc(node: LayoutNode, center: Point, radius = node.labelRadius): string {
+export function labelArc(node: SectorGeometry, center: Point, radius = node.labelRadius): string {
   const a = node.reverseLabel ? node.endAngle : node.startAngle
   const b = node.reverseLabel ? node.startAngle : node.endAngle
   return `M${point(radialPoint(center, radius, a))} A${radius},${radius} 0 ${Math.abs(b - a) > 180 ? 1 : 0} ${node.reverseLabel ? 0 : 1} ${point(radialPoint(center, radius, b))}`

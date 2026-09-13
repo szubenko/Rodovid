@@ -2,14 +2,48 @@ import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { familyDataSchema } from '../../src/data/schema'
 import { buildFamilyGraph, projectFamily } from '../../src/graph/projection'
+import { personName } from '../../src/data/person-name'
 
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 const graph = buildFamilyGraph(family)
 
+test('fourth generation switches to upright radial multiline names', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 1280, height: 1000 })
+  await page.goto('/tree/I1')
+  const ancestor = page.locator('svg [data-person-id="I9"][data-ring="3"]')
+  await expect(ancestor.locator('[data-label-orientation="radial"]')).toBeVisible()
+  await expect(ancestor.locator('textPath')).toHaveCount(0)
+  await expect(ancestor).toContainText('1900')
+  await expect(page.locator('svg [data-person-id="I5"] textPath').first()).toBeVisible()
+  for (const id of ['I9', 'I6', 'I8', 'I7']) {
+    const lines = await page.locator(`svg [data-person-id="${id}"] [data-label-kind="name"]`).allTextContents()
+    expect(lines.length).toBeLessThanOrEqual(2)
+    expect(lines.join(' ')).toBe(personName(family, id))
+  }
+  await expect(page.locator('[data-layer="empty-sectors"] text, [data-layer="empty-sectors"] title')).toHaveCount(0)
+  await page.locator('svg').screenshot({ path: testInfo.outputPath('radial-labels-desktop.png') })
+  await page.getByLabel('Покоління', { exact: true }).selectOption('5')
+  await expect(page.locator('svg [data-ring="4"] [data-label-orientation="radial"]').first()).toBeVisible()
+  await page.locator('svg').screenshot({ path: testInfo.outputPath('radial-labels-five-rings.png') })
+  const beforeZoom = (await ancestor.locator('[data-label-orientation="radial"]').textContent())!.replaceAll('…', '').length
+  for (let step = 0; step < 3; step++) await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
+  expect((await ancestor.locator('[data-label-orientation="radial"]').textContent())!.replaceAll('…', '').length).toBeGreaterThan(beforeZoom)
+  await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.getByLabel('Покоління', { exact: true }).selectOption('3')
+  await page.locator('svg').screenshot({ path: testInfo.outputPath('radial-labels-mobile.png') })
+  await ancestor.focus()
+  await page.keyboard.press('Enter')
+  await expect(page).toHaveURL(/\/tree\/I9$/)
+})
+
 test('home renders the approved real projection and supports keyboard sector navigation', async ({ page }) => {
   await page.goto('/')
   const map = page.getByRole('region', { name: 'Радіальна карта родини', exact: true })
-  await expect(map.locator('svg [data-person-id]')).toHaveCount(5)
+  await expect(map.locator('svg [data-person-id]')).toHaveCount(9)
+  await expect(map.locator('svg [data-layer="empty-sectors"] [data-lane="parents"]')).toHaveCount(6)
+  await expect(map.locator('svg [data-layer="empty-sectors"]')).toHaveText('')
+  await expect(map.locator('svg [data-layer="empty-sectors"] [role], svg [data-layer="empty-sectors"] [tabindex]')).toHaveCount(0)
   await expect(map.locator('[data-center="true"]')).toHaveAttribute('data-person-id', 'I1')
   await expect(map.locator('[data-center="true"]')).toContainText('нар. 1987')
   await expect(map.locator('img, image')).toHaveCount(0)
@@ -59,7 +93,7 @@ test('disputed roles and duplicate families keep distinct selectable relationshi
     await page.goto(`/tree/${personId}`)
     await page.getByText(/^Зв’язки на карті ·/).click()
     const buttons = page.locator('button[data-relationship-id]')
-    const expected = [...new Set(projectFamily(graph, personId).edges.map((edge) => edge.relationshipId))]
+    const expected = [...new Set(projectFamily(graph, personId, { generations: 4 }).edges.map((edge) => edge.relationshipId))]
     await expect(buttons).toHaveCount(expected.length)
     for (const button of await buttons.all()) {
       const id = await button.getAttribute('data-relationship-id')
@@ -81,7 +115,7 @@ test('all real centers fit the phone and desktop with full names and stable rela
     await page.setViewportSize({ width, height: 900 })
     for (const person of family.people) {
       await page.goto(`/tree/${person.id}`)
-      const projection = projectFamily(graph, person.id)
+      const projection = projectFamily(graph, person.id, { generations: 4 })
       await expect(page.locator('svg [data-person-id]')).toHaveCount(projection.appearances.length)
       expect(await page.locator('svg [data-relationship-id]').evaluateAll((elements) => elements.map((element) => element.getAttribute('data-relationship-id'))))
         .toEqual(projection.edges.map((edge) => edge.relationshipId))

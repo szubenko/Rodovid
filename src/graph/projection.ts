@@ -25,7 +25,11 @@ export function buildFamilyGraph(data: Pick<FamilyData, 'people' | 'relationship
     from.push({ personId: relation.toPersonId, relationshipId: relation.id, direction: relation.kind === 'spouse' ? 'spouses' : 'children' })
     to.push({ personId: relation.fromPersonId, relationshipId: relation.id, direction: relation.kind === 'spouse' ? 'spouses' : 'parents' })
   }
-  for (const list of neighbors.values()) list.sort((a, b) => compare(a.personId, b.personId) || compare(a.relationshipId, b.relationshipId))
+  const sex = new Map(data.people.map((person) => [person.id, person.sex]))
+  const parentOrder = (neighbor: Neighbor) => neighbor.direction === 'parents'
+    ? ({ M: 0, F: 1, U: 2 }[sex.get(neighbor.personId) ?? 'U']) : 0
+  for (const list of neighbors.values()) list.sort((a, b) => parentOrder(a) - parentOrder(b)
+    || compare(a.personId, b.personId) || compare(a.relationshipId, b.relationshipId))
   return { personIds, relationships, neighbors }
 }
 

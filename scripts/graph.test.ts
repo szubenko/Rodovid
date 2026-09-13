@@ -4,6 +4,7 @@ import { convertGedcom } from './gedcom/convert.ts'
 import { familyDataSchema, personAppearanceSchema, relationshipSchema } from '../src/data/schema.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 import { estimateTextWidth, fitLabel, layoutRadial } from '../src/graph/layout.ts'
+import { emptySectors } from '../src/graph/empty-sectors.ts'
 import minimal from '../tests/fixtures/data-contract/minimal.json'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
@@ -136,6 +137,31 @@ describe('family projection', () => {
 })
 
 describe('radial geometry', () => {
+  it('fills every ancestor and lower ring without inventing people or covering known sectors', () => {
+    const projection = projectFamily(graph, 'I1', { generations: 4 })
+    const layout = layoutRadial(projection, { width: 1024, height: 1024, labels })
+    const empty = emptySectors(layout, 3)
+    expect(layout.nodes).toHaveLength(9)
+    expect(empty.some((sector) => sector.label === 'Подружжя · немає відомостей')).toBe(true)
+    expect(empty.some((sector) => sector.label === 'Діти · немає відомостей')).toBe(true)
+    for (const ring of [1, 2, 3]) {
+      for (const parents of [true, false]) {
+        const sectors = [...layout.nodes, ...empty].filter((sector) => sector.ring === ring
+          && (sector.lane === 'parents') === parents).sort((a, b) => a.startAngle - b.startAngle)
+        expect(sectors[0]!.startAngle).toBe(parents ? -108 : 116)
+        expect(sectors.at(-1)!.endAngle).toBe(parents ? 108 : 244)
+        for (let index = 1; index < sectors.length; index++) expect(sectors[index]!.startAngle).toBeCloseTo(sectors[index - 1]!.endAngle)
+      }
+    }
+    expect(layout.nodes.find((node) => node.personId === 'I5')!.startAngle).toBe(-108)
+  })
+
+  it('labels collapsed continuations as hidden, without claiming data is missing', () => {
+    const projection = projectFamily(graph, 'I1', { generations: 4, collapsedAppearanceIds: ['appearance-2:I1'] })
+    const layout = layoutRadial(projection, { width: 1024, height: 1024, labels })
+    expect(emptySectors(layout, 3).every((sector) => sector.label === 'Продовження приховано')).toBe(true)
+  })
+
   it.each([320, 1024])('lays out all real centers at %s px with finite, bounded, nonoverlapping sectors and fitting labels', (width) => {
     for (const personId of graph.personIds) for (const generations of [1, 3, 4, 12]) {
       const projection = projectFamily(graph, personId, { generations })

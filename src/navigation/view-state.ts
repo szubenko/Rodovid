@@ -2,6 +2,7 @@ export type ViewRoute = { screen: 'tree' | 'person' | 'missing'; personId: strin
 export type MapSettings = {
   generations: number
   zoom: number
+  /** Fractions of the square map viewport; independent of its current pixel width. */
   pan: { x: number; y: number }
   collapsedAppearanceIds: string[]
 }

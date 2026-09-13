@@ -8,6 +8,8 @@ import { fitLabel, layoutRadial } from './layout'
 import { connectionPath, labelArc, lifeYears, relationshipName, sectorPath } from './presentation'
 import styles from './RadialMap.module.css'
 import { useMapTransition } from './useMapTransition'
+import { useMapCamera } from './useMapCamera'
+import { maxZoom, minZoom, scaleCamera } from './camera'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
@@ -43,21 +45,47 @@ export function RadialMap({ personId }: { personId: string }) {
   const labels = useMemo(() => new Map(family.people.map((person) => [person.id, personName(family, person.id)])), [family])
   const years = useMemo(() => new Map(family.people.map((person) => [person.id, lifeYears(family, person.id)])), [family])
   const mapSettings = state.current.map
-  const projection = useMemo(() => projectFamily(graph, personId, mapSettings), [graph, personId, mapSettings])
+  const { generations, collapsedAppearanceIds, pan, zoom } = mapSettings
+  const projection = useMemo(() => projectFamily(graph, personId, { generations, collapsedAppearanceIds }), [graph, personId, generations, collapsedAppearanceIds])
   const layout = useMemo(() => layoutRadial(projection, { width, height: width, labels, measureText, fontSize: width < 550 ? 12 : 18 }), [projection, width, labels, measureText])
-  useMapTransition(container, layout, personId, mapSettings)
+  const renderedCamera = useMemo(() => ({ ...mapSettings, pan: { x: pan.x * width, y: pan.y * width } }), [mapSettings, pan.x, pan.y, width])
+  useMapCamera(container, width, mapSettings, dispatch)
+  useMapTransition(container, layout, personId, renderedCamera)
   const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
   const visiblePeople = [...new Set(layout.nodes.map((node) => node.personId))]
   const relations = [...new Set(layout.edges.map((edge) => edge.relationshipId))].map((id) => graph.relationships.get(id)!)
   const selected = relations.find((relation) => relation.id === state.current.selectedRelationshipId)
   const selectRelation = (id: string) => dispatch({ type: 'relationship', id })
-  const { pan, zoom } = state.current.map
+  const changeScale = (factor: number) => dispatch({ type: 'map', settings: scaleCamera(mapSettings, factor) })
+  const moveCamera = (x: number, y: number) => dispatch({ type: 'map', settings: { pan: { x: pan.x + x, y: pan.y + y } } })
+  const toggleBranch = (id: string) => dispatch({ type: 'map', settings: { collapsedAppearanceIds:
+    collapsedAppearanceIds.includes(id) ? collapsedAppearanceIds.filter((entry) => entry !== id) : [...collapsedAppearanceIds, id] } })
+  const expandedIds = new Set(layout.nodes.map((node) => node.parentAppearanceId))
+  const branches = layout.nodes.filter((node) => !node.cycle && (expandedIds.has(node.appearanceId)
+    || node.hiddenConnections.some((connection) => connection.reason === 'collapsed' || connection.reason === 'depth')))
 
   return <section className={styles.map} aria-label="Радіальна карта родини">
     <p className={styles.hint}>Натисніть сектор, щоб змінити центр, або лінію, щоб переглянути зв’язок. ↗ — є родичі поза цим показом.</p>
+    <div className={styles.controls} role="group" aria-label="Керування картою">
+      <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
+      <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
+      <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
+      <button onClick={() => dispatch({ type: 'map', settings: { zoom: 1, pan: { x: 0, y: 0 } } })}>Вмістити карту</button>
+      <label htmlFor={`${prefix}-generations`}>Покоління</label>
+      <select id={`${prefix}-generations`} value={generations} onChange={(event) => dispatch({ type: 'map', settings: { generations: Number(event.target.value) } })}>
+        {Array.from({ length: 12 }, (_, index) => index + 1).map((depth) => <option key={depth} value={depth}>{depth}</option>)}
+      </select>
+    </div>
+    <div className={styles.controls} role="group" aria-label="Переміщення карти">
+      <button aria-label="Перемістити карту ліворуч" onClick={() => moveCamera(-0.12, 0)}>←</button>
+      <button aria-label="Перемістити карту вгору" onClick={() => moveCamera(0, -0.12)}>↑</button>
+      <button aria-label="Перемістити карту вниз" onClick={() => moveCamera(0, 0.12)}>↓</button>
+      <button aria-label="Перемістити карту праворуч" onClick={() => moveCamera(0.12, 0)}>→</button>
+    </div>
+    <p id={`${prefix}-gestures`} className={styles.hint}>Перетягуйте карту мишею або пальцем. Масштаб — двома пальцями, Ctrl + колесо або кнопками. Прокручуйте сторінку поза картою. Покоління задають глибину від центру; подружжя не додає покоління.</p>
     <div ref={container} className={styles.canvas}>
-      <svg viewBox={`0 0 ${width} ${width}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
-        <g data-layer="camera" transform={`translate(${pan.x} ${pan.y}) scale(${zoom})`}>
+      <svg viewBox={`0 0 ${width} ${width}`} role="group" aria-label={`Родина: ${labels.get(personId)}`} aria-describedby={`${prefix}-gestures`}>
+        <g data-layer="camera" transform={`translate(${renderedCamera.pan.x} ${renderedCamera.pan.y}) scale(${zoom})`}>
           <g data-layer="coordinates">
             {[...layout.nodes].sort((a, b) => Number(a.lane === 'center') - Number(b.lane === 'center')).map((node, index) => {
               const central = node.lane === 'center'
@@ -118,6 +146,25 @@ export function RadialMap({ personId }: { personId: string }) {
       </svg>
     </div>
     <p className={styles.legend}>Предки — вгорі · Подружжя та діти — внизу<br />Золотий круг — центр · Червона лінія — вибраний зв’язок · Пунктир — є невизначеність</p>
+    <details className={styles.details}>
+      <summary>Гілки карти · згорнуто {collapsedAppearanceIds.length}</summary>
+      <p className={styles.hint}>Згортання приховує продовження конкретного сектора. Люди залишаються в покажчику. Для бічних родичів виберіть людину новим центром.</p>
+      {collapsedAppearanceIds.length > 0 && <button onClick={() => dispatch({ type: 'map', settings: { collapsedAppearanceIds: [] } })}>Розгорнути всі гілки</button>}
+      <div className={styles.relationships}>
+        {branches.map((node, index) => {
+          const collapsed = collapsedAppearanceIds.includes(node.appearanceId)
+          const parent = node.parentAppearanceId ? nodes.get(node.parentAppearanceId) : undefined
+          const depthLimited = node.hiddenConnections.some((connection) => connection.reason === 'depth')
+          return <div className={styles.branch} key={node.appearanceId} data-branch-appearance={node.appearanceId}>
+            <strong>{index + 1}. {node.fullLabel}</strong>
+            <span>{node.lane === 'center' ? 'Від центру' : node.lane === 'parents' ? 'Предки' : 'Нащадки'}{parent ? ` · через ${parent.fullLabel}` : ''}</span>
+            <button aria-label={`${collapsed ? 'Розгорнути' : 'Згорнути'} гілку ${index + 1}: ${node.fullLabel}`} aria-expanded={!collapsed} onClick={() => toggleBranch(node.appearanceId)}>{collapsed ? 'Розгорнути гілку' : 'Згорнути гілку'}</button>
+            {(collapsed || depthLimited) && <span>↗ Є приховані родичі{depthLimited ? ' — збільште кількість поколінь' : ''}.</span>}
+          </div>
+        })}
+        {branches.length === 0 && <p>Для цього показу немає гілок для згортання.</p>}
+      </div>
+    </details>
     {projection.truncated && <p role="status">Показано частину гілок. Інші люди доступні в покажчику.</p>}
     <div className={styles.selection} aria-live="polite" aria-atomic="true">
       {selected ? <div data-testid="relationship-details" data-relationship-id={selected.id}>

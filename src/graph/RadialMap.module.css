@@ -2,7 +2,16 @@
 .hint, .legend { color: var(--color-muted); font-size: 0.9rem; }
 .hint { max-width: 48rem; }
 .canvas { width: 100%; max-width: 52rem; margin-inline: auto; overflow: clip; }
-.canvas svg { display: block; width: 100%; overflow: visible; }
+.canvas svg { display: block; width: 100%; overflow: visible; touch-action: none; user-select: none; cursor: grab; }
+.canvas svg:active { cursor: grabbing; }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-block: 0.5rem; }
+.controls button { min-width: 44px; text-align: center; }
+.controls output { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
+.controls label { display: flex; align-items: center; gap: 0.5rem; }
+.controls select { min-height: 44px; padding: 0.5rem; font: inherit; color: var(--color-text); background: #fff8e9; border: 1px solid #bea47f; border-radius: 0.25rem; }
+.controls button:disabled { cursor: default; opacity: 0.5; }
+.branch { display: grid; gap: 0.5rem; padding: 0.75rem; border: 1px solid #d7c8b3; overflow-wrap: anywhere; }
+.branch span { font-size: 0.9rem; color: var(--color-muted); }
 .node { cursor: pointer; }
 .sector { fill: #eee1c8; stroke: #8c3d32; stroke-width: 2; }
 .node[data-lane='parents'][data-branch='right'] .sector { fill: #f2e8d4; stroke: #77794d; }

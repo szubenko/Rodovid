@@ -3,6 +3,7 @@ import { Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } fr
 import { personName } from './data/load-family'
 import { FamilyProvider, ViewProvider } from './navigation/Providers'
 import { useFamily, useView } from './navigation/context'
+import { RadialMap } from './graph/RadialMap'
 import styles from './App.module.css'
 
 function Navigation() {
@@ -33,10 +34,9 @@ function PersonScreen({ screen }: { screen: 'tree' | 'person' }) {
         {screen === 'tree' ? <Link to={`/person/${personId}`}>Увійти до кімнати</Link>
           : <Link to={`/tree/${personId}`}>Показати на карті</Link>}
       </div>
-      <p className={styles.notice}>{screen === 'tree'
-        ? 'Радіальна карта готується. Поки можна вибрати людину в покажчику та перейти до її кімнати.'
-        : 'Кімната готується до наповнення. Людину можна переглянути на карті або повернутися до попереднього екрана.'}</p>
+      {screen === 'person' && <p className={styles.notice}>Кімната готується до наповнення. Людину можна переглянути на карті або повернутися до попереднього екрана.</p>}
     </section>
+    {screen === 'tree' && <RadialMap personId={personId} />}
     <section className={styles.panel} aria-labelledby="index-title">
       <h2 id="index-title">Люди родоводу <span className={styles.count}>· {family.people.length}</span></h2>
       <ul className={styles.people}>

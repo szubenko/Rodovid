@@ -26,6 +26,7 @@ export type LayoutOptions = {
   labels: ReadonlyMap<string, string>
   /** Inject canvas/SVG font measurement in the renderer; no browser dependency here. */
   measureText?: (text: string, fontSize: number) => number
+  fontSize?: number
 }
 
 const radians = (angle: number) => angle * Math.PI / 180
@@ -79,7 +80,8 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
   const radius = Math.min(width, height) / 2 - 16
   const centerRadius = Math.min(radius * 0.55, Math.max(58, radius * 0.34))
   const band = (radius - centerRadius) / Math.max(1, projection.generations - 1)
-  const fontSize = Math.min(width, height) < 550 ? 12 : 14
+  const fontSize = options.fontSize ?? (Math.min(width, height) < 550 ? 12 : 14)
+  if (!Number.isFinite(fontSize) || fontSize < 12 || fontSize > 32) throw new RangeError('Font size must be 12–32 pixels')
   const measure = (text: string) => {
     const value = (options.measureText ?? estimateTextWidth)(text, fontSize)
     if (!Number.isFinite(value) || value < 0) throw new RangeError('Invalid text measurement')

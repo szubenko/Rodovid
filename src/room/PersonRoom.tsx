@@ -3,6 +3,7 @@ import { lifeYears } from '../graph/presentation'
 import styles from './Room.module.css'
 import { BiographyEvents } from './BiographyEvents'
 import { RelativeDoors } from './RelativeDoors'
+import { Memories } from './Memories'
 
 export function PersonRoom({ personId }: { personId: string }) {
   const family = useFamily()
@@ -28,7 +29,7 @@ export function PersonRoom({ personId }: { personId: string }) {
     </section>
     <RelativeDoors personId={personId} />
     <div className={styles.grid}>
-      <section className={styles.paper} id="memories"><h2>Спогади</h2><p className={styles.empty}>Підготовлених спогадів поки немає.</p></section>
+      <Memories personId={personId} />
       <section className={styles.paper} id="photos"><h2>Фотографії</h2><p className={styles.empty}>Фотографій поки немає.</p></section>
       <section className={styles.paper} id="archive"><h2>Архів і докази</h2><p className={styles.empty}>Підготовлені документи й докази будуть доступні тут.</p></section>
       <section className={styles.paper} id="places"><h2>Місця життя</h2><p className={styles.empty}>Місця подій будуть доступні тут; координати не домислюються.</p></section>

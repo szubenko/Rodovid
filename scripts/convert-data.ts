@@ -6,6 +6,7 @@ import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
 import { failureReport, renderReport } from './validation/report.ts'
 import type { ValidationReport } from './validation/report.ts'
+import { resolveMemoryFiles } from './memory-files.ts'
 
 const defaultRoot = fileURLToPath(new URL('../', import.meta.url))
 const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`
@@ -57,7 +58,7 @@ try {
   ])
   if (values['init-identities'] && manifest !== undefined) throw new Error('Identity manifest already exists; initialization never overwrites it')
   if (!values['init-identities'] && manifest === undefined) throw new Error('Identity manifest missing; first import requires --init-identities')
-  const result = convertGedcom({ bytes, config: JSON.parse(config), supplements: JSON.parse(supplements),
+  const result = convertGedcom({ bytes, config: JSON.parse(config), supplements: await resolveMemoryFiles(JSON.parse(supplements), dirname(paths.supplements)),
     identities: manifest === undefined ? undefined : JSON.parse(manifest), supplementsFile: values.supplements })
   conversionReport = result.report
   validation = await validateData(result.family, { assetsRoot: resolve(root, values['assets-root']!), conversion: result.report })

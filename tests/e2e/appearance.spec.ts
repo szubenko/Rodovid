@@ -1,0 +1,21 @@
+import { expect, test } from '@playwright/test'
+
+test('manual and live system motion preferences retain navigation', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await page.goto('/tree/I1')
+  const preference = page.getByLabel('Рух', { exact: true })
+  await preference.selectOption('reduce')
+  await expect(page.locator('html')).toHaveAttribute('data-reduced-motion', 'true')
+  await page.locator('ul a[href="/tree/I2"]').dispatchEvent('click')
+  await expect(page.locator('[data-layer="coordinates"]')).toHaveAttribute('data-transition', 'idle')
+  await page.getByRole('link', { name: 'Увійти до кімнати' }).click()
+  await expect(preference).toHaveValue('reduce')
+  await page.getByRole('region', { name: 'Переходи до рідних' }).getByRole('button', { name: 'Сегрій Зубенко', exact: true }).click()
+  await expect(page).toHaveURL(/\/person\/I1$/)
+  await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
+  await preference.selectOption('system')
+  await expect(page.locator('html')).toHaveAttribute('data-reduced-motion', 'false')
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await expect(page.locator('html')).toHaveAttribute('data-reduced-motion', 'true')
+  await expect(page.getByText('Зменшення руху увімкнено')).toBeVisible()
+})

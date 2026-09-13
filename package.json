@@ -25,6 +25,7 @@
     "d3-selection": "3.0.0",
     "d3-zoom": "3.0.0",
     "leaflet": "1.9.4",
+    "motion": "13.2.0",
     "pdfjs-dist": "6.3.289",
     "photoswipe": "5.4.4",
     "react": "19.2.8",

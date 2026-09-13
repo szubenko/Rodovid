@@ -1,4 +1,5 @@
-.room { padding: clamp(0.65rem, 2vw, 1.5rem); margin-bottom: 2rem; border: 8px solid #74503a; border-radius: 0.35rem; background: #e9e0cf; overflow-wrap: anywhere; }
+.room { padding: clamp(0.65rem, 2vw, 1.5rem); margin-bottom: 2rem; border: 6px solid #74503a; border-radius: 0.35rem; background: linear-gradient(90deg, #e9e0cf, #f1eadd 45%, #e9e0cf); box-shadow: 0 8px 28px #382b2312; overflow-wrap: anywhere; }
+.room::before { content: ''; display: block; height: 16px; margin-bottom: 1rem; background: url('../appearance/ornament.svg') repeat-x center; opacity: 0.7; }
 .sections { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-bottom: 1rem; border-bottom: 3px double #8c3d32; }
 .sections a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-text); }
 .paper { min-width: 0; padding: clamp(0.8rem, 3vw, 1.7rem); margin-bottom: 1rem; background: #fffaf0; border: 1px solid #d7c8b3; box-shadow: 0 2px 6px #382b2310; scroll-margin-top: 1rem; }
@@ -44,14 +45,14 @@
 .doors h3 { margin-bottom: 0.5rem; }
 .choices { list-style: none; padding: 0; display: grid; gap: 0.7rem; }
 .choices button { width: 100%; text-align: left; }
-.modal { width: min(90vw, 55rem); max-height: 90svh; overflow: auto; padding: clamp(1rem, 3vw, 2rem); color: var(--color-text); background: #fffaf0; border: 3px solid #74503a; border-radius: 0.4rem; overflow-wrap: anywhere; }
+.modal { width: min(90vw, 55rem); max-height: 90svh; overflow: hidden; padding: clamp(1rem, 3vw, 2rem); color: var(--color-text); background: #fffaf0; border: 3px solid #74503a; border-radius: 0.4rem; overflow-wrap: anywhere; }
+.modal[open] { display: flex; flex-direction: column; }
+.modalBody { min-height: 0; overflow: auto; }
 .modal::backdrop { background: #241911b8; }
-.modalHeader { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.7rem; margin-bottom: 1rem; }
+.modalHeader { display: flex; flex-shrink: 0; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.7rem; margin-bottom: 1rem; background: #fffaf0; padding-block: 0.5rem; border-bottom: 1px solid #d7c8b3; }
 .modalHeader h2 { margin: 0; font-family: var(--font-heading); }
-.room [data-opening="true"] .doors { animation: door-open 160ms ease-out; transform-origin: left; }
-@keyframes door-open { to { transform: perspective(600px) rotateY(-7deg); opacity: 0.75; } }
 @media (max-width: 650px) { .doors { grid-template-columns: 1fr; gap: 0.2rem; } }
-@media (prefers-reduced-motion: reduce) { .room [data-opening="true"] .doors { animation: none; } }
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 1rem; }
+.grid > :global(#memories), .grid > :global(#archive) { grid-column: 1 / -1; }
 .grid .paper { margin: 0; }
 @media (max-width: 650px) { .grid { grid-template-columns: 1fr; } .room { border-width: 4px; } }

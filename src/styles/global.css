@@ -22,6 +22,8 @@
 
 body {
   margin: 0;
+  background-image: radial-gradient(#74503a08 0.6px, transparent 0.6px);
+  background-size: 6px 6px;
 }
 
 p {
@@ -33,3 +35,8 @@ p {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
+
+button, a, select { -webkit-tap-highlight-color: #8c3d3230; }
+button, input, select { accent-color: var(--color-accent); }
+button:focus-visible, a:focus-visible, select:focus-visible { outline-width: 3px; }
+html[data-reduced-motion="true"] *, html[data-reduced-motion="true"] *::before, html[data-reduced-motion="true"] *::after { scroll-behavior: auto !important; animation-duration: 0s !important; transition-duration: 0s !important; }

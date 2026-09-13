@@ -1,4 +1,6 @@
 import { useLayoutEffect, useRef, type RefObject } from 'react'
+import { animate } from 'motion'
+import { useMotionPreference } from '../appearance/context'
 import type { MapSettings } from '../navigation/view-state'
 import type { RadialLayout } from './layout'
 import { connectionPath } from './presentation'
@@ -6,6 +8,7 @@ import { transitionDuration, transitionOffset, transitionOrigins, type Positione
 
 /** One frame clock owns node positions and connection ports. The camera keeps its own transform. */
 export function useMapTransition(container: RefObject<HTMLDivElement | null>, layout: RadialLayout, personId: string, camera: MapSettings) {
+  const { reduced } = useMotionPreference()
   const displayed = useRef<{ personId: string; people: PositionedPerson[]; camera: MapSettings } | null>(null)
   useLayoutEffect(() => {
     const root = container.current!
@@ -19,8 +22,6 @@ export function useMapTransition(container: RefObject<HTMLDivElement | null>, la
       y: (point.y * previous.camera.zoom + previous.camera.pan.y - camera.pan.y) / camera.zoom,
     })) ?? []
     const origins = transitionOrigins(people, layout)
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
-    let frame = 0
     const draw = (progress: number) => {
       const offsets = new Map(layout.nodes.map((node) => [node.appearanceId, transitionOffset(origins.get(node.appearanceId)!, node, progress)]))
       elements.forEach((element) => {
@@ -43,20 +44,9 @@ export function useMapTransition(container: RefObject<HTMLDivElement | null>, la
       }) }
       layer.dataset.transition = progress < 1 ? 'moving' : 'idle'
     }
-    const finish = () => { cancelAnimationFrame(frame); draw(1) }
-    if (!previous || previous.personId === personId || reduced.matches) finish()
-    else {
-      draw(0)
-      const start = performance.now()
-      const tick = (now: number) => {
-        const progress = Math.min(1, (now - start) / transitionDuration)
-        draw(progress)
-        if (progress < 1) frame = requestAnimationFrame(tick)
-      }
-      frame = requestAnimationFrame(tick)
-    }
-    const preferenceChanged = () => { if (reduced.matches) finish() }
-    reduced.addEventListener('change', preferenceChanged)
-    return () => { cancelAnimationFrame(frame); reduced.removeEventListener('change', preferenceChanged) }
-  }, [container, layout, personId, camera])
+    if (!previous || previous.personId === personId || reduced) { draw(1); return }
+    draw(0)
+    const animation = animate(0, 1, { duration: transitionDuration / 1000, ease: 'linear', onUpdate: draw, onComplete: () => draw(1) })
+    return () => { animation.stop() }
+  }, [container, layout, personId, camera, reduced])
 }

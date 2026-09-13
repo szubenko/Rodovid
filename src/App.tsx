@@ -8,6 +8,7 @@ import { RadialMap } from './graph/RadialMap'
 import { PersonSearch } from './search/PersonSearch'
 import { KinshipExplanation } from './kinship/KinshipExplanation'
 import { PersonRoom } from './room/PersonRoom'
+import { MotionControls, MotionPreferences } from './appearance/MotionPreferences'
 import styles from './App.module.css'
 
 function Navigation() {
@@ -69,6 +70,7 @@ function Workspace() {
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>Сімейна історія</p><h1 ref={heading} tabIndex={-1}>{family.config.title}</h1></div>
       <Navigation />
+      <MotionControls />
     </header>
     <PersonSearch key={location.key} />
     <Routes>
@@ -81,5 +83,5 @@ function Workspace() {
 }
 
 export function App() {
-  return <FamilyProvider><ViewProvider><Workspace /></ViewProvider></FamilyProvider>
+  return <FamilyProvider><ViewProvider><MotionPreferences><Workspace /></MotionPreferences></ViewProvider></FamilyProvider>
 }

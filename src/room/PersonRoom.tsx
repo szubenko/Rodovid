@@ -8,13 +8,16 @@ import { PhotoGallery } from './PhotoGallery'
 import { Archive } from './Archive'
 import { ClaimEvidence } from './Evidence'
 import { Places } from './Places'
+import { motion } from 'motion/react'
+import { useMotionPreference } from '../appearance/context'
 
 export function PersonRoom({ personId }: { personId: string }) {
   const family = useFamily()
+  const { reduced } = useMotionPreference()
   const person = family.people.find(person => person.id === personId)!
   const names = family.claims.filter(claim => claim.field === 'name' && claim.target.id === personId)
   const descriptions = family.claims.filter(claim => claim.field === 'description' && claim.target.kind === 'person' && claim.target.id === personId)
-  return <article className={styles.room} aria-label="Відомості про людину">
+  return <motion.article className={styles.room} aria-label="Відомості про людину" initial={reduced ? false : { opacity: 0.88, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.18 }}>
     <nav className={styles.sections} aria-label="Розділи кімнати">
       <a href="#biography">Життєпис</a><a href="#relatives">Рідні</a><a href="#memories">Спогади</a><a href="#photos">Фото</a><a href="#archive">Архів</a><a href="#places">Місця</a>
     </nav>
@@ -39,5 +42,5 @@ export function PersonRoom({ personId }: { personId: string }) {
       <Archive personId={personId} />
       <Places personId={personId} />
     </div>
-  </article>
+  </motion.article>
 }

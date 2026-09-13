@@ -11,6 +11,6 @@ export function Modal({ title, onClose, children }: { title: string; onClose: ()
   }, [])
   return <dialog ref={ref} className={styles.modal} aria-label={title} onCancel={event => { event.preventDefault(); onClose() }}>
     <div className={styles.modalHeader}><h2>{title}</h2><button onClick={onClose} autoFocus>Закрити</button></div>
-    {children}
+    <div className={styles.modalBody}>{children}</div>
   </dialog>
 }

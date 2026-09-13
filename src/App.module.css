@@ -1,14 +1,26 @@
 .page {
-  display: grid;
+  width: min(100%, 72rem);
   min-height: 100svh;
-  place-items: center;
-  padding: clamp(1.5rem, 6vw, 5rem);
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3rem);
 }
 
-.introduction {
-  width: min(100%, 44rem);
-  border-top: 2px solid var(--color-accent);
-  padding-block: 2rem;
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1rem 2rem;
+}
+
+.panel {
+  margin-bottom: 1.5rem;
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid #d7c8b3;
+  border-top: 3px solid var(--color-accent);
+  border-radius: 0.4rem;
+  background: #fffaf0;
 }
 
 .eyebrow {
@@ -19,22 +31,34 @@
   text-transform: uppercase;
 }
 
-.introduction h1 {
-  margin-block: 1.25rem;
+.page h1, .page h2 {
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 7vw, 4.5rem);
   font-weight: 500;
-  line-height: 1.08;
-  text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
-.description {
-  max-width: 36rem;
-  font-size: 1.125rem;
-}
+.page h1 { margin-block: 0.5rem; font-size: clamp(2rem, 5vw, 3rem); }
+.page h2 { margin-block: 0.5rem 1rem; font-size: clamp(1.5rem, 4vw, 2.2rem); }
 
-.notice {
-  margin-top: 2.5rem;
-  color: var(--color-muted);
-  font-size: 0.95rem;
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-block: 1rem; }
+.actions a, .actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #9e7b62;
+  border-radius: 0.25rem;
+  color: var(--color-text);
+  background: #f5ecdd;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
+.actions button:disabled { opacity: 0.5; cursor: default; }
+.actions a:hover, .actions button:enabled:hover { background: #ecddc7; }
+.notice, .count { color: var(--color-muted); font-size: 1rem; }
+.notice { margin-top: 1.5rem; max-width: 44rem; }
+.people { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 0.25rem 1.5rem; padding: 0; list-style: none; }
+.people a { display: block; min-height: 44px; padding: 0.65rem 0.25rem; color: var(--color-text); overflow-wrap: anywhere; text-underline-offset: 4px; }
+.people a[aria-current] { color: var(--color-accent); font-weight: 700; }

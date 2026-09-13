@@ -1,0 +1,11 @@
+.kinship { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #d7c8b3; overflow-wrap: anywhere; }
+.kinship h3 { margin-block: 0 0.75rem; font-family: var(--font-heading); font-size: 1.4rem; font-weight: 500; }
+.kinship p { max-width: 58rem; }
+.result { font-weight: 700; color: var(--color-accent); }
+.warning { padding-left: 0.75rem; border-left: 3px solid #9e7b62; }
+.kinship summary { min-height: 44px; padding-block: 0.75rem; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.path { border-top: 1px solid #d7c8b3; margin-top: 1rem; }
+.path ol { padding-left: 1.5rem; }
+.path li { padding-block: 0.5rem; }
+.path a { display: inline-block; min-height: 44px; padding-block: 0.6rem; color: var(--color-text); text-underline-offset: 4px; }
+.record { margin-block: 0.25rem; color: var(--color-muted); font-size: 0.9rem; }

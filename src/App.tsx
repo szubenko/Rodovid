@@ -6,6 +6,7 @@ import { FamilyProvider, ViewProvider } from './navigation/Providers'
 import { useFamily, useView } from './navigation/context'
 import { RadialMap } from './graph/RadialMap'
 import { PersonSearch } from './search/PersonSearch'
+import { KinshipExplanation } from './kinship/KinshipExplanation'
 import styles from './App.module.css'
 
 function Navigation() {
@@ -36,6 +37,7 @@ function PersonScreen({ screen }: { screen: 'tree' | 'person' }) {
           : <Link to={`/tree/${personId}`}>Показати на карті</Link>}
       </div>
       {screen === 'person' && <p className={styles.notice}>Кімната готується до наповнення. Людину можна переглянути на карті або повернутися до попереднього екрана.</p>}
+      <KinshipExplanation personId={personId} />
     </section>
     {screen === 'tree' && <RadialMap personId={personId} />}
     <section className={styles.panel} aria-labelledby="index-title">

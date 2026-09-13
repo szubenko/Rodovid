@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { staticDataPlugin } from './scripts/static-data-plugin.ts'
+import { pdfAssetsPlugin } from './scripts/pdf-assets-plugin.ts'
 
 export default defineConfig({
-  plugins: [react(), staticDataPlugin()],
+  plugins: [react(), staticDataPlugin(), pdfAssetsPlugin()],
   // Only declared, validated files are emitted by staticDataPlugin.
   publicDir: false,
   build: {

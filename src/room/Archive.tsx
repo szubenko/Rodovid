@@ -1,0 +1,46 @@
+import type { EvidenceLink, Source } from '../data/schema'
+import { useFamily } from '../navigation/context'
+import { personEvidence } from './archive-data'
+import { personEvents } from './biography'
+import { MediaFiles } from './MediaFiles'
+import styles from './Room.module.css'
+
+export function SourceCard({ source, links }: { source: Source; links: EvidenceLink[] }) {
+  const family = useFamily()
+  const mediaIds = new Set([...source.mediaIds, ...links.flatMap(link => link.fragment?.mediaId ? [link.fragment.mediaId] : [])])
+  return <article className={styles.source} data-source-id={source.id}>
+    <h3>{source.title}</h3>
+    {source.description && <p>{source.description}</p>}
+    {source.archive && <p>Архів: {source.archive}</p>}
+    {source.reference && <p>Шифр: {source.reference}</p>}
+    {source.addedOn && <p>Додано: {source.addedOn}</p>}
+    {source.url && <p><a href={source.url} target="_blank" rel="noopener noreferrer">Перейти до джерела: {source.title}</a></p>}
+    <MediaFiles items={family.media.filter(m => mediaIds.has(m.id))} />
+    {links.map(link => <details key={link.id} data-evidence-id={link.id}>
+      <summary>Прив’язка до {({ person: 'людини', event: 'події', claim: 'твердження', relationship: 'зв’язку' })[link.target.kind]}</summary>
+      {link.fragment?.page && <p>Сторінка: {link.fragment.page}</p>}
+      {link.fragment?.frame && <p>Кадр: {link.fragment.frame}</p>}
+      {link.fragment?.folio && <p>Аркуш: {link.fragment.folio}</p>}
+      {link.fragment?.recordNumber && <p>Номер запису: {link.fragment.recordNumber}</p>}
+      {link.explanation && <p>{link.explanation}</p>}
+      {link.transcription && <blockquote className={styles.transcription}>{link.transcription}</blockquote>}
+      {link.fragment?.mediaId && <MediaFiles items={family.media.filter(m => m.id === link.fragment!.mediaId)} initialPage={link.fragment.page} />}
+    </details>)}
+  </article>
+}
+
+export function Archive({ personId }: { personId: string }) {
+  const family = useFamily()
+  const links = personEvidence(family, personId)
+  const sources = family.sources.filter(s => links.some(l => l.sourceId === s.id))
+  const directIds = new Set(personEvents(family, personId).flatMap(e => e.mediaIds))
+  const direct = family.media.filter(m => directIds.has(m.id) && !sources.some(s => s.mediaIds.includes(m.id)))
+  const profiles = family.people.find(p => p.id === personId)!.externalIds.filter(id => id.system === 'FamilySearch')
+  return <section className={styles.paper} id="archive" aria-label="Архів і докази">
+    <h2>Архів і докази</h2>
+    {sources.length === 0 && direct.length === 0 && <p className={styles.empty}>Підготовлених документів і доказів поки немає.</p>}
+    {sources.map(source => <SourceCard key={source.id} source={source} links={links.filter(l => l.sourceId === source.id)} />)}
+    <MediaFiles items={direct} />
+    {profiles.map(profile => <p key={profile.value} className={styles.empty}>FamilySearch ID: {profile.value}. Ідентифікатор профілю не є доказом факту.</p>)}
+  </section>
+}

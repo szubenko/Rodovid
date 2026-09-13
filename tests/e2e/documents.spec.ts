@@ -1,0 +1,47 @@
+import { expect, test } from '@playwright/test'
+import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
+import { familyDataSchema } from '../../src/data/schema'
+import { pdfFixture } from './helpers/pdf-fixture'
+
+test('shared document, page selection, zoom, transcription, failures and focus', async ({ page }, info) => {
+  const family = familyDataSchema.parse(fixture); family.datasetKind = 'family'
+  let pdfRequests = 0
+  await page.route('**/data/family.json', route => route.fulfill({ json: family }))
+  await page.route('**/assets/documents/fixture.pdf', route => { pdfRequests++; return route.fulfill({ body: pdfFixture(), contentType: 'application/pdf' }) })
+  await page.goto('/person/I1')
+  const archive = page.locator('#archive')
+  const source = archive.locator('[data-source-id="source-shared"]')
+  await expect(source).toContainText('ТЕСТ/1/2/3')
+  await expect(source.getByRole('link', { name: 'Перейти до джерела: Вигаданий спільний документ' })).toHaveAttribute('rel', 'noopener noreferrer')
+  expect(pdfRequests).toBe(0)
+  const open = source.getByRole('button', { name: 'Відкрити PDF: Умовний PDF', exact: true })
+  await open.click()
+  const dialog = page.getByRole('dialog', { name: 'Умовний PDF' })
+  await expect(dialog.getByRole('status')).toHaveText('Сторінка 1 готова')
+  await dialog.getByRole('button', { name: 'Наступна сторінка' }).click()
+  await expect(dialog.getByRole('status')).toHaveText('Сторінка 2 готова')
+  await dialog.getByLabel('Масштаб PDF').selectOption('2')
+  await expect(dialog.getByRole('status')).toHaveText('Сторінка 2 готова')
+  await dialog.locator('summary').click()
+  await expect(dialog).toContainText('Readable test record 2.')
+  await page.screenshot({ path: info.outputPath('pdf.png') })
+  await page.keyboard.press('Escape')
+  await expect(open).toBeFocused()
+  const fragment = source.locator('[data-evidence-id="link-event"]')
+  await fragment.locator('summary').click()
+  await expect(fragment).toContainText('Аркуш: 1 зв.')
+  await fragment.getByRole('button', { name: /Відкрити PDF/ }).click()
+  await expect(dialog.getByRole('status')).toHaveText('Сторінка 2 готова')
+  await dialog.getByRole('button', { name: 'Закрити', exact: true }).click()
+  const relation = source.locator('[data-evidence-id="link-relation"]')
+  await relation.locator('summary').click()
+  await expect(relation).toContainText('[Синтетична транскрипція]')
+  await page.goto('/person/I2')
+  await expect(source.locator('[data-media-id="media-pdf"]').first()).toBeVisible()
+  await expect(source.getByRole('link', { name: 'Прямий файл: Умовний PDF' }).first()).toHaveAttribute('href', '/assets/documents/fixture.pdf')
+  await page.route('**/assets/documents/fixture.pdf', route => route.abort())
+  await open.click()
+  await expect(dialog.getByRole('alert')).toBeVisible()
+  await dialog.getByRole('button', { name: 'Закрити', exact: true }).click()
+  await expect(page.locator('#person-title')).toBeVisible()
+})

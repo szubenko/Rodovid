@@ -10,6 +10,13 @@
 .paper summary { padding-block: 0.7rem; min-height: 44px; cursor: pointer; }
 .kicker { color: var(--color-accent); letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.75rem; }
 .empty { color: var(--color-muted); }
+.source { border-top: 1px solid #bda185; margin-top: 1rem; padding-top: 0.5rem; }
+.transcription { white-space: pre-wrap; margin: 0.75rem 0; padding: 0.75rem; border-left: 3px solid #9e7b62; }
+.mediaFiles { margin-block: 0.75rem; }
+.pdfControls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; margin-block: 1rem; }
+.pdfControls select { font: inherit; padding: 0.6rem; min-height: 44px; max-width: 100%; }
+.pdfCanvas { width: 100%; min-height: 10rem; max-height: 60svh; overflow: auto; border: 1px solid #bda185; background: #c7bcae; touch-action: pan-x pan-y; }
+.pdfCanvas canvas { display: block; margin: 0 auto; }
 .photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; }
 .photos figure { min-width: 0; margin: 0; }
 .photos button { width: 100%; }

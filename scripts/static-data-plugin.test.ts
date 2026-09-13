@@ -44,7 +44,7 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
     await put('generated/family.json', 'obsolete invalid JSON')
     await run()
     const files = (await readdir(join(directory, 'dist'), { recursive: true })).map((path) => path.replaceAll('\\', '/'))
-    expect(files.filter((path) => path.includes('.')).sort()).toEqual([
+    expect(files.filter((path) => path.includes('.') && !path.startsWith('app-assets/')).sort()).toEqual([
       'assets/photos/shared.png', 'assets/thumbs/shared.png', 'data/family.json', 'index.html',
     ])
     expect(await get(`dist/${photo.path}`)).toEqual(png)
@@ -92,7 +92,7 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
     const second = JSON.parse((await get('dist/data/family.json')).toString())
     expect(second.config).toMatchObject({ dataVersion: 'version-2', title: 'Updated input' })
     expect(second.media).toEqual([])
-    expect((await readdir(join(directory, 'dist'))).sort()).toEqual(['data', 'index.html'])
+    expect((await readdir(join(directory, 'dist'))).sort()).toEqual(['app-assets', 'data', 'index.html'])
     expect(await get('Data/Zubenko.ged')).toEqual(bytes)
 
     const server = await createServer({ configFile: join(repo, 'vite.config.ts'), root: directory,

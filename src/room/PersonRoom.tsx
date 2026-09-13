@@ -2,6 +2,7 @@ import { useFamily } from '../navigation/context'
 import { lifeYears } from '../graph/presentation'
 import styles from './Room.module.css'
 import { BiographyEvents } from './BiographyEvents'
+import { RelativeDoors } from './RelativeDoors'
 
 export function PersonRoom({ personId }: { personId: string }) {
   const family = useFamily()
@@ -25,7 +26,7 @@ export function PersonRoom({ personId }: { personId: string }) {
       {descriptions.length ? descriptions.map(claim => <p key={claim.id}>{claim.value as string}</p>) : <p className={styles.empty}>Окремого опису життя поки немає.</p>}
       <BiographyEvents personId={personId} />
     </section>
-    <section className={styles.paper} id="relatives"><h2>Рідні</h2><p className={styles.empty}>Переходи до рідних готуються. Усі люди доступні у списку родоводу.</p></section>
+    <RelativeDoors personId={personId} />
     <div className={styles.grid}>
       <section className={styles.paper} id="memories"><h2>Спогади</h2><p className={styles.empty}>Підготовлених спогадів поки немає.</p></section>
       <section className={styles.paper} id="photos"><h2>Фотографії</h2><p className={styles.empty}>Фотографій поки немає.</p></section>

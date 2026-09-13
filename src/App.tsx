@@ -9,6 +9,7 @@ import { PersonSearch } from './search/PersonSearch'
 import { KinshipExplanation } from './kinship/KinshipExplanation'
 import { PersonRoom } from './room/PersonRoom'
 import { MotionControls, MotionPreferences } from './appearance/MotionPreferences'
+import { AudioProvider } from './audio/AudioProvider'
 import styles from './App.module.css'
 
 function Navigation() {
@@ -72,6 +73,7 @@ function Workspace() {
       <Navigation />
       <MotionControls />
     </header>
+    <AudioProvider>
     <PersonSearch key={location.key} />
     <Routes>
       <Route path="/" element={<Navigate to={`/tree/${family.config.homePersonId}`} replace />} />
@@ -79,6 +81,7 @@ function Workspace() {
       <Route path="/person/:personId" element={<PersonScreen screen="person" />} />
       <Route path="*" element={<Missing />} />
     </Routes>
+    </AudioProvider>
   </main>
 }
 

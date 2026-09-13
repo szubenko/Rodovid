@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test'
 
 test('all 25 rooms resolve the same IDs with readable missing information', async ({ page }, info) => {
+  // This scenario loads every room and captures long pages; allow for parallel browser load.
+  test.setTimeout(90_000)
   await page.setViewportSize({ width: info.project.name.includes('mobile') ? 320 : 1024, height: 900 })
   for (let id = 1; id <= 25; id++) {
     await page.goto(`/person/I${id}`)

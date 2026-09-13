@@ -3,6 +3,7 @@ import { ViewLink } from '../navigation/ViewLink'
 import { personName } from '../data/person-name'
 import { claimText, eventClaims, eventLabels, personEvents } from './biography'
 import styles from './Room.module.css'
+import { ClaimEvidence, EvidenceForTarget } from './Evidence'
 
 export function BiographyEvents({ personId }: { personId: string }) {
   const family = useFamily()
@@ -22,12 +23,14 @@ export function BiographyEvents({ personId }: { personId: string }) {
             </p>
             {claim.field === 'date' && claim.value.raw && <p className={styles.empty}>Запис у джерелі: {claim.value.raw}</p>}
             {claim.explanation && <p>{claim.explanation}</p>}
+            <ClaimEvidence claim={claim} />
           </div>)}
           <p>Учасники: {event.participants.map((p, index) => <span key={`${p.personId}-${p.role}`}>
             {index > 0 && ', '}<ViewLink to={`/person/${p.personId}`}>{personName(family, p.personId)}</ViewLink>
           </span>)}</p>
           {event.mediaIds.map(id => { const media = family.media.find(m => m.id === id); return media && <p key={id}><a href={`/${media.path}`} target="_blank" rel="noopener noreferrer">{media.title}</a></p> })}
           <details><summary>Походження запису</summary>{event.provenance.map((p, i) => <p key={i}>{p.kind === 'gedcom' ? `${p.recordId} · ${p.path ?? 'запис GEDCOM'}` : `${p.file} · ${p.entryId}`}</p>)}</details>
+          <details><summary>Докази події</summary><EvidenceForTarget target={{ kind: 'event', id: event.id }} /></details>
         </li>
       })}</ol>
     </>}

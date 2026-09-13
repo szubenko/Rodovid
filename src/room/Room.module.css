@@ -10,6 +10,12 @@
 .paper summary { padding-block: 0.7rem; min-height: 44px; cursor: pointer; }
 .kicker { color: var(--color-accent); letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.75rem; }
 .empty { color: var(--color-muted); }
+.assessment { border-left: 2px solid #bda185; padding-left: 0.6rem; margin-block: 0.5rem; }
+.assessment[data-confidence="confirmed"] { border-color: #506448; }
+.assessment[data-confidence="hypothesis"] { border-color: #8c3d32; }
+.fragment { margin: 1rem 0; }
+.fragment > div { position: relative; overflow: hidden; border: 2px solid #8c3d32; }
+.fragment img { position: absolute; max-width: none; height: auto; }
 .source { border-top: 1px solid #bda185; margin-top: 1rem; padding-top: 0.5rem; }
 .transcription { white-space: pre-wrap; margin: 0.75rem 0; padding: 0.75rem; border-left: 3px solid #9e7b62; }
 .mediaFiles { margin-block: 0.75rem; }

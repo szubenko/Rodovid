@@ -10,6 +10,7 @@ import styles from './RadialMap.module.css'
 import { useMapTransition } from './useMapTransition'
 import { useMapCamera } from './useMapCamera'
 import { maxZoom, minZoom, scaleCamera } from './camera'
+import { EvidenceForTarget } from '../room/Evidence'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
@@ -172,6 +173,7 @@ export function RadialMap({ personId }: { personId: string }) {
         <p>{relationshipName(family, selected)}</p>
         <p><strong>{confidenceLabels[selected.confidence]}</strong>{selected.reviewStatus === 'disputed' ? ' · Потребує уточнення' : ''}</p>
         {selected.explanation && <p>{selected.explanation}</p>}
+        <details><summary>Докази вибраного зв’язку</summary><EvidenceForTarget target={{ kind: 'relationship', id: selected.id }} /></details>
         <button onClick={() => dispatch({ type: 'relationship', id: null })}>Зняти вибір зв’язку</button>
       </div> : <p>Виберіть лінію або запис у списку зв’язків нижче, щоб побачити людей та наявну оцінку.</p>}
     </div>

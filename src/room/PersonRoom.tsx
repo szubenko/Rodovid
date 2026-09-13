@@ -6,6 +6,7 @@ import { RelativeDoors } from './RelativeDoors'
 import { Memories } from './Memories'
 import { PhotoGallery } from './PhotoGallery'
 import { Archive } from './Archive'
+import { ClaimEvidence } from './Evidence'
 
 export function PersonRoom({ personId }: { personId: string }) {
   const family = useFamily()
@@ -24,9 +25,10 @@ export function PersonRoom({ personId }: { personId: string }) {
       {names.length > 0 && <details><summary>Імена та написання ({names.length})</summary>
         <ul>{names.map(claim => claim.field === 'name' && <li key={claim.id} id={`claim-${claim.id}`}>
           {claim.value.display}{claim.value.patronymic && !claim.value.display.includes(claim.value.patronymic) ? ` · ${claim.value.patronymic}` : ''} — {claim.isPrimary ? 'основне' : 'альтернативне'}
+          {claim.explanation && <p>{claim.explanation}</p>}<ClaimEvidence claim={claim} />
         </li>)}</ul>
       </details>}
-      {descriptions.length ? descriptions.map(claim => <p key={claim.id}>{claim.value as string}</p>) : <p className={styles.empty}>Окремого опису життя поки немає.</p>}
+      {descriptions.length ? descriptions.map(claim => <div key={claim.id} id={`claim-${claim.id}`}><p>{claim.value as string}</p>{claim.explanation && <p>{claim.explanation}</p>}<ClaimEvidence claim={claim} /></div>) : <p className={styles.empty}>Окремого опису життя поки немає.</p>}
       <BiographyEvents personId={personId} />
     </section>
     <RelativeDoors personId={personId} />

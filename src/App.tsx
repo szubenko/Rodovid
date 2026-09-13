@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router'
+import { Navigate, Route, Routes, useLocation, useParams } from 'react-router'
+import { ViewLink as Link } from './navigation/ViewLink'
 import { personName } from './data/load-family'
 import { FamilyProvider, ViewProvider } from './navigation/Providers'
 import { useFamily, useView } from './navigation/context'
@@ -7,11 +8,10 @@ import { RadialMap } from './graph/RadialMap'
 import styles from './App.module.css'
 
 function Navigation() {
-  const { state } = useView()
-  const navigate = useNavigate()
+  const { state, goBack } = useView()
   return <nav className={styles.actions} aria-label="Основна навігація">
-    <button disabled={state.position === 0} onClick={() => { void navigate(-1) }}>Назад</button>
-    <Link to={`/tree/${state.homePersonId}`}>До мене</Link>
+    <button disabled={state.position === 0} onClick={goBack}>Назад</button>
+    <Link to={`/tree/${state.homePersonId}`} resetMap>До мене</Link>
   </nav>
 }
 
@@ -54,9 +54,12 @@ function Workspace() {
   const family = useFamily()
   const location = useLocation()
   const heading = useRef<HTMLHeadingElement>(null)
+  const previousPath = useRef(location.pathname)
   useEffect(() => {
     document.title = `${family.config.title} — ${location.pathname.startsWith('/person/') ? 'Кімната' : 'Карта родини'}`
-    heading.current?.focus()
+    const recentering = previousPath.current.startsWith('/tree/') && location.pathname.startsWith('/tree/')
+    heading.current?.focus({ preventScroll: recentering })
+    previousPath.current = location.pathname
   }, [family.config.title, location.key, location.pathname])
   return <main className={styles.page}>
     <header className={styles.header}>

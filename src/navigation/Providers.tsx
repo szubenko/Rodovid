@@ -1,5 +1,5 @@
-import { useEffect, useReducer, useState, type ReactNode } from 'react'
-import { Link, useLocation, useMatch, useNavigationType } from 'react-router'
+import { useEffect, useReducer, useRef, useState, type ReactNode } from 'react'
+import { Link, useLocation, useMatch, useNavigate, useNavigationType } from 'react-router'
 import { loadFamily } from '../data/load-family'
 import type { FamilyData } from '../data/schema'
 import { FamilyContext, ViewContext, useFamily } from './context'
@@ -42,6 +42,8 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
 export function ViewProvider({ children }: { children: ReactNode }) {
   const family = useFamily()
   const location = useLocation()
+  const navigate = useNavigate()
+  const pending = useRef<{ key: string; target: string } | null>(null)
   const tree = useMatch('/tree/:personId')
   const person = useMatch('/person/:personId')
   const navigationType = useNavigationType()
@@ -56,6 +58,21 @@ export function ViewProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(viewReducer, undefined, () =>
     initialView(family.config.homePersonId, family.config.initialGenerations, location.key, route))
   // Reconcile before rendering consumers; the URL is authoritative.
-  if (state.key !== location.key) dispatch({ type: 'visit', key: location.key, route, navigationType })
-  return <ViewContext value={{ state, dispatch }}>{children}</ViewContext>
+  if (state.key !== location.key) dispatch({ type: 'visit', key: location.key, route, navigationType,
+    resetMap: (location.state as { resetMap?: boolean } | null)?.resetMap === true })
+  const goTo = (path: string, resetMap = false) => {
+    if (path === location.pathname) {
+      if (resetMap) dispatch({ type: 'reset-map' })
+      return
+    }
+    if (pending.current?.key === location.key && pending.current.target === path) return
+    pending.current = { key: location.key, target: path }
+    void navigate(path, { state: { resetMap } })
+  }
+  const goBack = () => {
+    if (state.position === 0 || pending.current?.key === location.key) return
+    pending.current = { key: location.key, target: 'back' }
+    void navigate(-1)
+  }
+  return <ViewContext value={{ state, dispatch, goTo, goBack }}>{children}</ViewContext>
 }

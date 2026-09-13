@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { ViewLink as Link } from '../navigation/ViewLink'
 import { personName } from '../data/load-family'
 import { confidenceLabels } from '../data/schema'
 import { useFamily, useView } from '../navigation/context'
@@ -7,6 +7,7 @@ import { buildFamilyGraph, projectFamily } from './projection'
 import { fitLabel, layoutRadial } from './layout'
 import { connectionPath, labelArc, lifeYears, relationshipName, sectorPath } from './presentation'
 import styles from './RadialMap.module.css'
+import { useMapTransition } from './useMapTransition'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
@@ -14,8 +15,7 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
 
 export function RadialMap({ personId }: { personId: string }) {
   const family = useFamily()
-  const { state, dispatch } = useView()
-  const navigate = useNavigate()
+  const { state, dispatch, goTo } = useView()
   const container = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState(320)
   const prefix = useId()
@@ -45,6 +45,7 @@ export function RadialMap({ personId }: { personId: string }) {
   const mapSettings = state.current.map
   const projection = useMemo(() => projectFamily(graph, personId, mapSettings), [graph, personId, mapSettings])
   const layout = useMemo(() => layoutRadial(projection, { width, height: width, labels, measureText, fontSize: width < 550 ? 12 : 18 }), [projection, width, labels, measureText])
+  useMapTransition(container, layout, personId, mapSettings)
   const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
   const visiblePeople = [...new Set(layout.nodes.map((node) => node.personId))]
   const relations = [...new Set(layout.edges.map((edge) => edge.relationshipId))].map((id) => graph.relationships.get(id)!)
@@ -58,7 +59,7 @@ export function RadialMap({ personId }: { personId: string }) {
       <svg viewBox={`0 0 ${width} ${width}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
         <g data-layer="camera" transform={`translate(${pan.x} ${pan.y}) scale(${zoom})`}>
           <g data-layer="coordinates">
-            {layout.nodes.map((node, index) => {
+            {[...layout.nodes].sort((a, b) => Number(a.lane === 'center') - Number(b.lane === 'center')).map((node, index) => {
               const central = node.lane === 'center'
               const date = years.get(node.personId)!
               const nameId = `${prefix}-name-${index}`
@@ -70,10 +71,10 @@ export function RadialMap({ personId }: { personId: string }) {
               const hidden = node.hiddenConnections.length > 0
               const nameLabel = hidden && node.labelWidth > node.fontSize * 3
                 ? `${fitLabel(node.fullLabel, node.labelWidth - measureText(' ↗', node.fontSize), (text) => measureText(text, node.fontSize))} ↗` : node.label
-              const action = () => { void navigate(`/${central ? 'person' : 'tree'}/${node.personId}`) }
+              const action = () => goTo(`/${central ? 'person' : 'tree'}/${node.personId}`)
               return <g key={node.appearanceId} className={styles.node} data-person-id={node.personId}
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane} data-branch={node.startAngle < 0 ? 'left' : 'right'}
-                role="link" tabIndex={0} onClick={action} onKeyDown={(event) => activate(event, action)}
+                role="link" tabIndex={0} onClick={(event) => { if (event.detail < 2) action() }} onKeyDown={(event) => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${node.fullLabel}. ${date}${hidden ? '. Є родичі поза цим показом' : ''}`}>
                 <title>{node.fullLabel} · {date}{hidden ? ' · Є інші родичі ↗' : ''}</title>
                 {central ? <circle className={styles.sector} cx={node.x} cy={node.y} r={layout.centerRadius} />

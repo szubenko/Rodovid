@@ -1,7 +1,7 @@
 .map { margin-block: 1rem 2rem; }
 .hint, .legend { color: var(--color-muted); font-size: 0.9rem; }
 .hint { max-width: 48rem; }
-.canvas { width: 100%; max-width: 52rem; margin-inline: auto; }
+.canvas { width: 100%; max-width: 52rem; margin-inline: auto; overflow: clip; }
 .canvas svg { display: block; width: 100%; overflow: visible; }
 .node { cursor: pointer; }
 .sector { fill: #eee1c8; stroke: #8c3d32; stroke-width: 2; }

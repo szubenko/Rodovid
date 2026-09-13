@@ -20,7 +20,8 @@ export type ViewState = {
   position: number
 }
 export type ViewAction =
-  | { type: 'visit'; key: string; route: ViewRoute; navigationType: 'POP' | 'PUSH' | 'REPLACE' }
+  | { type: 'visit'; key: string; route: ViewRoute; navigationType: 'POP' | 'PUSH' | 'REPLACE'; resetMap?: boolean }
+  | { type: 'reset-map' }
   | { type: 'map'; settings: Partial<MapSettings> }
   | { type: 'relationship'; id: string | null }
 
@@ -36,6 +37,8 @@ export function initialView(homePersonId: string, initialGenerations: number, ke
 }
 
 export function viewReducer(state: ViewState, action: ViewAction): ViewState {
+  if (action.type === 'reset-map') return { ...state, current: { ...state.current,
+    selectedRelationshipId: null, map: defaultMap(state.initialGenerations) } }
   if (action.type === 'map') return { ...state, current: { ...state.current, map: { ...state.current.map, ...action.settings } } }
   if (action.type === 'relationship') return { ...state, current: { ...state.current, selectedRelationshipId: action.id } }
   const entries = { ...state.entries, [state.key]: state.current }
@@ -44,7 +47,7 @@ export function viewReducer(state: ViewState, action: ViewAction): ViewState {
     ? action.route.personId : state.current.centerPersonId
   const current = restored ?? {
     ...action.route, centerPersonId, selectedRelationshipId: null,
-    map: centerPersonId === state.current.centerPersonId ? state.current.map : defaultMap(state.initialGenerations),
+    map: !action.resetMap && centerPersonId === state.current.centerPersonId ? state.current.map : defaultMap(state.initialGenerations),
   }
   let trail = state.trail
   let position = state.position

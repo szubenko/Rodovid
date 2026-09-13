@@ -5,6 +5,33 @@ const visit = (key: string, screen: 'tree' | 'person', personId: string, navigat
   ({ type: 'visit', key, route: { screen, personId }, navigationType })
 
 describe('view history', () => {
+  it('resets the home view from its room and restores that room snapshot on Back', () => {
+    let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' })
+    state = viewReducer(state, { type: 'map', settings: { generations: 5, zoom: 2, pan: { x: 70, y: -30 }, collapsedAppearanceIds: ['branch'] } })
+    state = viewReducer(state, visit('b', 'person', 'I1'))
+    const room = state.current
+    state = viewReducer(state, { type: 'visit', key: 'c', route: { screen: 'tree', personId: 'I1' }, navigationType: 'PUSH', resetMap: true })
+    expect(state.current.map).toEqual({ generations: 3, zoom: 1, pan: { x: 0, y: 0 }, collapsedAppearanceIds: [] })
+    state = viewReducer(state, visit('b', 'person', 'I1', 'POP'))
+    expect(state.current).toEqual(room)
+    state = viewReducer(state, visit('c', 'tree', 'I1', 'POP'))
+    expect(state.current.map.zoom).toBe(1)
+  })
+
+  it('resets in place without adding a Back step and keeps the reset on Forward', () => {
+    let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I2' })
+    state = viewReducer(state, visit('b', 'tree', 'I1'))
+    state = viewReducer(state, { type: 'map', settings: { zoom: 2, generations: 6, pan: { x: 10, y: 50 }, collapsedAppearanceIds: ['branch'] } })
+    state = viewReducer(state, { type: 'relationship', id: 'relation' })
+    state = viewReducer(state, { type: 'reset-map' })
+    expect(state.trail).toEqual(['a', 'b'])
+    expect(state.current.map).toEqual({ generations: 3, zoom: 1, pan: { x: 0, y: 0 }, collapsedAppearanceIds: [] })
+    expect(state.current.selectedRelationshipId).toBeNull()
+    state = viewReducer(state, visit('a', 'tree', 'I2', 'POP'))
+    state = viewReducer(state, visit('b', 'tree', 'I1', 'POP'))
+    expect(state.current.map.zoom).toBe(1)
+  })
+
   it('keeps home independent of the center and room person, resetting new centers', () => {
     let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' })
     state = viewReducer(state, { type: 'map', settings: { zoom: 2, generations: 4 } })

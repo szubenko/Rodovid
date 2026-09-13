@@ -44,19 +44,22 @@ export function labelArc(node: LayoutNode, center: Point, radius = node.labelRad
 }
 
 /** Short ports beside sector borders leave names clear and keep direction from the source edge. */
-export function connectionPath(from: LayoutNode, to: LayoutNode, center: Point): string {
+export function connectionPath(from: LayoutNode, to: LayoutNode, center: Point, fromOffset: Point = { x: 0, y: 0 }, toOffset: Point = { x: 0, y: 0 }): string {
   const outer = from.ring > to.ring ? from : to
   const inner = from.ring > to.ring ? to : from
+  const outerOffset = outer === from ? fromOffset : toOffset
+  const innerOffset = inner === from ? fromOffset : toOffset
+  const shift = (position: Point, offset: Point): Point => ({ x: position.x + offset.x, y: position.y + offset.y })
   const angle = outer.startAngle + (outer.endAngle - outer.startAngle) * 0.18
-  const start = radialPoint(center, inner.outerRadius - 10, angle)
-  const end = radialPoint(center, outer.innerRadius + 10, angle)
+  const start = shift(radialPoint(center, inner.outerRadius - 10, angle), innerOffset)
+  const end = shift(radialPoint(center, outer.innerRadius + 10, angle), outerOffset)
   if (outer.ring - inner.ring > 1) {
     // A direct child is outside the spouse ring. Route around that ring, never through its label.
     const side = angle < 180 ? 112 : 248
     const radius = outer.innerRadius - 2
-    const entry = radialPoint(center, inner.outerRadius - 10, side)
-    const corner = radialPoint(center, radius, side)
-    const port = radialPoint(center, radius, angle)
+    const entry = shift(radialPoint(center, inner.outerRadius - 10, side), innerOffset)
+    const corner = shift(radialPoint(center, radius, side), outerOffset)
+    const port = shift(radialPoint(center, radius, angle), outerOffset)
     return from === inner
       ? `M${point(entry)} L${point(corner)} A${radius},${radius} 0 0 ${angle > side ? 1 : 0} ${point(port)} L${point(end)}`
       : `M${point(end)} L${point(port)} A${radius},${radius} 0 0 ${angle > side ? 0 : 1} ${point(corner)} L${point(entry)}`

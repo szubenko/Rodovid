@@ -3,7 +3,12 @@ import type { FamilyData } from '../data/schema'
 import type { ViewAction, ViewState } from './view-state'
 
 export const FamilyContext = createContext<FamilyData | null>(null)
-export const ViewContext = createContext<{ state: ViewState; dispatch: Dispatch<ViewAction> } | null>(null)
+export const ViewContext = createContext<{
+  state: ViewState
+  dispatch: Dispatch<ViewAction>
+  goTo: (path: string, resetMap?: boolean) => void
+  goBack: () => void
+} | null>(null)
 
 export function useFamily() {
   const value = useContext(FamilyContext)

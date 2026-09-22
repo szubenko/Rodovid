@@ -1,7 +1,7 @@
 import type { MapSettings } from '../navigation/view-state'
 
 export type Camera = Pick<MapSettings, 'zoom' | 'pan'>
-export const minZoom = 0.5
+export const minZoom = 0.05
 export const maxZoom = 6
 
 /** Pan uses fractions of the square viewport, so resize and history preserve the view. */

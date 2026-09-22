@@ -16,8 +16,8 @@ const provenance = [{ kind: 'gedcom' as const, importId: 'test-import', recordId
 const edge = (id: string, from: string, to: string, kind: 'parent-child' | 'spouse' = 'parent-child') =>
   relationshipSchema.parse({ id, kind, fromPersonId: from, toPersonId: to, provenance })
 const options = { assetsRoot: resolve('tmp/no-optional-assets-needed') }
-const baseline = () => convertGedcom({ bytes: read('Data/Zubenko.ged'), config: json('Data/site.json'),
-  supplements: json('Data/annotations.json'), identities: json('Data/identities.json') })
+const baseline = () => convertGedcom({ bytes: read('tests/fixtures/baseline-2026-09-02/Zubenko.ged'), config: json('tests/fixtures/baseline-2026-09-02/site.json'),
+  supplements: json('tests/fixtures/baseline-2026-09-02/annotations.json'), identities: json('tests/fixtures/baseline-2026-09-02/identities.json') })
 const synthetic = (extra = '') => convertGedcom({ bytes: Buffer.from(read('tests/fixtures/conversion/complex.ged')
   .toString('utf8').replace('1 NAME Тест /Однакове/', `1 NAME Тест /Однакове/${extra ? `\n${extra}` : ''}`)),
   config: minimal().config, supplements: { schemaVersion: 1 }, datasetKind: 'synthetic' })

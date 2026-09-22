@@ -1,21 +1,23 @@
 import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
+import { dragMap } from './map-helpers'
 
-test('finds and centers all 25 people regardless of the visible generation', async ({ page }) => {
+test('finds and centers all 45 people regardless of the visible generation', async ({ page }) => {
   await page.goto('/tree/I1')
-  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(25)
+  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(45)
   const people = await page.locator('ul a[href^="/tree/"]').evaluateAll((links) => links.map((link) => ({
     name: link.textContent!, id: link.getAttribute('href')!.split('/').pop()!,
   })))
-  expect(people).toHaveLength(25)
+  expect(people).toHaveLength(45)
   for (const person of people) {
     await page.getByLabel('Покоління', { exact: true }).selectOption('1')
     await page.getByRole('searchbox').fill(person.name.toLocaleUpperCase('uk'))
     await page.locator(`[data-search-person="${person.id}"]`).click()
     await expect(page.locator('svg [data-center="true"]')).toHaveAttribute('data-person-id', person.id)
     await expect(page.getByRole('searchbox')).toHaveValue('')
-    await expect(page.getByLabel('Покоління', { exact: true })).toHaveValue('3')
+    const depth = page.getByLabel('Покоління', { exact: true })
+    await expect(depth).toHaveValue((await depth.locator('option').last().getAttribute('value'))!)
   }
 })
 
@@ -25,7 +27,7 @@ test('hidden results restore camera, collapsed branches and depth through Back a
   await page.getByText(/^Гілки карти ·/).click()
   await page.locator('[data-branch-appearance]').nth(1).getByRole('button').click()
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
-  await page.getByRole('button', { name: 'Перемістити карту ліворуч' }).click()
+  await dragMap(page, -40, 0)
   const camera = page.locator('[data-layer="camera"]')
   const transform = await camera.getAttribute('transform')
   const nodes = await page.locator('svg [data-person-id]').count()

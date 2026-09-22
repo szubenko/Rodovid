@@ -7,6 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -64,10 +65,12 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
     const conflicts = spouses.get(pair(edge))
     if (!conflicts) continue
     const related = [edge, ...conflicts]
+    const reviewed = reviewedGraphIssue(report?.sha256, 'CONFLICTING_ROLES', records(related), related)
     const known = report?.sha256 === baselineSha256 && hasOrigin(edge, '@F5@')
       && conflicts.every((item) => hasOrigin(item, '@F3@'))
-    issues.push({ severity: known ? 'warning' : 'error', code: 'CONFLICTING_ROLES',
-      message: known ? 'D03: подружжя й батьківство; дозволено для прототипу лише з обмеженнями реєстру ROD-004.'
+    issues.push({ severity: known || reviewed ? 'warning' : 'error', code: 'CONFLICTING_ROLES',
+      message: reviewed ? 'D07: суперечливі ролі збережено як невирішені; див. Rodovid_Import_2026-09-17.md.'
+        : known ? 'D03: подружжя й батьківство; дозволено для прототипу лише з обмеженнями реєстру ROD-004.'
         : 'Та сама пара записана як подружжя й батьки–діти; потрібен ручний розгляд.',
       recordIds: records(related), entityIds: related.map((item) => item.id) })
   }
@@ -84,15 +87,39 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
     }
     for (const group of families.values()) if (group.length > 1) {
       const ids = group.map((item) => item.recordId).sort()
+      const related = data.relationships.filter((item) => ids.some((recordId) => hasOrigin(item, recordId)))
+      const reviewed = reviewedGraphIssue(report.sha256, 'POSSIBLE_DUPLICATE_FAMILY', ids, related)
       const known = report.sha256 === baselineSha256 && ['@F6@,@F7@', '@F8@,@F9@'].includes(ids.join(','))
-      issues.push({ severity: known ? 'warning' : 'error', code: 'POSSIBLE_DUPLICATE_FAMILY',
-        message: known ? 'D01/D02: можливий дубль; записи не злито, чинні обмеження ROD-004.'
+      issues.push({ severity: known || reviewed ? 'warning' : 'error', code: 'POSSIBLE_DUPLICATE_FAMILY',
+        message: reviewed ? 'D08: можливий дубль збережено як невирішений; див. Rodovid_Import_2026-09-17.md.'
+          : known ? 'D01/D02: можливий дубль; записи не злито, чинні обмеження ROD-004.'
           : 'Однаковий склад сімей; потрібен ручний розгляд, автоматичне злиття заборонено.', recordIds: ids })
     }
   }
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
+  if (report.sha256 === reviewedExportSha256) {
+    const expected = { people: 45, relationships: 71, events: 68, claims: 111, places: 32 }
+    for (const [key, count] of Object.entries(expected)) {
+      const imported = data[key as keyof typeof expected].filter((item) => item.provenance.some((origin) => origin.kind === 'gedcom'))
+      if (imported.length !== count) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: `${key}: очікується ${count} імпортованих записів.` })
+    }
+    for (const review of reviewedGraphIssues) {
+      const related = data.relationships.filter((item) => (review.entityIds as readonly string[]).includes(item.id))
+      if (!reviewedGraphIssue(report.sha256, review.code, records(related), related)) issues.push({
+        severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${review.review}: втрачено пояснення або змінено невирішену оцінку.`,
+        entityIds: [...review.entityIds], recordIds: [...review.recordIds],
+      })
+    }
+    const name = data.claims.find((claim) => claim.field === 'name' && claim.target.id === 'I1')
+    if (!name?.explanation?.includes('D04') || name.confidence !== 'unassessed'
+      || data.places.some((place) => !place.description?.includes('D06'))) issues.push({
+      severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'D04/D06: втрачено невирішені зауваження до імені або місць.',
+    })
+    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: 'Експорт 17.09.2026: зіставлення перевірено; D04/D06/D07/D08 залишаються невирішеними.' })
+    return
+  }
   if (report.sha256 !== baselineSha256) {
     issues.push({ severity: 'info', code: 'UNREVIEWED_EXPORT', message: 'Експорт не є базовим знімком ROD-004; дозволи D01–D06 не переносяться автоматично.' })
     return

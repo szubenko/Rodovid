@@ -1,10 +1,27 @@
 import { expect, test, type Page } from '@playwright/test'
+import { dragMap } from './map-helpers'
+import { readFileSync } from 'node:fs'
+import { buildFamilyGraph, projectFamily } from '../../src/graph/projection'
+import { familyDataSchema } from '../../src/data/schema'
+
+const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
+const homeCount = projectFamily(buildFamilyGraph(family), 'I1', { generations: 12 }).appearances.length
 
 const camera = (page: Page) => page.locator('[data-layer="camera"]')
 const scale = (page: Page) => page.getByLabel('Масштаб карти', { exact: true })
 const generations = (page: Page) => page.getByLabel('Покоління', { exact: true })
 const nodes = (page: Page) => page.locator('svg [data-person-id]')
 const fit = (page: Page) => page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
+const expectFitted = async (page: Page) => {
+  expect(await page.locator('svg').evaluate((element) => {
+    const viewport = element.getBoundingClientRect()
+    return [...element.querySelectorAll('[data-person-id]')].every((node) => {
+      const box = node.getBoundingClientRect()
+      return box.left >= viewport.left - 1 && box.right <= viewport.right + 1
+        && box.top >= viewport.top - 1 && box.bottom <= viewport.bottom + 1
+    })
+  })).toBe(true)
+}
 const openBranches = (page: Page) => page.getByText(/^Гілки карти ·/).click()
 
 test('buttons zoom around center, pan, fit and remain within limits using the keyboard', async ({ page }) => {
@@ -14,17 +31,17 @@ test('buttons zoom around center, pan, fit and remain within limits using the ke
   await page.keyboard.press('Enter')
   await expect(scale(page)).toHaveText('125%')
   const scaled = await camera(page).getAttribute('transform')
-  await page.getByRole('button', { name: 'Перемістити карту праворуч' }).click()
+  await dragMap(page, 40, 0)
   expect(await camera(page).getAttribute('transform')).not.toBe(scaled)
   for (let index = 0; index < 10 && await increase.isEnabled(); index++) await increase.click()
   await expect(scale(page)).toHaveText('600%')
   await expect(increase).toBeDisabled()
   const decrease = page.getByRole('button', { name: 'Зменшити масштаб', exact: true })
-  for (let index = 0; index < 12 && await decrease.isEnabled(); index++) await decrease.click()
-  await expect(scale(page)).toHaveText('50%')
+  for (let index = 0; index < 30 && await decrease.isEnabled(); index++) await decrease.click()
+  await expect(scale(page)).toHaveText('5%')
   await expect(decrease).toBeDisabled()
   await fit(page)
-  await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
+  await expectFitted(page)
 })
 
 test('collapse is reversible and depth never removes people from the full index', async ({ page }) => {
@@ -47,8 +64,8 @@ test('collapse is reversible and depth never removes people from the full index'
   expect(await nodes(page).count()).toBeLessThan(fullCount)
   await expect(page.locator(`svg [data-appearance-id="${id}"]`)).toHaveCount(1)
   await generations(page).selectOption('1')
-  await expect(nodes(page)).toHaveCount(3)
-  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(25)
+  await expect(nodes(page)).toHaveCount(4)
+  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(45)
   await generations(page).selectOption('6')
   await page.getByRole('button', { name: 'Розгорнути всі гілки' }).click()
   await expect(nodes(page)).toHaveCount(fullCount)
@@ -60,7 +77,7 @@ test('Back, Forward, room return and home restore the correct camera, depth and 
   await page.goto('/tree/I1')
   await generations(page).selectOption('6')
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
-  await page.getByRole('button', { name: 'Перемістити карту ліворуч' }).click()
+  await dragMap(page, -40, 0)
   await openBranches(page)
   await page.locator('[data-branch-appearance]').nth(1).getByRole('button').click()
   const count = await nodes(page).count()
@@ -71,7 +88,7 @@ test('Back, Forward, room return and home restore the correct camera, depth and 
   await expect(nodes(page)).toHaveCount(count)
   await page.locator('ul a[href="/tree/I2"]').click()
   await expect(scale(page)).toHaveText('100%')
-  await expect(generations(page)).toHaveValue('3')
+  await expect(generations(page)).toHaveValue('5')
   await page.getByRole('button', { name: 'Назад', exact: true }).click()
   await expect(camera(page)).toHaveAttribute('transform', saved!)
   await expect(nodes(page)).toHaveCount(count)
@@ -81,8 +98,8 @@ test('Back, Forward, room return and home restore the correct camera, depth and 
   await page.goBack()
   await page.getByRole('link', { name: 'До мене', exact: true }).click()
   await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
-  await expect(generations(page)).toHaveValue('3')
-  await expect(nodes(page)).toHaveCount(9)
+  await expect(generations(page)).toHaveValue('6')
+  await expect(nodes(page)).toHaveCount(homeCount)
 })
 
 test('mouse dragging never follows a sector or line and wheel keeps page scrolling', async ({ page }) => {
@@ -110,14 +127,14 @@ test('mouse dragging never follows a sector or line and wheel keeps page scrolli
   await page.keyboard.up('Control')
   await expect(scale(page)).not.toHaveText('100%')
   await fit(page)
-  await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
+  await expectFitted(page)
 })
 
 test('resize retains normalized position and fit stays reachable at 320px', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1024, height: 900 })
   await page.goto('/tree/I1')
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
-  await page.getByRole('button', { name: 'Перемістити карту вниз' }).click()
+  await dragMap(page, 0, 40)
   const normalizedCenter = () => page.locator('svg').evaluate((svg) => {
     const element = svg as SVGSVGElement
     const matrix = element.querySelector<SVGGElement>('[data-layer="camera"]')!.transform.baseVal.consolidate()!.matrix
@@ -131,7 +148,7 @@ test('resize retains normalized position and fit stays reachable at 320px', asyn
   expect((await normalizedCenter()).y).toBeCloseTo(before.y)
   expect(await page.locator('html').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true)
   await fit(page)
-  await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
+  await expectFitted(page)
   await openBranches(page)
   await page.screenshot({ path: testInfo.outputPath('controls-320.png'), fullPage: true })
 })
@@ -141,7 +158,7 @@ test('camera input during recentering settles nodes and lines, and the next drag
   await page.clock.install({ time: new Date('2026-09-13T12:00:00Z') })
   await page.clock.pauseAt(new Date('2026-09-13T12:00:01Z'))
   await page.goto('/tree/I1')
-  await expect(nodes(page)).toHaveCount(9)
+  await expect(nodes(page)).toHaveCount(homeCount)
   await page.clock.runFor(1000)
   await page.locator('ul a[href="/tree/I2"]').dispatchEvent('click')
   await expect(page.locator('[data-layer="coordinates"]')).toHaveAttribute('data-transition', 'moving')
@@ -153,19 +170,24 @@ test('camera input during recentering settles nodes and lines, and the next drag
   await page.getByRole('button', { name: 'Вмістити карту', exact: true }).dispatchEvent('click')
   expect(await page.locator('svg [data-relationship-id] path').evaluateAll((elements) => elements.map((element) => element.getAttribute('d')))).toEqual(paths)
   await page.clock.resume()
+  const fittedScale = await scale(page).textContent()
+  const fittedTranslation = await camera(page).evaluate((element) => {
+    const matrix = (element as SVGGElement).transform.baseVal.consolidate()!.matrix
+    return { x: matrix.e, y: matrix.f }
+  })
   await page.locator('svg').scrollIntoViewIfNeeded()
   const box = (await page.locator('svg').boundingBox())!
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
   await page.mouse.down()
   await page.mouse.move(box.x + box.width / 2 + 40, box.y + box.height / 2 + 20, { steps: 5 })
   await page.mouse.up()
-  await expect(scale(page)).toHaveText('100%')
+  await expect(scale(page)).toHaveText(fittedScale!)
   const translation = await camera(page).evaluate((element) => {
     const matrix = (element as SVGGElement).transform.baseVal.consolidate()!.matrix
     return { x: matrix.e, y: matrix.f }
   })
-  expect(translation.x).toBeCloseTo(40, 0)
-  expect(translation.y).toBeCloseTo(20, 0)
+  expect(translation.x).toBeCloseTo(fittedTranslation.x + 40, 0)
+  expect(translation.y).toBeCloseTo(fittedTranslation.y + 20, 0)
   await expect(page).toHaveURL(/\/tree\/I2$/)
 })
 
@@ -197,6 +219,6 @@ test('native touch drag and pinch change the camera without navigation, and outs
   await touch('touchEnd', [])
   await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(before)
   await fit(page)
-  await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
+  await expectFitted(page)
   await session.detach()
 })

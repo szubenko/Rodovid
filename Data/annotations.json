@@ -2,586 +2,6 @@
   "schemaVersion": 1,
   "assessments": [
     {
-      "id": "review-relationship-f9ba7262bc40a95cbceb6db8",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-f9ba7262bc40a95cbceb6db8"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D03: суперечливі родинні ролі I9 та I6 — подружжя у F3 і батько–дитина у F5. Не з’ясовано; уточнює власник. Спорідненість через цей зв’язок потребує уточнення."
-    },
-    {
-      "id": "review-relationship-3e55e227569c03ea7ebe6157",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-3e55e227569c03ea7ebe6157"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D03: суперечливі родинні ролі I9 та I6 — подружжя у F3 і батько–дитина у F5. Не з’ясовано; уточнює власник. Спорідненість через цей зв’язок потребує уточнення."
-    },
-    {
-      "id": "review-relationship-533ae13fcc3d2a36715c8059",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-533ae13fcc3d2a36715c8059"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-205905f2fbf6dcc2a7e5499c",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-205905f2fbf6dcc2a7e5499c"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-c4b5034ae92e0c8da4cdc0f6",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-c4b5034ae92e0c8da4cdc0f6"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-e1be7d4106d89ecd682870de",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-e1be7d4106d89ecd682870de"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-ecc55af497365a854da66abb",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-ecc55af497365a854da66abb"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-01f1d3cd867f2706eadae283",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-01f1d3cd867f2706eadae283"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-a2bd9454507ff9b2fc82d010",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-a2bd9454507ff9b2fc82d010"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-9a37d990191d9f72530fe0c2",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-9a37d990191d9f72530fe0c2"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-1d2d34340b954bd598c77f2c",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-1d2d34340b954bd598c77f2c"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-119bd2519138bc80069f3798",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-119bd2519138bc80069f3798"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-be678a2cb4e770f9a12e87ea",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-be678a2cb4e770f9a12e87ea"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-7a5f2351e6d5a2fe656f97c9",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-7a5f2351e6d5a2fe656f97c9"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-d59de3d49fb2122654e9bb54",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-d59de3d49fb2122654e9bb54"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-75cb4a0534ea453a4111e3c2",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-75cb4a0534ea453a4111e3c2"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-dfb2baf91b63658f0d6a45b5",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-dfb2baf91b63658f0d6a45b5"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-9f37a74cf7ff093baab9cf03",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-9f37a74cf7ff093baab9cf03"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-0d58ee2db23427060f6b6e7b",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-0d58ee2db23427060f6b6e7b"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-9d4c93bdfecc423a3130f83e",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-9d4c93bdfecc423a3130f83e"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-2f67777d02fce285a2c29a2d",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-2f67777d02fce285a2c29a2d"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-d66bd08e86640027e4c184d7",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-d66bd08e86640027e4c184d7"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-b37e15dc992807d5fe7f0496",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-b37e15dc992807d5fe7f0496"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-90c98caeeeeaa850cd64d107",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-90c98caeeeeaa850cd64d107"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-28327bf989c1166557b74d0e",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-28327bf989c1166557b74d0e"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-4839b975c1c2d25713ef4b3e",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-4839b975c1c2d25713ef4b3e"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-81c0c8db3c1162f615a975ed",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-81c0c8db3c1162f615a975ed"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-611f81ae4698b600bc6f36f5",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-611f81ae4698b600bc6f36f5"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-2a955afedc9e757a9e0531c5",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-2a955afedc9e757a9e0531c5"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-3b5fd4fd4b475d8cd8b041fa",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-3b5fd4fd4b475d8cd8b041fa"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-77188b61d1fa7e0cb7d692ff",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-77188b61d1fa7e0cb7d692ff"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-802b0c64fb36a0a2cc6c2a3b",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-802b0c64fb36a0a2cc6c2a3b"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-a8eed8c0649e9f9ee28edd6b",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-a8eed8c0649e9f9ee28edd6b"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-649e3b9f6f5081f115d21e8e",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-649e3b9f6f5081f115d21e8e"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-3cfa6d1262d96766dd8b4103",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-3cfa6d1262d96766dd8b4103"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-213798c3ffc19c2d6c7c49d2",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-213798c3ffc19c2d6c7c49d2"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-2042a583f43d8caeab4326bc",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-2042a583f43d8caeab4326bc"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-570795c09b2877e145f913f9",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-570795c09b2877e145f913f9"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-d3daf038fad5b061e90b856d",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-d3daf038fad5b061e90b856d"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу.\nD05: записаний батько — Феодор Петров Зубенко; потребує перевірки. Різниця років народження — 83, це не точний вік і не доказ помилки. Не з’ясовано; уточнює власник."
-    },
-    {
-      "id": "review-relationship-2c4023ae719a278c0a5332fa",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-2c4023ae719a278c0a5332fa"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-c47425a57ace5401a4ead068",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-c47425a57ace5401a4ead068"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-266e9e9d793625cd4672148b",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-266e9e9d793625cd4672148b"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-e9e833b5e2ba5529e1b0b2ec",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-e9e833b5e2ba5529e1b0b2ec"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-259066879720fd7dd7184cf9",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-259066879720fd7dd7184cf9"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-6a0f9772b5ad1f62a3c3d0c0",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-6a0f9772b5ad1f62a3c3d0c0"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-704cc0985c55c127612701fd",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-704cc0985c55c127612701fd"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-ea66d4e2356d39e984106021",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-ea66d4e2356d39e984106021"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-db5c7bbdf552b47092ce6f32",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-db5c7bbdf552b47092ce6f32"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-ddd2d1a2a1891398d3e7408f",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-ddd2d1a2a1891398d3e7408f"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-d75016aa9983e0a339cc39f2",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-d75016aa9983e0a339cc39f2"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-2986a8b27e0425a7b7869519",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-2986a8b27e0425a7b7869519"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-fe70ea2927e028fdf1400ac3",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-fe70ea2927e028fdf1400ac3"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу.\nD05: записаний батько — Феодор Петров Зубенко; потребує перевірки. Різниця років народження — 83, це не точний вік і не доказ помилки. Не з’ясовано; уточнює власник."
-    },
-    {
-      "id": "review-relationship-983956cd23ae72e96354f45a",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-983956cd23ae72e96354f45a"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-84b78a9b20051aee60a55c0d",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-84b78a9b20051aee60a55c0d"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-c17652be2de40d59a76abcef",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-c17652be2de40d59a76abcef"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-9a3aabef8a702bfa69136b8e",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-9a3aabef8a702bfa69136b8e"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-b727f584abd119c59ac9f956",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-b727f584abd119c59ac9f956"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-3189235595bcb108958df7d7",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-3189235595bcb108958df7d7"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
       "id": "review-claim-9c80842dfb5af2a8be42d49f",
       "target": {
         "kind": "claim",
@@ -591,31 +11,44 @@
       "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене."
     },
     {
-      "id": "review-claim-244e8bf9bed97cd91397b290",
+      "id": "review-relationship-e86e6052c1175199aac28036",
       "target": {
-        "kind": "claim",
-        "id": "claim-244e8bf9bed97cd91397b290"
+        "kind": "relationship",
+        "id": "relationship-e86e6052c1175199aac28036"
       },
       "confidence": "unassessed",
-      "explanation": "D05: дати Григория I22 і рік народження записаного батька I20 потребують перевірки власником. Не з’ясовано; вихідний текст і точність збережені без виправлення."
+      "reviewStatus": "unreviewed",
+      "explanation": "D07: Петро Олександрович Дейкало та Оксана Миколаївна записані одночасно як подружжя (F6) і батько–дитина (F10). Не з’ясовано; уточнює власник родоводу. Точна спорідненість через ці зв’язки потребує уточнення."
     },
     {
-      "id": "review-claim-a8e30a7d34455a58d87c4b6a",
+      "id": "review-relationship-7cb3eb0510b32f0408bd52b2",
       "target": {
-        "kind": "claim",
-        "id": "claim-a8e30a7d34455a58d87c4b6a"
+        "kind": "relationship",
+        "id": "relationship-7cb3eb0510b32f0408bd52b2"
       },
       "confidence": "unassessed",
-      "explanation": "D05: дати Григория I22 і рік народження записаного батька I20 потребують перевірки власником. Не з’ясовано; вихідний текст і точність збережені без виправлення."
+      "reviewStatus": "unreviewed",
+      "explanation": "D07: Петро Олександрович Дейкало та Оксана Миколаївна записані одночасно як подружжя (F6) і батько–дитина (F10). Не з’ясовано; уточнює власник родоводу. Точна спорідненість через ці зв’язки потребує уточнення."
     },
     {
-      "id": "review-claim-ced8595398c18cada1a5ac88",
+      "id": "review-relationship-386c227f790be2fd03a50cfb",
       "target": {
-        "kind": "claim",
-        "id": "claim-ced8595398c18cada1a5ac88"
+        "kind": "relationship",
+        "id": "relationship-386c227f790be2fd03a50cfb"
       },
       "confidence": "unassessed",
-      "explanation": "D05: дати Григория I22 і рік народження записаного батька I20 потребують перевірки власником. Не з’ясовано; вихідний текст і точність збережені без виправлення."
+      "reviewStatus": "unreviewed",
+      "explanation": "D08: повторні сімейні записи F13/F16 пов’язують Олександра Дейкала з Петром Олександровичем Дейкалом. Обидва записи збережено; це не додатковий доказ. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-df5effff11a8254f799a5ef1",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-df5effff11a8254f799a5ef1"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D08: повторні сімейні записи F13/F16 пов’язують Олександра Дейкала з Петром Олександровичем Дейкалом. Обидва записи збережено; це не додатковий доказ. Не з’ясовано; уточнює власник родоводу."
     }
   ],
   "primaryClaimIds": [],
@@ -727,18 +160,58 @@
       "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
     },
     {
-      "id": "review-place-a4607bd274379fae26e03224",
-      "placeId": "place-a4607bd274379fae26e03224",
-      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
       "id": "review-place-830e1e3e287cfdd8020048e8",
       "placeId": "place-830e1e3e287cfdd8020048e8",
       "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
     },
     {
-      "id": "review-place-e4a000103be5384e4cba15ce",
-      "placeId": "place-e4a000103be5384e4cba15ce",
+      "id": "review-place-36c4e76051dd7f6dc14f78e0",
+      "placeId": "place-36c4e76051dd7f6dc14f78e0",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-a58bec669cff452f9ab3a20e",
+      "placeId": "place-a58bec669cff452f9ab3a20e",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-f7bf24befa4758d4367e3b36",
+      "placeId": "place-f7bf24befa4758d4367e3b36",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-beae826f3f638360ed9681f9",
+      "placeId": "place-beae826f3f638360ed9681f9",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-19235062e711bd70493ade5c",
+      "placeId": "place-19235062e711bd70493ade5c",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-becd59493d9543d61e23fdd5",
+      "placeId": "place-becd59493d9543d61e23fdd5",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-1d10a1eacd277bcef005c3b5",
+      "placeId": "place-1d10a1eacd277bcef005c3b5",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-6960353f1760032c31dd8ea7",
+      "placeId": "place-6960353f1760032c31dd8ea7",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-cfbfd6ae66c906b699f4bf28",
+      "placeId": "place-cfbfd6ae66c906b699f4bf28",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-1bdb4f5a91a9ee687f04d5cc",
+      "placeId": "place-1bdb4f5a91a9ee687f04d5cc",
       "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
     }
   ],

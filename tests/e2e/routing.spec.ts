@@ -6,7 +6,7 @@ test('home, center, room, back and forward share a single dataset', async ({ pag
   await page.goto('/')
   await expect(page).toHaveURL(/\/tree\/I1$/)
   await expect(page.getByRole('button', { name: 'Назад', exact: true })).toBeDisabled()
-  await expect(page.locator('ul a')).toHaveCount(25)
+  await expect(page.locator('ul a')).toHaveCount(45)
   await page.screenshot({ path: testInfo.outputPath('tree.png'), fullPage: true })
   const target = page.locator('ul a[href="/tree/I2"]')
   const name = await target.textContent()

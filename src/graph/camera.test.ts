@@ -18,7 +18,7 @@ describe('camera zoom', () => {
     expect(largest.zoom).toBe(6)
     expect(scaleCamera(largest, 2)).toEqual(largest)
     const smallest = scaleCamera(largest, 0.001)
-    expect(smallest.zoom).toBe(0.5)
+    expect(smallest.zoom).toBe(0.05)
     expect(scaleCamera(smallest, 0.5)).toEqual(smallest)
   })
 })

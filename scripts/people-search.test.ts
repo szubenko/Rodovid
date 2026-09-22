@@ -5,9 +5,9 @@ import { buildPeopleIndex, searchPeople } from '../src/search/people.ts'
 
 it('finds all 25 people and every prepared spelling in the unchanged real GEDCOM', () => {
   const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
-  const family = convertGedcom({ bytes: read('Data/Zubenko.ged'), config: JSON.parse(read('Data/site.json').toString()),
-    supplements: JSON.parse(read('Data/annotations.json').toString()), identities: JSON.parse(read('Data/identities.json').toString()),
-    supplementsFile: 'Data/annotations.json' }).family
+  const family = convertGedcom({ bytes: read('tests/fixtures/baseline-2026-09-02/Zubenko.ged'), config: JSON.parse(read('tests/fixtures/baseline-2026-09-02/site.json').toString()),
+    supplements: JSON.parse(read('tests/fixtures/baseline-2026-09-02/annotations.json').toString()), identities: JSON.parse(read('tests/fixtures/baseline-2026-09-02/identities.json').toString()),
+    supplementsFile: 'tests/fixtures/baseline-2026-09-02/annotations.json' }).family
   const index = buildPeopleIndex(family)
   expect(index).toHaveLength(25)
   for (const person of index) {

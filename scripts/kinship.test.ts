@@ -4,9 +4,9 @@ import { convertGedcom } from './gedcom/convert'
 import { explainKinship } from '../src/kinship/kinship'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
-const family = convertGedcom({ bytes: read('Data/Zubenko.ged'), config: JSON.parse(read('Data/site.json').toString()),
-  supplements: JSON.parse(read('Data/annotations.json').toString()), identities: JSON.parse(read('Data/identities.json').toString()),
-  supplementsFile: 'Data/annotations.json' }).family
+const family = convertGedcom({ bytes: read('tests/fixtures/baseline-2026-09-02/Zubenko.ged'), config: JSON.parse(read('tests/fixtures/baseline-2026-09-02/site.json').toString()),
+  supplements: JSON.parse(read('tests/fixtures/baseline-2026-09-02/annotations.json').toString()), identities: JSON.parse(read('tests/fixtures/baseline-2026-09-02/identities.json').toString()),
+  supplementsFile: 'tests/fixtures/baseline-2026-09-02/annotations.json' }).family
 
 describe('kinship on the unchanged family dataset', () => {
   it('reaches all 25 people without exhausting the budget or promoting unreviewed records', () => {

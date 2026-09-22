@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { assertPreservedLines, verifyBaseline } from './baseline.ts'
 import { children, inspectGedcom, values } from './parse.ts'
 
-const baseline = readFileSync(new URL('../../Data/Zubenko.ged', import.meta.url))
+const baseline = readFileSync(new URL('../../tests/fixtures/baseline-2026-09-02/Zubenko.ged', import.meta.url))
 const data = inspectGedcom(baseline)
 
 describe('reviewed RootsMagic 5.5.1 export', () => {

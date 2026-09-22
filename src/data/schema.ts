@@ -148,7 +148,7 @@ export const memorySchema = z.strictObject({
 export const siteConfigSchema = z.strictObject({
   schemaVersion: z.literal(1), dataVersion: text, title: text,
   homePersonId: personIdSchema.default('I1'),
-  initialGenerations: z.literal(3).default(3),
+  initialGenerations: z.number().int().min(1).max(11).default(3),
   rooms: z.array(z.strictObject({
     personId: personIdSchema, theme: text.optional(), backgroundMediaId: id.optional(),
   })).default([]),

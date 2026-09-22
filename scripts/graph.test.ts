@@ -2,15 +2,15 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { familyDataSchema, personAppearanceSchema, relationshipSchema } from '../src/data/schema.ts'
-import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
+import { availableGenerations, buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 import { estimateTextWidth, fitLabel, layoutRadial } from '../src/graph/layout.ts'
 import { emptySectors } from '../src/graph/empty-sectors.ts'
 import minimal from '../tests/fixtures/data-contract/minimal.json'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
-const family = convertGedcom({ bytes: read('Data/Zubenko.ged'), config: JSON.parse(read('Data/site.json').toString()),
-  supplements: JSON.parse(read('Data/annotations.json').toString()), identities: JSON.parse(read('Data/identities.json').toString()),
-  supplementsFile: 'Data/annotations.json' }).family
+const family = convertGedcom({ bytes: read('tests/fixtures/baseline-2026-09-02/Zubenko.ged'), config: JSON.parse(read('tests/fixtures/baseline-2026-09-02/site.json').toString()),
+  supplements: JSON.parse(read('tests/fixtures/baseline-2026-09-02/annotations.json').toString()), identities: JSON.parse(read('tests/fixtures/baseline-2026-09-02/identities.json').toString()),
+  supplementsFile: 'tests/fixtures/baseline-2026-09-02/annotations.json' }).family
 const graph = buildFamilyGraph(family)
 const labels = new Map(family.people.map((person) => {
   const names = family.claims.filter((claim) => claim.field === 'name' && claim.target.id === person.id)
@@ -28,6 +28,15 @@ function synthetic(links: [string, string, 'parent-child' | 'spouse'][]) {
 }
 
 describe('family projection', () => {
+  it('limits available rings to actual relatives of each center, including descendants', () => {
+    const graph = synthetic([['I4', 'I3', 'parent-child'], ['I3', 'I2', 'parent-child'], ['I2', 'I1', 'parent-child']])
+    expect(availableGenerations(graph, 'I1')).toBe(3)
+    // Descendants start at ring 2; the spouse lane occupies ring 1.
+    expect(availableGenerations(graph, 'I4')).toBe(4)
+    expect(availableGenerations(synthetic([]), 'I1')).toBe(1)
+    const cycle = synthetic([['I1', 'I2', 'parent-child'], ['I2', 'I1', 'parent-child']])
+    expect(availableGenerations(cycle, 'I1')).toBeLessThan(11)
+  })
   it('starts with the five approved I1 people over three generations', () => {
     const view = projectFamily(graph, 'I1')
     expect(view.generations).toBe(3)
@@ -137,29 +146,26 @@ describe('family projection', () => {
 })
 
 describe('radial geometry', () => {
-  it('fills every ancestor and lower ring without inventing people or covering known sectors', () => {
-    const projection = projectFamily(graph, 'I1', { generations: 4 })
+  it('completes only missing sibling slots and stops decoration with each known branch', () => {
+    const projection = projectFamily(synthetic([['I2', 'I1', 'parent-child'], ['I3', 'I2', 'parent-child']]), 'I1', { generations: 4 })
     const layout = layoutRadial(projection, { width: 1024, height: 1024, labels })
     const empty = emptySectors(layout, 3)
-    expect(layout.nodes).toHaveLength(9)
-    expect(empty.some((sector) => sector.label === 'Подружжя · немає відомостей')).toBe(true)
-    expect(empty.some((sector) => sector.label === 'Діти · немає відомостей')).toBe(true)
-    for (const ring of [1, 2, 3]) {
-      for (const parents of [true, false]) {
-        const sectors = [...layout.nodes, ...empty].filter((sector) => sector.ring === ring
-          && (sector.lane === 'parents') === parents).sort((a, b) => a.startAngle - b.startAngle)
-        expect(sectors[0]!.startAngle).toBe(parents ? -108 : 116)
-        expect(sectors.at(-1)!.endAngle).toBe(parents ? 108 : 244)
-        for (let index = 1; index < sectors.length; index++) expect(sectors[index]!.startAngle).toBeCloseTo(sectors[index - 1]!.endAngle)
-      }
+    expect(layout.nodes).toHaveLength(3)
+    expect(empty).toHaveLength(2)
+    expect(empty.some((sector) => sector.ring === 3)).toBe(false)
+    for (const sector of empty) {
+      expect(sector.lane).toBe('parents')
+      expect(layout.nodes.some((node) => node.ring === sector.ring && node.lane === 'parents')).toBe(true)
+      expect(layout.nodes.some((node) => node.ring === sector.ring && node.lane === sector.lane
+        && node.startAngle < sector.endAngle - 0.001 && node.endAngle > sector.startAngle + 0.001)).toBe(false)
     }
-    expect(layout.nodes.find((node) => node.personId === 'I5')!.startAngle).toBe(-108)
+    expect(layout.nodes.find((node) => node.personId === 'I3')!.startAngle).toBe(-108)
   })
 
-  it('labels collapsed continuations as hidden, without claiming data is missing', () => {
+  it('does not decorate collapsed continuations with empty rings', () => {
     const projection = projectFamily(graph, 'I1', { generations: 4, collapsedAppearanceIds: ['appearance-2:I1'] })
     const layout = layoutRadial(projection, { width: 1024, height: 1024, labels })
-    expect(emptySectors(layout, 3).every((sector) => sector.label === 'Продовження приховано')).toBe(true)
+    expect(emptySectors(layout, 3)).toEqual([])
   })
 
   it.each([320, 1024])('lays out all real centers at %s px with finite, bounded, nonoverlapping sectors and fitting labels', (width) => {
@@ -174,7 +180,8 @@ describe('radial geometry', () => {
         expect(node.x).toBeLessThanOrEqual(width)
         expect(node.y).toBeLessThanOrEqual(width)
         expect(node.outerRadius).toBeLessThanOrEqual(width / 2)
-        for (const label of node.ring === 0 ? node.centerLines : [node.label]) expect(estimateTextWidth(label, node.fontSize)).toBeLessThanOrEqual(node.labelWidth + 0.001)
+        expect(node.text.lines.filter((line) => !line.date).map((line) => line.text).join(' ')).toBe(node.fullLabel)
+        for (const line of node.text.lines) expect(estimateTextWidth(line.text, line.fontSize)).toBeLessThanOrEqual(node.text.width + 0.001)
         if (node.ring === 0) continue
         for (const other of result.nodes) if (other.ring === node.ring && other.appearanceId !== node.appearanceId) {
           expect(Math.min(node.endAngle, other.endAngle) - Math.max(node.startAngle, other.startAngle)).toBeLessThanOrEqual(0.00001)
@@ -189,9 +196,9 @@ describe('radial geometry', () => {
     const projection = projectFamily(synthetic([['I2', 'I1', 'parent-child']]), 'I1')
     const result = layoutRadial(projection, { width: 320, height: 400, labels: longLabels, measureText: (text) => Array.from(text).length * 9 })
     expect(result.nodes[0]!.centerLines.length).toBeLessThanOrEqual(3)
-    expect(result.nodes[1]!.label).toContain('…')
+    expect(result.nodes[1]!.label).not.toContain('…')
     expect(result.nodes[1]!.fullLabel).toBe(longLabels.get('I2'))
-    expect(result.nodes[1]!.labelTruncated).toBe(true)
+    expect(result.nodes[1]!.labelTruncated).toBe(false)
     expect(fitLabel('😀😀😀', 2, (text) => Array.from(text).length)).toBe('😀…')
     expect(fitLabel('Довге', 0.5, (text) => text.length)).toBe('')
   })

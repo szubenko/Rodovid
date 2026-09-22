@@ -57,6 +57,13 @@ export type ProjectionOptions = {
   maxAppearances?: number
 }
 
+/** Highest occupied ring for this center, independent of temporarily collapsed branches.
+ * Uses the same cycle detection and appearance budget as the rendered graph. */
+export function availableGenerations(graph: FamilyGraph, centerPersonId: string): number {
+  const full = projectFamily(graph, centerPersonId, { generations: 12 })
+  return Math.max(1, ...full.appearances.map((appearance) => appearance.ring))
+}
+
 function boundedInteger(value: number, min: number, max: number, label: string) {
   if (!Number.isInteger(value) || value < min || value > max) throw new RangeError(`Invalid ${label}: ${value}`)
   return value

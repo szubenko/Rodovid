@@ -7,7 +7,7 @@ import { supplementsSchema } from '../../src/data/supplements.ts'
 import type { FamilyData, Claim } from '../../src/data/schema.ts'
 
 const root = new URL('../../', import.meta.url)
-const baseline = readFileSync(new URL('Data/Zubenko.ged', root))
+const baseline = readFileSync(new URL('tests/fixtures/baseline-2026-09-02/Zubenko.ged', root))
 const bytes = readFileSync(new URL('tests/fixtures/conversion/complex.ged', root))
 const config = { schemaVersion: 1, dataVersion: 'test', title: 'Тест', homePersonId: 'I1' }
 const empty = { schemaVersion: 1 }
@@ -42,9 +42,9 @@ function additions(data: FamilyData) {
 
 describe('family JSON conversion', () => {
   it('uses the committed identity journal and all six review decisions without inventing evidence', () => {
-    const identities = JSON.parse(readFileSync(new URL('Data/identities.json', root), 'utf8'))
-    const supplements = JSON.parse(readFileSync(new URL('Data/annotations.json', root), 'utf8'))
-    const result = convert({ bytes: baseline, config: JSON.parse(readFileSync(new URL('Data/site.json', root), 'utf8')), identities, supplements, datasetKind: 'family' })
+    const identities = JSON.parse(readFileSync(new URL('tests/fixtures/baseline-2026-09-02/identities.json', root), 'utf8'))
+    const supplements = JSON.parse(readFileSync(new URL('tests/fixtures/baseline-2026-09-02/annotations.json', root), 'utf8'))
+    const result = convert({ bytes: baseline, config: JSON.parse(readFileSync(new URL('tests/fixtures/baseline-2026-09-02/site.json', root), 'utf8')), identities, supplements, datasetKind: 'family' })
     for (const code of ['D01', 'D02', 'D03', 'D04', 'D05', 'D06']) {
       expect(result.report.reviewNotes.some((note) => note.explanation?.includes(code))).toBe(true)
     }
@@ -60,7 +60,7 @@ describe('family JSON conversion', () => {
 
   it('preserves the complete baseline, independent family records and missing content', () => {
     const before = Buffer.from(baseline)
-    const result = convert({ bytes: baseline, config: JSON.parse(readFileSync(new URL('Data/site.json', root), 'utf8')), datasetKind: 'family' })
+    const result = convert({ bytes: baseline, config: JSON.parse(readFileSync(new URL('tests/fixtures/baseline-2026-09-02/site.json', root), 'utf8')), datasetKind: 'family' })
     expect(result.report.counts).toMatchObject({ people: 25, families: 9, childLinks: 32, events: 48, sources: 0, media: 0, evidenceLinks: 0, memories: 0 })
     expect(result.family.people.map((person) => person.id)).toEqual(Array.from({ length: 25 }, (_, i) => `I${i + 1}`))
     expect(result.family.config.homePersonId).toBe('I1')

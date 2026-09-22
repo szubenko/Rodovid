@@ -1,0 +1,3570 @@
+{
+  "exportDate": "2026-09-17",
+  "reviewDate": "2026-09-22",
+  "sha256": "a6428245adf900e2ec6bd84946d24945078e6d94d8bdfd96ce3b865c8232e506",
+  "previousSha256": "02a5e903ed7e261e58b5866d01fde1af16867c2594a23480c21c4ef6d4fb4fdd",
+  "counts": {
+    "people": 45,
+    "families": 21,
+    "childLinks": 32,
+    "relationships": 71,
+    "events": 68,
+    "claims": 111,
+    "places": 32,
+    "sources": 0,
+    "media": 0,
+    "evidenceLinks": 0,
+    "memories": 0
+  },
+  "personMap": [
+    {
+      "recordId": "@I1@",
+      "previousRecordId": "@I1@",
+      "canonicalId": "I1",
+      "familySearchId": "PFX8-NJ3",
+      "name": "Сегрій /Зубенко/"
+    },
+    {
+      "recordId": "@I2@",
+      "previousRecordId": "@I2@",
+      "canonicalId": "I2",
+      "familySearchId": "PFF9-K8Q",
+      "name": "Петр /Зубенко/"
+    },
+    {
+      "recordId": "@I3@",
+      "canonicalId": "I26",
+      "familySearchId": "PFKL-W2F",
+      "name": "Ольга Владимировна /Василенко/"
+    },
+    {
+      "recordId": "@I4@",
+      "previousRecordId": "@I3@",
+      "canonicalId": "I3",
+      "familySearchId": "PFF9-VHP",
+      "name": "Ірина Іванівна /Керницька/"
+    },
+    {
+      "recordId": "@I5@",
+      "previousRecordId": "@I5@",
+      "canonicalId": "I5",
+      "familySearchId": "PFFS-Y8D",
+      "name": "Яков Макарович /Зубенко/"
+    },
+    {
+      "recordId": "@I6@",
+      "previousRecordId": "@I4@",
+      "canonicalId": "I4",
+      "familySearchId": "PFFS-LRV",
+      "name": "Ольга Петрівна /Дейкало/"
+    },
+    {
+      "recordId": "@I7@",
+      "canonicalId": "I27",
+      "familySearchId": "PFVG-PWS",
+      "name": "Николай /Зубенко/"
+    },
+    {
+      "recordId": "@I8@",
+      "canonicalId": "I28",
+      "familySearchId": "PFV5-9GJ",
+      "name": "Іван /Керницький/"
+    },
+    {
+      "recordId": "@I9@",
+      "canonicalId": "I29",
+      "familySearchId": "PFVG-51P",
+      "name": "Наталія Іванівна //"
+    },
+    {
+      "recordId": "@I10@",
+      "previousRecordId": "@I9@",
+      "canonicalId": "I9",
+      "familySearchId": "PFF3-CN2",
+      "name": "Макар Ільянов /Зубенко/"
+    },
+    {
+      "recordId": "@I11@",
+      "previousRecordId": "@I7@",
+      "canonicalId": "I7",
+      "familySearchId": "PFFS-19F",
+      "name": "Оксана Миколаївна //"
+    },
+    {
+      "recordId": "@I12@",
+      "previousRecordId": "@I6@",
+      "canonicalId": "I6",
+      "familySearchId": "PFFS-2YZ",
+      "name": "Наталия Семенова /Пластун/"
+    },
+    {
+      "recordId": "@I13@",
+      "canonicalId": "I30",
+      "familySearchId": "PFPR-5QM",
+      "name": "Микола /Керницький/"
+    },
+    {
+      "recordId": "@I14@",
+      "previousRecordId": "@I8@",
+      "canonicalId": "I8",
+      "familySearchId": "PFF9-B5D",
+      "name": "Петро Олександрович /Дейкало/"
+    },
+    {
+      "recordId": "@I15@",
+      "previousRecordId": "@I10@",
+      "canonicalId": "I10",
+      "familySearchId": "PFJL-V4J",
+      "name": "Оленка //"
+    },
+    {
+      "recordId": "@I16@",
+      "canonicalId": "I31",
+      "familySearchId": "PFP5-FZ6",
+      "name": "Катерина Федірівна /Сидір/"
+    },
+    {
+      "recordId": "@I17@",
+      "canonicalId": "I32",
+      "familySearchId": "PF5Q-RRH",
+      "name": "Марія Антонівна /Чабан/"
+    },
+    {
+      "recordId": "@I18@",
+      "canonicalId": "I33",
+      "familySearchId": "PFT9-P9B",
+      "name": "Семен /Пластун/"
+    },
+    {
+      "recordId": "@I19@",
+      "canonicalId": "I34",
+      "familySearchId": "PF5Q-HR9",
+      "name": "Іван Ільянов /Чабан/"
+    },
+    {
+      "recordId": "@I20@",
+      "canonicalId": "I35",
+      "familySearchId": "PFVP-ZZV",
+      "name": "Олександр /Дейкало/"
+    },
+    {
+      "recordId": "@I21@",
+      "canonicalId": "I36",
+      "familySearchId": "PFPR-GXV",
+      "name": "Марія //"
+    },
+    {
+      "recordId": "@I22@",
+      "canonicalId": "I37",
+      "familySearchId": "PFPR-Y62",
+      "name": "Йосип /Керницький/"
+    },
+    {
+      "recordId": "@I23@",
+      "canonicalId": "I38",
+      "familySearchId": "PFPR-FR6",
+      "name": "Галина //"
+    },
+    {
+      "recordId": "@I24@",
+      "canonicalId": "I39",
+      "familySearchId": "PF5Q-XCN",
+      "name": "Кароліна /Чабан/"
+    },
+    {
+      "recordId": "@I25@",
+      "canonicalId": "I40",
+      "familySearchId": "PFPR-7CG",
+      "name": "Федір /Сидір/"
+    },
+    {
+      "recordId": "@I26@",
+      "canonicalId": "I41",
+      "familySearchId": "PF5Q-H4F",
+      "name": "Ілля /Чабан/"
+    },
+    {
+      "recordId": "@I27@",
+      "canonicalId": "I42",
+      "familySearchId": "PF5Q-CT6",
+      "name": "Антон /Чабан/"
+    },
+    {
+      "recordId": "@I28@",
+      "canonicalId": "I43",
+      "familySearchId": "PF5Q-6RK",
+      "name": "Марія /Чабан/"
+    },
+    {
+      "recordId": "@I29@",
+      "previousRecordId": "@I11@",
+      "canonicalId": "I11",
+      "familySearchId": "PFNJ-1Z1",
+      "name": "Агафия Прокофиева /Волинцова/"
+    },
+    {
+      "recordId": "@I30@",
+      "previousRecordId": "@I12@",
+      "canonicalId": "I12",
+      "familySearchId": "PFNV-X2B",
+      "name": "Илия /Феодоров Зубенко/"
+    },
+    {
+      "recordId": "@I31@",
+      "canonicalId": "I44",
+      "familySearchId": "PFV5-WW3",
+      "name": "Прокофий /Волинцов/"
+    },
+    {
+      "recordId": "@I32@",
+      "previousRecordId": "@I13@",
+      "canonicalId": "I13",
+      "familySearchId": "PFJK-1H6",
+      "name": "Елена /Зубенко/"
+    },
+    {
+      "recordId": "@I33@",
+      "previousRecordId": "@I14@",
+      "canonicalId": "I14",
+      "familySearchId": "PFJ2-JF1",
+      "name": "Никифор /Зубенко/"
+    },
+    {
+      "recordId": "@I34@",
+      "previousRecordId": "@I16@",
+      "canonicalId": "I16",
+      "familySearchId": "PFJ2-2KK",
+      "name": "Иван /Зубенко/"
+    },
+    {
+      "recordId": "@I35@",
+      "previousRecordId": "@I15@",
+      "canonicalId": "I15",
+      "familySearchId": "PFJ2-ZQD",
+      "name": "Акилина /Зубенко/"
+    },
+    {
+      "recordId": "@I36@",
+      "previousRecordId": "@I17@",
+      "canonicalId": "I17",
+      "familySearchId": "PFJ2-3L3",
+      "name": "Трофим /Зубенко/"
+    },
+    {
+      "recordId": "@I37@",
+      "previousRecordId": "@I18@",
+      "canonicalId": "I18",
+      "familySearchId": "PFJK-J3V",
+      "name": "Мелания /Зубенко/"
+    },
+    {
+      "recordId": "@I38@",
+      "previousRecordId": "@I20@",
+      "canonicalId": "I20",
+      "familySearchId": "PFJ2-7SW",
+      "name": "Феодор Петров /Зубенко/"
+    },
+    {
+      "recordId": "@I39@",
+      "previousRecordId": "@I19@",
+      "canonicalId": "I19",
+      "familySearchId": "PFJ2-SRZ",
+      "name": "Анна Герасимова /Пальчикова/"
+    },
+    {
+      "recordId": "@I40@",
+      "canonicalId": "I45",
+      "familySearchId": "PFVP-JC5",
+      "name": "Петр /Зубенко/"
+    },
+    {
+      "recordId": "@I41@",
+      "canonicalId": "I46",
+      "familySearchId": "PFV5-979",
+      "name": "Герасим /Пальчиков/"
+    },
+    {
+      "recordId": "@I42@",
+      "previousRecordId": "@I21@",
+      "canonicalId": "I21",
+      "familySearchId": "PFVV-JHC",
+      "name": "Пантелеимон /Зубенко/"
+    },
+    {
+      "recordId": "@I43@",
+      "previousRecordId": "@I25@",
+      "canonicalId": "I25",
+      "familySearchId": "PFVV-2N5",
+      "name": "Анна /Зубенко/"
+    },
+    {
+      "recordId": "@I44@",
+      "previousRecordId": "@I23@",
+      "canonicalId": "I23",
+      "familySearchId": "PFVV-7W1",
+      "name": "Тимофей /Зубенко/"
+    },
+    {
+      "recordId": "@I45@",
+      "previousRecordId": "@I24@",
+      "canonicalId": "I24",
+      "familySearchId": "PFVV-3JG",
+      "name": "Иосиф /Зубенко/"
+    }
+  ],
+  "familyMap": {
+    "@F1@": "@F1@",
+    "@F3@": "@F2@",
+    "@F5@": "@F3@",
+    "@F6@": "@F4@",
+    "@F9@": "@F6@",
+    "@F19@": "@F8@"
+  },
+  "mappings": [
+    {
+      "kind": "person",
+      "canonicalId": "I1",
+      "recordId": "@I1@",
+      "previousRecordId": "@I1@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-9c80842dfb5af2a8be42d49f",
+      "recordId": "@I1@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I1@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I2",
+      "recordId": "@I2@",
+      "previousRecordId": "@I2@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-6826f79bf4673f599e2cb51b",
+      "recordId": "@I2@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I2@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I26",
+      "recordId": "@I3@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-6706488f1d276d0ff386f801",
+      "recordId": "@I3@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I3",
+      "recordId": "@I4@",
+      "previousRecordId": "@I3@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-e849bfa28a098a27a39d62ae",
+      "recordId": "@I4@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I3@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I5",
+      "recordId": "@I5@",
+      "previousRecordId": "@I5@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-090db2ad3bd483f65cb6e7d5",
+      "recordId": "@I5@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I4",
+      "recordId": "@I6@",
+      "previousRecordId": "@I4@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-d64d60e6061446b31f76977c",
+      "recordId": "@I6@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I27",
+      "recordId": "@I7@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-2dfc621f688bca2aa10d8734",
+      "recordId": "@I7@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I28",
+      "recordId": "@I8@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-776063399b7f8e630073e4ee",
+      "recordId": "@I8@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I29",
+      "recordId": "@I9@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-27c9d912c0fce7be20a91644",
+      "recordId": "@I9@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I9",
+      "recordId": "@I10@",
+      "previousRecordId": "@I9@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-4adc22f2ca94eb903729661a",
+      "recordId": "@I10@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I9@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I7",
+      "recordId": "@I11@",
+      "previousRecordId": "@I7@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-a3fea2c00cae33b329fc69ea",
+      "recordId": "@I11@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I7@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I6",
+      "recordId": "@I12@",
+      "previousRecordId": "@I6@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-dd150068ecb3e7ca41caa310",
+      "recordId": "@I12@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I6@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I30",
+      "recordId": "@I13@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-3a26e6767831416d78cbf212",
+      "recordId": "@I13@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I8",
+      "recordId": "@I14@",
+      "previousRecordId": "@I8@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-de307b209c0a7c3c744d2497",
+      "recordId": "@I14@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I8@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I10",
+      "recordId": "@I15@",
+      "previousRecordId": "@I10@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-fb3ba80b8b1253ad98e67420",
+      "recordId": "@I15@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I10@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I31",
+      "recordId": "@I16@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-8c5519a8dd8171f9cbb37c67",
+      "recordId": "@I16@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I32",
+      "recordId": "@I17@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-119e6606c7b53dc6901826f1",
+      "recordId": "@I17@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I33",
+      "recordId": "@I18@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-c841b16392085b035c92a139",
+      "recordId": "@I18@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I34",
+      "recordId": "@I19@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-07c9cc6b8165e8367cd532eb",
+      "recordId": "@I19@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I35",
+      "recordId": "@I20@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-3f48e50d3ccf175c583eb741",
+      "recordId": "@I20@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I36",
+      "recordId": "@I21@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-57f23b6887a80c2b4b4f341d",
+      "recordId": "@I21@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I37",
+      "recordId": "@I22@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-370164d7b87595a03243f80f",
+      "recordId": "@I22@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I38",
+      "recordId": "@I23@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-ce3d9d8fffca6d322b24b706",
+      "recordId": "@I23@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I39",
+      "recordId": "@I24@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-85f754689fdabb864457b936",
+      "recordId": "@I24@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I40",
+      "recordId": "@I25@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-812c0b32e1b1315cc5c9e5d6",
+      "recordId": "@I25@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I41",
+      "recordId": "@I26@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-ff864a4911fb20fa6072a1db",
+      "recordId": "@I26@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I42",
+      "recordId": "@I27@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-d8ddb4ce3725d731ae18e71b",
+      "recordId": "@I27@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I43",
+      "recordId": "@I28@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-9a89893488147cd907f68bf7",
+      "recordId": "@I28@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I11",
+      "recordId": "@I29@",
+      "previousRecordId": "@I11@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-9c5c5374000be9ccbb44593b",
+      "recordId": "@I29@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I12",
+      "recordId": "@I30@",
+      "previousRecordId": "@I12@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-adcd059dd8aac02147275425",
+      "recordId": "@I30@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I12@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I44",
+      "recordId": "@I31@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-3d88a23585ec72d534cfc8fa",
+      "recordId": "@I31@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I13",
+      "recordId": "@I32@",
+      "previousRecordId": "@I13@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-ec97435410ebad3e99937578",
+      "recordId": "@I32@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I13@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I14",
+      "recordId": "@I33@",
+      "previousRecordId": "@I14@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-f2c38871f408d05a3d4e2405",
+      "recordId": "@I33@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I14@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I16",
+      "recordId": "@I34@",
+      "previousRecordId": "@I16@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-05d1a513d0e8df87650e7a20",
+      "recordId": "@I34@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I16@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I15",
+      "recordId": "@I35@",
+      "previousRecordId": "@I15@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-34109b7676fe21388a308c66",
+      "recordId": "@I35@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I15@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I17",
+      "recordId": "@I36@",
+      "previousRecordId": "@I17@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-e0f9a26c016e4a745e44a85d",
+      "recordId": "@I36@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I17@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I18",
+      "recordId": "@I37@",
+      "previousRecordId": "@I18@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-0a598da7bb18da304304cc5a",
+      "recordId": "@I37@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I18@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I20",
+      "recordId": "@I38@",
+      "previousRecordId": "@I20@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-8d2f675a93d5e4f4d30e4d3a",
+      "recordId": "@I38@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I20@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I19",
+      "recordId": "@I39@",
+      "previousRecordId": "@I19@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-534cd52b09f69cf1163032c9",
+      "recordId": "@I39@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I19@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I45",
+      "recordId": "@I40@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-76b7468018b1989916f696b1",
+      "recordId": "@I40@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I46",
+      "recordId": "@I41@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-7f31d054673c86ad88702812",
+      "recordId": "@I41@",
+      "path": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I21",
+      "recordId": "@I42@",
+      "previousRecordId": "@I21@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-4e7a7dffd253cd754e89f734",
+      "recordId": "@I42@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I21@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I25",
+      "recordId": "@I43@",
+      "previousRecordId": "@I25@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-63e1509b15554797ea4b6a9f",
+      "recordId": "@I43@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I25@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I23",
+      "recordId": "@I44@",
+      "previousRecordId": "@I23@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-1bbbba62789b745030eaacc9",
+      "recordId": "@I44@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I23@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "person",
+      "canonicalId": "I24",
+      "recordId": "@I45@",
+      "previousRecordId": "@I24@"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-88af4a5b6affbb492b17e3a4",
+      "recordId": "@I45@",
+      "path": "NAME[0]",
+      "previousRecordId": "@I24@",
+      "previousPath": "NAME[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-022fa9cf0faad75bde1b1810",
+      "recordId": "@F1@",
+      "previousRecordId": "@F1@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-4915e57108be53b938d5dbac",
+      "recordId": "@F1@",
+      "path": "HUSB[0]+WIFE[0]",
+      "previousRecordId": "@F1@",
+      "previousPath": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-f824821b9305741af371c288",
+      "recordId": "@F1@",
+      "path": "HUSB[0]+CHIL[0]",
+      "previousRecordId": "@F1@",
+      "previousPath": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-46125a5b0202bbad0ded9252",
+      "recordId": "@F1@",
+      "path": "WIFE[0]+CHIL[0]",
+      "previousRecordId": "@F1@",
+      "previousPath": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-fa54d25b605b73b734c77a8f",
+      "recordId": "@F2@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-f5a92c50a33f0996914b2358",
+      "recordId": "@F2@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-14a274de6f6c07a926b70a28",
+      "recordId": "@F3@",
+      "previousRecordId": "@F2@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-4b4d59b1f9e75b701b54ce7d",
+      "recordId": "@F3@",
+      "path": "HUSB[0]+WIFE[0]",
+      "previousRecordId": "@F2@",
+      "previousPath": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-53e7c072a326f78fdcc4f227",
+      "recordId": "@F3@",
+      "path": "HUSB[0]+CHIL[0]",
+      "previousRecordId": "@F2@",
+      "previousPath": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-aefe85aa7c3a414ece600694",
+      "recordId": "@F3@",
+      "path": "HUSB[0]+CHIL[1]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-1506ad402ddf8d538ec1610f",
+      "recordId": "@F3@",
+      "path": "WIFE[0]+CHIL[0]",
+      "previousRecordId": "@F2@",
+      "previousPath": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-4775585b390a934cb6413f61",
+      "recordId": "@F3@",
+      "path": "WIFE[0]+CHIL[1]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-27090478d731089b03c44858",
+      "recordId": "@F4@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-7b426104242ef5961c17cec3",
+      "recordId": "@F4@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-3e437b9125285c711c4679de",
+      "recordId": "@F4@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-f49368e5c308bd96f5b952fe",
+      "recordId": "@F4@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-8aa6b22db858d925da3fbdb7",
+      "recordId": "@F5@",
+      "previousRecordId": "@F3@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-f9ba7262bc40a95cbceb6db8",
+      "recordId": "@F5@",
+      "path": "HUSB[0]+WIFE[0]",
+      "previousRecordId": "@F3@",
+      "previousPath": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-7fcb798186f2459d89f19bd5",
+      "recordId": "@F5@",
+      "path": "HUSB[0]+CHIL[0]",
+      "previousRecordId": "@F3@",
+      "previousPath": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-88cf684e7d449a84883b87d6",
+      "recordId": "@F5@",
+      "path": "HUSB[0]+CHIL[1]",
+      "previousRecordId": "@F3@",
+      "previousPath": "HUSB[0]+CHIL[1]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-f104542f5bafbafbe9b9fe11",
+      "recordId": "@F5@",
+      "path": "WIFE[0]+CHIL[0]",
+      "previousRecordId": "@F3@",
+      "previousPath": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-8cd5934c73dbe5a174259dc3",
+      "recordId": "@F5@",
+      "path": "WIFE[0]+CHIL[1]",
+      "previousRecordId": "@F3@",
+      "previousPath": "WIFE[0]+CHIL[1]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-0d678f6923be72e12c82a6ce",
+      "recordId": "@F6@",
+      "previousRecordId": "@F4@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-e86e6052c1175199aac28036",
+      "recordId": "@F6@",
+      "path": "HUSB[0]+WIFE[0]",
+      "previousRecordId": "@F4@",
+      "previousPath": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-c44cdb0d16666e7ff69eca4d",
+      "recordId": "@F6@",
+      "path": "HUSB[0]+CHIL[0]",
+      "previousRecordId": "@F4@",
+      "previousPath": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-72b15a9c3b84ce2ac50ce45e",
+      "recordId": "@F6@",
+      "path": "WIFE[0]+CHIL[0]",
+      "previousRecordId": "@F4@",
+      "previousPath": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-44f76b40715124c8dea330ad",
+      "recordId": "@F7@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-63f869261700ed253ef7b311",
+      "recordId": "@F7@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-06b0022f062387a1098028b1",
+      "recordId": "@F7@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-f5d4694e9c076dd2d9ecf63b",
+      "recordId": "@F7@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-7f3f1d6e3c9d38f674c6403d",
+      "recordId": "@F8@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-a4296dbd2d0d90dce5f70f3b",
+      "recordId": "@F8@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-905081f07124695f34ef0307",
+      "recordId": "@F8@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-caa5ae99c33493d0b3a6f0b3",
+      "recordId": "@F8@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-bc077203a812c79397bf83f3",
+      "recordId": "@F9@",
+      "previousRecordId": "@F6@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-533ae13fcc3d2a36715c8059",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+WIFE[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-205905f2fbf6dcc2a7e5499c",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-c4b5034ae92e0c8da4cdc0f6",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[1]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[1]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-e1be7d4106d89ecd682870de",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[2]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[2]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-ecc55af497365a854da66abb",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[3]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[3]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-01f1d3cd867f2706eadae283",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[4]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[4]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-a2bd9454507ff9b2fc82d010",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[5]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[5]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-9a37d990191d9f72530fe0c2",
+      "recordId": "@F9@",
+      "path": "HUSB[0]+CHIL[6]",
+      "previousRecordId": "@F6@",
+      "previousPath": "HUSB[0]+CHIL[6]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-1d2d34340b954bd598c77f2c",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-119bd2519138bc80069f3798",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[1]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[1]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-be678a2cb4e770f9a12e87ea",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[2]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[2]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-7a5f2351e6d5a2fe656f97c9",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[3]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[3]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-d59de3d49fb2122654e9bb54",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[4]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[4]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-75cb4a0534ea453a4111e3c2",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[5]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[5]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-dfb2baf91b63658f0d6a45b5",
+      "recordId": "@F9@",
+      "path": "WIFE[0]+CHIL[6]",
+      "previousRecordId": "@F6@",
+      "previousPath": "WIFE[0]+CHIL[6]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-68d1ab53ac2ba80924320548",
+      "recordId": "@F10@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-7cb3eb0510b32f0408bd52b2",
+      "recordId": "@F10@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-8d26282d90e316e5680418cf",
+      "recordId": "@F11@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-03ca720edb68ecdd786f6330",
+      "recordId": "@F11@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-4abe3a52e967dcdaa67f3d99",
+      "recordId": "@F12@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-ae20e5ff9b079df196244b4b",
+      "recordId": "@F12@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-ae565602ab9bd1c93bfb09e8",
+      "recordId": "@F12@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-39264420441bc862baa9f2c4",
+      "recordId": "@F12@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-a335d4b239536bd88918170d",
+      "recordId": "@F13@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-386c227f790be2fd03a50cfb",
+      "recordId": "@F13@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-60ed10c5fd8cceabe13851a5",
+      "recordId": "@F14@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-c8077bdb7d87b14d8270a193",
+      "recordId": "@F14@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-c9c4d796701e950c82d25bac",
+      "recordId": "@F14@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-71cbe771b1ff1388a1aac0d9",
+      "recordId": "@F14@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-53c76bdcb158b0fc3a56792e",
+      "recordId": "@F15@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-a51d3ae817a2012cbca0ef62",
+      "recordId": "@F15@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-de1a75a889b37b0a06fe2d34",
+      "recordId": "@F15@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-1598db97671ebe9c1a0dc3df",
+      "recordId": "@F15@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-b5b6f94d6e38cbfbaf62cd18",
+      "recordId": "@F16@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-df5effff11a8254f799a5ef1",
+      "recordId": "@F16@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-51df642102d86b381535a02c",
+      "recordId": "@F17@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-fe9aceff935cdacd49b22458",
+      "recordId": "@F17@",
+      "path": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-900da5288daaaf8f9aead398",
+      "recordId": "@F17@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-40fce3624e8ad99dcb0caa06",
+      "recordId": "@F17@",
+      "path": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-1ae2f5d7e4ecbde7fac163b2",
+      "recordId": "@F18@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-419d46740adf61c250e794f4",
+      "recordId": "@F18@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-dec76bf71cfcd427aef1de29",
+      "recordId": "@F19@",
+      "previousRecordId": "@F8@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-a8eed8c0649e9f9ee28edd6b",
+      "recordId": "@F19@",
+      "path": "HUSB[0]+WIFE[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "HUSB[0]+WIFE[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-649e3b9f6f5081f115d21e8e",
+      "recordId": "@F19@",
+      "path": "HUSB[0]+CHIL[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-3cfa6d1262d96766dd8b4103",
+      "recordId": "@F19@",
+      "path": "HUSB[0]+CHIL[1]",
+      "previousRecordId": "@F8@",
+      "previousPath": "HUSB[0]+CHIL[1]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-213798c3ffc19c2d6c7c49d2",
+      "recordId": "@F19@",
+      "path": "HUSB[0]+CHIL[2]",
+      "previousRecordId": "@F8@",
+      "previousPath": "HUSB[0]+CHIL[2]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-2042a583f43d8caeab4326bc",
+      "recordId": "@F19@",
+      "path": "HUSB[0]+CHIL[3]",
+      "previousRecordId": "@F8@",
+      "previousPath": "HUSB[0]+CHIL[3]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-570795c09b2877e145f913f9",
+      "recordId": "@F19@",
+      "path": "HUSB[0]+CHIL[4]",
+      "previousRecordId": "@F8@",
+      "previousPath": "HUSB[0]+CHIL[4]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-2c4023ae719a278c0a5332fa",
+      "recordId": "@F19@",
+      "path": "WIFE[0]+CHIL[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "WIFE[0]+CHIL[0]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-c47425a57ace5401a4ead068",
+      "recordId": "@F19@",
+      "path": "WIFE[0]+CHIL[1]",
+      "previousRecordId": "@F8@",
+      "previousPath": "WIFE[0]+CHIL[1]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-266e9e9d793625cd4672148b",
+      "recordId": "@F19@",
+      "path": "WIFE[0]+CHIL[2]",
+      "previousRecordId": "@F8@",
+      "previousPath": "WIFE[0]+CHIL[2]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-e9e833b5e2ba5529e1b0b2ec",
+      "recordId": "@F19@",
+      "path": "WIFE[0]+CHIL[3]",
+      "previousRecordId": "@F8@",
+      "previousPath": "WIFE[0]+CHIL[3]"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-259066879720fd7dd7184cf9",
+      "recordId": "@F19@",
+      "path": "WIFE[0]+CHIL[4]",
+      "previousRecordId": "@F8@",
+      "previousPath": "WIFE[0]+CHIL[4]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-175016e1dabeebadff013a21",
+      "recordId": "@F20@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-e6a9dbab7edd447bf8ee426e",
+      "recordId": "@F20@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "family",
+      "canonicalId": "family-64ff759cca707f757cf294cf",
+      "recordId": "@F21@"
+    },
+    {
+      "kind": "relationship",
+      "canonicalId": "relationship-5987aa70886dd91ba3e622ff",
+      "recordId": "@F21@",
+      "path": "HUSB[0]+CHIL[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-387400ef6ea56cf6d20730e2",
+      "recordId": "@I1@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I1@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-f7623649800ffa476c0b685e",
+      "recordId": "@I1@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I1@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-bc03b4e76a343f211b98608e",
+      "recordId": "@I1@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I1@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-b47b86ca3267a5c6b2e0b1fd",
+      "recordId": "@I1@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I1@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-b18866b70328dc6fd7c399a2",
+      "recordId": "@I2@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I2@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-70290c090d68b62662b6b1f7",
+      "recordId": "@I2@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I2@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-025cf4b65753053459934468",
+      "recordId": "@I2@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I2@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-1fc5730c973e4f7cdb180114",
+      "recordId": "@I2@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I2@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-6e24b957348643d8d65f9b92",
+      "recordId": "@I3@",
+      "path": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-ab0216a4eef77f9ad0d256c5",
+      "recordId": "@I3@",
+      "path": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-36c4e76051dd7f6dc14f78e0",
+      "recordId": "@I3@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-7ffc6592e8621add6d8d5cdc",
+      "recordId": "@I3@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-52a82d608eec2ca48c92b7db",
+      "recordId": "@I4@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I3@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-6b5be36a47e3939cbf234bad",
+      "recordId": "@I4@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I3@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-740b1b2b3195fc9e372d8fd7",
+      "recordId": "@I4@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I3@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-be4484ccd5550532c9ae2531",
+      "recordId": "@I5@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-52cbe03e736133c380a3ac4f",
+      "recordId": "@I5@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-8f8f0d5038ae54d9c1edd915",
+      "recordId": "@I5@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-e3254152d42ef688af925003",
+      "recordId": "@I5@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-3d33ae0a7a41d4724dd28dd9",
+      "recordId": "@I5@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-813a491cd8c12bae21717d02",
+      "recordId": "@I5@",
+      "path": "DEAT[0].DATE[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-946e141a2b4c5aeb76fc62b6",
+      "recordId": "@I5@",
+      "path": "DEAT[0].PLAC[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-8ae8a681d44bdf4e2487d13b",
+      "recordId": "@I5@",
+      "path": "DEAT[0].PLAC[0]",
+      "previousRecordId": "@I5@",
+      "previousPath": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-e0e28e3656ba83f5a3cdf984",
+      "recordId": "@I6@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-01dd7e04100be0860ce6f6e0",
+      "recordId": "@I6@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-7a755c648526392b489e5540",
+      "recordId": "@I6@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-0d1cbd9318dc934c32f60204",
+      "recordId": "@I6@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-d95219ee04dbc8d53a6fbd7b",
+      "recordId": "@I6@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-ad2b6185a6a75d283c23d600",
+      "recordId": "@I6@",
+      "path": "DEAT[0].PLAC[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-3c6b9554e37eed8e03113766",
+      "recordId": "@I6@",
+      "path": "DEAT[0].PLAC[0]",
+      "previousRecordId": "@I4@",
+      "previousPath": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-0f6b077dde88138335a06686",
+      "recordId": "@I7@",
+      "path": "BIRT[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-a58bec669cff452f9ab3a20e",
+      "recordId": "@I7@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-ad19e9b93c7c0e4cda88ab3b",
+      "recordId": "@I7@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-ac0f6a448b6bffc7a6014cc5",
+      "recordId": "@I8@",
+      "path": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-54455a2a936a96efb38c5704",
+      "recordId": "@I8@",
+      "path": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-f7bf24befa4758d4367e3b36",
+      "recordId": "@I8@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-38d1bdd104b3b7a5e50df961",
+      "recordId": "@I8@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-e53f21ef2087d4c54368ae99",
+      "recordId": "@I8@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-829350de7e344ecabc33a49b",
+      "recordId": "@I8@",
+      "path": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-beae826f3f638360ed9681f9",
+      "recordId": "@I8@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-a43d90dd4019a4ace5358cf8",
+      "recordId": "@I8@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-65839e47b259306535fcb5f8",
+      "recordId": "@I8@",
+      "path": "BURI[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-19235062e711bd70493ade5c",
+      "recordId": "@I8@",
+      "path": "BURI[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-f9a95a286eaaa09965ed6497",
+      "recordId": "@I8@",
+      "path": "BURI[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-cfa40853a611a43cc0da1a89",
+      "recordId": "@I9@",
+      "path": "BIRT[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-becd59493d9543d61e23fdd5",
+      "recordId": "@I9@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-4e37ebb2e0aa5fb51d5373e4",
+      "recordId": "@I9@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-de511571428351cbfb1f4469",
+      "recordId": "@I10@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I9@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-bc07deefacf8e9363398f0bf",
+      "recordId": "@I10@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I9@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-293eeb3f3347ce5c6b833555",
+      "recordId": "@I10@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I9@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-4e03edee1f26030dbbee3ad0",
+      "recordId": "@I10@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I9@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-188aaaa1e58a38a65c9a40e4",
+      "recordId": "@I10@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I9@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-3605bb0de9e1be06e6268cc1",
+      "recordId": "@I11@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I7@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-836c7d8b122ca60e05653546",
+      "recordId": "@I12@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I6@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-a0f90d909d2937d2d22c0f73",
+      "recordId": "@I12@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I6@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-bfaee11261fe6e2880946623",
+      "recordId": "@I12@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I6@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-fa4d90a5aeb9c7a1b5f017f0",
+      "recordId": "@I12@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I6@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-52a143d681c9488202e2b83a",
+      "recordId": "@I13@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-2035bd57ac3dfe3337fed79f",
+      "recordId": "@I13@",
+      "path": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-598d98d9236650a6c8b0ca5d",
+      "recordId": "@I14@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I8@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-0c3da60fbaa86010dc0cb475",
+      "recordId": "@I15@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I10@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-e4e19caaba6d8a8bb575a988",
+      "recordId": "@I16@",
+      "path": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-2234b37bee1d1ff1c166620f",
+      "recordId": "@I16@",
+      "path": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-25104edd3d99f219eee14441",
+      "recordId": "@I16@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-f3c186771c6b78424ff4a43f",
+      "recordId": "@I16@",
+      "path": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-1d10a1eacd277bcef005c3b5",
+      "recordId": "@I16@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-7013705f8cebc5b4206d8147",
+      "recordId": "@I16@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-90a77887109d93b464cc50f2",
+      "recordId": "@I17@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-9b166f018590695e2cd594eb",
+      "recordId": "@I17@",
+      "path": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-7ea35e3f47fee11fcbedfbe9",
+      "recordId": "@I18@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-041dbf8c9cdc9b19359c594c",
+      "recordId": "@I19@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-e7e76ab89120d308b6771707",
+      "recordId": "@I19@",
+      "path": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-6960353f1760032c31dd8ea7",
+      "recordId": "@I19@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-979de20da2a71dfeccf0d905",
+      "recordId": "@I19@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-130bfea952c0dbaf5e0865b6",
+      "recordId": "@I20@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-e9b4ce708b8f698c57cd60dd",
+      "recordId": "@I21@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-845f4036e82c5123dccbad0b",
+      "recordId": "@I22@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-38ecd1e2e1a603bc813d18d8",
+      "recordId": "@I23@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-a5e2f69ab86a58e7819b76dc",
+      "recordId": "@I24@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-93671475277bf0f8df0b2f5b",
+      "recordId": "@I25@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-bfea52bcc8200fcae7edc61b",
+      "recordId": "@I26@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-4808c7c8cdc2f759847e9da3",
+      "recordId": "@I27@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-88d9e0e87ea8dbe7a48328ee",
+      "recordId": "@I28@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-61e5332cdf8f5b30ae71e95b",
+      "recordId": "@I29@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-1754975a829812e49002f9c5",
+      "recordId": "@I29@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-00aad88891a63e2807279725",
+      "recordId": "@I29@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-5892e82feab21336051bf1b6",
+      "recordId": "@I29@",
+      "path": "DEAT[0].DATE[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-c5187cadaf27030429e11780",
+      "recordId": "@I29@",
+      "path": "DEAT[0].PLAC[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-5ef84b505f6b1e78f4311652",
+      "recordId": "@I29@",
+      "path": "DEAT[0].PLAC[0]",
+      "previousRecordId": "@I11@",
+      "previousPath": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-a15c3e370443b11d1a8f0877",
+      "recordId": "@I30@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I12@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-4b0ed90cb710ca5fc643b778",
+      "recordId": "@I30@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I12@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-2fcc49617d81d7034b12e05d",
+      "recordId": "@I30@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I12@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-2d7553b1714479dd6e96c33f",
+      "recordId": "@I30@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I12@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-787721a54465a08acbf62fe1",
+      "recordId": "@I30@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I12@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-3c45bdfa0b75c6bc44455514",
+      "recordId": "@I31@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-9639892b7f79ccc4f1463bbd",
+      "recordId": "@I32@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I13@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-5886adb3f6fff8dbe31180fb",
+      "recordId": "@I32@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I13@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-e2572bef5a4fbaaec1b68791",
+      "recordId": "@I32@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I13@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-463f4c5360a8a9bf84addfe7",
+      "recordId": "@I32@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I13@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-a98855bdd68550e7a8bb5912",
+      "recordId": "@I32@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I13@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-9b9cadd6df794ea015a786b0",
+      "recordId": "@I33@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I14@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-937fe1da2d91f4dd4b4a07cd",
+      "recordId": "@I33@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I14@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-c25bfece57734a0ce2d12259",
+      "recordId": "@I33@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I14@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-9fd72b5bacb30dfcd191a451",
+      "recordId": "@I33@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I14@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-18d112c82a81fd73bee3d34f",
+      "recordId": "@I33@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I14@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-f97f3affb4c0fc76642aa724",
+      "recordId": "@I34@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I16@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-1ce4f7f0f08f852da17bf5fd",
+      "recordId": "@I34@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I16@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-0a871dafb642ddbfea8b0ef0",
+      "recordId": "@I34@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I16@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-f8584cdaf9031040a734470e",
+      "recordId": "@I34@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I16@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-2f1a6cc71617badbf46b2d97",
+      "recordId": "@I34@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I16@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-055a68a02489604ebc830781",
+      "recordId": "@I35@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I15@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-56d7ceb1fc40a824ace3b942",
+      "recordId": "@I35@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I15@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-f1cdf1ed7688ead2561f3cca",
+      "recordId": "@I35@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I15@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-6b23478aa91982bcbb08b9d9",
+      "recordId": "@I35@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I15@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-efea56d596875234eb9579c1",
+      "recordId": "@I35@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I15@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-4849d1d09fc3d0ebfe88a74e",
+      "recordId": "@I36@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I17@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-1fcbdcf67806566a9aff012f",
+      "recordId": "@I36@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I17@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-7964e4a0eca3511470df9de6",
+      "recordId": "@I36@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I17@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-c0b07d0b609895abee9a04cb",
+      "recordId": "@I36@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I17@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-0e2caed8d2c1b6cadc37c057",
+      "recordId": "@I36@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I17@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-5b44bd07fa83e817e0604f6f",
+      "recordId": "@I37@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I18@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-c23c512b49403c4047383ec7",
+      "recordId": "@I37@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I18@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-5a9c573a809e5cf14b7b0b7a",
+      "recordId": "@I37@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I18@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-937964401d95692080633d08",
+      "recordId": "@I37@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I18@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-136a71756dbd6eac5069bfcb",
+      "recordId": "@I37@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I18@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-b61d9b76dbe2046b738b430d",
+      "recordId": "@I38@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I20@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-244e8bf9bed97cd91397b290",
+      "recordId": "@I38@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I20@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-cfbfd6ae66c906b699f4bf28",
+      "recordId": "@I38@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-bdad3267c048750e1c506d98",
+      "recordId": "@I38@",
+      "path": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-4fec06a83eef4b6ad982b12b",
+      "recordId": "@I38@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I20@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-fbc64f97a871988e670d5361",
+      "recordId": "@I38@",
+      "path": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-1bdb4f5a91a9ee687f04d5cc",
+      "recordId": "@I38@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-ea6877e724a26ea3fd1b625a",
+      "recordId": "@I38@",
+      "path": "DEAT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-bd0ece69a43036409c787bb4",
+      "recordId": "@I39@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I19@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-56fb2642292e889700f2296b",
+      "recordId": "@I39@",
+      "path": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-a5f1d1064b82613609025adb",
+      "recordId": "@I39@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I19@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-0accb3002a6b1d6c6d1c415d",
+      "recordId": "@I39@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I19@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-119b10409f393f695214ebd1",
+      "recordId": "@I39@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I19@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-40a1b94cb7e18952402040d9",
+      "recordId": "@I40@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-977458c4055a98b1e6e9d177",
+      "recordId": "@I41@",
+      "path": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-08edd3766363a4dbabfe86aa",
+      "recordId": "@I42@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I21@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-7f9d0d26b01199963b69989a",
+      "recordId": "@I42@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I21@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-63bdd0281a0103f86e86b5ca",
+      "recordId": "@I42@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I21@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-06fb0817c9e68704493c0b5a",
+      "recordId": "@I42@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I21@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-198e3fdadf4d9bac427a3818",
+      "recordId": "@I42@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I21@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-ea4a356b5593a767243edd4f",
+      "recordId": "@I43@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I25@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-d626aa7f7632e20372f83b63",
+      "recordId": "@I43@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I25@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-979f4ada1fdefe863f9bfce1",
+      "recordId": "@I43@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I25@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-b25415c1bfa47936af939861",
+      "recordId": "@I43@",
+      "path": "BIRT[0].PLAC[0]",
+      "previousRecordId": "@I25@",
+      "previousPath": "BIRT[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-dc0ecc98f53ee3b071d1cea6",
+      "recordId": "@I43@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I25@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-e77272fd4532e5876f399619",
+      "recordId": "@I44@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I23@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-e81a46749eb98d690c4c6298",
+      "recordId": "@I44@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I23@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-aa67bc3609d7624d14aa47c7",
+      "recordId": "@I44@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I23@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-844bdc5dfb7b9d883e16cd81",
+      "recordId": "@I44@",
+      "path": "DEAT[0].DATE[0]",
+      "previousRecordId": "@I23@",
+      "previousPath": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-0e361725feed7b45f883b0a0",
+      "recordId": "@I45@",
+      "path": "BIRT[0]",
+      "previousRecordId": "@I24@",
+      "previousPath": "BIRT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-bcdbd3e139ab14804cda9664",
+      "recordId": "@I45@",
+      "path": "BIRT[0].DATE[0]",
+      "previousRecordId": "@I24@",
+      "previousPath": "BIRT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-104f3772099ef38349d0adeb",
+      "recordId": "@I45@",
+      "path": "DEAT[0]",
+      "previousRecordId": "@I24@",
+      "previousPath": "DEAT[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-b5fbecf3a39dbf5694431046",
+      "recordId": "@I45@",
+      "path": "DEAT[0].DATE[0]",
+      "previousRecordId": "@I24@",
+      "previousPath": "DEAT[0].DATE[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-915b6c27a1d0da4bdafd450b",
+      "recordId": "@F9@",
+      "path": "MARR[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "MARR[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-e3dbcc292f8f10211317c428",
+      "recordId": "@F9@",
+      "path": "MARR[0].DATE[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "MARR[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-b07ea20784052317c575b3b8",
+      "recordId": "@F9@",
+      "path": "MARR[0].PLAC[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "MARR[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-50e0c5e5f7242bb1b136a9d3",
+      "recordId": "@F9@",
+      "path": "MARR[0].PLAC[0]",
+      "previousRecordId": "@F6@",
+      "previousPath": "MARR[0].PLAC[0]"
+    },
+    {
+      "kind": "event",
+      "canonicalId": "event-e530890ff76e1053ecc49eb1",
+      "recordId": "@F19@",
+      "path": "MARR[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "MARR[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-656178cff13bef6ff5f32467",
+      "recordId": "@F19@",
+      "path": "MARR[0].DATE[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "MARR[0].DATE[0]"
+    },
+    {
+      "kind": "place",
+      "canonicalId": "place-830e1e3e287cfdd8020048e8",
+      "recordId": "@F19@",
+      "path": "MARR[0].PLAC[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "MARR[0].PLAC[0]"
+    },
+    {
+      "kind": "claim",
+      "canonicalId": "claim-1ec3378824a227e153786be8",
+      "recordId": "@F19@",
+      "path": "MARR[0].PLAC[0]",
+      "previousRecordId": "@F8@",
+      "previousPath": "MARR[0].PLAC[0]"
+    }
+  ],
+  "changedValues": [
+    {
+      "kind": "claim",
+      "id": "claim-e849bfa28a098a27a39d62ae",
+      "before": "Ірина Іванівна /Кирницька/",
+      "after": "Ірина Іванівна /Керницька/"
+    },
+    {
+      "kind": "place",
+      "id": "place-293eeb3f3347ce5c6b833555",
+      "before": "Чапліївка, Шосткинський, Сумська область, Україна",
+      "after": "Chepleevka, Krolevets, Chernigov, Russian Empire"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4e03edee1f26030dbbee3ad0",
+      "before": "Чапліївка, Шосткинський, Сумська область, Україна",
+      "after": "Chepleevka, Krolevets, Chernigov, Russian Empire"
+    }
+  ],
+  "retiredEntries": [
+    {
+      "kind": "person",
+      "id": "I22"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-18152b9d61aee974ffb49019"
+    },
+    {
+      "kind": "family",
+      "id": "family-b012bd41369f0360e56bdd9e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-3e55e227569c03ea7ebe6157"
+    },
+    {
+      "kind": "family",
+      "id": "family-64de9652b920ccf9061e6798"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-9f37a74cf7ff093baab9cf03"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-0d58ee2db23427060f6b6e7b"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-9d4c93bdfecc423a3130f83e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-2f67777d02fce285a2c29a2d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-d66bd08e86640027e4c184d7"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-b37e15dc992807d5fe7f0496"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-90c98caeeeeaa850cd64d107"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-28327bf989c1166557b74d0e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-4839b975c1c2d25713ef4b3e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-81c0c8db3c1162f615a975ed"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-611f81ae4698b600bc6f36f5"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-2a955afedc9e757a9e0531c5"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-3b5fd4fd4b475d8cd8b041fa"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-77188b61d1fa7e0cb7d692ff"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-802b0c64fb36a0a2cc6c2a3b"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-d3daf038fad5b061e90b856d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-6a0f9772b5ad1f62a3c3d0c0"
+    },
+    {
+      "kind": "family",
+      "id": "family-46412c95931c5adbc31f8b7f"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-704cc0985c55c127612701fd"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-ea66d4e2356d39e984106021"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-db5c7bbdf552b47092ce6f32"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-ddd2d1a2a1891398d3e7408f"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-d75016aa9983e0a339cc39f2"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-2986a8b27e0425a7b7869519"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-fe70ea2927e028fdf1400ac3"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-983956cd23ae72e96354f45a"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-84b78a9b20051aee60a55c0d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-c17652be2de40d59a76abcef"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-9a3aabef8a702bfa69136b8e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-b727f584abd119c59ac9f956"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-3189235595bcb108958df7d7"
+    },
+    {
+      "kind": "event",
+      "id": "event-2fcba75f0969d153eee777c5"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-a8e30a7d34455a58d87c4b6a"
+    },
+    {
+      "kind": "event",
+      "id": "event-37c659818649b7d1e0d84f7d"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ced8595398c18cada1a5ac88"
+    },
+    {
+      "kind": "event",
+      "id": "event-25d545b148663c91bf7cde7c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b5db6353ac31eab11ee2c730"
+    },
+    {
+      "kind": "place",
+      "id": "place-a4607bd274379fae26e03224"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0bf3fb8c610eded9ba5ea666"
+    },
+    {
+      "kind": "event",
+      "id": "event-c21d4d6bc33c3f2f9c4031d2"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-47e86665e2bf2a8bbe7dc3f5"
+    },
+    {
+      "kind": "place",
+      "id": "place-e4a000103be5384e4cba15ce"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-28831ea5e3828775edc5a913"
+    }
+  ],
+  "archivedAssessments": [
+    {
+      "id": "review-relationship-f9ba7262bc40a95cbceb6db8",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-f9ba7262bc40a95cbceb6db8"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D03: суперечливі родинні ролі I9 та I6 — подружжя у F3 і батько–дитина у F5. Не з’ясовано; уточнює власник. Спорідненість через цей зв’язок потребує уточнення."
+    },
+    {
+      "id": "review-relationship-3e55e227569c03ea7ebe6157",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-3e55e227569c03ea7ebe6157"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D03: суперечливі родинні ролі I9 та I6 — подружжя у F3 і батько–дитина у F5. Не з’ясовано; уточнює власник. Спорідненість через цей зв’язок потребує уточнення."
+    },
+    {
+      "id": "review-relationship-533ae13fcc3d2a36715c8059",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-533ae13fcc3d2a36715c8059"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-205905f2fbf6dcc2a7e5499c",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-205905f2fbf6dcc2a7e5499c"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-c4b5034ae92e0c8da4cdc0f6",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-c4b5034ae92e0c8da4cdc0f6"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-e1be7d4106d89ecd682870de",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-e1be7d4106d89ecd682870de"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-ecc55af497365a854da66abb",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-ecc55af497365a854da66abb"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-01f1d3cd867f2706eadae283",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-01f1d3cd867f2706eadae283"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-a2bd9454507ff9b2fc82d010",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-a2bd9454507ff9b2fc82d010"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-9a37d990191d9f72530fe0c2",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-9a37d990191d9f72530fe0c2"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-1d2d34340b954bd598c77f2c",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-1d2d34340b954bd598c77f2c"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-119bd2519138bc80069f3798",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-119bd2519138bc80069f3798"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-be678a2cb4e770f9a12e87ea",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-be678a2cb4e770f9a12e87ea"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-7a5f2351e6d5a2fe656f97c9",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-7a5f2351e6d5a2fe656f97c9"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-d59de3d49fb2122654e9bb54",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-d59de3d49fb2122654e9bb54"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-75cb4a0534ea453a4111e3c2",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-75cb4a0534ea453a4111e3c2"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-dfb2baf91b63658f0d6a45b5",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-dfb2baf91b63658f0d6a45b5"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-9f37a74cf7ff093baab9cf03",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-9f37a74cf7ff093baab9cf03"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-0d58ee2db23427060f6b6e7b",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-0d58ee2db23427060f6b6e7b"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-9d4c93bdfecc423a3130f83e",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-9d4c93bdfecc423a3130f83e"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-2f67777d02fce285a2c29a2d",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-2f67777d02fce285a2c29a2d"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-d66bd08e86640027e4c184d7",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-d66bd08e86640027e4c184d7"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-b37e15dc992807d5fe7f0496",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-b37e15dc992807d5fe7f0496"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-90c98caeeeeaa850cd64d107",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-90c98caeeeeaa850cd64d107"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-28327bf989c1166557b74d0e",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-28327bf989c1166557b74d0e"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-4839b975c1c2d25713ef4b3e",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-4839b975c1c2d25713ef4b3e"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-81c0c8db3c1162f615a975ed",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-81c0c8db3c1162f615a975ed"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-611f81ae4698b600bc6f36f5",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-611f81ae4698b600bc6f36f5"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-2a955afedc9e757a9e0531c5",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-2a955afedc9e757a9e0531c5"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-3b5fd4fd4b475d8cd8b041fa",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-3b5fd4fd4b475d8cd8b041fa"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-77188b61d1fa7e0cb7d692ff",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-77188b61d1fa7e0cb7d692ff"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-802b0c64fb36a0a2cc6c2a3b",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-802b0c64fb36a0a2cc6c2a3b"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D01: можливий дубль сім’ї F6/F7; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-a8eed8c0649e9f9ee28edd6b",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-a8eed8c0649e9f9ee28edd6b"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-649e3b9f6f5081f115d21e8e",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-649e3b9f6f5081f115d21e8e"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-3cfa6d1262d96766dd8b4103",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-3cfa6d1262d96766dd8b4103"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-213798c3ffc19c2d6c7c49d2",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-213798c3ffc19c2d6c7c49d2"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-2042a583f43d8caeab4326bc",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-2042a583f43d8caeab4326bc"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-570795c09b2877e145f913f9",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-570795c09b2877e145f913f9"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-d3daf038fad5b061e90b856d",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-d3daf038fad5b061e90b856d"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу.\nD05: записаний батько — Феодор Петров Зубенко; потребує перевірки. Різниця років народження — 83, це не точний вік і не доказ помилки. Не з’ясовано; уточнює власник."
+    },
+    {
+      "id": "review-relationship-2c4023ae719a278c0a5332fa",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-2c4023ae719a278c0a5332fa"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-c47425a57ace5401a4ead068",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-c47425a57ace5401a4ead068"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-266e9e9d793625cd4672148b",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-266e9e9d793625cd4672148b"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-e9e833b5e2ba5529e1b0b2ec",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-e9e833b5e2ba5529e1b0b2ec"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-259066879720fd7dd7184cf9",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-259066879720fd7dd7184cf9"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-6a0f9772b5ad1f62a3c3d0c0",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-6a0f9772b5ad1f62a3c3d0c0"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-704cc0985c55c127612701fd",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-704cc0985c55c127612701fd"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-ea66d4e2356d39e984106021",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-ea66d4e2356d39e984106021"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-db5c7bbdf552b47092ce6f32",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-db5c7bbdf552b47092ce6f32"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-ddd2d1a2a1891398d3e7408f",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-ddd2d1a2a1891398d3e7408f"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-d75016aa9983e0a339cc39f2",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-d75016aa9983e0a339cc39f2"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-2986a8b27e0425a7b7869519",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-2986a8b27e0425a7b7869519"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-fe70ea2927e028fdf1400ac3",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-fe70ea2927e028fdf1400ac3"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу.\nD05: записаний батько — Феодор Петров Зубенко; потребує перевірки. Різниця років народження — 83, це не точний вік і не доказ помилки. Не з’ясовано; уточнює власник."
+    },
+    {
+      "id": "review-relationship-983956cd23ae72e96354f45a",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-983956cd23ae72e96354f45a"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-84b78a9b20051aee60a55c0d",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-84b78a9b20051aee60a55c0d"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-c17652be2de40d59a76abcef",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-c17652be2de40d59a76abcef"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-9a3aabef8a702bfa69136b8e",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-9a3aabef8a702bfa69136b8e"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-b727f584abd119c59ac9f956",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-b727f584abd119c59ac9f956"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-relationship-3189235595bcb108958df7d7",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-3189235595bcb108958df7d7"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D02: можливий дубль сім’ї F8/F9; записи збережені окремо. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-claim-244e8bf9bed97cd91397b290",
+      "target": {
+        "kind": "claim",
+        "id": "claim-244e8bf9bed97cd91397b290"
+      },
+      "confidence": "unassessed",
+      "explanation": "D05: дати Григория I22 і рік народження записаного батька I20 потребують перевірки власником. Не з’ясовано; вихідний текст і точність збережені без виправлення."
+    },
+    {
+      "id": "review-claim-a8e30a7d34455a58d87c4b6a",
+      "target": {
+        "kind": "claim",
+        "id": "claim-a8e30a7d34455a58d87c4b6a"
+      },
+      "confidence": "unassessed",
+      "explanation": "D05: дати Григория I22 і рік народження записаного батька I20 потребують перевірки власником. Не з’ясовано; вихідний текст і точність збережені без виправлення."
+    },
+    {
+      "id": "review-claim-ced8595398c18cada1a5ac88",
+      "target": {
+        "kind": "claim",
+        "id": "claim-ced8595398c18cada1a5ac88"
+      },
+      "confidence": "unassessed",
+      "explanation": "D05: дати Григория I22 і рік народження записаного батька I20 потребують перевірки власником. Не з’ясовано; вихідний текст і точність збережені без виправлення."
+    }
+  ],
+  "retiredPlaces": [
+    {
+      "id": "review-place-a4607bd274379fae26e03224",
+      "placeId": "place-a4607bd274379fae26e03224",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-e4a000103be5384e4cba15ce",
+      "placeId": "place-e4a000103be5384e4cba15ce",
+      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    }
+  ],
+  "notes": [
+    "People matched by unique FamilySearch IDs; RootsMagic UID values were regenerated.",
+    "Old F6/F8 retained for surviving duplicate family occurrences; F7/F9 archived, not silently merged.",
+    "Old I22 / PFVV-8T2 absent from the new export; canonical I22 is reserved.",
+    "D01/D02/D03/D05 annotations retired for this export; original fixture retains all original data. D04/D06 remain unresolved. New D07/D08 are unresolved."
+  ]
+}

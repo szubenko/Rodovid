@@ -4,6 +4,8 @@ import { familyDataSchema } from '../../src/data/schema'
 import { dragMap } from './map-helpers'
 
 test('finds and centers all 45 people regardless of the visible generation', async ({ page }) => {
+  // This is 45 complete search/recenter interactions, not one slow UI action.
+  test.setTimeout(90_000)
   await page.goto('/tree/I1')
   await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(45)
   const people = await page.locator('ul a[href^="/tree/"]').evaluateAll((links) => links.map((link) => ({

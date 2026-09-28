@@ -3,7 +3,8 @@ import { expect, test } from '@playwright/test'
 test('zero, one and multiple relatives, close focus and back through rooms', async ({ page }) => {
   await page.goto('/person/I1')
   const doors = page.getByRole('region', { name: 'Переходи до рідних' })
-  await expect(doors.getByText('Записів у цьому родоводі немає.', { exact: true })).toHaveCount(2)
+  // The current export includes I1's spouse; only children are absent.
+  await expect(doors.getByText('Записів у цьому родоводі немає.', { exact: true })).toHaveCount(1)
   const parents = doors.getByRole('button', { name: 'Обрати: батьки (2)' })
   await parents.focus()
   await page.keyboard.press('Enter')

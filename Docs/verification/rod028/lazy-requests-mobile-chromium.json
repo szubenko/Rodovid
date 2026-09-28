@@ -1,0 +1,25 @@
+{
+  "initial": [
+    "/person/I1",
+    "/app-assets/index-C8iCE7Zu.js",
+    "/app-assets/index-CBFqgX5Q.css",
+    "/data/family.json",
+    "/app-assets/MemoryText-CNfGAHhT.js"
+  ],
+  "afterOpening": [
+    "/person/I1",
+    "/app-assets/index-C8iCE7Zu.js",
+    "/app-assets/index-CBFqgX5Q.css",
+    "/data/family.json",
+    "/app-assets/MemoryText-CNfGAHhT.js",
+    "/app-assets/PlacesMap-BHFciTQZ.js",
+    "/app-assets/PlacesMap-Bx9Ncv9D.css",
+    "/8/127/127.png",
+    "/8/128/127.png",
+    "/8/127/128.png",
+    "/8/128/128.png",
+    "/app-assets/PdfViewer-DaiC_aeM.js",
+    "/app-assets/pdf.worker.min-Dswkl-cV.mjs",
+    "/assets/documents/fixture.pdf"
+  ]
+}

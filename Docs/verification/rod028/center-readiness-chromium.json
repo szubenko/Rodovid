@@ -1,0 +1,191 @@
+{
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 320,
+    "height": 900
+  },
+  "profile": "chromium",
+  "note": "Local wall time; no CPU or network throttling; not a physical phone benchmark.",
+  "timings": [
+    {
+      "id": "I1",
+      "readyMs": 1273
+    },
+    {
+      "id": "I2",
+      "readyMs": 854
+    },
+    {
+      "id": "I26",
+      "readyMs": 449
+    },
+    {
+      "id": "I3",
+      "readyMs": 718
+    },
+    {
+      "id": "I5",
+      "readyMs": 642
+    },
+    {
+      "id": "I4",
+      "readyMs": 481
+    },
+    {
+      "id": "I27",
+      "readyMs": 750
+    },
+    {
+      "id": "I28",
+      "readyMs": 480
+    },
+    {
+      "id": "I29",
+      "readyMs": 607
+    },
+    {
+      "id": "I9",
+      "readyMs": 508
+    },
+    {
+      "id": "I7",
+      "readyMs": 439
+    },
+    {
+      "id": "I6",
+      "readyMs": 509
+    },
+    {
+      "id": "I30",
+      "readyMs": 398
+    },
+    {
+      "id": "I8",
+      "readyMs": 499
+    },
+    {
+      "id": "I10",
+      "readyMs": 579
+    },
+    {
+      "id": "I31",
+      "readyMs": 451
+    },
+    {
+      "id": "I32",
+      "readyMs": 487
+    },
+    {
+      "id": "I33",
+      "readyMs": 501
+    },
+    {
+      "id": "I34",
+      "readyMs": 478
+    },
+    {
+      "id": "I35",
+      "readyMs": 551
+    },
+    {
+      "id": "I36",
+      "readyMs": 712
+    },
+    {
+      "id": "I37",
+      "readyMs": 441
+    },
+    {
+      "id": "I38",
+      "readyMs": 420
+    },
+    {
+      "id": "I39",
+      "readyMs": 441
+    },
+    {
+      "id": "I40",
+      "readyMs": 426
+    },
+    {
+      "id": "I41",
+      "readyMs": 437
+    },
+    {
+      "id": "I42",
+      "readyMs": 488
+    },
+    {
+      "id": "I43",
+      "readyMs": 435
+    },
+    {
+      "id": "I11",
+      "readyMs": 473
+    },
+    {
+      "id": "I12",
+      "readyMs": 719
+    },
+    {
+      "id": "I44",
+      "readyMs": 642
+    },
+    {
+      "id": "I13",
+      "readyMs": 437
+    },
+    {
+      "id": "I14",
+      "readyMs": 470
+    },
+    {
+      "id": "I16",
+      "readyMs": 435
+    },
+    {
+      "id": "I15",
+      "readyMs": 448
+    },
+    {
+      "id": "I17",
+      "readyMs": 432
+    },
+    {
+      "id": "I18",
+      "readyMs": 432
+    },
+    {
+      "id": "I20",
+      "readyMs": 480
+    },
+    {
+      "id": "I19",
+      "readyMs": 486
+    },
+    {
+      "id": "I45",
+      "readyMs": 452
+    },
+    {
+      "id": "I46",
+      "readyMs": 499
+    },
+    {
+      "id": "I21",
+      "readyMs": 402
+    },
+    {
+      "id": "I25",
+      "readyMs": 525
+    },
+    {
+      "id": "I23",
+      "readyMs": 411
+    },
+    {
+      "id": "I24",
+      "readyMs": 409
+    }
+  ]
+}

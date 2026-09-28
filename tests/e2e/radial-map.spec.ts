@@ -124,9 +124,11 @@ test('disputed roles and duplicate families keep distinct selectable relationshi
   }
 })
 
-test('all real centers fit the phone and desktop with full names and stable relationship IDs', async ({ page }, testInfo) => {
-  test.setTimeout(90_000)
-  for (const width of [320, 1024]) {
+for (const width of [320, 1024]) {
+  test(`all real centers at ${width}px retain full names and stable relationship IDs`, async ({ page }, testInfo) => {
+    // 45 page loads plus full-page captures at mobile DPR need a batch budget.
+    // Individual assertions keep Playwright's normal timeout.
+    test.setTimeout(180_000)
     await page.setViewportSize({ width, height: 900 })
     for (const person of family.people) {
       await page.goto(`/tree/${person.id}`)
@@ -152,10 +154,12 @@ test('all real centers fit the phone and desktop with full names and stable rela
       if (['I1', 'I9', 'I20'].includes(person.id)) {
         await page.screenshot({ path: testInfo.outputPath(`${person.id}-${width}.png`), fullPage: true })
         await page.locator('svg').screenshot({ path: testInfo.outputPath(`${person.id}-${width}-map.png`) })
+        await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
+        await page.locator('svg').screenshot({ path: testInfo.outputPath(`${person.id}-${width}-fitted.png`) })
       }
     }
-  }
-})
+  })
+}
 
 test('a person without names, dates, photos or relationships remains usable', async ({ page }) => {
   const minimal = familyDataSchema.parse({ ...family, people: [family.people[0]], claims: [], events: [], relationships: [], media: [] })

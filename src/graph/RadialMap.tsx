@@ -84,7 +84,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     if (!svg.current) return
     setExportState('exporting')
     try {
-      await downloadSvgAsPng(svg.current, `rodovid-${personId}.png`)
+      await downloadSvgAsPng(svg.current, `rodovid-${personId}.png`, 3 / layout.textScale)
       setExportState('saved')
     } catch {
       setExportState('error')
@@ -98,7 +98,8 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
       <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={() => dispatch({ type: 'map', settings: scaleCamera({ zoom: 1, pan: { x: 0, y: 0 } }, layout.fitScale) })}>Вмістити карту</button>
-      <button onClick={() => { void savePng() }} disabled={exportState === 'exporting'}>
+      <button onClick={() => { void savePng() }} disabled={exportState === 'exporting'}
+        title="Зберегти всю поточну діаграму, включно з частинами за межами екрана">
         {exportState === 'exporting' ? 'Готуємо PNG…' : 'Зберегти PNG'}
       </button>
       <label htmlFor={`${prefix}-generations`}>Покоління</label>

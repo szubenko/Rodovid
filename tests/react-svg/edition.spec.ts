@@ -1,4 +1,27 @@
 import { test, expect, type Page } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+import { dragMap } from '../e2e/map-helpers'
+
+test('PNG атласу зберігає всю діаграму після зуму й перетягування', async ({ page }, testInfo) => {
+  await page.goto('/tree/I1')
+  const svg = page.getByRole('group', { name: /^Родина:/ })
+  const save = async (name: string) => {
+    const pending = page.waitForEvent('download')
+    await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
+    const download = await pending
+    await download.saveAs(testInfo.outputPath(name))
+    return readFileSync((await download.path())!)
+  }
+  const original = await save('atlas-full.png')
+  const viewport = await svg.evaluate(element => (element as SVGSVGElement).viewBox.baseVal.width)
+  expect(original.readUInt32BE(16)).toBeGreaterThan(viewport * 3)
+  await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
+  await dragMap(page, 40, 0)
+  const camera = svg.locator('[data-layer="camera"]')
+  const transform = await camera.getAttribute('transform')
+  expect((await save('atlas-full-panned.png')).equals(original)).toBe(true)
+  await expect(camera).toHaveAttribute('transform', transform!)
+})
 
 async function directory(page: Page, mobile: boolean) {
   if (mobile) await page.getByText('Знайти людину · покажчик родоводу', { exact: true }).click()

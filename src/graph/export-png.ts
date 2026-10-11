@@ -39,13 +39,25 @@ function pngBlob(canvas: HTMLCanvasElement): Promise<Blob> {
   }, 'image/png'))
 }
 
-export async function downloadSvgAsPng(svg: SVGSVGElement, fileName: string) {
-  const { width, height } = svg.viewBox.baseVal
-  if (!width || !height) throw new Error('SVG has no dimensions')
+export async function downloadSvgAsPng(svg: SVGSVGElement, fileName: string, pixelsPerUnit = 3) {
+  // Bounds in drawing coordinates include sectors outside the screen and ignore
+  // the parent camera's pan/zoom. Change only the exported copy, not the live map.
+  const drawing = svg.querySelector<SVGGElement>('[data-layer="coordinates"]')
+  if (!drawing) throw new Error('SVG has no diagram')
+  const bounds = drawing.getBBox()
+  if (!bounds.width || !bounds.height) throw new Error('SVG has no dimensions')
+  const padding = 24
+  const width = bounds.width + padding * 2
+  const height = bounds.height + padding * 2
+  const copy = inlineVisualStyles(svg)
+  copy.querySelector('[data-layer="camera"]')?.removeAttribute('transform')
+  copy.setAttribute('viewBox', `${bounds.x - padding} ${bounds.y - padding} ${width} ${height}`)
+  copy.setAttribute('width', String(width))
+  copy.setAttribute('height', String(height))
 
-  // Three pixels per SVG unit keeps ordinary desktop and phone exports crisp.
-  // The cap avoids exceeding the browser canvas limit for unusually large maps.
-  const scale = Math.min(3, 12_000 / Math.max(width, height))
+  // Keep labels crisp even in an edition that initially fits the drawing to
+  // the screen. Cap both dimensions and area to bound canvas memory usage.
+  const scale = Math.min(pixelsPerUnit, 12_000 / Math.max(width, height), Math.sqrt(32_000_000 / (width * height)))
   const canvas = document.createElement('canvas')
   canvas.width = Math.max(1, Math.round(width * scale))
   canvas.height = Math.max(1, Math.round(height * scale))
@@ -55,7 +67,6 @@ export async function downloadSvgAsPng(svg: SVGSVGElement, fileName: string) {
   const canvasBackground = getComputedStyle(svg.parentElement ?? svg).backgroundColor
   context.fillStyle = canvasBackground === 'rgba(0, 0, 0, 0)' ? '#dcdede' : canvasBackground
   context.fillRect(0, 0, canvas.width, canvas.height)
-  const copy = inlineVisualStyles(svg)
   const image = await svgImage(new XMLSerializer().serializeToString(copy))
   context.drawImage(image, 0, 0, canvas.width, canvas.height)
 

@@ -44,20 +44,38 @@ test('buttons zoom around center, pan, fit and remain within limits using the ke
   await expectFitted(page)
 })
 
-test('downloads the current diagram as a three-times PNG', async ({ page }) => {
+test('downloads the entire diagram including offscreen branches independently of pan and zoom', async ({ page }, testInfo) => {
   await page.goto('/tree/I1')
   const size = await page.locator('svg').evaluate((element) => {
-    const { width, height } = (element as SVGSVGElement).viewBox.baseVal
-    return { width, height }
+    const { width, height } = element.querySelector<SVGGElement>('[data-layer="coordinates"]')!.getBBox()
+    return { width: width + 48, height: height + 48, viewport: (element as SVGSVGElement).viewBox.baseVal.width }
   })
-  const downloadPromise = page.waitForEvent('download')
-  await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
-  const download = await downloadPromise
-  expect(download.suggestedFilename()).toBe('rodovid-I1.png')
-  const file = readFileSync((await download.path())!)
+  expect(size.width).toBeGreaterThan(size.viewport)
+  const save = async (name: string) => {
+    const downloadPromise = page.waitForEvent('download')
+    await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
+    const download = await downloadPromise
+    expect(download.suggestedFilename()).toBe('rodovid-I1.png')
+    await download.saveAs(testInfo.outputPath(name))
+    return readFileSync((await download.path())!)
+  }
+  const file = await save('full-diagram.png')
   expect(file.subarray(0, 8)).toEqual(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
-  expect(file.readUInt32BE(16)).toBe(Math.round(size.width * 3))
-  expect(file.readUInt32BE(20)).toBe(Math.round(size.height * 3))
+  const exportScale = Math.min(3, 12_000 / Math.max(size.width, size.height), Math.sqrt(32_000_000 / (size.width * size.height)))
+  expect(file.readUInt32BE(16)).toBe(Math.round(size.width * exportScale))
+  expect(file.readUInt32BE(20)).toBe(Math.round(size.height * exportScale))
+
+  await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
+  await dragMap(page, 40, 0)
+  const savedCamera = await camera(page).getAttribute('transform')
+  expect(savedCamera).not.toBe('translate(0 0) scale(1)')
+  // Identical image bytes prove that the export covers the same full diagram
+  // even when another part is visible on screen; saving doesn't move the camera.
+  expect((await save('full-diagram-panned.png')).equals(file)).toBe(true)
+  await expect(camera(page)).toHaveAttribute('transform', savedCamera!)
+
+  await generations(page).selectOption('1')
+  expect((await save('one-generation.png')).equals(file)).toBe(false)
   await expect(page.getByText('PNG збережено у файл.', { exact: true })).toBeVisible()
 })
 

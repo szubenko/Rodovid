@@ -20,7 +20,7 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
 
 export function RadialMap({ personId, fitToViewport = false }: { personId: string; fitToViewport?: boolean }) {
   const family = useFamily()
-  const { state, dispatch, goTo } = useView()
+  const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
   const svg = useRef<SVGSVGElement>(null)
   const [width, setWidth] = useState(320)
@@ -87,6 +87,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   return <section className={styles.map} aria-label="Радіальна карта родини">
     <p className={styles.hint}>Натисніть ім’я, щоб змінити центр, або лінію зв’язку, щоб побачити її докази.</p>
     <div className={styles.controls} role="group" aria-label="Керування картою">
+      <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
       <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>

@@ -19,7 +19,7 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
 
 export function HorizontalTree({ personId }: { personId: string }) {
   const family = useFamily()
-  const { state, dispatch, goTo } = useView()
+  const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
   const svg = useRef<SVGSVGElement>(null)
   const [width, setWidth] = useState(320)
@@ -69,8 +69,9 @@ export function HorizontalTree({ personId }: { personId: string }) {
     } catch { setExportState('error') }
   }
   return <section className={shared.map} aria-label="Горизонтальний родовід">
-    <p className={shared.hint}>Предки ліворуч, нащадки праворуч. Натисніть ім’я, щоб змінити центр, або лінію, щоб переглянути докази. Карту можна збільшувати й перетягувати.</p>
+    <p className={shared.hint}>Предки праворуч, нащадки ліворуч. Натисніть ім’я, щоб змінити центр, або лінію, щоб переглянути докази. Кнопка «Назад» повертає до попереднього перегляду.</p>
     <div className={shared.controls} role="group" aria-label="Керування картою">
+      <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={settings.zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
       <output aria-label="Масштаб карти">{Math.round(settings.zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={settings.zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
@@ -111,6 +112,7 @@ export function HorizontalTree({ personId }: { personId: string }) {
               const action = () => goTo(`/${central ? 'person' : 'horizontal'}/${node.personId}`)
               return <g key={node.appearanceId} className={styles.node} data-person-id={node.personId}
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane}
+                data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
                 <title>{labels.get(node.personId)} · {dates.get(node.personId)}</title>

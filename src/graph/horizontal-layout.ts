@@ -4,8 +4,8 @@ import { labelBlock, type LabelBlock, type TextMeasure } from './text-block'
 export type HorizontalNode = Appearance & { x: number; y: number; width: number; height: number; text: LabelBlock }
 export type HorizontalLayout = { width: number; height: number; nodes: HorizontalNode[]; edges: (Projection['edges'][number] & { path: string })[] }
 
-/** Order each generation independently, keeping close relatives near the center
- * even when distant generations are large. Spouses remain in the center column. */
+/** Lay out whole branches before their joining person, so each person faces the
+ * midpoint of their direct relatives. Spouses remain in the center column. */
 export function layoutHorizontal(projection: Projection, labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure): HorizontalLayout {
   const padding = 28
   const gap = 24
@@ -14,12 +14,35 @@ export function layoutHorizontal(projection: Projection, labels: ReadonlyMap<str
   const cardWidth = Math.max(224, ...[...blocks.values()].map(block => block.width + 40))
   const cardHeight = Math.max(104, ...[...blocks.values()].map(block => block.height + 40))
   const step = cardWidth + 80
-  const columns = new Map<number, Appearance[]>()
-  for (const node of projection.appearances) columns.set(node.generation, [...columns.get(node.generation) ?? [], node])
-  const positions = new Map<string, { x: number; y: number }>()
-  for (const [generation, nodes] of columns) nodes.forEach((node, index) => {
-    positions.set(node.appearanceId, { x: generation * step,
-      y: (index - (generation === 0 ? 0 : (nodes.length - 1) / 2)) * (cardHeight + gap) })
+  const branches = new Map<string, Appearance[]>()
+  for (const node of projection.appearances) if (node.parentAppearanceId && node.lane !== 'spouses') {
+    const key = `${node.parentAppearanceId}/${node.lane}`
+    branches.set(key, [...branches.get(key) ?? [], node])
+  }
+  const root = projection.appearances[0]!
+  const positions = new Map<string, { x: number; y: number }>([[root.appearanceId, { x: 0, y: 0 }]])
+  for (const lane of ['parents', 'children'] as const) {
+    let nextRow = 0
+    const midpoint = (nodes: Appearance[]) => (positions.get(nodes[0]!.appearanceId)!.y
+      + positions.get(nodes.at(-1)!.appearanceId)!.y) / 2
+    const place = (node: Appearance) => {
+      const relatives = branches.get(`${node.appearanceId}/${lane}`) ?? []
+      relatives.forEach(place)
+      positions.set(node.appearanceId, { x: -node.generation * step,
+        y: relatives.length ? midpoint(relatives) : nextRow++ * (cardHeight + gap) })
+    }
+    const relatives = branches.get(`${root.appearanceId}/${lane}`) ?? []
+    relatives.forEach(place)
+    if (relatives.length) {
+      const origin = midpoint(relatives)
+      for (const node of projection.appearances) if (node.lane === lane) {
+        const position = positions.get(node.appearanceId)!
+        positions.set(node.appearanceId, { ...position, y: position.y - origin })
+      }
+    }
+  }
+  projection.appearances.filter(node => node.lane === 'spouses').forEach((node, index) => {
+    positions.set(node.appearanceId, { x: 0, y: (index + 1) * (cardHeight + gap) })
   })
   const minX = Math.min(...[...positions.values()].map(point => point.x)) - cardWidth / 2
   const minY = Math.min(...[...positions.values()].map(point => point.y)) - cardHeight / 2

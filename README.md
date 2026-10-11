@@ -1,5 +1,10 @@
 # Мій родовід
 
+Окрема версія з оновленим дизайном **«Сімейний атлас»**: `npm run dev:react-svg`,
+адреса <http://127.0.0.1:5175>. Збірка — `npm run build:react-svg`, результат у
+`dist-react-svg/`. [Запуск та архітектура](Docs/Rodovid_React_SVG_Edition.md).
+У Windows для цієї версії відкрийте **`start-react-svg.bat`**.
+
 Статичний застосунок для перегляду сімейної історії. ROD-001 додає локальний
 каркас React + TypeScript + Vite.
 ROD-002 додає [контракт даних v1](Docs/Rodovid_Data_Contract_v1.md), Zod-схеми,

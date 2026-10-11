@@ -1,6 +1,7 @@
 # Залежності та результати збірки
 node_modules/
 dist/
+dist-react-svg/
 generated/
 
 # Звіти й артефакти перевірок

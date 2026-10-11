@@ -1,0 +1,8 @@
+:root {
+  --color-background: #f6f7f3;
+  --color-text: #243b34;
+  --color-muted: #62736b;
+  --color-accent: #29664f;
+}
+body { background: var(--color-background); }
+::selection { background: #d9eadb; color: #183c2d; }

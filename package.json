@@ -13,13 +13,17 @@
     "data:validate": "node scripts/convert-data.ts --validate-only",
     "data:check-gedcom": "node scripts/check-gedcom.ts",
     "dev": "vite",
+    "dev:react-svg": "vite --config vite.react-svg.config.ts",
     "typecheck": "tsc -b",
     "lint": "eslint . --max-warnings 0",
     "build": "npm run typecheck && vite build",
+    "build:react-svg": "npm run typecheck && vite build --config vite.react-svg.config.ts",
     "preview": "vite preview",
+    "preview:react-svg": "vite preview --config vite.react-svg.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:e2e:react-svg": "playwright test --config playwright.react-svg.config.ts"
   },
   "dependencies": {
     "d3-selection": "3.0.0",

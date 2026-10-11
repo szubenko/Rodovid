@@ -13,16 +13,19 @@ import { maxZoom, minZoom, scaleCamera } from './camera'
 import { EvidenceForTarget } from '../room/Evidence'
 import { emptySectors } from './empty-sectors'
 import { closestRelationship } from './closest-relationship'
+import { downloadSvgAsPng } from './export-png'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
 }
 
-export function RadialMap({ personId }: { personId: string }) {
+export function RadialMap({ personId, fitToViewport = false }: { personId: string; fitToViewport?: boolean }) {
   const family = useFamily()
   const { state, dispatch, goTo } = useView()
   const container = useRef<HTMLDivElement>(null)
+  const svg = useRef<SVGSVGElement>(null)
   const [width, setWidth] = useState(320)
+  const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
   const measureText = useMemo(() => {
     // Each context keeps one font; measurement never mutates a memoized object.
@@ -54,7 +57,7 @@ export function RadialMap({ personId }: { personId: string }) {
   const generations = Math.min(mapSettings.generations, maxGenerations)
   const projection = useMemo(() => projectFamily(graph, personId, { generations: Math.min(12, generations + 1), collapsedAppearanceIds }), [graph, personId, generations, collapsedAppearanceIds])
   const layout = useMemo(() => layoutRadial(projection, { width, height: width, labels, dates, measureText,
-    fontSize: 14, fitToViewport: false }), [projection, width, labels, dates, measureText])
+    fontSize: 14, fitToViewport }), [projection, width, labels, dates, measureText, fitToViewport])
   const empty = useMemo(() => emptySectors(layout, projection.generations - 1), [layout, projection.generations])
   const boundsScale = Math.max(1, layout.fitScale)
   const mapHeight = Math.min(width, Math.max(width * 0.6, layout.center.y + layout.centerRadius * boundsScale + 20,
@@ -77,6 +80,16 @@ export function RadialMap({ personId }: { personId: string }) {
   const expandedIds = new Set(layout.nodes.map((node) => node.parentAppearanceId))
   const branches = layout.nodes.filter((node) => !node.cycle && (expandedIds.has(node.appearanceId)
     || node.hiddenConnections.some((connection) => connection.reason === 'collapsed' || connection.reason === 'depth')))
+  const savePng = async () => {
+    if (!svg.current) return
+    setExportState('exporting')
+    try {
+      await downloadSvgAsPng(svg.current, `rodovid-${personId}.png`)
+      setExportState('saved')
+    } catch {
+      setExportState('error')
+    }
+  }
 
   return <section className={styles.map} aria-label="Радіальна карта родини">
     <p className={styles.hint}>Натисніть ім’я, щоб змінити центр. Зв’язки та їхні докази доступні під картою.</p>
@@ -85,13 +98,21 @@ export function RadialMap({ personId }: { personId: string }) {
       <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={() => dispatch({ type: 'map', settings: scaleCamera({ zoom: 1, pan: { x: 0, y: 0 } }, layout.fitScale) })}>Вмістити карту</button>
+      <button onClick={() => { void savePng() }} disabled={exportState === 'exporting'}>
+        {exportState === 'exporting' ? 'Готуємо PNG…' : 'Зберегти PNG'}
+      </button>
       <label htmlFor={`${prefix}-generations`}>Покоління</label>
       <select id={`${prefix}-generations`} value={generations} onChange={(event) => dispatch({ type: 'map', settings: { generations: Number(event.target.value) } })}>
         {Array.from({ length: maxGenerations }, (_, index) => index + 1).map((depth) => <option key={depth} value={depth}>{depth}</option>)}
       </select>
     </div>
+    {exportState !== 'idle' && <p className={styles.exportStatus} role="status">
+      {exportState === 'exporting' && 'Створюємо PNG високої якості…'}
+      {exportState === 'saved' && 'PNG збережено у файл.'}
+      {exportState === 'error' && 'Не вдалося створити PNG. Спробуйте ще раз.'}
+    </p>}
     <div ref={container} className={styles.canvas}>
-      <svg viewBox={`0 0 ${width} ${mapHeight}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
+      <svg ref={svg} viewBox={`0 0 ${width} ${mapHeight}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
         <g data-layer="camera" transform={`translate(${renderedCamera.pan.x} ${renderedCamera.pan.y}) scale(${zoom})`}>
           <g data-layer="coordinates">
             <g data-layer="empty-sectors" aria-hidden="true">

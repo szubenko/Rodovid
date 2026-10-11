@@ -7,7 +7,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   globalIgnores([
-    'dist', 'coverage', 'playwright-report', 'test-results', 'blob-report', 'tmp',
+    'dist', 'dist-react-svg', 'coverage', 'playwright-report', 'test-results', 'blob-report', 'tmp',
   ]),
   {
     files: ['**/*.{ts,tsx}'],

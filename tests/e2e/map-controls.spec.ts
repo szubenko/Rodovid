@@ -44,6 +44,23 @@ test('buttons zoom around center, pan, fit and remain within limits using the ke
   await expectFitted(page)
 })
 
+test('downloads the current diagram as a three-times PNG', async ({ page }) => {
+  await page.goto('/tree/I1')
+  const size = await page.locator('svg').evaluate((element) => {
+    const { width, height } = (element as SVGSVGElement).viewBox.baseVal
+    return { width, height }
+  })
+  const downloadPromise = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
+  const download = await downloadPromise
+  expect(download.suggestedFilename()).toBe('rodovid-I1.png')
+  const file = readFileSync((await download.path())!)
+  expect(file.subarray(0, 8)).toEqual(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+  expect(file.readUInt32BE(16)).toBe(Math.round(size.width * 3))
+  expect(file.readUInt32BE(20)).toBe(Math.round(size.height * 3))
+  await expect(page.getByText('PNG збережено у файл.', { exact: true })).toBeVisible()
+})
+
 test('collapse is reversible and depth never removes people from the full index', async ({ page }) => {
   await page.goto('/tree/I1')
   await generations(page).selectOption('6')

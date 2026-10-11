@@ -46,11 +46,12 @@ export function ViewProvider({ children }: { children: ReactNode }) {
   const pending = useRef<{ key: string; target: string } | null>(null)
   const tree = useMatch('/tree/:personId')
   const horizontal = useMatch('/horizontal/:personId')
+  const vertical = useMatch('/vertical/:personId')
   const person = useMatch('/person/:personId')
   const navigationType = useNavigationType()
   const route: ViewRoute = {
-    screen: tree ? 'tree' : horizontal ? 'horizontal' : person ? 'person' : 'missing',
-    personId: tree?.params.personId ?? horizontal?.params.personId ?? person?.params.personId ?? null,
+    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : person ? 'person' : 'missing',
+    personId: tree?.params.personId ?? horizontal?.params.personId ?? vertical?.params.personId ?? person?.params.personId ?? null,
   }
   if (route.personId && !family.people.some((entry) => entry.id === route.personId)) {
     route.screen = 'missing'

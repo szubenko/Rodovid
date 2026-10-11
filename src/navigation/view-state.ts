@@ -1,4 +1,5 @@
-export type ViewRoute = { screen: 'tree' | 'horizontal' | 'person' | 'missing'; personId: string | null }
+export type MapScreen = 'tree' | 'horizontal' | 'vertical'
+export type ViewRoute = { screen: MapScreen | 'person' | 'missing'; personId: string | null }
 export type MapSettings = {
   generations: number
   zoom: number
@@ -7,7 +8,7 @@ export type MapSettings = {
   collapsedAppearanceIds: string[]
 }
 export type View = ViewRoute & {
-  mapScreen: 'tree' | 'horizontal'
+  mapScreen: MapScreen
   centerPersonId: string
   selectedRelationshipId: string | null
   map: MapSettings
@@ -31,10 +32,14 @@ function defaultMap(generations: number): MapSettings {
   return { generations, zoom: 1, pan: { x: 0, y: 0 }, collapsedAppearanceIds: [] }
 }
 
+function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
+  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical'
+}
+
 export function initialView(homePersonId: string, initialGenerations: number, key: string, route: ViewRoute): ViewState {
   return {
     homePersonId, initialGenerations, key, entries: {}, trail: [key], position: 0,
-    current: { ...route, mapScreen: route.screen === 'horizontal' ? 'horizontal' : 'tree',
+    current: { ...route, mapScreen: isMapScreen(route.screen) ? route.screen : 'tree',
       centerPersonId: route.personId ?? homePersonId, selectedRelationshipId: null, map: defaultMap(initialGenerations) },
   }
 }
@@ -46,9 +51,9 @@ export function viewReducer(state: ViewState, action: ViewAction): ViewState {
   if (action.type === 'relationship') return { ...state, current: { ...state.current, selectedRelationshipId: action.id } }
   const entries = { ...state.entries, [state.key]: state.current }
   const restored = action.navigationType === 'POP' ? entries[action.key] : undefined
-  const centerPersonId = (action.route.screen === 'tree' || action.route.screen === 'horizontal') && action.route.personId
+  const centerPersonId = isMapScreen(action.route.screen) && action.route.personId
     ? action.route.personId : state.current.centerPersonId
-  const mapScreen = action.route.screen === 'horizontal' ? 'horizontal' : action.route.screen === 'tree' ? 'tree' : state.current.mapScreen
+  const mapScreen = isMapScreen(action.route.screen) ? action.route.screen : state.current.mapScreen
   const map = !action.resetMap && centerPersonId === state.current.centerPersonId ? state.current.map : defaultMap(state.initialGenerations)
   const current = restored ?? {
     ...action.route, mapScreen, centerPersonId, selectedRelationshipId: null,

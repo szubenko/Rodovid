@@ -4,7 +4,7 @@ import { zoom, zoomIdentity, zoomTransform, type D3ZoomEvent, type ZoomBehavior 
 import type { ViewAction } from '../navigation/view-state'
 import { maxZoom, minZoom, type Camera } from './camera'
 
-export function useMapCamera(container: RefObject<HTMLDivElement | null>, width: number, camera: Camera, dispatch: Dispatch<ViewAction>) {
+export function useMapCamera(container: RefObject<HTMLDivElement | null>, width: number, camera: Camera, dispatch: Dispatch<ViewAction>, height = width) {
   const suppressClickUntil = useRef(0)
   const synchronizing = useRef(false)
   const controller = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null)
@@ -14,7 +14,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
     let active = true
     let touchStart: { x: number; y: number } | undefined
     const behavior = zoom<SVGSVGElement, unknown>()
-      .extent([[0, 0], [width, width]])
+      .extent([[0, 0], [width, height]])
       .scaleExtent([minZoom, maxZoom])
       .clickDistance(6)
       // Ordinary wheel scrolling belongs to the page. Buttons offer the same zoom without a modifier.
@@ -59,7 +59,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       svg.removeEventListener('touchend', end, true)
       svg.removeEventListener('click', click, true)
     }
-  }, [container, width, dispatch])
+  }, [container, width, height, dispatch])
 
   useLayoutEffect(() => {
     const svg = container.current!.querySelector('svg')!

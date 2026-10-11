@@ -66,7 +66,9 @@ test('long names reflow with doubled text and keyboard can leave a relative choo
   await page.addStyleTag({ content: 'html { font-size: 200%; }' })
   await expect(page.locator('#person-title')).toHaveText(name)
   expect(await page.locator('html').evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(320)
-  const open = page.getByRole('button', { name: /^Обрати: батьки/ })
+  await page.screenshot({ path: info.outputPath('large-text-320.png') })
+  await page.goto('/person/I12')
+  const open = page.getByRole('button', { name: /^Обрати: діти/ })
   await open.focus()
   await page.keyboard.press('Enter')
   const dialog = page.getByRole('dialog')
@@ -76,7 +78,6 @@ test('long names reflow with doubled text and keyboard can leave a relative choo
     await page.keyboard.press('Tab')
     expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true)
   }
-  await page.screenshot({ path: info.outputPath('large-text-320.png') })
   await page.keyboard.press('Escape')
   await expect(open).toBeFocused()
   await expect(dialog).toHaveCount(0)

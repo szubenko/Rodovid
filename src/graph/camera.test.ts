@@ -21,4 +21,12 @@ describe('camera zoom', () => {
     expect(smallest.zoom).toBe(0.05)
     expect(scaleCamera(smallest, 0.5)).toEqual(smallest)
   })
+  it('keeps the visible center fixed in a rectangular horizontal viewport', () => {
+    const center = { x: 0.5, y: 440 / 320 / 2 }
+    const camera = { zoom: 1, pan: { x: 0.1, y: 0.2 } }
+    const next = scaleCamera(camera, 1.25, center)
+    for (const axis of ['x', 'y'] as const) {
+      expect((center[axis] - next.pan[axis]) / next.zoom).toBeCloseTo((center[axis] - camera.pan[axis]) / camera.zoom)
+    }
+  })
 })

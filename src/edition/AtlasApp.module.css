@@ -50,9 +50,10 @@
 .primary { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 0.65rem; min-height: 46px; padding: 0.7rem 1rem; border: 1px solid #29664f; border-radius: 6px; background: #29664f; color: #fff; font-size: 0.75rem; text-decoration: none; }
 .primary:hover { background: #204f3e; }
 .primary svg:last-child { width: 16px; }
-.viewTabs { display: flex; align-items: center; gap: 1.5rem; border-bottom: 1px solid #dce4d5; margin-bottom: 1.4rem; }
+.viewTabs { display: flex; align-items: center; flex-wrap: wrap; column-gap: 1.5rem; border-bottom: 1px solid #dce4d5; margin-bottom: 1.4rem; }
 .viewTabs a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 50px; padding: 0.5rem 0.1rem; border-bottom: 2px solid transparent; color: var(--color-muted); font-size: 0.78rem; text-decoration: none; }
 .viewTabs a[aria-current] { border-bottom-color: #29664f; color: #29664f; }
+.viewTabs a svg { flex-shrink: 0; }
 .viewTabs > span { margin-left: auto; color: var(--color-muted); font-size: 0.7rem; }
 .mapSurface { padding: 1.5rem; border: 1px solid #dce4d5; border-radius: 10px; background: #fff; }
 .mapIntro { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid #edf0e9; }

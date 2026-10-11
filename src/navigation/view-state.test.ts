@@ -1,10 +1,29 @@
 import { describe, expect, it } from 'vitest'
 import { initialView, viewReducer, type ViewAction } from './view-state'
 
-const visit = (key: string, screen: 'tree' | 'person', personId: string, navigationType: 'POP' | 'PUSH' | 'REPLACE' = 'PUSH'): ViewAction =>
+const visit = (key: string, screen: 'tree' | 'horizontal' | 'person', personId: string, navigationType: 'POP' | 'PUSH' | 'REPLACE' = 'PUSH'): ViewAction =>
   ({ type: 'visit', key, route: { screen, personId }, navigationType })
 
 describe('view history', () => {
+  it('separates map cameras, retains horizontal mode through rooms and restores snapshots', () => {
+    let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' })
+    state = viewReducer(state, { type: 'map', settings: { zoom: 2, pan: { x: 0.2, y: -0.1 }, generations: 5 } })
+    const radial = state.current
+    state = viewReducer(state, visit('b', 'horizontal', 'I1'))
+    expect(state.current).toMatchObject({ mapScreen: 'horizontal', map: { zoom: 1, pan: { x: 0, y: 0 }, generations: 5 } })
+    state = viewReducer(state, { type: 'map', settings: { zoom: 1.5 } })
+    state = viewReducer(state, { type: 'relationship', id: 'evidence' })
+    const horizontal = state.current
+    state = viewReducer(state, visit('c', 'person', 'I1'))
+    expect(state.current.mapScreen).toBe('horizontal')
+    state = viewReducer(state, visit('b', 'horizontal', 'I1', 'POP'))
+    expect(state.current).toEqual(horizontal)
+    state = viewReducer(state, visit('a', 'tree', 'I1', 'POP'))
+    expect(state.current).toEqual(radial)
+    state = viewReducer(state, visit('d', 'horizontal', 'I2'))
+    expect(state.current).toMatchObject({ centerPersonId: 'I2', map: { generations: 3, zoom: 1 } })
+    expect(state.homePersonId).toBe('I1')
+  })
   it('resets the home view from its room and restores that room snapshot on Back', () => {
     let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' })
     state = viewReducer(state, { type: 'map', settings: { generations: 5, zoom: 2, pan: { x: 70, y: -30 }, collapsedAppearanceIds: ['branch'] } })

@@ -1,0 +1,28 @@
+.canvas { width: 100%; margin-inline: auto; overflow: clip; background: #fcfdfa; }
+.canvas svg { display: block; width: 100%; touch-action: none; user-select: none; cursor: grab; }
+.canvas svg:active { cursor: grabbing; }
+.card { fill: #fff; stroke: #cddbc7; stroke-width: 1.5; }
+.node { cursor: pointer; }
+.node[data-lane='parents'] .card { fill: #f3f7ee; }
+.node[data-lane='children'] .card { fill: #f0f4f8; stroke: #bdcddd; }
+.node[data-lane='spouses'] .card { fill: #fbf4ee; stroke: #dec6b3; }
+.node[data-center='true'] .card { fill: #e5efdf; stroke: #29664f; stroke-width: 2.5; }
+.node:hover .card { stroke: #29664f; stroke-width: 3; }
+.node:focus-visible { outline: none; }
+.node:focus-visible .card { stroke: #29664f; stroke-width: 4; stroke-dasharray: 6 3; }
+.label { fill: #243c2c; font-family: system-ui, sans-serif; pointer-events: none; }
+.date { fill: #596850; font-family: system-ui, sans-serif; pointer-events: none; }
+.marker { fill: #5f7957; font: 11px system-ui, sans-serif; pointer-events: none; }
+.connection { cursor: pointer; }
+.line { fill: none; stroke: #90a585; stroke-width: 1.5; pointer-events: none; }
+.connection[data-uncertain='true'] .line { stroke-dasharray: 5 4; }
+.hit { fill: none; stroke: transparent; stroke-width: 24; pointer-events: stroke; vector-effect: non-scaling-stroke; }
+.connection[data-selected='true'] .line, .connection:hover .line, .connection:focus-visible .line { stroke: #29664f; stroke-width: 3; }
+.connection:focus-visible { outline: none; }
+@media (forced-colors: active) {
+  .node[data-lane] .card { fill: Canvas; stroke: CanvasText; }
+  .node[data-center='true'] .card, .node:focus-visible .card { stroke: Highlight; }
+  .label, .date, .marker { fill: CanvasText; }
+  .line { stroke: CanvasText; }
+  .connection[data-selected='true'] .line, .connection:focus-visible .line { stroke: Highlight; }
+}

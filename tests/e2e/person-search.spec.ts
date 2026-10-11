@@ -23,11 +23,9 @@ test('finds and centers all 45 people regardless of the visible generation', asy
   }
 })
 
-test('hidden results restore camera, collapsed branches and depth through Back and home', async ({ page }) => {
+test('hidden results restore camera and depth through Back and home', async ({ page }) => {
   await page.goto('/tree/I1')
   await page.getByLabel('Покоління', { exact: true }).selectOption('6')
-  await page.getByText(/^Гілки карти ·/).click()
-  await page.locator('[data-branch-appearance]').nth(1).getByRole('button').click()
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
   await dragMap(page, -40, 0)
   const camera = page.locator('[data-layer="camera"]')

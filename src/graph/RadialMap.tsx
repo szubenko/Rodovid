@@ -1,5 +1,4 @@
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react'
-import { ViewLink as Link } from '../navigation/ViewLink'
 import { personName } from '../data/load-family'
 import { confidenceLabels } from '../data/schema'
 import { useFamily, useView } from '../navigation/context'
@@ -70,16 +69,10 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   useMapCamera(container, width, mapSettings, dispatch)
   useMapTransition(container, layout, personId, renderedCamera)
   const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
-  const visiblePeople = [...new Set(layout.nodes.map((node) => node.personId))]
   const relations = [...new Set(layout.edges.map((edge) => edge.relationshipId))].map((id) => graph.relationships.get(id)!)
   const selected = relations.find((relation) => relation.id === state.current.selectedRelationshipId)
   const selectRelation = (id: string) => dispatch({ type: 'relationship', id })
   const changeScale = (factor: number) => dispatch({ type: 'map', settings: scaleCamera(mapSettings, factor) })
-  const toggleBranch = (id: string) => dispatch({ type: 'map', settings: { collapsedAppearanceIds:
-    collapsedAppearanceIds.includes(id) ? collapsedAppearanceIds.filter((entry) => entry !== id) : [...collapsedAppearanceIds, id] } })
-  const expandedIds = new Set(layout.nodes.map((node) => node.parentAppearanceId))
-  const branches = layout.nodes.filter((node) => !node.cycle && (expandedIds.has(node.appearanceId)
-    || node.hiddenConnections.some((connection) => connection.reason === 'collapsed' || connection.reason === 'depth')))
   const savePng = async () => {
     if (!svg.current) return
     setExportState('exporting')
@@ -92,7 +85,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   }
 
   return <section className={styles.map} aria-label="Радіальна карта родини">
-    <p className={styles.hint}>Натисніть ім’я, щоб змінити центр. Зв’язки та їхні докази доступні під картою.</p>
+    <p className={styles.hint}>Натисніть ім’я, щоб змінити центр, або лінію зв’язку, щоб побачити її докази.</p>
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
       <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
@@ -192,56 +185,16 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
         </g>
       </svg>
     </div>
-    <details className={styles.details}>
-      <summary>Гілки карти · згорнуто {collapsedAppearanceIds.length}</summary>
-      <p className={styles.hint}>Згортання приховує продовження конкретного сектора. Люди залишаються в покажчику. Для бічних родичів виберіть людину новим центром.</p>
-      {collapsedAppearanceIds.length > 0 && <button onClick={() => dispatch({ type: 'map', settings: { collapsedAppearanceIds: [] } })}>Розгорнути всі гілки</button>}
-      <div className={styles.relationships}>
-        {branches.map((node, index) => {
-          const collapsed = collapsedAppearanceIds.includes(node.appearanceId)
-          const parent = node.parentAppearanceId ? nodes.get(node.parentAppearanceId) : undefined
-          const depthLimited = node.hiddenConnections.some((connection) => connection.reason === 'depth')
-          return <div className={styles.branch} key={node.appearanceId} data-branch-appearance={node.appearanceId}>
-            <strong>{index + 1}. {node.fullLabel}</strong>
-            <span>{node.lane === 'center' ? 'Від центру' : node.lane === 'parents' ? 'Предки' : 'Нащадки'}{parent ? ` · через ${parent.fullLabel}` : ''}</span>
-            <button aria-label={`${collapsed ? 'Розгорнути' : 'Згорнути'} гілку ${index + 1}: ${node.fullLabel}`} aria-expanded={!collapsed} onClick={() => toggleBranch(node.appearanceId)}>{collapsed ? 'Розгорнути гілку' : 'Згорнути гілку'}</button>
-            {(collapsed || depthLimited) && <span>↗ Є приховані родичі{depthLimited ? ' — збільште кількість поколінь' : ''}.</span>}
-          </div>
-        })}
-        {branches.length === 0 && <p>Для цього показу немає гілок для згортання.</p>}
-      </div>
-    </details>
     {projection.truncated && <p role="status">Показано частину гілок. Інші люди доступні в покажчику.</p>}
-    <div className={styles.selection} aria-live="polite" aria-atomic="true">
-      {selected ? <div data-testid="relationship-details" data-relationship-id={selected.id}>
+    <div aria-live="polite" aria-atomic="true">
+      {selected && <div className={styles.selection} data-testid="relationship-details" data-relationship-id={selected.id}>
         <h3>Вибраний зв’язок · {relations.indexOf(selected) + 1}</h3>
         <p>{relationshipName(family, selected)}</p>
         <p><strong>{confidenceLabels[selected.confidence]}</strong>{selected.reviewStatus === 'disputed' ? ' · Потребує уточнення' : ''}</p>
         {selected.explanation && <p>{selected.explanation}</p>}
         <details><summary>Докази вибраного зв’язку</summary><EvidenceForTarget target={{ kind: 'relationship', id: selected.id }} /></details>
         <button onClick={() => dispatch({ type: 'relationship', id: null })}>Зняти вибір зв’язку</button>
-      </div> : <p>Виберіть лінію або запис у списку зв’язків нижче, щоб побачити людей та наявну оцінку.</p>}
+      </div>}
     </div>
-    <details className={styles.details} open>
-      <summary>Повні імена на карті · {visiblePeople.length}</summary>
-      <div className={styles.people}>
-        {visiblePeople.map((id) => <Link key={id} to={`/tree/${id}`} aria-current={id === personId ? 'page' : undefined}>
-          <strong>{labels.get(id)}</strong><span>{years.get(id)}</span>
-          {layout.nodes.some((node) => node.personId === id && node.hiddenConnections.length > 0) && <span>↗ Є інші родичі</span>}
-        </Link>)}
-      </div>
-    </details>
-    <details className={styles.details}>
-      <summary>Зв’язки на карті · {relations.length}</summary>
-      <p className={styles.hint}>Кожен запис відповідає окремому зв’язку. Повторні сімейні записи збережено.</p>
-      <div className={styles.relationships}>
-        {relations.map((relation, index) => <button key={relation.id} data-relationship-id={relation.id}
-          aria-pressed={selected?.id === relation.id} onClick={() => selectRelation(relation.id)}>
-          <strong>{index + 1}. {relationshipName(family, relation)}</strong>
-          <span>{confidenceLabels[relation.confidence]}{relation.reviewStatus === 'disputed' ? ' · Потребує уточнення' : ''}</span>
-        </button>)}
-        {relations.length === 0 && <p>Для цього показу зв’язків немає.</p>}
-      </div>
-    </details>
   </section>
 }

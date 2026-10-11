@@ -11,8 +11,6 @@
 .controls select { min-height: 44px; padding: 0.5rem; font: inherit; color: var(--color-text); background: #fff8e9; border: 1px solid #bea47f; border-radius: 0.25rem; }
 .controls button:disabled { cursor: default; opacity: 0.5; }
 .exportStatus { margin: 0.5rem 0; color: var(--color-muted); }
-.branch { display: grid; gap: 0.5rem; padding: 0.75rem; border: 1px solid #d7c8b3; overflow-wrap: anywhere; }
-.branch span { font-size: 0.9rem; color: var(--color-muted); }
 .node { cursor: pointer; }
 .node, .empty { --branch-color: #55c4db; }
 [data-tone='lime'] { --branch-color: #b9d51f; }
@@ -46,16 +44,8 @@
 .selection h3 { margin: 0 0 0.75rem; font: 1.35rem var(--font-heading); }
 .selection p + p { margin-top: 0.5rem; }
 .selection button { margin-top: 0.75rem; }
-.details { margin-top: 1rem; border-bottom: 1px solid #d7c8b3; padding-bottom: 0.75rem; }
-.details summary { padding: 0.75rem 0.25rem; min-height: 44px; cursor: pointer; }
-.people, .relationships { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 0.5rem; }
-.people a, .map button { min-height: 44px; border: 1px solid #bea47f; border-radius: 0.25rem; padding: 0.75rem; color: var(--color-text); background: #fff8e9; font: inherit; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
-.people a { text-decoration: none; }
-.people a[aria-current='page'] { background: #e7d3a9; }
-.people a:hover, .map button:hover { background: #ecddc7; }
-.people strong, .people span, .relationships strong, .relationships span { display: block; line-height: 1.5; }
-.people span, .relationships span { font-size: 0.9rem; color: var(--color-muted); }
-.relationships button[aria-pressed='true'] { border: 3px solid var(--color-accent); padding: calc(0.75rem - 2px); }
+.map button { min-height: 44px; border: 1px solid #bea47f; border-radius: 0.25rem; padding: 0.75rem; color: var(--color-text); background: #fff8e9; font: inherit; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+.map button:hover { background: #ecddc7; }
 @media (forced-colors: active) {
   .sector { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .sector, .node:focus-visible .sector { stroke: Highlight; }

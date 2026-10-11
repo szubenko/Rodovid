@@ -8,7 +8,6 @@ import { buildPeopleIndex, searchPeople } from '../search/people'
 import { lifeYears } from '../graph/presentation'
 import { RadialMap } from '../graph/RadialMap'
 import { PersonRoom } from '../room/PersonRoom'
-import { KinshipExplanation } from '../kinship/KinshipExplanation'
 import { MotionControls, MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
 import styles from './AtlasApp.module.css'
@@ -97,7 +96,6 @@ function PersonView({ screen }: { screen: 'tree' | 'person' }) {
         <RadialMap personId={personId} fitToViewport />
       </> : <PersonRoom key={personId} personId={personId} />}
     </div>
-    <details className={styles.kinship}><summary>Як ми пов’язані · спорідненість і джерела</summary><KinshipExplanation personId={personId} /></details>
   </>
 }
 

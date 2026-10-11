@@ -106,20 +106,16 @@ test('touch or mouse selects a concrete line and keyboard can clear or select it
 test('disputed roles and duplicate families keep distinct selectable relationships', async ({ page }) => {
   for (const personId of ['I8', 'I35']) {
     await page.goto(`/tree/${personId}`)
-    await page.getByText(/^Зв’язки на карті ·/).click()
-    const buttons = page.locator('button[data-relationship-id]')
-    const expected = [...new Set(projectFamily(graph, personId, { generations: 12 }).edges.map((edge) => edge.relationshipId))]
+    const buttons = page.locator('svg [data-relationship-id]')
+    const expected = projectFamily(graph, personId, { generations: 12 }).edges
     await expect(buttons).toHaveCount(expected.length)
     for (const button of await buttons.all()) {
       const id = await button.getAttribute('data-relationship-id')
-      await button.click()
+      await button.press('Enter')
       await expect(page.getByTestId('relationship-details')).toHaveAttribute('data-relationship-id', id!)
       await expect(button).toHaveAttribute('aria-pressed', 'true')
       const relation = graph.relationships.get(id!)!
       if (relation.explanation) await expect(page.getByTestId('relationship-details')).toContainText(relation.explanation)
-      const size = await button.boundingBox()
-      expect(size!.height).toBeGreaterThanOrEqual(44)
-      expect(size!.width).toBeGreaterThanOrEqual(44)
     }
   }
 })
@@ -149,8 +145,6 @@ for (const width of [320, 1024]) {
         const years = lifeYears(family, label.id)
         expect(label.date).toBe(years === 'Роки життя невідомі' ? '' : years)
       }
-      const names = page.getByRole('region', { name: 'Радіальна карта родини', exact: true }).locator('details[open] a')
-      await expect(names).toHaveCount(new Set(projection.appearances.map((node) => node.personId)).size)
       if (['I1', 'I9', 'I20'].includes(person.id)) {
         await page.screenshot({ path: testInfo.outputPath(`${person.id}-${width}.png`), fullPage: true })
         await page.locator('svg').screenshot({ path: testInfo.outputPath(`${person.id}-${width}-map.png`) })
@@ -168,6 +162,5 @@ test('a person without names, dates, photos or relationships remains usable', as
   await expect(page.locator('svg [data-person-id]')).toHaveCount(1)
   await expect(page.locator('svg [data-center="true"]')).toHaveAccessibleName(/Ім’я невідоме. Роки життя невідомі/)
   await expect(page.locator('svg')).not.toContainText(/undefined|null|NaN/)
-  await page.getByText(/^Зв’язки на карті ·/).click()
-  await expect(page.getByText('Для цього показу зв’язків немає.')).toBeVisible()
+  await expect(page.locator('svg [data-relationship-id]')).toHaveCount(0)
 })

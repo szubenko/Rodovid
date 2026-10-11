@@ -22,7 +22,6 @@ const expectFitted = async (page: Page) => {
     })
   })).toBe(true)
 }
-const openBranches = (page: Page) => page.getByText(/^Гілки карти ·/).click()
 
 test('buttons zoom around center, pan, fit and remain within limits using the keyboard', async ({ page }) => {
   await page.goto('/tree/I1')
@@ -79,42 +78,25 @@ test('downloads the entire diagram including offscreen branches independently of
   await expect(page.getByText('PNG збережено у файл.', { exact: true })).toBeVisible()
 })
 
-test('collapse is reversible and depth never removes people from the full index', async ({ page }) => {
+test('depth is reversible and never removes people from the full index', async ({ page }) => {
   await page.goto('/tree/I1')
   await generations(page).selectOption('6')
   const fullCount = await nodes(page).count()
   expect(fullCount).toBeGreaterThan(5)
-  await openBranches(page)
-  const root = page.locator('[data-branch-appearance="appearance-2:I1"]')
-  await root.getByRole('button').click()
-  await expect(nodes(page)).toHaveCount(1)
-  await expect(root).toContainText('Є приховані родичі')
-  await expect(root.getByRole('button')).toHaveAttribute('aria-expanded', 'false')
-  await root.getByRole('button').click()
-  await expect(nodes(page)).toHaveCount(fullCount)
-  // Collapse a parent's continuation; the parent itself remains available for expanding it.
-  const branch = page.locator('[data-branch-appearance]').nth(1)
-  const id = await branch.getAttribute('data-branch-appearance')
-  await branch.getByRole('button').click()
-  expect(await nodes(page).count()).toBeLessThan(fullCount)
-  await expect(page.locator(`svg [data-appearance-id="${id}"]`)).toHaveCount(1)
   await generations(page).selectOption('1')
   await expect(nodes(page)).toHaveCount(4)
   await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(45)
   await generations(page).selectOption('6')
-  await page.getByRole('button', { name: 'Розгорнути всі гілки' }).click()
   await expect(nodes(page)).toHaveCount(fullCount)
   await page.locator('ul a[href="/tree/I25"]').click()
   await expect(page).toHaveURL(/\/tree\/I25$/)
 })
 
-test('Back, Forward, room return and home restore the correct camera, depth and branches', async ({ page }) => {
+test('Back, Forward, room return and home restore the correct camera and depth', async ({ page }) => {
   await page.goto('/tree/I1')
   await generations(page).selectOption('6')
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
   await dragMap(page, -40, 0)
-  await openBranches(page)
-  await page.locator('[data-branch-appearance]').nth(1).getByRole('button').click()
   const count = await nodes(page).count()
   const saved = await camera(page).getAttribute('transform')
   await page.getByRole('link', { name: 'Увійти до кімнати', exact: true }).click()
@@ -184,7 +166,6 @@ test('resize retains normalized position and fit stays reachable at 320px', asyn
   expect(await page.locator('html').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true)
   await fit(page)
   await expectFitted(page)
-  await openBranches(page)
   await page.screenshot({ path: testInfo.outputPath('controls-320.png'), fullPage: true })
 })
 

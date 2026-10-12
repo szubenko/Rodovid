@@ -69,7 +69,7 @@ test('горизонтальна вкладка: камера, докази, к�
   await expect(svg).toBeVisible()
   const center = svg.locator('[data-center="true"]')
   const labelSize = await center.locator('text').first().evaluate(element => parseFloat(getComputedStyle(element).fontSize))
-  expect(labelSize).toBeGreaterThanOrEqual(14)
+  expect(labelSize).toBeGreaterThanOrEqual(20)
   await expect.poll(() => center.evaluate(element => {
     const viewport = element.closest('svg')!.getBoundingClientRect()
     const box = element.getBoundingClientRect()

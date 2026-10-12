@@ -59,7 +59,10 @@ test('home renders the approved real projection and supports keyboard sector nav
   await expect(map.locator('[data-center="true"]')).toContainText('нар. 1987')
   expect(await map.locator('svg [data-label-kind]').evaluateAll((elements) =>
     new Set(elements.map((element) => getComputedStyle(element).fontSize)).size)).toBe(1)
-  await expect(map.locator('svg [data-label-kind]').first()).toHaveCSS('font-size', '14px')
+  await expect(map.locator('svg [data-label-kind]').first()).toHaveCSS('font-size', '20px')
+  const lifespan = map.locator('svg [data-person-id="I28"] [data-label-kind="date"]')
+  await expect(lifespan).toHaveCount(1)
+  await expect(lifespan).toHaveText('1932 - 1988')
   await expect(map.locator('img, image')).toHaveCount(0)
   const node = map.locator('svg [data-person-id="I2"]')
   await node.focus()

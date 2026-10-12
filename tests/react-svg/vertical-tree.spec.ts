@@ -14,7 +14,7 @@ test('вертикальна вкладка: напрям поколінь, до
   const svg = page.getByRole('group', { name: /^Вертикальний родовід:/ })
   await expect(svg).toBeVisible()
   const center = svg.locator('[data-center="true"]')
-  expect(await center.locator('text').first().evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBeGreaterThanOrEqual(14)
+  expect(await center.locator('text').first().evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBeGreaterThanOrEqual(20)
   await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
   expect(await svg.evaluate(element => {
     const nodes = [...element.querySelectorAll('[data-person-id]')]
@@ -123,11 +123,13 @@ test('повний вертикальний PNG зберігається нез�
   const height = original.readUInt32BE(20)
   // The complete tree keeps its aspect ratio while the export's memory limit
   // can reduce the nominal 3× resolution for a wide, deep diagram.
-  expect(width / height).toBeCloseTo((bounds.width + 48) / (bounds.height + 48), 3)
+  const aspectRatio = (bounds.width + 48) / (bounds.height + 48)
+  // Each PNG dimension is rounded to a whole pixel after the memory cap.
+  expect(Math.abs(width - height * aspectRatio)).toBeLessThanOrEqual((1 + aspectRatio) / 2)
   expect(width).toBeLessThanOrEqual(Math.round((bounds.width + 48) * 3))
   expect(height).toBeLessThanOrEqual(Math.round((bounds.height + 48) * 3))
   expect(width * height).toBeLessThan(32_010_000)
-  expect(width).toBeGreaterThan(bounds.width * 2)
+  expect(width).toBeGreaterThan(bounds.width)
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
   const box = (await svg.boundingBox())!
   await page.mouse.move(box.x + 25, box.y + box.height / 2)

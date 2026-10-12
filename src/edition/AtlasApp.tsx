@@ -102,7 +102,7 @@ function PersonView({ screen }: { screen: 'tree' | 'horizontal' | 'vertical' | '
         <div className={styles.mapIntro}><p className={styles.eyebrow}>Кожна людина — центр свого світу</p>
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
-          : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} fitToViewport />}
+          : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
       </> : <PersonRoom key={personId} personId={personId} />}
     </div>
   </>
@@ -156,7 +156,7 @@ function MobileDirectory() {
 }
 
 function Providers({ children }: { children: ReactNode }) {
-  return <FamilyProvider><ViewProvider><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
+  return <FamilyProvider><ViewProvider initialRadialZoom={0.7}><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
 }
 
 export function AtlasApp() { return <Providers><Workspace /></Providers> }

@@ -29,14 +29,14 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   const prefix = useId()
   const measureText = useMemo(() => {
     // Each context keeps one font; measurement never mutates a memoized object.
-    const contexts = new Map<string, CanvasRenderingContext2D | null>()
-    for (const [size, serif] of [[12, false], [14, false], [18, false], [20, true], [32, true]] as const) {
+    const contexts = new Map<number, CanvasRenderingContext2D | null>()
+    for (const size of [20]) {
       const context = document.createElement('canvas').getContext('2d')
-      if (context) context.font = `${size}px ${serif ? 'Georgia, "Times New Roman", serif' : 'system-ui, sans-serif'}`
-      contexts.set(`${size}-${serif}`, context)
+      if (context) context.font = `${size}px system-ui, sans-serif`
+      contexts.set(size, context)
     }
-    return (text: string, size: number, serif = size === 20 || size === 32) => {
-      return contexts.get(`${size}-${serif}`)?.measureText(text).width ?? Array.from(text).length * size
+    return (text: string, size: number) => {
+      return contexts.get(size)?.measureText(text).width ?? Array.from(text).length * size
     }
   }, [])
   useEffect(() => {
@@ -58,7 +58,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   const generations = Math.min(mapSettings.generations, maxGenerations)
   const projection = useMemo(() => projectFamily(graph, personId, { generations: Math.min(12, generations + 1), collapsedAppearanceIds }), [graph, personId, generations, collapsedAppearanceIds])
   const layout = useMemo(() => layoutRadial(projection, { width, height: width, labels, dates, measureText,
-    fontSize: 14, fitToViewport }), [projection, width, labels, dates, measureText, fitToViewport])
+    fontSize: 20, fitToViewport }), [projection, width, labels, dates, measureText, fitToViewport])
   const empty = useMemo(() => emptySectors(layout, projection.generations - 1), [layout, projection.generations])
   const boundsScale = Math.max(1, layout.fitScale)
   const mapHeight = Math.min(width, Math.max(width * 0.6, layout.center.y + layout.centerRadius * boundsScale + 20,
@@ -89,13 +89,14 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   }
 
   return <section className={styles.map} aria-label="Радіальна карта родини">
-    <p className={styles.hint}>Натисніть ім’я, щоб змінити центр, або лінію зв’язку, щоб побачити її докази.</p>
+    <p className={styles.hint}>Натисніть ім’я, щоб змінити центр, або лінію зв’язку, щоб побачити її докази. «Вмістити карту» показує все коло, «До центру» повертає читабельні підписи.</p>
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
       <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={() => dispatch({ type: 'map', settings: scaleCamera({ zoom: 1, pan: { x: 0, y: 0 } }, layout.fitScale) })}>Вмістити карту</button>
+      <button onClick={() => dispatch({ type: 'map', settings: { zoom: 1, pan: { x: 0, y: 0 } } })}>До центру</button>
       <button onClick={() => { void savePng() }} disabled={exportState === 'exporting'}
         title="Зберегти всю поточну діаграму, включно з частинами за межами екрана">
         {exportState === 'exporting' ? 'Готуємо PNG…' : 'Зберегти PNG'}

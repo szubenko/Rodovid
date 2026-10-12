@@ -27,7 +27,7 @@
 .countryKey i { width: 1rem; height: 1rem; border: 1px solid #86928f; border-radius: 3px; }
 .emptyLabel { fill: #6d5c48; font-family: system-ui, sans-serif; pointer-events: none; }
 .node:hover .sector { stroke: #572019; stroke-width: 3; }
-.node:focus-visible { outline: none; }
+.node:focus { outline: none; }
 .node:focus-visible .sector { stroke: #572019; stroke-width: 5; stroke-dasharray: 6 3; }
 .label, .date, .hidden { fill: #14212b; pointer-events: none; }
 .label { font-family: system-ui, sans-serif; }
@@ -40,7 +40,7 @@
 .connection[data-selected='true'] .line { stroke: #ab3024; stroke-width: 6; }
 .connection:hover .line { stroke: #ab3024; opacity: 1; }
 .connection[data-selected='true'] .line, .connection:focus-visible .line { opacity: 1; }
-.connection:focus-visible { outline: none; }
+.connection:focus { outline: none; }
 .connection:focus-visible .hit { stroke: #8c3d3240; }
 .connection:focus-visible .line { stroke: #572019; stroke-width: 5; }
 .legend { text-align: center; margin-bottom: 1.25rem; }

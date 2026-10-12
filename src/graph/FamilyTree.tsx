@@ -39,7 +39,7 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
   const dates = useMemo(() => new Map(family.people.map(person => [person.id, lifeYears(family, person.id)])), [family])
   const measure = useMemo(() => {
     const contexts = new Map<number, CanvasRenderingContext2D | null>()
-    for (const size of [12, 14]) {
+    for (const size of [18, 20]) {
       const context = document.createElement('canvas').getContext('2d')
       if (context) context.font = `${size}px system-ui, sans-serif`
       contexts.set(size, context)

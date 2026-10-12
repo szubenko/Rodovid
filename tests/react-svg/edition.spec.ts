@@ -28,6 +28,19 @@ async function directory(page: Page, mobile: boolean) {
   return page.getByRole('complementary').getByRole('region', { name: 'Люди родоводу' }).filter({ visible: true })
 }
 
+test('батьківські сектори порівну, роки без BET/AND і віддалений старт', async ({ page }, testInfo) => {
+  await page.goto('/tree/I5')
+  const svg = page.getByRole('group', { name: /^Родина:/ })
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('70%')
+  await expect(svg.locator('[data-person-id="I9"] [data-label-kind="date"]')).toHaveText('1900 - 1932–1933')
+  const parents = svg.locator('[data-person-id="I12"][data-ring="2"] > path:first-of-type, [data-person-id="I11"][data-ring="2"] > path:first-of-type')
+  await expect(parents).toHaveCount(2)
+  const lengths = await parents.evaluateAll(paths => paths.map(path => (path as SVGPathElement).getTotalLength()))
+  expect(lengths[0]! / lengths[1]!).toBeCloseTo(1, 3)
+  expect((await svg.locator('[data-label-kind="date"]').allTextContents()).join(' ')).not.toMatch(/\b(?:BET|AND|FROM|TO)\b/)
+  await svg.screenshot({ path: testInfo.outputPath('equal-parent-halves.png') })
+})
+
 test('Окремий атлас: пошук, кімната, історія і домашня особа', async ({ page, isMobile }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
@@ -37,6 +50,13 @@ test('Окремий атлас: пошук, кімната, історія і �
   await expect(back).toBeVisible()
   await expect(back).toBeDisabled()
   await expect(page.getByRole('group', { name: /^Родина:/ })).toBeVisible()
+  const readableSize = () => page.getByRole('group', { name: /^Родина:/ }).locator('[data-center="true"] text').first().evaluate(text => {
+    const matrix = (text as SVGGraphicsElement).getScreenCTM()!
+    return parseFloat(getComputedStyle(text).fontSize) * Math.hypot(matrix.a, matrix.b)
+  })
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('70%')
+  expect(await readableSize()).toBeGreaterThanOrEqual(13.5)
+  await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
   const ids = await page.locator('[id]').evaluateAll(elements => elements.map(element => element.id))
   expect(new Set(ids).size).toBe(ids.length)
   await expect.poll(async () => page.getByRole('group', { name: /^Родина:/ }).evaluate(svg => {
@@ -48,6 +68,9 @@ test('Окремий атлас: пошук, кімната, історія і �
     })
   })).toBe(true)
   await page.screenshot({ path: `tmp/react-svg-${isMobile ? 'mobile' : 'desktop'}.png`, fullPage: true })
+  await page.getByRole('button', { name: 'До центру', exact: true }).click()
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
+  expect(await readableSize()).toBeGreaterThanOrEqual(19.5)
   const people = await directory(page, isMobile)
   await people.getByRole('searchbox', { name: 'Пошук людей' }).fill('Зубенко')
   const candidate = people.locator('a:not([aria-current])').first()
@@ -61,6 +84,7 @@ test('Окремий атлас: пошук, кімната, історія і �
   await expect(page.getByRole('heading', { name: 'Життєпис', exact: true })).toBeVisible()
   await page.getByRole('link', { name: 'Показати на карті', exact: true }).click()
   await expect(page.getByRole('group', { name: /^Родина:/ })).toBeVisible()
+  await page.getByRole('button', { name: 'До центру', exact: true }).click()
   await page.getByRole('button', { name: 'Збільшити масштаб' }).click()
   await expect(page.getByLabel('Масштаб карти')).toHaveText('125%')
   await dragMap(page, 40, 0)
@@ -68,7 +92,7 @@ test('Окремий атлас: пошук, кімната, історія і �
   const transform = await camera.getAttribute('transform')
   await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'До мене' }).click()
   await expect(page).toHaveURL(/\/tree\/I1$/)
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('70%')
   await expect(back).toBeEnabled()
   await back.click()
   await expect(page).toHaveURL(target!)

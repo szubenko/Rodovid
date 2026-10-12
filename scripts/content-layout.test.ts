@@ -20,15 +20,20 @@ const dates = new Map(family.people.map((person) => {
 it.each([320, 1024])('fits every full name and date at a readable size inside the allocated sector at %s px', (width) => {
   for (const person of family.people) {
     const projection = projectFamily(graph, person.id, { generations: availableGenerations(graph, person.id) + 1 })
-    const layout = layoutRadial(projection, { width, height: width, labels, dates, fontSize: 14, fitToViewport: false })
+    const layout = layoutRadial(projection, { width, height: width, labels, dates, fontSize: 20, fitToViewport: false })
     expect(new Set(layout.nodes.flatMap((node) => node.text.lines.map((line) => line.fontSize))).size).toBe(1)
-    expect(layout.nodes[0]!.fontSize).toBe(14)
+    expect(layout.nodes[0]!.fontSize).toBe(20)
     expect(layout.fitScale).toBeGreaterThanOrEqual(0.05)
     expect(layout.ringRadii.at(-1)! * layout.fitScale).toBeCloseTo(width / 2 - 16)
     for (const node of layout.nodes) {
       expect(node.text.lines.filter((line) => !line.date).map((line) => line.text).join(' ')).toBe(labels.get(node.personId))
       expect(node.text.lines.filter((line) => line.date).map((line) => line.text).join(' · ')).toBe(dates.get(node.personId))
       expect(node.labelTruncated).toBe(false)
+      if (node.lane === 'parents') {
+        const parent = layout.nodes.find(parent => parent.appearanceId === node.parentAppearanceId)!
+        const span = parent.lane === 'center' ? 216 : parent.endAngle - parent.startAngle
+        expect(node.endAngle - node.startAngle).toBeCloseTo(span / node.slotCount)
+      }
       if (node.labelOrientation === 'radial') {
         const pad = 12 * layout.textScale
         const end = Math.sqrt((node.outerRadius - pad) ** 2 - (node.text.height / 2) ** 2)
@@ -53,7 +58,7 @@ it.each([320, 1024])('fits every full name and date at a readable size inside th
 
 it('uses the same size for the center, ancestors, spouse and dates', () => {
   const projection = projectFamily(graph, 'I1', { generations: availableGenerations(graph, 'I1') + 1 })
-  const layout = layoutRadial(projection, { width: 1024, height: 1024, labels, dates, fontSize: 18 })
+  const layout = layoutRadial(projection, { width: 1024, height: 1024, labels, dates, fontSize: 20 })
   for (const node of layout.nodes) for (const line of node.text.lines) {
     expect(line.fontSize).toBe(layout.nodes[0]!.fontSize)
   }

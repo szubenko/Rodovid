@@ -64,7 +64,7 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
   }
   const { width, height } = options
   const center = { x: width / 2, y: height / 2 }
-  const fontSize = options.fontSize ?? (Math.min(width, height) < 550 ? 12 : 14)
+  const fontSize = options.fontSize ?? 20
   if (!Number.isFinite(fontSize) || fontSize < 12 || fontSize > 32) throw new RangeError('Font size must be 12–32 pixels')
   const measure = (text: string, size: number) => {
     const result = (options.measureText ?? estimateTextWidth)(text, size)
@@ -100,9 +100,9 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     const siblings = children.get(node.parentAppearanceId + '/' + node.lane)!
     const slots = Array.from({ length: node.slotCount }, (_, index) => {
       const child = siblings.find((entry) => entry.slotIndex === index)
-      // Preserve paternal/maternal halves at the root. Deeper branches share
-      // space according to their actual contents, including small unknown slots.
-      return atRoot && node.lane === 'parents' ? 1 : child ? weight(child) : 0.25
+      // Each ancestral branch has equal parent slots at every generation,
+      // including the empty half when only one parent is known.
+      return node.lane === 'parents' ? 1 : child ? weight(child) : 0.25
     })
     const unit = (end - start) / slots.reduce((sum, value) => sum + value, 0)
     const startAngle = start + slots.slice(0, node.slotIndex).reduce((sum, value) => sum + value, 0) * unit

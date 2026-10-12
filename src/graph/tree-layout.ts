@@ -11,9 +11,9 @@ export function layoutTree(projection: Projection, labels: ReadonlyMap<string, s
   const padding = 28
   const gap = 24
   const blocks = new Map(projection.appearances.map(node => [node.appearanceId,
-    labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', 14, 12, measure, 190)]))
-  const cardWidth = Math.max(224, ...[...blocks.values()].map(block => block.width + 40))
-  const cardHeight = Math.max(104, ...[...blocks.values()].map(block => block.height + 40))
+    labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', 20, 18, measure, 264)]))
+  const cardWidth = Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
+  const cardHeight = Math.max(128, ...[...blocks.values()].map(block => block.height + 40))
   const vertical = orientation === 'vertical'
   const step = (vertical ? cardHeight : cardWidth) + 80
   const breadthStep = (vertical ? cardWidth : cardHeight) + gap

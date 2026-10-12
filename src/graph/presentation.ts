@@ -5,14 +5,20 @@ import { radialPoint, type LayoutNode, type Point } from './layout'
 
 export function dateYears(date: HistoricalDate): string {
   if (date.kind === 'unknown') return date.raw ?? ''
-  if (date.kind !== 'point' || !['unspecified', 'gregorian'].includes(date.calendar)) return date.raw
+  if (!['unspecified', 'gregorian'].includes(date.calendar)) return date.raw
+  if (date.kind === 'range') return date.from.year === date.to.year ? String(date.from.year) : `${date.from.year}–${date.to.year}`
+  if (date.kind === 'period') {
+    if (date.from && date.to) return `${date.from.year}–${date.to.year}`
+    return date.from ? `від ${date.from.year}` : `до ${date.to!.year}`
+  }
+  if (date.kind !== 'point') return date.raw
   const prefixes = { exact: '', about: 'бл. ', estimated: 'орієнт. ', calculated: 'обчисл. ', before: 'до ', after: 'після ' }
   return `${prefixes[date.qualifier]}${date.value.year}`
 }
 
 /** Missing death dates never imply that a person is alive. Keep alternative dates visible. */
 export function lifeYears(family: FamilyData, personId: string): string {
-  return (['birth', 'death'] as const).flatMap((kind) => {
+  const years = (['birth', 'death'] as const).flatMap((kind) => {
     const events = family.events.filter((event) => event.kind === kind
       && event.participants.some((person) => person.personId === personId && person.role === 'subject'))
     const claims = family.claims.filter((claim) => claim.field === 'date'
@@ -21,8 +27,11 @@ export function lifeYears(family: FamilyData, personId: string): string {
       ?? claims.find((claim) => claim.field === 'date' && dateYears(claim.value))
     if (primary?.field !== 'date') return []
     const alternatives = new Set(claims.flatMap((claim) => claim.field === 'date' && dateYears(claim.value) ? [dateYears(claim.value)] : []))
-    return [`${kind === 'birth' ? 'нар.' : 'пом.'} ${dateYears(primary.value)}${alternatives.size > 1 ? ' (є інші дати)' : ''}`]
-  }).join(' · ') || 'Роки життя невідомі'
+    return [{ kind, value: `${dateYears(primary.value)}${alternatives.size > 1 ? ' (є інші дати)' : ''}` }]
+  })
+  if (years.length === 2) return years.map(year => year.value).join(' - ')
+  const year = years[0]
+  return year ? `${year.kind === 'birth' ? 'нар.' : 'пом.'} ${year.value}` : 'Роки життя невідомі'
 }
 
 export function relationshipName(family: FamilyData, relation: Relationship): string {

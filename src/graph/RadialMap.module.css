@@ -20,9 +20,13 @@
 .sector { fill: #fff; stroke: #e8ebec; stroke-width: 2; }
 .empty .sector { fill: #f5f6f6; }
 .rim { fill: none; stroke: var(--branch-color); stroke-width: 3; pointer-events: none; }
-.node[data-center='true'] .sector { fill: #fff; stroke: var(--branch-color); stroke-width: 3; }
+.node[data-center='true'] .sector { stroke: var(--branch-color); stroke-width: 3; }
+.node .sector { fill: var(--birth-country-color); }
+.countryLegend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 0.75rem 0; font-size: 0.8rem; color: var(--color-muted); }
+.countryKey { display: inline-flex; align-items: center; gap: 0.4rem; }
+.countryKey i { width: 1rem; height: 1rem; border: 1px solid #86928f; border-radius: 3px; }
 .emptyLabel { fill: #6d5c48; font-family: system-ui, sans-serif; pointer-events: none; }
-.node:hover .sector { fill: #eef8fb; }
+.node:hover .sector { stroke: #572019; stroke-width: 3; }
 .node:focus-visible { outline: none; }
 .node:focus-visible .sector { stroke: #572019; stroke-width: 5; stroke-dasharray: 6 3; }
 .label, .date, .hidden { fill: #14212b; pointer-events: none; }
@@ -47,7 +51,7 @@
 .map button { min-height: 44px; border: 1px solid #bea47f; border-radius: 0.25rem; padding: 0.75rem; color: var(--color-text); background: #fff8e9; font: inherit; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
 .map button:hover { background: #ecddc7; }
 @media (forced-colors: active) {
-  .sector { fill: Canvas; stroke: CanvasText; }
+  .sector, .node .sector { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .sector, .node:focus-visible .sector { stroke: Highlight; }
   .line { stroke: CanvasText; }
   .connection[data-selected='true'] .line, .connection:focus-visible .line { stroke: Highlight; }

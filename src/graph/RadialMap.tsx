@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { personName } from '../data/load-family'
 import { confidenceLabels } from '../data/schema'
 import { useFamily, useView } from '../navigation/context'
@@ -13,6 +13,7 @@ import { EvidenceForTarget } from '../room/Evidence'
 import { emptySectors } from './empty-sectors'
 import { closestRelationship } from './closest-relationship'
 import { downloadSvgAsPng } from './export-png'
+import { birthCountries, countryColor, unknownBirthCountry } from './birth-country'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
@@ -47,6 +48,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     return () => observer.disconnect()
   }, [])
   const graph = useMemo(() => buildFamilyGraph(family), [family])
+  const countries = useMemo(() => birthCountries(family), [family])
   const labels = useMemo(() => new Map(family.people.map((person) => [person.id, personName(family, person.id)])), [family])
   const years = useMemo(() => new Map(family.people.map((person) => [person.id, lifeYears(family, person.id)])), [family])
   const dates = useMemo(() => new Map([...years].map(([id, date]) => [id, date === 'Роки життя невідомі' ? '' : date])), [years])
@@ -69,6 +71,8 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   useMapCamera(container, width, mapSettings, dispatch)
   useMapTransition(container, layout, personId, renderedCamera)
   const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
+  const visibleCountries = [...new Set(layout.nodes.map(node => countries.get(node.personId)!))]
+    .sort((a, b) => Number(a === unknownBirthCountry) - Number(b === unknownBirthCountry) || a.localeCompare(b, 'uk'))
   const relations = [...new Set(layout.edges.map((edge) => edge.relationshipId))].map((id) => graph.relationships.get(id)!)
   const selected = relations.find((relation) => relation.id === state.current.selectedRelationshipId)
   const selectRelation = (id: string) => dispatch({ type: 'relationship', id })
@@ -106,6 +110,12 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
       {exportState === 'saved' && 'PNG збережено у файл.'}
       {exportState === 'error' && 'Не вдалося створити PNG. Спробуйте ще раз.'}
     </p>}
+    <div className={styles.countryLegend} role="group" aria-label="Країна народження">
+      <span>Країна народження · як записано в родоводі:</span>
+      {visibleCountries.map(country => <span key={country} className={styles.countryKey}>
+        <i aria-hidden="true" style={{ backgroundColor: countryColor(country) }} />{country}
+      </span>)}
+    </div>
     <div ref={container} className={styles.canvas}>
       <svg ref={svg} viewBox={`0 0 ${width} ${mapHeight}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
         <g data-layer="camera" transform={`translate(${renderedCamera.pan.x} ${renderedCamera.pan.y}) scale(${zoom})`}>
@@ -120,6 +130,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
             </g>
             {[...layout.nodes].sort((a, b) => Number(a.lane === 'center') - Number(b.lane === 'center')).map((node, index) => {
               const central = node.lane === 'center'
+              const country = countries.get(node.personId)!
               const date = years.get(node.personId)!
               const nameId = `${prefix}-name-${index}`
               const hidden = node.hiddenConnections.some((connection) => connection.reason !== 'recenter')
@@ -133,10 +144,11 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
               const textPosition = radialPoint(layout.center, (node.innerRadius + padding + radialEnd) / 2, angle)
               const action = () => goTo(`/${central ? 'person' : 'tree'}/${node.personId}`)
               return <g key={node.appearanceId} className={styles.node} data-person-id={node.personId}
+                data-birth-country={country} style={{ '--birth-country-color': countryColor(country) } as CSSProperties}
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane} data-ring={node.ring} data-tone={node.tone} data-branch={node.startAngle < 0 ? 'left' : 'right'}
                 role="link" tabIndex={0} onClick={(event) => { if (event.detail < 2) action() }} onKeyDown={(event) => activate(event, action)}
-                aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${node.fullLabel}. ${date}${hidden ? '. Є родичі поза цим показом' : ''}`}>
-                <title>{node.fullLabel} · {date}{hidden ? ' · Є інші родичі ↗' : ''}</title>
+                aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${node.fullLabel}. ${date}. Країна народження: ${country}${hidden ? '. Є родичі поза цим показом' : ''}`}>
+                <title>{node.fullLabel} · {date} · Країна народження: {country}{hidden ? ' · Є інші родичі ↗' : ''}</title>
                 {central ? <circle className={styles.sector} cx={node.x} cy={node.y} r={layout.centerRadius} />
                   : <><path className={styles.sector} d={sectorPath(node, layout.center)} />
                     <path className={styles.rim} d={labelArc({ ...node, reverseLabel: false }, layout.center, node.outerRadius)} /></>}

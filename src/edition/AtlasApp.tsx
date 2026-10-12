@@ -100,7 +100,7 @@ function PersonView({ screen }: { screen: 'tree' | 'horizontal' | 'vertical' | '
     <div className={isMap ? styles.mapSurface : styles.roomSurface}>
       {isMap ? <>
         <div className={styles.mapIntro}><p className={styles.eyebrow}>Кожна людина — центр свого світу</p>
-          <span><i />Предки <i />Родина <i />Нащадки</span></div>
+          {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} fitToViewport />}
       </> : <PersonRoom key={personId} personId={personId} />}

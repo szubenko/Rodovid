@@ -72,6 +72,8 @@
 .mapSurface svg [data-person-id]:hover > path:first-of-type, .mapSurface svg [data-person-id]:hover > circle { fill: #edf5e7; }
 .mapSurface svg [data-person-id]:focus-visible > path:first-of-type, .mapSurface svg [data-person-id]:focus-visible > circle { stroke: #29664f; stroke-width: 5px; }
 .mapSurface svg [data-center="true"] > circle { fill: #eef5e7; stroke: #7c9d6e; stroke-width: 3px; }
+.mapSurface svg [data-birth-country] > path:first-of-type, .mapSurface svg [data-birth-country] > circle { fill: var(--birth-country-color); }
+.mapSurface svg [data-birth-country]:hover > path:first-of-type, .mapSurface svg [data-birth-country]:hover > circle { fill: var(--birth-country-color); stroke: #29664f; stroke-width: 3px; }
 .mapSurface svg [data-layer="empty-sectors"] path:first-of-type { fill: #f5f8f0; stroke: #e4ebdc; }
 .mapSurface svg [data-tone="cyan"] { --branch-color: #83a892; }
 .mapSurface svg [data-tone="lime"] { --branch-color: #b0bf7c; }

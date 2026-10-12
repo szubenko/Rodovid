@@ -156,7 +156,7 @@ function MobileDirectory() {
 }
 
 function Providers({ children }: { children: ReactNode }) {
-  return <FamilyProvider><ViewProvider initialRadialZoom={0.7}><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
+  return <FamilyProvider><ViewProvider initialRadialZoom={0.6}><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
 }
 
 export function AtlasApp() { return <Providers><Workspace /></Providers> }

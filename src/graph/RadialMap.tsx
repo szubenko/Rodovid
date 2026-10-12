@@ -140,9 +140,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
               let rotation = ((angle + 270) % 360 + 360) % 360
               if (rotation > 90 && rotation <= 270) rotation -= 180
               if (rotation > 270) rotation -= 360
-              const padding = 12 * layout.textScale
-              const radialEnd = Math.sqrt(Math.max(0, (node.outerRadius - padding) ** 2 - (node.text.height / 2) ** 2))
-              const textPosition = radialPoint(layout.center, (node.innerRadius + padding + radialEnd) / 2, angle)
+              const textPosition = radialPoint(layout.center, node.labelRadius, angle)
               const action = () => goTo(`/${central ? 'person' : 'tree'}/${node.personId}`)
               return <g key={node.appearanceId} className={styles.node} data-person-id={node.personId}
                 data-birth-country={country} style={{ '--birth-country-color': countryColor(country) } as CSSProperties}

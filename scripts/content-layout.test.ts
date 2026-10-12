@@ -35,9 +35,8 @@ it.each([320, 1024])('fits every full name and date at a readable size inside th
         expect(node.endAngle - node.startAngle).toBeCloseTo(span / node.slotCount)
       }
       if (node.labelOrientation === 'radial') {
-        const pad = 12 * layout.textScale
-        const end = Math.sqrt((node.outerRadius - pad) ** 2 - (node.text.height / 2) ** 2)
-        const centerRadius = (node.innerRadius + pad + end) / 2
+        const centerRadius = node.labelRadius
+        expect(centerRadius - node.innerRadius).toBeCloseTo(node.outerRadius - centerRadius)
         const halfAngle = (node.endAngle - node.startAngle) / 2 * Math.PI / 180
         for (const x of [centerRadius - node.text.width / 2, centerRadius + node.text.width / 2]) {
           expect(Math.hypot(x, node.text.height / 2)).toBeLessThan(node.outerRadius)
@@ -61,5 +60,32 @@ it('uses the same size for the center, ancestors, spouse and dates', () => {
   const layout = layoutRadial(projection, { width: 1024, height: 1024, labels, dates, fontSize: 20 })
   for (const node of layout.nodes) for (const line of node.text.lines) {
     expect(line.fontSize).toBe(layout.nodes[0]!.fontSize)
+  }
+})
+
+it('revealing narrower ancestors does not stretch the preceding cells for Petro and Herasym', () => {
+  const layoutAtDepth = (generations: number) => layoutRadial(projectFamily(graph, 'I1', { generations }),
+    { width: 1024, height: 1024, labels, dates, fontSize: 20, fitToViewport: false })
+  const nearer = layoutAtDepth(7)
+  const deeper = layoutAtDepth(8)
+  for (const id of ['I45', 'I46']) {
+    const before = nearer.nodes.find(node => node.personId === id)!
+    const after = deeper.nodes.find(node => node.appearanceId === before.appearanceId)!
+    expect(before.ring).toBe(6)
+    expect(after.innerRadius).toBe(before.innerRadius)
+    expect(after.outerRadius).toBe(before.outerRadius)
+    expect(after.text).toEqual(before.text)
+  }
+})
+
+it('keeps the last three Chaban ancestors comparable to their neighboring ring from I1', () => {
+  const projection = projectFamily(graph, 'I1', { generations: availableGenerations(graph, 'I1') + 1 })
+  const layout = layoutRadial(projection, { width: 1024, height: 1024, labels, dates, fontSize: 20,
+    fitToViewport: false, measureText: (text, size) => Array.from(text).length * size * 0.5 })
+  for (const id of ['I64', 'I65', 'I66']) {
+    const node = layout.nodes.find(node => node.personId === id)!
+    const parent = layout.nodes.find(parent => parent.appearanceId === node.parentAppearanceId)!
+    expect(node.outerRadius - node.innerRadius).toBeLessThanOrEqual((parent.outerRadius - parent.innerRadius) * 1.6)
+    expect(node.labelRadius - node.innerRadius).toBeCloseTo(node.outerRadius - node.labelRadius)
   }
 })

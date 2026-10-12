@@ -139,6 +139,16 @@ for (const width of [320, 1024]) {
       expect(await page.locator('html').evaluate((element) => element.scrollWidth)).toBeLessThanOrEqual(width)
       expect(await page.locator('text[data-label-width]').evaluateAll((elements) => elements.filter((element) =>
         (element as SVGTextElement).getComputedTextLength() > Number(element.getAttribute('data-label-width')) + 0.5).length)).toBe(0)
+      expect(await page.locator('svg').evaluate(svg => {
+        const center = svg.querySelector<SVGCircleElement>('[data-center="true"] > circle')!
+        return [...svg.querySelectorAll<SVGGElement>('[data-label-orientation="radial"]')].every(label => {
+          const sector = label.parentElement!.querySelector('path')!
+          const radii = [...sector.getAttribute('d')!.matchAll(/A([\d.e+-]+),/g)].map(match => Number(match[1]))
+          const matrix = label.transform.baseVal.consolidate()!.matrix
+          const radius = Math.hypot(matrix.e - center.cx.baseVal.value, matrix.f - center.cy.baseVal.value)
+          return Math.abs(radius - (radii[0]! + radii[1]!) / 2) < 0.01
+        })
+      })).toBe(true)
       const labels = await page.locator('svg [data-person-id]').evaluateAll((elements) => elements.map((element) => ({
         id: element.getAttribute('data-person-id')!,
         name: [...element.querySelectorAll('[data-label-kind="name"]')].map((line) => line.textContent).join(' '),

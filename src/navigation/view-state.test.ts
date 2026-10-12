@@ -6,19 +6,19 @@ const visit = (key: string, screen: MapScreen | 'person', personId: string, navi
 
 describe('view history', () => {
   it('starts atlas circles farther out, keeps other maps at 100%, and restores saved cameras', () => {
-    let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' }, 0.7)
-    expect(state.current.map.zoom).toBe(0.7)
-    expect(state.current.map.pan.x).toBeCloseTo(0.15)
+    let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' }, 0.6)
+    expect(state.current.map.zoom).toBe(0.6)
+    expect(state.current.map.pan.x).toBeCloseTo(0.2)
     state = viewReducer(state, { type: 'map', settings: { zoom: 2, pan: { x: 0.2, y: 0.3 } } })
     const circle = state.current
     state = viewReducer(state, visit('b', 'horizontal', 'I1'))
     expect(state.current.map).toMatchObject({ zoom: 1, pan: { x: 0, y: 0 } })
     state = viewReducer(state, visit('c', 'tree', 'I1'))
-    expect(state.current.map.zoom).toBe(0.7)
+    expect(state.current.map.zoom).toBe(0.6)
     state = viewReducer(state, visit('a', 'tree', 'I1', 'POP'))
     expect(state.current).toEqual(circle)
     state = viewReducer(state, visit('d', 'tree', 'I2'))
-    expect(state.current.map.zoom).toBe(0.7)
+    expect(state.current.map.zoom).toBe(0.6)
   })
   it('starts in vertical mode and restores its camera and evidence after rooms or other maps', () => {
     let state = initialView('I1', 3, 'vertical', { screen: 'vertical', personId: 'I2' })

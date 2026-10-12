@@ -57,7 +57,7 @@ export function fitLabel(text: string, width: number, measure: (text: string) =>
 
 /** Measure complete text first, allocate sectors and rings, then fit the entire
  * drawing into the viewport. Zoom scales the complete drawing, never reflows or
- * removes letters. Unknown parent slots retain a small, explicit empty sector. */
+ * removes letters. Unknown parents retain an equal empty slot. */
 export function layoutRadial(projection: Projection, options: LayoutOptions): RadialLayout {
   for (const dimension of [options.width, options.height]) {
     if (!Number.isFinite(dimension) || dimension < 160 || dimension > 10000) throw new RangeError('Viewport must be 160–10000 pixels')
@@ -71,9 +71,11 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     if (!Number.isFinite(result) || result < 0) throw new RangeError('Invalid text measurement')
     return result * 1.03
   }
+  const blockFor = (node: Appearance, lineWidth?: number) => labelBlock(
+    options.labels.get(node.personId) ?? 'Ім’я невідоме', options.dates?.get(node.personId) ?? '',
+    fontSize, fontSize, measure, lineWidth)
   const blocks = new Map(projection.appearances.map((node) => [node.appearanceId,
-    labelBlock(options.labels.get(node.personId) ?? 'Ім’я невідоме', options.dates?.get(node.personId) ?? '',
-      fontSize, fontSize, measure, node.ring === 0 ? fontSize * 5 : undefined)]))
+    blockFor(node, node.ring === 0 ? fontSize * 5 : undefined)]))
   const children = new Map<string, Appearance[]>()
   for (const node of projection.appearances) if (node.parentAppearanceId) {
     const key = node.parentAppearanceId + '/' + node.lane
@@ -114,6 +116,18 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
   const ringCount = Math.max(1, projection.generations - 1)
   const ringRadii = [rootRadius]
   const radial = (node: Appearance) => node.lane === 'parents' && node.ring >= 3
+  const radialOuterRadius = (innerRadius: number, block: LabelBlock, span: number) => {
+    const tangent = Math.tan(Math.min(radians(80), span / 2))
+    // Keep a visible gutter without asking a narrow wedge to reserve the same
+    // 24 px across its sides as a broad cell. Radial end padding stays 12 px.
+    const sidePadding = Math.min(padding, innerRadius * tangent * 0.15)
+    const halfHeight = block.height / 2 + sidePadding
+    const start = Math.max(innerRadius + padding, halfHeight / tangent)
+    const reach = innerRadius + block.width
+    // The centered rectangle must clear both straight sides and the outer arc.
+    return Math.max(2 * start + block.width - innerRadius,
+      (reach + 4 * padding + 2 * Math.hypot(reach + padding, Math.sqrt(3) * halfHeight)) / 3)
+  }
   for (let ring = 1; ring <= ringCount; ring++) {
     const members = projection.appearances.filter((node) => node.ring === ring)
     let inner = ringRadii[ring - 1]!
@@ -122,18 +136,24 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
       const block = blocks.get(node.appearanceId)!
       const { startAngle, endAngle } = angles.get(node.appearanceId)!
       const span = radians(endAngle - startAngle)
-      if (radial(node)) {
-        inner = Math.max(inner, (block.height / 2 + padding) / Math.tan(Math.min(radians(80), span / 2)))
-      } else {
+      if (!radial(node)) {
         band = Math.max(band, block.height + padding * 2 + 3)
         inner = Math.max(inner, (block.width + padding * 2) / span)
       }
     }
-    // Growing the preceding ring only adds room for its already measured text.
+    // Arc labels may need a larger inner circumference. Narrow radial labels
+    // add space in their own ring without stretching the preceding cells.
     ringRadii[ring - 1] = inner
     for (const node of members.filter(radial)) {
-      const block = blocks.get(node.appearanceId)!
-      band = Math.max(band, Math.hypot(inner + 3 + padding + block.width, block.height / 2 + padding) + padding - inner)
+      const { startAngle, endAngle } = angles.get(node.appearanceId)!
+      const span = radians(endAngle - startAngle)
+      // A second name line can force excessive radial growth in a narrow
+      // sector. Pick the complete one/two-line name that fits most compactly.
+      const candidates = [blockFor(node, Infinity), blockFor(node, 0)]
+      const block = candidates.reduce((best, candidate) => radialOuterRadius(inner + 3, candidate, span)
+        < radialOuterRadius(inner + 3, best, span) ? candidate : best)
+      blocks.set(node.appearanceId, block)
+      band = Math.max(band, radialOuterRadius(inner + 3, block, span) - inner)
     }
     ringRadii.push(inner + band)
   }

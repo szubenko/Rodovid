@@ -1,12 +1,12 @@
 import { expect, test } from '@playwright/test'
 
-test('all 45 rooms resolve the same IDs with readable missing information', async ({ page }, info) => {
+test('all 74 rooms resolve the same IDs with readable missing information', async ({ page }, info) => {
   // This scenario loads every room and captures long pages; allow for parallel browser load.
-  test.setTimeout(90_000)
+  test.setTimeout(150_000)
   await page.setViewportSize({ width: info.project.name.includes('mobile') ? 320 : 1024, height: 900 })
   const response = await page.request.get('/data/family.json')
   const family = await response.json() as { people: { id: string }[] }
-  expect(family.people).toHaveLength(45)
+  expect(family.people).toHaveLength(74)
   for (const { id } of family.people) {
     await page.goto(`/person/${id}`)
     await expect(page.locator('#person-title')).toBeVisible()

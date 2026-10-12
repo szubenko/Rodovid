@@ -50,6 +50,8 @@ export function convertGedcom(input: ConversionInput) {
   const locations = new Map<TreeNode, { recordId: string; path?: string }>()
   const records = new Map<string, TreeNode>()
   const warnings: { code: string; recordId?: string; path?: string; message: string }[] = []
+  const familyMetadata: { recordId: string; path?: string; tag: string; value: string; line: number }[] = []
+  const familyLinkNotes = new Map<TreeNode, string>()
   function walk(node: TreeNode, recordId: string, path?: string) {
     locations.set(node, { recordId, ...(path ? { path } : {}) })
     const occurrences = new Map<string, number>()
@@ -75,6 +77,7 @@ export function convertGedcom(input: ConversionInput) {
   const gedc = inspection.header && children(inspection.header, 'GEDC')[0]
   const version = gedc && children(gedc, 'VERS')[0]?.value
   if (version !== '5.5.1') throw new Error(`Unsupported GEDCOM version: ${version ?? 'missing'}`)
+  const exporter = children(inspection.header, 'SOUR')[0]?.value ?? 'GEDCOM'
   function loc(node: TreeNode) {
     const location = locations.get(node)
     if (!location) throw new Error(`Record without XREF at line ${node.indexSource + 1}`)
@@ -182,16 +185,30 @@ export function convertGedcom(input: ConversionInput) {
     data.people.push(personSchema.parse({ id: personId, lifeStatus: deaths.length ? 'deceased' : 'unknown',
       sex: person.sex.length === 1 && ['M', 'F', 'U'].includes(person.sex[0] ?? '') ? person.sex[0] : undefined,
       externalIds: ['_FSFTID', '_UID'].flatMap((tag) => children(node, tag).map((entry) => ({
-        system: tag === '_FSFTID' ? 'FamilySearch' : 'RootsMagic-UID', value: literal(entry),
+        system: tag === '_FSFTID' ? 'FamilySearch' : `${exporter}-UID`, value: literal(entry),
       }))), provenance: [origin(node), ...deaths.map(origin)],
     }))
     for (const name of children(node, 'NAME')) {
       const raw = literal(name)
+      const pieces = /^([^/]*)\/([^/]*)\//.exec(raw)
       addClaim(name, { field: 'name', target: { kind: 'person', id: personId }, value: {
         raw, display: raw.replaceAll('/', '').replace(/\s+/g, ' ').trim(),
-        given: field(name, 'GIVN'), surname: field(name, 'SURN'),
+        given: field(name, 'GIVN') ?? (pieces?.[1]?.trim() || undefined),
+        surname: field(name, 'SURN') ?? (pieces?.[2]?.trim() || undefined),
         prefix: field(name, 'NPFX'), suffix: field(name, 'NSFX'),
       }, explanation: notes(name) })
+      for (const roman of children(name, 'ROMN')) {
+        const romanRaw = literal(roman)
+        const romanPieces = /^([^/]*)\/([^/]*)\//.exec(romanRaw)
+        const type = field(roman, 'TYPE')
+        addClaim(roman, { field: 'name', target: { kind: 'person', id: personId }, value: {
+          raw: romanRaw, display: romanRaw.replaceAll('/', '').replace(/\s+/g, ' ').trim(),
+          given: field(roman, 'GIVN') ?? (romanPieces?.[1]?.trim() || undefined),
+          surname: field(roman, 'SURN') ?? (romanPieces?.[2]?.trim() || undefined),
+          prefix: field(roman, 'NPFX'), suffix: field(roman, 'NSFX'),
+        }, explanation: ['Латинський варіант із GEDCOM ROMN; написання не перевірено.',
+          type && `TYPE: ${type}`, notes(roman)].filter(Boolean).join('\n') })
+      }
     }
     descriptions(node, { kind: 'person', id: personId })
     cite(node, { kind: 'person', id: personId })
@@ -203,6 +220,9 @@ export function convertGedcom(input: ConversionInput) {
       if (!family.children.some((entry) => roles.includes(entry.tag!) && entry.value === node.pointer)) {
         throw new Error(`Inconsistent reverse ${tag} link: ${node.pointer} -> ${link.value}`)
       }
+      const explanation = notes(link)
+      if (explanation) familyLinkNotes.set(link, explanation)
+      descriptions(link, { kind: 'person', id: personId })
     }
     for (const change of children(node, 'CHAN')) markMetadata(change)
   }
@@ -211,6 +231,9 @@ export function convertGedcom(input: ConversionInput) {
   for (const family of inspection.families) {
     const node = family.node
     handled.add(node)
+    for (const uid of children(node, '_UID')) familyMetadata.push({
+      ...loc(uid), tag: '_UID', value: literal(uid), line: uid.indexSource + 1,
+    })
     rawFamilies.push({ id: id('family', node), recordId: loc(node).recordId,
       husbands: family.husbands, wives: family.wives, childIds: family.childIds })
     const parents = [...children(node, 'HUSB'), ...children(node, 'WIFE')]
@@ -219,10 +242,15 @@ export function convertGedcom(input: ConversionInput) {
     const relations: Relationship[] = []
     function relation(kind: Relationship['kind'], from: TreeNode, to: TreeNode) {
       const relationId = registry.resolve('relationship', loc(node).recordId, `${loc(from).path}+${loc(to).path}`)
+      const linkedPeople = kind === 'parent-child' ? [targetRecord(to.value, 'INDI')]
+        : [targetRecord(from.value, 'INDI'), targetRecord(to.value, 'INDI')]
+      const reverseNotes = linkedPeople.flatMap((person) => children(person, kind === 'parent-child' ? 'FAMC' : 'FAMS'))
+        .filter((link) => link.value === node.pointer && familyLinkNotes.has(link))
       const result = relationshipSchema.parse({ id: relationId, kind,
         fromPersonId: id('person', targetRecord(from.value, 'INDI')),
         toPersonId: id('person', targetRecord(to.value, 'INDI')),
-        provenance: [origin(from), origin(to)],
+        explanation: reverseNotes.map((link) => familyLinkNotes.get(link)).join('\n') || undefined,
+        provenance: [origin(from), origin(to), ...reverseNotes.map(origin)],
       })
       relations.push(result)
       cite(node, { kind: 'relationship', id: result.id })
@@ -236,6 +264,11 @@ export function convertGedcom(input: ConversionInput) {
   for (const record of inspection.tree.children.filter((node) => ['INDI', 'FAM'].includes(node.tag!))) {
     for (const event of record.children.filter((node) => (record.tag === 'INDI' ? individualEvents : familyEvents).has(node.tag!))) {
       handled.add(event)
+      if (event.tag === 'MARR' && !event.value && !event.children.length) {
+        warnings.push({ code: 'EMPTY_EVENT_CONTEXT', ...loc(event),
+          message: 'Порожній MARR збережено у звіті; він не встановлює події шлюбу.' })
+        continue
+      }
       const eventId = id('event', event)
       const target = { kind: 'event' as const, id: eventId }
       const type = field(event, 'TYPE')
@@ -291,7 +324,7 @@ export function convertGedcom(input: ConversionInput) {
       relationships: family.relationships.length, events: family.events.length, claims: family.claims.length,
       places: family.places.length, sources: family.sources.length, media: family.media.length,
       evidenceLinks: family.evidenceLinks.length, memories: family.memories.length },
-    rawFamilies, warnings, unhandledNodes,
+    rawFamilies, familyMetadata, warnings, unhandledNodes,
     reviewNotes: [
       ...family.relationships.filter((entry) => entry.explanation).map((entry) => ({
         target: { kind: 'relationship', id: entry.id }, explanation: entry.explanation, provenance: entry.provenance,

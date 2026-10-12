@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 import { familyDataSchema } from '../../src/data/schema'
-import { buildFamilyGraph, projectFamily } from '../../src/graph/projection'
+import { availableGenerations, buildFamilyGraph, projectFamily } from '../../src/graph/projection'
 import { personName } from '../../src/data/person-name'
 import { lifeYears } from '../../src/graph/presentation'
 
@@ -45,9 +45,10 @@ test('home renders the approved real projection and supports keyboard sector nav
   await page.goto('/')
   const map = page.getByRole('region', { name: 'Радіальна карта родини', exact: true })
   const depth = page.getByLabel('Покоління', { exact: true })
-  await expect(depth).toHaveValue('6')
-  await expect(depth.locator('option')).toHaveCount(6)
-  expect(await map.locator('svg [data-ring]').evaluateAll((elements) => Math.max(...elements.map((element) => Number(element.getAttribute('data-ring')))))).toBe(6)
+  const homeDepth = availableGenerations(graph, 'I1')
+  await expect(depth).toHaveValue(String(homeDepth))
+  await expect(depth.locator('option')).toHaveCount(homeDepth)
+  expect(await map.locator('svg [data-ring]').evaluateAll((elements) => Math.max(...elements.map((element) => Number(element.getAttribute('data-ring')))))).toBe(homeDepth)
   await expect(page.getByRole('group', { name: 'Переміщення карти', exact: true })).toHaveCount(0)
   await expect(page.getByText('Предки — вгорі', { exact: false })).toHaveCount(0)
   await expect(page.getByText('Перетягуйте карту мишею', { exact: false })).toHaveCount(0)
@@ -103,8 +104,8 @@ test('touch or mouse selects a concrete line and keyboard can clear or select it
   await expect(details).toHaveAttribute('data-relationship-id', id!)
 })
 
-test('disputed roles and duplicate families keep distinct selectable relationships', async ({ page }) => {
-  for (const personId of ['I8', 'I35']) {
+test('corrected parents and reviewed chronology keep distinct selectable relationships', async ({ page }) => {
+  for (const personId of ['I8', 'I24']) {
     await page.goto(`/tree/${personId}`)
     const buttons = page.locator('svg [data-relationship-id]')
     const expected = projectFamily(graph, personId, { generations: 12 }).edges
@@ -122,9 +123,9 @@ test('disputed roles and duplicate families keep distinct selectable relationshi
 
 for (const width of [320, 1024]) {
   test(`all real centers at ${width}px retain full names and stable relationship IDs`, async ({ page }, testInfo) => {
-    // 45 page loads plus full-page captures at mobile DPR need a batch budget.
+    // Every imported person is loaded, with full-page captures at mobile DPR.
     // Individual assertions keep Playwright's normal timeout.
-    test.setTimeout(180_000)
+    test.setTimeout(240_000)
     await page.setViewportSize({ width, height: 900 })
     for (const person of family.people) {
       await page.goto(`/tree/${person.id}`)

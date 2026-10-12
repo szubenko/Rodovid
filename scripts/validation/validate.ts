@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,6 +99,29 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
+  if (report.sha256 === octoberExportSha256) {
+    const expected = { people: 74, relationships: 118, events: 129, claims: 321, places: 58 }
+    for (const [key, count] of Object.entries(expected)) {
+      const imported = data[key as keyof typeof expected].filter(item => item.provenance.some(origin => origin.kind === 'gedcom'))
+      if (imported.length !== count) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: `${key}: очікується ${count} імпортованих записів.` })
+    }
+    const edge = data.relationships.find(item => item.id === chronologyReviewId)
+    const note = data.claims.find(item => item.field === 'description' && item.target.id === 'I24'
+      && item.provenance.some(origin => origin.kind === 'gedcom' && origin.recordId === '@I65@' && origin.path === 'FAMC[0].NOTE[0]'))
+    if (!edge || edge.fromPersonId !== 'I19' || edge.toPersonId !== 'I24' || edge.confidence !== 'unassessed'
+      || edge.reviewStatus !== 'unreviewed' || !edge.explanation?.includes('D09:') || !edge.explanation.includes('Потребує перевірки')
+      || !note || note.field !== 'description' || !note.value.includes('Потребує перевірки')) issues.push({
+      severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'D09: роки й зв’язок Анни та Иосифа залишаються неперевіреними; позначку потрібно зберегти.', entityIds: [chronologyReviewId],
+    })
+    const name = data.claims.find(claim => claim.field === 'name' && claim.target.id === 'I1' && claim.isPrimary)
+    if (!name?.explanation?.includes('D04') || name.confidence !== 'unassessed'
+      || data.places.some(place => !place.description?.includes('D06'))) issues.push({
+      severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'D04/D06: втрачено невирішені зауваження до імені або місць.',
+    })
+    issues.push({ severity: 'warning', code: 'D09', message: 'Анна: 1832; Иосиф: 1891. Роки та зв’язок збережено за рішенням власника з позначкою «потребує перевірки».', entityIds: [chronologyReviewId] })
+    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: 'Перевірений імпорт 12.10.2026: 45 попередніх людей збережено, 29 додано; рішення власника застосовано.' })
+    return
+  }
   if (report.sha256 === reviewedExportSha256) {
     const expected = { people: 45, relationships: 71, events: 68, claims: 111, places: 32 }
     for (const [key, count] of Object.entries(expected)) {

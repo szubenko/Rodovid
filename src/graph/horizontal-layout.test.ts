@@ -61,6 +61,6 @@ describe('horizontal family layout', () => {
     const center = layout.nodes.find(node => node.lane === 'center')!
     const parents = layout.nodes.filter(node => node.parentAppearanceId === center.appearanceId && node.lane === 'parents')
     expect(parents.length).toBeGreaterThan(0)
-    expect(center.y).toBe((parents[0]!.y + parents.at(-1)!.y) / 2)
+    expect(center.y).toBeCloseTo((parents[0]!.y + parents.at(-1)!.y) / 2, 10)
   })
 })

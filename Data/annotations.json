@@ -11,47 +11,92 @@
       "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене."
     },
     {
-      "id": "review-relationship-e86e6052c1175199aac28036",
+      "id": "review-relationship-259066879720fd7dd7184cf9",
       "target": {
         "kind": "relationship",
-        "id": "relationship-e86e6052c1175199aac28036"
+        "id": "relationship-259066879720fd7dd7184cf9"
       },
       "confidence": "unassessed",
       "reviewStatus": "unreviewed",
-      "explanation": "D07: Петро Олександрович Дейкало та Оксана Миколаївна записані одночасно як подружжя (F6) і батько–дитина (F10). Не з’ясовано; уточнює власник родоводу. Точна спорідненість через ці зв’язки потребує уточнення."
-    },
-    {
-      "id": "review-relationship-7cb3eb0510b32f0408bd52b2",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-7cb3eb0510b32f0408bd52b2"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D07: Петро Олександрович Дейкало та Оксана Миколаївна записані одночасно як подружжя (F6) і батько–дитина (F10). Не з’ясовано; уточнює власник родоводу. Точна спорідненість через ці зв’язки потребує уточнення."
-    },
-    {
-      "id": "review-relationship-386c227f790be2fd03a50cfb",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-386c227f790be2fd03a50cfb"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D08: повторні сімейні записи F13/F16 пов’язують Олександра Дейкала з Петром Олександровичем Дейкалом. Обидва записи збережено; це не додатковий доказ. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-relationship-df5effff11a8254f799a5ef1",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-df5effff11a8254f799a5ef1"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D08: повторні сімейні записи F13/F16 пов’язують Олександра Дейкала з Петром Олександровичем Дейкалом. Обидва записи збережено; це не додатковий доказ. Не з’ясовано; уточнює власник родоводу."
+      "explanation": "D09: хронологія материнства потребує перевірки. Роки та зв’язок збережено за рішенням власника 12.10.2026; оцінку достовірності не підвищено."
     }
   ],
-  "primaryClaimIds": [],
+  "primaryClaimIds": [
+    "claim-9c80842dfb5af2a8be42d49f",
+    "claim-6826f79bf4673f599e2cb51b",
+    "claim-e849bfa28a098a27a39d62ae",
+    "claim-776063399b7f8e630073e4ee",
+    "claim-27c9d912c0fce7be20a91644",
+    "claim-3a26e6767831416d78cbf212",
+    "claim-8c5519a8dd8171f9cbb37c67",
+    "claim-fe55b426b123104626caa42b",
+    "claim-88829db0ff039682750730b4",
+    "claim-80f884977c8880b85496dd05",
+    "claim-3d06a9a6868531dc504c4559",
+    "claim-102422847a479cca3e60d767",
+    "claim-07c9cc6b8165e8367cd532eb",
+    "claim-119e6606c7b53dc6901826f1",
+    "claim-84d8ae8a36866bd9d8eff23c",
+    "claim-03a8db16ac9ed225f29fb63d",
+    "claim-370164d7b87595a03243f80f",
+    "claim-57f23b6887a80c2b4b4f341d",
+    "claim-812c0b32e1b1315cc5c9e5d6",
+    "claim-ce3d9d8fffca6d322b24b706",
+    "claim-ff864a4911fb20fa6072a1db",
+    "claim-9a89893488147cd907f68bf7",
+    "claim-2d34e8c13a22ef27540fa02e",
+    "claim-f04ab35315863a453840b70d",
+    "claim-d8ddb4ce3725d731ae18e71b",
+    "claim-85f754689fdabb864457b936",
+    "claim-75625385f4af24435fa0d469",
+    "claim-9235681d1c5d1aaa92ec230e",
+    "claim-1a9c782ccc82afa57c712ca8",
+    "claim-eced5644842261fcb8ed0f68",
+    "claim-0478cdaec30e83972eccc6e4",
+    "claim-c8ca5c6fe586ad8d50fb742a",
+    "claim-e00f0bf4bd6a0ff735511ed6",
+    "claim-e849cee4f49bec3fdfd340b7",
+    "claim-e7cdbcebd33dc82589b18d77",
+    "claim-8333cf4497090060e49f2370",
+    "claim-20eee9c80456bf183d0721a9",
+    "claim-4adc22f2ca94eb903729661a",
+    "claim-dd150068ecb3e7ca41caa310",
+    "claim-064315828868644b8196eb95",
+    "claim-333555f197f7b32dbd1c71cd",
+    "claim-12043e6c86cd6b80a3d8b4ac",
+    "claim-02bd40b4779ef5c88e02b568",
+    "claim-de307b209c0a7c3c744d2497",
+    "claim-a3fea2c00cae33b329fc69ea",
+    "claim-a91ca16d314871d2e40cb3b3",
+    "claim-8d3c6c3e7fd717cc655be482",
+    "claim-d04f3d19388ef08dc1882ea6",
+    "claim-793c6f9fa953c3253cfed9d1",
+    "claim-090db2ad3bd483f65cb6e7d5",
+    "claim-d64d60e6061446b31f76977c",
+    "claim-adcd059dd8aac02147275425",
+    "claim-9c5c5374000be9ccbb44593b",
+    "claim-34109b7676fe21388a308c66",
+    "claim-05d1a513d0e8df87650e7a20",
+    "claim-ec97435410ebad3e99937578",
+    "claim-f2c38871f408d05a3d4e2405",
+    "claim-0a598da7bb18da304304cc5a",
+    "claim-e0f9a26c016e4a745e44a85d",
+    "claim-8d2f675a93d5e4f4d30e4d3a",
+    "claim-534cd52b09f69cf1163032c9",
+    "claim-63e1509b15554797ea4b6a9f",
+    "claim-4e7a7dffd253cd754e89f734",
+    "claim-1bbbba62789b745030eaacc9",
+    "claim-88af4a5b6affbb492b17e3a4",
+    "claim-3d88a23585ec72d534cfc8fa",
+    "claim-76b7468018b1989916f696b1",
+    "claim-7f31d054673c86ad88702812",
+    "claim-c841b16392085b035c92a139",
+    "claim-3f48e50d3ccf175c583eb741",
+    "claim-ba24251f7fa4d8f877290daf",
+    "claim-6706488f1d276d0ff386f801",
+    "claim-2dfc621f688bca2aa10d8734",
+    "claim-fb3ba80b8b1253ad98e67420"
+  ],
   "additionalClaims": [],
   "placeEnrichments": [
     {
@@ -75,18 +120,8 @@
       "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
     },
     {
-      "id": "review-place-ad2b6185a6a75d283c23d600",
-      "placeId": "place-ad2b6185a6a75d283c23d600",
-      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
       "id": "review-place-8f8f0d5038ae54d9c1edd915",
       "placeId": "place-8f8f0d5038ae54d9c1edd915",
-      "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
-    },
-    {
-      "id": "review-place-946e141a2b4c5aeb76fc62b6",
-      "placeId": "place-946e141a2b4c5aeb76fc62b6",
       "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
     },
     {
@@ -213,6 +248,146 @@
       "id": "review-place-1bdb4f5a91a9ee687f04d5cc",
       "placeId": "place-1bdb4f5a91a9ee687f04d5cc",
       "explanation": "D06: координати не підготовлені; тотожність варіантів назв не погоджена. Вихідне написання збережене. Не з’ясовано; уточнює власник родоводу."
+    },
+    {
+      "id": "review-place-25cdc88460ef118b0e3b69a0",
+      "placeId": "place-25cdc88460ef118b0e3b69a0",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-7a335eaaead1fb5ad03882b2",
+      "placeId": "place-7a335eaaead1fb5ad03882b2",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-4022ce3338d0bf570332d2cd",
+      "placeId": "place-4022ce3338d0bf570332d2cd",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-b514206c9c82b52aee790c86",
+      "placeId": "place-b514206c9c82b52aee790c86",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-3f559945b217f5e0cfe62d80",
+      "placeId": "place-3f559945b217f5e0cfe62d80",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-129adb64c36cbce2dc1f66ad",
+      "placeId": "place-129adb64c36cbce2dc1f66ad",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-9977191dd7cdcf85f1985234",
+      "placeId": "place-9977191dd7cdcf85f1985234",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-147b32fc05296de8f9e30fec",
+      "placeId": "place-147b32fc05296de8f9e30fec",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-2f382119d127a3338bbb47f1",
+      "placeId": "place-2f382119d127a3338bbb47f1",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-02ab1b02dbb47906011369eb",
+      "placeId": "place-02ab1b02dbb47906011369eb",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-209f6603418c167183138e1e",
+      "placeId": "place-209f6603418c167183138e1e",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-9e0b9966c7873e165b01807c",
+      "placeId": "place-9e0b9966c7873e165b01807c",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-144ccd44cbdd92b90f314a31",
+      "placeId": "place-144ccd44cbdd92b90f314a31",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-5a95cbcc66b5f3eaddff3d7a",
+      "placeId": "place-5a95cbcc66b5f3eaddff3d7a",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-1120d1e2a88dfa271e84ea7b",
+      "placeId": "place-1120d1e2a88dfa271e84ea7b",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-5c423e293cde8db8e814fdbd",
+      "placeId": "place-5c423e293cde8db8e814fdbd",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-23759b6da6f0d79443e26d58",
+      "placeId": "place-23759b6da6f0d79443e26d58",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-a9c8ea3ae868ce910caf1254",
+      "placeId": "place-a9c8ea3ae868ce910caf1254",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-3fa8a5376537162785209629",
+      "placeId": "place-3fa8a5376537162785209629",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-2165ea56dfa6d8a09feb286e",
+      "placeId": "place-2165ea56dfa6d8a09feb286e",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-446650028adb461f66b3032e",
+      "placeId": "place-446650028adb461f66b3032e",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-9e63c4d24e9a96e2e25fd35a",
+      "placeId": "place-9e63c4d24e9a96e2e25fd35a",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-d200bc391e6ab10a58425bea",
+      "placeId": "place-d200bc391e6ab10a58425bea",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-1cd3eca880f0f21f3a8e9d2c",
+      "placeId": "place-1cd3eca880f0f21f3a8e9d2c",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-ee57f82de56ed529efc1a083",
+      "placeId": "place-ee57f82de56ed529efc1a083",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-d2fbb86dd5ad516bc0d284df",
+      "placeId": "place-d2fbb86dd5ad516bc0d284df",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-235aa93bcbf6393ae37148c6",
+      "placeId": "place-235aa93bcbf6393ae37148c6",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    },
+    {
+      "id": "review-place-a4c5f433f2b11d163cb01c3c",
+      "placeId": "place-a4c5f433f2b11d163cb01c3c",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
     }
   ],
   "sources": [],

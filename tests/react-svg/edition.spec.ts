@@ -84,7 +84,7 @@ test('Прямі адреси, порожній пошук і вузький е�
   await people.getByRole('searchbox', { name: 'Пошук людей' }).fill('zzzzzzzz')
   await expect(people.getByText('Нікого не знайдено.', { exact: false })).toBeVisible()
   await people.getByRole('searchbox', { name: 'Пошук людей' }).fill('')
-  await expect(people.locator('li')).toHaveCount(45)
+  await expect(people.locator('li')).toHaveCount(74)
   if (isMobile) {
     await page.setViewportSize({ width: 320, height: 740 })
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)

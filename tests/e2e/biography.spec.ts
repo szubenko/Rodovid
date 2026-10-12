@@ -8,13 +8,13 @@ test('current biography keeps partial dates, the prepared marriage and provenanc
   await expect(events).toContainText('1987')
   await expect(events).not.toContainText('1 січня')
   await page.goto('/person/I12')
-  // The September export has one I12 marriage; duplicate source records are tested below.
+  // The reviewed export has one I12 marriage; duplicate source records are tested below.
   await expect(events.getByRole('heading', { name: 'Шлюб', exact: true })).toHaveCount(1)
   await expect(events).not.toContainText('_EVDEF')
   const death = events.locator('[data-event-id]').filter({ has: page.getByRole('heading', { name: 'Смерть', exact: true }) })
   await death.getByText('Походження запису', { exact: true }).click()
-  // Stable site I12 maps to @I30@ in the current GEDCOM export.
-  await expect(death.getByText('@I30@ · DEAT[0]', { exact: true })).toBeVisible()
+  // Stable site I12 maps to @I52@ in the current GEDCOM export.
+  await expect(death.getByText('@I52@ · DEAT[0]', { exact: true })).toBeVisible()
   expect(await page.locator('html').evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width)
 })
 

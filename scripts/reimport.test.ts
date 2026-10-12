@@ -2,14 +2,14 @@ import { readFileSync } from 'node:fs'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
-import { reviewedExportSha256, reviewedGraphIssues } from './validation/reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, chronologyReviewId } from './validation/reviewed-export.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
 const json = (path: string) => JSON.parse(read(path).toString())
 const load = (directory: string) => convertGedcom({ bytes: read(`${directory}/Zubenko.ged`),
   config: json(`${directory}/site.json`), supplements: json(`${directory}/annotations.json`), identities: json(`${directory}/identities.json`) })
-const current = () => load('Data')
+const current = () => load('tests/fixtures/import-2026-09-17')
 
 it('preserves canonical people by FamilySearch identity despite reused XREFs and regenerated RootsMagic UIDs', () => {
   const old = load('tests/fixtures/baseline-2026-09-02').family
@@ -24,6 +24,62 @@ it('preserves canonical people by FamilySearch identity despite reused XREFs and
   expect(next.identities.entries.some((entry) => entry.entity.kind === 'person' && entry.entity.id === 'I22')).toBe(true)
   expect(next.report.sha256).toBe(reviewedExportSha256)
   expect(next.report.counts).toMatchObject({ people: 45, families: 21, events: 68, relationships: 71 })
+})
+
+it('imports all 74 people while retaining all 45 September identities and reserving retired I22', () => {
+  const before = current().family
+  const next = load('Data')
+  for (const person of before.people) {
+    const fs = person.externalIds.find(item => item.system === 'FamilySearch')!.value
+    expect(next.family.people.find(item => item.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))?.id).toBe(person.id)
+    const oldName = before.claims.find(claim => claim.field === 'name' && claim.target.id === person.id)!
+    const newName = next.family.claims.find(claim => claim.field === 'name' && claim.target.id === person.id && claim.isPrimary)!
+    expect(newName.value).toEqual(oldName.value)
+  }
+  expect(next.report.sha256).toBe(octoberExportSha256)
+  expect(next.report.counts).toMatchObject({ people: 74, families: 28, events: 129, relationships: 118 })
+  expect(next.family.people.filter(person => !before.people.some(old => old.id === person.id))).toHaveLength(29)
+  expect(next.family.people.some(person => person.id === 'I22')).toBe(false)
+  const graph = buildFamilyGraph(next.family), reached = new Set(['I1']), queue = [...reached]
+  for (let i = 0; i < queue.length; i++) for (const node of projectFamily(graph, queue[i]!).appearances) {
+    if (!reached.has(node.personId)) { reached.add(node.personId); queue.push(node.personId) }
+  }
+  expect(reached).toEqual(graph.personIds)
+  expect(reached.size).toBe(74)
+})
+
+it('keeps approved names and death dates, Roman alternatives, restored records and the corrected father', () => {
+  const { family, report } = load('Data')
+  const person = (fs: string) => family.people.find(item => item.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))!
+  const dates = (fs: string, kind: string) => family.events.filter(event => event.kind === kind && event.participants.some(item => item.personId === person(fs).id))
+    .flatMap(event => family.claims.filter(claim => claim.target.id === event.id && claim.field === 'date').map(claim => claim.field === 'date' ? claim.value.raw : ''))
+  expect(dates('PFFS-Y8D', 'death')).toEqual(['23 MAR 2015'])
+  expect(dates('PFFS-LRV', 'death')).toEqual(['22 DEC 2017'])
+  expect(dates('PFF3-CN2', 'death')).toEqual(['BET 1932 AND 1933'])
+  expect(dates('PFF3-CN2', 'burial')).toEqual([])
+  expect(family.claims.find(claim => claim.field === 'name' && claim.isPrimary && claim.target.id === person('PFF3-CN2').id))
+    .toMatchObject({ value: { display: 'Макар Ільянов Зубенко' } })
+  expect(family.claims.filter(claim => claim.field === 'name' && claim.provenance.some(origin => origin.kind === 'gedcom' && origin.path?.includes('ROMN')))).toHaveLength(69)
+  for (const fs of ['PFKL-W2F', 'PFVG-PWS', 'PFJL-V4J']) expect(person(fs)).toBeDefined()
+  expect(family.relationships.filter(edge => edge.kind === 'parent-child' && edge.toPersonId === person('PFFS-19F').id).map(edge => edge.fromPersonId))
+    .toEqual([person('PN4L-66C').id])
+  expect(family.relationships.some(edge => /D07|D08/.test(edge.explanation ?? ''))).toBe(false)
+  expect(family.events.filter(event => event.kind === 'marriage')).toHaveLength(2)
+  expect(report.warnings.filter(warning => warning.code === 'EMPTY_EVENT_CONTEXT')).toHaveLength(10)
+})
+
+it('preserves the visible D09 chronology note without upgrading certainty', async () => {
+  const result = load('Data'), options = { assetsRoot: 'Data', conversion: result.report }
+  expect((await validateData(result.family, options)).status).toBe('passed')
+  for (const mutation of ['explanation', 'confidence', 'reviewStatus', 'note'] as const) {
+    const data = structuredClone(result.family)
+    const edge = data.relationships.find(item => item.id === chronologyReviewId)!
+    if (mutation === 'explanation') delete edge.explanation
+    else if (mutation === 'confidence') edge.confidence = 'confirmed'
+    else if (mutation === 'reviewStatus') edge.reviewStatus = 'accepted'
+    else data.claims = data.claims.filter(claim => !(claim.field === 'description' && claim.target.id === 'I24'))
+    expect((await validateData(data, options)).issues).toContainEqual(expect.objectContaining({ code: 'REVIEW_POLICY_MISSING', severity: 'error' }))
+  }
 })
 
 it('retains existing event and claim IDs, and removes obsolete duplicate and conflict annotations only from the active export', () => {

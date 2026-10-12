@@ -1,11 +1,12 @@
 import { expect, test, type Page } from '@playwright/test'
 import { dragMap } from './map-helpers'
 import { readFileSync } from 'node:fs'
-import { buildFamilyGraph, projectFamily } from '../../src/graph/projection'
+import { availableGenerations, buildFamilyGraph, projectFamily } from '../../src/graph/projection'
 import { familyDataSchema } from '../../src/data/schema'
 
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 const homeCount = projectFamily(buildFamilyGraph(family), 'I1', { generations: 12 }).appearances.length
+const homeDepth = availableGenerations(buildFamilyGraph(family), 'I1')
 
 const camera = (page: Page) => page.locator('[data-layer="camera"]')
 const scale = (page: Page) => page.getByLabel('Масштаб карти', { exact: true })
@@ -85,7 +86,7 @@ test('depth is reversible and never removes people from the full index', async (
   expect(fullCount).toBeGreaterThan(5)
   await generations(page).selectOption('1')
   await expect(nodes(page)).toHaveCount(4)
-  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(45)
+  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(74)
   await generations(page).selectOption('6')
   await expect(nodes(page)).toHaveCount(fullCount)
   await page.locator('ul a[href="/tree/I25"]').click()
@@ -115,7 +116,7 @@ test('Back, Forward, room return and home restore the correct camera and depth',
   await page.goBack()
   await page.getByRole('link', { name: 'До мене', exact: true }).click()
   await expect(camera(page)).toHaveAttribute('transform', 'translate(0 0) scale(1)')
-  await expect(generations(page)).toHaveValue('6')
+  await expect(generations(page)).toHaveValue(String(homeDepth))
   await expect(nodes(page)).toHaveCount(homeCount)
 })
 

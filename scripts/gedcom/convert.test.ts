@@ -41,6 +41,24 @@ function additions(data: FamilyData) {
 }
 
 describe('family JSON conversion', () => {
+  it('preserves AQ Roman names, family UID and continued reverse-link notes without inventing an empty marriage', () => {
+    const input = Buffer.from(`0 HEAD\n1 SOUR Ancestral Quest\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME Іван /Зубенко/\n2 ROMN Ivan /Zubenko/\n3 TYPE user\n1 _UID person-uid\n1 FAMS @F1@\n0 @I2@ INDI\n1 NAME Ольга /Зубенко/\n1 FAMS @F1@\n0 @I3@ INDI\n1 NAME Иосиф /Зубенко/\n1 FAMC @F1@\n2 NOTE Потребує перевірки\n3 CONT Роки залишено\n0 @F1@ FAM\n1 _UID family-uid\n1 HUSB @I1@\n1 WIFE @I2@\n1 CHIL @I3@\n1 MARR\n0 TRLR\n`)
+    const { family, report } = convert({ bytes: input })
+    expect(family.claims.filter(claim => claim.field === 'name' && claim.target.id === 'I1')).toEqual([
+      expect.objectContaining({ value: { raw: 'Іван /Зубенко/', display: 'Іван Зубенко', given: 'Іван', surname: 'Зубенко' } }),
+      expect.objectContaining({ value: { raw: 'Ivan /Zubenko/', display: 'Ivan Zubenko', given: 'Ivan', surname: 'Zubenko' }, confidence: 'unassessed', isPrimary: false }),
+    ])
+    expect(family.people[0]!.externalIds).toContainEqual({ system: 'Ancestral Quest-UID', value: 'person-uid' })
+    expect(report.familyMetadata).toContainEqual(expect.objectContaining({ recordId: '@F1@', tag: '_UID', value: 'family-uid' }))
+    expect(family.claims).toContainEqual(expect.objectContaining({ field: 'description', target: { kind: 'person', id: 'I3' }, value: 'Потребує перевірки\nРоки залишено' }))
+    expect(family.relationships.filter(edge => edge.kind === 'parent-child').every(edge => edge.explanation === 'Потребує перевірки\nРоки залишено')).toBe(true)
+    expect(family.events).toEqual([])
+    expect(family.relationships.filter(edge => edge.kind === 'spouse')).toHaveLength(1)
+    expect(report.warnings).toContainEqual(expect.objectContaining({ code: 'EMPTY_EVENT_CONTEXT', recordId: '@F1@', path: 'MARR[0]' }))
+    expect(report.unhandledNodes).toEqual([])
+    expect(convert({ bytes: Buffer.from(input.toString().replace('3 TYPE user', '3 TYPE user\n3 _UNKNOWN value')) }).report.unhandledNodes)
+      .toContainEqual(expect.objectContaining({ tag: '_UNKNOWN', path: 'NAME[0].ROMN[0]._UNKNOWN[0]' }))
+  })
   it('uses the committed identity journal and all six review decisions without inventing evidence', () => {
     const identities = JSON.parse(readFileSync(new URL('tests/fixtures/baseline-2026-09-02/identities.json', root), 'utf8'))
     const supplements = JSON.parse(readFileSync(new URL('tests/fixtures/baseline-2026-09-02/annotations.json', root), 'utf8'))

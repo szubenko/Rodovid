@@ -3,15 +3,15 @@ import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 import { dragMap } from './map-helpers'
 
-test('finds and centers all 45 people regardless of the visible generation', async ({ page }) => {
-  // This is 45 complete search/recenter interactions, not one slow UI action.
-  test.setTimeout(90_000)
+test('finds and centers all 74 people regardless of the visible generation', async ({ page }) => {
+  // This covers a complete search/recenter interaction for every imported person.
+  test.setTimeout(150_000)
   await page.goto('/tree/I1')
-  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(45)
+  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(74)
   const people = await page.locator('ul a[href^="/tree/"]').evaluateAll((links) => links.map((link) => ({
     name: link.textContent!, id: link.getAttribute('href')!.split('/').pop()!,
   })))
-  expect(people).toHaveLength(45)
+  expect(people).toHaveLength(74)
   for (const person of people) {
     await page.getByLabel('Покоління', { exact: true }).selectOption('1')
     await page.getByRole('searchbox').fill(person.name.toLocaleUpperCase('uk'))

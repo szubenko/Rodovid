@@ -3,12 +3,21 @@ import { expect, test } from '@playwright/test'
 import { familyDataSchema } from '../../src/data/schema'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { pdfFixture } from './helpers/pdf-fixture'
+import { convertGedcom } from '../../scripts/gedcom/convert'
 
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 
 test('duplicate appearances lead to one room and recentering restores keyboard focus', async ({ page }) => {
+  // The corrected October graph has no repeated ancestors at I1. Exercise the
+  // retained September fixture to keep coverage for multiple appearances.
+  const prior = new URL('../fixtures/import-2026-09-17/', import.meta.url)
+  const read = (name: string) => readFileSync(new URL(name, prior))
+  const data = convertGedcom({ bytes: read('Zubenko.ged'), config: JSON.parse(read('site.json').toString()),
+    supplements: JSON.parse(read('annotations.json').toString()), identities: JSON.parse(read('identities.json').toString()) }).family
+  await page.route('**/data/family.json', route => route.fulfill({ json: data }))
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/tree/I1')
+  await expect(page.locator('svg [data-center="true"]')).toHaveAttribute('data-person-id', 'I1')
   const appearances = await page.locator('svg [data-person-id]').evaluateAll(elements => elements.map(el => ({
     person: el.getAttribute('data-person-id')!, appearance: el.getAttribute('data-appearance-id')!,
   })))
@@ -16,6 +25,7 @@ test('duplicate appearances lead to one room and recentering restores keyboard f
   expect(duplicate).toBeDefined()
   for (const node of appearances.filter(node => node.person === duplicate.person)) {
     await page.goto('/tree/I1')
+    await expect(page.locator('svg [data-center="true"]')).toHaveAttribute('data-person-id', 'I1')
     await page.locator(`svg [data-appearance-id="${node.appearance}"]`).press('Enter')
     await expect(page).toHaveURL(`/tree/${node.person}`)
     await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
@@ -27,7 +37,7 @@ test('duplicate appearances lead to one room and recentering restores keyboard f
 })
 
 test('all centers expose readable full-name alternatives and large touch targets at 320px', async ({ page }, info) => {
-  test.setTimeout(120_000)
+  test.setTimeout(180_000)
   await page.setViewportSize({ width: 320, height: 900 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   const timings: { id: string; readyMs: number }[] = []

@@ -3,7 +3,7 @@ export type ViewRoute = { screen: MapScreen | 'person' | 'missing'; personId: st
 export type MapSettings = {
   generations: number
   zoom: number
-  /** Fractions of the map viewport width; independent of its current pixel width. */
+  /** Fractions of the viewport width (x) and height (y), independent of pixel dimensions. */
   pan: { x: number; y: number }
   collapsedAppearanceIds: string[]
 }

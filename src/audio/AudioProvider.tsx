@@ -5,7 +5,7 @@ import { readAudioPreferences, saveAudioPreferences, type AudioPreferences } fro
 import { useAudioChannel } from './useAudioChannel'
 import styles from './Audio.module.css'
 
-export function AudioProvider({ children }: { children: ReactNode }) {
+export function AudioProvider({ children, controlsAfter = false }: { children: ReactNode; controlsAfter?: boolean }) {
   const family = useFamily()
   const [preferences, setPreferences] = useState(readAudioPreferences)
   const [effectsArmed, setEffectsArmed] = useState(false)
@@ -43,8 +43,7 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     update({ musicEnabled: false, effectsEnabled: false })
   }
   const playDoor = () => { if (armed.current && effect.status !== 'error') void effect.play(true) }
-  return <DoorAudioContext value={playDoor}>
-    <div className={styles.audio}>
+  const controls = <div className={styles.audio}>
       <details>
         <summary>Звук · {musicActive || effectsActive ? 'увімкнено' : 'вимкнено'}</summary>
         <p>Запускайте звук кнопками нижче. Налаштування зберігаються в цьому браузері; після перезавантаження потрібне нове натискання.</p>
@@ -72,6 +71,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
       <audio ref={musicRef} data-audio="music" preload="none" loop onError={music.fail} />
       <audio ref={effectRef} data-audio="effects" preload="none" onError={effect.fail} onEnded={effect.ended} />
     </div>
+  return <DoorAudioContext value={playDoor}>
+    {!controlsAfter && controls}
     {children}
+    {controlsAfter && controls}
   </DoorAudioContext>
 }

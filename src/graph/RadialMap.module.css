@@ -1,8 +1,16 @@
-.map { margin-block: 1rem 2rem; }
+.map { display: flex; flex-direction: column; margin-block: 1rem 2rem; }
+.map > * { order: 2; }
+.map > .controls { order: 0; }
+.map > [data-map-viewport] { order: 1; }
+.map > .hint { margin-top: 0.75rem; }
+.map[data-map-expanded='true'] { position: fixed; inset: 0; z-index: 1000; margin: 0; padding: 0.5rem; background: var(--color-background, #fcfdfa); overflow: auto; }
+.map[data-map-expanded='true'] > .controls { flex-wrap: nowrap; flex-shrink: 0; overflow-x: auto; scrollbar-width: thin; }
+.map[data-map-expanded='true'] > .controls > * { flex-shrink: 0; white-space: nowrap; }
+.map[data-map-expanded='true'] > [data-map-viewport] { max-width: none; flex-shrink: 0; }
 .hint { color: var(--color-muted); font-size: 0.9rem; }
 .hint { max-width: 48rem; }
 .canvas { width: 100%; max-width: 68rem; margin-inline: auto; overflow: clip; background: #dcdede; }
-.canvas svg { display: block; width: 100%; overflow: visible; touch-action: none; user-select: none; cursor: grab; }
+.canvas svg { display: block; width: 100%; height: 100%; overflow: visible; touch-action: none; user-select: none; cursor: grab; }
 .canvas svg:active { cursor: grabbing; }
 .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-block: 0.5rem; }
 .controls button { min-width: 44px; text-align: center; }
@@ -50,6 +58,11 @@
 .selection button { margin-top: 0.75rem; }
 .map button { min-height: 44px; border: 1px solid #bea47f; border-radius: 0.25rem; padding: 0.75rem; color: var(--color-text); background: #fff8e9; font: inherit; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
 .map button:hover { background: #ecddc7; }
+@media (max-width: 760px) {
+  .controls { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; scrollbar-width: thin; }
+  .controls > * { flex-shrink: 0; }
+  .controls button { white-space: nowrap; }
+}
 @media (forced-colors: active) {
   .sector, .node .sector { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .sector, .node:focus-visible .sector { stroke: Highlight; }

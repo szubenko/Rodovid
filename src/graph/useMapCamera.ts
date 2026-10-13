@@ -22,7 +22,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       .on('zoom', (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
         if (!active || synchronizing.current || !event.sourceEvent) return // React/history owns programmatic changes.
         dispatch({ type: 'map', settings: { zoom: event.transform.k,
-          pan: { x: event.transform.x / width, y: event.transform.y / width } } })
+          pan: { x: event.transform.x / width, y: event.transform.y / height } } })
       })
     selection.call(behavior).on('dblclick.zoom', null)
     controller.current = behavior
@@ -64,11 +64,11 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
   useLayoutEffect(() => {
     const svg = container.current!.querySelector('svg')!
     // Synchronize d3's gesture origin after Back/Forward, buttons, recentering and resize.
-    const target = zoomIdentity.translate(camera.pan.x * width, camera.pan.y * width).scale(camera.zoom)
+    const target = zoomIdentity.translate(camera.pan.x * width, camera.pan.y * height).scale(camera.zoom)
     const current = zoomTransform(svg)
     if (current.x === target.x && current.y === target.y && current.k === target.k) return
     synchronizing.current = true
     select(svg).call(controller.current!.transform, target)
     synchronizing.current = false
-  }, [container, width, camera.pan.x, camera.pan.y, camera.zoom])
+  }, [container, width, height, camera.pan.x, camera.pan.y, camera.zoom])
 }

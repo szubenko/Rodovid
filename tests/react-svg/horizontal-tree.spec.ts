@@ -92,7 +92,7 @@ test('горизонтальна вкладка: камера, докази, к�
   await expect(page.getByTestId('relationship-details')).toHaveAttribute('data-relationship-id', id!)
   await page.getByRole('button', { name: '← Назад' }).click()
   await expect(page).toHaveURL(/\/tree\/I1$/)
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('125%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('75%')
   expect(errors).toEqual([])
 })
 

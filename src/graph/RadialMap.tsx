@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
+import { useId, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react'
 import { personName } from '../data/load-family'
 import { confidenceLabels } from '../data/schema'
 import { useFamily, useView } from '../navigation/context'
@@ -8,7 +8,9 @@ import { connectionPath, labelArc, lifeYears, relationshipName, sectorPath } fro
 import styles from './RadialMap.module.css'
 import { useMapTransition } from './useMapTransition'
 import { useMapCamera } from './useMapCamera'
-import { maxZoom, minZoom, scaleCamera } from './camera'
+import { useMapViewport } from './useMapViewport'
+import { useMapExpansion } from './useMapExpansion'
+import { fitCamera, maxZoom, minZoom, scaleCamera } from './camera'
 import { EvidenceForTarget } from '../room/Evidence'
 import { emptySectors } from './empty-sectors'
 import { closestRelationship } from './closest-relationship'
@@ -24,7 +26,8 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
   const svg = useRef<SVGSVGElement>(null)
-  const [width, setWidth] = useState(320)
+  const { width, height } = useMapViewport(container)
+  const { expanded, toggleExpansion } = useMapExpansion(container)
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
   const measureText = useMemo(() => {
@@ -39,14 +42,6 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
       return contexts.get(size)?.measureText(text).width ?? Array.from(text).length * size
     }
   }, [])
-  useEffect(() => {
-    const element = container.current!
-    const observer = new ResizeObserver(([entry]) => {
-      if (entry) setWidth(Math.max(160, Math.min(10000, entry.contentRect.width)))
-    })
-    observer.observe(element)
-    return () => observer.disconnect()
-  }, [])
   const graph = useMemo(() => buildFamilyGraph(family), [family])
   const countries = useMemo(() => birthCountries(family), [family])
   const labels = useMemo(() => new Map(family.people.map((person) => [person.id, personName(family, person.id)])), [family])
@@ -57,18 +52,11 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   const maxGenerations = useMemo(() => availableGenerations(graph, personId), [graph, personId])
   const generations = Math.min(mapSettings.generations, maxGenerations)
   const projection = useMemo(() => projectFamily(graph, personId, { generations: Math.min(12, generations + 1), collapsedAppearanceIds }), [graph, personId, generations, collapsedAppearanceIds])
-  const layout = useMemo(() => layoutRadial(projection, { width, height: width, labels, dates, measureText,
-    fontSize: 20, fitToViewport }), [projection, width, labels, dates, measureText, fitToViewport])
+  const layout = useMemo(() => layoutRadial(projection, { width, height, labels, dates, measureText,
+    fontSize: 20, fitToViewport }), [projection, width, height, labels, dates, measureText, fitToViewport])
   const empty = useMemo(() => emptySectors(layout, projection.generations - 1), [layout, projection.generations])
-  const boundsScale = Math.max(1, layout.fitScale)
-  const mapHeight = Math.min(width, Math.max(width * 0.6, layout.center.y + layout.centerRadius * boundsScale + 20,
-    ...[...layout.nodes.filter((node) => node.lane !== 'center'), ...empty].map((sector) => {
-      const angles = [sector.startAngle, sector.endAngle]
-      if (sector.startAngle <= 180 && sector.endAngle >= 180) angles.push(180)
-      return layout.center.y + Math.max(...angles.map((angle) => radialPoint({ x: 0, y: 0 }, sector.outerRadius, angle).y)) * boundsScale + 20
-    })))
-  const renderedCamera = useMemo(() => ({ ...mapSettings, pan: { x: pan.x * width, y: pan.y * width } }), [mapSettings, pan.x, pan.y, width])
-  useMapCamera(container, width, mapSettings, dispatch)
+  const renderedCamera = useMemo(() => ({ ...mapSettings, pan: { x: pan.x * width, y: pan.y * height } }), [mapSettings, pan.x, pan.y, width, height])
+  useMapCamera(container, width, mapSettings, dispatch, height)
   useMapTransition(container, layout, personId, renderedCamera)
   const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
   const visibleCountries = [...new Set(layout.nodes.map(node => countries.get(node.personId)!))]
@@ -77,6 +65,10 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   const selected = relations.find((relation) => relation.id === state.current.selectedRelationshipId)
   const selectRelation = (id: string) => dispatch({ type: 'relationship', id })
   const changeScale = (factor: number) => dispatch({ type: 'map', settings: scaleCamera(mapSettings, factor) })
+  const fitMap = () => {
+    const drawing = svg.current?.querySelector<SVGGElement>('[data-layer="coordinates"]')
+    if (drawing) dispatch({ type: 'map', settings: fitCamera(drawing.getBBox(), width, height) })
+  }
   const savePng = async () => {
     if (!svg.current) return
     setExportState('exporting')
@@ -88,15 +80,17 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     }
   }
 
-  return <section className={styles.map} aria-label="Радіальна карта родини">
+  return <section className={styles.map} aria-label="Радіальна карта родини"
+    data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
     <p className={styles.hint}>Натисніть ім’я, щоб змінити центр, або лінію зв’язку, щоб побачити її докази. «Вмістити карту» показує все коло, «До центру» повертає читабельні підписи.</p>
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
       <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
-      <button onClick={() => dispatch({ type: 'map', settings: scaleCamera({ zoom: 1, pan: { x: 0, y: 0 } }, layout.fitScale) })}>Вмістити карту</button>
+      <button onClick={fitMap}>Вмістити карту</button>
       <button onClick={() => dispatch({ type: 'map', settings: { zoom: 1, pan: { x: 0, y: 0 } } })}>До центру</button>
+      <button onClick={toggleExpansion} aria-pressed={expanded}>{expanded ? 'Згорнути діаграму' : 'На весь екран'}</button>
       <button onClick={() => { void savePng() }} disabled={exportState === 'exporting'}
         title="Зберегти всю поточну діаграму, включно з частинами за межами екрана">
         {exportState === 'exporting' ? 'Готуємо PNG…' : 'Зберегти PNG'}
@@ -117,8 +111,8 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
         <i aria-hidden="true" style={{ backgroundColor: countryColor(country) }} />{country}
       </span>)}
     </div>
-    <div ref={container} className={styles.canvas}>
-      <svg ref={svg} viewBox={`0 0 ${width} ${mapHeight}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
+    <div ref={container} className={styles.canvas} data-map-viewport>
+      <svg ref={svg} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={`Родина: ${labels.get(personId)}`}>
         <g data-layer="camera" transform={`translate(${renderedCamera.pan.x} ${renderedCamera.pan.y}) scale(${zoom})`}>
           <g data-layer="coordinates">
             <g data-layer="empty-sectors" aria-hidden="true">

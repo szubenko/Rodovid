@@ -1,5 +1,5 @@
 .canvas { width: 100%; margin-inline: auto; overflow: clip; background: #fcfdfa; }
-.canvas svg { display: block; width: 100%; touch-action: none; user-select: none; cursor: grab; }
+.canvas svg { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; cursor: grab; }
 .canvas svg:active { cursor: grabbing; }
 .card { fill: #fff; stroke: #cddbc7; stroke-width: 1.5; }
 .node { cursor: pointer; }

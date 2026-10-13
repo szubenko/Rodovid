@@ -132,7 +132,7 @@ function Workspace() {
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
       </aside>
       <main className={styles.main} id="atlas-content" tabIndex={-1}>
-        <AudioProvider>
+        <AudioProvider controlsAfter={state.current.screen !== 'person'}>
           <Routes>
             <Route path="/" element={<Navigate to={`/tree/${state.homePersonId}`} replace />} />
             <Route path="/tree/:personId" element={<PersonView screen="tree" />} />

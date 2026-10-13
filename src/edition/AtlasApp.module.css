@@ -56,18 +56,44 @@
 .viewTabs a svg { flex-shrink: 0; }
 .viewTabs > span { margin-left: auto; color: var(--color-muted); font-size: 0.7rem; }
 .mapSurface { padding: 1.5rem; border: 1px solid #dce4d5; border-radius: 10px; background: #fff; }
+.main:has(.mapSurface) .personHeader { padding-block: 0.75rem; }
+.main:has(.mapSurface) .personHeader h1 { margin-block: 0.35rem; font-size: clamp(1.5rem, 2.3vw, 2.25rem); }
+.main:has(.mapSurface) .viewTabs { margin-bottom: 0.75rem; }
 .mapIntro { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid #edf0e9; }
 .mapIntro > span { display: flex; align-items: center; gap: 0.4rem; color: var(--color-muted); font-size: 0.65rem; }
 .mapIntro i { width: 6px; height: 6px; border-radius: 50%; margin-left: 0.5rem; background: #779c69; }
 .mapIntro i:nth-of-type(2) { background: #c1906e; }
 .mapIntro i:nth-of-type(3) { background: #8da5c4; }
 .mapSurface > section { margin: 1rem 0 0; }
+.app:has(.mapSurface) .topbar { min-height: 60px; padding: 0.4rem 1rem; gap: 1rem; }
+.app:has(.mapSurface) .brand { font-size: 1.25rem; min-width: 0; }
+.app:has(.mapSurface) .brandIcon { width: 32px; height: 32px; }
+.app:has(.mapSurface) .layout { max-width: none; grid-template-columns: 220px minmax(0, 1fr); }
+.app:has(.mapSurface) .sidebar { padding: 0.75rem; }
+.app:has(.mapSurface) .sidebarIntro, .app:has(.mapSurface) .stats,
+.app:has(.mapSurface) .sidebarFooter { display: none; }
+.app:has(.mapSurface) .personList { max-height: calc(100dvh - 240px); }
+.main:has(.mapSurface) { padding: 0.5rem 0.75rem; }
+.main:has(.mapSurface) > div:first-child { display: block; margin: 0; padding: 0; border: 0; }
+.main:has(.mapSurface) .personHeader { padding-block: 0.35rem; gap: 0.5rem; }
+.main:has(.mapSurface) .personHeader > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
+.main:has(.mapSurface) .personHeader .eyebrow { display: none; }
+.main:has(.mapSurface) .personHeader h1 { margin: 0; font-size: 1.4rem; }
+.main:has(.mapSurface) .viewTabs { margin-bottom: 0.4rem; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+.main:has(.mapSurface) .viewTabs a { flex-shrink: 0; min-height: 44px; white-space: nowrap; }
+.main:has(.mapSurface) .viewTabs > span { display: none; }
+.mapSurface { padding: 0.5rem; }
+.mapSurface .mapIntro { display: none; }
+.mapSurface > section { margin-top: 0; }
 .mapSurface > section > p:first-child { font-size: 0.75rem; }
 .mapSurface button, .mapSurface select { border-color: #d0dac9; border-radius: 5px; background: #f5f8f1; font-size: 0.75rem; }
 .mapSurface button:hover { background: #e9f0e1; }
-.mapSurface [aria-label="Керування картою"] { gap: 0.4rem; padding: 0.5rem 0; margin-bottom: 0.7rem; }
+.mapSurface [aria-label="Керування картою"] { gap: 0.4rem; padding: 0; margin-block: 0 0.35rem; }
+.mapSurface [aria-label="Керування картою"] { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+.mapSurface [aria-label="Керування картою"] > * { flex-shrink: 0; white-space: nowrap; }
+.mapSurface [aria-label="Керування картою"] button { padding: 0.5rem; }
 .mapSurface [aria-label="Керування картою"] output, .mapSurface [aria-label="Керування картою"] label { font-size: 0.72rem; }
-.mapSurface div:has(> svg) { max-width: 76rem; background: #fcfdfa; border: 1px solid #edf1e7; border-radius: 8px; }
+.mapSurface div:has(> svg) { max-width: none; background: #fcfdfa; border: 1px solid #edf1e7; border-radius: 8px; }
 .mapSurface svg [data-person-id] > path:first-of-type, .mapSurface svg [data-person-id] > circle { fill: #fff; stroke: #e0e8d9; }
 .mapSurface svg [data-person-id]:hover > path:first-of-type, .mapSurface svg [data-person-id]:hover > circle { fill: #edf5e7; }
 .mapSurface svg [data-person-id]:focus-visible > path:first-of-type, .mapSurface svg [data-person-id]:focus-visible > circle { stroke: #29664f; stroke-width: 5px; }
@@ -124,11 +150,23 @@
   .personHeader { padding-top: 1rem; gap: 1rem; }
   .personHeader h1 { font-size: 2rem; }
   .primary { font-size: 0.8rem; }
-  .mapSurface { padding: 0.8rem; }
+  .mapSurface { padding: 0.35rem; }
+  .app:has(.mapSurface) .brand { font-size: 1.2rem; gap: 0.5rem; }
+  .app:has(.mapSurface) .brandIcon { width: 28px; height: 28px; }
+  .main:has(.mapSurface) .personHeader { gap: 0.35rem; padding-block: 0.25rem; }
+  .mapSurface [aria-label="Керування картою"] { padding-block: 0.25rem; margin-top: 0; margin-bottom: 0.4rem; }
+  .main:has(.mapSurface) .viewTabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+  .main:has(.mapSurface) .viewTabs a { flex-shrink: 0; white-space: nowrap; min-height: 44px; }
+  .main:has(.mapSurface) .viewTabs > span { display: none; }
+  .mapSurface .mapIntro { display: none; }
+  .mapSurface > section { margin-top: 0; }
   .mapIntro > span { display: none; }
   .viewTabs { gap: 1rem; }
   .viewTabs a { font-size: 0.75rem; }
   .pageFooter { flex-wrap: wrap; }
+}
+@media (max-width: 360px) {
+  .app:has(.mapSurface) .brandIcon { display: none; }
 }
 @media (forced-colors: active) {
   .mapSurface svg [data-person-id] > path:first-of-type, .mapSurface svg [data-person-id] > circle, .mapSurface svg [data-layer="empty-sectors"] path:first-of-type { fill: Canvas; stroke: CanvasText; }

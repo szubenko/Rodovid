@@ -38,7 +38,7 @@ test('buttons zoom around center, pan, fit and remain within limits using the ke
   await expect(increase).toBeDisabled()
   const decrease = page.getByRole('button', { name: 'Зменшити масштаб', exact: true })
   for (let index = 0; index < 30 && await decrease.isEnabled(); index++) await decrease.click()
-  await expect(scale(page)).toHaveText('5%')
+  await expect(scale(page)).toHaveText('1%')
   await expect(decrease).toBeDisabled()
   await fit(page)
   await expectFitted(page)
@@ -156,8 +156,8 @@ test('resize retains normalized position and fit stays reachable at 320px', asyn
   const normalizedCenter = () => page.locator('svg').evaluate((svg) => {
     const element = svg as SVGSVGElement
     const matrix = element.querySelector<SVGGElement>('[data-layer="camera"]')!.transform.baseVal.consolidate()!.matrix
-    const width = element.viewBox.baseVal.width
-    return { x: matrix.a * 0.5 + matrix.e / width, y: matrix.a * 0.5 + matrix.f / width }
+    const { width, height } = element.viewBox.baseVal
+    return { x: matrix.a * 0.5 + matrix.e / width, y: matrix.a * 0.5 + matrix.f / height }
   })
   const before = await normalizedCenter()
   await page.setViewportSize({ width: 320, height: 900 })

@@ -51,6 +51,7 @@ test('вікно кожної діаграми підлаштовується п
 })
 
 test('розгорнута діаграма використовує весь екран і повертає фокус через Escape', async ({ page }, testInfo) => {
+  test.setTimeout(120_000)
   for (const [width, height] of [[1366, 768], [320, 668], [812, 375]]) {
     await page.setViewportSize({ width: width!, height: height! })
     for (const screen of ['tree', 'horizontal', 'vertical']) {

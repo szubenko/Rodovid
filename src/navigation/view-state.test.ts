@@ -23,7 +23,8 @@ describe('view history', () => {
   it('starts in vertical mode and restores its camera and evidence after rooms or other maps', () => {
     let state = initialView('I1', 3, 'vertical', { screen: 'vertical', personId: 'I2' })
     expect(state.current).toMatchObject({ mapScreen: 'vertical', centerPersonId: 'I2' })
-    state = viewReducer(state, { type: 'map', settings: { zoom: 1.5, pan: { x: -0.2, y: 0.3 }, generations: 5 } })
+    state = viewReducer(state, { type: 'map', settings: { zoom: 1.5, pan: { x: -0.2, y: 0.3 }, generations: 5,
+      expandedRelativeIds: ['I3', 'I6'], showAllRelatives: true } })
     state = viewReducer(state, { type: 'relationship', id: 'evidence' })
     const vertical = state.current
     state = viewReducer(state, visit('room', 'person', 'I2'))

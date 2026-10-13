@@ -6,6 +6,8 @@ export type MapSettings = {
   /** Fractions of the viewport width (x) and height (y), independent of pixel dimensions. */
   pan: { x: number; y: number }
   collapsedAppearanceIds: string[]
+  expandedRelativeIds?: string[]
+  showAllRelatives?: boolean
 }
 export type View = ViewRoute & {
   mapScreen: MapScreen

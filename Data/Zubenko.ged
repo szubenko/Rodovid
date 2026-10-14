@@ -950,24 +950,6 @@
 1 CHAN
 2 DATE 12 OCT 2026
 3 TIME 00:24:18
-0 @I65@ INDI
-1 NAME Иосиф /Зубенко/
-2 ROMN Yosyf /Zubenko/
-1 SEX M
-1 BIRT
-2 DATE 1891
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
-1 DEAT
-2 DATE 30 DEC 1982
-1 _FSFTID PFVV-3JG
-1 _UID 70D6D21B3E449E419F87BF6BDE6558058444
-1 FAMC @F21@
-2 NOTE Потребує перевірки: мати Анна Герасимова Пальчикова народилася 1832 року,
-3 CONT син Иосиф Зубенко — 1891 року (близько 59 років різниці).
-3 CONT Власник 12.10.2026 доручив зберегти роки та зв’язок із цією позначкою.
-1 CHAN
-2 DATE 12 OCT 2026
-3 TIME 00:24:19
 0 @I66@ INDI
 1 NAME Прокофий /Волинцов/
 2 ROMN Agafij /Volontsov/
@@ -1214,7 +1196,6 @@
 1 CHIL @I52@
 1 CHIL @I63@
 1 CHIL @I64@
-1 CHIL @I65@
 1 MARR
 2 DATE 15 FEB 1853
 2 PLAC Харьковская губерния, Российская империя

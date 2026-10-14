@@ -5,21 +5,38 @@ const visualProperties = [
   'paint-order', 'text-anchor', 'dominant-baseline', 'visibility',
 ]
 
-function inlineVisualStyles(source: SVGSVGElement): SVGSVGElement {
+function snapshotDiagram(source: SVGSVGElement) {
   const copy = source.cloneNode(true) as SVGSVGElement
-  const sourceElements = [source, ...source.querySelectorAll<SVGElement>('*')]
-  const copyElements = [copy, ...copy.querySelectorAll<SVGElement>('*')]
-
-  sourceElements.forEach((element, index) => {
-    const target = copyElements[index]
-    if (!target) return
-    const style = getComputedStyle(element)
-    const declarations = visualProperties.map((property) => `${property}:${style.getPropertyValue(property)}`).join(';')
-    target.setAttribute('style', `${target.getAttribute('style') ?? ''};${declarations}`)
-  })
-
-  copy.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-  return copy
+  copy.querySelector('[data-layer="camera"]')?.removeAttribute('transform')
+  copy.querySelector('[data-layer="layout"]')?.removeAttribute('transform')
+  copy.querySelectorAll('[data-hit="true"]').forEach(hit => hit.remove())
+  // Resolve the normal diagram styles on an inert offscreen copy. Hover and
+  // focus are transient input feedback; explicit selection stays in the copy.
+  copy.setAttribute('inert', '')
+  copy.setAttribute('aria-hidden', 'true')
+  copy.style.position = 'fixed'
+  copy.style.left = '-100000px'
+  copy.style.top = '-100000px'
+  source.parentElement!.append(copy)
+  try {
+    const drawing = copy.querySelector<SVGGElement>('[data-layer="coordinates"]')
+    if (!drawing) throw new Error('SVG has no diagram')
+    const bounds = drawing.getBBox()
+    for (const element of [copy, ...copy.querySelectorAll<SVGElement>('*')]) {
+      const style = getComputedStyle(element)
+      const declarations = visualProperties.map(property => `${property}:${style.getPropertyValue(property)}`).join(';')
+      element.setAttribute('style', `${element.getAttribute('style') ?? ''};${declarations}`)
+    }
+    copy.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    return { copy, bounds }
+  } finally {
+    copy.remove()
+    copy.style.removeProperty('position')
+    copy.style.removeProperty('left')
+    copy.style.removeProperty('top')
+    copy.removeAttribute('inert')
+    copy.removeAttribute('aria-hidden')
+  }
 }
 
 function svgImage(svg: string): Promise<HTMLImageElement> {
@@ -42,15 +59,11 @@ function pngBlob(canvas: HTMLCanvasElement): Promise<Blob> {
 export async function downloadSvgAsPng(svg: SVGSVGElement, fileName: string, pixelsPerUnit = 3) {
   // Bounds in drawing coordinates include sectors outside the screen and ignore
   // the parent camera's pan/zoom. Change only the exported copy, not the live map.
-  const drawing = svg.querySelector<SVGGElement>('[data-layer="coordinates"]')
-  if (!drawing) throw new Error('SVG has no diagram')
-  const bounds = drawing.getBBox()
+  const { copy, bounds } = snapshotDiagram(svg)
   if (!bounds.width || !bounds.height) throw new Error('SVG has no dimensions')
   const padding = 24
   const width = bounds.width + padding * 2
   const height = bounds.height + padding * 2
-  const copy = inlineVisualStyles(svg)
-  copy.querySelector('[data-layer="camera"]')?.removeAttribute('transform')
   copy.setAttribute('viewBox', `${bounds.x - padding} ${bounds.y - padding} ${width} ${height}`)
   copy.setAttribute('width', String(width))
   copy.setAttribute('height', String(height))

@@ -4,6 +4,7 @@ import type { Relationship } from '../../src/data/schema.ts'
  * This permits an unresolved prototype view, never a confirmed relationship. */
 export const reviewedExportSha256 = 'a6428245adf900e2ec6bd84946d24945078e6d94d8bdfd96ce3b865c8232e506'
 export const octoberExportSha256 = '462724e223880ee9528c70e0087a9ebccac33e6b866566ad178ba3581d7b8358'
+export const correctedOctoberExportSha256 = '01a33b9f8880a6943550e24a52dc0846bbb195cce45ec99dab1165405f9f4ab0'
 export const chronologyReviewId = 'relationship-259066879720fd7dd7184cf9'
 export const reviewedGraphIssues = [
   { code: 'CONFLICTING_ROLES', review: 'D07', recordIds: ['@F10@', '@F6@'],

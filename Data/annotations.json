@@ -9,16 +9,6 @@
       },
       "confidence": "unassessed",
       "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене."
-    },
-    {
-      "id": "review-relationship-259066879720fd7dd7184cf9",
-      "target": {
-        "kind": "relationship",
-        "id": "relationship-259066879720fd7dd7184cf9"
-      },
-      "confidence": "unassessed",
-      "reviewStatus": "unreviewed",
-      "explanation": "D09: хронологія материнства потребує перевірки. Роки та зв’язок збережено за рішенням власника 12.10.2026; оцінку достовірності не підвищено."
     }
   ],
   "primaryClaimIds": [
@@ -86,7 +76,6 @@
     "claim-63e1509b15554797ea4b6a9f",
     "claim-4e7a7dffd253cd754e89f734",
     "claim-1bbbba62789b745030eaacc9",
-    "claim-88af4a5b6affbb492b17e3a4",
     "claim-3d88a23585ec72d534cfc8fa",
     "claim-76b7468018b1989916f696b1",
     "claim-7f31d054673c86ad88702812",
@@ -382,11 +371,6 @@
     {
       "id": "review-place-235aa93bcbf6393ae37148c6",
       "placeId": "place-235aa93bcbf6393ae37148c6",
-      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
-    },
-    {
-      "id": "review-place-a4c5f433f2b11d163cb01c3c",
-      "placeId": "place-a4c5f433f2b11d163cb01c3c",
       "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
     }
   ],

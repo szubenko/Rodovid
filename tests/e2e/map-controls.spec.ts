@@ -86,7 +86,7 @@ test('depth is reversible and never removes people from the full index', async (
   expect(fullCount).toBeGreaterThan(5)
   await generations(page).selectOption('1')
   await expect(nodes(page)).toHaveCount(4)
-  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(74)
+  await expect(page.locator('ul a[href^="/tree/"]')).toHaveCount(73)
   await generations(page).selectOption('6')
   await expect(nodes(page)).toHaveCount(fullCount)
   await page.locator('ul a[href="/tree/I25"]').click()

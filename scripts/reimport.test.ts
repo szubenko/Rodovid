@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
-import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, chronologyReviewId } from './validation/reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, chronologyReviewId } from './validation/reviewed-export.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
@@ -28,7 +28,7 @@ it('preserves canonical people by FamilySearch identity despite reused XREFs and
 
 it('imports all 74 people while retaining all 45 September identities and reserving retired I22', () => {
   const before = current().family
-  const next = load('Data')
+  const next = load('tests/fixtures/import-2026-10-12')
   for (const person of before.people) {
     const fs = person.externalIds.find(item => item.system === 'FamilySearch')!.value
     expect(next.family.people.find(item => item.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))?.id).toBe(person.id)
@@ -49,7 +49,7 @@ it('imports all 74 people while retaining all 45 September identities and reserv
 })
 
 it('keeps approved names and death dates, Roman alternatives, restored records and the corrected father', () => {
-  const { family, report } = load('Data')
+  const { family, report } = load('tests/fixtures/import-2026-10-12')
   const person = (fs: string) => family.people.find(item => item.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))!
   const dates = (fs: string, kind: string) => family.events.filter(event => event.kind === kind && event.participants.some(item => item.personId === person(fs).id))
     .flatMap(event => family.claims.filter(claim => claim.target.id === event.id && claim.field === 'date').map(claim => claim.field === 'date' ? claim.value.raw : ''))
@@ -69,7 +69,7 @@ it('keeps approved names and death dates, Roman alternatives, restored records a
 })
 
 it('preserves the visible D09 chronology note without upgrading certainty', async () => {
-  const result = load('Data'), options = { assetsRoot: 'Data', conversion: result.report }
+  const result = load('tests/fixtures/import-2026-10-12'), options = { assetsRoot: 'Data', conversion: result.report }
   expect((await validateData(result.family, options)).status).toBe('passed')
   for (const mutation of ['explanation', 'confidence', 'reviewStatus', 'note'] as const) {
     const data = structuredClone(result.family)
@@ -80,6 +80,29 @@ it('preserves the visible D09 chronology note without upgrading certainty', asyn
     else data.claims = data.claims.filter(claim => !(claim.field === 'description' && claim.target.id === 'I24'))
     expect((await validateData(data, options)).issues).toContainEqual(expect.objectContaining({ code: 'REVIEW_POLICY_MISSING', severity: 'error' }))
   }
+})
+
+it('removes the other-branch Iosif and all dependent entities while preserving every remaining identity', async () => {
+  const before = load('tests/fixtures/import-2026-10-12')
+  const after = load('Data')
+  const audit = json('Docs/Rodovid_Correction_2026-10-14.json')
+  expect(after.report.sha256).toBe(correctedOctoberExportSha256)
+  expect(after.report.counts).toMatchObject({ people: 73, families: 28, childLinks: 53, events: 127, relationships: 116, claims: 315, places: 57 })
+  const retired = new Set(audit.retiredEntries.map((entry: { id: string }) => entry.id))
+  for (const key of ['people', 'relationships', 'events', 'claims', 'places'] as const) {
+    expect(after.family[key].map(item => item.id)).toEqual(before.family[key].filter(item => !retired.has(item.id)).map(item => item.id))
+  }
+  expect(after.family.people.some(person => person.id === 'I24')).toBe(false)
+  expect(after.family.relationships.some(edge => edge.fromPersonId === 'I24' || edge.toPersonId === 'I24')).toBe(false)
+  expect(after.identities.entries.find(entry => entry.entity.kind === 'person' && entry.entity.id === 'I24')?.origins.length).toBeGreaterThan(0)
+  const validation = await validateData(after.family, { assetsRoot: 'Data', conversion: after.report })
+  expect(validation.status).toBe('passed')
+  expect(validation.issues.some(issue => issue.code === 'D09')).toBe(false)
+  const graph = buildFamilyGraph(after.family), reached = new Set(['I1']), queue = [...reached]
+  for (let i = 0; i < queue.length; i++) for (const node of projectFamily(graph, queue[i]!).appearances) {
+    if (!reached.has(node.personId)) { reached.add(node.personId); queue.push(node.personId) }
+  }
+  expect(reached.size).toBe(73)
 })
 
 it('retains existing event and claim IDs, and removes obsolete duplicate and conflict annotations only from the active export', () => {

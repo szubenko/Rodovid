@@ -1,4 +1,4 @@
-export type MapScreen = 'tree' | 'horizontal' | 'vertical'
+export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'relatives'
 export type ViewRoute = { screen: MapScreen | 'person' | 'missing'; personId: string | null }
 export type MapSettings = {
   generations: number
@@ -37,7 +37,7 @@ function defaultMap(generations: number, screen: MapScreen = 'tree', initialRadi
 }
 
 function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
-  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical'
+  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'relatives'
 }
 
 export function initialView(homePersonId: string, initialGenerations: number, key: string, route: ViewRoute, initialRadialZoom = 1): ViewState {
@@ -63,7 +63,7 @@ export function viewReducer(state: ViewState, action: ViewAction): ViewState {
     : defaultMap(state.initialGenerations, mapScreen, state.initialRadialZoom)
   const current = restored ?? {
     ...action.route, mapScreen, centerPersonId, selectedRelationshipId: null,
-    map: mapScreen === state.current.mapScreen ? map : { ...map,
+    map: mapScreen === state.current.mapScreen ? map : {
       ...defaultMap(map.generations, mapScreen, state.initialRadialZoom), collapsedAppearanceIds: map.collapsedAppearanceIds },
   }
   let trail = state.trail

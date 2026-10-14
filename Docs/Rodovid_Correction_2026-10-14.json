@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-14",
+  "reason": "Власник перевірив Йосипа Зубенка: інша гілка; доручив прибрати його.",
+  "removedPerson": {
+    "id": "I24",
+    "recordId": "@I65@",
+    "familySearchId": "PFVV-3JG",
+    "name": "Иосиф Зубенко",
+    "years": "1891–1982"
+  },
+  "previousSha256": "462724e223880ee9528c70e0087a9ebccac33e6b866566ad178ba3581d7b8358",
+  "sha256": "01a33b9f8880a6943550e24a52dc0846bbb195cce45ec99dab1165405f9f4ab0",
+  "counts": {
+    "people": 73,
+    "families": 28,
+    "childLinks": 53,
+    "relationships": 116,
+    "events": 127,
+    "claims": 315,
+    "places": 57,
+    "sources": 0,
+    "media": 0,
+    "evidenceLinks": 0,
+    "memories": 0
+  },
+  "retiredEntries": [
+    {
+      "kind": "person",
+      "id": "I24"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-88af4a5b6affbb492b17e3a4"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-570795c09b2877e145f913f9"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-259066879720fd7dd7184cf9"
+    },
+    {
+      "kind": "event",
+      "id": "event-0e361725feed7b45f883b0a0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-bcdbd3e139ab14804cda9664"
+    },
+    {
+      "kind": "event",
+      "id": "event-104f3772099ef38349d0adeb"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b5fbecf3a39dbf5694431046"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-cb6ce8832b549f80e381f74f"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-5c556ced65cc029ab6e42f96"
+    },
+    {
+      "kind": "place",
+      "id": "place-a4c5f433f2b11d163cb01c3c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0bc780252b6bc9ed05b85a13"
+    }
+  ],
+  "archivedAssessments": [
+    {
+      "id": "review-relationship-259066879720fd7dd7184cf9",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-259066879720fd7dd7184cf9"
+      },
+      "confidence": "unassessed",
+      "reviewStatus": "unreviewed",
+      "explanation": "D09: хронологія материнства потребує перевірки. Роки та зв’язок збережено за рішенням власника 12.10.2026; оцінку достовірності не підвищено."
+    }
+  ],
+  "archivedPlaces": [
+    {
+      "id": "review-place-a4c5f433f2b11d163cb01c3c",
+      "placeId": "place-a4c5f433f2b11d163cb01c3c",
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв з сучасними місцями потребують перевірки."
+    }
+  ],
+  "resolvedReview": "D09: помилкове включення людини й батьківські зв’язки вилучено за перевіркою власника.",
+  "backup": "tests/fixtures/import-2026-10-12",
+  "validation": {
+    "errors": 0,
+    "warnings": 83,
+    "info": 2
+  }
+}

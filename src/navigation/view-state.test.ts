@@ -23,8 +23,7 @@ describe('view history', () => {
   it('starts in vertical mode and restores its camera and evidence after rooms or other maps', () => {
     let state = initialView('I1', 3, 'vertical', { screen: 'vertical', personId: 'I2' })
     expect(state.current).toMatchObject({ mapScreen: 'vertical', centerPersonId: 'I2' })
-    state = viewReducer(state, { type: 'map', settings: { zoom: 1.5, pan: { x: -0.2, y: 0.3 }, generations: 5,
-      expandedRelativeIds: ['I3', 'I6'], showAllRelatives: true } })
+    state = viewReducer(state, { type: 'map', settings: { zoom: 1.5, pan: { x: -0.2, y: 0.3 }, generations: 5 } })
     state = viewReducer(state, { type: 'relationship', id: 'evidence' })
     const vertical = state.current
     state = viewReducer(state, visit('room', 'person', 'I2'))
@@ -36,6 +35,28 @@ describe('view history', () => {
     state = viewReducer(state, visit('relative', 'vertical', 'I3'))
     expect(state.current).toMatchObject({ centerPersonId: 'I3', mapScreen: 'vertical', map: { zoom: 1, generations: 3 } })
     expect(state.homePersonId).toBe('I1')
+  })
+  it('keeps the full-family tab separate from the original vertical tab and restores branches with history', () => {
+    let state = initialView('I1', 3, 'vertical', { screen: 'vertical', personId: 'I1' })
+    state = viewReducer(state, { type: 'map', settings: { zoom: 1.25 } })
+    const original = state.current
+    state = viewReducer(state, visit('full', 'relatives', 'I1'))
+    expect(state.current).toMatchObject({ mapScreen: 'relatives', map: { zoom: 1 } })
+    state = viewReducer(state, { type: 'map', settings: { expandedRelativeIds: ['I69'], showAllRelatives: true, zoom: 0.15 } })
+    const full = state.current
+    state = viewReducer(state, visit('room', 'person', 'I1'))
+    expect(state.current.mapScreen).toBe('relatives')
+    state = viewReducer(state, visit('full', 'relatives', 'I1', 'POP'))
+    expect(state.current).toEqual(full)
+    state = viewReducer(state, visit('vertical', 'vertical', 'I1', 'POP'))
+    expect(state.current).toEqual(original)
+    state = viewReducer(state, visit('full', 'relatives', 'I1', 'POP'))
+    expect(state.current).toEqual(full)
+    state = viewReducer(state, visit('relative', 'relatives', 'I3'))
+    expect(state.current.map.expandedRelativeIds).toBeUndefined()
+    expect(state.current.map.showAllRelatives).toBeUndefined()
+    state = viewReducer(state, visit('another', 'vertical', 'I3'))
+    expect(state.current.map.showAllRelatives).toBeUndefined()
   })
   it('separates map cameras, retains horizontal mode through rooms and restores snapshots', () => {
     let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' })

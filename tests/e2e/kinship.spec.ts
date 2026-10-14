@@ -29,19 +29,17 @@ test('keeps I1 as the reference through search, room, Back and home', async ({ p
   await expect(panel).toContainText('Це ви — домашня особа')
 })
 
-test('reviewed chronology remains readable at 320px and details support keyboard', async ({ page }, testInfo) => {
+test('remaining kinship stays readable at 320px and details support keyboard', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 320, height: 740 })
-  await page.goto('/person/I24')
+  await page.goto('/person/I23')
   const panel = page.getByRole('region', { name: 'Спорідненість із вами' })
-  await expect(panel.locator('p').filter({ hasText: 'D09' }).first()).toBeVisible()
-  await expect(page.getByRole('article', { name: 'Відомості про людину' })).toContainText('Потребує перевірки: мати Анна')
+  await expect(panel).not.toContainText('D09')
   const summary = panel.locator('summary')
   await summary.focus()
   await page.keyboard.press('Enter')
   await expect(panel.locator('details')).toHaveAttribute('open', '')
   await expect(panel).toContainText('@F21@')
-  await expect(panel).toContainText('1832')
-  await expect(panel).toContainText('1891')
+  await expect(panel).toContainText('Анна Герасимова Пальчикова')
   await expect(panel).not.toContainText('Кілька записів цього кроку')
   await page.keyboard.press('Tab')
   await expect(panel.getByRole('link').first()).toBeFocused()
@@ -76,11 +74,14 @@ test('synthetic accepted relation, unassessed confidence and disconnected person
   await page.screenshot({ path: testInfo.outputPath('kinship-no-path.png'), fullPage: true })
 })
 
-test('desktop map exposes the uncertainty before opening details', async ({ page }, testInfo) => {
+test('removed other-branch person is absent from room, map and search', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 850 })
-  await page.goto('/tree/I24')
-  const panel = page.getByRole('region', { name: 'Спорідненість із вами' })
-  await expect(panel).toContainText('D09')
-  await expect(panel.locator('details')).not.toHaveAttribute('open', '')
-  await page.screenshot({ path: testInfo.outputPath('kinship-map-1024.png'), fullPage: true })
+  for (const path of ['/person/I24', '/tree/I24']) {
+    await page.goto(path)
+    await expect(page.getByRole('heading', { name: 'Людину не знайдено' })).toBeVisible()
+  }
+  await page.goto('/tree/I1')
+  await page.getByRole('searchbox').fill('Иосиф Зубенко')
+  await expect(page.locator('[data-search-person="I24"]')).toHaveCount(0)
+  await expect(page.getByText('Нікого не знайдено.', { exact: false })).toBeVisible()
 })

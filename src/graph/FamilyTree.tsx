@@ -21,10 +21,14 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
 }
 
-export function FamilyTree({ personId, orientation }: { personId: string; orientation: TreeOrientation }) {
-  const title = orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
+export function FamilyTree({ personId, orientation, includeRelatives = false }: {
+  personId: string; orientation: TreeOrientation; includeRelatives?: boolean
+}) {
+  const title = includeRelatives ? 'Родовід з усіма родичами' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
   const vertical = orientation === 'vertical'
-  const directionHint = vertical ? 'Предки зверху, нащадки знизу, брати й сестри та подружжя поруч. «+» додає родичів до гілки.' : 'Предки праворуч, нащадки ліворуч.'
+  const mapScreen = includeRelatives ? 'relatives' : orientation
+  const directionHint = includeRelatives ? 'Предки зверху, нащадки знизу, брати й сестри та подружжя поруч. «+» додає родичів до гілки.'
+    : vertical ? 'Предки зверху, нащадки знизу, подружжя поруч.' : 'Предки праворуч, нащадки ліворуч.'
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -51,13 +55,13 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
     }
   }, [])
   const settings = state.current.map
-  const maxGenerations = useMemo(() => vertical ? availableRelativeGenerations(graph, personId)
-    : availableGenerations(graph, personId), [graph, personId, vertical])
+  const maxGenerations = useMemo(() => includeRelatives ? availableRelativeGenerations(graph, personId)
+    : availableGenerations(graph, personId), [graph, personId, includeRelatives])
   const generations = Math.min(settings.generations, maxGenerations)
-  const projection = useMemo(() => vertical ? projectRelatives(graph, personId, {
+  const projection = useMemo(() => includeRelatives ? projectRelatives(graph, personId, {
     generations, expandedPersonIds: settings.expandedRelativeIds, showAll: settings.showAllRelatives,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
-    collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, vertical,
+    collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, includeRelatives,
     settings.collapsedAppearanceIds, settings.expandedRelativeIds, settings.showAllRelatives])
   const layout = useMemo(() => 'relatedCount' in projection ? layoutRelatives(projection, graph, labels, dates, measure)
     : layoutTree(projection, labels, dates, measure, orientation), [projection, graph, labels, dates, measure, orientation])
@@ -87,7 +91,7 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
     if (!svg.current) return
     setExportState('exporting')
     try {
-      await downloadSvgAsPng(svg.current, `rodovid-${orientation}-${personId}.png`)
+      await downloadSvgAsPng(svg.current, `rodovid-${mapScreen}-${personId}.png`)
       setExportState('saved')
     } catch { setExportState('error') }
   }
@@ -106,11 +110,11 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
       <button onClick={() => { void savePng() }} disabled={exportState === 'exporting'}>{exportState === 'exporting' ? 'Готуємо PNG…' : 'Зберегти PNG'}</button>
       <label htmlFor={`${prefix}-generations`}>Покоління</label>
       <select id={`${prefix}-generations`} value={generations} onChange={event => dispatch({ type: 'map', settings: {
-        generations: Number(event.target.value), ...(vertical ? { showAllRelatives: false, expandedRelativeIds: [] } : {}),
+        generations: Number(event.target.value), ...(includeRelatives ? { showAllRelatives: false, expandedRelativeIds: [] } : {}),
       } })}>
         {Array.from({ length: maxGenerations }, (_, index) => index + 1).map(depth => <option key={depth} value={depth}>{depth}</option>)}
       </select>
-      {vertical && <button aria-pressed={settings.showAllRelatives === true} onClick={toggleAllRelatives}>
+      {includeRelatives && <button aria-pressed={settings.showAllRelatives === true} onClick={toggleAllRelatives}>
         {settings.showAllRelatives ? 'Початкові гілки' : 'Показати всіх родичів'}
       </button>}
     </div>
@@ -119,7 +123,7 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
     <div ref={container} className={styles.canvas} data-map-viewport>
       <svg ref={svg} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={`${title}: ${labels.get(personId)}`}>
         <g data-layer="camera" transform={`translate(${settings.pan.x * width} ${settings.pan.y * height}) scale(${settings.zoom})`}>
-          <g data-layer="coordinates"><g transform={`translate(${offset.x} ${offset.y})`}>
+          <g data-layer="coordinates"><g data-layer="layout" transform={`translate(${offset.x} ${offset.y})`}>
             <g data-layer="connections">{layout.edges.map(edge => {
               const relation = graph.relationships.get(edge.relationshipId)!
               const action = () => dispatch({ type: 'relationship', id: relation.id })
@@ -138,7 +142,7 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
             {layout.nodes.map(node => {
               const central = node.lane === 'center'
               const hidden = node.hiddenConnections.length > 0
-              const action = () => goTo(`/${central ? 'person' : orientation}/${node.personId}`)
+              const action = () => goTo(`/${central ? 'person' : mapScreen}/${node.personId}`)
               const branchExpanded = settings.expandedRelativeIds?.includes(node.personId) === true
               const branchAction = () => toggleBranch(node.personId)
               const hiddenCount = new Set(node.hiddenConnections.map(connection => connection.personId)).size
@@ -153,9 +157,9 @@ export function FamilyTree({ personId, orientation }: { personId: string; orient
                 <rect className={styles.card} x={node.x - node.width / 2} y={node.y - node.height / 2} width={node.width} height={node.height} rx="10" />
                 {node.text.lines.map((line, index) => <text key={index} className={line.date ? styles.date : styles.label}
                   x={node.x} y={node.y + line.y} fontSize={line.fontSize} textAnchor="middle" dominantBaseline="central">{line.text}</text>)}
-                {hidden && !vertical && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
+                {hidden && !includeRelatives && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
                 </g>
-                {vertical && !settings.showAllRelatives && (hidden || branchExpanded) && <g className={styles.branch}
+                {includeRelatives && !settings.showAllRelatives && (hidden || branchExpanded) && <g className={styles.branch}
                   data-branch-person-id={node.personId} role="button" tabIndex={0} aria-expanded={branchExpanded}
                   aria-label={`${branchExpanded ? 'Згорнути' : 'Додати'} гілку: ${labels.get(node.personId)}${hiddenCount ? `. Прихованих родичів: ${hiddenCount}` : ''}`}
                   onClick={event => { event.stopPropagation(); branchAction() }} onKeyDown={event => activate(event, branchAction)}>

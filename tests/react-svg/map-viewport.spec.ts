@@ -4,7 +4,7 @@ test('вікно кожної діаграми підлаштовується п
   test.setTimeout(120_000)
   for (const [width, height] of [[1920, 1080], [1366, 768], [1280, 720], [1024, 768], [412, 915], [320, 668], [812, 375]]) {
     await page.setViewportSize({ width: width!, height: height! })
-    for (const screen of ['tree', 'horizontal', 'vertical']) {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'relatives']) {
       await page.goto(`/${screen}/I1`)
       const svg = page.locator('[data-map-viewport] > svg')
       await expect(svg).toBeVisible()
@@ -54,7 +54,7 @@ test('розгорнута діаграма використовує весь е
   test.setTimeout(120_000)
   for (const [width, height] of [[1366, 768], [320, 668], [812, 375]]) {
     await page.setViewportSize({ width: width!, height: height! })
-    for (const screen of ['tree', 'horizontal', 'vertical']) {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'relatives']) {
       await page.goto(`/${screen}/I1`)
       const zoom = page.getByLabel('Масштаб карти')
       const initialZoom = await zoom.textContent()

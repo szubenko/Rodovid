@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,6 +99,21 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
+  if (report.sha256 === correctedOctoberExportSha256) {
+    const expected = { people: 73, relationships: 116, events: 127, claims: 315, places: 57 }
+    for (const [key, count] of Object.entries(expected)) {
+      const imported = data[key as keyof typeof expected].filter(item => item.provenance.some(origin => origin.kind === 'gedcom'))
+      if (imported.length !== count) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: `${key}: очікується ${count} імпортованих записів після вилучення Йосипа.` })
+    }
+    if (data.people.some(person => person.id === 'I24' || person.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PFVV-3JG'))
+      || data.relationships.some(edge => edge.fromPersonId === 'I24' || edge.toPersonId === 'I24')
+      || data.claims.some(claim => claim.target.id === 'I24')) issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'Йосип Зубенко належить іншій гілці; його вилучення погоджено власником 14.10.2026.' })
+    const name = data.claims.find(claim => claim.field === 'name' && claim.target.id === 'I1' && claim.isPrimary)
+    if (!name?.explanation?.includes('D04') || name.confidence !== 'unassessed'
+      || data.places.some(place => !place.description?.includes('D06'))) issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'D04/D06: втрачено невирішені зауваження до імені або місць.' })
+    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: 'Виправлення 14.10.2026: Йосип Зубенко з іншої гілки вилучений; D09 закрито за перевіркою власника.' })
+    return
+  }
   if (report.sha256 === octoberExportSha256) {
     const expected = { people: 74, relationships: 118, events: 129, claims: 321, places: 58 }
     for (const [key, count] of Object.entries(expected)) {

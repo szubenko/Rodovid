@@ -66,7 +66,7 @@ function Missing() {
 
 function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const family = useFamily()
-  const { state } = useView()
+  const { state, goBack, goTo } = useView()
   const isMap = screen !== 'person'
   const { personId } = useParams()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -107,7 +107,13 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'relatives' ? <RelativesTree key={personId} personId={personId} /> : screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
-      </> : <PersonRoom key={personId} personId={personId} />}
+      </> : <>
+        <div className={styles.roomActions} role="group" aria-label="Керування історією життя">
+          <button type="button" aria-label="Назад до попереднього перегляду"
+            onClick={() => state.position > 0 ? goBack() : goTo(`/${state.current.mapScreen}/${state.current.centerPersonId}`)}>← Назад</button>
+        </div>
+        <PersonRoom key={personId} personId={personId} />
+      </>}
     </div>
   </>
 }

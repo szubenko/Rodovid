@@ -1,5 +1,20 @@
 import { expect, test } from '@playwright/test'
 
+test('колесо плавно масштабує кожну діаграму без Ctrl в обох напрямках', async ({ page }) => {
+  for (const screen of ['tree', 'horizontal', 'vertical', 'relatives']) {
+    await page.goto(`/${screen}/I1`)
+    const svg = page.locator('[data-map-viewport] > svg')
+    const scale = page.getByLabel('Масштаб карти', { exact: true })
+    const initial = screen === 'tree' ? 60 : 100
+    await expect(scale).toHaveText(`${initial}%`)
+    await svg.hover()
+    await page.mouse.wheel(0, -30)
+    await expect(scale).toHaveText(`${Math.round(initial * 2 ** 0.06)}%`)
+    await page.mouse.wheel(0, 30)
+    await expect(scale).toHaveText(`${initial}%`)
+  }
+})
+
 test('вікно кожної діаграми підлаштовується під висоту браузера без зміни шрифту', async ({ page }, testInfo) => {
   test.setTimeout(120_000)
   for (const [width, height] of [[1920, 1080], [1366, 768], [1280, 720], [1024, 768], [412, 915], [320, 668], [812, 375]]) {

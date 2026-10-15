@@ -17,8 +17,10 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       .extent([[0, 0], [width, height]])
       .scaleExtent([minZoom, maxZoom])
       .clickDistance(6)
-      // Ordinary wheel scrolling belongs to the page. Buttons offer the same zoom without a modifier.
-      .filter((event: MouseEvent) => event.type === 'wheel' ? event.ctrlKey : !event.button && !event.ctrlKey)
+      // Keep wheel zoom gentle: d3's default Ctrl multiplier makes each notch jump 10× faster.
+      .wheelDelta((event: WheelEvent) => -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 0.002))
+      // Wheel zoom works directly over the diagram, with or without Ctrl.
+      .filter((event: MouseEvent) => event.type === 'wheel' || !event.button && !event.ctrlKey)
       .on('zoom', (event: D3ZoomEvent<SVGSVGElement, unknown>) => {
         if (!active || synchronizing.current || !event.sourceEvent) return // React/history owns programmatic changes.
         dispatch({ type: 'map', settings: { zoom: event.transform.k,

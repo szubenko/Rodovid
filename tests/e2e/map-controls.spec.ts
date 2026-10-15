@@ -120,7 +120,7 @@ test('Back, Forward, room return and home restore the correct camera and depth',
   await expect(nodes(page)).toHaveCount(homeCount)
 })
 
-test('mouse dragging never follows a sector or line and wheel keeps page scrolling', async ({ page }) => {
+test('mouse dragging never follows a sector or line and wheel gently zooms without Ctrl', async ({ page }) => {
   await page.goto('/tree/I1')
   await page.locator('svg').scrollIntoViewIfNeeded()
   const box = (await page.locator('svg').boundingBox())!
@@ -134,8 +134,10 @@ test('mouse dragging never follows a sector or line and wheel keeps page scrolli
   expect(await camera(page).getAttribute('transform')).not.toBe('translate(0 0) scale(1)')
   await expect(page.getByTestId('relationship-details')).toHaveCount(0)
   const before = await page.evaluate(() => scrollY)
-  await page.mouse.wheel(0, 100)
-  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(before)
+  await page.mouse.wheel(0, -30)
+  await expect(scale(page)).toHaveText('104%')
+  expect(await page.evaluate(() => scrollY)).toBe(before)
+  await page.mouse.wheel(0, 30)
   await expect(scale(page)).toHaveText('100%')
   await page.locator('svg').scrollIntoViewIfNeeded()
   const wheelBox = (await page.locator('svg').boundingBox())!
@@ -143,7 +145,7 @@ test('mouse dragging never follows a sector or line and wheel keeps page scrolli
   await page.keyboard.down('Control')
   await page.mouse.wheel(0, -30)
   await page.keyboard.up('Control')
-  await expect(scale(page)).not.toHaveText('100%')
+  await expect(scale(page)).toHaveText('104%')
   await fit(page)
   await expectFitted(page)
 })

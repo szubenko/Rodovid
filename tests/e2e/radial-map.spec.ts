@@ -132,6 +132,7 @@ for (const width of [320, 1024]) {
     await page.setViewportSize({ width, height: 900 })
     for (const person of family.people) {
       await page.goto(`/tree/${person.id}`)
+      const svg = page.locator('[data-map-viewport] > svg')
       const projection = projectFamily(graph, person.id, { generations: 12 })
       await expect(page.locator('svg [data-person-id]')).toHaveCount(projection.appearances.length)
       expect(await page.locator('svg [data-relationship-id]').evaluateAll((elements) => elements.map((element) => element.getAttribute('data-relationship-id'))))
@@ -139,7 +140,7 @@ for (const width of [320, 1024]) {
       expect(await page.locator('html').evaluate((element) => element.scrollWidth)).toBeLessThanOrEqual(width)
       expect(await page.locator('text[data-label-width]').evaluateAll((elements) => elements.filter((element) =>
         (element as SVGTextElement).getComputedTextLength() > Number(element.getAttribute('data-label-width')) + 0.5).length)).toBe(0)
-      expect(await page.locator('svg').evaluate(svg => {
+      expect(await svg.evaluate(svg => {
         const center = svg.querySelector<SVGCircleElement>('[data-center="true"] > circle')!
         return [...svg.querySelectorAll<SVGGElement>('[data-label-orientation="radial"]')].every(label => {
           const sector = label.parentElement!.querySelector('path')!
@@ -161,9 +162,9 @@ for (const width of [320, 1024]) {
       }
       if (['I1', 'I9', 'I20'].includes(person.id)) {
         await page.screenshot({ path: testInfo.outputPath(`${person.id}-${width}.png`), fullPage: true })
-        await page.locator('svg').screenshot({ path: testInfo.outputPath(`${person.id}-${width}-map.png`) })
+        await svg.screenshot({ path: testInfo.outputPath(`${person.id}-${width}-map.png`) })
         await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
-        await page.locator('svg').screenshot({ path: testInfo.outputPath(`${person.id}-${width}-fitted.png`) })
+        await svg.screenshot({ path: testInfo.outputPath(`${person.id}-${width}-fitted.png`) })
       }
     }
   })

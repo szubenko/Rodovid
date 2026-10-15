@@ -71,7 +71,7 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     if (!Number.isFinite(result) || result < 0) throw new RangeError('Invalid text measurement')
     return result * 1.03
   }
-  const blockFor = (node: Appearance, lineWidth?: number) => labelBlock(
+  const blockFor = (node: Pick<Appearance, 'personId'>, lineWidth?: number) => labelBlock(
     options.labels.get(node.personId) ?? 'Ім’я невідоме', options.dates?.get(node.personId) ?? '',
     fontSize, fontSize, measure, lineWidth)
   const blocks = new Map(projection.appearances.map((node) => [node.appearanceId,
@@ -110,12 +110,23 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     const startAngle = start + slots.slice(0, node.slotIndex).reduce((sum, value) => sum + value, 0) * unit
     angles.set(node.appearanceId, { startAngle, endAngle: startAngle + slots[node.slotIndex]! * unit })
   }
-  const root = blocks.get(projection.appearances[0]!.appearanceId)!
   const padding = 12
-  const rootRadius = Math.max(48, Math.hypot(root.width / 2, root.height / 2) + padding)
+  // Size the center once for the whole family, so changing the selected person
+  // cannot resize it. Keep a generous minimum and room for every complete label.
+  const centerIds = new Set([...options.labels.keys(), ...(options.dates?.keys() ?? []), projection.centerPersonId])
+  const rootRadius = Math.max(fontSize * 6, ...Array.from(centerIds, personId => {
+    const block = blockFor({ personId }, fontSize * 5)
+    return Math.hypot(block.width / 2, block.height / 2) + padding
+  }))
   const ringCount = Math.max(1, projection.generations - 1)
   const ringRadii = [rootRadius]
-  const radial = (node: Appearance) => node.lane === 'parents' && node.ring >= 3
+  const orientations = new Map<string, 'arc' | 'radial'>()
+  const arcOuterRadius = (innerRadius: number, block: LabelBlock, span: number, reverse: boolean) => {
+    const labelRadius = Math.max(innerRadius + block.height / 2 + padding,
+      ...block.lines.map((line) => (measure(line.text, line.fontSize) + padding * 2) / span
+        - (reverse ? 1 : -1) * line.y))
+    return 2 * labelRadius - innerRadius
+  }
   const radialOuterRadius = (innerRadius: number, block: LabelBlock, span: number) => {
     const tangent = Math.tan(Math.min(radians(80), span / 2))
     // Keep a visible gutter without asking a narrow wedge to reserve the same
@@ -130,32 +141,35 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
   }
   for (let ring = 1; ring <= ringCount; ring++) {
     const members = projection.appearances.filter((node) => node.ring === ring)
-    let inner = ringRadii[ring - 1]!
-    let band = 28
+    if (!members.length) {
+      // Children keep their genealogical ring even when no spouse is known,
+      // but an unoccupied ring must not leave a blank band around the center.
+      ringRadii.push(ringRadii[ring - 1]!)
+      continue
+    }
+    const inner = ringRadii[ring - 1]! + 3
+    let outer = inner + 25
     for (const node of members) {
-      const block = blocks.get(node.appearanceId)!
       const { startAngle, endAngle } = angles.get(node.appearanceId)!
       const span = radians(endAngle - startAngle)
-      if (!radial(node)) {
-        band = Math.max(band, block.height + padding * 2 + 3)
-        inner = Math.max(inner, (block.width + padding * 2) / span)
-      }
-    }
-    // Arc labels may need a larger inner circumference. Narrow radial labels
-    // add space in their own ring without stretching the preceding cells.
-    ringRadii[ring - 1] = inner
-    for (const node of members.filter(radial)) {
-      const { startAngle, endAngle } = angles.get(node.appearanceId)!
-      const span = radians(endAngle - startAngle)
-      // A second name line can force excessive radial growth in a narrow
-      // sector. Pick the complete one/two-line name that fits most compactly.
+      const angle = (startAngle + endAngle) / 2
+      const reverse = angle > 90 && angle < 270
+      const arcBlock = blocks.get(node.appearanceId)!
+      const arcRadius = arcOuterRadius(inner, arcBlock, span, reverse)
+      // Narrow descendants need the same compact radial option as distant
+      // ancestors. Compare complete one/two-line names without shrinking text.
       const candidates = [blockFor(node, Infinity), blockFor(node, 0)]
-      const block = candidates.reduce((best, candidate) => radialOuterRadius(inner + 3, candidate, span)
-        < radialOuterRadius(inner + 3, best, span) ? candidate : best)
-      blocks.set(node.appearanceId, block)
-      band = Math.max(band, radialOuterRadius(inner + 3, block, span) - inner)
+      const radialBlock = candidates.reduce((best, candidate) => radialOuterRadius(inner, candidate, span)
+        < radialOuterRadius(inner, best, span) ? candidate : best)
+      const radialRadius = radialOuterRadius(inner, radialBlock, span)
+      const radial = node.lane === 'parents' ? node.ring >= 3 : radialRadius < arcRadius
+      orientations.set(node.appearanceId, radial ? 'radial' : 'arc')
+      if (radial) blocks.set(node.appearanceId, radialBlock)
+      outer = Math.max(outer, radial ? radialRadius : arcRadius)
     }
-    ringRadii.push(inner + band)
+    // Labels grow their own ring. Never enlarge the center or a spouse/parent
+    // sector just to make room for the following generation's circumference.
+    ringRadii.push(outer)
   }
   const viewportScale = (Math.min(width, height) / 2 - 16) / ringRadii.at(-1)!
   // Reading view preserves the requested pixel size; only an explicit fit
@@ -184,7 +198,7 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
       centerLines: appearance.ring === 0 ? text.lines.filter((line) => !line.date).map((line) => line.text) : [],
       fontSize: fontSize * textScale,
       reverseLabel, text,
-      labelOrientation: appearance.ring === 0 ? 'center' : radial(appearance) ? 'radial' : 'arc',
+      labelOrientation: appearance.ring === 0 ? 'center' : orientations.get(appearance.appearanceId)!,
     }
   })
   const byId = new Map(nodes.map((node) => [node.appearanceId, node]))

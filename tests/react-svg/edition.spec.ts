@@ -1,6 +1,9 @@
 import { test, expect, type Page } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { dragMap } from '../e2e/map-helpers'
+import { familyDataSchema } from '../../src/data/schema'
+
+const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 
 test('PNG атласу зберігає всю діаграму після зуму й перетягування', async ({ page }, testInfo) => {
   await page.goto('/tree/I1')
@@ -120,7 +123,7 @@ test('Прямі адреси, порожній пошук і вузький е�
   await people.getByRole('searchbox', { name: 'Пошук людей' }).fill('zzzzzzzz')
   await expect(people.getByText('Нікого не знайдено.', { exact: false })).toBeVisible()
   await people.getByRole('searchbox', { name: 'Пошук людей' }).fill('')
-  await expect(people.locator('li')).toHaveCount(74)
+  await expect(people.locator('li')).toHaveCount(family.people.length)
   if (isMobile) {
     await page.setViewportSize({ width: 320, height: 740 })
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)

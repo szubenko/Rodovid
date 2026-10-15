@@ -2,6 +2,7 @@ import type { FamilyGraph } from './projection'
 import type { RelativeAppearance, RelativeProjection } from './relatives-projection'
 import { labelBlock, type TextMeasure } from './text-block'
 import type { TreeLayout, TreeNode } from './tree-layout'
+import { centerFamilyParents } from './family-centering'
 
 export type RelativeNode = Omit<TreeNode, 'lane'> & { lane: RelativeAppearance['lane'] }
 type Group = { ids: string[]; generation: number; x: number; width: number }
@@ -12,11 +13,16 @@ type FamilyJoin = { parents: RelativeAppearance[]; children: RelativeAppearance[
  * duplicate cards. Long/conflicting edges use a gutter outside all cards. */
 export function layoutRelatives(projection: RelativeProjection, graph: FamilyGraph,
   labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure): Omit<TreeLayout, 'nodes'> & { nodes: RelativeNode[] } {
-  const padding = 28, familyGap = 360, spouseGap = 96
+  const padding = 28, familyGap = 360, spouseGap = 24
   const blocks = new Map(projection.appearances.map(node => [node.appearanceId,
-    labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', 20, 18, measure, 264)]))
+    labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', node.lane === 'relatives' ? 20 : 22, 18, measure, 264)]))
   const cardWidth = Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
   const cardHeight = Math.max(128, ...[...blocks.values()].map(block => block.height + 40))
+  const mainHeight = Math.max(152, cardHeight * 1.18)
+  const sizes = new Map(projection.appearances.map(node => [node.personId, {
+    width: node.lane === 'relatives' ? cardWidth : cardWidth * 1.16,
+    height: node.lane === 'relatives' ? cardHeight : mainHeight,
+  }]))
   const byPerson = new Map(projection.appearances.map(node => [node.personId, node]))
   const byAppearance = new Map(projection.appearances.map(node => [node.appearanceId, node]))
   const parentsByChild = new Map<string, RelativeAppearance[]>()
@@ -42,7 +48,7 @@ export function layoutRelatives(projection: RelativeProjection, graph: FamilyGra
     familiesByRow.set(generation, [...familiesByRow.get(generation) ?? [], family])
   }
   // Leave room for separate family buses rather than several crossing lines per child.
-  const step = cardHeight + Math.max(200, ...[...familiesByRow.values()].map(row => row.length * 16 + 100))
+  const step = mainHeight + Math.max(200, ...[...familiesByRow.values()].map(row => row.length * 16 + 100))
   const groups: Group[] = []
   const groupByPerson = new Map<string, Group>()
   for (const node of projection.appearances) {
@@ -57,7 +63,7 @@ export function layoutRelatives(projection: RelativeProjection, graph: FamilyGra
         groupByPerson.set(neighbor.personId, group)
       }
     }
-    group.width = group.ids.length * (cardWidth + spouseGap) - spouseGap
+    group.width = group.ids.reduce((sum, id) => sum + sizes.get(id)!.width, 0) + (group.ids.length - 1) * spouseGap
     groups.push(group)
   }
   const rows = new Map<number, Group[]>()
@@ -65,7 +71,9 @@ export function layoutRelatives(projection: RelativeProjection, graph: FamilyGra
   const generations = [...rows.keys()].sort((a, b) => a - b)
   const memberX = (id: string) => {
     const group = groupByPerson.get(id)!
-    return group.x - group.width / 2 + cardWidth / 2 + group.ids.indexOf(id) * (cardWidth + spouseGap)
+    const index = group.ids.indexOf(id)
+    const before = group.ids.slice(0, index).reduce((sum, member) => sum + sizes.get(member)!.width + spouseGap, 0)
+    return group.x - group.width / 2 + before + sizes.get(id)!.width / 2
   }
   const pack = (row: Group[], targets: Map<Group, number>, sort = true) => {
     if (sort) row.sort((a, b) => targets.get(a)! - targets.get(b)!)
@@ -207,15 +215,53 @@ export function layoutRelatives(projection: RelativeProjection, graph: FamilyGra
     slots.forEach((index, childIndex) => { nextRow[index] = children[childIndex]! })
     pack(nextRow, positions, false)
   }
-  const minX = Math.min(...projection.appearances.map(node => memberX(node.personId))) - cardWidth / 2
+  const minX = Math.min(...projection.appearances.map(node => memberX(node.personId) - sizes.get(node.personId)!.width / 2))
   const minGeneration = generations[0]!
   const nodes = projection.appearances.map((node): RelativeNode => ({ ...node,
-    x: memberX(node.personId) - minX + padding, y: (node.generation - minGeneration) * step + cardHeight / 2 + padding,
-    width: cardWidth, height: cardHeight, text: blocks.get(node.appearanceId)!,
+    x: memberX(node.personId) - minX + padding,
+    y: (node.generation - minGeneration) * step + sizes.get(node.personId)!.height / 2 + padding,
+    ...sizes.get(node.personId)!, text: blocks.get(node.appearanceId)!,
   }))
+  const centeringFamilies = [...families.values()].map(family => ({
+    parents: family.parents.map(parent => parent.personId), children: family.children.map(child => child.personId),
+  }))
+  if (!centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap)) {
+    // Reordering a shared spouse's children can reverse the next descendant
+    // row. Repair that order before retrying exact centering and separation.
+    for (const generation of generations.slice(1)) {
+      const row = rows.get(generation)!
+      const parentXs = new Map(row.map(group => [group, group.ids.flatMap(id => parentsByChild.get(id) ?? [])
+        .map(parent => memberX(parent.personId))]))
+      const cost = (left: Group, right: Group) => parentXs.get(left)!.reduce((sum, a) => sum + parentXs.get(right)!.filter(b => a > b).length, 0)
+      for (let pass = 0; pass < row.length; pass++) {
+        let changed = false
+        for (let i = 0; i < row.length - 1; i++) {
+          const left = row[i]!, right = row[i + 1]!
+          if (cost(right, left) >= cost(left, right)) continue
+          row[i] = right; row[i + 1] = left; changed = true
+        }
+        if (!changed) break
+      }
+      pack(row, new Map(row.map(group => [group, group.x])), false)
+    }
+    for (const node of nodes) node.x = memberX(node.personId)
+    centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap)
+  }
+  const centeredLeft = Math.min(...nodes.map(node => node.x - node.width / 2))
+  for (const node of nodes) node.x += padding - centeredLeft
   const byId = new Map(nodes.map(node => [node.appearanceId, node]))
   const nodeX = (person: RelativeAppearance) => byId.get(person.appearanceId)!.x
-  const anchor = (family: FamilyJoin) => family.parents.reduce((sum, parent) => sum + nodeX(parent), 0) / family.parents.length
+  const anchor = (family: FamilyJoin) => {
+    const parents = family.parents.map(parent => byId.get(parent.appearanceId)!).sort((a, b) => a.x - b.x)
+    if (parents.length === 2) {
+      const [left, right] = parents as [RelativeNode, RelativeNode]
+      return (left.x + left.width / 2 + right.x - right.width / 2) / 2
+    }
+    return parents.reduce((sum, parent) => sum + parent.x, 0) / parents.length
+  }
+  // Cards share a top edge. All joins sit below the tallest card in the row,
+  // so a compact partner's connector never runs through a larger card.
+  const rowBottom = (node: RelativeNode) => (node.generation - minGeneration) * step + padding + mainHeight
   for (const row of familiesByRow.values()) {
     const span = (family: FamilyJoin) => [anchor(family), ...family.children.map(nodeX)]
     row.sort((a, b) => Math.min(...span(a)) - Math.min(...span(b)))
@@ -268,22 +314,22 @@ export function layoutRelatives(projection: RelativeProjection, graph: FamilyGra
   const edges = projection.edges.map(edge => {
     const from = byId.get(edge.fromAppearanceId)!, to = byId.get(edge.toAppearanceId)!
     const spouse = graph.relationships.get(edge.relationshipId)!.kind === 'spouse'
-    if (spouse && from.y === to.y) {
-      const startY = from.y + cardHeight / 2, channel = startY + 56
-      return { ...edge, path: `M${from.x},${startY} V${channel} H${to.x} V${startY}` }
+    if (spouse && from.generation === to.generation) {
+      const startY = from.y + from.height / 2, endY = to.y + to.height / 2, channel = rowBottom(from) + 56
+      return { ...edge, path: `M${from.x},${startY} V${channel} H${to.x} V${endY}` }
     }
     if (!spouse && to.generation === from.generation + 1) {
-      const startY = from.y + cardHeight / 2, endY = to.y - cardHeight / 2
+      const startY = from.y + from.height / 2, endY = to.y - to.height / 2
       const family = familyByChild.get(to.personId)!
-      const joinX = anchor(family), joinY = startY + 56, channel = startY + 100 + family.track * 16
+      const joinX = anchor(family), joinY = rowBottom(from) + 56, channel = rowBottom(from) + 100 + family.track * 16
       return { ...edge, path: `M${from.x},${startY} V${joinY} H${joinX} V${channel} H${to.x} V${endY}` }
     }
     // Source cycles or inconsistent generation constraints stay inspectable.
     const channel = cardRight + 32 + gutterIndex++ * 12
-    const startY = from.y + cardHeight / 2 + 40, endY = to.y + cardHeight / 2 + 40
+    const startY = rowBottom(from) + 40, endY = rowBottom(to) + 40
     width = Math.max(width, channel + padding)
     height = Math.max(height, startY + padding, endY + padding)
-    return { ...edge, path: `M${from.x},${from.y + cardHeight / 2} V${startY} H${channel} V${endY} H${to.x} V${to.y + cardHeight / 2}` }
+    return { ...edge, path: `M${from.x},${from.y + from.height / 2} V${startY} H${channel} V${endY} H${to.x} V${to.y + to.height / 2}` }
   })
   return { nodes, edges, width, height }
 }

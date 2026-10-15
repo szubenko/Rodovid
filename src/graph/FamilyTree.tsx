@@ -45,9 +45,9 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   })), [family])
   const measure = useMemo(() => {
     const contexts = new Map<number, CanvasRenderingContext2D | null>()
-    for (const size of [18, 20]) {
+    for (const size of [18, 20, 22]) {
       const context = document.createElement('canvas').getContext('2d')
-      if (context) context.font = `${size}px system-ui, sans-serif`
+      if (context) context.font = `${size === 22 ? '600 ' : ''}${size}px system-ui, sans-serif`
       contexts.set(size, context)
     }
     return (text: string, size: number) => {
@@ -150,6 +150,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
                 <g className={styles.node} data-person-id={node.personId}
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane}
                 data-generation={node.generation}
+                data-main-line={includeRelatives ? node.lane !== 'relatives' : undefined}
                 data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
@@ -164,6 +165,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
                   aria-label={`${branchExpanded ? 'Згорнути' : 'Додати'} гілку: ${labels.get(node.personId)}${hiddenCount ? `. Прихованих родичів: ${hiddenCount}` : ''}`}
                   onClick={event => { event.stopPropagation(); branchAction() }} onKeyDown={event => activate(event, branchAction)}>
                   <title>{branchExpanded ? 'Згорнути додану гілку' : `Додати родичів: ${hiddenCount}`}</title>
+                  <rect className={styles.branchHit} data-hit="true" x={node.x + node.width / 2 - 52} y={node.y + node.height / 2 + 6} width="44" height="44" />
                   <rect x={node.x + node.width / 2 - 52} y={node.y + node.height / 2 + 6} width="44" height="44" rx="22" />
                   <text x={node.x + node.width / 2 - 30} y={node.y + node.height / 2 + 28} textAnchor="middle" dominantBaseline="central">{branchExpanded ? '−' : '+'}</text>
                 </g>}

@@ -76,7 +76,33 @@ describe('vertical full-family geometry on the real archive', () => {
   const dates = new Map(family.people.map(p => [p.id, lifeYears(family, p.id)]))
   const measure = (text: string, size: number) => text.length * size * 0.65
 
-  it('includes all 74 people and 118 relationships from every center', () => {
+  it('centers the Deikalo parents strictly above all five children from the screenshot', () => {
+    const layout = layoutRelatives(projectRelatives(real, 'I1', { showAll: true }), real, labels, dates, measure)
+    const nodes = new Map(layout.nodes.map(node => [node.personId, node]))
+    const petro = nodes.get('I8')!, oksana = nodes.get('I7')!
+    const children = ['I4', 'I71', 'I72', 'I73', 'I74'].map(id => nodes.get(id)!.x)
+    expect((petro.x + oksana.x) / 2).toBeCloseTo((Math.min(...children) + Math.max(...children)) / 2, 6)
+  })
+
+  it('gives Makar and Natalia larger main-line cards than his siblings and keeps the couple close', () => {
+    const layout = layoutRelatives(projectRelatives(real, 'I1', { showAll: true }), real, labels, dates, measure)
+    const nodes = new Map(layout.nodes.map(node => [node.personId, node]))
+    const makar = nodes.get('I9')!, natalia = nodes.get('I6')!
+    for (const id of ['I13', 'I14', 'I15', 'I16', 'I17', 'I18']) {
+      const sibling = nodes.get(id)!
+      expect(makar.width).toBeGreaterThan(sibling.width * 1.1)
+      expect(makar.height).toBeGreaterThan(sibling.height * 1.1)
+      expect(makar.y - makar.height / 2).toBe(sibling.y - sibling.height / 2)
+    }
+    expect(natalia.width).toBe(makar.width)
+    expect(natalia.height).toBe(makar.height)
+    expect(makar.text.lines.find(line => !line.date)!.fontSize).toBeGreaterThan(nodes.get('I13')!.text.lines.find(line => !line.date)!.fontSize)
+    const gap = Math.abs(makar.x - natalia.x) - (makar.width + natalia.width) / 2
+    expect(gap).toBeGreaterThan(0)
+    expect(gap).toBeLessThanOrEqual(32)
+  })
+
+  it('includes every archive person and relationship from every center', () => {
     for (const person of family.people) {
       const full = projectRelatives(real, person.id, { showAll: true })
       expect(new Set(ids(full)).size).toBe(family.people.length)
@@ -84,13 +110,35 @@ describe('vertical full-family geometry on the real archive', () => {
       expect(full.appearances.every(n => n.hiddenConnections.length === 0)).toBe(true)
     }
   })
-  it('keeps upright complete labels, partners on one row, generations ordered and cards disjoint at every center and depth', () => {
+  it('centers every visible family and keeps complete labels, partners on one row, generations ordered and cards disjoint at every center and depth', () => {
     for (const person of family.people) {
       const maxDepth = availableRelativeGenerations(real, person.id)
       for (let depth = 1; depth <= maxDepth + 1; depth++) {
         const projection = projectRelatives(real, person.id, { generations: Math.min(depth, maxDepth), showAll: depth > maxDepth })
         const layout = layoutRelatives(projection, real, labels, dates, measure)
         const byId = new Map(layout.nodes.map(n => [n.appearanceId, n]))
+        const byPerson = new Map(layout.nodes.map(n => [n.personId, n]))
+        const visibleFamilies = new Map<string, { parents: typeof layout.nodes; children: typeof layout.nodes }>()
+        for (const child of layout.nodes) {
+          const parents = [...new Set(real.neighbors.get(child.personId)!.filter(n => n.direction === 'parents').map(n => n.personId))]
+            .flatMap(id => {
+              const parent = byPerson.get(id)
+              return parent !== undefined && parent.generation === child.generation - 1 ? [parent] : []
+            })
+          if (!parents.length) continue
+          const key = parents.map(parent => parent.personId).sort().join(',')
+          const visibleFamily = visibleFamilies.get(key) ?? { parents, children: [] }
+          visibleFamily.children.push(child)
+          visibleFamilies.set(key, visibleFamily)
+        }
+        for (const { parents, children } of visibleFamilies.values()) {
+          parents.sort((a, b) => a.x - b.x)
+          const parentCenter = parents.length === 2
+            ? (parents[0]!.x + parents[0]!.width / 2 + parents[1]!.x - parents[1]!.width / 2) / 2
+            : parents.reduce((sum, parent) => sum + parent.x, 0) / parents.length
+          const childCenter = (Math.min(...children.map(child => child.x)) + Math.max(...children.map(child => child.x))) / 2
+          expect(parentCenter, `${person.id}, depth ${depth}, parents ${parents.map(parent => parent.personId)}`).toBeCloseTo(childCenter, 6)
+        }
         for (const node of layout.nodes) {
           expect([node.x, node.y, node.width, node.height].every(Number.isFinite)).toBe(true)
           expect(node.x - node.width / 2).toBeGreaterThanOrEqual(0)
@@ -99,12 +147,12 @@ describe('vertical full-family geometry on the real archive', () => {
           expect(node.y + node.height / 2 + 50).toBeLessThanOrEqual(layout.height)
           expect(node.text.lines.filter(l => !l.date).map(l => l.text).join(' ')).toBe(labels.get(node.personId))
           expect(node.text.width).toBeLessThan(node.width - 30)
-          expect(layout.nodes.some(other => other !== node && Math.abs(node.x - other.x) < node.width
-            && Math.abs(node.y - other.y) < node.height)).toBe(false)
+          expect(layout.nodes.some(other => other !== node && Math.abs(node.x - other.x) < (node.width + other.width) / 2
+            && Math.abs(node.y - other.y) < (node.height + other.height) / 2)).toBe(false)
         }
         for (const edge of layout.edges) {
           const from = byId.get(edge.fromAppearanceId)!, to = byId.get(edge.toAppearanceId)!
-          if (real.relationships.get(edge.relationshipId)!.kind === 'spouse') expect(from.y).toBe(to.y)
+          if (real.relationships.get(edge.relationshipId)!.kind === 'spouse') expect(from.y - from.height / 2).toBe(to.y - to.height / 2)
           else expect(to.y).toBeGreaterThan(from.y + from.height)
           // Orthogonal links must never pass through an unrelated card.
           const coordinates = edge.path.match(/-?\d+(?:\.\d+)?/g)!.map(Number)

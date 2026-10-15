@@ -12,14 +12,16 @@
 .node:focus-visible { outline: none; }
 .node:focus-visible .card { stroke: #29664f; stroke-width: 4; stroke-dasharray: 6 3; }
 .label { fill: #243c2c; font-family: system-ui, sans-serif; pointer-events: none; }
+.node[data-main-line='true'] .label { font-weight: 600; }
 .date { fill: #596850; font-family: system-ui, sans-serif; pointer-events: none; }
 .marker { fill: #5f7957; font: 11px system-ui, sans-serif; pointer-events: none; }
 .branch { cursor: pointer; }
-.branch rect { fill: #f3f7ee; stroke: #63845a; stroke-width: 1.5; }
+.branch .branchHit { fill: transparent; stroke: transparent; stroke-width: 24; vector-effect: non-scaling-stroke; pointer-events: all; }
+.branch rect:not(.branchHit) { fill: #f3f7ee; stroke: #63845a; stroke-width: 1.5; }
 .branch text { fill: #29664f; font: 26px system-ui, sans-serif; pointer-events: none; }
-.branch:hover rect, .branch:focus-visible rect { stroke: #29664f; stroke-width: 3; }
+.branch:hover rect:not(.branchHit), .branch:focus-visible rect:not(.branchHit) { stroke: #29664f; stroke-width: 3; }
 .branch:focus-visible { outline: none; }
-.branch:focus-visible rect { stroke-dasharray: 5 3; }
+.branch:focus-visible rect:not(.branchHit) { stroke-dasharray: 5 3; }
 .count { margin: 0.4rem 0 0; color: #596850; font-size: 0.8rem; }
 .connection { cursor: pointer; }
 .line { fill: none; stroke: #90a585; stroke-width: 1.5; pointer-events: none; }
@@ -31,9 +33,9 @@
   .node[data-lane] .card { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .card, .node:focus-visible .card { stroke: Highlight; }
   .label, .date, .marker { fill: CanvasText; }
-  .branch rect { fill: Canvas; stroke: ButtonText; }
+  .branch rect:not(.branchHit) { fill: Canvas; stroke: ButtonText; }
   .branch text, .count { fill: CanvasText; color: CanvasText; }
-  .branch:focus-visible rect { stroke: Highlight; }
+  .branch:focus-visible rect:not(.branchHit) { stroke: Highlight; }
   .line { stroke: CanvasText; }
   .connection[data-selected='true'] .line, .connection:focus-visible .line { stroke: Highlight; }
 }

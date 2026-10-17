@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,11 +99,14 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if (report.sha256 === correctedOctoberExportSha256) {
-    const expected = { people: 73, relationships: 116, events: 127, claims: 315, places: 57 }
+  if (report.sha256 === correctedOctoberExportSha256 || report.sha256 === mergedOctoberExportSha256) {
+    const merged = report.sha256 === mergedOctoberExportSha256
+    const expected = merged
+      ? { people: 84, relationships: 135, events: 151, claims: 379, places: 71 }
+      : { people: 73, relationships: 116, events: 127, claims: 315, places: 57 }
     for (const [key, count] of Object.entries(expected)) {
       const imported = data[key as keyof typeof expected].filter(item => item.provenance.some(origin => origin.kind === 'gedcom'))
-      if (imported.length !== count) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: `${key}: очікується ${count} імпортованих записів після вилучення Йосипа.` })
+      if (imported.length !== count) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: `${key}: очікується ${count} імпортованих записів погодженого набору.` })
     }
     if (data.people.some(person => person.id === 'I24' || person.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PFVV-3JG'))
       || data.relationships.some(edge => edge.fromPersonId === 'I24' || edge.toPersonId === 'I24')
@@ -111,7 +114,15 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const name = data.claims.find(claim => claim.field === 'name' && claim.target.id === 'I1' && claim.isPrimary)
     if (!name?.explanation?.includes('D04') || name.confidence !== 'unassessed'
       || data.places.some(place => !place.description?.includes('D06'))) issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'D04/D06: втрачено невирішені зауваження до імені або місць.' })
-    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: 'Виправлення 14.10.2026: Йосип Зубенко з іншої гілки вилучений; D09 закрито за перевіркою власника.' })
+    if (merged) {
+      for (const fs of ['PNQ4-6DZ', 'PFVG-PWS', 'PFJL-V4J']) if (!data.people.some(person => person.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))) {
+        issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
+      }
+      if (data.sources.length !== 4 || data.evidenceLinks.length !== 12) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Мердж 17.10.2026 має зберігати 4 джерела та 12 цитувань.' })
+    }
+    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: merged
+      ? 'Мердж 17.10.2026: 73 попередні людини й зв’язки збережено; 11 людей додано; технічні пропуски експорту відновлено.'
+      : 'Виправлення 14.10.2026: Йосип Зубенко з іншої гілки вилучений; D09 закрито за перевіркою власника.' })
     return
   }
   if (report.sha256 === octoberExportSha256) {

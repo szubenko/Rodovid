@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-17",
+  "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+  "backup": "tmp/before-yakov-marriage-order-2026-10-17",
+  "changes": [
+    {
+      "relationshipId": "relationship-321a6e63b988bf6c76a388ad",
+      "fromPersonId": "I5",
+      "toPersonId": "I87",
+      "relativeOrder": {
+        "I5": 1
+      }
+    },
+    {
+      "relationshipId": "relationship-4b4d59b1f9e75b701b54ce7d",
+      "fromPersonId": "I5",
+      "toPersonId": "I4",
+      "relativeOrder": {
+        "I5": 2
+      }
+    },
+    {
+      "relationshipId": "relationship-8bef8a05b7d9a22dda4afe54",
+      "fromPersonId": "I5",
+      "toPersonId": "I10",
+      "relativeOrder": {
+        "I5": 1
+      }
+    },
+    {
+      "relationshipId": "relationship-aefe85aa7c3a414ece600694",
+      "fromPersonId": "I5",
+      "toPersonId": "I27",
+      "relativeOrder": {
+        "I5": 2
+      }
+    },
+    {
+      "relationshipId": "relationship-53e7c072a326f78fdcc4f227",
+      "fromPersonId": "I5",
+      "toPersonId": "I2",
+      "relativeOrder": {
+        "I5": 3
+      }
+    },
+    {
+      "relationshipId": "relationship-4775585b390a934cb6413f61",
+      "fromPersonId": "I4",
+      "toPersonId": "I27",
+      "relativeOrder": {
+        "I4": 1
+      }
+    },
+    {
+      "relationshipId": "relationship-1506ad402ddf8d538ec1610f",
+      "fromPersonId": "I4",
+      "toPersonId": "I2",
+      "relativeOrder": {
+        "I4": 2
+      }
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 98,
+    "info": 2
+  }
+}

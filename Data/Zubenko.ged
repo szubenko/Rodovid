@@ -785,6 +785,7 @@
 2 DATE 12 OCT 2026
 3 TIME 00:18:30
 1 _FSFTID PFFS-Y8D
+1 FAMS @F32@
 0 @I51@ INDI
 1 NAME Ольга Петрівна /Дейкало/
 1 SEX F
@@ -1111,6 +1112,9 @@
 2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine, Soviet Union
 1 FAMC @F18@
 0 @I74@ INDI
+1 NAME Оленка Яківна /Зубенко/
+2 GIVN Оленка Яківна
+2 SURN Зубенко
 1 NAME Оленка //
 2 GIVN Оленка
 1 SEX F
@@ -1118,8 +1122,8 @@
 1 _FSFTID PFJL-V4J
 1 CHAN
 2 DATE 17 SEP 2026
-1 DEAT
-1 FAMC @F19@
+1 DEAT Y
+1 FAMC @F32@
 0 @F1@ FAM
 1 HUSB @I2@
 1 WIFE @I3@
@@ -1236,7 +1240,6 @@
 1 WIFE @I39@
 1 _UID A53EA399BAE6D6449403FEF0C1ACA0E24D7E
 1 CHIL @I50@
-1 CHIL @I74@
 0 @F20@ FAM
 1 HUSB @I52@
 1 WIFE @I53@
@@ -1496,4 +1499,15 @@
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
 2 CONC //www.familysearch.org/ark:/61903/1:1:6X37-6N4T : Tue Sep 01 20:46:46 UT
 2 CONC C 2026), Наталия Семенова Пластун in entry for Яков, 12 Nov 1923.
+0 @F32@ FAM
+1 HUSB @I50@
+1 WIFE @I86@
+1 CHIL @I74@
+0 @I86@ INDI
+1 NAME Надя //
+2 GIVN Надя
+1 SEX F
+1 _FSFTID PNQS-T8M
+1 DEAT Y
+1 FAMS @F32@
 0 TRLR

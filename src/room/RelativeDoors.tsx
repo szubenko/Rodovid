@@ -9,7 +9,8 @@ import { useMotionPreference } from '../appearance/context'
 import { useDoorAudio } from '../audio/context'
 
 function relativeGroups(family: FamilyData, personId: string) {
-  const relations = family.relationships
+  const relations = [...family.relationships].sort((a, b) =>
+    (a.relativeOrder?.[personId] ?? Infinity) - (b.relativeOrder?.[personId] ?? Infinity))
   return [
     { label: 'Батьки', ids: relations.filter(r => r.kind === 'parent-child' && r.toPersonId === personId).map(r => r.fromPersonId) },
     { label: 'Подружжя', ids: relations.filter(r => r.kind === 'spouse' && [r.fromPersonId, r.toPersonId].includes(personId)).map(r => r.fromPersonId === personId ? r.toPersonId : r.fromPersonId) },

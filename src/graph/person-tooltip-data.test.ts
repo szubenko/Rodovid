@@ -1,9 +1,26 @@
 import { describe, expect, it } from 'vitest'
 import { familyDataSchema, type Claim } from '../data/schema'
 import fixture from '../../tests/fixtures/data-contract/full.json'
-import { tooltipClaimText, tooltipEventLabel, tooltipEvents, tooltipLifeYears, tooltipPersonTitle, tooltipRelatives, tooltipText, tooltipTimeline, tooltipTimelineYear } from './person-tooltip-data'
+import { biographyTimeline, tooltipClaimText, tooltipEventLabel, tooltipEvents, tooltipLifeYears, tooltipPersonTitle, tooltipRelatives, tooltipText, tooltipTimeline, tooltipTimelineYear } from './person-tooltip-data'
+import currentData from '../../generated/family.json'
 
 const deathNote = 'В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.'
+
+it('shows Yakov’s first marriage and Olenka before the second marriage, Nikolay and Petro without inferring dates', () => {
+  const family = familyDataSchema.parse(currentData)
+  family.relationships.reverse() // The explicit owner order must survive record ordering.
+  const snapshot = JSON.stringify(family)
+  for (const timeline of [tooltipTimeline(family, 'I5'), biographyTimeline(family, 'I5')]) {
+    const relatives = timeline.filter(entry => entry.stage === 2 || entry.stage === 3)
+    expect(relatives.map(entry => entry.labelPersonIds)).toEqual([['I87'], ['I10'], ['I4'], ['I27'], ['I2']])
+    expect(relatives.filter(entry => entry.stage === 2).map(entry => entry.label)).toEqual(['Перший шлюб', 'Другий шлюб'])
+    expect(relatives.filter(entry => entry.stage === 2).map(tooltipTimelineYear)).toEqual(['', ''])
+  }
+  expect(tooltipRelatives(family, 'I5').filter(relative => relative.rank === 3).map(relative => relative.otherId)).toEqual(['I87', 'I4'])
+  expect(tooltipRelatives(family, 'I5').filter(relative => relative.rank === 4).map(relative => relative.otherId)).toEqual(['I10', 'I27', 'I2'])
+  expect(tooltipRelatives(family, 'I4').filter(relative => relative.rank === 4).map(relative => relative.otherId)).toEqual(['I27', 'I2'])
+  expect(JSON.stringify(family)).toBe(snapshot)
+})
 
 describe('person tooltip details', () => {
   it('omits an event with only an unknown date and the imported DECEASED note', () => {

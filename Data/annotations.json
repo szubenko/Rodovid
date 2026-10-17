@@ -9,6 +9,99 @@
       },
       "confidence": "unassessed",
       "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене."
+    },
+    {
+      "id": "screenshot-relationship-97568b90812b58547384edd8",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-97568b90812b58547384edd8"
+      },
+      "confidence": "unassessed",
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся."
+    },
+    {
+      "id": "screenshot-relationship-8bef8a05b7d9a22dda4afe54",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-8bef8a05b7d9a22dda4afe54"
+      },
+      "confidence": "unassessed",
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.\n17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "relativeOrder": {
+        "I5": 1
+      }
+    },
+    {
+      "id": "screenshot-relationship-321a6e63b988bf6c76a388ad",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-321a6e63b988bf6c76a388ad"
+      },
+      "confidence": "unassessed",
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.\n17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "relativeOrder": {
+        "I5": 1
+      }
+    },
+    {
+      "id": "owner-order-relationship-4b4d59b1f9e75b701b54ce7d",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-4b4d59b1f9e75b701b54ce7d"
+      },
+      "confidence": "unassessed",
+      "relativeOrder": {
+        "I5": 2
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження."
+    },
+    {
+      "id": "owner-order-relationship-aefe85aa7c3a414ece600694",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-aefe85aa7c3a414ece600694"
+      },
+      "confidence": "unassessed",
+      "relativeOrder": {
+        "I5": 2
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження."
+    },
+    {
+      "id": "owner-order-relationship-53e7c072a326f78fdcc4f227",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-53e7c072a326f78fdcc4f227"
+      },
+      "confidence": "unassessed",
+      "relativeOrder": {
+        "I5": 3
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження."
+    },
+    {
+      "id": "owner-order-relationship-4775585b390a934cb6413f61",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-4775585b390a934cb6413f61"
+      },
+      "confidence": "unassessed",
+      "relativeOrder": {
+        "I4": 1
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження."
+    },
+    {
+      "id": "owner-order-relationship-1506ad402ddf8d538ec1610f",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-1506ad402ddf8d538ec1610f"
+      },
+      "confidence": "unassessed",
+      "relativeOrder": {
+        "I4": 2
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження."
     }
   ],
   "primaryClaimIds": [
@@ -95,7 +188,8 @@
     "claim-8fd072bc2d49bd607a974599",
     "claim-4dfad059970b6e088f6cee7b",
     "claim-9f1b515318b5e80d5513c573",
-    "claim-46ee1ce4b58ae55b33857fb2"
+    "claim-46ee1ce4b58ae55b33857fb2",
+    "claim-f0d68a1502b336593d173f16"
   ],
   "additionalClaims": [],
   "placeEnrichments": [
@@ -524,8 +618,204 @@
       "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія"
     }
   ],
-  "sources": [],
-  "media": [],
-  "evidenceLinks": [],
+  "sources": [
+    {
+      "id": "source-yakov-families-2026-10-17",
+      "title": "Родини Якова Макаровича Зубенка у FamilySearch",
+      "addedOn": "2026-10-17",
+      "description": "Знімок наданий власником замість GEDCOM. Яков PFFS-Y8D та Ольга PFFS-LRV мають дітей Петра PFF9-K8Q (1963–Living) й Николая PFVG-PWS (Living). Яков і Надя PNQS-T8M (Deceased) мають доньку Оленку Яківну Зубенко PFJL-V4J (Deceased). Для Якова й Наді показано No Marriage Events. Це запис дерева FamilySearch, не первинний акт; порядок блоків не доводить хронології шлюбів.",
+      "mediaIds": [
+        "media-yakov-families-2026-10-17"
+      ],
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "source-yakov-families-2026-10-17"
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "media-yakov-families-2026-10-17",
+      "path": "assets/documents/yakov-families-2026-10-17.png",
+      "mimeType": "image/png",
+      "dimensions": {
+        "width": 396,
+        "height": 803
+      },
+      "title": "Родини Якова Макаровича Зубенка — знімок FamilySearch",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-yakov-families-2026-10-17"
+        }
+      ]
+    }
+  ],
+  "evidenceLinks": [
+    {
+      "id": "evidence-yakov-families-person-I87",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "person",
+        "id": "I87"
+      },
+      "transcription": "Надя; Deceased; PNQS-T8M.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-person-I87"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-claim-claim-fb3ba80b8b1253ad98e67420",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "claim",
+        "id": "claim-fb3ba80b8b1253ad98e67420"
+      },
+      "transcription": "Оленка Яківна Зубенко; Deceased; PFJL-V4J.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-claim-claim-fb3ba80b8b1253ad98e67420"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-relationship-relationship-97568b90812b58547384edd8",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-97568b90812b58547384edd8"
+      },
+      "transcription": "Яков Макарович Зубенко PFFS-Y8D + Надя PNQS-T8M; Children (1): Оленка Яківна Зубенко PFJL-V4J.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-relationship-relationship-97568b90812b58547384edd8"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-relationship-relationship-8bef8a05b7d9a22dda4afe54",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-8bef8a05b7d9a22dda4afe54"
+      },
+      "transcription": "Яков Макарович Зубенко PFFS-Y8D + Надя PNQS-T8M; Children (1): Оленка Яківна Зубенко PFJL-V4J.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-relationship-relationship-8bef8a05b7d9a22dda4afe54"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-relationship-relationship-321a6e63b988bf6c76a388ad",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-321a6e63b988bf6c76a388ad"
+      },
+      "transcription": "Яков Макарович Зубенко PFFS-Y8D + Надя PNQS-T8M; Children (1): Оленка Яківна Зубенко PFJL-V4J.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-relationship-relationship-321a6e63b988bf6c76a388ad"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-person-I2",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "person",
+        "id": "I2"
+      },
+      "transcription": "Петр Зубенко; 1963–Living; PFF9-K8Q.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-person-I2"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-person-I27",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "person",
+        "id": "I27"
+      },
+      "transcription": "Николай Зубенко; Living; PFVG-PWS.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-person-I27"
+        }
+      ]
+    },
+    {
+      "id": "evidence-yakov-families-person-I10",
+      "sourceId": "source-yakov-families-2026-10-17",
+      "target": {
+        "kind": "person",
+        "id": "I10"
+      },
+      "transcription": "Оленка Яківна Зубенко; Deceased; PFJL-V4J.",
+      "fragment": {
+        "mediaId": "media-yakov-families-2026-10-17"
+      },
+      "explanation": "Наданий власником знімок FamilySearch від 17.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-yakov-families-person-I10"
+        }
+      ]
+    }
+  ],
   "memories": []
 }

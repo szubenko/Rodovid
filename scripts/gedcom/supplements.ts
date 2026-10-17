@@ -116,6 +116,12 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
     entity.confidence = entry.confidence
     if (entry.explanation !== undefined) entity.explanation = [entity.explanation, entry.explanation].filter(Boolean).join('\n')
     if (entry.reviewStatus && 'reviewStatus' in entity) entity.reviewStatus = entry.reviewStatus
+    if (entry.relativeOrder && 'fromPersonId' in entity) {
+      if (Object.keys(entry.relativeOrder).some(id => id !== entity.fromPersonId && id !== entity.toPersonId)) {
+        throw new Error(`Relative order belongs to a nonparticipant: ${entry.id}`)
+      }
+      entity.relativeOrder = entry.relativeOrder
+    }
     entity.provenance.push(origin(entry.id))
   }
   const selected = new Set<string>()

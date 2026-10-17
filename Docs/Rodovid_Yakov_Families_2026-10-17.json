@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-17",
+  "backup": "tests/fixtures/olenka-parent-2026-10-17",
+  "previousSha256": "7f9a9720c40e99d88b2f3f456a3332aff8808a654a2608878e64aea1a3801621",
+  "sha256": "fbaaabf5969325a08d33dd04fef65ed54273ebf06e06eb3e8669d5711e7e6d7a",
+  "source": {
+    "path": "Data/assets/documents/yakov-families-2026-10-17.png",
+    "sha256": "f6fc75f49a996c5199b263489bece692fa65bbf33d4a2cbf5eff14598dabaea8"
+  },
+  "addedPerson": {
+    "id": "I87",
+    "recordId": "@I86@",
+    "name": "Надя",
+    "familySearchId": "PNQS-T8M"
+  },
+  "updatedPerson": {
+    "id": "I10",
+    "name": "Оленка Яківна Зубенко",
+    "lifeStatus": "deceased"
+  },
+  "addedEntries": [
+    {
+      "kind": "claim",
+      "id": "claim-89fdec6311f86ed8d08f8c64"
+    },
+    {
+      "kind": "person",
+      "id": "I87"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f0d68a1502b336593d173f16"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-321a6e63b988bf6c76a388ad"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-97568b90812b58547384edd8"
+    },
+    {
+      "kind": "event",
+      "id": "event-14c1479673c702a394417201"
+    }
+  ],
+  "counts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 152,
+    "claims": 381,
+    "places": 71,
+    "sources": 5,
+    "media": 1,
+    "evidenceLinks": 20,
+    "memories": 0
+  },
+  "validation": {
+    "errors": 0,
+    "warnings": 98,
+    "info": 2
+  }
+}

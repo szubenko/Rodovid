@@ -41,11 +41,15 @@ export const relationshipSchema = z.strictObject({
   kind: z.enum(['parent-child', 'spouse']),
   // parent -> child; spouse endpoints have no directional meaning.
   fromPersonId: personIdSchema, toPersonId: personIdSchema,
+  relativeOrder: z.record(personIdSchema, z.number().int().positive()).optional(),
   reviewStatus: z.enum(['unreviewed', 'accepted', 'disputed']).default('unreviewed'),
   ...assessment,
   provenance,
 }).refine((relation) => relation.fromPersonId !== relation.toPersonId, {
   message: 'A relationship needs two distinct people',
+}).refine(relation => Object.keys(relation.relativeOrder ?? {}).every(id =>
+  id === relation.fromPersonId || id === relation.toPersonId), {
+  message: 'Relative order belongs to a participant of this relationship',
 })
 
 export const eventSchema = z.strictObject({

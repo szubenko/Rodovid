@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
-import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, chronologyReviewId } from './validation/reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, chronologyReviewId } from './validation/reviewed-export.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
@@ -107,7 +107,7 @@ it('removes the other-branch Iosif and all dependent entities while preserving e
 
 it('merges the fifth export without losing prior people, relationships, source references or technical omissions', async () => {
   const before = load('tests/fixtures/import-2026-10-14').family
-  const after = load('Data')
+  const after = load('tests/fixtures/import-2026-10-17')
   expect(after.report.sha256).toBe(mergedOctoberExportSha256)
   expect(after.report.counts).toMatchObject({ people: 84, families: 31, childLinks: 62, relationships: 135,
     events: 151, claims: 379, places: 71, sources: 4, evidenceLinks: 12 })
@@ -144,6 +144,77 @@ it('merges the fifth export without losing prior people, relationships, source r
   }
   expect(reached).toEqual(graph.personIds)
   expect(reached.size).toBe(84)
+})
+
+it('corrects Olenka’s father without inferring her mother or changing other people, facts, spouses or identities', async () => {
+  const before = load('tests/fixtures/import-2026-10-17')
+  const after = load('tests/fixtures/olenka-parent-2026-10-17')
+  expect(after.report.sha256).toBe(olenkaCorrectionSha256)
+  expect(after.report.counts).toMatchObject({ people: 84, families: 32, childLinks: 62, relationships: 134,
+    events: 151, claims: 379, places: 71, sources: 4, evidenceLinks: 12 })
+  const oldParents = before.family.relationships.filter(r => r.kind === 'parent-child' && r.toPersonId === 'I10')
+  expect(oldParents.map(r => r.fromPersonId).sort()).toEqual(['I6', 'I9'])
+  const parents = after.family.relationships.filter(r => r.kind === 'parent-child' && r.toPersonId === 'I10')
+  expect(parents).toHaveLength(1)
+  expect(parents[0]).toMatchObject({ fromPersonId: 'I5', confidence: 'unassessed', explanation: expect.stringContaining('Матір не уточнено') })
+  const omitOrigin = <T extends { provenance: unknown }>(item: T) => {
+    const copy: Partial<T> = structuredClone(item)
+    delete copy.provenance
+    return copy
+  }
+  for (const kind of ['people', 'events', 'claims', 'places', 'sources', 'evidenceLinks'] as const) {
+    expect(after.family[kind].map(omitOrigin)).toEqual(before.family[kind].map(omitOrigin))
+  }
+  expect(after.family.relationships.filter(r => r.toPersonId !== 'I10').map(omitOrigin))
+    .toEqual(before.family.relationships.filter(r => r.toPersonId !== 'I10').map(omitOrigin))
+  expect(after.family.relationships.filter(r => r.kind === 'spouse' && [r.fromPersonId, r.toPersonId].includes('I5')))
+    .toHaveLength(1)
+  for (const old of oldParents) expect(after.identities.entries.find(e => e.entity.id === old.id)?.origins
+    .some(o => o.importId === before.report.importId)).toBe(true)
+  const options = { assetsRoot: 'Data', conversion: after.report }
+  expect((await validateData(after.family, options)).status).toBe('passed')
+  const wrong = structuredClone(after.family)
+  wrong.relationships.find(r => r.id === parents[0]!.id)!.fromPersonId = 'I9'
+  expect((await validateData(wrong, options)).issues).toContainEqual(expect.objectContaining({ code: 'REVIEW_POLICY_MISSING', severity: 'error' }))
+  const graph = buildFamilyGraph(after.family), reached = new Set(['I1']), queue = [...reached]
+  for (let i = 0; i < queue.length; i++) for (const node of projectFamily(graph, queue[i]!).appearances) {
+    if (!reached.has(node.personId)) { reached.add(node.personId); queue.push(node.personId) }
+  }
+  expect(reached).toEqual(graph.personIds)
+})
+
+it('adds Nadia and the screenshot evidence while preserving both families and canonical identities', async () => {
+  const before = load('tests/fixtures/olenka-parent-2026-10-17')
+  const after = load('Data')
+  expect(after.report.sha256).toBe(yakovFamiliesSha256)
+  expect(after.report.counts).toMatchObject({ people: 85, families: 32, relationships: 136, events: 152, claims: 381, sources: 5, media: 1, evidenceLinks: 20 })
+  for (const person of before.family.people) expect(after.family.people.some(p => p.id === person.id)).toBe(true)
+  for (const edge of before.family.relationships) expect(after.family.relationships.find(r => r.id === edge.id))
+    .toMatchObject({ kind: edge.kind, fromPersonId: edge.fromPersonId, toPersonId: edge.toPersonId })
+  expect(after.family.people.find(p => p.id === 'I87')).toMatchObject({ lifeStatus: 'deceased', externalIds: [{ system: 'FamilySearch', value: 'PNQS-T8M' }] })
+  expect(after.family.people.find(p => p.id === 'I10')?.lifeStatus).toBe('deceased')
+  expect(after.family.claims.filter(c => c.field === 'name' && c.target.id === 'I10').map(c => c.field === 'name' && c.value.display))
+    .toEqual(['Оленка Яківна Зубенко', 'Оленка'])
+  const parents = (id: string) => after.family.relationships.filter(r => r.kind === 'parent-child' && r.toPersonId === id).map(r => r.fromPersonId).sort()
+  expect(parents('I10')).toEqual(['I5', 'I87'])
+  for (const id of ['I2', 'I27']) expect(parents(id)).toEqual(['I4', 'I5'])
+  expect(after.family.relationships.filter(r => r.kind === 'parent-child' && r.fromPersonId === 'I87').map(r => r.toPersonId)).toEqual(['I10'])
+  expect(after.family.events.filter(e => e.kind === 'marriage')).toHaveLength(before.family.events.filter(e => e.kind === 'marriage').length)
+  for (const id of ['I10', 'I87']) {
+    const deaths = after.family.events.filter(e => e.kind === 'death' && e.participants.some(p => p.personId === id))
+    expect(deaths).toHaveLength(1)
+    expect(after.family.claims.some(c => c.field === 'date' && c.target.id === deaths[0]!.id)).toBe(false)
+  }
+  const options = { assetsRoot: 'Data', conversion: after.report }
+  expect((await validateData(after.family, options)).status).toBe('passed')
+  const wrong = structuredClone(after.family)
+  wrong.relationships.find(r => r.kind === 'parent-child' && r.fromPersonId === 'I87')!.fromPersonId = 'I4'
+  expect((await validateData(wrong, options)).issues).toContainEqual(expect.objectContaining({ code: 'REVIEW_POLICY_MISSING', severity: 'error' }))
+  const graph = buildFamilyGraph(after.family), reached = new Set(['I1']), queue = [...reached]
+  for (let i = 0; i < queue.length; i++) for (const node of projectFamily(graph, queue[i]!).appearances) {
+    if (!reached.has(node.personId)) { reached.add(node.personId); queue.push(node.personId) }
+  }
+  expect(reached).toEqual(graph.personIds)
 })
 
 it('retains existing event and claim IDs, and removes obsolete duplicate and conflict annotations only from the active export', () => {

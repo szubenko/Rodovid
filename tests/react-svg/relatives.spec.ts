@@ -181,7 +181,7 @@ test('два шлюби Наталії: партнери й діти розта�
   const x = (id: string) => region.boxes[id]!.x + region.boxes[id]!.width / 2
   expect(x('I67')).toBeLessThan(x('I6'))
   expect(x('I6')).toBeLessThan(x('I9'))
-  for (const vasylChild of ['I68', 'I69']) for (const makarChild of ['I10', 'I5']) {
+  for (const vasylChild of ['I68', 'I69']) for (const makarChild of ['I5']) {
     expect(x(vasylChild)).toBeLessThan(x(makarChild))
   }
   const pending = page.waitForEvent('download')

@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,10 +99,13 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if (report.sha256 === correctedOctoberExportSha256 || report.sha256 === mergedOctoberExportSha256) {
-    const merged = report.sha256 === mergedOctoberExportSha256
-    const expected = merged
-      ? { people: 84, relationships: 135, events: 151, claims: 379, places: 71 }
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256].includes(report.sha256)) {
+    const screenshotFamilies = report.sha256 === yakovFamiliesSha256
+    const correctedOlenka = report.sha256 === olenkaCorrectionSha256
+    const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
+    const expected = screenshotFamilies
+      ? { people: 85, relationships: 136, events: 152, claims: 381, places: 71 } : merged
+      ? { people: 84, relationships: correctedOlenka ? 134 : 135, events: 151, claims: 379, places: 71 }
       : { people: 73, relationships: 116, events: 127, claims: 315, places: 57 }
     for (const [key, count] of Object.entries(expected)) {
       const imported = data[key as keyof typeof expected].filter(item => item.provenance.some(origin => origin.kind === 'gedcom'))
@@ -118,9 +121,33 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
       for (const fs of ['PNQ4-6DZ', 'PFVG-PWS', 'PFJL-V4J']) if (!data.people.some(person => person.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))) {
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
-      if (data.sources.length !== 4 || data.evidenceLinks.length !== 12) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Мердж 17.10.2026 має зберігати 4 джерела та 12 цитувань.' })
+      if (data.sources.length !== (screenshotFamilies ? 5 : 4) || data.evidenceLinks.length !== (screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору 17.10.2026.' })
     }
-    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: merged
+    if (screenshotFamilies) {
+      const nadia = data.people.find(person => person.id === 'I87')
+      const olenka = data.people.find(person => person.id === 'I10')
+      const name = data.claims.find(claim => claim.field === 'name' && claim.target.id === 'I10' && claim.isPrimary)
+      const parents = data.relationships.filter(edge => edge.kind === 'parent-child' && edge.toPersonId === 'I10').map(edge => edge.fromPersonId).sort()
+      const spouses = data.relationships.filter(edge => edge.kind === 'spouse' && [edge.fromPersonId, edge.toPersonId].includes('I5'))
+        .map(edge => edge.fromPersonId === 'I5' ? edge.toPersonId : edge.fromPersonId).sort()
+      if (!nadia?.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PNQS-T8M')
+        || nadia.lifeStatus !== 'deceased' || olenka?.lifeStatus !== 'deceased'
+        || name?.field !== 'name' || name.value.display !== 'Оленка Яківна Зубенко'
+        || JSON.stringify(parents) !== JSON.stringify(['I5', 'I87']) || JSON.stringify(spouses) !== JSON.stringify(['I4', 'I87'])
+        || !data.sources.some(source => source.id === 'source-yakov-families-2026-10-17')
+        || !data.media.some(media => media.id === 'media-yakov-families-2026-10-17')) {
+        issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'Втрачено уточнення зі знімка FamilySearch: Надя PNQS-T8M — дружина Якова й матір Оленки Яківни Зубенко.' })
+      }
+    }
+    if (correctedOlenka) {
+      const parents = data.relationships.filter(edge => edge.kind === 'parent-child' && edge.toPersonId === 'I10')
+      if (parents.length !== 1 || parents[0]?.fromPersonId !== 'I5' || !parents[0].explanation?.includes('17.10.2026')) {
+        issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'За уточненням власника Оленка I10 — дочка Якова I5. Матір не уточнено.' })
+      }
+    }
+    issues.push({ severity: 'info', code: 'REVIEWED_EXPORT', message: screenshotFamilies
+      ? 'За знімком власника додано Надю PNQS-T8M, уточнено повне ім’я Оленки й обох її батьків; дат шлюбу не встановлено.' : correctedOlenka
+      ? 'Уточнення 17.10.2026: Оленка — дочка Якова, матір не уточнено; решта погодженого мерджу збережена.' : merged
       ? 'Мердж 17.10.2026: 73 попередні людини й зв’язки збережено; 11 людей додано; технічні пропуски експорту відновлено.'
       : 'Виправлення 14.10.2026: Йосип Зубенко з іншої гілки вилучений; D09 закрито за перевіркою власника.' })
     return

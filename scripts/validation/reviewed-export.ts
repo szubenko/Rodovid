@@ -6,6 +6,8 @@ export const reviewedExportSha256 = 'a6428245adf900e2ec6bd84946d24945078e6d94d8b
 export const octoberExportSha256 = '462724e223880ee9528c70e0087a9ebccac33e6b866566ad178ba3581d7b8358'
 export const correctedOctoberExportSha256 = '01a33b9f8880a6943550e24a52dc0846bbb195cce45ec99dab1165405f9f4ab0'
 export const mergedOctoberExportSha256 = '883009bd56e79fca85207aabaf09b5ec2365c47ac3fb631ef7ecf00c95919504'
+export const olenkaCorrectionSha256 = '7f9a9720c40e99d88b2f3f456a3332aff8808a654a2608878e64aea1a3801621'
+export const yakovFamiliesSha256 = 'fbaaabf5969325a08d33dd04fef65ed54273ebf06e06eb3e8669d5711e7e6d7a'
 export const chronologyReviewId = 'relationship-259066879720fd7dd7184cf9'
 export const reviewedGraphIssues = [
   { code: 'CONFLICTING_ROLES', review: 'D07', recordIds: ['@F10@', '@F6@'],

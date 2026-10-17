@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-17",
+  "reason": "17.10.2026: власник уточнив, що Оленка (I10) — дочка Якова Макаровича Зубенка (I5), а не Макарія (I9). Матір не уточнено; материнство Ольги Петрівни Дейкало не встановлюється зі шлюбу. Підстава — повідомлення власника; первинний акт не перевірявся.",
+  "previousSha256": "883009bd56e79fca85207aabaf09b5ec2365c47ac3fb631ef7ecf00c95919504",
+  "sha256": "7f9a9720c40e99d88b2f3f456a3332aff8808a654a2608878e64aea1a3801621",
+  "backup": "tests/fixtures/import-2026-10-17",
+  "person": {
+    "id": "I10",
+    "recordId": "@I74@"
+  },
+  "father": {
+    "id": "I5",
+    "recordId": "@I50@"
+  },
+  "mother": null,
+  "familyRecordId": "@F32@",
+  "retiredEntries": [
+    {
+      "kind": "relationship",
+      "id": "relationship-88cf684e7d449a84883b87d6"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-8cd5934c73dbe5a174259dc3"
+    }
+  ],
+  "addedEntries": [
+    {
+      "kind": "family",
+      "id": "family-f08d8b90117e75d6167fc2c7"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-8bef8a05b7d9a22dda4afe54"
+    }
+  ],
+  "counts": {
+    "people": 84,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 134,
+    "events": 151,
+    "claims": 379,
+    "places": 71,
+    "sources": 4,
+    "media": 0,
+    "evidenceLinks": 12,
+    "memories": 0
+  },
+  "validation": {
+    "errors": 0,
+    "warnings": 97,
+    "info": 2
+  },
+  "retainedCouple": {
+    "source": "tests/fixtures/import-2026-10-14",
+    "sha256": "01a33b9f8880a6943550e24a52dc0846bbb195cce45ec99dab1165405f9f4ab0",
+    "ownerNote": "Власник назвав Ольгу Петрівну Дейкало другою дружиною Якова. Першу дружину в наявних попередніх GEDCOM не знайдено; ім’я та матір Оленки не встановлено.",
+    "people": [
+      {
+        "personId": "I5",
+        "familySearchId": "PFFS-Y8D",
+        "claims": [
+          {
+            "id": "claim-090db2ad3bd483f65cb6e7d5",
+            "field": "name",
+            "value": {
+              "raw": "Яков Макарович /Зубенко/",
+              "display": "Яков Макарович Зубенко",
+              "given": "Яков Макарович",
+              "surname": "Зубенко"
+            }
+          },
+          {
+            "id": "claim-52cbe03e736133c380a3ac4f",
+            "field": "date",
+            "value": {
+              "kind": "point",
+              "raw": "12 NOV 1923",
+              "calendar": "unspecified",
+              "qualifier": "exact",
+              "value": {
+                "precision": "day",
+                "year": 1923,
+                "month": 11,
+                "day": 12
+              }
+            }
+          },
+          {
+            "id": "claim-e3254152d42ef688af925003",
+            "field": "place",
+            "value": "place-8f8f0d5038ae54d9c1edd915"
+          },
+          {
+            "id": "claim-813a491cd8c12bae21717d02",
+            "field": "date",
+            "value": {
+              "kind": "point",
+              "raw": "23 MAR 2015",
+              "calendar": "unspecified",
+              "qualifier": "exact",
+              "value": {
+                "precision": "day",
+                "year": 2015,
+                "month": 3,
+                "day": 23
+              }
+            }
+          }
+        ]
+      },
+      {
+        "personId": "I4",
+        "familySearchId": "PFFS-LRV",
+        "claims": [
+          {
+            "id": "claim-d64d60e6061446b31f76977c",
+            "field": "name",
+            "value": {
+              "raw": "Ольга Петрівна /Дейкало/",
+              "display": "Ольга Петрівна Дейкало",
+              "given": "Ольга Петрівна",
+              "surname": "Дейкало"
+            }
+          },
+          {
+            "id": "claim-01dd7e04100be0860ce6f6e0",
+            "field": "date",
+            "value": {
+              "kind": "point",
+              "raw": "6 AUG 1929",
+              "calendar": "unspecified",
+              "qualifier": "exact",
+              "value": {
+                "precision": "day",
+                "year": 1929,
+                "month": 8,
+                "day": 6
+              }
+            }
+          },
+          {
+            "id": "claim-0d1cbd9318dc934c32f60204",
+            "field": "place",
+            "value": "place-7a755c648526392b489e5540"
+          },
+          {
+            "id": "claim-79463fbf36f66d6815f1698e",
+            "field": "date",
+            "value": {
+              "kind": "point",
+              "raw": "22 DEC 2017",
+              "calendar": "unspecified",
+              "qualifier": "exact",
+              "value": {
+                "precision": "day",
+                "year": 2017,
+                "month": 12,
+                "day": 22
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

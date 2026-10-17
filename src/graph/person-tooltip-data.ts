@@ -92,7 +92,9 @@ export function tooltipRelatives(family: FamilyData, personId: string) {
         : sex === 'M' ? 'Син' : sex === 'F' ? 'Донька' : 'Дитина'
       return { relation, otherId, label, rank, name: personName(family, otherId),
         years: tooltipLifeYears(family, otherId), birthKey: birthDateKey(family, otherId) }
-    }).sort((a, b) => a.rank - b.rank || (a.rank === 4 ? a.birthKey - b.birthKey : 0))
+    }).sort((a, b) => a.rank - b.rank
+      || (a.relation.relativeOrder?.[personId] ?? Infinity) - (b.relation.relativeOrder?.[personId] ?? Infinity)
+      || (a.rank === 4 ? a.birthKey - b.birthKey : 0))
 }
 
 export type TooltipTimelineEntry = {
@@ -121,6 +123,10 @@ export function tooltipTimelineYear(entry: TooltipTimelineEntry): string {
 function personTimeline(family: FamilyData, personId: string, complete: boolean): TooltipTimelineEntry[] {
   const relatives = tooltipRelatives(family, personId)
   const childIds = new Set(relatives.filter(relative => relative.rank === 4).map(relative => relative.otherId))
+  const marriageLabel = (relation: Relationship | null) => {
+    const order = relation?.relativeOrder?.[personId]
+    return order === 1 ? 'Перший шлюб' : order === 2 ? 'Другий шлюб' : order ? `${order}-й шлюб` : 'Шлюб'
+  }
   const entries: TooltipTimelineEntry[] = []
   const includedEvents = new Set<string>()
   const addEvent = (event: FamilyEvent, relationship: Relationship | null = null) => {
@@ -140,7 +146,7 @@ function personTimeline(family: FamilyData, personId: string, complete: boolean)
     const partnerIds = event.kind === 'marriage' ? participants.length ? participants : partnerId ? [partnerId] : [] : []
     const labelPersonIds = child ? [child.personId] : partnerIds
     const label = child ? `Народження ${childLabel}`
-      : event.kind === 'marriage' && partnerIds.length ? 'Шлюб'
+        : event.kind === 'marriage' && partnerIds.length ? marriageLabel(relationship)
       : tooltipEventLabel(event)
     entries.push({ id: event.id, event, relationship, label, labelPersonIds,
       claims: eventClaims(family, event.id).filter(claim => complete || tooltipClaimText(family, claim)),
@@ -160,7 +166,7 @@ function personTimeline(family: FamilyData, personId: string, complete: boolean)
           && event.participants.some(person => person.personId === relative.otherId)))
       if (marriages.length) marriages.forEach(event => addEvent(event, relative.relation))
       else entries.push({ id: `marriage/${relative.relation.id}`, event: null, relationship: relative.relation,
-        label: 'Шлюб', labelPersonIds: [relative.otherId], claims: [], participantIds: [], dateKey: Infinity, stage: 2 })
+        label: marriageLabel(relative.relation), labelPersonIds: [relative.otherId], claims: [], participantIds: [], dateKey: Infinity, stage: 2 })
     } else if (relative.rank === 4) {
       const births = family.events.filter(event => event.kind === 'birth'
         && event.participants.some(person => person.personId === relative.otherId && person.role === 'subject'))
@@ -189,7 +195,24 @@ function personTimeline(family: FamilyData, personId: string, complete: boolean)
   const sortKey = (entry: TooltipTimelineEntry) => Number.isFinite(entry.dateKey) ? entry.dateKey
     : entry.stage === 0 ? -Infinity : entry.stage === 2 ? marriageKeys.get(entry.id) ?? deathKey
     : entry.stage < 5 ? deathKey : Infinity
-  return entries.sort((a, b) => (sortKey(a) - sortKey(b)) || a.stage - b.stage)
+  const timeline = entries.sort((a, b) => (sortKey(a) - sortKey(b)) || a.stage - b.stage)
+  const orderedMarriages = relatives.filter(relative => relative.rank === 3 && relative.relation.relativeOrder?.[personId])
+  if (orderedMarriages.length < 2) return timeline
+  const unionOrder = (entry: TooltipTimelineEntry) => {
+    if (entry.stage === 2) return entry.relationship?.relativeOrder?.[personId]
+    if (entry.stage !== 3) return undefined
+    const id = childId(entry)
+    return orderedMarriages.find(relative => family.relationships.some(relation => relation.kind === 'parent-child'
+      && relation.fromPersonId === relative.otherId && relation.toPersonId === id))?.relation.relativeOrder?.[personId]
+  }
+  // An explicitly supplied union sequence orders only the family entries.
+  // Keep their actual dates and every other life event in its original slot.
+  const ordered = timeline.filter(entry => unionOrder(entry) !== undefined).sort((a, b) =>
+    unionOrder(a)! - unionOrder(b)! || a.stage - b.stage
+    || (a.relationship?.relativeOrder?.[personId] ?? Infinity) - (b.relationship?.relativeOrder?.[personId] ?? Infinity)
+    || (sortKey(a) - sortKey(b)))
+  let cursor = 0
+  return timeline.map(entry => unionOrder(entry) === undefined ? entry : ordered[cursor++]!)
 }
 
 export function tooltipTimeline(family: FamilyData, personId: string): TooltipTimelineEntry[] {

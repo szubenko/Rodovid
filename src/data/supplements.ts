@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { entityIdSchema as id } from './ids.ts'
+import { entityIdSchema as id, personIdSchema } from './ids.ts'
 import {
   claimSchema, confidenceSchema, evidenceLinkSchema, mediaSchema,
   memorySchema, sourceSchema,
@@ -18,8 +18,11 @@ export const supplementsSchema = z.strictObject({
     ]),
     confidence: confidenceSchema.default('unassessed'), explanation: text.optional(),
     reviewStatus: z.enum(['unreviewed', 'accepted', 'disputed']).optional(),
+    relativeOrder: z.record(personIdSchema, z.number().int().positive()).optional(),
   }).refine((entry) => entry.reviewStatus === undefined || entry.target.kind === 'relationship', {
     message: 'Review status applies only to relationships',
+  }).refine(entry => entry.relativeOrder === undefined || entry.target.kind === 'relationship', {
+    message: 'Relative order applies only to relationships',
   })).default([]),
   // Select by stable claim ID, not by an array offset or display value.
   primaryClaimIds: z.array(id).default([]),

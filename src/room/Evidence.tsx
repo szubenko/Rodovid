@@ -2,8 +2,8 @@ import type { EvidenceLink, FamilyEvent, Media, Relationship } from '../data/sch
 import { useFamily } from '../navigation/context'
 import { SourceCard } from './Archive'
 import { MediaFiles } from './MediaFiles'
-import { claimLabels, eventClaims } from './biography'
-import { tooltipClaimText } from '../graph/person-tooltip-data'
+import { eventClaims } from './biography'
+import { recordDescription, recordUrl } from './source-record'
 import styles from './Room.module.css'
 
 export function EvidenceForTarget({ target }: { target: EvidenceLink['target'] }) {
@@ -22,7 +22,6 @@ function SourceMedia({ items, links }: { items: Media[]; links: EvidenceLink[] }
       <a href={`${import.meta.env.BASE_URL}${item.path}`} target="_blank" rel="noopener noreferrer" aria-label={`Відкрити скан: ${item.title}`}>
         <img src={`${import.meta.env.BASE_URL}${item.path}`} alt={item.title} width={item.dimensions?.width} height={item.dimensions?.height} loading="lazy" />
       </a>
-      <figcaption>{item.title}{item.description && <p>{item.description}</p>}</figcaption>
     </figure>)}
     {items.filter(item => item.mimeType === 'application/pdf').map(item =>
       <MediaFiles key={item.id} items={[item]} initialPage={links.find(link => link.fragment?.mediaId === item.id)?.fragment?.page} />
@@ -43,32 +42,36 @@ function SourceDocuments({ links, mediaIds }: { links: EvidenceLink[]; mediaIds:
       const citations = links.filter(link => link.sourceId === source.id)
       const mediaIds = new Set([...source.mediaIds, ...citations.flatMap(link => link.fragment?.mediaId ? [link.fragment.mediaId] : [])])
       const media = family.media.filter(item => mediaIds.has(item.id))
+      const url = recordUrl(source, citations)
+      const description = recordDescription(source.description)
+      const hasText = Boolean(description || citations.some(link => link.transcription || recordDescription(link.explanation)))
       return <article key={source.id} className={styles.source} data-source-id={source.id} aria-label={source.title}>
-        <p><strong>{source.title}</strong></p>
-        {source.description && <p className={styles.sourceText}>{source.description}</p>}
+        <dl className={`${styles.biographyRecordFields} ${styles.sourceFacts}`}>
+          <div><dt>Зовнішнє посилання:</dt><dd>{url
+            ? <a href={url} target="_blank" rel="noopener noreferrer">{url}</a> : 'Не додано'}</dd></div>
+        </dl>
         {source.archive && <p>Архів: {source.archive}</p>}
         {source.reference && <p>Шифр: {source.reference}</p>}
-        {source.url && <p><a href={source.url} target="_blank" rel="noopener noreferrer">Перейти до джерела</a></p>}
+        <p className={styles.sourceHeading}>Опис</p>
+        {description && <p className={styles.sourceText}>{description}</p>}
+        {!hasText && <p className={styles.empty}>Текст запису ще не додано.</p>}
         {citations.map(link => {
-          const claim = link.target.kind === 'claim' ? family.claims.find(claim => claim.id === link.target.id) : undefined
-          const value = claim ? tooltipClaimText(family, claim) : ''
           return <div key={link.id} data-evidence-id={link.id} data-source-target-kind={link.target.kind} data-source-target-id={link.target.id}>
-            <p className={styles.biographyMeta}>{claim ? `${claimLabels[claim.field]}${value ? `: ${value}` : ''}`
-              : link.target.kind === 'relationship' ? 'Родинний зв’язок' : 'Подія'}</p>
             {link.fragment && (link.fragment.page || link.fragment.frame || link.fragment.folio || link.fragment.recordNumber) && <dl className={styles.biographyRecordFields}>
               {link.fragment.page && <div><dt>Сторінка:</dt><dd>{link.fragment.page}</dd></div>}
               {link.fragment.frame && <div><dt>Кадр:</dt><dd>{link.fragment.frame}</dd></div>}
               {link.fragment.folio && <div><dt>Аркуш:</dt><dd>{link.fragment.folio}</dd></div>}
               {link.fragment.recordNumber && <div><dt>Номер запису:</dt><dd>{link.fragment.recordNumber}</dd></div>}
             </dl>}
-            {link.explanation && <p className={styles.sourceText}>{link.explanation}</p>}
-            {link.transcription && <>
-              <p><strong>Текст документа</strong></p>
-              <blockquote className={styles.transcription}>{link.transcription}</blockquote>
-            </>}
+            {recordDescription(link.explanation) && <p className={styles.sourceText}>{recordDescription(link.explanation)}</p>}
+            {link.transcription && <blockquote className={styles.transcription}>{link.transcription}</blockquote>}
           </div>
         })}
-        <SourceMedia items={media} links={citations} />
+        {media.some(item => item.mimeType.startsWith('image/') || item.mimeType === 'application/pdf')
+          ? <SourceMedia items={media} links={citations} /> : <>
+            <p className={styles.empty}>Скриншот запису ще не додано.</p>
+            <SourceMedia items={media} links={citations} />
+          </>}
       </article>
     })}
     <SourceMedia items={directMedia} links={[]} />

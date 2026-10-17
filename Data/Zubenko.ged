@@ -581,30 +581,9 @@
 2 SOUR @S1@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NT61
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-2 SOUR @S2@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-5XK9
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-2 SOUR @S3@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3L-JXHD
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-2 SOUR @S4@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-6N4T
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE DEC 1980
 2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine, Soviet Union
-2 SOUR @S1@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NT61
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-2 SOUR @S2@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-5XK9
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-2 SOUR @S3@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3L-JXHD
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-2 SOUR @S4@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-6N4T
-4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PFFS-2YZ
 1 _UID 285B47C95893154DA652E8803DA227EE3458
 1 FAMS @F15@
@@ -656,6 +635,9 @@
 1 BIRT
 2 DATE 7 OCT 1918
 2 PLAC Kharkiv Guberniya, Russian Empire
+2 SOUR @S3@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3L-JXHD
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I42@ INDI
 1 NAME Таня Василівна /Пластун/
 2 ROMN Tania Vasylivna /Plastun/
@@ -776,6 +758,9 @@
 1 BIRT
 2 DATE 12 NOV 1923
 2 PLAC Chapliyïvka, Shostka, Sumy, Ukraine, Soviet Union
+2 SOUR @S4@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-6N4T
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE 23 MAR 2015
 1 _UID E96EC68A3EF15647873C6F464E2D06D6426B
@@ -1213,6 +1198,9 @@
 1 MARR
 2 DATE 10 JAN 1918
 2 PLAC Kharkiv Guberniya, Russian Empire
+2 SOUR @S2@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-5XK9
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @F16@ FAM
 1 WIFE @I42@
 1 _UID 419FBD0ADAD09A47BC368D4F66DC553FD62C

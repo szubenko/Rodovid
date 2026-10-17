@@ -152,6 +152,8 @@ export const memorySchema = z.strictObject({
 export const siteConfigSchema = z.strictObject({
   schemaVersion: z.literal(1), dataVersion: text, title: text,
   homePersonId: personIdSchema.default('I1'),
+  // Presentation overrides for the page heading only; never primary name claims.
+  personHeadingNames: z.record(personIdSchema, text).optional(),
   initialGenerations: z.number().int().min(1).max(11).default(3),
   rooms: z.array(z.strictObject({
     personId: personIdSchema, theme: text.optional(), backgroundMediaId: id.optional(),

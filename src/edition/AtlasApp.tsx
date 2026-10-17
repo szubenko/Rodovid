@@ -3,9 +3,9 @@ import { Navigate, Route, Routes, useLocation, useParams } from 'react-router'
 import { FamilyProvider, ViewProvider } from '../navigation/Providers'
 import { useFamily, useView } from '../navigation/context'
 import { ViewLink as Link } from '../navigation/ViewLink'
-import { personName } from '../data/person-name'
+import { personFullName, personName } from '../data/person-name'
 import { buildPeopleIndex, searchPeople } from '../search/people'
-import { tooltipLifeYears, tooltipPersonTitle } from '../graph/person-tooltip-data'
+import { tooltipLifeYears } from '../graph/person-tooltip-data'
 import { RadialMap } from '../graph/RadialMap'
 import { HorizontalTree } from '../graph/HorizontalTree'
 import { VerticalTree } from '../graph/VerticalTree'
@@ -47,7 +47,7 @@ function PeopleDirectory() {
       {people.map(person => <li key={person.personId}>
         <Link to={`/${state.current.mapScreen}/${person.personId}`} aria-current={state.current.personId === person.personId ? 'page' : undefined}>
           <span className={styles.personMark} aria-hidden="true">{person.name.charAt(0)}</span>
-          <span><strong>{person.name}</strong><small>{person.years}</small></span><span className={styles.personArrow} aria-hidden="true">↗</span>
+          <span><strong>{person.name}</strong>{person.years !== 'Роки життя невідомі' && <small>{person.years}</small>}</span><span className={styles.personArrow} aria-hidden="true">↗</span>
         </Link>
       </li>)}
     </ul>
@@ -85,7 +85,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   return <>
     <header className={styles.personHeader}>
       <div>
-        <h1 ref={heading} tabIndex={-1}>{tooltipPersonTitle(family, personId)}</h1>
+        <h1 ref={heading} tabIndex={-1}>{personFullName(family, personId)}</h1>
         {years && <p className={styles.years}>{years}</p>}
       </div>
     </header>

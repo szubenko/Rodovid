@@ -37,6 +37,14 @@ export const supplementsSchema = z.strictObject({
     }).optional(),
   })).default([]),
   sources: z.array(sourceSchema).default([]),
+  sourceEnrichments: z.array(z.strictObject({
+    id, sourceId: id, title: text.optional(), description: text.optional(),
+    url: sourceSchema.shape.url, mediaIds: z.array(id).optional(),
+  })).default([]),
+  evidenceEnrichments: z.array(z.strictObject({
+    id, evidenceLinkId: id, transcription: text.optional(),
+    explanation: text.optional(), fragment: evidenceLinkSchema.shape.fragment,
+  })).default([]),
   media: z.array(mediaSchema).default([]),
   evidenceLinks: z.array(evidenceLinkSchema).default([]),
   memories: z.array(memorySchema).default([]),

@@ -25,6 +25,7 @@ export function assertReferences(data: FamilyData) {
     if (!indexes.get(kind)!.has(id)) throw new Error(`Unresolved ${kind} reference: ${id}`)
   }
   need('person', data.config.homePersonId)
+  Object.keys(data.config.personHeadingNames ?? {}).forEach(id => need('person', id))
   for (const room of data.config.rooms) {
     need('person', room.personId)
     if (room.backgroundMediaId) need('media', room.backgroundMediaId)
@@ -91,6 +92,32 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
   const uniqueEntry = (id: string) => {
     if (entryIds.has(id)) throw new Error(`Duplicate supplement entry: ${id}`)
     entryIds.add(id)
+  }
+  const sourceEnrichments = new Set<string>()
+  for (const entry of supplements.sourceEnrichments) {
+    uniqueEntry(entry.id)
+    const source = data.sources.find(source => source.id === entry.sourceId)
+    if (!source) throw new Error(`Unresolved source enrichment: ${entry.sourceId}`)
+    if (sourceEnrichments.has(source.id)) throw new Error(`Conflicting source enrichments: ${source.id}`)
+    sourceEnrichments.add(source.id)
+    for (const field of ['title', 'description', 'url'] as const) {
+      if (entry[field] !== undefined) Object.assign(source, { [field]: entry[field] })
+    }
+    if (entry.mediaIds) source.mediaIds = [...new Set([...source.mediaIds, ...entry.mediaIds])]
+    source.provenance.push(origin(entry.id))
+  }
+  const evidenceEnrichments = new Set<string>()
+  for (const entry of supplements.evidenceEnrichments) {
+    uniqueEntry(entry.id)
+    const link = data.evidenceLinks.find(link => link.id === entry.evidenceLinkId)
+    if (!link) throw new Error(`Unresolved evidence enrichment: ${entry.evidenceLinkId}`)
+    if (evidenceEnrichments.has(link.id)) throw new Error(`Conflicting evidence enrichments: ${link.id}`)
+    evidenceEnrichments.add(link.id)
+    for (const field of ['transcription', 'explanation'] as const) {
+      if (entry[field] !== undefined) Object.assign(link, { [field]: entry[field] })
+    }
+    if (entry.fragment) link.fragment = { ...link.fragment, ...entry.fragment }
+    link.provenance.push(origin(entry.id))
   }
   for (const enrichment of supplements.placeEnrichments) {
     uniqueEntry(enrichment.id)

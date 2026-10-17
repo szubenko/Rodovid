@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,8 +99,9 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256].includes(report.sha256)) {
-    const screenshotFamilies = report.sha256 === yakovFamiliesSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256].includes(report.sha256)) {
+    const correctedSources = report.sha256 === nataliaSourcesSha256
+    const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
     const expected = screenshotFamilies
@@ -121,7 +122,10 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
       for (const fs of ['PNQ4-6DZ', 'PFVG-PWS', 'PFJL-V4J']) if (!data.people.some(person => person.externalIds.some(id => id.system === 'FamilySearch' && id.value === fs))) {
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
-      if (data.sources.length !== (screenshotFamilies ? 5 : 4) || data.evidenceLinks.length !== (screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору 17.10.2026.' })
+      const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
+      if (imported(data.sources) !== 4 || imported(data.evidenceLinks) !== (correctedSources ? 8 : 12)
+        || data.sources.length < (screenshotFamilies ? 5 : 4)
+        || data.evidenceLinks.length < (correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
     }
     if (screenshotFamilies) {
       const nadia = data.people.find(person => person.id === 'I87')

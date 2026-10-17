@@ -1,8 +1,11 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "2026-10-17-yakov-marriage-order",
+  "dataVersion": "2026-10-18-natalia-sources",
   "title": "Родовід Зубенків і Дейкалів",
   "homePersonId": "I1",
+  "personHeadingNames": {
+    "I6": "Наталія Семенівна Заприса"
+  },
   "initialGenerations": 11,
   "rooms": [],
   "audio": {

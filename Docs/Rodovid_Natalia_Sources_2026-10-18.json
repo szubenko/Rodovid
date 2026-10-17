@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-18",
+  "reason": "Уточнення власника: народження Наталії, шлюб і народження двох дітей; джерела не стосуються смерті.",
+  "basis": "Повідомлення власника та описи чотирьох джерел у GEDCOM; первинні акти повторно не перевірялися.",
+  "backup": "tmp/natalia-sources-2026-10-18/before",
+  "beforeSha256": "fbaaabf5969325a08d33dd04fef65ed54273ebf06e06eb3e8669d5711e7e6d7a",
+  "sha256": "c3f017c2760cec79dbf2aebbeebd9792c12b159b6251938b8ecb69e86a9afcf7",
+  "changed": [
+    {
+      "id": "evidenceLink-190b24f3fce3f538608f39e7",
+      "sourceId": "source-fddfa6e11112f078644b01bb",
+      "before": {
+        "kind": "event",
+        "id": "event-836c7d8b122ca60e05653546"
+      },
+      "after": {
+        "kind": "event",
+        "id": "event-9306dee1426697c13f5de623"
+      }
+    },
+    {
+      "id": "evidenceLink-b8d67133f36eaeca47afbb54",
+      "sourceId": "source-0837581a3bf72fc9675081b0",
+      "before": {
+        "kind": "event",
+        "id": "event-836c7d8b122ca60e05653546"
+      },
+      "after": {
+        "kind": "event",
+        "id": "event-7280a445f710f9bbf54fb8e2"
+      }
+    },
+    {
+      "id": "evidenceLink-2f968fbec45438d815bd63aa",
+      "sourceId": "source-639757f951c61e9b1fd23e9a",
+      "before": {
+        "kind": "event",
+        "id": "event-836c7d8b122ca60e05653546"
+      },
+      "after": {
+        "kind": "event",
+        "id": "event-be4484ccd5550532c9ae2531"
+      }
+    },
+    {
+      "id": "evidenceLink-2b9cf26d0f772e7bce308622",
+      "sourceId": "source-0c2700dfad0a6f8a580a97f2",
+      "before": {
+        "kind": "event",
+        "id": "event-fa4d90a5aeb9c7a1b5f017f0"
+      },
+      "after": null
+    },
+    {
+      "id": "evidenceLink-d33e3338b22319ea312bf673",
+      "sourceId": "source-fddfa6e11112f078644b01bb",
+      "before": {
+        "kind": "event",
+        "id": "event-fa4d90a5aeb9c7a1b5f017f0"
+      },
+      "after": null
+    },
+    {
+      "id": "evidenceLink-de5383fd77ba4f60f6bf3201",
+      "sourceId": "source-0837581a3bf72fc9675081b0",
+      "before": {
+        "kind": "event",
+        "id": "event-fa4d90a5aeb9c7a1b5f017f0"
+      },
+      "after": null
+    },
+    {
+      "id": "evidenceLink-8f7a813abcafe591cf1b52d0",
+      "sourceId": "source-639757f951c61e9b1fd23e9a",
+      "before": {
+        "kind": "event",
+        "id": "event-fa4d90a5aeb9c7a1b5f017f0"
+      },
+      "after": null
+    }
+  ],
+  "unchanged": {
+    "annotationsSha256": "f2117b16dc1e8c6d92b31c4111fd0eb0a6ab97341635ec7fcab4e0c62cc8c4ed",
+    "rootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+  },
+  "counts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 152,
+    "claims": 381,
+    "places": 71,
+    "sources": 5,
+    "media": 1,
+    "evidenceLinks": 16,
+    "memories": 0
+  }
+}

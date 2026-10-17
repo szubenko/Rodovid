@@ -1,11 +1,25 @@
 import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { familyDataSchema } from '../../src/data/schema'
-import { personName } from '../../src/data/person-name'
-import { tooltipLifeYears, tooltipPersonTitle } from '../../src/graph/person-tooltip-data'
+import { personFullName, personName } from '../../src/data/person-name'
+import { tooltipLifeYears } from '../../src/graph/person-tooltip-data'
 
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 const anna = family.people.find(person => personName(family, person.id) === 'Анна Герасимова Пальчикова')!
+
+test('повне ім’я Наталії показане лише у верхньому заголовку', async ({ page }) => {
+  for (const screen of ['tree', 'person']) {
+    await page.goto(`/${screen}/I6`)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Наталія Семенівна Заприса')
+    await expect(page.locator('aside')).toContainText('Наталия Заприса')
+    await expect(page.locator('aside')).not.toContainText('Семенівна')
+    if (screen === 'tree') {
+      const person = page.locator('svg [data-person-id="I6"]').first()
+      await expect(person).toHaveAttribute('aria-label', /Наталия Заприса/)
+      await expect(person).not.toHaveAttribute('aria-label', /Семенівна/)
+    }
+  }
+})
 
 test('шапка й вкладки не зміщуються між усіма діаграмами та історією життя', async ({ page, isMobile }, testInfo) => {
   test.setTimeout(120_000)
@@ -18,7 +32,7 @@ test('шапка й вкладки не зміщуються між усіма �
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
       await expect(page.getByLabel('Перегляд людини', { exact: true })).toBeVisible()
       const heading = page.getByRole('heading', { level: 1 })
-      await expect(heading).toHaveText(tooltipPersonTitle(family, personId))
+      await expect(heading).toHaveText(personFullName(family, personId))
       const years = tooltipLifeYears(family, personId)
       if (years) await expect(heading.locator('..').getByText(years, { exact: true })).toBeVisible()
       const boxes = () => page.evaluate(() => {
@@ -46,7 +60,7 @@ test('шапка й вкладки не зміщуються між усіма �
         }
         expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
         if (screen === 'person') {
-          await expect(heading).toHaveText(tooltipPersonTitle(family, personId))
+          await expect(heading).toHaveText(personFullName(family, personId))
           await expect(page.getByRole('heading', { name: 'Життєпис', exact: true })).toHaveCount(0)
           await expect(page.locator('#biography > header')).toHaveCount(0)
           await expect(page.getByRole('region', { name: 'Відомості', exact: true })).toBeVisible()

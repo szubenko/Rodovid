@@ -15,6 +15,31 @@ function renderBiography(family: FamilyData) {
 }
 
 describe('complete biography', () => {
+  it('shows the link, description and scan without repeating event details, titles or scan labels', () => {
+    const family = familyDataSchema.parse(fixture)
+    family.evidenceLinks = family.evidenceLinks.filter(link => link.id === 'link-main')
+    const link = family.evidenceLinks[0]!
+    link.explanation = 'Посилання з GEDCOM OBJE.FILE: https://www.familysearch.org/ark:/61903/1:1:TEST\nМетадані експорту: FORM=; _TYPE=OTHER'
+    link.transcription = 'Текст із метричної книги.'
+    family.sources[0]!.url = undefined
+    family.sources[0]!.description = 'Тип джерела в експорті (_TYPE): Unspecified\n"Ukraine", <i>FamilySearch</i> (https://www.familysearch.org/ark:/61903/1:1:TEST : 2024), Index.'
+    family.sources[0]!.mediaIds = ['media-scan']
+    const block = renderBiography(family).split('data-source-id="source-shared"')[1]!.split('</article>')[0]!
+    expect(block).not.toContain('<dt>Дата:</dt>')
+    expect(block).not.toContain('Тип події:')
+    expect(block).not.toContain(`>${family.sources[0]!.title}</p>`)
+    expect(block).toContain('>Опис</p>')
+    expect(block).not.toContain('Текст запису (опис)')
+    expect(block).not.toContain('>Скриншот запису</p>')
+    expect(block).not.toContain('<figcaption>')
+    expect(block).toContain('href="https://www.familysearch.org/ark:/61903/1:1:TEST"')
+    expect(block).toContain('Текст із метричної книги.')
+    expect(block).toContain('src="/assets/documents/fixture.png"')
+    expect(block).not.toContain('Метадані експорту')
+    expect(block).not.toContain('OBJE.FILE')
+    expect(block).not.toContain('&lt;i&gt;')
+    expect(block.indexOf('Текст із метричної книги.')).toBeLessThan(block.indexOf('src="/assets/documents/fixture.png"'))
+  })
   it('groups event sources once while keeping each alternative citation and useful participants distinct', () => {
     const family = familyDataSchema.parse(fixture)
     family.sources[0]!.description = 'Опис основного документа'
@@ -45,7 +70,7 @@ describe('complete biography', () => {
     expect(participants).toContain('href="/person/I2"')
     expect(participants).toContain('свідок')
     expect(participants).not.toContain('href="/person/I1"')
-    for (const value of ['Опис основного документа', mainLink.transcription, '2 зв.', 'Дата: 1874', 'Текст джерела події']) {
+    for (const value of ['Опис основного документа', mainLink.transcription, '2 зв.', 'Текст джерела події']) {
       expect(main).toContain(value)
     }
     expect(birth.match(/src="\/assets\/documents\/fixture.png"/g)).toHaveLength(1)
@@ -56,7 +81,7 @@ describe('complete biography', () => {
     expect(main).not.toContain('Ймовірно')
     expect(main).not.toContain('Запис у джерелі')
     expect(alternative).toContain('Текст альтернативного документа')
-    expect(alternative).toContain('Дата: близько 1876')
+    expect(alternative).not.toContain('Дата:')
     expect(alternative).toContain('src="/assets/documents/alternative.png"')
     expect(alternative).not.toContain(mainLink.transcription)
     expect(alternative).not.toContain('Опис основного документа')

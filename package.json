@@ -12,6 +12,8 @@
     "data:convert": "node scripts/convert-data.ts",
     "data:validate": "node scripts/convert-data.ts --validate-only",
     "data:check-gedcom": "node scripts/check-gedcom.ts",
+    "source:list": "node scripts/source-records.ts --list",
+    "source:add": "node scripts/source-records.ts",
     "dev": "vite",
     "dev:react-svg": "vite --config vite.react-svg.config.ts",
     "typecheck": "tsc -b",

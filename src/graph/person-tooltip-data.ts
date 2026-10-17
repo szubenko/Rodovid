@@ -21,6 +21,18 @@ function isSocialStatus(event: FamilyEvent): boolean {
   return event.kind === 'other' && ['caste name', 'стан'].includes(event.label?.trim().toLocaleLowerCase('uk') ?? '')
 }
 
+export function personStatusEvents(family: FamilyData, personId: string) {
+  return personEvents(family, personId).filter(isSocialStatus)
+}
+
+function isOccupation(event: FamilyEvent): boolean {
+  return event.kind === 'other' && ['occu', 'заняття', 'occupation'].includes(event.label?.trim().toLocaleLowerCase('uk') ?? '')
+}
+
+export function personOccupationEvents(family: FamilyData, personId: string) {
+  return personEvents(family, personId).filter(isOccupation)
+}
+
 export function tooltipPersonTitle(family: FamilyData, personId: string): string {
   const descriptions = family.events.filter(event => isSocialStatus(event)
     && event.participants.some(person => person.personId === personId && person.role === 'subject'))
@@ -106,7 +118,7 @@ export function tooltipTimelineYear(entry: TooltipTimelineEntry): string {
 }
 
 /** A view of existing records and relationships; never creates dates or source events. */
-export function tooltipTimeline(family: FamilyData, personId: string): TooltipTimelineEntry[] {
+function personTimeline(family: FamilyData, personId: string, complete: boolean): TooltipTimelineEntry[] {
   const relatives = tooltipRelatives(family, personId)
   const childIds = new Set(relatives.filter(relative => relative.rank === 4).map(relative => relative.otherId))
   const entries: TooltipTimelineEntry[] = []
@@ -131,13 +143,15 @@ export function tooltipTimeline(family: FamilyData, personId: string): TooltipTi
       : event.kind === 'marriage' && partnerIds.length ? 'Шлюб'
       : tooltipEventLabel(event)
     entries.push({ id: event.id, event, relationship, label, labelPersonIds,
-      claims: eventClaims(family, event.id).filter(claim => tooltipClaimText(family, claim)),
+      claims: eventClaims(family, event.id).filter(claim => complete || tooltipClaimText(family, claim)),
       participantIds: event.kind === 'marriage' ? [] : participants,
       dateKey: eventDateKey(family, event),
       stage: child ? 3 : ({ birth: 0, baptism: 1, marriage: 2, residence: 4, other: 4, death: 5, burial: 6 })[event.kind],
     })
   }
-  for (const { event } of tooltipEvents(family, personId)) addEvent(event)
+  const ownEvents = complete ? personEvents(family, personId).filter(event => !isSocialStatus(event) && !isOccupation(event))
+    : tooltipEvents(family, personId).map(({ event }) => event)
+  for (const event of ownEvents) addEvent(event)
   for (const relative of relatives) {
     if (relative.rank === 3) {
       const marriages = family.events.filter(event => event.kind === 'marriage'
@@ -176,4 +190,13 @@ export function tooltipTimeline(family: FamilyData, personId: string): TooltipTi
     : entry.stage === 0 ? -Infinity : entry.stage === 2 ? marriageKeys.get(entry.id) ?? deathKey
     : entry.stage < 5 ? deathKey : Infinity
   return entries.sort((a, b) => (sortKey(a) - sortKey(b)) || a.stage - b.stage)
+}
+
+export function tooltipTimeline(family: FamilyData, personId: string): TooltipTimelineEntry[] {
+  return personTimeline(family, personId, false)
+}
+
+/** The life story keeps all claims and source events, including undated and empty records. */
+export function biographyTimeline(family: FamilyData, personId: string): TooltipTimelineEntry[] {
+  return personTimeline(family, personId, true)
 }

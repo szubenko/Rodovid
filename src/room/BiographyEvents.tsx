@@ -1,38 +1,30 @@
+import { Fragment } from 'react'
 import { useFamily } from '../navigation/context'
 import { ViewLink } from '../navigation/ViewLink'
 import { personName } from '../data/person-name'
-import { claimText, eventClaims, eventLabels, personEvents } from './biography'
+import { biographyTimeline, tooltipTimelineYear } from '../graph/person-tooltip-data'
+import { BiographyClaim } from './BiographyClaim'
+import { BiographyRecord } from './BiographyRecord'
 import styles from './Room.module.css'
-import { ClaimEvidence, EvidenceForTarget } from './Evidence'
 
 export function BiographyEvents({ personId }: { personId: string }) {
   const family = useFamily()
-  const events = personEvents(family, personId)
-  return <section aria-label="Біографічні події">
-    <h3>Події життя</h3>
-    {events.length === 0 ? <p className={styles.empty}>Біографічних подій у записах немає.</p> : <>
-      <p className={styles.empty}>За основною датою; без основної дати або зі невизначеним календарем — наприкінці. Окремі записи збережено.</p>
-      <ol className={styles.timeline}>{events.map(event => {
-        const claims = eventClaims(family, event.id)
-        return <li key={event.id} id={`event-${event.id}`} data-event-id={event.id}>
-          <h3>{event.label ?? eventLabels[event.kind]}</h3>
-          {!claims.some(claim => claim.field === 'date') && <p>Дата невідома</p>}
-          {claims.map(claim => <div key={claim.id} id={`claim-${claim.id}`} className={styles.fact}>
-            <p><strong>{({ date: 'Дата', place: 'Місце', description: 'Опис', cause: 'Причина смерті', name: 'Ім’я' })[claim.field]}: </strong>
-              {claimText(family, claim)} · {claim.isPrimary ? 'основне значення' : 'окреме твердження'}
-            </p>
-            {claim.field === 'date' && claim.value.raw && <p className={styles.empty}>Запис у джерелі: {claim.value.raw}</p>}
-            {claim.explanation && <p>{claim.explanation}</p>}
-            <ClaimEvidence claim={claim} />
-          </div>)}
-          <p>Учасники: {event.participants.map((p, index) => <span key={`${p.personId}-${p.role}`}>
-            {index > 0 && ', '}<ViewLink to={`/person/${p.personId}`}>{personName(family, p.personId)}</ViewLink>
-          </span>)}</p>
-          {event.mediaIds.map(id => { const media = family.media.find(m => m.id === id); return media && <p key={id}><a href={`/${media.path}`} target="_blank" rel="noopener noreferrer">{media.title}</a></p> })}
-          <details><summary>Походження запису</summary>{event.provenance.map((p, i) => <p key={i}>{p.kind === 'gedcom' ? `${p.recordId} · ${p.path ?? 'запис GEDCOM'}` : `${p.file} · ${p.entryId}`}</p>)}</details>
-          <details><summary>Докази події</summary><EvidenceForTarget target={{ kind: 'event', id: event.id }} /></details>
-        </li>
-      })}</ol>
-    </>}
+  const entries = biographyTimeline(family, personId)
+  return <section className={styles.biographySection} aria-label="Біографічні події">
+    <h3 className={styles.biographySectionTitle}>Події життя</h3>
+    {entries.length === 0 ? <p className={styles.empty}>Біографічних подій у записах немає.</p>
+      : <ol className={styles.lifeTimeline}>{entries.map(entry => <li key={entry.id}
+        id={entry.event ? `event-${entry.event.id}` : undefined} data-timeline-id={entry.id} data-event-id={entry.event?.id}>
+        <span className={styles.lifeTimelineYear} data-timeline-year aria-hidden="true">{tooltipTimelineYear(entry)}</span>
+        <div className={styles.lifeTimelineContent}>
+          <h4>{entry.label}{entry.labelPersonIds.length > 0 && <>: {entry.labelPersonIds.map((id, index) =>
+            <Fragment key={id}>{index > 0 && ', '}
+              <ViewLink className={styles.biographyPersonLink} to={`/person/${id}`}>{personName(family, id)}</ViewLink>
+            </Fragment>
+          )}</>}</h4>
+          <div className={styles.biographyClaims}>{entry.claims.map(claim => <BiographyClaim key={claim.id} claim={claim} />)}</div>
+          <BiographyRecord event={entry.event} relationship={entry.relationship} />
+        </div>
+      </li>)}</ol>}
   </section>
 }

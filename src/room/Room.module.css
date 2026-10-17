@@ -35,9 +35,6 @@
 .memory pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .memory blockquote { margin-inline: 0; padding-left: 1rem; border-left: 3px solid #9e7b62; }
 .memory h4 { font-family: var(--font-heading); font-size: 1.15rem; }
-.timeline { list-style: none; border-left: 2px solid #bda185; }
-.timeline > li { padding-bottom: 1rem; border-bottom: 1px solid #dfcfba; }
-.fact { margin-block: 0.65rem; }
 .room button, .modal button { min-height: 44px; padding: 0.6rem 0.9rem; border: 1px solid #9e7b62; border-radius: 0.25rem; background: #f5ecdd; color: var(--color-text); font: inherit; cursor: pointer; overflow-wrap: anywhere; }
 .room button:hover, .modal button:hover { background: #ecddc7; }
 .room button:disabled, .modal button:disabled { opacity: 0.6; cursor: default; }
@@ -58,3 +55,51 @@
 .grid > :global(#memories), .grid > :global(#archive) { grid-column: 1 / -1; }
 .grid .paper { margin: 0; }
 @media (max-width: 650px) { .grid { grid-template-columns: 1fr; } .room { border-width: 4px; } }
+
+.paper.biography { --biography-inset: clamp(0.8rem, 3vw, 1.7rem); padding: 0; color: #243b34; background: #fffefa; border-color: #d5ded1; border-radius: 12px; }
+.biography .biographyHeader { padding: 14px var(--biography-inset) 10px; border-bottom: 1px solid #e1e7da; border-radius: 12px 12px 0 0; background: linear-gradient(125deg, #edf3e7, #f8f9f1); }
+.biography .biographyHeading { margin: 0 0 4px; color: #58714f; font: 650 11px/1.4 var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; }
+.biography .biographyName { margin: 0; color: #213f31; font: 400 clamp(25px, 2.6vw, 32px)/1.2 var(--font-heading); }
+.biography .biographyYears { margin: 3px 0 0; color: #52684b; font-size: 14px; line-height: 1.35; }
+.biography .biographyBody { padding: 0 var(--biography-inset); }
+.biography .biographySection { padding: 18px 0; border-radius: 0; background: transparent; }
+.biography .biographySection + .biographySection { border-top: 1px solid #e7ebdf; }
+.biography .biographySectionTitle { margin: 0 0 12px; color: #426344; font: 650 11px/1.4 var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; }
+.biography .biographyFacts { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 16px 24px; }
+.biography .biographyFacts > .biographyFact { flex: 0 0 100%; min-width: 0; }
+.biography .biographyFacts > [data-field='name'] { flex: 0 1 auto; max-width: 100%; }
+.biography .biographyFact > p { margin: 0; line-height: 1.55; white-space: pre-line; }
+.biography .biographyFact > p + p { margin-top: 4px; }
+.biography .biographyField { color: #596c54; }
+.biography .biographyMeta { color: #697461; font-size: 13px; }
+.biography .biographyExplanation { color: #596c54; white-space: pre-line; }
+.biography .biographyPersonLink { color: inherit; text-decoration: none; }
+.biography .biographyPersonLink:hover { color: var(--color-accent); }
+.biography .biographyPersonLink:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 2px; }
+.biography .biographyDetails { margin-top: 4px; min-width: 0; font-size: 13px; }
+.biography .biographyDetails > summary { display: list-item; width: fit-content; max-width: 100%; min-height: 44px; padding: 10px 0; color: #596c54; }
+.biography .biographyDetails > summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.biography .biographyRecordFields { margin: 8px 0; }
+.biography .biographyRecordFields > div { display: flex; flex-wrap: wrap; column-gap: 8px; margin-top: 4px; }
+.biography .biographyRecordFields dt { color: #596c54; }
+.biography .biographyRecordFields dd { margin: 0; min-width: 0; }
+.biography .biographyClaims { display: grid; gap: 12px; }
+.biography .biographyRecord { margin-top: 8px; }
+.biography .biographyParticipants { color: #596c54; font-size: 14px; }
+.biography .biographyStatus + .biographyStatus { margin-top: 20px; }
+.biography .biographyOccupation { margin-top: 16px; }
+.biography .biographyOccupation > h4 { margin: 0 0 8px; color: #596c54; font-size: 16px; }
+.biography .lifeTimeline { --timeline-year-width: 36px; position: relative; margin: 0; padding: 0; list-style: none; }
+.biography .lifeTimeline::before { content: ''; position: absolute; left: var(--timeline-year-width); top: 8px; bottom: 0; width: 1px; background: #d9e3cf; }
+.biography .lifeTimeline > li { position: relative; display: grid; grid-template-columns: var(--timeline-year-width) minmax(0, 1fr); column-gap: 12px; margin: 0; }
+.biography .lifeTimeline > li + li { margin-top: 24px; }
+.biography .lifeTimeline > li::before { content: ''; position: absolute; left: calc(var(--timeline-year-width) + 0.5px); top: 6px; width: 9px; height: 9px; transform: translateX(-50%); border: 2px solid #fffefa; border-radius: 50%; background: #8ca87a; box-shadow: 0 0 0 1px #cad8c0; }
+.biography .lifeTimelineYear { grid-column: 1; grid-row: 1; align-self: start; padding: 3px 8px 0 0; color: #58714f; font-size: 12px; line-height: 1.35; text-align: left; font-variant-numeric: tabular-nums; }
+.biography .lifeTimelineContent { grid-column: 2; grid-row: 1; min-width: 0; }
+.biography .lifeTimelineContent > h4 { margin: 0 0 8px; color: #2e4b35; font-size: 16px; font-weight: 600; }
+@media (forced-colors: active) {
+  .paper.biography, .biography .biographyHeader { background: Canvas; color: CanvasText; border-color: CanvasText; }
+  .biography .biographyHeading, .biography .biographyName, .biography .biographyYears, .biography .biographySectionTitle, .biography .lifeTimelineYear, .biography .lifeTimelineContent > h4 { color: CanvasText; }
+  .biography .lifeTimeline::before, .biography .lifeTimeline > li::before { background: CanvasText; }
+  .biography .lifeTimeline > li::before { border-color: Canvas; }
+}

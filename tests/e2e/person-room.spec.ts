@@ -22,6 +22,8 @@ test('all 74 rooms resolve the same IDs with readable missing information', asyn
 test('room navigation returns to its current person and preserves history', async ({ page }) => {
   await page.goto('/tree/I1')
   await page.getByRole('link', { name: 'Увійти до кімнати' }).click()
+  await expect(page.getByText('Життєвий статус невідомий.', { exact: true })).not.toBeVisible()
+  await page.getByText('Походження запису людини', { exact: true }).click()
   await expect(page.getByText('Життєвий статус невідомий.', { exact: true })).toBeVisible()
   await page.getByRole('link', { name: 'Показати на карті', exact: true }).click()
   await expect(page).toHaveURL(/\/tree\/I1$/)

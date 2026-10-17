@@ -1,9 +1,9 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type RefObject } from 'react'
+import { Fragment, useEffect, useId, useLayoutEffect, useRef, useState, type RefObject } from 'react'
 import { personName } from '../data/person-name'
 import { confidenceLabels, type Claim } from '../data/schema'
 import { useFamily } from '../navigation/context'
-import { claimText, eventClaims, eventLabels, personEvents } from '../room/biography'
-import { lifeYears } from './presentation'
+import { ViewLink } from '../navigation/ViewLink'
+import { tooltipClaimText, tooltipLifeYears, tooltipPersonTitle, tooltipRelatives, tooltipText, tooltipTimeline, tooltipTimelineYear } from './person-tooltip-data'
 import styles from './PersonTooltip.module.css'
 
 type Preview = { personId: string; anchor: Element; x: number; y: number }
@@ -138,66 +138,71 @@ export function PersonTooltip({ container }: { container: RefObject<HTMLDivEleme
   if (!preview) return null
   const { personId } = preview
   const person = family.people.find(person => person.id === personId)!
-  const facts = family.claims.filter(claim => claim.target.kind === 'person' && claim.target.id === personId)
-  const events = personEvents(family, personId)
-  const relations = family.relationships.filter(relation => relation.fromPersonId === personId || relation.toPersonId === personId)
+  const title = tooltipPersonTitle(family, personId)
+  const facts = family.claims.filter(claim => claim.target.kind === 'person' && claim.target.id === personId && tooltipClaimText(family, claim))
+  const events = tooltipTimeline(family, personId)
+  const relatives = tooltipRelatives(family, personId)
+  const years = tooltipLifeYears(family, personId)
   const portrait = family.media.find(media => media.id === person.portraitId && media.mimeType.startsWith('image/'))
-  const externalRecords = person.externalIds.filter(external => !/-UID$/i.test(external.system))
-  const renderClaim = (claim: Claim) => <div key={claim.id} className={styles.fact} data-claim-id={claim.id}>
-    <p><span className={styles.field}>{fieldLabels[claim.field]}: </span>{claimText(family, claim)}</p>
+  const renderClaim = (claim: Claim) => <div key={claim.id} className={styles.fact} data-claim-id={claim.id} data-field={claim.field}>
+    <p><span className={styles.field}>{fieldLabels[claim.field]}: </span>
+      {claim.field === 'name' && claim.target.kind === 'person'
+        ? <ViewLink className={styles.personLink} to={`/person/${claim.target.id}`}>{tooltipClaimText(family, claim)}</ViewLink>
+        : tooltipClaimText(family, claim)}</p>
     {claim.field === 'name' && claim.value.patronymic && !claim.value.display.includes(claim.value.patronymic)
       && <p>{claim.value.patronymic}</p>}
     {claim.confidence !== 'unassessed' && <p className={styles.meta} data-confidence={claim.confidence}>{confidenceLabels[claim.confidence]}</p>}
-    {claim.explanation && claim.field !== 'name' && <p className={styles.explanation}>{claim.explanation}</p>}
+    {claim.explanation && claim.field !== 'name' && tooltipText(claim.explanation) && <p className={styles.explanation}>{tooltipText(claim.explanation)}</p>}
   </div>
 
   return <div ref={card} id={id} role="tooltip" tabIndex={-1} className={styles.card} data-tooltip-person-id={personId}
-    aria-label={`Відомості: ${personName(family, personId)}`}
+    aria-label={`Відомості: ${title}`}
     onPointerEnter={() => keepOpen.current()} onPointerLeave={() => leave.current()}
     onFocus={() => keepOpen.current()} onBlur={() => leave.current()}>
     <header className={styles.header}>
       {portrait && <img className={styles.portrait} src={`${import.meta.env.BASE_URL}${portrait.thumbnail?.path ?? portrait.path}`} alt=""
         onError={event => { event.currentTarget.hidden = true }} />}
       <div><p className={styles.eyebrow}>Сторінки родоводу</p>
-        <h2>{personName(family, personId)}</h2><p className={styles.years}>{lifeYears(family, personId)}</p></div>
+        <h2><ViewLink className={styles.personLink} to={`/person/${personId}`}>{title}</ViewLink></h2>
+        {years && <p className={styles.years}>{years}</p>}</div>
     </header>
     <div className={styles.body} data-tooltip-scroll tabIndex={0} aria-label="Прокручування відомостей про людину">
-      <section className={styles.section} aria-label="Відомості">
+      {facts.length > 0 && <section className={styles.section} aria-label="Відомості">
         <h3>Відомості</h3>
-        {facts.map(renderClaim)}
-      </section>
-      <section className={styles.section} aria-label="Події життя">
-        <h3>Події життя <span>{events.length}</span></h3>
-        {events.length ? <ol className={styles.timeline}>{events.map(event => {
-          const claims = eventClaims(family, event.id)
-          return <li key={event.id} data-event-id={event.id}>
-            <h4>{event.label ?? eventLabels[event.kind]}</h4>
-            {!claims.some(claim => claim.field === 'date') && <p className={styles.meta}>Дата невідома</p>}
-            {claims.map(renderClaim)}
-            {event.participants.filter(participant => participant.personId !== personId).map(participant =>
-              <p className={styles.participant} key={`${participant.personId}/${participant.role}`}>Учасник: {personName(family, participant.personId)}</p>)}
+        <div className={styles.personFacts}>{facts.map(renderClaim)}</div>
+      </section>}
+      {events.length > 0 && <section className={styles.section} aria-label="Події життя">
+        <h3>Події життя</h3>
+        <ol className={styles.timeline}>{events.map(entry =>
+          <li key={entry.id} data-timeline-id={entry.id} data-event-id={entry.event?.id}>
+            <span className={styles.timelineYear} data-timeline-year aria-hidden="true">{tooltipTimelineYear(entry)}</span>
+            <div className={styles.timelineContent}>
+              <h4>{entry.label}{entry.labelPersonIds.length > 0 && <>: {entry.labelPersonIds.map((id, index) =>
+                <Fragment key={id}>{index > 0 && ', '}
+                  <ViewLink className={styles.personLink} to={`/person/${id}`}>{personName(family, id)}</ViewLink>
+                </Fragment>
+              )}</>}</h4>
+              {entry.claims.map(renderClaim)}
+              {entry.participantIds.map(id => <p className={styles.participant} key={id}>Учасник: <ViewLink className={styles.personLink} to={`/person/${id}`}>{personName(family, id)}</ViewLink></p>)}
+              {entry.relationship && entry.relationship.confidence !== 'unassessed' && <p className={styles.meta} data-confidence={entry.relationship.confidence}>
+                Родинний зв’язок: {confidenceLabels[entry.relationship.confidence]}
+              </p>}
+              {entry.relationship?.reviewStatus === 'disputed' && <p className={styles.meta}>Родинний зв’язок потребує уточнення</p>}
+            </div>
           </li>
-        })}</ol> : <p className={styles.meta}>Подій у записах поки немає.</p>}
-      </section>
-      {relations.length > 0 && <section className={styles.section} aria-label="Родина"><h3>Родина <span>{relations.length}</span></h3>
-        {relations.map(relation => {
-          const otherId = relation.fromPersonId === personId ? relation.toPersonId : relation.fromPersonId
-          const sex = family.people.find(person => person.id === otherId)?.sex
-          const label = relation.kind === 'spouse' ? 'Подружжя' : relation.toPersonId === personId
-            ? sex === 'M' ? 'Батько' : sex === 'F' ? 'Мати' : 'Батько / мати'
-            : sex === 'M' ? 'Син' : sex === 'F' ? 'Донька' : 'Дитина'
-          return <div key={relation.id} className={styles.fact} data-relation-id={relation.id}>
-            <p><span className={styles.field}>{label}: </span>{personName(family, otherId)}</p>
+        )}</ol>
+      </section>}
+      {relatives.length > 0 && <section className={styles.section} aria-label="Родина"><h3>Родина</h3>
+        {relatives.map(({ relation, otherId, label, name, years }) =>
+          <div key={relation.id} className={styles.fact} data-relation-id={relation.id}>
+            <p><span className={styles.field}>{label}: </span><ViewLink className={styles.personLink} to={`/person/${otherId}`}>{name}</ViewLink>{years && <> <span className={styles.relativeYears}>{years}</span></>}</p>
             {(relation.confidence !== 'unassessed' || relation.reviewStatus === 'disputed') && <p className={styles.meta} data-confidence={relation.confidence}>
               {relation.confidence !== 'unassessed' && confidenceLabels[relation.confidence]}
               {relation.reviewStatus === 'disputed' && `${relation.confidence !== 'unassessed' ? ' · ' : ''}Потребує уточнення`}
             </p>}
-            {relation.explanation && <p className={styles.explanation}>{relation.explanation}</p>}
+            {relation.explanation && tooltipText(relation.explanation) && <p className={styles.explanation}>{tooltipText(relation.explanation)}</p>}
           </div>
-        })}
-      </section>}
-      {externalRecords.length > 0 && <section className={styles.section} aria-label="Зовнішні записи"><h3>Зовнішні записи</h3>
-        {externalRecords.map(external => <p key={`${external.system}/${external.value}`}><span className={styles.field}>{external.system}: </span>{external.value}</p>)}
+        )}
       </section>}
     </div>
   </div>

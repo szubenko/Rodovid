@@ -8,7 +8,9 @@ describe('historical dates in biographies', () => {
     const base = { kind: 'point', raw: '1874', calendar: 'unspecified', qualifier: 'exact', value: { precision: 'year', year: 1874 } } as const
     expect(formatDate(base)).toBe('1874')
     expect(formatDate({ ...base, qualifier: 'about' })).toBe('близько 1874')
-    expect(formatDate({ ...base, value: { precision: 'month', year: 1874, month: 3 } })).toBe('03.1874 (місяць)')
+    expect(formatDate({ ...base, value: { precision: 'month', year: 1874, month: 3 } })).toBe('березень 1874')
+    expect(formatDate({ ...base, raw: 'DEC 1980', value: { precision: 'month', year: 1980, month: 12 } })).toBe('грудень 1980')
+    expect(formatDate({ ...base, raw: '12 DEC 1980', value: { precision: 'day', year: 1980, month: 12, day: 12 } })).toBe('12 грудня 1980')
     expect(formatDate({ ...base, value: { precision: 'day', year: 1874, month: 3, day: 12 } })).toBe('12 березня 1874')
     expect(formatDate({ kind: 'range', raw: 'BET 1874 AND 1876', calendar: 'unspecified', from: base.value, to: { precision: 'year', year: 1876 } })).toBe('між 1874 і 1876')
     expect(formatDate({ kind: 'period', raw: 'TO 1874', calendar: 'unspecified', to: base.value })).toBe('до 1874')

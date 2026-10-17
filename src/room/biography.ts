@@ -2,9 +2,10 @@ import type { DatePoint, HistoricalDate } from '../data/dates'
 import type { Claim, FamilyData, FamilyEvent } from '../data/schema'
 
 const months = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня']
+const monthNames = ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень']
 function point(date: DatePoint): string {
   if (date.precision === 'year') return `${date.year}`
-  if (date.precision === 'month') return `${String(date.month).padStart(2, '0')}.${date.year} (місяць)`
+  if (date.precision === 'month') return `${monthNames[date.month - 1]} ${date.year}`
   return `${date.day} ${months[date.month - 1]} ${date.year}`
 }
 export function formatDate(date: HistoricalDate): string {

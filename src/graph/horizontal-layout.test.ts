@@ -28,8 +28,8 @@ describe('horizontal family layout', () => {
           expect(node.text.width).toBeLessThan(node.width - 30)
           expect(node.text.height).toBeLessThan(node.height - 30)
           expect(node.text.lines.filter(line => !line.date).map(line => line.text).join(' ')).toBe(labels.get(node.personId))
-          if (node.lane === 'parents') expect(node.x).toBeGreaterThan(center.x)
-          if (node.lane === 'children') expect(node.x).toBeLessThan(center.x)
+          if (node.lane === 'parents') expect(node.x + node.width / 2).toBeLessThan(center.x - center.width / 2)
+          if (node.lane === 'children') expect(node.x - node.width / 2).toBeGreaterThan(center.x + center.width / 2)
           if (node.lane === 'spouses') expect(node.x).toBe(center.x)
           for (const lane of ['parents', 'children'] as const) {
             const relatives = layout.nodes.filter(relative => relative.parentAppearanceId === node.appearanceId && relative.lane === lane)

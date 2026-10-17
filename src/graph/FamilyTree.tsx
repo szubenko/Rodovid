@@ -29,7 +29,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const vertical = orientation === 'vertical'
   const mapScreen = includeRelatives ? 'relatives' : orientation
   const directionHint = includeRelatives ? 'Предки зверху, нащадки знизу, брати й сестри та подружжя поруч. «+» додає родичів до гілки.'
-    : vertical ? 'Предки зверху, нащадки знизу, подружжя поруч.' : 'Предки праворуч, нащадки ліворуч.'
+    : vertical ? 'Предки зверху, нащадки знизу, подружжя поруч.' : 'Предки ліворуч, нащадки праворуч.'
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)

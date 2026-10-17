@@ -31,7 +31,7 @@ test('нащадок стоїть напроти власних предків �
   await page.screenshot({ path: testInfo.outputPath('aligned-branches.png'), fullPage: true })
 })
 
-test('предки праворуч, а кнопка біля карти повертає після натискання на родича', async ({ page, isMobile }) => {
+test('предки ліворуч, нащадки праворуч, а кнопка біля карти повертає після натискання на родича', async ({ page, isMobile }) => {
   await page.goto('/horizontal/I1')
   const svg = page.getByRole('group', { name: /^Горизонтальний родовід:/ })
   const back = page.getByRole('button', { name: 'Назад до попереднього перегляду', exact: true })
@@ -41,13 +41,21 @@ test('предки праворуч, а кнопка біля карти пов�
   const scale = await page.getByLabel('Масштаб карти').textContent()
   expect(await svg.evaluate(element => {
     const center = element.querySelector('[data-center="true"]')!.getBoundingClientRect()
-    return [...element.querySelectorAll('[data-lane="parents"]')].every(node => node.getBoundingClientRect().left > center.right)
+    return [...element.querySelectorAll('[data-lane="parents"]')].every(node => node.getBoundingClientRect().right < center.left)
   })).toBe(true)
   const relative = svg.locator('[data-lane="parents"]').first()
   const personId = await relative.getAttribute('data-person-id')
   if (isMobile) await relative.tap()
   else await relative.click()
   await expect(page).toHaveURL(new RegExp(`/horizontal/${personId}$`))
+  await expect.poll(() => svg.evaluate(element => {
+    const center = element.querySelector('[data-center="true"]')!.getBoundingClientRect()
+    const parents = [...element.querySelectorAll('[data-lane="parents"]')]
+    const children = [...element.querySelectorAll('[data-lane="children"]')]
+    return parents.length > 0 && children.length > 0
+      && parents.every(node => node.getBoundingClientRect().right < center.left)
+      && children.every(node => node.getBoundingClientRect().left > center.right)
+  })).toBe(true)
   await expect(back).toBeEnabled()
   await back.click()
   await expect(page).toHaveURL(/\/horizontal\/I1$/)

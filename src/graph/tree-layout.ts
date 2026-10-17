@@ -18,7 +18,7 @@ export function layoutTree(projection: Projection, labels: ReadonlyMap<string, s
   const step = (vertical ? cardHeight : cardWidth) + 80
   const breadthStep = (vertical ? cardWidth : cardHeight) + gap
   const point = (generation: number, breadth: number) => vertical
-    ? { x: breadth, y: generation * step } : { x: -generation * step, y: breadth }
+    ? { x: breadth, y: generation * step } : { x: generation * step, y: breadth }
   const breadth = (position: { x: number; y: number }) => vertical ? position.x : position.y
   const branches = new Map<string, Appearance[]>()
   for (const node of projection.appearances) if (node.parentAppearanceId && node.lane !== 'spouses') {

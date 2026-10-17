@@ -89,9 +89,6 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <div><p className={styles.eyebrow}>{isMap ? 'Карта родини' : 'Особиста кімната'} <span>/</span> {personId}</p>
         <h1 ref={heading} tabIndex={-1}>{name}</h1>
         <p className={styles.years}>{lifeYears(family, personId)}</p></div>
-      {!isMap && <Link className={styles.primary} to={`/${state.current.mapScreen}/${personId}`}>
-        <Icon kind={state.current.mapScreen} />Показати на карті<Icon kind="arrow" />
-      </Link>}
     </header>
     <div className={styles.viewTabs} aria-label="Перегляд людини">
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
@@ -107,7 +104,11 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'relatives' ? <RelativesTree key={personId} personId={personId} /> : screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
-      </> : <PersonRoom key={personId} personId={personId} />}
+      </> : <PersonRoom key={personId} personId={personId} navigationAction={
+        <Link className={styles.primary} to={`/${state.current.mapScreen}/${personId}`}>
+          <Icon kind={state.current.mapScreen} />Показати на карті<Icon kind="arrow" />
+        </Link>
+      } />}
     </div>
   </>
 }

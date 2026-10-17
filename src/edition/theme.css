@@ -1,4 +1,5 @@
 :root {
+  scrollbar-gutter: stable;
   --color-background: #f6f7f3;
   --color-text: #243b34;
   --color-muted: #62736b;

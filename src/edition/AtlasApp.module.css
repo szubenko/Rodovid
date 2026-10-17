@@ -45,7 +45,6 @@
 .personHeader > div { display: flex; flex: 1; min-width: 0; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
 .personHeader h1 { max-width: 28ch; margin: 0; font-size: 1.4rem; line-height: 1.12; overflow-wrap: anywhere; }
 .personHeader .eyebrow { display: none; }
-.personHeader > .primary { width: 12rem; }
 .years { color: var(--color-muted); font-size: 0.8rem; }
 .primary { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 0.65rem; min-height: 46px; padding: 0.7rem 1rem; border: 1px solid #29664f; border-radius: 6px; background: #29664f; color: #fff; font-size: 0.75rem; text-decoration: none; }
 .primary:hover { background: #204f3e; }
@@ -88,7 +87,8 @@
 .mapSurface details { border-color: #dce4d5; font-size: 0.8rem; }
 .roomSurface > article { margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
 .roomSurface > article::before { display: none; }
-.roomSurface article > nav { border-bottom: 1px solid #dce4d5; }
+.roomSurface article > nav { align-items: center; border-bottom: 1px solid #dce4d5; padding-bottom: 0.4rem; }
+.roomSurface article > nav > .primary { margin-left: auto; color: #fff; }
 .roomSurface button { border-color: #d0dac9; background: #f5f8f1; border-radius: 5px; }
 .pageFooter { display: flex; justify-content: flex-end; gap: 1rem; padding: 1.5rem 0 0.5rem; color: var(--color-muted); font-size: 0.7rem; }
 .pageFooter summary { min-height: 44px; cursor: pointer; }
@@ -120,7 +120,6 @@
   .personHeader { gap: 0.35rem; padding-block: 0.25rem; }
   .personHeader > div { flex-basis: 100%; }
   .personHeader h1 { max-width: none; }
-  .personHeader > .primary { width: 13rem; }
   .primary { font-size: 0.8rem; }
   .mapSurface { padding: 0.35rem; }
   .mapSurface [aria-label="Керування картою"] { padding-block: 0.25rem; margin-top: 0; margin-bottom: 0.4rem; }

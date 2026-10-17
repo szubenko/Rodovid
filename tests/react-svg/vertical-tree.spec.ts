@@ -54,7 +54,7 @@ test('вертикальна вкладка: напрям поколінь, до
   await center.focus()
   await page.keyboard.press('Enter')
   await expect(page.getByRole('article', { name: 'Відомості про людину' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Показати на карті', exact: true })).toHaveAttribute('href', '/vertical/I1')
+  await expect(page.getByRole('link', { name: 'Вертикальний родовід', exact: true })).toHaveAttribute('href', '/vertical/I1')
   await page.getByRole('button', { name: '← Назад', exact: true }).click()
   await expect(page.getByLabel('Масштаб карти')).toHaveText('125%')
   await expect(page.getByTestId('relationship-details')).toHaveAttribute('data-relationship-id', id!)

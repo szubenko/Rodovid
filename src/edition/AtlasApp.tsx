@@ -5,7 +5,7 @@ import { useFamily, useView } from '../navigation/context'
 import { ViewLink as Link } from '../navigation/ViewLink'
 import { personName } from '../data/person-name'
 import { buildPeopleIndex, searchPeople } from '../search/people'
-import { lifeYears } from '../graph/presentation'
+import { tooltipLifeYears, tooltipPersonTitle } from '../graph/person-tooltip-data'
 import { RadialMap } from '../graph/RadialMap'
 import { HorizontalTree } from '../graph/HorizontalTree'
 import { VerticalTree } from '../graph/VerticalTree'
@@ -16,7 +16,7 @@ import { MotionControls, MotionPreferences } from '../appearance/MotionPreferenc
 import { AudioProvider } from '../audio/AudioProvider'
 import styles from './AtlasApp.module.css'
 
-function Icon({ kind }: { kind: MapScreen | 'book' | 'search' | 'home' | 'arrow' }) {
+function Icon({ kind }: { kind: MapScreen | 'book' | 'search' | 'home' }) {
   const paths = {
     tree: <><circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /><path d="M12 7v6M5 17v-4h14v4" /></>,
     horizontal: <><rect x="2" y="9" width="6" height="6" rx="1" /><rect x="16" y="2" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M8 12h4V5h4M12 12v7h4" /></>,
@@ -25,7 +25,6 @@ function Icon({ kind }: { kind: MapScreen | 'book' | 'search' | 'home' | 'arrow'
     book: <><path d="M12 5v15M12 5C8 2 3 4 3 4v14s5-2 9 2c4-4 9-2 9-2V4s-5-2-9 1Z" /></>,
     search: <><circle cx="10" cy="10" r="6" /><path d="m15 15 5 5" /></>,
     home: <><path d="m3 10 9-7 9 7v10H3Zm6 10v-7h6v7" /></>,
-    arrow: <path d="m10 5 7 7-7 7M17 12H3" />,
   }
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[kind]}</svg>
 }
@@ -66,7 +65,6 @@ function Missing() {
 
 function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const family = useFamily()
-  const { state } = useView()
   const isMap = screen !== 'person'
   const { personId } = useParams()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -80,15 +78,16 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   }, [family, personId, screen, isMap, location.key])
   const person = family.people.find(entry => entry.id === personId)
   if (!person || !personId) return <Missing />
-  const name = personName(family, personId)
+  const years = tooltipLifeYears(family, personId)
   const eventCount = family.events.filter(event => event.participants.some(participant => participant.personId === personId)).length
   const relationCount = new Set(family.relationships.flatMap(relation => relation.fromPersonId === personId ? [relation.toPersonId]
     : relation.toPersonId === personId ? [relation.fromPersonId] : [])).size
   return <>
     <header className={styles.personHeader}>
-      <div><p className={styles.eyebrow}>{isMap ? 'Карта родини' : 'Особиста кімната'} <span>/</span> {personId}</p>
-        <h1 ref={heading} tabIndex={-1}>{name}</h1>
-        <p className={styles.years}>{lifeYears(family, personId)}</p></div>
+      <div>
+        <h1 ref={heading} tabIndex={-1}>{tooltipPersonTitle(family, personId)}</h1>
+        {years && <p className={styles.years}>{years}</p>}
+      </div>
     </header>
     <div className={styles.viewTabs} aria-label="Перегляд людини">
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
@@ -104,11 +103,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'relatives' ? <RelativesTree key={personId} personId={personId} /> : screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
-      </> : <PersonRoom key={personId} personId={personId} navigationAction={
-        <Link className={styles.primary} to={`/${state.current.mapScreen}/${personId}`}>
-          <Icon kind={state.current.mapScreen} />Показати на карті<Icon kind="arrow" />
-        </Link>
-      } />}
+      </> : <PersonRoom key={personId} personId={personId} showBiographyHeader={false} />}
     </div>
   </>
 }

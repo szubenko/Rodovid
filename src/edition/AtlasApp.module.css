@@ -41,11 +41,9 @@
 .main { min-width: 0; padding: 0.5rem 0.75rem; }
 .main > div:has(> audio) { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin: 1rem 0 0; padding: 0.25rem 0 0.75rem; max-width: none; border: 0; border-bottom: 1px solid #e1e7de; background: transparent; font-size: 0.75rem; }
 .main > div:has(> audio) > button { margin-left: auto; padding: 0.5rem 0.7rem; min-height: 44px; border: 1px solid #d0dac9; border-radius: 5px; background: #f5f8f1; font-size: 0.7rem; }
-.personHeader { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding-block: 0.35rem; }
-.personHeader > div { display: flex; flex: 1; min-width: 0; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
-.personHeader h1 { max-width: 28ch; margin: 0; font-size: 1.4rem; line-height: 1.12; overflow-wrap: anywhere; }
-.personHeader .eyebrow { display: none; }
-.years { color: var(--color-muted); font-size: 0.8rem; }
+.personHeader { margin-bottom: 0.4rem; padding: 14px clamp(0.8rem, 3vw, 1.7rem) 10px; border: 1px solid #e1e7da; border-radius: 12px; background: linear-gradient(125deg, #edf3e7, #f8f9f1); }
+.personHeader h1 { margin: 0; color: #213f31; font: 400 clamp(25px, 2.6vw, 32px)/1.2 var(--font-heading); overflow-wrap: anywhere; }
+.years { margin: 3px 0 0; color: #52684b; font-size: 14px; line-height: 1.35; }
 .primary { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 0.65rem; min-height: 46px; padding: 0.7rem 1rem; border: 1px solid #29664f; border-radius: 6px; background: #29664f; color: #fff; font-size: 0.75rem; text-decoration: none; }
 .primary:hover { background: #204f3e; }
 .primary svg:last-child { width: 16px; }
@@ -87,8 +85,7 @@
 .mapSurface details { border-color: #dce4d5; font-size: 0.8rem; }
 .roomSurface > article { margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
 .roomSurface > article::before { display: none; }
-.roomSurface article > nav { align-items: center; border-bottom: 1px solid #dce4d5; padding-bottom: 0.4rem; }
-.roomSurface article > nav > .primary { margin-left: auto; color: #fff; }
+.roomSurface article > nav { align-items: center; border-bottom: 1px solid #dce4d5; padding-bottom: 0.4rem; padding-left: 10px; }
 .roomSurface button { border-color: #d0dac9; background: #f5f8f1; border-radius: 5px; }
 .pageFooter { display: flex; justify-content: flex-end; gap: 1rem; padding: 1.5rem 0 0.5rem; color: var(--color-muted); font-size: 0.7rem; }
 .pageFooter summary { min-height: 44px; cursor: pointer; }
@@ -99,7 +96,6 @@
 .skipLink { position: fixed; top: -100px; left: 1rem; z-index: 100; padding: 1rem; background: #fff; color: var(--color-accent); }
 .skipLink:focus { top: 1rem; }
 @media (max-width: 1100px) {
-  .personHeader { flex-wrap: wrap; }
   .viewTabs { gap: 1rem; }
 }
 @media (max-width: 760px) {
@@ -117,9 +113,6 @@
   .mobileDirectory > summary { min-height: 44px; padding-block: 0.75rem; cursor: pointer; font-size: 0.8rem; }
   .mobileDirectory .directory { padding: 1rem 0; }
   .personList { max-height: 340px; }
-  .personHeader { gap: 0.35rem; padding-block: 0.25rem; }
-  .personHeader > div { flex-basis: 100%; }
-  .personHeader h1 { max-width: none; }
   .primary { font-size: 0.8rem; }
   .mapSurface { padding: 0.35rem; }
   .mapSurface [aria-label="Керування картою"] { padding-block: 0.25rem; margin-top: 0; margin-bottom: 0.4rem; }
@@ -131,6 +124,8 @@
   .brandIcon { display: none; }
 }
 @media (forced-colors: active) {
+  .personHeader { background: Canvas; border-color: CanvasText; }
+  .personHeader h1, .years { color: CanvasText; }
   .mapSurface svg [data-person-id] > path:first-of-type, .mapSurface svg [data-person-id] > circle, .mapSurface svg [data-layer="empty-sectors"] path:first-of-type { fill: Canvas; stroke: CanvasText; }
   .mapSurface svg [data-person-id]:focus-visible > path:first-of-type, .mapSurface svg [data-person-id]:focus-visible > circle { stroke: Highlight; }
 }

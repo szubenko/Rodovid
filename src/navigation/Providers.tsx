@@ -44,6 +44,9 @@ export function ViewProvider({ children, initialMapZoom = 1 }: { children: React
   const location = useLocation()
   const navigate = useNavigate()
   const pending = useRef<{ key: string; target: string } | null>(null)
+  // Once navigation commits, a later visit to the same history entry must allow
+  // the same link again. The guard only suppresses clicks during a pending move.
+  useEffect(() => { pending.current = null }, [location.key])
   const tree = useMatch('/tree/:personId')
   const horizontal = useMatch('/horizontal/:personId')
   const vertical = useMatch('/vertical/:personId')

@@ -93,7 +93,7 @@ test('горизонтальна вкладка: камера, докази, к�
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
   await page.getByRole('link', { name: 'Історія життя', exact: true }).click()
   await expect(page.getByRole('article', { name: 'Відомості про людину' })).toBeVisible()
-  await expect(page.getByRole('link', { name: 'Показати на карті', exact: true })).toHaveAttribute('href', '/horizontal/I1')
+  await expect(page.getByRole('link', { name: 'Горизонтальний родовід', exact: true })).toHaveAttribute('href', '/horizontal/I1')
   await page.getByRole('button', { name: '← Назад' }).click()
   await expect(svg).toBeVisible()
   await expect(page.getByLabel('Масштаб карти')).toHaveText('75%')

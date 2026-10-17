@@ -7,7 +7,7 @@ import { BiographyEvents } from './BiographyEvents'
 import { BiographyRecord } from './BiographyRecord'
 import styles from './Room.module.css'
 
-export function LifeBiography({ personId }: { personId: string }) {
+export function LifeBiography({ personId, showHeader = true }: { personId: string; showHeader?: boolean }) {
   const family = useFamily()
   const headingId = useId()
   const person = family.people.find(person => person.id === personId)!
@@ -16,12 +16,13 @@ export function LifeBiography({ personId }: { personId: string }) {
   const statuses = personStatusEvents(family, personId)
   const occupations = personOccupationEvents(family, personId)
   const years = tooltipLifeYears(family, personId)
-  return <section className={`${styles.paper} ${styles.biography}`} id="biography" aria-labelledby={headingId}>
-    <header className={styles.biographyHeader}>
+  const Container = showHeader ? 'section' : 'div'
+  return <Container className={`${styles.paper} ${styles.biography}`} id="biography" aria-labelledby={showHeader ? headingId : undefined}>
+    {showHeader && <header className={styles.biographyHeader}>
       <h2 id={headingId} className={styles.biographyHeading}>Життєпис</h2>
       <p className={styles.biographyName}>{tooltipPersonTitle(family, personId)}</p>
       {years && <p className={styles.biographyYears}>{years}</p>}
-    </header>
+    </header>}
     <div className={styles.biographyBody}>
       <section className={styles.biographySection} aria-label="Відомості">
         <h3 className={styles.biographySectionTitle}>Відомості</h3>
@@ -53,5 +54,5 @@ export function LifeBiography({ personId }: { personId: string }) {
         </details>
       </section>}
     </div>
-  </section>
+  </Container>
 }

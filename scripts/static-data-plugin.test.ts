@@ -3,7 +3,7 @@ import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { build, createServer } from 'vite'
-import { expect, it } from 'vitest'
+import { expect, it, vi } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { familyDataSchema, mediaSchema } from '../src/data/schema.ts'
 import { validateData } from './validation/validate.ts'
@@ -101,7 +101,38 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
       await server.listen()
       const response = await fetch(`${server.resolvedUrls!.local[0]}data/family.json`)
       expect(response.headers.get('content-type')).toBe('application/json')
-      expect(familyDataSchema.parse(await response.json()).config.dataVersion).toBe('version-2')
+      const initial = familyDataSchema.parse(await response.json())
+      expect(initial.config.dataVersion).toBe('version-2')
+      const messages = vi.spyOn(server.ws, 'send')
+      const logger = vi.spyOn(server.config.logger, 'error').mockImplementation(() => {})
+      const updatedPlace = { id: 'reviewed-place', placeId: initial.places[0]!.id,
+        displayName: 'Уточнене українське місце', explanation: 'Уточнення власника' }
+      const current = async () => familyDataSchema.parse(await (await fetch(`${server.resolvedUrls!.local[0]}data/family.json`)).json())
+
+      // Reproduce an edit while Vite stays open: HTTP bytes and browser reload must both update.
+      await json('Data/annotations.json', { schemaVersion: 1, placeEnrichments: [updatedPlace] })
+      await vi.waitFor(async () => {
+        expect((await current()).places[0]!.displayName).toBe(updatedPlace.displayName)
+      }, { timeout: 15_000 })
+      expect(messages).toHaveBeenCalledWith({ type: 'full-reload' })
+
+      messages.mockClear()
+      await json('Data/annotations.json', { schemaVersion: 2 })
+      await vi.waitFor(() => expect(messages).toHaveBeenCalledWith(expect.objectContaining({ type: 'error' })), { timeout: 15_000 })
+      expect((await current()).places[0]!.displayName).toBe(updatedPlace.displayName)
+      expect(messages).not.toHaveBeenCalledWith({ type: 'full-reload' })
+      expect(logger).toHaveBeenCalled()
+
+      // A valid correction recovers without restarting and replaces stale names again.
+      messages.mockClear()
+      await json('Data/annotations.json', { schemaVersion: 1 })
+      await json('Data/site.json', { ...config, dataVersion: 'version-3' })
+      await vi.waitFor(async () => {
+        const fresh = await current()
+        expect(fresh.config.dataVersion).toBe('version-3')
+        expect(fresh.places[0]!.displayName).toBeUndefined()
+      }, { timeout: 15_000 })
+      expect(messages).toHaveBeenCalledWith({ type: 'full-reload' })
     } finally { await server.close() }
   } finally { await rm(directory, { recursive: true, force: true }) }
 }, 120_000)

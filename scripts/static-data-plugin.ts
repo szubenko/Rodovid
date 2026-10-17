@@ -1,6 +1,6 @@
 import { execFile } from 'node:child_process'
 import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
 import type { Plugin, ResolvedConfig } from 'vite'
@@ -32,6 +32,7 @@ async function prepare(root: string) {
 
 export function staticDataPlugin(): Plugin {
   let config: ResolvedConfig
+  let stopWatching: (() => Promise<void>) | undefined
   return {
     name: 'rodovid-static-data',
     configResolved(value) { config = value },
@@ -42,7 +43,42 @@ export function staticDataPlugin(): Plugin {
       }
     },
     async configureServer(server) {
-      const files = await prepare(config.root)
+      let files = await prepare(config.root)
+      const dataDirectory = resolve(config.root, 'Data')
+      let timer: ReturnType<typeof setTimeout> | undefined
+      let pending = Promise.resolve()
+      let closed = false
+      const changed = (event: string, file: string) => {
+        const path = relative(dataDirectory, file)
+        if (!['add', 'change', 'unlink'].includes(event) || isAbsolute(path) || path === '..'
+          || path.startsWith('../') || path.startsWith('..\\')) return
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          pending = pending.then(async () => {
+            if (closed) return
+            try {
+              const updated = await prepare(config.root)
+              if (closed) return
+              // Replace the whole validated snapshot, then reload both room and tooltip consumers.
+              files = updated
+              server.ws.send({ type: 'full-reload' })
+            } catch (error) {
+              if (closed) return
+              const message = `Не вдалося оновити дані родоводу: ${error instanceof Error ? error.message : String(error)}`
+              config.logger.error(message)
+              server.ws.send({ type: 'error', err: { message, stack: '' } })
+            }
+          })
+        }, 100)
+      }
+      server.watcher.add(dataDirectory)
+      server.watcher.on('all', changed)
+      stopWatching = async () => {
+        closed = true
+        clearTimeout(timer)
+        server.watcher.off('all', changed)
+        await pending
+      }
       server.middlewares.use((request, response, next) => {
         const path = (request.url ?? '').split('?')[0]!
         const file = path.startsWith(config.base) ? files.get(path.slice(config.base.length)) : undefined
@@ -53,5 +89,6 @@ export function staticDataPlugin(): Plugin {
         response.end(request.method === 'HEAD' ? undefined : file.bytes)
       })
     },
+    async closeBundle() { await stopWatching?.() },
   }
 }

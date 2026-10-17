@@ -6,16 +6,16 @@ import { PhotoGallery } from './PhotoGallery'
 import { Places } from './Places'
 import { motion } from 'motion/react'
 import { useMotionPreference } from '../appearance/context'
-import type { ReactNode } from 'react'
 
-export function PersonRoom({ personId, navigationAction }: { personId: string; navigationAction?: ReactNode }) {
+export function PersonRoom({ personId, showBiographyHeader = true }: {
+  personId: string; showBiographyHeader?: boolean
+}) {
   const { reduced } = useMotionPreference()
   return <motion.article className={styles.room} aria-label="Відомості про людину" initial={reduced ? false : { opacity: 0.88, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.18 }}>
     <nav className={styles.sections} aria-label="Розділи кімнати">
-      <a href="#biography">Життєпис</a><a href="#relatives">Рідні</a><a href="#memories">Спогади</a><a href="#photos">Фото</a><a href="#places">Місця</a>
-      {navigationAction}
+      {showBiographyHeader && <a href="#biography">Життєпис</a>}<a href="#relatives">Рідні</a><a href="#memories">Спогади</a><a href="#photos">Фото</a><a href="#places">Місця</a>
     </nav>
-    <LifeBiography personId={personId} />
+    <LifeBiography personId={personId} showHeader={showBiographyHeader} />
     <RelativeDoors personId={personId} />
     <div className={styles.grid}>
       <Memories personId={personId} />

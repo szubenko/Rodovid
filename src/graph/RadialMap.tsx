@@ -16,6 +16,7 @@ import { emptySectors } from './empty-sectors'
 import { closestRelationship } from './closest-relationship'
 import { downloadSvgAsPng } from './export-png'
 import { birthCountries, countryColor, unknownBirthCountry } from './birth-country'
+import { PersonTooltip } from './PersonTooltip'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
@@ -141,7 +142,6 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane} data-ring={node.ring} data-tone={node.tone} data-branch={node.startAngle < 0 ? 'left' : 'right'}
                 role="link" tabIndex={0} onClick={(event) => { if (event.detail < 2) action() }} onKeyDown={(event) => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${node.fullLabel}. ${date}. Країна народження: ${country}${hidden ? '. Є родичі поза цим показом' : ''}`}>
-                <title>{node.fullLabel} · {date} · Країна народження: {country}{hidden ? ' · Є інші родичі ↗' : ''}</title>
                 {central ? <circle className={styles.sector} cx={node.x} cy={node.y} r={layout.centerRadius} />
                   : <><path className={styles.sector} d={sectorPath(node, layout.center)} />
                     <path className={styles.rim} d={labelArc({ ...node, reverseLabel: false }, layout.center, node.outerRadius)} /></>}
@@ -191,6 +191,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
         </g>
       </svg>
     </div>
+    <PersonTooltip key={`${personId}/${zoom}/${pan.x}/${pan.y}/${generations}/${expanded}`} container={container} />
     {projection.truncated && <p role="status">Показано частину гілок. Інші люди доступні в покажчику.</p>}
     <div aria-live="polite" aria-atomic="true">
       {selected && <div className={styles.selection} data-testid="relationship-details" data-relationship-id={selected.id}>

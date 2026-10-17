@@ -1,0 +1,34 @@
+.card { position: fixed; z-index: 1100; display: flex; flex-direction: column; width: min(390px, calc(100vw - 24px)); max-height: min(660px, calc(100dvh - 24px), 78dvh); overflow: hidden; border: 1px solid #d5ded1; border-radius: 16px; background: #fffefa; color: #243b34; box-shadow: 0 18px 60px #203c2d26, 0 3px 12px #203c2d14; font: 14px/1.55 var(--font-body, system-ui, sans-serif); text-align: left; overflow-wrap: anywhere; }
+.card:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+.header { display: flex; align-items: center; gap: 14px; flex-shrink: 0; padding: 22px 24px 18px; background: linear-gradient(125deg, #edf3e7, #f8f9f1); border-bottom: 1px solid #e1e7da; }
+.header h2 { margin: 6px 0 8px; font: 400 25px/1.2 var(--font-heading, Georgia, serif); color: #213f31; }
+.card p { margin: 0; line-height: 1.55; }
+.card .eyebrow { color: #58714f; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 650; }
+.card .years { color: #52684b; font-size: 13px; }
+.portrait { width: 62px; height: 76px; flex-shrink: 0; object-fit: cover; border-radius: 9px; border: 1px solid #d1ddc7; }
+.body { min-height: 0; padding: 0 24px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #bccab1 transparent; }
+.body:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -3px; }
+.section { padding: 18px 0; }
+.section + .section { border-top: 1px solid #e7ebdf; }
+.section h3 { display: flex; align-items: center; gap: 9px; margin: 0 0 12px; color: #426344; font: 650 11px/1.4 var(--font-body, system-ui, sans-serif); text-transform: uppercase; letter-spacing: 0.1em; }
+.section h3 > span { display: inline-grid; place-items: center; min-width: 22px; height: 20px; padding: 0 5px; border-radius: 6px; background: #edf2e6; font-size: 10px; letter-spacing: 0; }
+.fact + .fact { margin-top: 11px; }
+.field { color: #596c54; }
+.card .meta { color: #697461; font-size: 12px; }
+.card .meta { margin-top: 3px; }
+.meta [data-confidence='hypothesis'], .meta [data-confidence='probable'], .meta[data-confidence='hypothesis'], .meta[data-confidence='probable'] { color: #895d28; }
+.card .explanation { margin-top: 4px; color: #66705f; font-size: 12px; white-space: pre-line; }
+.fact > p:first-child { white-space: pre-line; }
+.timeline { margin: 0; padding: 0 0 0 18px; list-style: none; border-left: 1px solid #d9e3cf; }
+.timeline > li { position: relative; }
+.timeline > li + li { margin-top: 20px; }
+.timeline > li::before { content: ''; position: absolute; left: -23px; top: 6px; width: 9px; height: 9px; border: 2px solid #fffefa; border-radius: 50%; background: #8ca87a; box-shadow: 0 0 0 1px #cad8c0; }
+.timeline h4 { margin: 0 0 7px; color: #2e4b35; font-size: 14px; font-weight: 600; }
+.card .participant { margin-top: 8px; color: #596c54; font-size: 12px; }
+@media (forced-colors: active) {
+  .card { border-color: CanvasText; color: CanvasText; background: Canvas; box-shadow: none; }
+  .header { background: Canvas; border-color: CanvasText; }
+  .card h2, .card h3, .card h4, .card p, .field, .meta [data-confidence], .meta[data-confidence] { color: CanvasText; }
+  .timeline { border-color: CanvasText; }
+  .timeline > li::before { background: CanvasText; border-color: Canvas; }
+}

@@ -16,6 +16,7 @@ import { closestRelationship } from './closest-relationship'
 import { downloadSvgAsPng } from './export-png'
 import shared from './RadialMap.module.css'
 import styles from './FamilyTree.module.css'
+import { PersonTooltip } from './PersonTooltip'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
@@ -154,7 +155,6 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
                 data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
-                <title>{labels.get(node.personId)} · {dates.get(node.personId)}</title>
                 <rect className={styles.card} x={node.x - node.width / 2} y={node.y - node.height / 2} width={node.width} height={node.height} rx="10" />
                 {node.text.lines.map((line, index) => <text key={index} className={line.date ? styles.date : styles.label}
                   x={node.x} y={node.y + line.y} fontSize={line.fontSize} textAnchor="middle" dominantBaseline="central">{line.text}</text>)}
@@ -175,6 +175,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
         </g>
       </svg>
     </div>
+    <PersonTooltip key={`${personId}/${settings.zoom}/${settings.pan.x}/${settings.pan.y}/${generations}/${expanded}/${settings.showAllRelatives}/${settings.expandedRelativeIds?.join(',')}`} container={container} />
     {'relatedCount' in projection && <p className={styles.count} role="status" data-testid="relatives-count">
       Людей у схемі: {projection.appearances.length} із {projection.relatedCount}. Зелені картки — предки, блакитні — нащадки, світлі — бокові гілки.
     </p>}

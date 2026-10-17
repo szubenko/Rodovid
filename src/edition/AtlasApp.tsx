@@ -38,7 +38,7 @@ function PeopleDirectory() {
   const index = useMemo(() => buildPeopleIndex(family).sort((a, b) => a.name.localeCompare(b.name, 'uk')), [family])
   const people = query.trim() ? searchPeople(index, query) : index
   return <section className={styles.directory} aria-labelledby={titleId}>
-    <div className={styles.directoryHeading}><h2 id={titleId}>Люди родоводу</h2><span>{family.people.length}</span></div>
+    <div className={styles.directoryHeading}><h2 id={titleId}>Люди родоводу</h2></div>
     <label className={styles.search}>
       <Icon kind="search" /><span className={styles.srOnly}>Пошук людей</span>
       <input type="search" placeholder="Ім’я або прізвище…" value={query} onChange={event => setQuery(event.target.value)} />
@@ -135,14 +135,14 @@ function Workspace() {
     </header>
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
-        <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2><p>Досліджуйте родинні зв’язки,<br />зберігайте пам’ять про рідних.</p></div>
+        <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2></div>
         <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
         <MobileDirectory key={location.pathname} />
         <div className={styles.desktopDirectory}><PeopleDirectory /></div>
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
       </aside>
       <main className={styles.main} id="atlas-content" tabIndex={-1}>
-        <AudioProvider controlsAfter={state.current.screen !== 'person'}>
+        <AudioProvider controlsAfter>
           <Routes>
             <Route path="/" element={<Navigate to={`/tree/${state.homePersonId}`} replace />} />
             <Route path="/tree/:personId" element={<PersonView screen="tree" />} />

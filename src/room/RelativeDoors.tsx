@@ -38,7 +38,6 @@ export function RelativeDoors({ personId }: { personId: string }) {
   const group = groups.find(g => g.label === selected)
   return <section className={styles.paper} id="relatives" aria-label="Переходи до рідних" data-opening={opening}>
     <h2>Рідні</h2>
-    <p className={styles.empty}>За родинними записами; невизначеність зв’язків описана у поясненні спорідненості.</p>
     <motion.div className={styles.doors} animate={{ rotateY: opening && !reduced ? -7 : 0, opacity: opening && !reduced ? 0.75 : 1 }} transition={{ duration: reduced ? 0 : 0.16 }} style={{ transformOrigin: 'left' }}>{groups.map(group => <div key={group.label}>
       <h3>{group.label}</h3>
       {group.ids.length === 0 ? <p className={styles.empty}>Записів у цьому родоводі немає.</p>

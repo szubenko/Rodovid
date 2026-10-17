@@ -66,7 +66,7 @@ function Missing() {
 
 function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const family = useFamily()
-  const { state, goBack, goTo } = useView()
+  const { state } = useView()
   const isMap = screen !== 'person'
   const { personId } = useParams()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -89,9 +89,9 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <div><p className={styles.eyebrow}>{isMap ? 'Карта родини' : 'Особиста кімната'} <span>/</span> {personId}</p>
         <h1 ref={heading} tabIndex={-1}>{name}</h1>
         <p className={styles.years}>{lifeYears(family, personId)}</p></div>
-      <Link className={styles.primary} to={`/${isMap ? 'person' : state.current.mapScreen}/${personId}`}>
-        <Icon kind={isMap ? 'book' : state.current.mapScreen} />{isMap ? 'Увійти до кімнати' : 'Показати на карті'}<Icon kind="arrow" />
-      </Link>
+      {!isMap && <Link className={styles.primary} to={`/${state.current.mapScreen}/${personId}`}>
+        <Icon kind={state.current.mapScreen} />Показати на карті<Icon kind="arrow" />
+      </Link>}
     </header>
     <div className={styles.viewTabs} aria-label="Перегляд людини">
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
@@ -107,13 +107,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'relatives' ? <RelativesTree key={personId} personId={personId} /> : screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
-      </> : <>
-        <div className={styles.roomActions} role="group" aria-label="Керування історією життя">
-          <button type="button" aria-label="Назад до попереднього перегляду"
-            onClick={() => state.position > 0 ? goBack() : goTo(`/${state.current.mapScreen}/${state.current.centerPersonId}`)}>← Назад</button>
-        </div>
-        <PersonRoom key={personId} personId={personId} />
-      </>}
+      </> : <PersonRoom key={personId} personId={personId} />}
     </div>
   </>
 }
@@ -130,7 +124,7 @@ function Workspace() {
       <p className={styles.familyTitle}>{family.config.title}</p>
       <nav className={styles.navigation} aria-label="Основна навігація">
         <button disabled={state.position === 0} onClick={goBack}>← Назад</button>
-        <Link to={`/${state.current.mapScreen}/${state.homePersonId}`} resetMap><Icon kind="home" />До мене</Link>
+        <Link to={`/tree/${state.homePersonId}`} resetMap><Icon kind="home" />До мене</Link>
       </nav>
     </header>
     <div className={styles.layout}>
@@ -153,7 +147,7 @@ function Workspace() {
             <Route path="*" element={<Missing />} />
           </Routes>
         </AudioProvider>
-        <footer className={styles.pageFooter}><span>Родовід · сімейна історія</span><details><summary>Налаштування руху</summary><MotionControls /></details></footer>
+        <footer className={styles.pageFooter}><details><summary>Налаштування руху</summary><MotionControls /></details></footer>
       </main>
     </div>
   </div>
@@ -167,7 +161,7 @@ function MobileDirectory() {
 }
 
 function Providers({ children }: { children: ReactNode }) {
-  return <FamilyProvider><ViewProvider initialRadialZoom={0.6}><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
+  return <FamilyProvider><ViewProvider initialMapZoom={0.6}><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
 }
 
 export function AtlasApp() { return <Providers><Workspace /></Providers> }

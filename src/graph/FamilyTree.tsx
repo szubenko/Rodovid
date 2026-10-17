@@ -74,7 +74,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const changeScale = (factor: number) => dispatch({ type: 'map', settings: scaleCamera(settings, factor) })
   const toggleAllRelatives = () => {
     if (settings.showAllRelatives) {
-      dispatch({ type: 'map', settings: { showAllRelatives: false, expandedRelativeIds: [], zoom: 1, pan: { x: 0, y: 0 } } })
+      dispatch({ type: 'map', settings: { showAllRelatives: false, expandedRelativeIds: [],
+        ...scaleCamera({ zoom: 1, pan: { x: 0, y: 0 } }, state.initialMapZoom) } })
       return
     }
     const full = layoutRelatives(projectRelatives(graph, personId, { generations, showAll: true }), graph, labels, dates, measure)

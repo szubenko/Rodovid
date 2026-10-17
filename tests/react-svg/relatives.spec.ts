@@ -19,7 +19,7 @@ test('окрема вкладка усіх родичів зберігає по�
   await expect(page).toHaveURL(/\/relatives\/I1$/)
   await expect(page.getByRole('link', { name: 'Усі родичі', exact: true })).toHaveAttribute('aria-current', 'page')
   await expect(page).toHaveTitle(/Родовід з усіма родичами$/)
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('60%')
   const full = page.getByRole('group', { name: /^Родовід з усіма родичами:/ })
   await expect(full.locator('[data-person-id="I27"]')).toHaveCount(1)
   await page.getByRole('button', { name: 'Назад до попереднього перегляду', exact: true }).click()
@@ -38,7 +38,8 @@ test('окрема вкладка усіх родичів зберігає по�
   await expect(page).toHaveURL(url => url.pathname === selectedPersonPath)
   await expect(page.getByRole('heading', { name: selectedPersonName, level: 1, exact: true })).toBeVisible()
   await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'До мене', exact: true }).click()
-  await expect(page).toHaveURL(/\/relatives\/I1$/)
+  await expect(page).toHaveURL(/\/tree\/I1$/)
+  await expect(page.getByRole('link', { name: 'Родинне коло', exact: true })).toHaveAttribute('aria-current', 'page')
 })
 
 test('бокові гілки: брати й сестри, розкриття, згортання та повернення', async ({ page, isMobile }, testInfo) => {
@@ -129,7 +130,7 @@ test('вся родина: всі унікальні картки й зв’яз
   }
   await page.getByRole('button', { name: 'Початкові гілки', exact: true }).click()
   expect(await svg.locator('[data-person-id]').count()).toBeLessThan(peopleCount)
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('60%')
 })
 
 test('Чабани й Карпінські: подружжя стоїть навпроти власних батьків без перехрестя', async ({ page }, testInfo) => {

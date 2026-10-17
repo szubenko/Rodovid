@@ -39,7 +39,7 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
   </main>
 }
 
-export function ViewProvider({ children, initialRadialZoom = 1 }: { children: ReactNode; initialRadialZoom?: number }) {
+export function ViewProvider({ children, initialMapZoom = 1 }: { children: ReactNode; initialMapZoom?: number }) {
   const family = useFamily()
   const location = useLocation()
   const navigate = useNavigate()
@@ -59,7 +59,7 @@ export function ViewProvider({ children, initialRadialZoom = 1 }: { children: Re
     route.personId = null
   }
   const [state, dispatch] = useReducer(viewReducer, undefined, () =>
-    initialView(family.config.homePersonId, family.config.initialGenerations, location.key, route, initialRadialZoom))
+    initialView(family.config.homePersonId, family.config.initialGenerations, location.key, route, initialMapZoom))
   // Reconcile before rendering consumers; the URL is authoritative.
   if (state.key !== location.key) dispatch({ type: 'visit', key: location.key, route, navigationType,
     resetMap: (location.state as { resetMap?: boolean } | null)?.resetMap === true })

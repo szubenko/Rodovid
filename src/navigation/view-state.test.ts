@@ -5,14 +5,21 @@ const visit = (key: string, screen: MapScreen | 'person', personId: string, navi
   ({ type: 'visit', key, route: { screen, personId }, navigationType })
 
 describe('view history', () => {
-  it('starts atlas circles farther out, keeps other maps at 100%, and restores saved cameras', () => {
+  it('starts every atlas diagram at 60%, centers new views, and restores saved cameras', () => {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'relatives'] as const) {
+      const initial = initialView('I1', 3, 'direct', { screen, personId: 'I1' }, 0.6)
+      expect(initial.current.map).toMatchObject({ zoom: 0.6, pan: { x: 0.2, y: 0.2 } })
+      const changed = viewReducer(initial, { type: 'map', settings: { zoom: 2, pan: { x: -0.1, y: 0.4 } } })
+      expect(viewReducer(changed, { type: 'reset-map' }).current.map).toEqual(initial.current.map)
+      expect(viewReducer(changed, visit('relative', screen, 'I2')).current.map).toEqual(initial.current.map)
+    }
     let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' }, 0.6)
     expect(state.current.map.zoom).toBe(0.6)
     expect(state.current.map.pan.x).toBeCloseTo(0.2)
     state = viewReducer(state, { type: 'map', settings: { zoom: 2, pan: { x: 0.2, y: 0.3 } } })
     const circle = state.current
     state = viewReducer(state, visit('b', 'horizontal', 'I1'))
-    expect(state.current.map).toMatchObject({ zoom: 1, pan: { x: 0, y: 0 } })
+    expect(state.current.map).toMatchObject({ zoom: 0.6, pan: { x: 0.2, y: 0.2 } })
     state = viewReducer(state, visit('c', 'tree', 'I1'))
     expect(state.current.map.zoom).toBe(0.6)
     state = viewReducer(state, visit('a', 'tree', 'I1', 'POP'))

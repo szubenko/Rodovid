@@ -25,6 +25,11 @@ export function dateSortKey(date?: HistoricalDate): number {
 }
 export const eventLabels: Record<FamilyEvent['kind'], string> = { birth: 'Народження', death: 'Смерть', marriage: 'Шлюб', baptism: 'Хрещення', burial: 'Поховання', residence: 'Місце проживання', other: 'Інша подія' }
 export function eventClaims(family: FamilyData, eventId: string) { return family.claims.filter(claim => claim.target.kind === 'event' && claim.target.id === eventId) }
+export const claimLabels = { name: 'Ім’я', date: 'Дата', place: 'Місце', description: 'Опис', cause: 'Причина смерті' }
+export function orderBiographyClaims(claims: Claim[]): Claim[] {
+  const order = { description: 0, cause: 1, date: 2, place: 3, name: 4 }
+  return [...claims].sort((a, b) => order[a.field] - order[b.field])
+}
 export function personEvents(family: FamilyData, personId: string) {
   const key = (event: FamilyEvent) => {
     const claim = eventClaims(family, event.id).find(claim => claim.field === 'date' && claim.isPrimary)

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 
-test('current biography keeps partial dates, the prepared marriage and provenance', async ({ page }) => {
+test('current biography keeps partial dates and hides empty source blocks', async ({ page }) => {
   await page.goto('/person/I1')
   const events = page.getByRole('region', { name: 'Біографічні події' })
   await expect(events).toContainText('1987')
@@ -12,9 +12,8 @@ test('current biography keeps partial dates, the prepared marriage and provenanc
   await expect(events.getByRole('heading', { name: /^Шлюб:/ })).toHaveCount(1)
   await expect(events).not.toContainText('_EVDEF')
   const death = events.locator('[data-event-id]').filter({ has: page.getByRole('heading', { name: 'Смерть', exact: true }) })
-  await death.getByText('Походження запису', { exact: true }).click()
-  // Stable site I12 maps to @I52@ in the current GEDCOM export.
-  await expect(death.getByText(/^@I52@ · DEAT\[0\] · імпорт:/)).toBeVisible()
+  await expect(death.getByText('Джерело', { exact: true })).toHaveCount(0)
+  await expect(events.getByText('Походження запису', { exact: true })).toHaveCount(0)
   expect(await page.locator('html').evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width)
 })
 
@@ -31,11 +30,14 @@ test('synthetic alternatives, unknown date and historical range remain readable'
   const events = page.getByRole('region', { name: 'Біографічні події' })
   await expect(events.getByRole('heading', { name: /^Шлюб:/ })).toHaveCount(2)
   await expect(events.locator('[data-claim-id="claim-date-main"]')).toContainText('1874')
-  await expect(events.locator('[data-claim-id="claim-date-main"]')).toContainText('Основне значення')
+  await expect(events.locator('[data-timeline-id="event-birth"]').getByText('Джерело', { exact: true })).toHaveCount(1)
   await expect(events).toContainText('близько 1876')
   await expect(events).toContainText('між 1890 і 1892')
-  await expect(events).toContainText('Дата невідома')
-  await expect(events).toContainText('DECEASED')
+  const death = events.locator('[data-event-id="unknown-death"]')
+  await expect(death.getByRole('heading', { name: 'Смерть', exact: true })).toBeVisible()
+  await expect(death).not.toContainText('Дата невідома')
+  await expect(death).not.toContainText('DECEASED')
+  await expect(death.getByText('Джерело', { exact: true })).toHaveCount(0)
   await expect(events.locator('[data-event-id="range-event"] [data-timeline-year]')).toHaveText('1890')
   const biography = page.locator('#biography')
   const facts = biography.getByRole('region', { name: 'Відомості', exact: true })

@@ -1,7 +1,6 @@
 import type { EvidenceLink, Source } from '../data/schema'
 import { useFamily } from '../navigation/context'
-import { personEvidence } from './archive-data'
-import { claimText, eventLabels, personEvents } from './biography'
+import { claimText, eventLabels } from './biography'
 import { personName } from '../data/person-name'
 import { relationshipName } from '../graph/presentation'
 import { MediaFiles } from './MediaFiles'
@@ -41,20 +40,4 @@ export function SourceCard({ source, links }: { source: Source; links: EvidenceL
       {link.fragment?.mediaId && <MediaFiles items={family.media.filter(m => m.id === link.fragment!.mediaId)} initialPage={link.fragment.page} />}
     </details>})}
   </article>
-}
-
-export function Archive({ personId }: { personId: string }) {
-  const family = useFamily()
-  const links = personEvidence(family, personId)
-  const sources = family.sources.filter(s => links.some(l => l.sourceId === s.id))
-  const directIds = new Set(personEvents(family, personId).flatMap(e => e.mediaIds))
-  const direct = family.media.filter(m => directIds.has(m.id) && !sources.some(s => s.mediaIds.includes(m.id)))
-  const profiles = family.people.find(p => p.id === personId)!.externalIds.filter(id => id.system === 'FamilySearch')
-  return <section className={styles.paper} id="archive" aria-label="Архів і докази">
-    <h2>Архів і докази</h2>
-    {sources.length === 0 && direct.length === 0 && <p className={styles.empty}>Підготовлених документів і доказів поки немає.</p>}
-    {sources.map(source => <SourceCard key={source.id} source={source} links={links.filter(l => l.sourceId === source.id)} />)}
-    <MediaFiles items={direct} />
-    {profiles.map(profile => <p key={profile.value} className={styles.empty}>FamilySearch ID: {profile.value}. Ідентифікатор профілю не є доказом факту.</p>)}
-  </section>
 }

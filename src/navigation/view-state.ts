@@ -18,7 +18,7 @@ export type View = ViewRoute & {
 export type ViewState = {
   homePersonId: string
   initialGenerations: number
-  initialRadialZoom: number
+  initialMapZoom: number
   key: string
   current: View
   entries: Record<string, View>
@@ -31,8 +31,7 @@ export type ViewAction =
   | { type: 'map'; settings: Partial<MapSettings> }
   | { type: 'relationship'; id: string | null }
 
-function defaultMap(generations: number, screen: MapScreen = 'tree', initialRadialZoom = 1): MapSettings {
-  const zoom = screen === 'tree' ? initialRadialZoom : 1
+function defaultMap(generations: number, zoom = 1): MapSettings {
   return { generations, zoom, pan: { x: (1 - zoom) / 2, y: (1 - zoom) / 2 }, collapsedAppearanceIds: [] }
 }
 
@@ -40,18 +39,18 @@ function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
   return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'relatives'
 }
 
-export function initialView(homePersonId: string, initialGenerations: number, key: string, route: ViewRoute, initialRadialZoom = 1): ViewState {
+export function initialView(homePersonId: string, initialGenerations: number, key: string, route: ViewRoute, initialMapZoom = 1): ViewState {
   return {
-    homePersonId, initialGenerations, initialRadialZoom, key, entries: {}, trail: [key], position: 0,
+    homePersonId, initialGenerations, initialMapZoom, key, entries: {}, trail: [key], position: 0,
     current: { ...route, mapScreen: isMapScreen(route.screen) ? route.screen : 'tree',
       centerPersonId: route.personId ?? homePersonId, selectedRelationshipId: null,
-      map: defaultMap(initialGenerations, isMapScreen(route.screen) ? route.screen : 'tree', initialRadialZoom) },
+      map: defaultMap(initialGenerations, initialMapZoom) },
   }
 }
 
 export function viewReducer(state: ViewState, action: ViewAction): ViewState {
   if (action.type === 'reset-map') return { ...state, current: { ...state.current,
-    selectedRelationshipId: null, map: defaultMap(state.initialGenerations, state.current.mapScreen, state.initialRadialZoom) } }
+    selectedRelationshipId: null, map: defaultMap(state.initialGenerations, state.initialMapZoom) } }
   if (action.type === 'map') return { ...state, current: { ...state.current, map: { ...state.current.map, ...action.settings } } }
   if (action.type === 'relationship') return { ...state, current: { ...state.current, selectedRelationshipId: action.id } }
   const entries = { ...state.entries, [state.key]: state.current }
@@ -60,11 +59,11 @@ export function viewReducer(state: ViewState, action: ViewAction): ViewState {
     ? action.route.personId : state.current.centerPersonId
   const mapScreen = isMapScreen(action.route.screen) ? action.route.screen : state.current.mapScreen
   const map = !action.resetMap && centerPersonId === state.current.centerPersonId ? state.current.map
-    : defaultMap(state.initialGenerations, mapScreen, state.initialRadialZoom)
+    : defaultMap(state.initialGenerations, state.initialMapZoom)
   const current = restored ?? {
     ...action.route, mapScreen, centerPersonId, selectedRelationshipId: null,
     map: mapScreen === state.current.mapScreen ? map : {
-      ...defaultMap(map.generations, mapScreen, state.initialRadialZoom), collapsedAppearanceIds: map.collapsedAppearanceIds },
+      ...defaultMap(map.generations, state.initialMapZoom), collapsedAppearanceIds: map.collapsedAppearanceIds },
   }
   let trail = state.trail
   let position = state.position

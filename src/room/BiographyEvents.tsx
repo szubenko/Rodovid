@@ -5,6 +5,7 @@ import { personName } from '../data/person-name'
 import { biographyTimeline, tooltipTimelineYear } from '../graph/person-tooltip-data'
 import { BiographyClaim } from './BiographyClaim'
 import { BiographyRecord } from './BiographyRecord'
+import { orderBiographyClaims } from './biography'
 import styles from './Room.module.css'
 
 export function BiographyEvents({ personId }: { personId: string }) {
@@ -22,8 +23,8 @@ export function BiographyEvents({ personId }: { personId: string }) {
               <ViewLink className={styles.biographyPersonLink} to={`/person/${id}`}>{personName(family, id)}</ViewLink>
             </Fragment>
           )}</>}</h4>
-          <div className={styles.biographyClaims}>{entry.claims.map(claim => <BiographyClaim key={claim.id} claim={claim} />)}</div>
-          <BiographyRecord event={entry.event} relationship={entry.relationship} />
+          <div className={styles.biographyClaims}>{orderBiographyClaims(entry.claims).map(claim => <BiographyClaim key={claim.id} claim={claim} />)}</div>
+          <BiographyRecord event={entry.event} relationship={entry.relationship} personId={personId} labelPersonIds={entry.labelPersonIds} />
         </div>
       </li>)}</ol>}
   </section>

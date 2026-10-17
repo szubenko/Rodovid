@@ -88,15 +88,10 @@
 .mapSurface details { border-color: #dce4d5; font-size: 0.8rem; }
 .roomSurface > article { margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
 .roomSurface > article::before { display: none; }
-.roomSurface section { border-color: #dce4d5; background: #fff; border-radius: 8px; box-shadow: none; }
 .roomSurface article > nav { border-bottom: 1px solid #dce4d5; }
 .roomSurface button { border-color: #d0dac9; background: #f5f8f1; border-radius: 5px; }
-.roomActions { display: flex; margin-bottom: 0.75rem; }
-.roomActions button { min-height: 44px; padding: 0.5rem 0.85rem; border: 1px solid #d0dac9; color: var(--color-text); font: inherit; cursor: pointer; }
-.roomActions button:hover { background: #e9f0e1; }
-.pageFooter { display: flex; justify-content: space-between; gap: 1rem; padding: 1.5rem 0 0.5rem; color: var(--color-muted); font-size: 0.7rem; }
+.pageFooter { display: flex; justify-content: flex-end; gap: 1rem; padding: 1.5rem 0 0.5rem; color: var(--color-muted); font-size: 0.7rem; }
 .pageFooter summary { min-height: 44px; cursor: pointer; }
-.pageFooter > span { padding-block: 0.8rem; }
 .empty { padding: 3rem 0; }
 .empty .primary { margin-top: 1rem; }
 .mobileDirectory { display: none; }

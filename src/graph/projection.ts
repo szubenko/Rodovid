@@ -57,6 +57,25 @@ export type ProjectionOptions = {
   maxAppearances?: number
 }
 
+/** Follow ancestors and descendants separately: a parent's other children are
+ * side relatives, and spouses never extend the direct line. */
+export function directLinePersonIds(graph: FamilyGraph, personId: string): ReadonlySet<string> {
+  const result = new Set([personId])
+  for (const direction of ['parents', 'children'] as const) {
+    const visited = new Set([personId])
+    const queue = [personId]
+    for (let index = 0; index < queue.length; index++) {
+      for (const neighbor of graph.neighbors.get(queue[index]!) ?? []) {
+        if (neighbor.direction !== direction || visited.has(neighbor.personId)) continue
+        visited.add(neighbor.personId)
+        result.add(neighbor.personId)
+        queue.push(neighbor.personId)
+      }
+    }
+  }
+  return result
+}
+
 /** Highest occupied ring for this center, independent of temporarily collapsed branches.
  * Uses the same cycle detection and appearance budget as the rendered graph. */
 export function availableGenerations(graph: FamilyGraph, centerPersonId: string): number {

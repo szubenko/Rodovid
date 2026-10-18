@@ -7,7 +7,7 @@ export type TreeLayout = { width: number; height: number; nodes: TreeNode[]; edg
 
 /** Lay out whole branches before their joining person, so each person faces the
  * midpoint of their direct relatives. Cards and text remain upright in both views. */
-export function layoutTree(projection: Projection, labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure, orientation: TreeOrientation): TreeLayout {
+export function layoutTree(projection: Projection, labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure, orientation: TreeOrientation, directLine?: ReadonlySet<string>): TreeLayout {
   const padding = 28
   const gap = 24
   const blocks = new Map(projection.appearances.map(node => [node.appearanceId,
@@ -52,11 +52,17 @@ export function layoutTree(projection: Projection, labels: ReadonlyMap<string, s
   })
   const minX = Math.min(...[...positions.values()].map(point => point.x)) - cardWidth / 2
   const minY = Math.min(...[...positions.values()].map(point => point.y)) - cardHeight / 2
-  const nodes = projection.appearances.map((node): TreeNode => ({ ...node,
-    x: positions.get(node.appearanceId)!.x - minX + padding,
-    y: positions.get(node.appearanceId)!.y - minY + padding,
-    width: cardWidth, height: cardHeight, text: blocks.get(node.appearanceId)!,
-  }))
+  const nodes = projection.appearances.map((node): TreeNode => {
+    const scale = vertical && directLine && node.lane !== 'center' && !directLine.has(node.personId) ? 0.8 : 1
+    const block = blocks.get(node.appearanceId)!
+    return { ...node,
+      x: positions.get(node.appearanceId)!.x - minX + padding,
+      y: positions.get(node.appearanceId)!.y - minY + padding,
+      width: cardWidth * scale, height: cardHeight * scale,
+      text: { width: block.width * scale, height: block.height * scale,
+        lines: block.lines.map(line => ({ ...line, y: line.y * scale, fontSize: line.fontSize * scale })) },
+    }
+  })
   const byId = new Map(nodes.map(node => [node.appearanceId, node]))
   const edges = projection.edges.map(edge => {
     const from = byId.get(edge.fromAppearanceId)!

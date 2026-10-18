@@ -9,7 +9,7 @@ import { RadialMap } from './graph/RadialMap'
 import { PersonSearch } from './search/PersonSearch'
 import { KinshipExplanation } from './kinship/KinshipExplanation'
 import { PersonRoom } from './room/PersonRoom'
-import { MotionControls, MotionPreferences } from './appearance/MotionPreferences'
+import { MotionPreferences } from './appearance/MotionPreferences'
 import { AudioProvider } from './audio/AudioProvider'
 import styles from './App.module.css'
 
@@ -72,7 +72,6 @@ function Workspace() {
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>Сімейна історія</p><h1 ref={heading} tabIndex={-1}>{family.config.title}</h1></div>
       <Navigation />
-      <MotionControls />
     </header>
     <AudioProvider>
     <PersonSearch key={location.key} />

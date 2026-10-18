@@ -1,6 +1,6 @@
 export const audioStorageKey = 'rodovid.audio.v1'
 export type AudioPreferences = { musicEnabled: boolean; effectsEnabled: boolean; musicVolume: number; effectsVolume: number }
-export const defaultAudioPreferences: AudioPreferences = { musicEnabled: false, effectsEnabled: false, musicVolume: 0.15, effectsVolume: 0.3 }
+export const defaultAudioPreferences: AudioPreferences = { musicEnabled: false, effectsEnabled: false, musicVolume: 0.02, effectsVolume: 0.3 }
 
 export function parseAudioPreferences(raw: string | null): AudioPreferences {
   try {

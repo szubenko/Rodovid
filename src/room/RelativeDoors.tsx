@@ -5,12 +5,10 @@ import { relativeGroups } from './relative-groups'
 import styles from './Room.module.css'
 import { motion } from 'motion/react'
 import { useMotionPreference } from '../appearance/context'
-import { useDoorAudio } from '../audio/context'
 
 export function RelativeDoors({ personId }: { personId: string }) {
   const family = useFamily()
   const { reduced } = useMotionPreference()
-  const playDoor = useDoorAudio()
   const { goTo } = useView()
   const [opening, setOpening] = useState(false)
   const pending = useRef(false)
@@ -20,7 +18,6 @@ export function RelativeDoors({ personId }: { personId: string }) {
   const choose = (id: string) => {
     if (pending.current) return
     pending.current = true
-    playDoor()
     setOpening(true)
     timer.current = setTimeout(() => goTo(`/person/${id}`), reduced ? 0 : 160)
   }

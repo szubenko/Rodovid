@@ -41,5 +41,10 @@ export function useAudioChannel(ref: RefObject<HTMLAudioElement | null>, path: s
       if (generation.current.value === attempt) fail()
     }
   }
-  return { status, play, stop, fail, ended: () => setStatus('off') }
+  const ended = () => {
+    // Some browsers can still emit ended for looping media. Only resume a
+    // channel that the visitor has left enabled; a late event must not unmute it.
+    if (intended.current) void play(true)
+  }
+  return { status, play, stop, fail, ended }
 }

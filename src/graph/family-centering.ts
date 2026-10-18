@@ -6,7 +6,7 @@ type Basis = { coefficients: Float64Array; direction: Float64Array; target: numb
  * Couple members prefer moving together, but can spread to accommodate ancestry.
  * Contradictory inputs keep their original inspectable layout. */
 export function centerFamilyParents(cards: Card[], families: CenteredFamily[], couples: string[][],
-  familyGap: number, spouseGap: number) {
+  familyGap: number, spouseGap: number, compactLeafSiblings = false) {
   const count = cards.length
   const index = new Map(cards.map((card, i) => [card.personId, i]))
   const groups = couples.map(ids => ids.map(id => index.get(id)!))
@@ -45,6 +45,27 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
     const coefficients = new Float64Array(count)
     coefficients[main[0]!] = -1; coefficients[main[1]!] = 1
     equations.push({ coefficients, target: (cards[main[0]!]!.width + cards[main[1]!]!.width) / 2 + spouseGap })
+  }
+  if (compactLeafSiblings) {
+    // An unexpanded sibling needs no room for a descendant branch. Keep that
+    // card with its family instead of stretching the last child to center an
+    // ancestor. The parent and ancestor positions adapt to the compact row.
+    const birthFamily = new Map(families.flatMap((family, i) => family.children.map(id => [id, i] as const)))
+    const parents = new Set(families.flatMap(family => family.parents))
+    const leaf = (member: number) => groups[groupByIndex.get(member)!]!.length === 1 && !parents.has(cards[member]!.personId)
+    const rows = new Map<number, number[]>()
+    cards.forEach((card, i) => rows.set(card.generation, [...rows.get(card.generation) ?? [], i]))
+    for (const row of rows.values()) {
+      row.sort((a, b) => positions[a]! - positions[b]!)
+      for (let slot = 1; slot < row.length; slot++) {
+        const left = row[slot - 1]!, right = row[slot]!
+        const family = birthFamily.get(cards[left]!.personId)
+        if (family === undefined || family !== birthFamily.get(cards[right]!.personId) || (!leaf(left) && !leaf(right))) continue
+        const coefficients = new Float64Array(count)
+        coefficients[left] = -1; coefficients[right] = 1
+        equations.push({ coefficients, target: (cards[left]!.width + cards[right]!.width) / 2 + familyGap })
+      }
+    }
   }
   const basis: Basis[] = []
   for (const equation of equations) {

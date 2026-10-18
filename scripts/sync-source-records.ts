@@ -4,7 +4,7 @@ import { basename, dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 import { z } from 'zod'
-import { evidenceLinkSchema, sourceSchema } from '../src/data/schema.ts'
+import { evidenceLinkSchema, sourceSchema, siteConfigSchema } from '../src/data/schema.ts'
 import type { FamilyData } from '../src/data/schema.ts'
 import { supplementsSchema } from '../src/data/supplements.ts'
 import { recordDescription, recordUrl } from '../src/room/source-record.ts'
@@ -65,7 +65,11 @@ export function planSourceRecordSync(input: ConversionInput, dataDirectory: stri
   const stateBytes = optionalFile(statePath)
   const state: State = stateBytes ? stateSchema.parse(JSON.parse(stateBytes.toString('utf8'))) : { schemaVersion: 1, records: [] }
   const additions = supplementsSchema.parse(input.supplements)
-  const imported = convertGedcom({ ...input, supplements: { schemaVersion: 1 } })
+  // This pass reads only GEDCOM sources, before supplemental media exist.
+  // Validate the original room/audio references in the full discovery pass below.
+  const config = siteConfigSchema.parse(input.config)
+  const imported = convertGedcom({ ...input, config: { ...config, rooms: [],
+    audio: { ...config.audio, musicMediaIds: [], effectMediaIds: [] } }, supplements: { schemaVersion: 1 } })
   const incoming = imported.family
   // A later export may omit a source. Retain its last accepted identity and links
   // without writing cached GEDCOM entities into the editable annotations.

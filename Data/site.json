@@ -9,7 +9,7 @@
   "initialGenerations": 11,
   "rooms": [],
   "audio": {
-    "musicMediaIds": [],
+    "musicMediaIds": ["music-bandura-seamless-loop"],
     "effectMediaIds": [],
     "musicEnabled": false,
     "effectsEnabled": false

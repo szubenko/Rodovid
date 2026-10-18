@@ -12,7 +12,7 @@ import { VerticalTree } from '../graph/VerticalTree'
 import { RelativesTree } from '../graph/RelativesTree'
 import type { MapScreen } from '../navigation/view-state'
 import { PersonRoom } from '../room/PersonRoom'
-import { MotionControls, MotionPreferences } from '../appearance/MotionPreferences'
+import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
 import styles from './AtlasApp.module.css'
 
@@ -129,21 +129,19 @@ function Workspace() {
         <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
         <MobileDirectory key={location.pathname} />
         <div className={styles.desktopDirectory}><PeopleDirectory /></div>
+        <div className={styles.sidebarAudio}><AudioProvider /></div>
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
       </aside>
       <main className={styles.main} id="atlas-content" tabIndex={-1}>
-        <AudioProvider controlsAfter>
-          <Routes>
-            <Route path="/" element={<Navigate to={`/tree/${state.homePersonId}`} replace />} />
-            <Route path="/tree/:personId" element={<PersonView screen="tree" />} />
-            <Route path="/horizontal/:personId" element={<PersonView screen="horizontal" />} />
-            <Route path="/vertical/:personId" element={<PersonView screen="vertical" />} />
-            <Route path="/relatives/:personId" element={<PersonView screen="relatives" />} />
-            <Route path="/person/:personId" element={<PersonView screen="person" />} />
-            <Route path="*" element={<Missing />} />
-          </Routes>
-        </AudioProvider>
-        <footer className={styles.pageFooter}><details><summary>Налаштування руху</summary><MotionControls /></details></footer>
+        <Routes>
+          <Route path="/" element={<Navigate to={`/tree/${state.homePersonId}`} replace />} />
+          <Route path="/tree/:personId" element={<PersonView screen="tree" />} />
+          <Route path="/horizontal/:personId" element={<PersonView screen="horizontal" />} />
+          <Route path="/vertical/:personId" element={<PersonView screen="vertical" />} />
+          <Route path="/relatives/:personId" element={<PersonView screen="relatives" />} />
+          <Route path="/person/:personId" element={<PersonView screen="person" />} />
+          <Route path="*" element={<Missing />} />
+        </Routes>
       </main>
     </div>
   </div>

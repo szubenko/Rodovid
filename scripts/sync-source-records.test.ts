@@ -34,6 +34,20 @@ function fixture() {
   return { root, data, annotations, read, prepare, apply }
 }
 
+it('syncs sources with supplemental music and still rejects missing audio references', () => {
+  const f = fixture(), { input } = f.prepare()
+  const music = { id: 'music-bandura', path: 'assets/audio/bandura.ogg', mimeType: 'audio/ogg',
+    title: 'Бандура', provenance: [{ kind: 'supplement', file: 'Data/annotations.json', entryId: 'music-bandura' }] }
+  const withMusic = { ...input, config: { ...input.config, audio: { musicMediaIds: [music.id], effectMediaIds: [] } },
+    supplements: { ...input.supplements, media: [music] } }
+  const plan = planSourceRecordSync(withMusic, f.data)
+  expect(plan.summary.records).toBe(2)
+  const family = convertGedcom({ ...withMusic, supplements: plan.supplements }).family
+  expect(family.config.audio.musicMediaIds).toEqual([music.id])
+  expect(family.media.find(item => item.id === music.id)?.path).toBe(music.path)
+  expect(() => planSourceRecordSync({ ...withMusic, supplements: input.supplements }, f.data)).toThrow('Unresolved media reference')
+})
+
 it('creates JSON without scans, shares a file between citations, and repeats without writes', async () => {
   const f = fixture(), first = f.prepare()
   expect(first.plan.summary).toMatchObject({ records: 2, created: 2, conflicts: [] })

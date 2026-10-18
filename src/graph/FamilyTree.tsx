@@ -3,10 +3,11 @@ import { personName } from '../data/person-name'
 import { confidenceLabels } from '../data/schema'
 import { useFamily, useView } from '../navigation/context'
 import { EvidenceForTarget } from '../room/Evidence'
-import { availableGenerations, buildFamilyGraph, projectFamily } from './projection'
+import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFamily } from './projection'
 import { layoutTree, type TreeOrientation } from './tree-layout'
 import { availableRelativeGenerations, projectRelatives } from './relatives-projection'
 import { layoutRelatives } from './relatives-layout'
+import { projectVerticalFamily } from './vertical-projection'
 import { lifeYears, relationshipName } from './presentation'
 import { useMapCamera } from './useMapCamera'
 import { useMapViewport } from './useMapViewport'
@@ -29,7 +30,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const vertical = orientation === 'vertical'
   const mapScreen = includeRelatives ? 'relatives' : orientation
   const directionHint = includeRelatives ? 'Предки зверху, нащадки знизу, брати й сестри та подружжя поруч. «+» додає родичів до гілки.'
-    : vertical ? 'Предки зверху, нащадки знизу, подружжя поруч.' : 'Предки ліворуч, нащадки праворуч.'
+    : 'Предки ліворуч, нащадки праворуч.'
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -39,6 +40,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
   const graph = useMemo(() => buildFamilyGraph(family), [family])
+  const directLine = useMemo(() => directLinePersonIds(graph, state.homePersonId), [graph, state.homePersonId])
   const labels = useMemo(() => new Map(family.people.map(person => [person.id, personName(family, person.id)])), [family])
   const dates = useMemo(() => new Map(family.people.map(person => {
     const years = lifeYears(family, person.id)
@@ -61,11 +63,14 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const generations = Math.min(settings.generations, maxGenerations)
   const projection = useMemo(() => includeRelatives ? projectRelatives(graph, personId, {
     generations, expandedPersonIds: settings.expandedRelativeIds, showAll: settings.showAllRelatives,
+  }) : (vertical ? projectVerticalFamily(graph, personId, directLine, {
+    generations: Math.min(12, generations + 1), collapsedAppearanceIds: settings.collapsedAppearanceIds,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
-    collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, includeRelatives,
+    collapsedAppearanceIds: settings.collapsedAppearanceIds })), [graph, personId, generations, includeRelatives, vertical, directLine,
     settings.collapsedAppearanceIds, settings.expandedRelativeIds, settings.showAllRelatives])
   const layout = useMemo(() => 'relatedCount' in projection ? layoutRelatives(projection, graph, labels, dates, measure)
-    : layoutTree(projection, labels, dates, measure, orientation), [projection, graph, labels, dates, measure, orientation])
+    : 'familyMode' in projection ? layoutRelatives(projection, graph, labels, dates, measure, directLine)
+    : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine])
   const center = layout.nodes.find(node => node.lane === 'center')!
   const offset = { x: width / 2 - center.x, y: height / 2 - center.y }
   useMapCamera(container, width, settings, dispatch, height)
@@ -99,7 +104,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   }
   return <section className={shared.map} aria-label={title}
     data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
-    <p className={shared.hint}>{directionHint} Натисніть ім’я, щоб змінити центр, або лінію, щоб переглянути докази. Кнопка «Назад» повертає до попереднього перегляду.</p>
+    {(!vertical || includeRelatives) && <p className={shared.hint}>{directionHint} Натисніть ім’я, щоб змінити центр, або лінію, щоб переглянути докази. Кнопка «Назад» повертає до попереднього перегляду.</p>}
     <div className={shared.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={settings.zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
@@ -152,6 +157,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
                 <g className={styles.node} data-person-id={node.personId}
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane}
                 data-generation={node.generation}
+                data-direct-line={vertical && !includeRelatives ? directLine.has(node.personId) : undefined}
                 data-main-line={includeRelatives ? node.lane !== 'relatives' : undefined}
                 data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}

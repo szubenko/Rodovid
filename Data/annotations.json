@@ -2178,6 +2178,20 @@
   ],
   "media": [
     {
+      "id": "music-bandura-seamless-loop",
+      "path": "assets/audio/music/Rodovid_Bandura_Seamless_Loop.ogg",
+      "mimeType": "audio/ogg",
+      "title": "Родовід — бандура",
+      "description": "Згенерована фонова мелодія для повторення по колу. Надана власником 18.10.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "music-bandura-seamless-loop"
+        }
+      ]
+    },
+    {
       "id": "media-record-natalia-birth-1894-cf550e64689add55",
       "path": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.png",
       "dimensions": {

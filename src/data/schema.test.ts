@@ -133,7 +133,10 @@ describe('family data contract v1', () => {
     const familySupplements = supplementsSchema.parse(annotations)
     expect(familySupplements.assessments.every((entry) => entry.confidence === 'unassessed')).toBe(true)
     expect(familySupplements.sources.every(source => source.provenance.every(origin => origin.kind === 'supplement'))).toBe(true)
-    expect(familySupplements.additionalClaims).toEqual([])
+    expect(familySupplements.additionalClaims).toEqual(expect.arrayContaining([expect.objectContaining({ claim: expect.objectContaining({
+      id: 'claim-oleksandra-PN3F-KPN-birth-date-1935', confidence: 'unassessed',
+      provenance: [expect.objectContaining({ kind: 'supplement', file: 'Data/annotations.json' })],
+    }) })]))
     expect(siteConfigSchema.safeParse({ ...site, currentCenterId: 'I2' }).success).toBe(false)
     expect(supplementsSchema.safeParse({ ...annotations, people: full.people }).success).toBe(false)
     const supplements = supplementsSchema.parse({

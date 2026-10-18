@@ -1,11 +1,33 @@
 import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { familyDataSchema } from '../../src/data/schema'
-import { personFullName, personName } from '../../src/data/person-name'
+import { personFullName } from '../../src/data/person-name'
 import { tooltipLifeYears } from '../../src/graph/person-tooltip-data'
 
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
-const anna = family.people.find(person => personName(family, person.id) === 'Анна Герасимова Пальчикова')!
+const anna = family.people.find(person => person.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PFJ2-SRZ'))!
+
+test('шапка доповнює коротке ім’я по батькові, зберігаючи імена на діаграмах', async ({ page }, testInfo) => {
+  for (const [personId, headingName, diagramName] of [
+    ['I8', 'Петро Олександрович Дейкало', 'Петро Дейкало'],
+    ['I5', 'Яков Макарович Зубенко', 'Яков Макарович Зубенко'],
+  ]) {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'relatives', 'person']) {
+      await page.goto(`/${screen}/${personId}`)
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(headingName!)
+      if (screen !== 'person') {
+        const person = page.locator(`svg [data-person-id="${personId}"]`).first()
+        await expect(person).toHaveAttribute('aria-label', new RegExp(diagramName!))
+        expect((await person.locator('text').allTextContents()).join(' ')).toContain(diagramName!)
+        if (personId === 'I8') await expect(person).not.toContainText('Олександрович')
+      }
+      if (personId === 'I8' && ['tree', 'person'].includes(screen)) {
+        await page.screenshot({ path: testInfo.outputPath(`petro-heading-${screen}.png`) })
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    }
+  }
+})
 
 test('повне ім’я Наталії показане лише у верхньому заголовку', async ({ page }) => {
   for (const screen of ['tree', 'person']) {

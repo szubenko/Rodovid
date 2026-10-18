@@ -9,6 +9,9 @@ export const mergedOctoberExportSha256 = '883009bd56e79fca85207aabaf09b5ec2365c4
 export const olenkaCorrectionSha256 = '7f9a9720c40e99d88b2f3f456a3332aff8808a654a2608878e64aea1a3801621'
 export const yakovFamiliesSha256 = 'fbaaabf5969325a08d33dd04fef65ed54273ebf06e06eb3e8669d5711e7e6d7a'
 export const nataliaSourcesSha256 = 'c3f017c2760cec79dbf2aebbeebd9792c12b159b6251938b8ecb69e86a9afcf7'
+export const export6SourcesSha256 = '7715a9ada900e0c17ac1e63d5dcce6c02384ef6e6050c8e64bbebfe49e32ac63'
+// Owner supplied the Deikalo marriage date (31 Jan 1921); all previous identities were retained.
+export const deikaloMarriageSha256 = 'a2b8ea7eaae60f6844cc5cb4a0bf3a3d6d84b707342205f19365e63d7924163f'
 export const chronologyReviewId = 'relationship-259066879720fd7dd7184cf9'
 export const reviewedGraphIssues = [
   { code: 'CONFLICTING_ROLES', review: 'D07', recordIds: ['@F10@', '@F6@'],

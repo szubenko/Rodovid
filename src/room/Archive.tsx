@@ -31,7 +31,7 @@ export function SourceCard({ source, links }: { source: Source; links: EvidenceL
       {link.fragment?.folio && <p>Аркуш: {link.fragment.folio}</p>}
       {link.fragment?.recordNumber && <p>Номер запису: {link.fragment.recordNumber}</p>}
       {link.explanation && <p>{link.explanation}</p>}
-      {link.transcription && <blockquote className={styles.transcription}>{link.transcription}</blockquote>}
+      {link.transcription && link.transcription !== source.description && <blockquote className={styles.transcription}>{link.transcription}</blockquote>}
       {region && media?.dimensions && media.mimeType.startsWith('image/') && <figure className={styles.fragment}>
         <div style={{ aspectRatio: `${media.dimensions.width * region.width} / ${media.dimensions.height * region.height}` }}>
           <img src={`/${media.thumbnail?.path ?? media.path}`} alt="Виділений фрагмент запису" loading="lazy" style={{ width: `${100 / region.width}%`, left: `${-100 * region.x / region.width}%`, top: `${-100 * region.y / region.height}%` }} />

@@ -1,6 +1,30 @@
 import type { EvidenceLink, FamilyData, FamilyEvent, Source } from '../data/schema'
 import { claimText, eventClaims, eventLabels } from './biography.ts'
 
+/** Keep every citation, while presenting byte-identical documents together. */
+export function sourceDocumentGroups(family: FamilyData, links: EvidenceLink[]) {
+  const groups: { sources: Source[]; citations: EvidenceLink[]; media: FamilyData['media'] }[] = []
+  const byDocument = new Map<string, typeof groups[number]>()
+  for (const source of family.sources.filter(source => links.some(link => link.sourceId === source.id))) {
+    const citations = links.filter(link => link.sourceId === source.id)
+    const mediaIds = new Set([...source.mediaIds, ...citations.flatMap(link => link.fragment?.mediaId ? [link.fragment.mediaId] : [])])
+    const items = family.media.filter(item => mediaIds.has(item.id))
+    const mediaKey = (item: FamilyData['media'][number]) => `${item.mimeType}:${item.sha256 ?? item.path}`
+    const key = items.some(item => item.mimeType.startsWith('image/') || item.mimeType === 'application/pdf')
+      ? JSON.stringify([...new Set(items.map(mediaKey))].sort()) : `source:${source.id}`
+    let group = byDocument.get(key)
+    if (!group) {
+      group = { sources: [], citations: [], media: [] }
+      byDocument.set(key, group)
+      groups.push(group)
+    }
+    group.sources.push(source)
+    group.citations.push(...citations)
+    for (const item of items) if (!group.media.some(previous => mediaKey(previous) === mediaKey(item))) group.media.push(item)
+  }
+  return groups
+}
+
 /** Export instructions and bibliography are preserved in data, separate from a record's text. */
 export function recordDescription(value?: string): string {
   return (value ?? '').split(/\r?\n/).filter(line => !/^\s*(?:Тип джерела в експорті \(_TYPE\):|Метадані експорту:|Посилання з GEDCOM OBJE\.FILE:|"[^"]+",\s*<i>FamilySearch<\/i>)/u.test(line))
@@ -8,6 +32,7 @@ export function recordDescription(value?: string): string {
 }
 
 export function recordUrl(source: Source, links: EvidenceLink[]): string | undefined {
+  if (source.url === null) return undefined
   // Explicit structured URL first; legacy exports retain URLs inside citation notes.
   const candidates = [source.url, ...links.map(link => link.explanation), source.description]
   for (const text of candidates) {

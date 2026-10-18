@@ -3,7 +3,7 @@ import { useFamily } from '../navigation/context'
 import { SourceCard } from './Archive'
 import { MediaFiles } from './MediaFiles'
 import { eventClaims } from './biography'
-import { recordDescription, recordUrl } from './source-record'
+import { recordDescription, recordUrl, sourceDocumentGroups } from './source-record'
 import styles from './Room.module.css'
 
 export function EvidenceForTarget({ target }: { target: EvidenceLink['target'] }) {
@@ -38,40 +38,41 @@ function SourceDocuments({ links, mediaIds }: { links: EvidenceLink[]; mediaIds:
   const sourceMediaIds = new Set([...sources.flatMap(source => source.mediaIds), ...links.flatMap(link => link.fragment?.mediaId ? [link.fragment.mediaId] : [])])
   const directMedia = family.media.filter(item => mediaIds.includes(item.id) && !sourceMediaIds.has(item.id))
   return <div>
-    {sources.map(source => {
-      const citations = links.filter(link => link.sourceId === source.id)
-      const mediaIds = new Set([...source.mediaIds, ...citations.flatMap(link => link.fragment?.mediaId ? [link.fragment.mediaId] : [])])
-      const media = family.media.filter(item => mediaIds.has(item.id))
-      const url = recordUrl(source, citations)
-      const description = recordDescription(source.description)
-      const hasText = Boolean(description || citations.some(link => link.transcription || recordDescription(link.explanation)))
-      return <article key={source.id} className={styles.source} data-source-id={source.id} aria-label={source.title}>
-        <dl className={`${styles.biographyRecordFields} ${styles.sourceFacts}`}>
-          <div><dt>Зовнішнє посилання:</dt><dd>{url
-            ? <a href={url} target="_blank" rel="noopener noreferrer">{url}</a> : 'Не додано'}</dd></div>
-        </dl>
-        {source.archive && <p>Архів: {source.archive}</p>}
-        {source.reference && <p>Шифр: {source.reference}</p>}
+    {sourceDocumentGroups(family, links).map(({ sources: documents, citations, media }) => {
+      const source = documents[0]!
+      const hasText = citations.some(link => link.transcription || recordDescription(link.explanation))
+      return <article key={source.id} className={styles.source} data-source-id={source.id} data-source-ids={documents.map(item => item.id).join(' ')} aria-label={source.title}>
+        {[...new Set(documents.map(item => item.archive).filter(Boolean))].map(archive => <p key={archive}>Архів: {archive}</p>)}
+        {[...new Set(documents.map(item => item.reference).filter(Boolean))].map(reference => <p key={reference}>Шифр: {reference}</p>)}
         <p className={styles.sourceHeading}>Опис</p>
-        {description && <p className={styles.sourceText}>{description}</p>}
-        {!hasText && <p className={styles.empty}>Текст запису ще не додано.</p>}
-        {citations.map(link => {
-          return <div key={link.id} data-evidence-id={link.id} data-source-target-kind={link.target.kind} data-source-target-id={link.target.id}>
-            {link.fragment && (link.fragment.page || link.fragment.frame || link.fragment.folio || link.fragment.recordNumber) && <dl className={styles.biographyRecordFields}>
-              {link.fragment.page && <div><dt>Сторінка:</dt><dd>{link.fragment.page}</dd></div>}
-              {link.fragment.frame && <div><dt>Кадр:</dt><dd>{link.fragment.frame}</dd></div>}
-              {link.fragment.folio && <div><dt>Аркуш:</dt><dd>{link.fragment.folio}</dd></div>}
-              {link.fragment.recordNumber && <div><dt>Номер запису:</dt><dd>{link.fragment.recordNumber}</dd></div>}
-            </dl>}
-            {recordDescription(link.explanation) && <p className={styles.sourceText}>{recordDescription(link.explanation)}</p>}
-            {link.transcription && <blockquote className={styles.transcription}>{link.transcription}</blockquote>}
-          </div>
-        })}
+        <div className={styles.sourceDescription} data-source-description>
+          {!hasText && <p className={styles.empty}>Текст запису ще не додано.</p>}
+          {citations.map((link, index) => {
+            return <div key={link.id} data-evidence-id={link.id} data-source-target-kind={link.target.kind} data-source-target-id={link.target.id}>
+              {link.fragment && (link.fragment.page || link.fragment.frame || link.fragment.folio || link.fragment.recordNumber) && <dl className={styles.biographyRecordFields}>
+                {link.fragment.page && <div><dt>Сторінка:</dt><dd>{link.fragment.page}</dd></div>}
+                {link.fragment.frame && <div><dt>Кадр:</dt><dd>{link.fragment.frame}</dd></div>}
+                {link.fragment.folio && <div><dt>Аркуш:</dt><dd>{link.fragment.folio}</dd></div>}
+                {link.fragment.recordNumber && <div><dt>Номер запису:</dt><dd>{link.fragment.recordNumber}</dd></div>}
+              </dl>}
+              {recordDescription(link.explanation) && citations.findIndex(item => recordDescription(item.explanation) === recordDescription(link.explanation)) === index
+                && <p className={styles.sourceText}>{recordDescription(link.explanation)}</p>}
+              {link.transcription && citations.findIndex(item => item.transcription === link.transcription) === index
+                && <blockquote className={styles.transcription}>{link.transcription}</blockquote>}
+            </div>
+          })}
+        </div>
         {media.some(item => item.mimeType.startsWith('image/') || item.mimeType === 'application/pdf')
           ? <SourceMedia items={media} links={citations} /> : <>
             <p className={styles.empty}>Скриншот запису ще не додано.</p>
             <SourceMedia items={media} links={citations} />
           </>}
+        <div className={styles.sourceLinks} data-source-links>
+          {documents.map(document => {
+            const url = recordUrl(document, citations.filter(link => link.sourceId === document.id))
+            return url && <a key={document.id} href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+          })}
+        </div>
       </article>
     })}
     <SourceMedia items={directMedia} links={[]} />

@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,12 +99,15 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256].includes(report.sha256)) {
-    const correctedSources = report.sha256 === nataliaSourcesSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256].includes(report.sha256)) {
+    const deikaloMarriage = report.sha256 === deikaloMarriageSha256
+    const export6 = report.sha256 === export6SourcesSha256 || deikaloMarriage
+    const correctedSources = report.sha256 === nataliaSourcesSha256 || export6
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = screenshotFamilies
+    const expected = deikaloMarriage
+      ? { people: 85, relationships: 136, events: 153, claims: 382, places: 71 } : screenshotFamilies
       ? { people: 85, relationships: 136, events: 152, claims: 381, places: 71 } : merged
       ? { people: 84, relationships: correctedOlenka ? 134 : 135, events: 151, claims: 379, places: 71 }
       : { people: 73, relationships: 116, events: 127, claims: 315, places: 57 }
@@ -123,9 +126,9 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
       const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
-      if (imported(data.sources) !== 4 || imported(data.evidenceLinks) !== (correctedSources ? 8 : 12)
-        || data.sources.length < (screenshotFamilies ? 5 : 4)
-        || data.evidenceLinks.length < (correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
+      if (imported(data.sources) !== (export6 ? 60 : 4) || imported(data.evidenceLinks) !== (export6 ? 126 : correctedSources ? 8 : 12)
+        || data.sources.length < (deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
+        || data.evidenceLinks.length < (deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
     }
     if (screenshotFamilies) {
       const nadia = data.people.find(person => person.id === 'I87')
@@ -138,10 +141,15 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         || nadia.lifeStatus !== 'deceased' || olenka?.lifeStatus !== 'deceased'
         || name?.field !== 'name' || name.value.display !== 'Оленка Яківна Зубенко'
         || JSON.stringify(parents) !== JSON.stringify(['I5', 'I87']) || JSON.stringify(spouses) !== JSON.stringify(['I4', 'I87'])
-        || !data.sources.some(source => source.id === 'source-yakov-families-2026-10-17')
-        || !data.media.some(media => media.id === 'media-yakov-families-2026-10-17')) {
+        || !deikaloMarriage && (!data.sources.some(source => source.id === 'source-yakov-families-2026-10-17')
+          || !data.media.some(media => media.id === 'media-yakov-families-2026-10-17'))) {
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: 'Втрачено уточнення зі знімка FamilySearch: Надя PNQS-T8M — дружина Якова й матір Оленки Яківни Зубенко.' })
       }
+    }
+    if (deikaloMarriage && (data.sources.some(source => source.id === 'source-yakov-families-2026-10-17')
+      || data.media.some(media => media.id === 'media-yakov-families-2026-10-17')
+      || data.evidenceLinks.some(link => link.sourceId === 'source-yakov-families-2026-10-17'))) {
+      issues.push({ severity: 'error', code: 'REJECTED_TREE_SOURCE', message: '18.10.2026: власник відхилив скриншот дерева FamilySearch як джерело; його не можна повертати до доказів.' })
     }
     if (correctedOlenka) {
       const parents = data.relationships.filter(edge => edge.kind === 'parent-child' && edge.toPersonId === 'I10')

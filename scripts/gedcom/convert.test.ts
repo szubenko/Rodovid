@@ -41,6 +41,35 @@ function additions(data: FamilyData) {
 }
 
 describe('family JSON conversion', () => {
+  it('keeps an internal addition reason out of published claims while retaining the fact and origin', () => {
+    const first = convert()
+    const supplements = additions(first.family)
+    supplements.additionalClaims[0]!.publishReason = false
+    const before = structuredClone(supplements)
+    const { family } = convert({ supplements })
+    const claim = family.claims.find(claim => claim.id === 'claim-extra')!
+    expect(claim.value).toEqual(supplements.additionalClaims[0]!.claim.value)
+    expect(claim.provenance).toContainEqual({ kind: 'supplement', file: 'Data/annotations.json', entryId: claim.id })
+    expect(claim.explanation).toBeUndefined()
+    expect(JSON.stringify(family)).not.toContain('Окреме сімейне свідчення')
+    expect(supplements).toEqual(before)
+  })
+  it('sets living status only from an explicit supplement with valid identity and no death event', () => {
+    const enrichment = { id: 'owner-life-status', personId: 'I2', lifeStatus: 'alive', explanation: 'Explicit family information' }
+    const { family } = convert({ supplements: { schemaVersion: 1, personEnrichments: [enrichment] } })
+    expect(family.people.find(person => person.id === 'I2')).toMatchObject({
+      lifeStatus: 'alive', provenance: expect.arrayContaining([
+        { kind: 'supplement', file: 'Data/annotations.json', entryId: enrichment.id },
+      ]),
+    })
+    expect(family.people.find(person => person.id === 'I3')!.lifeStatus).toBe('unknown')
+    expect(() => convert({ supplements: { schemaVersion: 1, personEnrichments: [{ ...enrichment, personId: 'I999' }] } }))
+      .toThrow('Unresolved person enrichment')
+    expect(() => convert({ supplements: { schemaVersion: 1, personEnrichments: [enrichment, { ...enrichment, id: 'duplicate-status' }] } }))
+      .toThrow('Conflicting person enrichments')
+    expect(() => convert({ supplements: { schemaVersion: 1, personEnrichments: [{ ...enrichment, personId: 'I1' }] } }))
+      .toThrow('Living status conflicts with a death event')
+  })
   it('preserves AQ Roman names, family UID and continued reverse-link notes without inventing an empty marriage', () => {
     const input = Buffer.from(`0 HEAD\n1 SOUR Ancestral Quest\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME Іван /Зубенко/\n2 ROMN Ivan /Zubenko/\n3 TYPE user\n1 _UID person-uid\n1 FAMS @F1@\n0 @I2@ INDI\n1 NAME Ольга /Зубенко/\n1 FAMS @F1@\n0 @I3@ INDI\n1 NAME Иосиф /Зубенко/\n1 FAMC @F1@\n2 NOTE Потребує перевірки\n3 CONT Роки залишено\n0 @F1@ FAM\n1 _UID family-uid\n1 HUSB @I1@\n1 WIFE @I2@\n1 CHIL @I3@\n1 MARR\n0 TRLR\n`)
     const { family, report } = convert({ bytes: input })

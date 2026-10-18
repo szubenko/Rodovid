@@ -72,7 +72,7 @@ test('age appears below dates for all events, including children’s births, exc
   await popup.screenshot({ path: info.outputPath('popup-event-age.png') })
 })
 
-test('Petro’s real room and popup show 23–24 years at Serhiy’s birth', async ({ page }, info) => {
+test('Petro’s exact birth date gives 24 years at Serhiy’s birth in the room and popup', async ({ page }, info) => {
   const response = await page.request.get('/data/family.json')
   const family = familyDataSchema.parse(await response.json())
   const birth = family.events.find(event => event.kind === 'birth'
@@ -81,7 +81,7 @@ test('Petro’s real room and popup show 23–24 years at Serhiy’s birth', asy
   await page.goto('/person/I2')
   const event = page.locator(`#biography [data-event-id="${birth.id}"]`)
   await expect(event).toContainText('21 грудня 1987')
-  await expect(event.locator('[data-event-age]')).toHaveText('Вік 23–24 роки')
+  await expect(event.locator('[data-event-age]')).toHaveText('Вік 24 роки')
   await event.screenshot({ path: info.outputPath('room-serhiy-birth-age.png') })
 
   await page.goto('/tree/I2')
@@ -89,7 +89,7 @@ test('Petro’s real room and popup show 23–24 years at Serhiy’s birth', asy
   await page.locator('[data-map-viewport] [data-center="true"]').focus()
   const popup = page.getByRole('tooltip')
   const popupEvent = popup.locator(`[data-event-id="${birth.id}"]`)
-  await expect(popupEvent.locator('[data-event-age]')).toHaveText('Вік 23–24 роки')
+  await expect(popupEvent.locator('[data-event-age]')).toHaveText('Вік 24 роки')
   await popupEvent.scrollIntoViewIfNeeded()
   await popup.screenshot({ path: info.outputPath('popup-serhiy-birth-age.png') })
 })

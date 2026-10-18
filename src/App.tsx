@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Navigate, Route, Routes, useLocation, useParams } from 'react-router'
 import { ViewLink as Link } from './navigation/ViewLink'
 import { personName } from './data/load-family'
+import { personFullName } from './data/person-name'
 import { FamilyProvider, ViewProvider } from './navigation/Providers'
 import { useFamily, useView } from './navigation/context'
 import { RadialMap } from './graph/RadialMap'
@@ -34,7 +35,7 @@ function PersonScreen({ screen }: { screen: 'tree' | 'person' }) {
   return <>
     <section className={styles.panel} aria-labelledby="person-title">
       <p className={styles.eyebrow}>{screen === 'tree' ? 'Карта родини · у центрі' : 'Особиста кімната'}</p>
-      <h2 id="person-title">{personName(family, personId)}</h2>
+      <h2 id="person-title">{personFullName(family, personId)}</h2>
       <div className={styles.actions}>
         {screen === 'tree' ? <Link to={`/person/${personId}`}>Увійти до кімнати</Link>
           : <Link to={`/tree/${personId}`}>Показати на карті</Link>}

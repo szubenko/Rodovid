@@ -11,11 +11,14 @@ import { entityIdSchema } from '../src/data/ids.ts'
 import { sourceSchema } from '../src/data/schema.ts'
 import type { FamilyData } from '../src/data/schema.ts'
 import { dateSortKey, eventClaims, eventLabels } from '../src/room/biography.ts'
-import { personFullName, personName } from '../src/data/person-name.ts'
+import { personName } from '../src/data/person-name.ts'
 import { recordFacts, recordUrl } from '../src/room/source-record.ts'
 import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
-import { resolveSourceRecordFiles, sourceRecordFileSchema } from './source-record-files.ts'
+import { recordEvidenceIds, resolveSourceRecordFiles, sourceRecordFileSchema } from './source-record-files.ts'
+import { eventTokens, sourceArk, sourceRecordBaseName } from './source-record-names.ts'
+import { planSourceRecordSync } from './sync-source-records.ts'
+export { sourceRecordBaseName } from './source-record-names.ts'
 
 const defaultRoot = fileURLToPath(new URL('../', import.meta.url))
 const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`
@@ -33,7 +36,7 @@ const personEvents = (family: FamilyData, personId: string) => {
 }
 export const sourceRecordSchema = z.strictObject({
   id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/).optional(), eventId: entityIdSchema,
-  personId: entityIdSchema.optional(), familySearchSourceId: z.string().regex(/^[A-Z0-9]+-[A-Z0-9]+$/).optional(),
+  personId: entityIdSchema.optional(), familySearchSourceId: z.string().regex(/^[\p{L}\p{N}]+(?:-[\p{L}\p{N}]+)+$/u).optional(),
   baseName: z.string().regex(/^[\p{L}\p{N}-]+$/u).optional(),
   sourceId: entityIdSchema.optional(), title: z.string().min(1).optional(),
   url: sourceSchema.shape.url, description: z.string().optional(),
@@ -49,26 +52,11 @@ async function load(root: string) {
   const config = JSON.parse(configBytes.toString())
   const supplements = JSON.parse(annotationsBytes.toString())
   const identities = JSON.parse(identityBytes.toString())
+  const plan = planSourceRecordSync({ bytes, config, supplements, identities }, resolve(root, 'Data'))
   return { bytes, config, supplements, identities, annotationsBytes,
-    result: convertGedcom({ bytes, config, supplements: resolveSourceRecordFiles(supplements, resolve(root, 'Data')), identities }) }
-}
-
-const eventTokens = { birth: 'народження', death: 'смерть', marriage: 'шлюб', baptism: 'хрещення', burial: 'поховання', residence: 'проживання', other: 'інша-подія' } as const
-const sourceArk = (url?: string) => url?.match(/\/1:1:([A-Z0-9]+-[A-Z0-9]+)/iu)?.[1]?.toUpperCase()
-export function sourceRecordBaseName(family: FamilyData, event: FamilyData['events'][number], sourceRecordId: string, selectedPersonId?: string) {
-  const participant = event.kind === 'birth' || event.kind === 'death'
-    ? event.participants.find(person => person.role === 'subject')
-    : event.participants.find(person => person.personId === selectedPersonId) ?? event.participants[0]
-  const person = family.people.find(person => person.id === participant?.personId)
-  const fsId = person?.externalIds.find(id => id.system === 'FamilySearch')?.value
-  if (!person || !fsId) throw new Error('Для назви файла потрібен FamilySearch ID учасника події.')
-  const names = family.claims.filter(claim => claim.field === 'name' && claim.target.id === person.id)
-  const name = names.find(claim => claim.isPrimary) ?? names[0]
-  const surname = name?.field === 'name' ? name.value.surname : undefined
-  const given = personFullName(family, person.id).split(/\s+/u)[0]
-  const slug = (value: string) => value.normalize('NFC').toLocaleLowerCase('uk').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '')
-  if (!surname || !given) throw new Error('Для назви файла потрібні ім’я та прізвище учасника події.')
-  return `${slug(surname)}-${slug(given)}-${eventTokens[event.kind]}-${fsId}-${sourceRecordId}`
+    retainedSources: plan.supplements.sources.filter(source => !supplements.sources?.some((item: { id: string }) => item.id === source.id)),
+    retainedLinks: plan.supplements.evidenceLinks.filter(link => !supplements.evidenceLinks?.some((item: { id: string }) => item.id === link.id)),
+    result: convertGedcom({ bytes, config, supplements: plan.supplements, identities }) }
 }
 
 /** Offline attachment: validates the complete candidate before replacing annotations. */
@@ -85,11 +73,10 @@ export async function addSourceRecord(root: string, value: unknown, inputDirecto
   const existing = family.sources.find(source => source.id === sourceId)
   if (record.sourceId && !existing) throw new Error(`Джерела немає: ${sourceId}`)
   const citation = family.evidenceLinks.find(link => link.sourceId === sourceId && link.target.kind === 'event' && link.target.id === event.id)
-  const url = record.url ?? (existing ? recordUrl(existing, family.evidenceLinks.filter(link => link.sourceId === sourceId)) : undefined)
-  if (!url) throw new Error('Вкажіть зовнішнє посилання джерела.')
-  const fsSourceId = record.familySearchSourceId ?? sourceArk(url)
-  if (!fsSourceId) throw new Error('Не визначено FamilySearch ID запису джерела.')
-  const baseName = record.baseName ?? sourceRecordBaseName(family, event, fsSourceId, record.personId)
+  const url = record.url !== undefined ? record.url : (existing ? recordUrl(existing, family.evidenceLinks.filter(link => link.sourceId === sourceId)) : undefined) ?? null
+  const fsSourceId = record.familySearchSourceId ?? sourceArk(url) ?? `локальне-${recordId}`
+  const priorBinding = additions.sourceRecordFiles.find(entry => entry.sourceId === sourceId)
+  const baseName = priorBinding ? basename(priorBinding.jsonFile, '.json') : record.baseName ?? sourceRecordBaseName(family, event, fsSourceId, record.personId)
   const jsonPath = `assets/documents/source-records/${baseName}.json`
   const description = record.descriptionFile
     ? (await readFile(resolve(inputDirectory, record.descriptionFile), 'utf8')).replace(/^\uFEFF/u, '').trim() : record.description
@@ -101,7 +88,6 @@ export async function addSourceRecord(root: string, value: unknown, inputDirecto
   }
   let asset: { path: string; bytes: Buffer } | undefined
   let mediaId: string | undefined
-  const priorBinding = additions.sourceRecordFiles.find(entry => entry.evidenceLinkId === citation?.id)
   if (record.screenshot) {
     const bytes = await readFile(resolve(inputDirectory, record.screenshot))
     const extension = extname(record.screenshot).toLowerCase()
@@ -145,15 +131,18 @@ export async function addSourceRecord(root: string, value: unknown, inputDirecto
     upsert(additions.evidenceLinks, { id, sourceId, target: { kind: 'event', id: event.id },
       ...(description ? { transcription: description } : {}), ...Object.keys(fragment).length ? { fragment } : {}, provenance: provenance(id) })
   }
-  if (!mediaId) throw new Error('Додайте скриншот для пари з JSON.')
   const evidenceLinkId = citation?.id ?? `evidence-record-${recordId}`
-  upsert(additions.sourceRecordFiles, { id: priorBinding?.id ?? `record-file-${recordId}`, sourceId, evidenceLinkId, mediaId, jsonFile: jsonPath })
+  const evidenceLinkIds = [...new Set([...(priorBinding ? recordEvidenceIds(priorBinding) : []), evidenceLinkId])]
+  upsert(additions.sourceRecordFiles, { id: priorBinding?.id ?? `record-file-${recordId}`, sourceId, evidenceLinkIds, ...(mediaId ? { mediaId } : {}), jsonFile: jsonPath })
   const metadata = sourceRecordFileSchema.parse({ url, description: description ?? citation?.transcription ?? '' })
   // JSON is authoritative: keep only bindings, never another editable transcript copy.
-  for (const entry of additions.evidenceEnrichments.filter(entry => entry.evidenceLinkId === evidenceLinkId)) delete entry.transcription
-  for (const entry of additions.evidenceLinks.filter(entry => entry.id === evidenceLinkId)) delete entry.transcription
-  for (const entry of additions.sourceEnrichments.filter(entry => entry.sourceId === sourceId)) delete entry.url
-  const candidate = convertGedcom({ ...current, supplements: resolveSourceRecordFiles(additions, resolve(root, 'Data'), new Map([[jsonPath, metadata]])) })
+  for (const entry of additions.evidenceEnrichments.filter(entry => evidenceLinkIds.includes(entry.evidenceLinkId))) delete entry.transcription
+  for (const entry of additions.evidenceLinks.filter(entry => evidenceLinkIds.includes(entry.id))) delete entry.transcription
+  for (const entry of additions.sourceEnrichments.filter(entry => entry.sourceId === sourceId)) { delete entry.url; delete entry.description }
+  const candidateAdditions = structuredClone(additions)
+  candidateAdditions.sources.push(...current.retainedSources.filter(source => !candidateAdditions.sources.some(item => item.id === source.id)))
+  candidateAdditions.evidenceLinks.push(...current.retainedLinks.filter(link => !candidateAdditions.evidenceLinks.some(item => item.id === link.id)))
+  const candidate = convertGedcom({ ...current, supplements: resolveSourceRecordFiles(candidateAdditions, resolve(root, 'Data'), new Map([[jsonPath, metadata]])) })
   const validation = await validateData(candidate.family, { assetsRoot: resolve(root, 'Data'), conversion: candidate.report })
   // A dry run has not copied its new scan yet; signature and dimensions were checked above.
   const errors = validation.issues.filter(issue => issue.severity === 'error'
@@ -192,19 +181,21 @@ export async function addSourcePair(root: string, inputPath: string, apply = fal
   const path = resolve(inputPath)
   const baseName = basename(path, '.json').normalize('NFC')
   const tokens = Object.entries(eventTokens).map(([kind, token]) => ({ kind, token }))
-  const eventType = tokens.find(({ token }) => new RegExp(`-${token}-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+-[A-Z0-9]+$`, 'u').test(baseName))
-  const ids = baseName.match(/-([A-Z0-9]+-[A-Z0-9]+)-([A-Z0-9]+-[A-Z0-9]+)$/u)
+  const eventType = tokens.find(({ token }) => new RegExp(`-${token}-(?:[A-Z0-9]+-[A-Z0-9]+|I[0-9]+)-[\\p{L}\\p{N}-]+$`, 'u').test(baseName))
+  const ids = eventType && baseName.match(new RegExp(`-${eventType.token}-([A-Z0-9]+-[A-Z0-9]+|I[0-9]+)-([\\p{L}\\p{N}-]+)$`, 'u'))
   if (!eventType || !ids) throw new Error('Назва має містити прізвище-ім’я-типподії-IDлюдини-IDджерела.json')
   const [, personFsId, sourceFsId] = ids
   const record = sourceRecordFileSchema.parse(JSON.parse((await readFile(path, 'utf8')).replace(/^\uFEFF/u, '')))
-  if (sourceArk(record.url) && sourceArk(record.url) !== sourceFsId) throw new Error('FamilySearch ID джерела в назві й посиланні не збігаються.')
   const { result: { family }, supplements } = await load(root)
-  const person = family.people.find(person => person.externalIds.some(id => id.system === 'FamilySearch' && id.value === personFsId))
+  const existingBinding = supplementsSchema.parse(supplements).sourceRecordFiles.find(entry => basename(entry.jsonFile, '.json') === baseName)
+  if (!existingBinding && sourceArk(record.url) && sourceArk(record.url) !== sourceFsId) throw new Error('FamilySearch ID джерела в назві й посиланні не збігаються.')
+  const person = family.people.find(person => person.id === personFsId || person.externalIds.some(id => id.system === 'FamilySearch' && id.value === personFsId))
   if (!person) throw new Error(`Людину з FamilySearch ID ${personFsId} не знайдено.`)
   const candidates = family.events.filter(event => event.kind === eventType.kind && event.participants.some(p => p.personId === person.id))
-  const existingBinding = supplementsSchema.parse(supplements).sourceRecordFiles.find(entry => entry.jsonFile.endsWith(`-${sourceFsId}.json`))
-  const source = family.sources.find(source => source.id === existingBinding?.sourceId)
-    ?? family.sources.find(source => sourceArk(recordUrl(source, family.evidenceLinks.filter(link => link.sourceId === source.id))) === sourceFsId)
+  const matches = family.sources.filter(source => sourceArk(recordUrl(source, family.evidenceLinks.filter(link => link.sourceId === source.id))) === sourceFsId
+    && family.evidenceLinks.some(link => link.sourceId === source.id && link.target.kind === 'event' && candidates.some(event => event.id === link.target.id)))
+  if (!existingBinding && matches.length > 1) throw new Error('Кілька джерел мають цей кадр. Виберіть точне джерело в локальному майстрі.')
+  const source = family.sources.find(source => source.id === existingBinding?.sourceId) ?? matches[0]
   const linked = source && candidates.filter(event => family.evidenceLinks.some(link => link.sourceId === source.id && link.target.kind === 'event' && link.target.id === event.id))
   const events = linked?.length ? linked : candidates
   if (events.length !== 1) throw new Error('Не вдалося однозначно вибрати подію. Скористайтеся локальним майстром source:add.')
@@ -213,9 +204,9 @@ export async function addSourcePair(root: string, inputPath: string, apply = fal
   for (const image of imagePaths) try { await readFile(image); images.push(image) } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
   }
-  if (images.length !== 1) throw new Error('Поруч із JSON має бути рівно один скан з такою самою назвою (PNG/JPG/PDF).')
+  if (images.length > 1) throw new Error('Поруч із JSON може бути лише один скан з такою самою назвою (PNG/JPG/PDF).')
   return addSourceRecord(root, { eventId: events[0]!.id, personId: person.id, familySearchSourceId: sourceFsId,
-    ...(source ? { sourceId: source.id } : {}), baseName, ...record, screenshot: images[0] }, dirname(path), apply)
+    ...(source ? { sourceId: source.id } : {}), baseName, ...record, ...(images[0] ? { screenshot: images[0] } : {}) }, dirname(path), apply)
 }
 
 async function main() {
@@ -264,11 +255,11 @@ async function main() {
     const effectiveUrl = url || (source ? recordUrl(source, links) : undefined)
     const descriptionPath = (await prompts.question('Шлях до JSON з url і description (Enter — ввести опис тут): ')).trim().replace(/^["']|["']$/g, '')
     const metadata = descriptionPath ? sourceRecordFileSchema.parse(JSON.parse((await readFile(resolve(descriptionPath), 'utf8')).replace(/^\uFEFF/u, '')))
-      : { url: effectiveUrl, description: await prompts.question('Опис: ') }
-    const familySearchSourceId = sourceArk(metadata.url) ?? sourceArk(effectiveUrl) ?? (await prompts.question('FamilySearch ID запису джерела: ')).trim()
-    const screenshot = (await prompts.question('Шлях до PNG/JPG/PDF: ')).trim().replace(/^["']|["']$/g, '')
-    const record = { eventId: entry.event!.id, personId: person.id, familySearchSourceId, ...(source ? { sourceId: source.id } : {}),
-      ...(title ? { title } : {}), ...metadata, screenshot }
+      : { url: effectiveUrl ?? null, description: await prompts.question('Опис: ') }
+    const familySearchSourceId = sourceArk(metadata.url) ?? sourceArk(effectiveUrl) ?? (await prompts.question('ID запису або місцевий номер (Enter — автоматично): ')).trim()
+    const screenshot = (await prompts.question('Шлях до PNG/JPG/PDF (Enter — без скану): ')).trim().replace(/^["']|["']$/g, '')
+    const record = { eventId: entry.event!.id, personId: person.id, ...(familySearchSourceId ? { familySearchSourceId } : {}), ...(source ? { sourceId: source.id } : {}),
+      ...(title ? { title } : {}), ...metadata, ...(screenshot ? { screenshot } : {}) }
     console.log(json(await addSourceRecord(root, record, process.cwd(), true)))
     console.log('Збережено. Локальний dev-сервер оновить сторінку; для публікації потрібна звичайна збірка сайту.')
   } finally { prompts.close() }

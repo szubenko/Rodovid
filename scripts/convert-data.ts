@@ -7,7 +7,7 @@ import { validateData } from './validation/validate.ts'
 import { failureReport, renderReport } from './validation/report.ts'
 import type { ValidationReport } from './validation/report.ts'
 import { resolveMemoryFiles } from './memory-files.ts'
-import { resolveSourceRecordFiles } from './source-record-files.ts'
+import { applySourceRecordSync, planSourceRecordSync, sourceRecordSyncReport } from './sync-source-records.ts'
 import { imageSize } from 'image-size'
 import { readAsset } from './assets.ts'
 
@@ -30,10 +30,11 @@ async function writeAtomic(path: string, value: unknown, plainText = false) {
 let reportPath: string | undefined
 let validation: ValidationReport | undefined
 let conversionReport: Record<string, unknown> = {}
+let sourceRecordReport = ''
 async function saveReport() {
   if (!reportPath || !validation) return
   await writeAtomic(reportPath, { ...conversionReport, validation })
-  await writeAtomic(`${reportPath}.md`, renderReport(validation), true)
+  await writeAtomic(`${reportPath}.md`, renderReport(validation) + '\n' + sourceRecordReport, true)
 }
 
 try {
@@ -61,9 +62,13 @@ try {
   ])
   if (values['init-identities'] && manifest !== undefined) throw new Error('Identity manifest already exists; initialization never overwrites it')
   if (!values['init-identities'] && manifest === undefined) throw new Error('Identity manifest missing; first import requires --init-identities')
-  const result = convertGedcom({ bytes, config: JSON.parse(config), supplements: resolveSourceRecordFiles(await resolveMemoryFiles(JSON.parse(supplements), dirname(paths.supplements)), dirname(paths.supplements)),
-    identities: manifest === undefined ? undefined : JSON.parse(manifest), supplementsFile: values.supplements })
-  conversionReport = result.report
+  const input = { bytes, config: JSON.parse(config), supplements: await resolveMemoryFiles(JSON.parse(supplements), dirname(paths.supplements)),
+    identities: manifest === undefined ? undefined : JSON.parse(manifest), supplementsFile: values.supplements }
+  const sourcePlan = planSourceRecordSync(input, dirname(paths.supplements))
+  const result = convertGedcom({ ...input, supplements: sourcePlan.supplements })
+  conversionReport = { ...result.report, sourceRecords: { records: sourcePlan.summary.records,
+    retained: sourcePlan.summary.retained, conflicts: sourcePlan.summary.conflicts } }
+  sourceRecordReport = sourceRecordSyncReport(sourcePlan.summary)
   validation = await validateData(result.family, { assetsRoot: resolve(root, values['assets-root']!), conversion: result.report })
   await saveReport()
   if (validation.status === 'failed') throw new Error(`Validation failed: ${validation.totals.errors} error(s); see ${paths.report}.md`)
@@ -77,6 +82,9 @@ try {
   if (values['validate-only']) {
     console.log(json({ status: validation.status, ...validation.counts, ...validation.totals, report: `${paths.report}.md` }))
   } else {
+    const backup = await applySourceRecordSync(sourcePlan, paths.supplements, Buffer.from(supplements), root)
+    if (backup) console.log(`Джерела синхронізовано; резервна копія: ${backup}`)
+    if (sourcePlan.summary.conflicts.length) console.error(`Описи джерел мають розбіжності (${sourcePlan.summary.conflicts.length}); ручні правки збережено. Варіанти: ${paths.report}`)
     // Commit the identity journal first. A failed output write can safely be retried with it.
     if (manifest === undefined) {
       await mkdir(dirname(paths.identities), { recursive: true })

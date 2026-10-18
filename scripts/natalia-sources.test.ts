@@ -28,13 +28,13 @@ it('assigns Natalia’s four sources to her birth, marriage and two child births
     ['@F15@', 'marriage', '6XST-5XK9'],
     ['@I41@', 'birth', '6X3L-JXHD'],
     ['@I50@', 'birth', '6X37-6N4T'],
-  ]
+  ] as const
   for (const [recordId, kind, ark] of expected) {
     const event = timeline.find(({ event }) => event && event.kind === kind && event.provenance.some(origin => origin.kind === 'gedcom' && origin.recordId === recordId))!.event!
     const links = family.evidenceLinks.filter(link => link.target.kind === 'event' && link.target.id === event.id)
-    expect(links).toHaveLength(1)
-    expect(family.sources.find(source => source.id === links[0]!.sourceId)!.description).toContain(ark)
-    expect(links[0]!.explanation).toContain(ark)
+    const original = links.find(link => family.sources.find(source => source.id === link.sourceId)!.description?.includes(ark))
+    expect(original).toBeDefined()
+    expect(original!.explanation).toContain(ark)
   }
   const death = timeline.find(entry => entry.event?.kind === 'death')!.event!
   expect(family.evidenceLinks.filter(link => link.target.kind === 'event' && link.target.id === death.id)).toHaveLength(0)

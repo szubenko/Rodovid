@@ -16,9 +16,8 @@ test('Natalia’s sources appear under the four relevant events and not her deat
     const event = family.events.find(event => event.kind === kind && event.provenance.some(origin => origin.kind === 'gedcom' && origin.recordId === recordId))!
     const block = page.locator(`[data-timeline-id="${event.id}"]`)
     await block.getByText('Джерело', { exact: true }).click()
-    await expect(block.locator('[data-source-id]')).toHaveCount(1)
-    await expect(block.locator('[data-source-id]')).toContainText(ark!)
-    const source = block.locator('[data-source-id]')
+    const source = block.locator('[data-source-id]').filter({ hasText: ark! })
+    await expect(source).toHaveCount(1)
     if (kind === 'birth' && recordId === '@I39@') {
       await expect(source).toContainText('Собственникъ Симеонъ Григоріевъ Заприса, и законная жена его Евдокія Аврамова; оба православные.')
       await expect(source.locator('img')).toBeVisible()
@@ -26,7 +25,8 @@ test('Natalia’s sources appear under the four relevant events and not her deat
     }
     await expect(source).not.toContainText('Дата:')
     await expect(source).not.toContainText('Тип події:')
-    await expect(source.getByRole('link', { name: new RegExp(ark!) })).toHaveAttribute('href', new RegExp(`^https://(?:www\\.)?familysearch\\.org/ark:/61903/1:1:${ark}$`))
+    const urlPattern = new RegExp(`^https://(?:www\\.)?familysearch\\.org/ark:/61903/1:1:${ark}$`)
+    await expect(source.getByRole('link', { name: urlPattern })).toHaveAttribute('href', urlPattern)
     if (recordId === '@I39@' && kind === 'birth') {
       const scan = source.locator('img')
       await expect(scan).toBeVisible()

@@ -25,7 +25,7 @@ async function fixture() {
     await cp(resolve(root, 'Data', file), resolve(directory, 'Data', file))
   }
   await cp(resolve(root, 'Data/assets'), resolve(directory, 'Data/assets'), { recursive: true })
-  await cp(resolve(root, 'Data/assets/documents/yakov-families-2026-10-17.png'), resolve(directory, 'scan.png'))
+  await writeFile(resolve(directory, 'scan.png'), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII=', 'base64'))
   await writeFile(resolve(directory, 'description.txt'), 'Умовна розшифровка для тесту.\nДругий рядок.', 'utf8')
   return directory
 }
@@ -67,14 +67,26 @@ it('previews without writes, then attaches text and a real copied scan to an imp
 
 it('adds a new source without loosening checks on the original citations', async () => {
   const directory = await fixture()
+  const before = await load(directory)
   await addSourceRecord(directory, { ...record, sourceId: undefined, id: 'new-record', title: 'Умовний новий документ', url: 'https://www.familysearch.org/ark:/61903/1:1:TEST-0001' }, directory, true)
   const after = await load(directory)
-  expect(after.family.sources).toHaveLength(6)
-  expect(after.family.evidenceLinks).toHaveLength(17)
+  expect(after.family.sources).toHaveLength(before.family.sources.length + 1)
+  expect(after.family.evidenceLinks).toHaveLength(before.family.evidenceLinks.length + 1)
   expect((await validateData(after.family, { assetsRoot: resolve(directory, 'Data'), conversion: after.report })).status).toBe('passed')
   after.family.evidenceLinks = after.family.evidenceLinks.filter(link => link.sourceId !== record.sourceId)
   expect((await validateData(after.family, { assetsRoot: resolve(directory, 'Data'), conversion: after.report })).status).toBe('failed')
-})
+}, 20_000)
+
+it('keeps the rejected FamilySearch tree screenshot out of sources and rejects restoring it', async () => {
+  const directory = await fixture()
+  const result = await load(directory)
+  expect(result.family.sources.some(source => source.id === 'source-yakov-families-2026-10-17')).toBe(false)
+  expect(result.family.media.some(media => media.path.includes('yakov-families-2026-10-17'))).toBe(false)
+  expect((await validateData(result.family, { assetsRoot: resolve(directory, 'Data'), conversion: result.report })).status).toBe('passed')
+  result.family.sources.push({ ...result.family.sources[0]!, id: 'source-yakov-families-2026-10-17', mediaIds: [] })
+  expect((await validateData(result.family, { assetsRoot: resolve(directory, 'Data'), conversion: result.report })).issues)
+    .toContainEqual(expect.objectContaining({ code: 'REJECTED_TREE_SOURCE', severity: 'error' }))
+}, 20_000)
 
 it('imports the two-field JSON by filename IDs and reads later edits directly from that JSON', async () => {
   const directory = await fixture()
@@ -105,16 +117,18 @@ it('imports the two-field JSON by filename IDs and reads later edits directly fr
   await expect(load(directory)).rejects.toThrow()
 }, 20_000)
 
-it('rejects an incorrect filename ID and missing sibling scan without changing annotations', async () => {
+it('rejects an incorrect filename ID and accepts JSON without a sibling scan', async () => {
   const directory = await fixture()
   const file = resolve(directory, 'заприса-наталія-народження-PFFS-2YZ-TEST-0001.json')
   const annotations = await readFile(resolve(directory, 'Data/annotations.json'))
   await writeFile(file, JSON.stringify({ url: record.url, description: 'Текст' }))
   await expect(addSourcePair(directory, file, true)).rejects.toThrow('не збігаються')
-  await writeFile(file, JSON.stringify({ url: 'https://familysearch.org/ark:/61903/1:1:TEST-0001', description: 'Текст' }))
-  await expect(addSourcePair(directory, file, true)).rejects.toThrow('рівно один скан')
   expect(await readFile(resolve(directory, 'Data/annotations.json'))).toEqual(annotations)
-})
+  await writeFile(file, JSON.stringify({ url: 'https://familysearch.org/ark:/61903/1:1:TEST-0001', description: 'Текст' }))
+  const result = await addSourcePair(directory, file, true)
+  expect(result.mediaId).toBeUndefined()
+  expect((await load(directory)).family.sources.find(source => source.id === result.sourceId)?.description).toBe('Текст')
+}, 20_000)
 
 it('rejects missing event targets and invalid images before changing annotations', async () => {
   const directory = await fixture()
@@ -123,4 +137,4 @@ it('rejects missing event targets and invalid images before changing annotations
   await writeFile(resolve(directory, 'bad.png'), 'not an image')
   await expect(addSourceRecord(directory, { ...record, screenshot: 'bad.png' }, directory, true)).rejects.toThrow('не відповідає')
   expect(await readFile(resolve(directory, 'Data/annotations.json'))).toEqual(annotations)
-})
+}, 20_000)

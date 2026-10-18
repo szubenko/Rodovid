@@ -22,7 +22,7 @@ describe('complete biography', () => {
     link.explanation = 'Посилання з GEDCOM OBJE.FILE: https://www.familysearch.org/ark:/61903/1:1:TEST\nМетадані експорту: FORM=; _TYPE=OTHER'
     link.transcription = 'Текст із метричної книги.'
     family.sources[0]!.url = undefined
-    family.sources[0]!.description = 'Тип джерела в експорті (_TYPE): Unspecified\n"Ukraine", <i>FamilySearch</i> (https://www.familysearch.org/ark:/61903/1:1:TEST : 2024), Index.'
+    family.sources[0]!.description = 'Тип джерела в експорті (_TYPE): Unspecified\n"Ukraine", database with images, <i>FamilySearch</i> (https://www.familysearch.org/ark:/61903/1:1:TEST : 2024), Index.\nТекст із метричної книги.'
     family.sources[0]!.mediaIds = ['media-scan']
     const block = renderBiography(family).split('data-source-id="source-shared"')[1]!.split('</article>')[0]!
     expect(block).not.toContain('<dt>Дата:</dt>')
@@ -33,8 +33,15 @@ describe('complete biography', () => {
     expect(block).not.toContain('>Скриншот запису</p>')
     expect(block).not.toContain('<figcaption>')
     expect(block).toContain('href="https://www.familysearch.org/ark:/61903/1:1:TEST"')
+    expect(block).not.toContain('Зовнішнє посилання')
+    const description = block.split('data-source-description="true"')[1]!
+    expect(description).toBeDefined()
+    expect(description.indexOf('Текст із метричної книги.')).toBeLessThan(description.indexOf('href="https://www.familysearch.org/ark:/61903/1:1:TEST"'))
     expect(block).toContain('Текст із метричної книги.')
+    expect(block.match(/Текст із метричної книги\./g)).toHaveLength(1)
+    expect(block).not.toContain('database with images')
     expect(block).toContain('src="/assets/documents/fixture.png"')
+    expect(block.indexOf('src="/assets/documents/fixture.png"')).toBeLessThan(block.indexOf('href="https://www.familysearch.org/ark:/61903/1:1:TEST"'))
     expect(block).not.toContain('Метадані експорту')
     expect(block).not.toContain('OBJE.FILE')
     expect(block).not.toContain('&lt;i&gt;')
@@ -70,9 +77,10 @@ describe('complete biography', () => {
     expect(participants).toContain('href="/person/I2"')
     expect(participants).toContain('свідок')
     expect(participants).not.toContain('href="/person/I1"')
-    for (const value of ['Опис основного документа', mainLink.transcription, '2 зв.', 'Текст джерела події']) {
+    for (const value of [mainLink.transcription, '2 зв.', 'Текст джерела події']) {
       expect(main).toContain(value)
     }
+    expect(main).not.toContain('Опис основного документа')
     expect(birth.match(/src="\/assets\/documents\/fixture.png"/g)).toHaveLength(1)
     expect(birth).not.toContain('data-evidence-id="link-event"')
     expect(main).not.toContain('Текст альтернативного документа')
@@ -86,6 +94,37 @@ describe('complete biography', () => {
     expect(alternative).not.toContain(mainLink.transcription)
     expect(alternative).not.toContain('Опис основного документа')
     expect(family).toEqual(before)
+  })
+
+  it('shows identical scan bytes and text once while retaining different indexed URLs and citations', () => {
+    const family = familyDataSchema.parse(fixture)
+    const scan = family.media.find(item => item.id === 'media-scan')!
+    scan.sha256 = 'a'.repeat(64)
+    family.media.push({ ...scan, id: 'same-scan-copy', path: 'assets/documents/copy.png' })
+    family.sources[0]!.mediaIds = [scan.id]
+    family.sources[1]!.mediaIds = ['same-scan-copy']
+    family.sources[0]!.url = 'https://familysearch.org/ark:/61903/1:1:RECORD-CHILD'
+    family.sources[1]!.url = 'https://familysearch.org/ark:/61903/1:1:RECORD-PARENT'
+    family.evidenceLinks = family.sources.map((source, index) => ({ ...family.evidenceLinks[0]!, id: `same-act-${index}`,
+      sourceId: source.id, target: { kind: 'event', id: 'event-birth' }, transcription: 'Однаковий опис акта.',
+      explanation: undefined, fragment: { mediaId: source.mediaIds[0], folio: String(index + 1) } }))
+    const before = structuredClone(family)
+    const birth = renderBiography(family).split('data-timeline-id="event-birth"')[1]!.split('</li>')[0]!
+    expect(birth.match(/<img /g)).toHaveLength(1)
+    expect(birth.match(/Однаковий опис акта\./g)).toHaveLength(1)
+    for (const source of family.sources) expect(birth).toContain(`href="${source.url}"`)
+    for (const link of family.evidenceLinks) expect(birth).toContain(`data-evidence-id="${link.id}"`)
+    expect(family).toEqual(before)
+
+    family.evidenceLinks[1]!.transcription = 'Інше читання того самого акта.'
+    const alternative = renderBiography(family).split('data-timeline-id="event-birth"')[1]!.split('</li>')[0]!
+    expect(alternative.match(/<img /g)).toHaveLength(1)
+    expect(alternative).toContain('Однаковий опис акта.')
+    expect(alternative).toContain('Інше читання того самого акта.')
+
+    family.media.find(item => item.id === 'same-scan-copy')!.sha256 = 'b'.repeat(64)
+    const distinct = renderBiography(family).split('data-timeline-id="event-birth"')[1]!.split('</li>')[0]!
+    expect(distinct.match(/<img /g)).toHaveLength(2)
   })
 
   it('keeps direct event documents inside its source block without inventing a source record', () => {
@@ -222,6 +261,32 @@ describe('complete biography', () => {
     expect(marriage).not.toContain('Учасники:')
     expect(marriage).not.toContain('Дата:')
     expect(marriage).not.toContain('Дата невідома')
+    expect(family).toEqual(before)
+  })
+
+  it('keeps child marriage evidence attached to parents without showing the marriage in their timelines', () => {
+    const family = familyDataSchema.parse(fixture)
+    family.people.push({ ...family.people[0]!, id: 'I3' }, { ...family.people[0]!, id: 'I4' })
+    const relationship = family.relationships[0]!
+    family.relationships.push({ ...relationship, id: 'child-parent', kind: 'parent-child', fromPersonId: 'I1', toPersonId: 'I3' },
+      { ...relationship, id: 'child-marriage', fromPersonId: 'I3', toPersonId: 'I4' })
+    const marriage = { ...family.events.find(event => event.kind === 'marriage')!, id: 'child-wedding',
+      relationshipIds: ['child-marriage'], participants: [{ personId: 'I3', role: 'partner' }, { personId: 'I4', role: 'partner' },
+        { personId: 'I1', role: 'father' }, { personId: 'I2', role: 'mother' }] }
+    family.events.push(marriage)
+    family.claims.push({ ...family.claims.find(claim => claim.field === 'date')!, id: 'child-wedding-date',
+      target: { kind: 'event', id: marriage.id } })
+    family.evidenceLinks.push({ ...family.evidenceLinks[0]!, id: 'parent-wedding-proof', target: { kind: 'person', id: 'I1' } })
+    const before = structuredClone(family)
+    for (const timeline of [biographyTimeline, tooltipTimeline]) {
+      for (const parentId of ['I1', 'I2']) expect(timeline(family, parentId).some(entry => entry.id === marriage.id)).toBe(false)
+      for (const partnerId of ['I3', 'I4']) expect(timeline(family, partnerId).find(entry => entry.id === marriage.id)?.labelPersonIds)
+        .toEqual([partnerId === 'I3' ? 'I4' : 'I3'])
+    }
+    expect(renderBiography(family)).not.toContain('data-timeline-id="child-wedding"')
+    family.events = family.events.filter(event => event.id !== 'event-marriage')
+    expect(biographyTimeline(family, 'I1').some(entry => entry.id === 'marriage/rel-1')).toBe(true)
+    family.events = before.events
     expect(family).toEqual(before)
   })
 

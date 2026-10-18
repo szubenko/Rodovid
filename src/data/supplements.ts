@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { entityIdSchema as id, personIdSchema } from './ids.ts'
 import {
   claimSchema, confidenceSchema, evidenceLinkSchema, mediaSchema,
-  memorySchema, sourceSchema,
+  memorySchema, personSchema, sourceSchema,
 } from './schema.ts'
 
 const text = z.string().min(1)
@@ -27,7 +27,11 @@ export const supplementsSchema = z.strictObject({
   // Select by stable claim ID, not by an array offset or display value.
   primaryClaimIds: z.array(id).default([]),
   additionalClaims: z.array(z.strictObject({
-    reason: text, claim: claimSchema,
+    reason: text, publishReason: z.boolean().default(true), claim: claimSchema,
+  })).default([]),
+  personEnrichments: z.array(z.strictObject({
+    id, personId: personIdSchema, explanation: text,
+    lifeStatus: personSchema.shape.lifeStatus,
   })).default([]),
   placeEnrichments: z.array(z.strictObject({
     id, placeId: id, explanation: text,
@@ -38,7 +42,7 @@ export const supplementsSchema = z.strictObject({
   })).default([]),
   sources: z.array(sourceSchema).default([]),
   sourceEnrichments: z.array(z.strictObject({
-    id, sourceId: id, title: text.optional(), description: text.optional(),
+    id, sourceId: id, title: text.optional(), description: z.string().optional(),
     url: sourceSchema.shape.url, mediaIds: z.array(id).optional(),
   })).default([]),
   evidenceEnrichments: z.array(z.strictObject({
@@ -46,7 +50,7 @@ export const supplementsSchema = z.strictObject({
     explanation: text.optional(), fragment: evidenceLinkSchema.shape.fragment,
   })).default([]),
   sourceRecordFiles: z.array(z.strictObject({
-    id, sourceId: id, evidenceLinkId: id, mediaId: id,
+    id, sourceId: id, evidenceLinkId: id.optional(), evidenceLinkIds: z.array(id).optional(), mediaId: id.optional(),
     jsonFile: z.string().regex(/^assets\/documents\/source-records\/[\p{L}\p{N}_-]+\.json$/u),
   })).default([]),
   media: z.array(mediaSchema).default([]),

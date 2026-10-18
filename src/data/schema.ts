@@ -107,6 +107,7 @@ const webUrl = z.url().refine((url) => /^https?:\/\//.test(url), 'Use an HTTP(S)
 
 export const mediaSchema = z.strictObject({
   id, path: assetPath,
+  sha256: z.string().regex(/^[a-f0-9]{64}$/u).optional(),
   dimensions: z.strictObject({ width: z.number().int().positive(), height: z.number().int().positive() }).optional(),
   mimeType: z.enum(['image/jpeg', 'image/png', 'application/pdf', 'audio/mpeg', 'audio/ogg', 'audio/wav']),
   thumbnail: z.strictObject({
@@ -120,7 +121,7 @@ export const mediaSchema = z.strictObject({
 export const sourceSchema = z.strictObject({
   id, title: text, description: text.optional(),
   archive: text.optional(), reference: text.optional(),
-  url: webUrl.optional(), addedOn: z.iso.date().optional(),
+  url: webUrl.nullable().optional(), addedOn: z.iso.date().optional(),
   mediaIds: ids, provenance,
 })
 

@@ -119,6 +119,12 @@ export function tooltipTimelineYear(entry: TooltipTimelineEntry): string {
   return date ? dateYears(date.value) : ''
 }
 
+function isMarriagePartner(family: FamilyData, event: FamilyEvent, personId: string): boolean {
+  return event.participants.some(person => person.personId === personId && ['partner', 'spouse'].includes(person.role))
+    || family.relationships.some(relation => relation.kind === 'spouse' && event.relationshipIds.includes(relation.id)
+      && (relation.fromPersonId === personId || relation.toPersonId === personId))
+}
+
 /** A view of existing records and relationships; never creates dates or source events. */
 function personTimeline(family: FamilyData, personId: string, complete: boolean): TooltipTimelineEntry[] {
   const relatives = tooltipRelatives(family, personId)
@@ -130,6 +136,8 @@ function personTimeline(family: FamilyData, personId: string, complete: boolean)
   const entries: TooltipTimelineEntry[] = []
   const includedEvents = new Set<string>()
   const addEvent = (event: FamilyEvent, relationship: Relationship | null = null) => {
+    // Parents may be cited in a child's marriage without having that marriage in their life story.
+    if (event.kind === 'marriage' && !isMarriagePartner(family, event, personId)) return
     if (includedEvents.has(event.id)) return
     includedEvents.add(event.id)
     if (event.kind === 'marriage' && !relationship) {
@@ -138,7 +146,8 @@ function personTimeline(family: FamilyData, personId: string, complete: boolean)
           || event.participants.some(person => person.personId === relative.otherId)))?.relation ?? null
     }
     const child = event.kind === 'birth' ? event.participants.find(person => childIds.has(person.personId) && person.role === 'subject') : undefined
-    const participants = [...new Set(event.participants.filter(person => person.personId !== personId && person.personId !== child?.personId).map(person => person.personId))]
+    const participants = [...new Set(event.participants.filter(person => person.personId !== personId && person.personId !== child?.personId
+      && (event.kind !== 'marriage' || isMarriagePartner(family, event, person.personId))).map(person => person.personId))]
     const childSex = child && family.people.find(person => person.id === child.personId)?.sex
     const childLabel = childSex === 'M' ? 'сина' : childSex === 'F' ? 'доньки' : 'дитини'
     const partnerId = relationship?.kind === 'spouse'
@@ -161,9 +170,9 @@ function personTimeline(family: FamilyData, personId: string, complete: boolean)
   for (const relative of relatives) {
     if (relative.rank === 3) {
       const marriages = family.events.filter(event => event.kind === 'marriage'
+        && isMarriagePartner(family, event, personId)
         && (event.relationshipIds.includes(relative.relation.id)
-          || event.participants.some(person => person.personId === personId)
-          && event.participants.some(person => person.personId === relative.otherId)))
+          || isMarriagePartner(family, event, relative.otherId)))
       if (marriages.length) marriages.forEach(event => addEvent(event, relative.relation))
       else entries.push({ id: `marriage/${relative.relation.id}`, event: null, relationship: relative.relation,
         label: marriageLabel(relative.relation), labelPersonIds: [relative.otherId], claims: [], participantIds: [], dateKey: Infinity, stage: 2 })

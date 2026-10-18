@@ -85,7 +85,7 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
   data.memories.push(...supplements.memories)
   for (const entry of supplements.additionalClaims) {
     entry.claim.provenance.push(origin(entry.claim.id))
-    entry.claim.explanation = [entry.claim.explanation, entry.reason].filter(Boolean).join('\n')
+    if (entry.publishReason) entry.claim.explanation = [entry.claim.explanation, entry.reason].filter(Boolean).join('\n')
     data.claims.push(entry.claim)
   }
   const enriched = new Set<string>()
@@ -93,6 +93,20 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
   const uniqueEntry = (id: string) => {
     if (entryIds.has(id)) throw new Error(`Duplicate supplement entry: ${id}`)
     entryIds.add(id)
+  }
+  const personEnrichments = new Set<string>()
+  for (const entry of supplements.personEnrichments) {
+    uniqueEntry(entry.id)
+    const person = data.people.find(person => person.id === entry.personId)
+    if (!person) throw new Error(`Unresolved person enrichment: ${entry.personId}`)
+    if (personEnrichments.has(person.id)) throw new Error(`Conflicting person enrichments: ${person.id}`)
+    personEnrichments.add(person.id)
+    if (entry.lifeStatus === 'alive' && data.events.some(event => event.kind === 'death'
+      && event.participants.some(participant => participant.personId === person.id && participant.role === 'subject'))) {
+      throw new Error(`Living status conflicts with a death event: ${person.id}`)
+    }
+    person.lifeStatus = entry.lifeStatus
+    person.provenance.push(origin(entry.id))
   }
   const sourceEnrichments = new Set<string>()
   for (const entry of supplements.sourceEnrichments) {
@@ -104,6 +118,7 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
     for (const field of ['title', 'description', 'url'] as const) {
       if (entry[field] !== undefined) Object.assign(source, { [field]: entry[field] })
     }
+    if (source.description === '') delete source.description
     if (entry.mediaIds) source.mediaIds = [...new Set([...source.mediaIds, ...entry.mediaIds])]
     source.provenance.push(origin(entry.id))
   }

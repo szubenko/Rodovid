@@ -1,0 +1,2762 @@
+{
+  "date": "2026-10-18",
+  "source": "E:/RodovidZubenko/Magic/ZubenkoNewFormat.reviewed.10.17.26_6.ged",
+  "sourceSha256": "05bdb8ab1c8c890d972f0f4f31b463c4cf81f2ada755f3402a5c273cf7f63aef",
+  "previousSha256": "c3f017c2760cec79dbf2aebbeebd9792c12b159b6251938b8ecb69e86a9afcf7",
+  "sha256": "7715a9ada900e0c17ac1e63d5dcce6c02384ef6e6050c8e64bbebfe49e32ac63",
+  "backup": "tests/fixtures/export-6-before-2026-10-18",
+  "method": "Джерела й цитування додані до чинного погодженого дерева. Наявні ідентичності, факти, оцінки та родинні зв’язки збережені; єдина зміна факту — дата народження Петра 1963 → 02.07.1963 з нового структурованого експорту.",
+  "historicalVerification": "Перевірено зміст локального експорту та відповідність існуючим подіям; зовнішні індекси й скани повторно не перевірялися, оцінки достовірності не підвищувалися.",
+  "ownerDecision": "У поточній розмові власник погодив: «Так, виправити прив’язки за змістом».",
+  "personMap": {
+    "@I1@": "@I1@",
+    "@I2@": "@I2@",
+    "@I3@": "@I3@",
+    "@I4@": "@I4@",
+    "@I5@": "@I5@",
+    "@I6@": "@I6@",
+    "@I7@": "@I7@",
+    "@I8@": "@I8@",
+    "@I9@": "@I9@",
+    "@I10@": "@I10@",
+    "@I11@": "@I11@",
+    "@I12@": "@I12@",
+    "@I13@": "@I13@",
+    "@I14@": "@I14@",
+    "@I15@": "@I15@",
+    "@I16@": "@I16@",
+    "@I17@": "@I17@",
+    "@I18@": "@I18@",
+    "@I19@": "@I19@",
+    "@I20@": "@I20@",
+    "@I21@": "@I21@",
+    "@I22@": "@I22@",
+    "@I23@": "@I23@",
+    "@I24@": "@I24@",
+    "@I25@": "@I25@",
+    "@I26@": "@I26@",
+    "@I27@": "@I50@",
+    "@I28@": "@I51@",
+    "@I29@": "@I52@",
+    "@I30@": "@I60@",
+    "@I31@": "@I61@",
+    "@I32@": "@I75@",
+    "@I33@": "@I76@",
+    "@I34@": "@I62@",
+    "@I35@": "@I63@",
+    "@I36@": "@I64@",
+    "@I37@": "@I67@",
+    "@I38@": "@I68@",
+    "@I39@": "@I39@",
+    "@I40@": "@I69@",
+    "@I41@": "@I77@",
+    "@I42@": "@I78@",
+    "@I43@": "@I79@",
+    "@I44@": "@I80@",
+    "@I45@": "@I81@",
+    "@I46@": "@I82@",
+    "@I47@": "@I83@",
+    "@I48@": "@I44@",
+    "@I49@": "@I70@",
+    "@I50@": "@I45@",
+    "@I51@": "@I71@",
+    "@I52@": "@I38@",
+    "@I53@": "@I53@",
+    "@I54@": "@I54@",
+    "@I55@": "@I55@",
+    "@I56@": "@I56@",
+    "@I57@": "@I57@",
+    "@I58@": "@I58@",
+    "@I59@": "@I59@",
+    "@I60@": "@I66@",
+    "@I61@": "@I48@",
+    "@I62@": "@I47@",
+    "@I63@": "@I46@",
+    "@I64@": "@I49@",
+    "@I65@": "@I72@",
+    "@I66@": "@I40@",
+    "@I67@": "@I41@",
+    "@I68@": "@I42@",
+    "@I69@": "@I27@",
+    "@I70@": "@I28@",
+    "@I71@": "@I29@",
+    "@I72@": "@I30@",
+    "@I73@": "@I31@",
+    "@I74@": "@I32@",
+    "@I75@": "@I33@",
+    "@I76@": "@I34@",
+    "@I77@": "@I35@",
+    "@I78@": "@I36@",
+    "@I79@": "@I37@",
+    "@I80@": "@I84@",
+    "@I81@": "@I85@",
+    "@I82@": "@I43@"
+  },
+  "retainedAbsentPeople": [
+    "PFVG-PWS",
+    "PFJL-V4J",
+    "PNQS-T8M"
+  ],
+  "placeholders": {
+    "@I27@": "PFFS-Y8D",
+    "@I28@": "PFFS-LRV"
+  },
+  "counts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 152,
+    "claims": 382,
+    "places": 71,
+    "sources": 62,
+    "media": 4,
+    "evidenceLinks": 138,
+    "memories": 0
+  },
+  "beforeCounts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 152,
+    "claims": 382,
+    "places": 71,
+    "sources": 6,
+    "media": 4,
+    "evidenceLinks": 18,
+    "memories": 0
+  },
+  "newSourceRecords": 56,
+  "addedCitations": [
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S6@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S16@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S17@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S18@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S19@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S20@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S21@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S22@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "person",
+      "source": "@S23@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S52@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S53@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S54@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S55@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S56@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S57@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S58@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "person",
+      "source": "@S59@"
+    },
+    {
+      "record": "@I61@",
+      "tag": "person",
+      "source": "@S46@"
+    },
+    {
+      "record": "@I61@",
+      "tag": "person",
+      "source": "@S47@"
+    },
+    {
+      "record": "@I61@",
+      "tag": "person",
+      "source": "@S48@"
+    },
+    {
+      "record": "@I61@",
+      "tag": "person",
+      "source": "@S49@"
+    },
+    {
+      "record": "@I61@",
+      "tag": "person",
+      "source": "@S50@"
+    },
+    {
+      "record": "@I61@",
+      "tag": "person",
+      "source": "@S51@"
+    },
+    {
+      "record": "@I69@",
+      "tag": "person",
+      "source": "@S33@"
+    },
+    {
+      "record": "@I69@",
+      "tag": "person",
+      "source": "@S34@"
+    },
+    {
+      "record": "@I69@",
+      "tag": "person",
+      "source": "@S35@"
+    },
+    {
+      "record": "@I69@",
+      "tag": "person",
+      "source": "@S36@"
+    },
+    {
+      "record": "@I69@",
+      "tag": "person",
+      "source": "@S37@"
+    },
+    {
+      "record": "@I77@",
+      "tag": "person",
+      "source": "@S38@"
+    },
+    {
+      "record": "@I77@",
+      "tag": "person",
+      "source": "@S39@"
+    },
+    {
+      "record": "@I77@",
+      "tag": "person",
+      "source": "@S40@"
+    },
+    {
+      "record": "@I77@",
+      "tag": "person",
+      "source": "@S41@"
+    },
+    {
+      "record": "@I77@",
+      "tag": "person",
+      "source": "@S42@"
+    },
+    {
+      "record": "@I44@",
+      "tag": "person",
+      "source": "@S7@"
+    },
+    {
+      "record": "@I44@",
+      "tag": "person",
+      "source": "@S8@"
+    },
+    {
+      "record": "@I44@",
+      "tag": "person",
+      "source": "@S9@"
+    },
+    {
+      "record": "@I44@",
+      "tag": "person",
+      "source": "@S10@"
+    },
+    {
+      "record": "@I44@",
+      "tag": "person",
+      "source": "@S11@"
+    },
+    {
+      "record": "@I45@",
+      "tag": "person",
+      "source": "@S12@"
+    },
+    {
+      "record": "@I45@",
+      "tag": "person",
+      "source": "@S13@"
+    },
+    {
+      "record": "@I45@",
+      "tag": "person",
+      "source": "@S14@"
+    },
+    {
+      "record": "@I45@",
+      "tag": "person",
+      "source": "@S15@"
+    },
+    {
+      "record": "@I45@",
+      "tag": "person",
+      "source": "@S11@"
+    },
+    {
+      "record": "@I38@",
+      "tag": "person",
+      "source": "@S5@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S24@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S25@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S26@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S27@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S28@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S29@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S30@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S31@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "person",
+      "source": "@S32@"
+    },
+    {
+      "record": "@I28@",
+      "tag": "person",
+      "source": "@S43@"
+    },
+    {
+      "record": "@I28@",
+      "tag": "person",
+      "source": "@S44@"
+    },
+    {
+      "record": "@I28@",
+      "tag": "person",
+      "source": "@S45@"
+    },
+    {
+      "record": "@I31@",
+      "tag": "person",
+      "source": "@S44@"
+    },
+    {
+      "record": "@I31@",
+      "tag": "person",
+      "source": "@S45@"
+    },
+    {
+      "record": "@I32@",
+      "tag": "person",
+      "source": "@S44@"
+    },
+    {
+      "record": "@I32@",
+      "tag": "person",
+      "source": "@S45@"
+    },
+    {
+      "record": "@I33@",
+      "tag": "person",
+      "source": "@S43@"
+    },
+    {
+      "record": "@I33@",
+      "tag": "person",
+      "source": "@S60@"
+    },
+    {
+      "record": "@I33@",
+      "tag": "person",
+      "source": "@S45@"
+    },
+    {
+      "record": "@I34@",
+      "tag": "person",
+      "source": "@S43@"
+    },
+    {
+      "record": "@I34@",
+      "tag": "person",
+      "source": "@S60@"
+    },
+    {
+      "record": "@I34@",
+      "tag": "person",
+      "source": "@S45@"
+    },
+    {
+      "record": "@I38@",
+      "tag": "BIRT",
+      "source": "@S5@"
+    },
+    {
+      "record": "@I38@",
+      "tag": "BIRT",
+      "source": "@S23@"
+    },
+    {
+      "record": "@I38@",
+      "tag": "BIRT",
+      "source": "@S32@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "BIRT",
+      "source": "@S6@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "BIRT",
+      "source": "@S51@"
+    },
+    {
+      "record": "@I52@",
+      "tag": "BIRT",
+      "source": "@S59@"
+    },
+    {
+      "record": "@I48@",
+      "tag": "BIRT",
+      "source": "@S7@"
+    },
+    {
+      "record": "@I48@",
+      "tag": "BIRT",
+      "source": "@S12@"
+    },
+    {
+      "record": "@I46@",
+      "tag": "BIRT",
+      "source": "@S8@"
+    },
+    {
+      "record": "@I46@",
+      "tag": "BIRT",
+      "source": "@S13@"
+    },
+    {
+      "record": "@I47@",
+      "tag": "BIRT",
+      "source": "@S9@"
+    },
+    {
+      "record": "@I47@",
+      "tag": "BIRT",
+      "source": "@S14@"
+    },
+    {
+      "record": "@I51@",
+      "tag": "BIRT",
+      "source": "@S11@"
+    },
+    {
+      "record": "@I58@",
+      "tag": "BIRT",
+      "source": "@S16@"
+    },
+    {
+      "record": "@I58@",
+      "tag": "BIRT",
+      "source": "@S27@"
+    },
+    {
+      "record": "@I57@",
+      "tag": "BIRT",
+      "source": "@S17@"
+    },
+    {
+      "record": "@I57@",
+      "tag": "BIRT",
+      "source": "@S26@"
+    },
+    {
+      "record": "@I59@",
+      "tag": "BIRT",
+      "source": "@S18@"
+    },
+    {
+      "record": "@I59@",
+      "tag": "BIRT",
+      "source": "@S28@"
+    },
+    {
+      "record": "@I56@",
+      "tag": "BIRT",
+      "source": "@S19@"
+    },
+    {
+      "record": "@I56@",
+      "tag": "BIRT",
+      "source": "@S25@"
+    },
+    {
+      "record": "@I55@",
+      "tag": "BIRT",
+      "source": "@S20@"
+    },
+    {
+      "record": "@I55@",
+      "tag": "BIRT",
+      "source": "@S29@"
+    },
+    {
+      "record": "@I54@",
+      "tag": "BIRT",
+      "source": "@S21@"
+    },
+    {
+      "record": "@I54@",
+      "tag": "BIRT",
+      "source": "@S30@"
+    },
+    {
+      "record": "@F20@",
+      "tag": "MARR",
+      "source": "@S22@"
+    },
+    {
+      "record": "@F20@",
+      "tag": "MARR",
+      "source": "@S31@"
+    },
+    {
+      "record": "@I53@",
+      "tag": "DEAT",
+      "source": "@S24@"
+    },
+    {
+      "record": "@I81@",
+      "tag": "BIRT",
+      "source": "@S33@"
+    },
+    {
+      "record": "@I81@",
+      "tag": "BIRT",
+      "source": "@S38@"
+    },
+    {
+      "record": "@I78@",
+      "tag": "BIRT",
+      "source": "@S34@"
+    },
+    {
+      "record": "@I78@",
+      "tag": "BIRT",
+      "source": "@S39@"
+    },
+    {
+      "record": "@I79@",
+      "tag": "BIRT",
+      "source": "@S35@"
+    },
+    {
+      "record": "@I79@",
+      "tag": "BIRT",
+      "source": "@S40@"
+    },
+    {
+      "record": "@I80@",
+      "tag": "BIRT",
+      "source": "@S36@"
+    },
+    {
+      "record": "@I80@",
+      "tag": "BIRT",
+      "source": "@S41@"
+    },
+    {
+      "record": "@I39@",
+      "tag": "BIRT",
+      "source": "@S37@"
+    },
+    {
+      "record": "@I39@",
+      "tag": "BIRT",
+      "source": "@S42@"
+    },
+    {
+      "record": "@I28@",
+      "tag": "BIRT",
+      "source": "@S43@"
+    },
+    {
+      "record": "@I21@",
+      "tag": "BIRT",
+      "source": "@S45@"
+    },
+    {
+      "record": "@I76@",
+      "tag": "BIRT",
+      "source": "@S46@"
+    },
+    {
+      "record": "@I76@",
+      "tag": "BIRT",
+      "source": "@S53@"
+    },
+    {
+      "record": "@I75@",
+      "tag": "BIRT",
+      "source": "@S47@"
+    },
+    {
+      "record": "@I75@",
+      "tag": "BIRT",
+      "source": "@S55@"
+    },
+    {
+      "record": "@I63@",
+      "tag": "BIRT",
+      "source": "@S48@"
+    },
+    {
+      "record": "@I63@",
+      "tag": "BIRT",
+      "source": "@S57@"
+    },
+    {
+      "record": "@I62@",
+      "tag": "BIRT",
+      "source": "@S49@"
+    },
+    {
+      "record": "@F21@",
+      "tag": "MARR",
+      "source": "@S50@"
+    },
+    {
+      "record": "@F21@",
+      "tag": "MARR",
+      "source": "@S58@"
+    },
+    {
+      "record": "@I76@",
+      "tag": "DEAT",
+      "source": "@S52@"
+    },
+    {
+      "record": "@I75@",
+      "tag": "DEAT",
+      "source": "@S54@"
+    },
+    {
+      "record": "@I60@",
+      "tag": "DEAT",
+      "source": "@S56@"
+    }
+  ],
+  "eventAttachments": [
+    {
+      "record": "@I38@",
+      "tag": "BIRT",
+      "source": "@S5@",
+      "existingDate": "25 MAY 1900"
+    },
+    {
+      "record": "@I38@",
+      "tag": "BIRT",
+      "source": "@S23@",
+      "existingDate": "25 MAY 1900"
+    },
+    {
+      "record": "@I38@",
+      "tag": "BIRT",
+      "source": "@S32@",
+      "existingDate": "25 MAY 1900"
+    },
+    {
+      "record": "@I52@",
+      "tag": "BIRT",
+      "source": "@S6@",
+      "existingDate": "20 JUL 1862"
+    },
+    {
+      "record": "@I52@",
+      "tag": "BIRT",
+      "source": "@S51@",
+      "existingDate": "20 JUL 1862"
+    },
+    {
+      "record": "@I52@",
+      "tag": "BIRT",
+      "source": "@S59@",
+      "existingDate": "20 JUL 1862"
+    },
+    {
+      "record": "@I48@",
+      "tag": "BIRT",
+      "source": "@S7@",
+      "existingDate": "25 DEC 1921"
+    },
+    {
+      "record": "@I48@",
+      "tag": "BIRT",
+      "source": "@S12@",
+      "existingDate": "25 DEC 1921"
+    },
+    {
+      "record": "@I46@",
+      "tag": "BIRT",
+      "source": "@S8@",
+      "existingDate": "1 JUL 1926"
+    },
+    {
+      "record": "@I46@",
+      "tag": "BIRT",
+      "source": "@S13@",
+      "existingDate": "1 JUL 1926"
+    },
+    {
+      "record": "@I47@",
+      "tag": "BIRT",
+      "source": "@S9@",
+      "existingDate": "25 JAN 1924"
+    },
+    {
+      "record": "@I47@",
+      "tag": "BIRT",
+      "source": "@S14@",
+      "existingDate": "25 JAN 1924"
+    },
+    {
+      "record": "@I51@",
+      "tag": "BIRT",
+      "source": "@S11@",
+      "existingDate": "6 AUG 1929"
+    },
+    {
+      "record": "@I58@",
+      "tag": "BIRT",
+      "source": "@S16@",
+      "existingDate": "26 DEC 1894"
+    },
+    {
+      "record": "@I58@",
+      "tag": "BIRT",
+      "source": "@S27@",
+      "existingDate": "26 DEC 1894"
+    },
+    {
+      "record": "@I57@",
+      "tag": "BIRT",
+      "source": "@S17@",
+      "existingDate": "8 FEB 1892"
+    },
+    {
+      "record": "@I57@",
+      "tag": "BIRT",
+      "source": "@S26@",
+      "existingDate": "8 FEB 1892"
+    },
+    {
+      "record": "@I59@",
+      "tag": "BIRT",
+      "source": "@S18@",
+      "existingDate": "22 JUL 1897"
+    },
+    {
+      "record": "@I59@",
+      "tag": "BIRT",
+      "source": "@S28@",
+      "existingDate": "22 JUL 1897"
+    },
+    {
+      "record": "@I56@",
+      "tag": "BIRT",
+      "source": "@S19@",
+      "existingDate": "13 MAY 1889"
+    },
+    {
+      "record": "@I56@",
+      "tag": "BIRT",
+      "source": "@S25@",
+      "existingDate": "13 MAY 1889"
+    },
+    {
+      "record": "@I55@",
+      "tag": "BIRT",
+      "source": "@S20@",
+      "existingDate": "22 JUN 1886"
+    },
+    {
+      "record": "@I55@",
+      "tag": "BIRT",
+      "source": "@S29@",
+      "existingDate": "22 JUN 1886"
+    },
+    {
+      "record": "@I54@",
+      "tag": "BIRT",
+      "source": "@S21@",
+      "existingDate": "11 JUN 1883"
+    },
+    {
+      "record": "@I54@",
+      "tag": "BIRT",
+      "source": "@S30@",
+      "existingDate": "11 JUN 1883"
+    },
+    {
+      "record": "@F20@",
+      "tag": "MARR",
+      "source": "@S22@",
+      "existingDate": "15 JAN 1882"
+    },
+    {
+      "record": "@F20@",
+      "tag": "MARR",
+      "source": "@S31@",
+      "existingDate": "15 JAN 1882"
+    },
+    {
+      "record": "@I53@",
+      "tag": "DEAT",
+      "source": "@S24@",
+      "existingDate": "11 JUL 1917"
+    },
+    {
+      "record": "@I81@",
+      "tag": "BIRT",
+      "source": "@S33@",
+      "existingDate": "13 MAY 1896"
+    },
+    {
+      "record": "@I81@",
+      "tag": "BIRT",
+      "source": "@S38@",
+      "existingDate": "13 MAY 1896"
+    },
+    {
+      "record": "@I78@",
+      "tag": "BIRT",
+      "source": "@S34@",
+      "existingDate": "12 AUG 1880"
+    },
+    {
+      "record": "@I78@",
+      "tag": "BIRT",
+      "source": "@S39@",
+      "existingDate": "12 AUG 1880"
+    },
+    {
+      "record": "@I79@",
+      "tag": "BIRT",
+      "source": "@S35@",
+      "existingDate": "9 MAY 1883"
+    },
+    {
+      "record": "@I79@",
+      "tag": "BIRT",
+      "source": "@S40@",
+      "existingDate": "9 MAY 1883"
+    },
+    {
+      "record": "@I80@",
+      "tag": "BIRT",
+      "source": "@S36@",
+      "existingDate": "22 APR 1892"
+    },
+    {
+      "record": "@I80@",
+      "tag": "BIRT",
+      "source": "@S41@",
+      "existingDate": "22 APR 1892"
+    },
+    {
+      "record": "@I39@",
+      "tag": "BIRT",
+      "source": "@S37@",
+      "existingDate": "12 OCT 1894"
+    },
+    {
+      "record": "@I39@",
+      "tag": "BIRT",
+      "source": "@S42@",
+      "existingDate": "12 OCT 1894"
+    },
+    {
+      "record": "@I28@",
+      "tag": "BIRT",
+      "source": "@S43@",
+      "existingDate": "6 NOV 1851"
+    },
+    {
+      "record": "@I21@",
+      "tag": "BIRT",
+      "source": "@S45@",
+      "existingDate": "1874"
+    },
+    {
+      "record": "@I76@",
+      "tag": "BIRT",
+      "source": "@S46@",
+      "existingDate": "5 AUG 1858"
+    },
+    {
+      "record": "@I76@",
+      "tag": "BIRT",
+      "source": "@S53@",
+      "existingDate": "5 AUG 1858"
+    },
+    {
+      "record": "@I75@",
+      "tag": "BIRT",
+      "source": "@S47@",
+      "existingDate": "10 DEC 1855"
+    },
+    {
+      "record": "@I75@",
+      "tag": "BIRT",
+      "source": "@S55@",
+      "existingDate": "10 DEC 1855"
+    },
+    {
+      "record": "@I63@",
+      "tag": "BIRT",
+      "source": "@S48@",
+      "existingDate": "26 JUL 1865"
+    },
+    {
+      "record": "@I63@",
+      "tag": "BIRT",
+      "source": "@S57@",
+      "existingDate": "26 JUL 1865"
+    },
+    {
+      "record": "@I62@",
+      "tag": "BIRT",
+      "source": "@S49@",
+      "existingDate": "8 SEP 1860"
+    },
+    {
+      "record": "@F21@",
+      "tag": "MARR",
+      "source": "@S50@",
+      "existingDate": "15 FEB 1853"
+    },
+    {
+      "record": "@F21@",
+      "tag": "MARR",
+      "source": "@S58@",
+      "existingDate": "15 FEB 1853"
+    },
+    {
+      "record": "@I76@",
+      "tag": "DEAT",
+      "source": "@S52@",
+      "existingDate": "10 AUG 1859"
+    },
+    {
+      "record": "@I75@",
+      "tag": "DEAT",
+      "source": "@S54@",
+      "existingDate": "28 MAR 1858"
+    },
+    {
+      "record": "@I60@",
+      "tag": "DEAT",
+      "source": "@S56@",
+      "existingDate": "3 SEP 1896"
+    }
+  ],
+  "relationshipAttachments": [
+    {
+      "record": "@S44@",
+      "sourceId": "source-b287d41f8ee8ddbcbdd8af22",
+      "relationshipId": "relationship-8d2a1b091e4e9cfb3987e886",
+      "evidenceLinkId": "evidence-export-6-S44-stepan-anastasia-marriage"
+    },
+    {
+      "record": "@S60@",
+      "sourceId": "source-faea5ee825b379790d9248d2",
+      "relationshipId": "relationship-8d2a1b091e4e9cfb3987e886",
+      "evidenceLinkId": "evidence-export-6-S60-stepan-anastasia-marriage"
+    }
+  ],
+  "narrativeAttachments": [
+    {
+      "sourceRecord": "@S45@",
+      "evidenceLinkId": "evidenceLink-9172481fb2051db0c1bbe8c2"
+    },
+    {
+      "sourceRecord": "@S43@",
+      "evidenceLinkId": "evidenceLink-77240f257e957d2e93cb0b4c"
+    },
+    {
+      "sourceRecord": "@S5@",
+      "evidenceLinkId": "evidenceLink-5b86aa63afa6f93626e178ac"
+    },
+    {
+      "sourceRecord": "@S11@",
+      "evidenceLinkId": "evidenceLink-ce74b32b37cf8d55669ce9c0"
+    },
+    {
+      "sourceRecord": "@S6@",
+      "evidenceLinkId": "evidenceLink-2eea640517accb6f988004c4"
+    },
+    {
+      "sourceRecord": "@S22@",
+      "evidenceLinkId": "evidenceLink-ca6822635d5a5ecdeebe27d4"
+    },
+    {
+      "sourceRecord": "@S58@",
+      "evidenceLinkId": "evidenceLink-d84a957fd98c38d682af3391"
+    }
+  ],
+  "genericOnlySources": [
+    {
+      "record": "@S10@",
+      "reason": "У локальному описі не зазначено тип події 31.01.1921; джерело збережене біля Петра Дейкала."
+    },
+    {
+      "record": "@S15@",
+      "reason": "У локальному описі не зазначено тип події 31.01.1921; джерело збережене біля Ксенії Дейкало."
+    }
+  ],
+  "duplicateImageReferences": [
+    [
+      "@S44@",
+      "@S60@"
+    ]
+  ],
+  "correctedExportBindings": [
+    "@S1@–@S4@: попередні виправлення Наталії збережено.",
+    "@S5@: народження Макара; не смерть або стан.",
+    "@S7@/@S12@: народження Петра Петровича Дейкала, не його батьків.",
+    "@S24@: смерть Агафії, не народження."
+  ],
+  "addedIdentities": [
+    {
+      "kind": "source",
+      "id": "source-1d12603e9a41ab7dca537341"
+    },
+    {
+      "kind": "source",
+      "id": "source-a91d796b8d7447a21aec51c6"
+    },
+    {
+      "kind": "source",
+      "id": "source-f7a10e320e8cfd5fa281ffff"
+    },
+    {
+      "kind": "source",
+      "id": "source-e1ada33cf63e59a8f2d493ed"
+    },
+    {
+      "kind": "source",
+      "id": "source-cfb3244ad58dc0005c3446ff"
+    },
+    {
+      "kind": "source",
+      "id": "source-439b52b9a06a22252991d6e0"
+    },
+    {
+      "kind": "source",
+      "id": "source-f039ff1cd57ce7caa61962cc"
+    },
+    {
+      "kind": "source",
+      "id": "source-a4eb0af945ce9d7b3a85f523"
+    },
+    {
+      "kind": "source",
+      "id": "source-63485d1e4e51d99b9ac56616"
+    },
+    {
+      "kind": "source",
+      "id": "source-4d88c01f0d1206e3a1979601"
+    },
+    {
+      "kind": "source",
+      "id": "source-ca0e214f9217ab15a45ce47a"
+    },
+    {
+      "kind": "source",
+      "id": "source-6ca71ce85a4763dcfc94c88e"
+    },
+    {
+      "kind": "source",
+      "id": "source-e8bd8291280ad006d26c52ad"
+    },
+    {
+      "kind": "source",
+      "id": "source-459ba67b6cfac0ef28a8f587"
+    },
+    {
+      "kind": "source",
+      "id": "source-24fdc3508ce10e57160dcc93"
+    },
+    {
+      "kind": "source",
+      "id": "source-46fbf39a0ea1a0a43ef2f41d"
+    },
+    {
+      "kind": "source",
+      "id": "source-0a10043dd72d9ce1ff0da90a"
+    },
+    {
+      "kind": "source",
+      "id": "source-b05a251340328da63c35bcd8"
+    },
+    {
+      "kind": "source",
+      "id": "source-3f33be618e23889695e1a6f8"
+    },
+    {
+      "kind": "source",
+      "id": "source-4bca2b9d4b7aef70fa7ee654"
+    },
+    {
+      "kind": "source",
+      "id": "source-73444eb10cd685123a4a87b1"
+    },
+    {
+      "kind": "source",
+      "id": "source-6ed389eff28dbb4ff7cc1a60"
+    },
+    {
+      "kind": "source",
+      "id": "source-618aa7b97689182a9fdfb09d"
+    },
+    {
+      "kind": "source",
+      "id": "source-b6973457f234dc32bdd3a939"
+    },
+    {
+      "kind": "source",
+      "id": "source-48b4b93da9e4d7b6d40d2b56"
+    },
+    {
+      "kind": "source",
+      "id": "source-1fe88bf4c6d2077a2c7538db"
+    },
+    {
+      "kind": "source",
+      "id": "source-258dd5a4b8db47b918fb23e8"
+    },
+    {
+      "kind": "source",
+      "id": "source-e18eae6b7c1154786cbca61d"
+    },
+    {
+      "kind": "source",
+      "id": "source-1a3bba8e2c0e3a1ba18f7728"
+    },
+    {
+      "kind": "source",
+      "id": "source-658ce6ab111aab7d799d9506"
+    },
+    {
+      "kind": "source",
+      "id": "source-f9a9b91e338589ee2e787b45"
+    },
+    {
+      "kind": "source",
+      "id": "source-6b007d925bf6ca4f9698db05"
+    },
+    {
+      "kind": "source",
+      "id": "source-ad000d626292dce8bb1a15a5"
+    },
+    {
+      "kind": "source",
+      "id": "source-bf927828adddb3fbd789dca1"
+    },
+    {
+      "kind": "source",
+      "id": "source-9b7a8ee08d869aacf9c0d545"
+    },
+    {
+      "kind": "source",
+      "id": "source-d7aba2075be4c5a2938e877d"
+    },
+    {
+      "kind": "source",
+      "id": "source-ed8386e8053f679ac9059f63"
+    },
+    {
+      "kind": "source",
+      "id": "source-81201bbd31616658205d7e4b"
+    },
+    {
+      "kind": "source",
+      "id": "source-bff78fa43a93474bab352bde"
+    },
+    {
+      "kind": "source",
+      "id": "source-b287d41f8ee8ddbcbdd8af22"
+    },
+    {
+      "kind": "source",
+      "id": "source-3afa8e67dcf8ebca553eafc9"
+    },
+    {
+      "kind": "source",
+      "id": "source-95a746d312bccef6f9e86e3a"
+    },
+    {
+      "kind": "source",
+      "id": "source-a338510342c307a1fc6ccdee"
+    },
+    {
+      "kind": "source",
+      "id": "source-42e1d3b79505def00f9db270"
+    },
+    {
+      "kind": "source",
+      "id": "source-192b7406a004c3be8e16b516"
+    },
+    {
+      "kind": "source",
+      "id": "source-bf280db4fb92edaa3bf1c02a"
+    },
+    {
+      "kind": "source",
+      "id": "source-be6953c6bf73fdcc01162eeb"
+    },
+    {
+      "kind": "source",
+      "id": "source-be71a308ea2f5169ebbc5886"
+    },
+    {
+      "kind": "source",
+      "id": "source-64add2af1871b7304744bc77"
+    },
+    {
+      "kind": "source",
+      "id": "source-daa81a0874cebe65ad70c5f9"
+    },
+    {
+      "kind": "source",
+      "id": "source-9b5827bcdf98e888496303f7"
+    },
+    {
+      "kind": "source",
+      "id": "source-032b5abbb32a838563ee2199"
+    },
+    {
+      "kind": "source",
+      "id": "source-cfc4c42c7d848f1bf3f9282e"
+    },
+    {
+      "kind": "source",
+      "id": "source-f256d9a8f4f37e8f7e1b68b7"
+    },
+    {
+      "kind": "source",
+      "id": "source-56382debec84308b0690b708"
+    },
+    {
+      "kind": "source",
+      "id": "source-faea5ee825b379790d9248d2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-31bc15bc4b84d848d09ae2b9"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e5c300456ea53e8c861cd907"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e1be66bd570c47f582e8c614"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-3c693b0630dd9f042414f011"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-664b175d76bcddeb1fe76ec2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9263c37a993b2f46cbb748b8"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-aa1fd806dd2039d41fff4998"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-8c0ddb4036364b3ec375e549"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-66d8b7152a1b3bd522ae295d"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e5bc6c274315421280d3c657"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-fd4606daba6339de74cee151"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-703c50e118a7e9aff74be9f1"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e8745ace1bae4084676d0972"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-1cf8c0d8ddb4f131acced300"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ecda08a09aee0b1b8ea0c992"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f433fa258babbcfe9b74b07e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-85fb542989fd9b9a916aa4fd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-3db606c6e19a833ee227cdfb"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-c7163b59d563adfcfe73ad36"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f08ef17a1f11536c7454c494"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e377bfb1c5e3873c55175dbd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-03e91929b52486fb70427104"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d2cdd220355bd3f5f34ce950"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d5b002a226eead770c2c338c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-aa25528fa84d427e7cefe888"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-8798cae965f2fcd8bf29b9c6"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-b05e24a2958de77da1aefeee"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-c3b814022759ec95aed838e2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5b88a2816830995b3e11b78d"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-83af7089745811d1d683f695"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2965fc19b0623e054003c21e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9fe25ab3b0836e87e2539052"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-827a00950400934cdb051c4c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-328b3859d7cb3ecd6b9cb203"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-3c38f8a2d68ae0a4ef12ba47"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5287a1b62a3373e845c38010"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-eeb80a23bd9fe0528e593a92"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-1adefcc384c1aca4a21c906e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-05a5a7cb0b3bec91b662f50f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-40ee96e482352b07479210b3"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-32b8c0c938ec0eb331197bb9"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ee3e8950be6693e46ef49ebc"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-264ddb07d8cbbe404519b6c8"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-035942d4b7bdb9917ad4b80f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e385e19ed3d48a91cf3b1fd1"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4d84be16a6a45baf7ff0299b"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-a908aa20c5f0b971485cf1c5"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-afefdf836028cc93b1cd300c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-cd298854328217b79713e27f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-36d793501399b0e6d3761a02"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5a6a36a558a1af9d8cfbaf7c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-6ac96caaa67b92f50ebe690e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f3c196a4af1d3aa10230f8b0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2c7bd5819ab47b62cb74eba1"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-775e41e332560a972de7084f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4975e70c0109b5709be58e14"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-86a4045d39f29ae2b5fe4f80"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ba8db0ef6190043abf9eea00"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2009931e4e6a674ed32a52d5"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-37f0f91b5eda31bc1bd6b515"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-17915453f90803474e04dd12"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-69ab1c0952e973cff575eedf"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e697656547c2416479392f70"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-c1d2703ce8c549a2051fd599"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-c2413597561aad2552e60153"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-231523c69090f655cf0c498a"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9172481fb2051db0c1bbe8c2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-77240f257e957d2e93cb0b4c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5b86aa63afa6f93626e178ac"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9ba677147775c7fe0cec9f82"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-801d4fadc63cdefebd7c9097"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-a80fa96ad63cc2496bce1c30"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-00d5fd00818d7d780e3f1a62"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-97e87e17bad7f1f3b59b87fc"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-89e3fcdb377b28a6b3fb63f7"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-a91a8d27c2f78af8c9751245"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5a26f388a22f98539b06f69a"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ebd027efa735cada77f95e0c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-92ca0933e3ad069fc9fc4370"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ce74b32b37cf8d55669ce9c0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2eea640517accb6f988004c4"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-85b3caa3229d7620e218dd90"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-917c13b9ba779d2ed28a1a24"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-de59677622ed1bea890a1b15"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d3d20ccdf33b6c1d27e201e6"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9c5255dd12918c8c493adf8f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-dae1e24565c1e64ef77dbcde"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5c8913718710d77b7ea03d95"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-85b88cc58091ac223ef2f301"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d038e09197277db845aaa198"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-58a2e26b2c48ba1fb555b3ba"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-3ec3777af64180cd3f182430"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4250cc9ee0bba267f1571d67"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-39b4eb1048518557714c28a2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2dd868ca57f1e0fe43180c36"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-09977e4d20b6a31dcd37847b"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5a2bcd08c9ae200a68cede31"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-8fc1dfbe4803ca5773c71fbe"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-1b5e7d0197e03fb61d88a4fa"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-965f4a6a9cd56265b4bb0c8e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ca6822635d5a5ecdeebe27d4"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-0c2095cec8a3059f5961dfb1"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-7c15bc5cd8d98762c0e84b58"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d84a957fd98c38d682af3391"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-0da90f04a72eb58f116cbd58"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-64058956907c1adb8665b632"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4c0363f8e5d828cb9a43e3ed"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5406161d59cd3ce382001fbe"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f3f4d25205f7a57c2f65cf47"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5420b22debe9c995ccb61bcd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-6feb5727594ebeebcf08b7b0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f0a027e513f0b1ecd1f46633"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-6670d7afdc66009207eacf2f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f4d5ac395db2784b90706e97"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f6ba047a5c0b4f8ea5145a3d"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-3f6bb123880b8c1e35ec8eca"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f6f2aebdfeeff9b38e52a629"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-239948c42bf2348dbfdd69f3"
+    }
+  ],
+  "normalizations": [
+    {
+      "record": "@S1@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S2@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S3@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S4@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S5@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S6@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S7@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S8@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S9@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S10@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S11@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S12@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S13@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S14@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S15@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S16@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S17@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S18@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S19@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S20@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S21@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S22@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S23@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S24@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S25@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S26@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S27@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S28@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S29@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S30@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S31@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S32@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S33@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S34@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S35@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S36@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S37@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S38@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S39@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S40@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S41@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S42@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S43@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S44@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S45@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S46@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S47@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S48@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S49@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S50@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S51@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S52@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S53@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S54@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S55@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S56@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S57@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S58@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S59@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@S60@",
+      "kind": "source-type-to-note"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-12SL",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-PRH5",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NT7Q",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-Y5Y4",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-P6VX",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-WCRD",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-J4JX",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-BTTJ",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I29@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-97QK",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3Q-VQT2",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQ3-SWB5",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X37-MW54",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-WMNP",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X34-S4NV",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-LVBM",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XSY-GR6Q",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I30@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-12S5",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I31@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQ3-SWBB",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I31@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-WMN5",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I31@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-LVB3",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I31@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-BTKX",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I31@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XSY-GR64",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I31@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-12ST",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I39@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NT61",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I39@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-5XK9",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I39@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-JXHD",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I39@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X37-6N4T",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I40@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-JWQ8",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I40@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-3PX8",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I40@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-HYTL",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I40@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-Q5LP",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I40@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NTX6",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I41@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-JWQX",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I41@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-3PXN",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I41@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-HYT5",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I41@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-Q5LR",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I41@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NTXF",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I48@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-7QFV",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I48@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-MPJH",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I48@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-D392",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I48@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-5XXV",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I48@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CS9T-LFDJ?view=index&lang=uk&groupId=M9MK-VGG",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I50@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-7QF2",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I50@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-MPJ8",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I50@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-D39P",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I50@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-5XXK",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I50@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CS9T-LFDJ?view=index&lang=uk&groupId=M9MK-VGG",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I52@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-97QV",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3H-93C1",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-P6VF",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NT7W",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-PRC7",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-Y5YZ",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-WCRF",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-J4JL",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-BTTV",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I53@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-97Q2",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I70@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-QZW?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=96&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I70@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741?wc=QV25-XP6%3A180600901%2C203864301%2C203870801%26cc%3D1910265&cc=1910265&lang=en&i=57&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I70@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I73@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741?wc=QV25-XP6%3A180600901%2C203864301%2C203870801%26cc%3D1910265&cc=1910265&lang=en&i=57&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I73@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I74@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741?wc=QV25-XP6%3A180600901%2C203864301%2C203870801%26cc%3D1910265&cc=1910265&lang=en&i=57&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I74@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I75@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-QZW?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=96&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I75@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I75@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I76@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-QZW?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=96&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I76@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    },
+    {
+      "record": "@I76@",
+      "kind": "citation-web-reference",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "metadata": "FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N"
+    }
+  ],
+  "newSourceUrls": [
+    {
+      "sourceId": "source-fddfa6e11112f078644b01bb",
+      "record": "@S2@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-5XK9"
+    },
+    {
+      "sourceId": "source-0837581a3bf72fc9675081b0",
+      "record": "@S3@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-JXHD"
+    },
+    {
+      "sourceId": "source-1d12603e9a41ab7dca537341",
+      "record": "@S5@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-97QV"
+    },
+    {
+      "sourceId": "source-a91d796b8d7447a21aec51c6",
+      "record": "@S6@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-12SL"
+    },
+    {
+      "sourceId": "source-f7a10e320e8cfd5fa281ffff",
+      "record": "@S7@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-7QFV"
+    },
+    {
+      "sourceId": "source-e1ada33cf63e59a8f2d493ed",
+      "record": "@S8@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-MPJH"
+    },
+    {
+      "sourceId": "source-cfb3244ad58dc0005c3446ff",
+      "record": "@S9@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-D392"
+    },
+    {
+      "sourceId": "source-439b52b9a06a22252991d6e0",
+      "record": "@S10@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-5XXV"
+    },
+    {
+      "sourceId": "source-f039ff1cd57ce7caa61962cc",
+      "record": "@S11@",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CS9T-LFDJ?view=index&lang=uk&groupId=M9MK-VGG"
+    },
+    {
+      "sourceId": "source-a4eb0af945ce9d7b3a85f523",
+      "record": "@S12@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-7QF2"
+    },
+    {
+      "sourceId": "source-63485d1e4e51d99b9ac56616",
+      "record": "@S13@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-MPJ8"
+    },
+    {
+      "sourceId": "source-4d88c01f0d1206e3a1979601",
+      "record": "@S14@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3L-D39P"
+    },
+    {
+      "sourceId": "source-ca0e214f9217ab15a45ce47a",
+      "record": "@S15@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-5XXK"
+    },
+    {
+      "sourceId": "source-6ca71ce85a4763dcfc94c88e",
+      "record": "@S16@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-PRH5"
+    },
+    {
+      "sourceId": "source-e8bd8291280ad006d26c52ad",
+      "record": "@S17@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NT7Q"
+    },
+    {
+      "sourceId": "source-459ba67b6cfac0ef28a8f587",
+      "record": "@S18@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-Y5Y4"
+    },
+    {
+      "sourceId": "source-24fdc3508ce10e57160dcc93",
+      "record": "@S19@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-P6VX"
+    },
+    {
+      "sourceId": "source-46fbf39a0ea1a0a43ef2f41d",
+      "record": "@S20@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-WCRD"
+    },
+    {
+      "sourceId": "source-0a10043dd72d9ce1ff0da90a",
+      "record": "@S21@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-J4JX"
+    },
+    {
+      "sourceId": "source-b05a251340328da63c35bcd8",
+      "record": "@S22@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-BTTJ"
+    },
+    {
+      "sourceId": "source-3f33be618e23889695e1a6f8",
+      "record": "@S23@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-97QK"
+    },
+    {
+      "sourceId": "source-4bca2b9d4b7aef70fa7ee654",
+      "record": "@S24@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3H-93C1"
+    },
+    {
+      "sourceId": "source-73444eb10cd685123a4a87b1",
+      "record": "@S25@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-P6VF"
+    },
+    {
+      "sourceId": "source-6ed389eff28dbb4ff7cc1a60",
+      "record": "@S26@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NT7W"
+    },
+    {
+      "sourceId": "source-618aa7b97689182a9fdfb09d",
+      "record": "@S27@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-PRC7"
+    },
+    {
+      "sourceId": "source-b6973457f234dc32bdd3a939",
+      "record": "@S28@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3K-Y5YZ"
+    },
+    {
+      "sourceId": "source-48b4b93da9e4d7b6d40d2b56",
+      "record": "@S29@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-WCRF"
+    },
+    {
+      "sourceId": "source-1fe88bf4c6d2077a2c7538db",
+      "record": "@S30@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-J4JL"
+    },
+    {
+      "sourceId": "source-258dd5a4b8db47b918fb23e8",
+      "record": "@S31@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XST-BTTV"
+    },
+    {
+      "sourceId": "source-e18eae6b7c1154786cbca61d",
+      "record": "@S32@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-97Q2"
+    },
+    {
+      "sourceId": "source-1a3bba8e2c0e3a1ba18f7728",
+      "record": "@S33@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-JWQ8"
+    },
+    {
+      "sourceId": "source-658ce6ab111aab7d799d9506",
+      "record": "@S34@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-3PX8"
+    },
+    {
+      "sourceId": "source-f9a9b91e338589ee2e787b45",
+      "record": "@S35@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-HYTL"
+    },
+    {
+      "sourceId": "source-6b007d925bf6ca4f9698db05",
+      "record": "@S36@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-Q5LP"
+    },
+    {
+      "sourceId": "source-ad000d626292dce8bb1a15a5",
+      "record": "@S37@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NTX6"
+    },
+    {
+      "sourceId": "source-bf927828adddb3fbd789dca1",
+      "record": "@S38@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-JWQX"
+    },
+    {
+      "sourceId": "source-9b7a8ee08d869aacf9c0d545",
+      "record": "@S39@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-3PXN"
+    },
+    {
+      "sourceId": "source-d7aba2075be4c5a2938e877d",
+      "record": "@S40@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-HYT5"
+    },
+    {
+      "sourceId": "source-ed8386e8053f679ac9059f63",
+      "record": "@S41@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-Q5LR"
+    },
+    {
+      "sourceId": "source-81201bbd31616658205d7e4b",
+      "record": "@S42@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X32-NTXF"
+    },
+    {
+      "sourceId": "source-bff78fa43a93474bab352bde",
+      "record": "@S43@",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-QZW?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=96&groupId=1910265"
+    },
+    {
+      "sourceId": "source-b287d41f8ee8ddbcbdd8af22",
+      "record": "@S44@",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741?wc=QV25-XP6%3A180600901%2C203864301%2C203870801%26cc%3D1910265&cc=1910265&lang=en&i=57&groupId=1910265"
+    },
+    {
+      "sourceId": "source-3afa8e67dcf8ebca553eafc9",
+      "record": "@S45@",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265"
+    },
+    {
+      "sourceId": "source-95a746d312bccef6f9e86e3a",
+      "record": "@S46@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQ3-SWBB"
+    },
+    {
+      "sourceId": "source-a338510342c307a1fc6ccdee",
+      "record": "@S47@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-WMN5"
+    },
+    {
+      "sourceId": "source-42e1d3b79505def00f9db270",
+      "record": "@S48@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-LVB3"
+    },
+    {
+      "sourceId": "source-192b7406a004c3be8e16b516",
+      "record": "@S49@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-BTKX"
+    },
+    {
+      "sourceId": "source-bf280db4fb92edaa3bf1c02a",
+      "record": "@S50@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XSY-GR64"
+    },
+    {
+      "sourceId": "source-be6953c6bf73fdcc01162eeb",
+      "record": "@S51@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-12ST"
+    },
+    {
+      "sourceId": "source-be71a308ea2f5169ebbc5886",
+      "record": "@S52@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X3Q-VQT2"
+    },
+    {
+      "sourceId": "source-64add2af1871b7304744bc77",
+      "record": "@S53@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQ3-SWB5"
+    },
+    {
+      "sourceId": "source-daa81a0874cebe65ad70c5f9",
+      "record": "@S54@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X37-MW54"
+    },
+    {
+      "sourceId": "source-9b5827bcdf98e888496303f7",
+      "record": "@S55@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-WMNP"
+    },
+    {
+      "sourceId": "source-032b5abbb32a838563ee2199",
+      "record": "@S56@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X34-S4NV"
+    },
+    {
+      "sourceId": "source-cfc4c42c7d848f1bf3f9282e",
+      "record": "@S57@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-LVBM"
+    },
+    {
+      "sourceId": "source-f256d9a8f4f37e8f7e1b68b7",
+      "record": "@S58@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XSY-GR6Q"
+    },
+    {
+      "sourceId": "source-56382debec84308b0690b708",
+      "record": "@S59@",
+      "url": "https://familysearch.org/ark:/61903/1:1:6XQS-12S5"
+    },
+    {
+      "sourceId": "source-faea5ee825b379790d9248d2",
+      "record": "@S60@",
+      "url": "https://familysearch.org/ark:/61903/3:1:33S7-9R9B-741"
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 98,
+    "info": 2,
+    "status": "passed"
+  },
+  "unchangedRootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+}

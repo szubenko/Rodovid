@@ -1,0 +1,24 @@
+.frame[data-tone], .art { --skin-accent: #327cb1; --skin-pale: #e6f3fc; --skin-border: #bcdff5; }
+.frame[data-tone='rose'], .art[data-tone='rose'] { --skin-accent: #d7475a; --skin-pale: #fceae8; --skin-border: #f5c9c3; }
+.frame[data-tone='green'], .art[data-tone='green'] { --skin-accent: #4d8556; --skin-pale: #edf3e5; --skin-border: #c9dcb9; }
+.frame[data-tone='clay'], .art[data-tone='clay'] { --skin-accent: #bc542d; --skin-pale: #fcebdd; --skin-border: #f4ceb0; }
+.frame[data-tone='neutral'], .art[data-tone='neutral'] { --skin-accent: #65756c; --skin-pale: #eff3ef; --skin-border: #d1dcd4; }
+.frame.frame[data-tone] { fill: #fffdf9; stroke: var(--skin-border); stroke-width: 1.4; }
+g[data-center='true'] .frame.frame[data-tone] { stroke: var(--skin-accent); stroke-width: 2; }
+g:hover > .frame.frame[data-tone], g:focus-visible > .frame.frame[data-tone] { stroke: var(--skin-accent); stroke-width: 3; }
+.art { color: var(--skin-accent); }
+.border { color: var(--skin-border); }
+.border path { fill: none; stroke: currentColor; stroke-width: 1.6; }
+.portraitRing { fill: #fff; stroke: var(--skin-border); stroke-width: 1; }
+.badge { fill: var(--skin-pale); }
+.badgeLabel { fill: var(--skin-accent); font: 600 13px system-ui, sans-serif; }
+.name { fill: #25221f; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+.years { fill: #7e807c; font: 15px system-ui, sans-serif; }
+.flourish { fill: none; stroke: currentColor; stroke-width: 1; }
+@media (forced-colors: active) {
+  .frame.frame[data-tone] { fill: Canvas; stroke: CanvasText; }
+  g[data-center='true'] .frame.frame[data-tone], g:focus-visible > .frame.frame[data-tone] { stroke: Highlight; }
+  .art { color: CanvasText; }
+  .name, .years, .badgeLabel { fill: CanvasText; }
+  .badge { fill: Canvas; stroke: CanvasText; }
+}

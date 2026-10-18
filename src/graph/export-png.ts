@@ -56,10 +56,28 @@ function pngBlob(canvas: HTMLCanvasElement): Promise<Blob> {
   }, 'image/png'))
 }
 
+async function embedImages(svg: SVGSVGElement) {
+  await Promise.all([...svg.querySelectorAll('image')].map(async image => {
+    const href = image.getAttribute('href')
+    if (!href || href.startsWith('data:')) return
+    const response = await fetch(new URL(href, document.baseURI))
+    if (!response.ok) throw new Error('Diagram image could not be loaded')
+    const blob = await response.blob()
+    const data = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.onerror = () => reject(new Error('Diagram image could not be embedded'))
+      reader.readAsDataURL(blob)
+    })
+    image.setAttribute('href', data)
+  }))
+}
+
 export async function downloadSvgAsPng(svg: SVGSVGElement, fileName: string, pixelsPerUnit = 3) {
   // Bounds in drawing coordinates include sectors outside the screen and ignore
   // the parent camera's pan/zoom. Change only the exported copy, not the live map.
   const { copy, bounds } = snapshotDiagram(svg)
+  await embedImages(copy)
   if (!bounds.width || !bounds.height) throw new Error('SVG has no dimensions')
   const padding = 24
   const width = bounds.width + padding * 2

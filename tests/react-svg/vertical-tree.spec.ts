@@ -1,6 +1,77 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 
+test('скіни всіх карток вертикального родоводу відповідають стану й заняттю', async ({ page }, testInfo) => {
+  test.setTimeout(60_000)
+  await page.goto('/vertical/I1')
+  const card = page.locator('[data-person-id="I1"]')
+  const nodes = page.locator('[data-person-id]')
+  await expect(card).toHaveAttribute('data-card-skin', 'man')
+  await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
+  await expect(card.getByText('Чоловік', { exact: true })).toHaveCount(1)
+  await expect(page.locator('[data-card-artwork]')).toHaveCount(1)
+  await expect(page.locator('[data-card-artwork]')).toHaveAttribute('href', /stylepicture.*\.png/)
+  await page.getByRole('button', { name: 'До центру', exact: true }).click()
+  // Illustrations, long names and dates stay inside the original card bounds.
+  expect(await nodes.evaluateAll(elements => elements.every(element => {
+    const rect = element.querySelector('rect')!.getBoundingClientRect()
+    return [...element.querySelectorAll('text')].every(text => {
+      const box = text.getBoundingClientRect()
+      return box.left >= rect.left && box.right <= rect.right && box.top >= rect.top && box.bottom <= rect.bottom
+    })
+  }))).toBe(true)
+  await card.screenshot({ path: testInfo.outputPath('owner-skin.png') })
+  await page.screenshot({ path: testInfo.outputPath('vertical-owner-skin.png'), fullPage: true })
+  await page.getByLabel('Покоління', { exact: true }).selectOption('1')
+  const picture = await card.evaluate(element => {
+    const bounds = element.closest('svg')!.querySelector<SVGGraphicsElement>('[data-layer="layout"]')!.getBBox()
+    const rect = element.querySelector('rect')!
+    const size = Math.min(Number(rect.getAttribute('height')) - 24, Number(rect.getAttribute('width')) * .34)
+    return { width: bounds.width + 48,
+      x: Number(rect.getAttribute('x')) + 19 - bounds.x + 24,
+      y: Number(rect.getAttribute('y')) + (Number(rect.getAttribute('height')) - size) / 2 - bounds.y + 24, size }
+  })
+  const pending = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
+  const download = await pending
+  await download.saveAs(testInfo.outputPath('owner-skin-export.png'))
+  const png = readFileSync((await download.path())!).toString('base64')
+  // Decode the actual export: the illustration must retain its warm skin tones.
+  expect(await page.evaluate(async ({ png, picture }) => {
+    const image = new Image()
+    image.src = `data:image/png;base64,${png}`
+    await image.decode()
+    const canvas = document.createElement('canvas')
+    canvas.width = 100; canvas.height = 100
+    const context = canvas.getContext('2d')!
+    const scale = image.width / picture.width
+    context.drawImage(image, picture.x * scale, picture.y * scale, picture.size * scale, picture.size * scale, 0, 0, 100, 100)
+    const pixels = context.getImageData(0, 0, 100, 100).data
+    let warmPixels = 0
+    for (let i = 0; i < pixels.length; i += 4) {
+      if (pixels[i]! > 130 && pixels[i]! > pixels[i + 1]! * 1.2 && pixels[i + 1]! > pixels[i + 2]! * 1.15) warmPixels++
+    }
+    return warmPixels > 400
+  }, { png, picture })).toBe(true)
+  await page.goto('/vertical/I2')
+  await expect(page.locator('[data-center="true"][data-person-id]')).toHaveAttribute('data-person-id', 'I2')
+  await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
+  await expect(page.locator('[data-person-id="I1"]')).toHaveAttribute('data-card-skin', 'man')
+  for (const [id, skin] of [['I9', 'cossack-male'], ['I19', 'cossack-female'], ['I56', 'peasant-male'],
+    ['I57', 'peasant-female'], ['I62', 'potter-male'], ['I11', 'woman']]) {
+    await page.goto(`/vertical/${id}`)
+    const center = page.locator('[data-center="true"][data-person-id]')
+    await expect(center).toHaveAttribute('data-card-skin', skin!)
+    await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
+    await page.getByRole('button', { name: 'До центру', exact: true }).click()
+    await center.screenshot({ path: testInfo.outputPath(`skin-${id}.png`) })
+  }
+  for (const diagram of ['horizontal', 'relatives', 'tree']) {
+    await page.goto(`/${diagram}/I1`)
+    await expect(page.locator('[data-card-skin]')).toHaveCount(0)
+  }
+})
+
 test('вертикальна вкладка: напрям поколінь, докази, кімната й відновлення камери', async ({ page, isMobile }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
@@ -66,8 +137,8 @@ test('Макар більший за бокових родичів після з
   await expect(makar).toHaveAttribute('data-direct-line', 'true')
   const siblings = svg.locator('[data-lane="children"][data-generation="1"][data-direct-line="false"]')
   expect(await siblings.count()).toBeGreaterThan(0)
-  const main = await makar.locator('rect').evaluate(rect => ({ width: Number(rect.getAttribute('width')), height: Number(rect.getAttribute('height')) }))
-  for (const rect of await siblings.locator('rect').all()) {
+  const main = await makar.locator(':scope > rect').evaluate(rect => ({ width: Number(rect.getAttribute('width')), height: Number(rect.getAttribute('height')) }))
+  for (const rect of await siblings.locator(':scope > rect').all()) {
     expect(Number(await rect.getAttribute('width'))).toBeCloseTo(main.width * 0.8)
     expect(Number(await rect.getAttribute('height'))).toBeCloseTo(main.height * 0.8)
   }

@@ -29,7 +29,7 @@ export function LifeBiography({ personId, showHeader = true }: { personId: strin
         <div className={styles.biographyFacts}>{claims.map(claim => <BiographyClaim key={claim.id} claim={claim} />)}</div>
         {statuses.map(event => <div key={event.id} id={`event-${event.id}`} data-event-id={event.id} className={styles.biographyStatus}>
           <div className={styles.biographyClaims}>{orderBiographyClaims(eventClaims(family, event.id)).map(claim =>
-            <BiographyClaim key={claim.id} claim={claim} label={claim.field === 'description' ? 'Стан' : undefined} />
+            <BiographyClaim key={claim.id} claim={claim} personId={personId} label={claim.field === 'description' ? 'Стан' : undefined} />
           )}</div>
           <BiographyRecord event={event} personId={personId} showSource={false} />
         </div>)}
@@ -38,7 +38,7 @@ export function LifeBiography({ personId, showHeader = true }: { personId: strin
           return <div key={event.id} id={`event-${event.id}`} data-event-id={event.id} className={styles.biographyOccupation}>
             {!occupationClaims.some(claim => claim.field === 'description') && <h4>Заняття</h4>}
             <div className={styles.biographyClaims}>{occupationClaims.map(claim =>
-              <BiographyClaim key={claim.id} claim={claim} label={claim.field === 'description' ? 'Заняття' : undefined} />
+              <BiographyClaim key={claim.id} claim={claim} personId={personId} label={claim.field === 'description' ? 'Заняття' : undefined} />
             )}</div>
             <BiographyRecord event={event} personId={personId} />
           </div>

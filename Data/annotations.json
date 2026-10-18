@@ -643,6 +643,13 @@
       "mediaIds": [
         "media-record-natalia-birth-1894-cf550e64689add55"
       ]
+    },
+    {
+      "id": "source-details-4a92e5356a0eee0da363",
+      "sourceId": "source-639757f951c61e9b1fd23e9a",
+      "mediaIds": [
+        "media-record-4a92e5356a0eee0da363"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -652,6 +659,29 @@
       "fragment": {
         "mediaId": "media-record-natalia-birth-1894-cf550e64689add55"
       }
+    },
+    {
+      "id": "evidence-details-4a92e5356a0eee0da363",
+      "evidenceLinkId": "evidenceLink-2f968fbec45438d815bd63aa",
+      "fragment": {
+        "mediaId": "media-record-4a92e5356a0eee0da363"
+      }
+    }
+  ],
+  "sourceRecordFiles": [
+    {
+      "id": "natalia-birth-1894",
+      "sourceId": "source-0c2700dfad0a6f8a580a97f2",
+      "evidenceLinkId": "evidenceLink-dca617f21f205fcd482559e9",
+      "mediaId": "media-record-natalia-birth-1894-cf550e64689add55",
+      "jsonFile": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.json"
+    },
+    {
+      "id": "record-file-4a92e5356a0eee0da363",
+      "sourceId": "source-639757f951c61e9b1fd23e9a",
+      "evidenceLinkId": "evidenceLink-2f968fbec45438d815bd63aa",
+      "mediaId": "media-record-4a92e5356a0eee0da363",
+      "jsonFile": "assets/documents/source-records/зубенко-яков-народження-PFFS-Y8D-6X37-6N4T.json"
     }
   ],
   "media": [
@@ -675,17 +705,34 @@
     {
       "id": "media-record-natalia-birth-1894-cf550e64689add55",
       "path": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.png",
-      "mimeType": "image/png",
-      "title": "Скан запису: natalia-birth-1894",
       "dimensions": {
         "width": 1161,
         "height": 480
       },
+      "mimeType": "image/png",
+      "title": "Скан запису: natalia-birth-1894",
       "provenance": [
         {
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "media-record-natalia-birth-1894-cf550e64689add55"
+        }
+      ]
+    },
+    {
+      "id": "media-record-4a92e5356a0eee0da363",
+      "path": "assets/documents/source-records/зубенко-яков-народження-PFFS-Y8D-6X37-6N4T.png",
+      "mimeType": "image/png",
+      "title": "Скан запису: зубенко-яков-народження-PFFS-Y8D-6X37-6N4T",
+      "dimensions": {
+        "width": 512,
+        "height": 104
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-4a92e5356a0eee0da363"
         }
       ]
     }
@@ -852,14 +899,5 @@
       ]
     }
   ],
-  "memories": [],
-  "sourceRecordFiles": [
-    {
-      "id": "natalia-birth-1894",
-      "sourceId": "source-0c2700dfad0a6f8a580a97f2",
-      "evidenceLinkId": "evidenceLink-dca617f21f205fcd482559e9",
-      "mediaId": "media-record-natalia-birth-1894-cf550e64689add55",
-      "jsonFile": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.json"
-    }
-  ]
+  "memories": []
 }

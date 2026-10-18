@@ -23,7 +23,7 @@ export function BiographyEvents({ personId }: { personId: string }) {
               <ViewLink className={styles.biographyPersonLink} to={`/person/${id}`}>{personName(family, id)}</ViewLink>
             </Fragment>
           )}</>}</h4>
-          <div className={styles.biographyClaims}>{orderBiographyClaims(entry.claims).map(claim => <BiographyClaim key={claim.id} claim={claim} />)}</div>
+          <div className={styles.biographyClaims}>{orderBiographyClaims(entry.claims).map(claim => <BiographyClaim key={claim.id} claim={claim} personId={personId} />)}</div>
           <BiographyRecord event={entry.event} relationship={entry.relationship} personId={personId} labelPersonIds={entry.labelPersonIds} />
         </div>
       </li>)}</ol>}

@@ -3,6 +3,7 @@ import { personName } from '../data/person-name'
 import { confidenceLabels, type Claim } from '../data/schema'
 import { useFamily } from '../navigation/context'
 import { ViewLink } from '../navigation/ViewLink'
+import { eventAge, formatEventAge } from '../room/event-age'
 import { tooltipClaimText, tooltipLifeYears, tooltipPersonTitle, tooltipRelatives, tooltipText, tooltipTimeline, tooltipTimelineYear } from './person-tooltip-data'
 import styles from './PersonTooltip.module.css'
 
@@ -144,16 +145,21 @@ export function PersonTooltip({ container }: { container: RefObject<HTMLDivEleme
   const relatives = tooltipRelatives(family, personId)
   const years = tooltipLifeYears(family, personId)
   const portrait = family.media.find(media => media.id === person.portraitId && media.mimeType.startsWith('image/'))
-  const renderClaim = (claim: Claim) => <div key={claim.id} className={styles.fact} data-claim-id={claim.id} data-field={claim.field}>
-    <p><span className={styles.field}>{fieldLabels[claim.field]}: </span>
-      {claim.field === 'name' && claim.target.kind === 'person'
-        ? <ViewLink className={styles.personLink} to={`/person/${claim.target.id}`}>{tooltipClaimText(family, claim)}</ViewLink>
-        : tooltipClaimText(family, claim)}</p>
-    {claim.field === 'name' && claim.value.patronymic && !claim.value.display.includes(claim.value.patronymic)
-      && <p>{claim.value.patronymic}</p>}
-    {claim.confidence !== 'unassessed' && <p className={styles.meta} data-confidence={claim.confidence}>{confidenceLabels[claim.confidence]}</p>}
-    {claim.explanation && claim.field !== 'name' && tooltipText(claim.explanation) && <p className={styles.explanation}>{tooltipText(claim.explanation)}</p>}
-  </div>
+  const renderClaim = (claim: Claim) => {
+    const age = eventAge(family, personId, claim)
+    return <div key={claim.id} className={styles.fact} data-claim-id={claim.id} data-field={claim.field}>
+      <p className={claim.field === 'date' ? styles.date : undefined}><span><span className={styles.field}>{fieldLabels[claim.field]}: </span>
+        {claim.field === 'name' && claim.target.kind === 'person'
+          ? <ViewLink className={styles.personLink} to={`/person/${claim.target.id}`}>{tooltipClaimText(family, claim)}</ViewLink>
+          : tooltipClaimText(family, claim)}</span>
+        {age !== undefined && <span className={styles.age} data-event-age={age.from} data-event-age-to={age.to}>{formatEventAge(age)}</span>}
+      </p>
+      {claim.field === 'name' && claim.value.patronymic && !claim.value.display.includes(claim.value.patronymic)
+        && <p>{claim.value.patronymic}</p>}
+      {claim.confidence !== 'unassessed' && <p className={styles.meta} data-confidence={claim.confidence}>{confidenceLabels[claim.confidence]}</p>}
+      {claim.explanation && claim.field !== 'name' && tooltipText(claim.explanation) && <p className={styles.explanation}>{tooltipText(claim.explanation)}</p>}
+    </div>
+  }
 
   return <div ref={card} id={id} role="tooltip" tabIndex={-1} className={styles.card} data-tooltip-person-id={personId}
     aria-label={`Відомості: ${title}`}

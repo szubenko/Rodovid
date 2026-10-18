@@ -189,7 +189,7 @@ it('adds Nadia and the screenshot evidence while preserving both families and ca
   const before = load('tests/fixtures/olenka-parent-2026-10-17')
   const after = load('Data')
   expect(after.report.sha256).toBe(nataliaSourcesSha256)
-  expect(after.report.counts).toMatchObject({ people: 85, families: 32, relationships: 136, events: 152, claims: 381, sources: 5, media: 2, evidenceLinks: 16 })
+  expect(after.report.counts).toMatchObject({ people: 85, families: 32, relationships: 136, events: 152, claims: 381, sources: 5, media: 3, evidenceLinks: 16 })
   for (const person of before.family.people) expect(after.family.people.some(p => p.id === person.id)).toBe(true)
   for (const edge of before.family.relationships) expect(after.family.relationships.find(r => r.id === edge.id))
     .toMatchObject({ kind: edge.kind, fromPersonId: edge.fromPersonId, toPersonId: edge.toPersonId })

@@ -20,6 +20,8 @@
 .personFacts > .fact { flex: 0 0 100%; min-width: 0; margin: 0; }
 .personFacts > [data-field='name'] { flex: 0 1 auto; max-width: 100%; }
 .field { color: #596c54; }
+.date > span { display: block; }
+.age { color: #596c54; white-space: nowrap; }
 .card .meta { color: #697461; font-size: 12px; }
 .card .meta { margin-top: 3px; }
 .meta [data-confidence='hypothesis'], .meta [data-confidence='probable'], .meta[data-confidence='hypothesis'], .meta[data-confidence='probable'] { color: #895d28; }
@@ -37,7 +39,7 @@
 @media (forced-colors: active) {
   .card { border-color: CanvasText; color: CanvasText; background: Canvas; box-shadow: none; }
   .header { background: Canvas; border-color: CanvasText; }
-  .card h2, .card h3, .card h4, .card p, .field, .meta [data-confidence], .meta[data-confidence] { color: CanvasText; }
+  .card h2, .card h3, .card h4, .card p, .field, .age, .meta [data-confidence], .meta[data-confidence] { color: CanvasText; }
   .timelineYear { color: CanvasText; }
   .timeline::before { background: CanvasText; }
   .timeline > li::before { background: CanvasText; border-color: Canvas; }

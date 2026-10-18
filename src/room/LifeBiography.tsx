@@ -48,9 +48,10 @@ export function LifeBiography({ personId, showHeader = true }: { personId: strin
       {externalIds.length > 0 && <section className={styles.biographySection} aria-label="Дані вихідного запису">
         <h3 className={styles.biographySectionTitle}>Дані вихідного запису</h3>
         <details className={styles.biographyDetails}><summary>Зовнішні записи</summary>
-          <dl className={styles.biographyRecordFields}>{externalIds.map(({ system, value }, index) =>
-            <div key={`${system}-${index}`}><dt>{system}</dt><dd>{value}</dd></div>
-          )}</dl>
+          <dl className={styles.biographyRecordFields}>{externalIds.map(({ system, value }, index) => {
+            const url = system === 'FamilySearch' ? `https://www.familysearch.org/uk/tree/person/details/${encodeURIComponent(value)}` : undefined
+            return <div key={`${system}-${index}`}><dt>{system}</dt><dd>{url ? <a href={url} target="_blank" rel="noopener noreferrer">{url}</a> : value}</dd></div>
+          })}</dl>
         </details>
       </section>}
     </div>

@@ -1,52 +1,75 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import './places-map.css'
-import type { SiteConfig } from '../data/schema'
-import type { PlaceEvents } from './places-data'
+import type { GeoJsonObject } from 'geojson'
+import ukraineRegions from './maps/ukraine-regions.json'
+import regionsUrl from './maps/ukraine-regions.json?url'
+import { placeName, type PlaceEvents } from './places-data'
 import { eventLabels } from './biography'
-import styles from './Room.module.css'
+import styles from './Places.module.css'
 
-const defaultTiles = { tileUrl: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', attributionText: '© OpenStreetMap contributors', attributionUrl: 'https://www.openstreetmap.org/copyright', maxZoom: 19 }
-
-export default function PlacesMap({ entries, config }: { entries: PlaceEvents[]; config?: SiteConfig['map'] }) {
+export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
+  entries: PlaceEvents[]; selectedPlaceId?: string; onSelect: (placeId: string) => void
+}) {
   const root = useRef<HTMLDivElement>(null)
-  const [unavailable, setUnavailable] = useState(false)
+  const markers = useRef(new Map<string, L.Marker>())
   useEffect(() => {
     const element = root.current!
-    const provider = config ?? defaultTiles
-    const map = L.map(element, { scrollWheelZoom: false, zoomAnimation: false, fadeAnimation: false, markerZoomAnimation: false, inertia: false })
-    const points: L.LatLngTuple[] = entries.flatMap(({ place }) => place.coordinates ? [[place.coordinates.latitude, place.coordinates.longitude] as L.LatLngTuple] : [])
-    if (points.length === 1) map.setView(points[0]!, Math.min(8, provider.maxZoom))
-    else if (points.length) map.fitBounds(points, { padding: [30, 30], maxZoom: Math.min(10, provider.maxZoom) })
-    L.control.zoom({ zoomInTitle: 'Збільшити карту місць', zoomOutTitle: 'Зменшити карту місць' }).addTo(map)
-    map.zoomControl.remove()
-    const attribution = document.createElement('a')
-    attribution.textContent = provider.attributionText; attribution.href = provider.attributionUrl
-    attribution.target = '_blank'; attribution.rel = 'noopener noreferrer'
-    L.tileLayer(provider.tileUrl, { attribution: attribution.outerHTML, maxZoom: provider.maxZoom, keepBuffer: 0, updateWhenIdle: true })
-      .on('tileerror', () => setUnavailable(true)).addTo(map)
+    const map = L.map(element, { zoomControl: false, zoomSnap: 0, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false, boxZoom: false, keyboard: false, zoomAnimation: false, fadeAnimation: false, markerZoomAnimation: false, inertia: false })
+    const outline = L.geoJSON(ukraineRegions as GeoJsonObject, {
+      interactive: false,
+      style: { className: 'rodovid-place-region', color: '#cbcdbb', weight: 0.8, fillColor: '#f6f4e9', fillOpacity: 1, opacity: 1 },
+    }).addTo(map)
+    const bounds = outline.getBounds()
+    for (const { place } of entries) if (place.coordinates) bounds.extend([place.coordinates.latitude, place.coordinates.longitude])
+    const fit = () => { map.invalidateSize({ animate: false, pan: false }); map.fitBounds(bounds, { padding: [24, 32], animate: false }) }
+    fit()
+    map.attributionControl.setPrefix(false)
+    const attribution = document.createElement('span')
+    for (const [label, href] of [
+      ['geoBoundaries', 'https://www.geoboundaries.org/'],
+      ['© OSM', 'https://www.openstreetmap.org/copyright'],
+      ['Дані карти', regionsUrl],
+    ]) {
+      if (attribution.childNodes.length) attribution.append(' · ')
+      const link = document.createElement('a'); link.textContent = label!; link.href = href!
+      link.target = '_blank'; link.rel = 'noopener noreferrer'; attribution.append(link)
+    }
+    map.attributionControl.addAttribution(attribution.innerHTML)
     for (const { place, events } of entries) {
       if (!place.coordinates) continue
       const latLng: L.LatLngTuple = [place.coordinates.latitude, place.coordinates.longitude]
-      const name = place.displayName ?? place.originalName
-      const marker = L.marker(latLng, { title: name, alt: name, icon: L.divIcon({ className: 'rodovid-place-marker', html: '<span aria-hidden="true">●</span>', iconSize: [44, 44], iconAnchor: [22, 22] }) }).addTo(map)
-      marker.getElement()?.setAttribute('data-place-marker', place.id)
-      const popup = document.createElement('div')
-      const heading = document.createElement('strong'); heading.textContent = name; popup.append(heading)
-      for (const { event } of events) {
-        const row = document.createElement('p'), link = document.createElement('a')
-        link.textContent = event.label ?? eventLabels[event.kind]; link.href = `#event-${event.id}`
-        row.append(link); popup.append(row)
-      }
-      marker.bindPopup(popup)
+      const name = placeName(place)
+      const marker = L.marker(latLng, { title: name, alt: name, icon: L.divIcon({ className: 'rodovid-place-marker', html: '<span class="rodovid-place-dot" aria-hidden="true"></span>', iconSize: [44, 44], iconAnchor: [22, 22] }) }).addTo(map)
+      const markerElement = marker.getElement()!
+      markerElement.setAttribute('data-place-marker', place.id)
+      markerElement.setAttribute('aria-label', `${name}: ${events.map(({ event }) => event.label ?? eventLabels[event.kind]).join(', ')}`)
+      markerElement.setAttribute('aria-controls', `place-${place.id}`)
+      markerElement.addEventListener('keydown', event => {
+        if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); onSelect(place.id) }
+      })
+      const label = document.createElement('span'); label.textContent = name
+      const below = events.some(({ event }) => event.kind === 'death')
+      marker.bindTooltip(label, { permanent: true, direction: below ? 'bottom' : 'top', offset: [0, below ? 10 : -10], className: 'rodovid-place-label' })
+      marker.on('click', () => onSelect(place.id))
+      markers.current.set(place.id, marker)
     }
-    const resize = new ResizeObserver(() => map.invalidateSize({ animate: false }))
+    const resize = new ResizeObserver(fit)
     resize.observe(element)
-    return () => { resize.disconnect(); map.remove() }
-  }, [entries, config])
+    const activeMarkers = markers.current
+    return () => { resize.disconnect(); activeMarkers.clear(); map.remove() }
+  }, [entries, onSelect])
+
+  useEffect(() => {
+    for (const [id, marker] of markers.current) {
+      const selected = id === selectedPlaceId
+      marker.getElement()?.setAttribute('aria-pressed', String(selected))
+      marker.getElement()?.classList.toggle('rodovid-place-selected', selected)
+      marker.setZIndexOffset(selected ? 1000 : 0)
+    }
+  }, [selectedPlaceId, entries, onSelect])
   return <div>
-    {unavailable && <p role="status">Підкладка недоступна. Назви, координати й події залишаються у списку нижче.</p>}
-    <div ref={root} className={styles.placeMap} aria-label="Географічна карта місць" />
+    <div ref={root} className={styles.map} aria-label="Географічна карта місць" />
   </div>
 }

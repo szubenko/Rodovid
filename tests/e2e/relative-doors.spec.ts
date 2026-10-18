@@ -4,7 +4,7 @@ test('separate parent buttons navigate directly with keyboard and preserve room 
   await page.goto('/person/I1')
   const doors = page.getByRole('region', { name: 'Переходи до рідних' })
   // The current export includes I1's spouse; only children are absent.
-  await expect(doors.getByText('Записів у цьому родоводі немає.', { exact: true })).toHaveCount(1)
+  await expect(doors.getByText('Записів у цьому родоводі немає.', { exact: true })).toHaveCount(0)
   const parents = doors.locator('div').filter({ has: page.getByRole('heading', { name: 'Батьки', exact: true }) }).last()
   await expect(parents.getByRole('button')).toHaveCount(2)
   await expect(doors.getByRole('button', { name: /^Обрати: батьки/ })).toHaveCount(0)

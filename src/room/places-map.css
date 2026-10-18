@@ -1,5 +1,7 @@
-.rodovid-place-marker { display: grid; place-items: center; font-size: 30px; color: #8c3d32; text-shadow: 0 1px 3px #fff; }
-.leaflet-container { color: #382b23; background: #e6dfd2; }
-.leaflet-container .leaflet-control-attribution { font-size: 11px; color: #382b23; background: #fffaf0; }
-.leaflet-container .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; }
-.leaflet-popup-content a { display: inline-flex; min-height: 44px; align-items: center; }
+.rodovid-place-marker { display: grid; place-items: center; background: transparent; border: 0; }
+.rodovid-place-dot { display: block; width: 16px; height: 16px; border-radius: 50%; background: #b4443c; }
+.rodovid-place-selected .rodovid-place-dot { box-shadow: 0 0 0 6px #b4443c2b; }
+.rodovid-place-marker:focus-visible { outline: 2px solid #58714f; border-radius: 50%; }
+.leaflet-tooltip.rodovid-place-label { white-space: nowrap; padding: 4px 8px; color: #344b3e; background: #fffefa; border: 1px solid #d5ded1; font: 12px/1.4 var(--font-body); box-shadow: 0 1px 4px #344b3e14; }
+.leaflet-container { color: #344b3e; background: #e7ebe3; }
+.leaflet-container .leaflet-control-attribution { font-size: 11px; color: #344b3e; background: #fffefa; }

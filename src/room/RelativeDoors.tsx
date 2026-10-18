@@ -28,8 +28,7 @@ export function RelativeDoors({ personId }: { personId: string }) {
     <h2>Рідні</h2>
     <motion.div className={styles.doors} animate={{ rotateY: opening && !reduced ? -7 : 0, opacity: opening && !reduced ? 0.75 : 1 }} transition={{ duration: reduced ? 0 : 0.16 }} style={{ transformOrigin: 'left' }}>{groups.map(group => <div key={group.label}>
       <h3>{group.label}</h3>
-      {group.ids.length === 0 ? <p className={styles.empty}>Записів у цьому родоводі немає.</p>
-        : <div className={styles.relativeButtons}>
+      {group.ids.length > 0 && <div className={styles.relativeButtons}>
           {group.ids.map(id => <button key={id} disabled={opening} onClick={() => choose(id)}>{personName(family, id)}</button>)}
         </div>}
     </div>)}</motion.div>

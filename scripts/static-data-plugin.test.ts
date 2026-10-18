@@ -109,6 +109,30 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
         displayName: 'Уточнене українське місце', explanation: 'Уточнення власника' }
       const current = async () => familyDataSchema.parse(await (await fetch(`${server.resolvedUrls!.local[0]}data/family.json`)).json())
 
+      const stem = 'заприса-наталія-народження-PFFS-2YZ-6X32-NT61'
+      const imagePath = `assets/documents/source-records/${stem}.png`
+      const jsonPath = `assets/documents/source-records/${stem}.json`
+      const citation = initial.evidenceLinks[0]!
+      await put(`Data/${imagePath}`, png)
+      await json(`Data/${jsonPath}`, { url: 'https://example.org/record', description: 'Початковий опис.' })
+      await json('Data/annotations.json', { schemaVersion: 1,
+        media: [{ id: 'paired-image', path: imagePath, mimeType: 'image/png', title: 'Тестовий скан', provenance }],
+        sourceRecordFiles: [{ id: 'paired-record', sourceId: citation.sourceId, evidenceLinkId: citation.id,
+          mediaId: 'paired-image', jsonFile: jsonPath }],
+      })
+      await vi.waitFor(async () => {
+        expect((await current()).evidenceLinks.find(link => link.id === citation.id)?.transcription).toBe('Початковий опис.')
+      }, { timeout: 15_000 })
+      const scan = await fetch(`${server.resolvedUrls!.local[0]}${encodeURI(imagePath)}`)
+      expect(scan.status).toBe(200)
+      expect(Buffer.from(await scan.arrayBuffer())).toEqual(png)
+      messages.mockClear()
+      await json(`Data/${jsonPath}`, { url: 'https://example.org/record', description: 'Оновлений опис із JSON.' })
+      await vi.waitFor(async () => {
+        expect((await current()).evidenceLinks.find(link => link.id === citation.id)?.transcription).toBe('Оновлений опис із JSON.')
+      }, { timeout: 15_000 })
+      expect(messages).toHaveBeenCalledWith({ type: 'full-reload' })
+
       // Reproduce an edit while Vite stays open: HTTP bytes and browser reload must both update.
       await json('Data/annotations.json', { schemaVersion: 1, placeEnrichments: [updatedPlace] })
       await vi.waitFor(async () => {

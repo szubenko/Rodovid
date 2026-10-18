@@ -102,7 +102,7 @@ export const placeSchema = z.strictObject({
   description: text.optional(), provenance,
 })
 
-const assetPath = z.string().regex(/^assets\/(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.[A-Za-z0-9]+$/)
+const assetPath = z.string().regex(/^assets\/(?:[\p{L}\p{N}_-]+\/)*[\p{L}\p{N}_-]+\.[A-Za-z0-9]+$/u)
 const webUrl = z.url().refine((url) => /^https?:\/\//.test(url), 'Use an HTTP(S) URL')
 
 export const mediaSchema = z.strictObject({

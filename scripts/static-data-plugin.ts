@@ -81,7 +81,9 @@ export function staticDataPlugin(): Plugin {
       }
       server.middlewares.use((request, response, next) => {
         const path = (request.url ?? '').split('?')[0]!
-        const file = path.startsWith(config.base) ? files.get(path.slice(config.base.length)) : undefined
+        let key: string
+        try { key = decodeURIComponent(path.slice(config.base.length)) } catch { return next() }
+        const file = path.startsWith(config.base) ? files.get(key) : undefined
         if (!file || !['GET', 'HEAD'].includes(request.method ?? '')) return next()
         response.setHeader('Content-Type', file.mimeType)
         response.setHeader('Cache-Control', 'no-store')

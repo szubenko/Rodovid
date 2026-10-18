@@ -13,12 +13,12 @@ export function PersonRoom({ personId, showBiographyHeader = true }: {
   const { reduced } = useMotionPreference()
   return <motion.article className={styles.room} aria-label="Відомості про людину" initial={reduced ? false : { opacity: 0.88, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.18 }}>
     <nav className={styles.sections} aria-label="Розділи кімнати">
-      {showBiographyHeader && <a href="#biography">Життєпис</a>}<a href="#relatives">Рідні</a><a href="#memories">Спогади</a><a href="#photos">Фото</a><a href="#places">Місця</a>
+      {showBiographyHeader && <a href="#biography">Життєпис</a>}<a href="#memories">Спогади</a><a href="#relatives">Рідні</a><a href="#photos">Фото</a><a href="#places">Місця</a>
     </nav>
     <LifeBiography personId={personId} showHeader={showBiographyHeader} />
-    <RelativeDoors personId={personId} />
     <div className={styles.grid}>
       <Memories personId={personId} />
+      <RelativeDoors personId={personId} />
       <PhotoGallery personId={personId} />
       <Places personId={personId} />
     </div>

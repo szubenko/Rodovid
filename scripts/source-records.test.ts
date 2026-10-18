@@ -1,7 +1,8 @@
 import { cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { isAbsolute, relative, resolve } from 'node:path'
 import { afterEach, expect, it } from 'vitest'
-import { addSourceRecord } from './source-records.ts'
+import { addSourcePair, addSourceRecord } from './source-records.ts'
+import { resolveSourceRecordFiles } from './source-record-files.ts'
 import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
 
@@ -32,7 +33,7 @@ async function load(directory: string) {
   const read = (file: string) => readFile(resolve(directory, 'Data', file))
   const json = async (file: string) => JSON.parse((await read(file)).toString())
   return convertGedcom({ bytes: await read('Zubenko.ged'), config: await json('site.json'),
-    identities: await json('identities.json'), supplements: await json('annotations.json') })
+    identities: await json('identities.json'), supplements: resolveSourceRecordFiles(await json('annotations.json'), resolve(directory, 'Data')) })
 }
 const record = { id: 'natalia-birth-test', eventId: 'event-836c7d8b122ca60e05653546',
   sourceId: 'source-0c2700dfad0a6f8a580a97f2', url: 'https://www.familysearch.org/ark:/61903/1:1:6X32-NT61',
@@ -66,13 +67,53 @@ it('previews without writes, then attaches text and a real copied scan to an imp
 
 it('adds a new source without loosening checks on the original citations', async () => {
   const directory = await fixture()
-  await addSourceRecord(directory, { ...record, sourceId: undefined, id: 'new-record', title: 'Умовний новий документ' }, directory, true)
+  await addSourceRecord(directory, { ...record, sourceId: undefined, id: 'new-record', title: 'Умовний новий документ', url: 'https://www.familysearch.org/ark:/61903/1:1:TEST-0001' }, directory, true)
   const after = await load(directory)
   expect(after.family.sources).toHaveLength(6)
   expect(after.family.evidenceLinks).toHaveLength(17)
   expect((await validateData(after.family, { assetsRoot: resolve(directory, 'Data'), conversion: after.report })).status).toBe('passed')
   after.family.evidenceLinks = after.family.evidenceLinks.filter(link => link.sourceId !== record.sourceId)
   expect((await validateData(after.family, { assetsRoot: resolve(directory, 'Data'), conversion: after.report })).status).toBe('failed')
+})
+
+it('imports the two-field JSON by filename IDs and reads later edits directly from that JSON', async () => {
+  const directory = await fixture()
+  const name = 'заприса-наталія-народження-PFFS-2YZ-6X32-NT61'
+  await mkdir(resolve(directory, 'incoming'))
+  const file = resolve(directory, 'incoming', `${name}.json`)
+  const metadata = { url: record.url, description: 'Перший рядок.\nДругий рядок.' }
+  await writeFile(file, JSON.stringify(metadata))
+  await cp(resolve(directory, 'scan.png'), resolve(directory, 'incoming', `${name}.png`))
+  const result = await addSourcePair(directory, file, true)
+  const path = resolve(directory, 'Data', result.jsonFile)
+  expect(JSON.parse(await readFile(path, 'utf8'))).toEqual(metadata)
+  const before = await load(directory)
+  expect(before.family.media.find(media => media.id === result.mediaId)!.path).toBe(`assets/documents/source-records/${name}.png`)
+  const link = () => before.family.evidenceLinks.find(link => link.sourceId === record.sourceId && link.target.id === record.eventId)!
+  expect(link().transcription).toBe(metadata.description)
+  await writeFile(path, JSON.stringify({ ...metadata, description: 'Виправлений опис із JSON.' }))
+  const updated = await load(directory)
+  expect(updated.family.evidenceLinks.find(item => item.id === link().id)!.transcription).toBe('Виправлений опис із JSON.')
+  const raw = JSON.parse(await readFile(resolve(directory, 'Data/annotations.json'), 'utf8'))
+  expect(raw.evidenceEnrichments.find((entry: { evidenceLinkId: string }) => entry.evidenceLinkId === link().id)).not.toHaveProperty('transcription')
+  await writeFile(path, JSON.stringify({ url: 'https://www.familysearch.org/ark:/61903/3:1:TEST-IMAGE', description: 'Посилання на зображення.' }))
+  await addSourcePair(directory, path, true)
+  expect((await load(directory)).family.sources).toHaveLength(before.family.sources.length)
+  await writeFile(path, JSON.stringify({ ...metadata, description: '' }))
+  expect((await load(directory)).family.evidenceLinks.find(item => item.id === link().id)).not.toHaveProperty('transcription')
+  await writeFile(path, JSON.stringify({ ...metadata, unexpected: true }))
+  await expect(load(directory)).rejects.toThrow()
+}, 20_000)
+
+it('rejects an incorrect filename ID and missing sibling scan without changing annotations', async () => {
+  const directory = await fixture()
+  const file = resolve(directory, 'заприса-наталія-народження-PFFS-2YZ-TEST-0001.json')
+  const annotations = await readFile(resolve(directory, 'Data/annotations.json'))
+  await writeFile(file, JSON.stringify({ url: record.url, description: 'Текст' }))
+  await expect(addSourcePair(directory, file, true)).rejects.toThrow('не збігаються')
+  await writeFile(file, JSON.stringify({ url: 'https://familysearch.org/ark:/61903/1:1:TEST-0001', description: 'Текст' }))
+  await expect(addSourcePair(directory, file, true)).rejects.toThrow('рівно один скан')
+  expect(await readFile(resolve(directory, 'Data/annotations.json'))).toEqual(annotations)
 })
 
 it('rejects missing event targets and invalid images before changing annotations', async () => {

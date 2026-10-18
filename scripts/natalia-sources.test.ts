@@ -1,4 +1,6 @@
 import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { resolveSourceRecordFiles } from './source-record-files'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert'
 import { biographyTimeline } from '../src/graph/person-tooltip-data'
@@ -9,7 +11,7 @@ it('assigns Natalia’s four sources to her birth, marriage and two child births
   const read = (file: string) => readFileSync(new URL(`../Data/${file}`, import.meta.url))
   const json = (file: string) => JSON.parse(read(file).toString())
   const { family } = convertGedcom({ bytes: read('Zubenko.ged'), config: json('site.json'),
-    supplements: json('annotations.json'), identities: json('identities.json') })
+    supplements: resolveSourceRecordFiles(json('annotations.json'), fileURLToPath(new URL('../Data', import.meta.url))), identities: json('identities.json') })
   const personId = family.people.find(person => person.externalIds.some(id => id.value === 'PFFS-2YZ'))!.id
   expect(personFullName(family, personId)).toBe('Наталія Семенівна Заприса')
   expect(personName(family, personId)).toBe('Наталия Заприса')

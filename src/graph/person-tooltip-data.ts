@@ -62,7 +62,7 @@ function eventDateKey(family: FamilyData, event: FamilyEvent): number {
   return dates.map(claim => dateSortKey(claim.value)).find(Number.isFinite) ?? Infinity
 }
 
-function birthDateKey(family: FamilyData, personId: string): number {
+export function birthDateKey(family: FamilyData, personId: string): number {
   const births = family.events.filter(event => event.kind === 'birth'
     && event.participants.some(person => person.personId === personId && person.role === 'subject'))
   return Math.min(...births.map(event => eventDateKey(family, event)))

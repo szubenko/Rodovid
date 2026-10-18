@@ -26,7 +26,14 @@ test('Natalia’s sources appear under the four relevant events and not her deat
     }
     await expect(source).not.toContainText('Дата:')
     await expect(source).not.toContainText('Тип події:')
-    await expect(source.getByRole('link', { name: new RegExp(ark!) })).toHaveAttribute('href', `https://familysearch.org/ark:/61903/1:1:${ark}`)
+    await expect(source.getByRole('link', { name: new RegExp(ark!) })).toHaveAttribute('href', new RegExp(`^https://(?:www\\.)?familysearch\\.org/ark:/61903/1:1:${ark}$`))
+    if (recordId === '@I39@' && kind === 'birth') {
+      const scan = source.locator('img')
+      await expect(scan).toBeVisible()
+      await expect(scan).toHaveAttribute('src', /заприса-наталія-народження-PFFS-2YZ-6X32-NT61\.png$/)
+      await expect.poll(() => scan.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+      await expect(source).toContainText('Собственникъ Симеонъ Григоріевъ Заприса')
+    }
     await expect(source.getByText('Опис', { exact: true })).toBeVisible()
     await expect(source.getByText('Текст запису (опис)', { exact: true })).toHaveCount(0)
     await expect(source.getByText('Скриншот запису', { exact: true })).toHaveCount(0)

@@ -65,7 +65,7 @@ test('all centers expose readable full-name alternatives and large touch targets
   await info.attach('center-readiness.json', { path: timingPath, contentType: 'application/json' })
 })
 
-test('long names reflow with doubled text and keyboard can leave a relative chooser', async ({ page }, info) => {
+test('long names reflow with doubled text and relatives navigate directly by keyboard', async ({ page }, info) => {
   const data = structuredClone(family)
   const claim = data.claims.find(c => c.field === 'name' && c.target.id === 'I1')!
   const name = 'ТестовеДужеДовгеПрізвищеБезПробілів Олександра Катерина Іванівна'
@@ -78,19 +78,11 @@ test('long names reflow with doubled text and keyboard can leave a relative choo
   expect(await page.locator('html').evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(320)
   await page.screenshot({ path: info.outputPath('large-text-320.png') })
   await page.goto('/person/I12')
-  const open = page.getByRole('button', { name: /^Обрати: діти/ })
-  await open.focus()
+  const child = page.locator('#relatives').getByRole('heading', { name: 'Діти', exact: true }).locator('..').getByRole('button').first()
+  await child.focus()
   await page.keyboard.press('Enter')
-  const dialog = page.getByRole('dialog')
-  await expect(dialog.getByRole('button', { name: 'Закрити', exact: true })).toBeFocused()
-  // Chromium can focus the scrollable dialog body as well as its buttons.
-  for (let step = 0; step < 2; step++) {
-    await page.keyboard.press('Tab')
-    expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true)
-  }
-  await page.keyboard.press('Escape')
-  await expect(open).toBeFocused()
-  await expect(dialog).toHaveCount(0)
+  await expect(page).not.toHaveURL(/\/person\/I12$/)
+  await expect(page.getByRole('dialog')).toHaveCount(0)
 })
 
 test('production defers map and PDF code and files until opened', async ({ page }, info) => {

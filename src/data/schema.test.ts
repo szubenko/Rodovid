@@ -132,7 +132,7 @@ describe('family data contract v1', () => {
     expect(siteConfigSchema.parse(site).homePersonId).toBe('I1')
     const familySupplements = supplementsSchema.parse(annotations)
     expect(familySupplements.assessments.every((entry) => entry.confidence === 'unassessed')).toBe(true)
-    expect(familySupplements.sources).toEqual([])
+    expect(familySupplements.sources.every(source => source.provenance.every(origin => origin.kind === 'supplement'))).toBe(true)
     expect(familySupplements.additionalClaims).toEqual([])
     expect(siteConfigSchema.safeParse({ ...site, currentCenterId: 'I2' }).success).toBe(false)
     expect(supplementsSchema.safeParse({ ...annotations, people: full.people }).success).toBe(false)

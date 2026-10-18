@@ -42,8 +42,12 @@ export const supplementsSchema = z.strictObject({
     url: sourceSchema.shape.url, mediaIds: z.array(id).optional(),
   })).default([]),
   evidenceEnrichments: z.array(z.strictObject({
-    id, evidenceLinkId: id, transcription: text.optional(),
+    id, evidenceLinkId: id, transcription: z.string().optional(),
     explanation: text.optional(), fragment: evidenceLinkSchema.shape.fragment,
+  })).default([]),
+  sourceRecordFiles: z.array(z.strictObject({
+    id, sourceId: id, evidenceLinkId: id, mediaId: id,
+    jsonFile: z.string().regex(/^assets\/documents\/source-records\/[\p{L}\p{N}_-]+\.json$/u),
   })).default([]),
   media: z.array(mediaSchema).default([]),
   evidenceLinks: z.array(evidenceLinkSchema).default([]),

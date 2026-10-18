@@ -73,6 +73,7 @@ export function assertReferences(data: FamilyData) {
 export function mergeSupplements(input: FamilyData, additions: unknown, file = 'Data/annotations.json'): FamilyData {
   const data = structuredClone(input)
   const supplements = supplementsSchema.parse(additions)
+  if (supplements.sourceRecordFiles.length) throw new Error('Resolve source record JSON files before GEDCOM conversion')
   const origin = (entryId: string) => ({ kind: 'supplement' as const, file, entryId })
   // Do not let an addition masquerade as a fact imported from GEDCOM.
   for (const key of ['sources', 'media', 'evidenceLinks', 'memories'] as const) {
@@ -116,6 +117,7 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
     for (const field of ['transcription', 'explanation'] as const) {
       if (entry[field] !== undefined) Object.assign(link, { [field]: entry[field] })
     }
+    if (link.transcription === '') delete link.transcription
     if (entry.fragment) link.fragment = { ...link.fragment, ...entry.fragment }
     link.provenance.push(origin(entry.id))
   }

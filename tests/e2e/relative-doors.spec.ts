@@ -28,11 +28,13 @@ test('separate parent buttons navigate directly with keyboard and preserve room 
   await expect(page).toHaveURL(/\/tree\/I2$/)
 })
 
-test('spouse and duplicate child records choose unique people; rapid and reduced motion navigation', async ({ page }) => {
+test('children appear as direct buttons; rapid and reduced motion navigation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/person/I12')
   const doors = page.getByRole('region', { name: 'Переходи до рідних' })
-  await expect(doors.getByRole('button', { name: 'Обрати: діти (7)' })).toBeVisible()
+  const children = doors.getByRole('heading', { name: 'Діти', exact: true }).locator('..')
+  await expect(children.getByRole('button')).toHaveCount(7)
+  await expect(doors.getByRole('button', { name: /^Обрати:/ })).toHaveCount(0)
   await doors.getByRole('button', { name: 'Агафия Прокофиева Волинцова' }).evaluate((el: HTMLButtonElement) => { el.click(); el.click(); el.click() })
   await expect(page).toHaveURL(/\/person\/I11$/)
   await page.getByRole('button', { name: /^(?:← )?Назад$/ }).click()

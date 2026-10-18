@@ -45,10 +45,8 @@
 .room button:disabled, .modal button:disabled { opacity: 0.6; cursor: default; }
 .doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
 .doors h3 { margin: 0 0 0.5rem; }
-.parentButtons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.parentButtons button { max-width: 100%; text-align: left; }
-.choices { list-style: none; padding: 0; display: grid; gap: 0.7rem; }
-.choices button { width: 100%; text-align: left; }
+.relativeButtons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.relativeButtons button { max-width: 100%; text-align: left; }
 .modal { width: min(90vw, 55rem); max-height: 90svh; overflow: hidden; padding: clamp(1rem, 3vw, 2rem); color: var(--color-text); background: #fffaf0; border: 3px solid #74503a; border-radius: 0.4rem; overflow-wrap: anywhere; }
 .modal[open] { display: flex; flex-direction: column; }
 .modalBody { min-height: 0; overflow: auto; }

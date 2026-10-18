@@ -649,7 +649,6 @@
     {
       "id": "evidence-details-natalia-birth-1894",
       "evidenceLinkId": "evidenceLink-dca617f21f205fcd482559e9",
-      "transcription": "Собственникъ Симеонъ Григоріевъ Заприса, и законная жена его Евдокія Аврамова; оба православные.",
       "fragment": {
         "mediaId": "media-record-natalia-birth-1894-cf550e64689add55"
       }
@@ -675,7 +674,7 @@
     },
     {
       "id": "media-record-natalia-birth-1894-cf550e64689add55",
-      "path": "assets/documents/source-records/natalia-birth-1894-cf550e64689add55.png",
+      "path": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.png",
       "mimeType": "image/png",
       "title": "Скан запису: natalia-birth-1894",
       "dimensions": {
@@ -853,5 +852,14 @@
       ]
     }
   ],
-  "memories": []
+  "memories": [],
+  "sourceRecordFiles": [
+    {
+      "id": "natalia-birth-1894",
+      "sourceId": "source-0c2700dfad0a6f8a580a97f2",
+      "evidenceLinkId": "evidenceLink-dca617f21f205fcd482559e9",
+      "mediaId": "media-record-natalia-birth-1894-cf550e64689add55",
+      "jsonFile": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.json"
+    }
+  ]
 }

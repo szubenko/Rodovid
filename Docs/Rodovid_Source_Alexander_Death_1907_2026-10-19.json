@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-19",
+  "status": "approved-and-attached",
+  "ownerDecision": "Власник погодив попередньо показаний опис і скрин для обох джерел відповіддю «ок».",
+  "description": "Александръ, сынъ села Чеплеевки кр. собственника Симеона Григоріева Заприса. Умеръ 2 марта, погребенъ 3 марта. Возрастъ — 11 лѣтъ. Запись № 10.",
+  "records": [
+    {
+      "sourceId": "source-061cf6a8e3d5c1cb027ff424",
+      "jsonFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXF.json",
+      "scanFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXF.png",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X39-QQXF",
+      "previous": {
+        "url": "https://familysearch.org/ark:/61903/1:1:6X39-QQXF",
+        "description": ""
+      },
+      "mediaId": "media-file-source-061cf6a8e3d5c1cb027ff424",
+      "evidenceLinkIds": [
+        "evidenceLink-d813a4a7a55c538a66f24179",
+        "evidenceLink-b061ad5323cc63ca4efcd15c"
+      ]
+    },
+    {
+      "sourceId": "source-0adddae78903e80ab09d3997",
+      "jsonFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXZ.json",
+      "scanFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXZ.png",
+      "url": "https://familysearch.org/ark:/61903/1:1:6X39-QQXZ",
+      "previous": {
+        "url": "https://familysearch.org/ark:/61903/1:1:6X39-QQXZ",
+        "description": ""
+      },
+      "mediaId": "media-file-source-0adddae78903e80ab09d3997",
+      "evidenceLinkIds": [
+        "evidenceLink-bfd4f40f5580a8d61367ef78",
+        "evidenceLink-a0e2fb845f6cd74b4b872569"
+      ]
+    }
+  ],
+  "imageSha256": "1fe94940321ada4bf95740373ff1f10ee64138dc6a884d753dc6e62b91e36eb7",
+  "backup": "tmp/source-records/alexander-death-1907-1792440938004",
+  "originalImage": "E:/RodovidZubenko/SelectedBooks/заприса-александр-смерть-1907-акт-10.png",
+  "editorialNotes": [
+    "Підготовлено генеалогічний витяг для опису джерела; порядок фраз упорядковано. Це не повна рядкова транскрипція фрагмента з підписами причту.",
+    "Назви граф на обрізаному зображенні відсутні. Значення 2 і 3 під заголовком «Мартъ» прочитані як дні смерті та поховання відповідно до контексту запису про смерть.",
+    "1907 рік міститься в попередньо імпортованому експорті й бібліографії індексів. На цьому фрагменті рік не видно; до тексту зображення його не додано."
+  ],
+  "unchangedInputSha256": {
+    "Zubenko.ged": "ae71559e7098f40742bc84dbb9c78858a44f30739956ee353ae489a639865290",
+    "identities.json": "18f8e6add5b54580050a233d629c7ad7af37383b634037f5d4321294a187412a",
+    "site.json": "c4fc65141a14a9bfe052c05e5da27da9c9815a8103a11c670447d7fb4165384d",
+    "Zubenko.rmtree": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+  },
+  "historicalVerification": "Переглянуто наданий власником фрагмент метричного запису № 10. Дні смерті й поховання — 2 та 3 березня, вік — 11 років, батько — Симеон Григоріев Заприса. 1907 рік походить із попереднього експорту; на скрині він відсутній. Зміни структурованих фактів та оцінок достовірності не виконувалися.",
+  "counts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 172,
+    "claims": 405,
+    "places": 72,
+    "sources": 80,
+    "media": 79,
+    "evidenceLinks": 166,
+    "memories": 0
+  },
+  "remaining": {
+    "all": 2,
+    "directAncestors": 0,
+    "sourceRecords": [
+      "@S78@",
+      "@S79@"
+    ]
+  },
+  "checks": {
+    "factsUnchanged": true,
+    "existingMediaUnchanged": true,
+    "unchangedInputs": true,
+    "identicalScans": true,
+    "identicalDescriptions": true,
+    "sourceSyncConflicts": 0,
+    "sourceSyncChanges": 0
+  }
+}

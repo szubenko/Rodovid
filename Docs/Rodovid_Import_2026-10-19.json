@@ -1,0 +1,2652 @@
+{
+  "date": "2026-10-19",
+  "source": "E:/RodovidZubenko/Magic/ZubenkoNewFormat.reviewed.10.19.26.ged",
+  "sourceSha256": "753e0fca4325ff5e7843c408460051e88ebdb18868c9a52048486580db35dda6",
+  "previousSha256": "a2b8ea7eaae60f6844cc5cb4a0bf3a3d6d84b707342205f19365e63d7924163f",
+  "sha256": "ae71559e7098f40742bc84dbb9c78858a44f30739956ee353ae489a639865290",
+  "backup": "tests/fixtures/import-before-2026-10-19",
+  "method": "Додавання до погодженого дерева за FamilySearch ID з явними зіставленнями; попередні факти, локальні матеріали та виправлення збережені.",
+  "historicalVerification": "Перевірено локальний експорт. Нові індекси й скани зовні не відкривалися. 15 сканів та описів повторно використані за явним підтвердженням власника; оцінки достовірності не підвищені.",
+  "personMap": {
+    "@I1@": "@I1@",
+    "@I2@": "@I2@",
+    "@I3@": "@I3@",
+    "@I4@": "@I4@",
+    "@I5@": "@I5@",
+    "@I6@": "@I6@",
+    "@I7@": "@I7@",
+    "@I8@": "@I8@",
+    "@I9@": "@I9@",
+    "@I10@": "@I10@",
+    "@I11@": "@I11@",
+    "@I12@": "@I12@",
+    "@I13@": "@I13@",
+    "@I14@": "@I14@",
+    "@I15@": "@I15@",
+    "@I16@": "@I16@",
+    "@I17@": "@I17@",
+    "@I18@": "@I18@",
+    "@I19@": "@I19@",
+    "@I20@": "@I20@",
+    "@I21@": "@I21@",
+    "@I22@": "@I22@",
+    "@I23@": "@I23@",
+    "@I24@": "@I24@",
+    "@I25@": "@I25@",
+    "@I26@": "@I26@",
+    "@I27@": "@I50@",
+    "@I28@": "@I51@",
+    "@I29@": "@I52@",
+    "@I30@": "@I60@",
+    "@I31@": "@I61@",
+    "@I32@": "@I75@",
+    "@I33@": "@I76@",
+    "@I34@": "@I62@",
+    "@I35@": "@I63@",
+    "@I36@": "@I64@",
+    "@I37@": "@I67@",
+    "@I38@": "@I68@",
+    "@I39@": "@I39@",
+    "@I40@": "@I69@",
+    "@I41@": "@I77@",
+    "@I42@": "@I78@",
+    "@I43@": "@I79@",
+    "@I44@": "@I80@",
+    "@I45@": "@I81@",
+    "@I46@": "@I82@",
+    "@I47@": "@I83@",
+    "@I48@": "@I44@",
+    "@I49@": "@I70@",
+    "@I50@": "@I45@",
+    "@I51@": "@I71@",
+    "@I52@": "@I38@",
+    "@I53@": "@I53@",
+    "@I54@": "@I54@",
+    "@I55@": "@I55@",
+    "@I56@": "@I56@",
+    "@I57@": "@I57@",
+    "@I58@": "@I58@",
+    "@I59@": "@I59@",
+    "@I60@": "@I66@",
+    "@I61@": "@I48@",
+    "@I62@": "@I47@",
+    "@I63@": "@I46@",
+    "@I64@": "@I49@",
+    "@I65@": "@I72@",
+    "@I66@": "@I40@",
+    "@I67@": "@I41@",
+    "@I68@": "@I42@",
+    "@I69@": "@I27@",
+    "@I70@": "@I28@",
+    "@I71@": "@I29@",
+    "@I72@": "@I30@",
+    "@I73@": "@I31@",
+    "@I74@": "@I32@",
+    "@I75@": "@I33@",
+    "@I76@": "@I34@",
+    "@I77@": "@I35@",
+    "@I78@": "@I36@",
+    "@I79@": "@I37@",
+    "@I80@": "@I84@",
+    "@I81@": "@I85@",
+    "@I82@": "@I43@"
+  },
+  "familyMap": {
+    "@F1@": "@F1@",
+    "@F2@": "@F2@",
+    "@F3@": "@F3@",
+    "@F4@": "@F4@",
+    "@F5@": "@F5@",
+    "@F6@": "@F6@",
+    "@F7@": "@F7@",
+    "@F8@": "@F8@",
+    "@F9@": "@F18@",
+    "@F10@": "@F21@",
+    "@F11@": "@F23@",
+    "@F12@": "@F24@",
+    "@F13@": "@F25@",
+    "@F14@": "@F29@",
+    "@F15@": "@F30@",
+    "@F16@": "@F26@",
+    "@F17@": "@F27@",
+    "@F18@": "@F19@",
+    "@F19@": "@F20@",
+    "@F20@": "@F22@",
+    "@F21@": "@F17@",
+    "@F22@": "@F28@",
+    "@F23@": "@F15@",
+    "@F24@": "@F9@",
+    "@F25@": "@F10@",
+    "@F26@": "@F11@",
+    "@F27@": "@F12@",
+    "@F28@": "@F13@",
+    "@F29@": "@F14@",
+    "@F30@": "@F31@"
+  },
+  "retainedAbsentPeople": [
+    "PFJL-V4J",
+    "PFVG-PWS",
+    "PNQS-T8M"
+  ],
+  "placeholders": {
+    "@I27@": "PFFS-Y8D",
+    "@I28@": "PFFS-LRV"
+  },
+  "incomingCounts": {
+    "people": 82,
+    "families": 30,
+    "events": 139,
+    "births": 54,
+    "deaths": 73,
+    "marriages": 12,
+    "familySearchIds": 80,
+    "childLinks": 59,
+    "eventDefinitions": 0,
+    "sourceRecords": 79,
+    "sourceCitations": 120,
+    "mediaRecords": 0
+  },
+  "beforeCounts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 153,
+    "claims": 384,
+    "places": 71,
+    "sources": 61,
+    "media": 62,
+    "evidenceLinks": 132,
+    "memories": 0
+  },
+  "counts": {
+    "people": 85,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 136,
+    "events": 172,
+    "claims": 405,
+    "places": 72,
+    "sources": 80,
+    "media": 77,
+    "evidenceLinks": 166,
+    "memories": 0
+  },
+  "factChanges": [
+    {
+      "record": "@I3@",
+      "field": "BIRT.DATE",
+      "before": null,
+      "after": "19 AUG 1963"
+    },
+    {
+      "record": "@I81@",
+      "field": "DEAT",
+      "before": "Y / DATE DECEASED",
+      "after": "2 MAR 1907; Kharkiv Guberniya, Russian Empire"
+    },
+    {
+      "record": "@I60@",
+      "field": "DEAT.PLAC",
+      "before": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "after": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія"
+    },
+    {
+      "record": "@I75@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козачка"
+    },
+    {
+      "record": "@I76@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козак"
+    },
+    {
+      "record": "@I62@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козачка"
+    },
+    {
+      "record": "@I63@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козак"
+    },
+    {
+      "record": "@I64@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козак"
+    },
+    {
+      "record": "@I39@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянка"
+    },
+    {
+      "record": "@I69@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянинъ-собственникъ"
+    },
+    {
+      "record": "@I77@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Селянка"
+    },
+    {
+      "record": "@I77@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянка-собственница"
+    },
+    {
+      "record": "@I78@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянинъ"
+    },
+    {
+      "record": "@I79@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянинъ"
+    },
+    {
+      "record": "@I80@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянка"
+    },
+    {
+      "record": "@I81@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Крестьянинъ"
+    },
+    {
+      "record": "@I54@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козачка"
+    },
+    {
+      "record": "@I55@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козак"
+    },
+    {
+      "record": "@I56@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козачка"
+    },
+    {
+      "record": "@I57@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козак"
+    },
+    {
+      "record": "@I58@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козачка"
+    },
+    {
+      "record": "@I59@",
+      "field": "CAST → EVEN.TYPE Caste Name",
+      "before": null,
+      "after": "Козак"
+    }
+  ],
+  "removedClaims": [
+    {
+      "id": "claim-fe132a7d421ea7aba4d0a591",
+      "isPrimary": false,
+      "confidence": "unassessed",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-a2b8ea7eaae60f6844cc5cb4a0bf3a3d6d84b707342205f19365e63d7924163f",
+          "recordId": "@I81@",
+          "path": "DEAT[0].NOTE[0]"
+        }
+      ],
+      "field": "description",
+      "target": {
+        "kind": "event",
+        "id": "event-67954975c7bce988e7195f94"
+      },
+      "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+    }
+  ],
+  "updatedPlaces": [
+    {
+      "id": "place-1bdb4f5a91a9ee687f04d5cc",
+      "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "historicalNames": [],
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      },
+      "description": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-ae71559e7098f40742bc84dbb9c78858a44f30739956ee353ae489a639865290",
+          "recordId": "@I60@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-1bdb4f5a91a9ee687f04d5cc"
+        }
+      ]
+    }
+  ],
+  "newSourceRecords": 19,
+  "addedCitations": [
+    {
+      "record": "@I75@",
+      "kind": "person",
+      "source": "@S71@"
+    },
+    {
+      "record": "@I75@",
+      "kind": "person",
+      "source": "@S72@"
+    },
+    {
+      "record": "@I76@",
+      "kind": "person",
+      "source": "@S73@"
+    },
+    {
+      "record": "@I62@",
+      "kind": "person",
+      "source": "@S75@"
+    },
+    {
+      "record": "@I62@",
+      "kind": "person",
+      "source": "@S76@"
+    },
+    {
+      "record": "@I63@",
+      "kind": "person",
+      "source": "@S77@"
+    },
+    {
+      "record": "@I64@",
+      "kind": "person",
+      "source": "@S78@"
+    },
+    {
+      "record": "@I64@",
+      "kind": "person",
+      "source": "@S79@"
+    },
+    {
+      "record": "@I69@",
+      "kind": "person",
+      "source": "@S61@"
+    },
+    {
+      "record": "@I79@",
+      "kind": "person",
+      "source": "@S62@"
+    },
+    {
+      "record": "@I81@",
+      "kind": "person",
+      "source": "@S63@"
+    },
+    {
+      "record": "@I54@",
+      "kind": "person",
+      "source": "@S65@"
+    },
+    {
+      "record": "@I55@",
+      "kind": "person",
+      "source": "@S66@"
+    },
+    {
+      "record": "@I56@",
+      "kind": "person",
+      "source": "@S67@"
+    },
+    {
+      "record": "@I57@",
+      "kind": "person",
+      "source": "@S68@"
+    },
+    {
+      "record": "@I58@",
+      "kind": "person",
+      "source": "@S69@"
+    },
+    {
+      "record": "@I59@",
+      "kind": "person",
+      "source": "@S70@"
+    },
+    {
+      "record": "@I81@",
+      "kind": "DEAT",
+      "source": "@S61@"
+    },
+    {
+      "record": "@I81@",
+      "kind": "DEAT",
+      "source": "@S63@"
+    },
+    {
+      "record": "@I79@",
+      "kind": "BIRT",
+      "source": "@S62@"
+    },
+    {
+      "record": "@I81@",
+      "kind": "BIRT",
+      "source": "@S64@"
+    },
+    {
+      "record": "@I54@",
+      "kind": "BIRT",
+      "source": "@S65@"
+    },
+    {
+      "record": "@I55@",
+      "kind": "BIRT",
+      "source": "@S66@"
+    },
+    {
+      "record": "@I56@",
+      "kind": "BIRT",
+      "source": "@S67@"
+    },
+    {
+      "record": "@I57@",
+      "kind": "BIRT",
+      "source": "@S68@"
+    },
+    {
+      "record": "@I58@",
+      "kind": "BIRT",
+      "source": "@S69@"
+    },
+    {
+      "record": "@I59@",
+      "kind": "BIRT",
+      "source": "@S70@"
+    },
+    {
+      "record": "@I75@",
+      "kind": "DEAT",
+      "source": "@S71@"
+    },
+    {
+      "record": "@I75@",
+      "kind": "BIRT",
+      "source": "@S72@"
+    },
+    {
+      "record": "@I76@",
+      "kind": "DEAT",
+      "source": "@S73@"
+    },
+    {
+      "record": "@I76@",
+      "kind": "BIRT",
+      "source": "@S74@"
+    },
+    {
+      "record": "@I62@",
+      "kind": "BIRT",
+      "source": "@S75@"
+    },
+    {
+      "record": "@I62@",
+      "kind": "BIRT",
+      "source": "@S76@"
+    },
+    {
+      "record": "@I63@",
+      "kind": "BIRT",
+      "source": "@S77@"
+    }
+  ],
+  "reusedScans": [
+    {
+      "source": "@S62@",
+      "fromSource": "@S35@",
+      "file": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-CJKT.png",
+      "sha256": "da68eda2682cc45165ed93b481353f96c7fd7315e48c56c6d192146a9d7237a6",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S64@",
+      "fromSource": "@S33@",
+      "file": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ4.png",
+      "sha256": "d3b15d2005034818796b84cd65b453114786e06284cfd8451cf8fee421e6bd4a",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S65@",
+      "fromSource": "@S21@",
+      "file": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4J8.png",
+      "sha256": "a3048ef23418d06adad536271876646cfa290aa579e738badaf2812b840d39cb",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S66@",
+      "fromSource": "@S20@",
+      "file": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCR4.png",
+      "sha256": "63cb9393b2b9f3573aa340564d6d0869319432746b291fe8aaeedc69e41a28df",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S67@",
+      "fromSource": "@S19@",
+      "file": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6V6.png",
+      "sha256": "f47f9c4b9558daa07ac704075f706ad58890419d043587bb96a78f3a29e4f5db",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S68@",
+      "fromSource": "@S17@",
+      "file": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7S.png",
+      "sha256": "5f0c212c085df9baa50ec266fcd2895e2e54e18f045eed46f4fb3148de7e06a0",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S69@",
+      "fromSource": "@S16@",
+      "file": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRHP.png",
+      "sha256": "a3612726065282b660cd4586391fc2b1d3ac211a2435953ed9745096b63c6d93",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S70@",
+      "fromSource": "@S18@",
+      "file": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5YQ.png",
+      "sha256": "47c0ff494aba50ca3efdc4205a2def80ad44660e0216a9605814d28c08a9283e",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S71@",
+      "fromSource": "@S54@",
+      "file": "assets/documents/source-records/зубенко-мина-смерть-PNK8-SXG-6X37-MW5W.png",
+      "sha256": "8f697ee67071d9d3e13f41b5ec4df1ba6801ddbd066701b8b2730d1fab3ad868",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S72@",
+      "fromSource": "@S47@",
+      "file": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMNG.png",
+      "sha256": "931796d205c7b1756dba955aa94fec6ce18680686cf2ffe634cf1d8c158bc4ec",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S73@",
+      "fromSource": "@S52@",
+      "file": "assets/documents/source-records/зубенко-емелиан-смерть-PNK8-2S8-6X3Q-87C1.png",
+      "sha256": "5678b948cf485506bb39af0fd784ce5c9a4f74355bcfb5ddd3d3d2a5440a2520",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S74@",
+      "fromSource": "@S46@",
+      "file": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBG.png",
+      "sha256": "02eef196dc47949dfca129caf7d533f430645ee2caa7b31e89b8d6cfc28351e0",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S75@",
+      "fromSource": "@S49@",
+      "file": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKZ.png",
+      "sha256": "25d0d05e638c87d74cf688f2554b0e1847c482af4e68faf10f9c7c18b16113a6",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S76@",
+      "fromSource": "@S49@",
+      "file": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTK6.png",
+      "sha256": "25d0d05e638c87d74cf688f2554b0e1847c482af4e68faf10f9c7c18b16113a6",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    },
+    {
+      "source": "@S77@",
+      "fromSource": "@S57@",
+      "file": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVYY.png",
+      "sha256": "c43bb80edf091dd82a5bb3c316eb6053fe94eccb018122f0532a4f60c31cba52",
+      "ownerDecision": "19.10.2026: власник підтвердив використання наявних сканів і погоджених описів для 15 нових індексних записів."
+    }
+  ],
+  "unresolved": [
+    {
+      "record": "@I64@",
+      "personId": "I23",
+      "sources": [
+        "@S78@",
+        "@S79@"
+      ],
+      "structuredDate": "8 OCT 1980",
+      "sourceDate": "9 Oct 1880",
+      "decision": "Збережено чинну структуровану дату. Нові джерела лише біля людини; тип події та дата потребують перевірки скану."
+    },
+    {
+      "record": "@I75@",
+      "personId": "I76",
+      "field": "CAST",
+      "value": "Козачка",
+      "decision": "Оригінальний текст збережено; чоловіча стать і попередні факти не змінені. Потребує уточнення власником."
+    }
+  ],
+  "normalizations": [
+    {
+      "record": "@S1@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S2@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S3@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S4@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S5@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S6@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S7@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S8@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S9@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S10@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S11@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S12@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S13@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S14@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S15@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S16@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S17@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S18@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S19@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S20@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S21@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S22@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S23@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S24@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S25@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S26@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S27@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S28@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S29@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S30@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S31@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S32@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S33@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S34@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S35@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S36@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S37@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S38@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S39@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S40@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S41@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S42@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S43@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S44@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S45@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S46@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S47@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S48@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S49@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S50@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S51@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S52@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S53@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S54@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S55@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S56@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S57@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S58@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S59@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S60@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S61@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S62@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S63@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S64@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S65@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S66@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S67@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S68@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S69@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S70@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S71@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S72@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S73@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S74@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S75@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S76@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S77@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S78@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "record": "@S79@",
+      "tag": "_FREE",
+      "handling": "empty-export-metadata"
+    },
+    {
+      "source": "@S6@",
+      "tag": "_RIN",
+      "value": "6",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S6@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S6@",
+      "tag": "_RIN",
+      "value": "6",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S6@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S16@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S17@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S18@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S19@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S20@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S21@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S22@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S23@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S52@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S53@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S54@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S55@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S56@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S57@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S58@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S59@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S46@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S47@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S48@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S49@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S50@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S51@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S71@",
+      "tag": "_RIN",
+      "value": "71",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S71@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S72@",
+      "tag": "_RIN",
+      "value": "72",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S72@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S71@",
+      "tag": "_RIN",
+      "value": "71",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S71@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S72@",
+      "tag": "_RIN",
+      "value": "72",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S72@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S73@",
+      "tag": "_RIN",
+      "value": "73",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S73@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S74@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S73@",
+      "tag": "_RIN",
+      "value": "73",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S73@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S75@",
+      "tag": "_RIN",
+      "value": "75",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S75@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S76@",
+      "tag": "_RIN",
+      "value": "76",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S76@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S75@",
+      "tag": "_RIN",
+      "value": "75",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S75@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S76@",
+      "tag": "_RIN",
+      "value": "76",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S76@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S77@",
+      "tag": "_RIN",
+      "value": "77",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S77@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S77@",
+      "tag": "_RIN",
+      "value": "77",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S77@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S78@",
+      "tag": "_RIN",
+      "value": "78",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S78@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S79@",
+      "tag": "_RIN",
+      "value": "79",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S79@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S78@",
+      "tag": "_RIN",
+      "value": "78",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S78@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S79@",
+      "tag": "_RIN",
+      "value": "79",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S79@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S1@",
+      "tag": "_RIN",
+      "value": "1",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S1@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S2@",
+      "tag": "_RIN",
+      "value": "2",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S2@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S3@",
+      "tag": "_RIN",
+      "value": "3",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S3@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S4@",
+      "tag": "_RIN",
+      "value": "4",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S4@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S1@",
+      "tag": "_RIN",
+      "value": "1",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S1@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S2@",
+      "tag": "_RIN",
+      "value": "2",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S2@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S3@",
+      "tag": "_RIN",
+      "value": "3",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S3@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S4@",
+      "tag": "_RIN",
+      "value": "4",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S4@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S1@",
+      "tag": "_RIN",
+      "value": "1",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S1@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S2@",
+      "tag": "_RIN",
+      "value": "2",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S2@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S3@",
+      "tag": "_RIN",
+      "value": "3",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S3@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S4@",
+      "tag": "_RIN",
+      "value": "4",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S4@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S33@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S34@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S35@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S36@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S37@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S61@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S38@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S39@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S40@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S41@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S42@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S62@",
+      "tag": "_RIN",
+      "value": "62",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S62@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S62@",
+      "tag": "_RIN",
+      "value": "62",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S62@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S63@",
+      "tag": "_RIN",
+      "value": "63",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S63@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S64@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S63@",
+      "tag": "_RIN",
+      "value": "63",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S63@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S7@",
+      "tag": "_RIN",
+      "value": "7",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S7@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S7@",
+      "tag": "_RIN",
+      "value": "7",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S7@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S8@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S9@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S10@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S11@",
+      "tag": "_RIN",
+      "value": "11",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S11@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S12@",
+      "tag": "_RIN",
+      "value": "12",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S12@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S12@",
+      "tag": "_RIN",
+      "value": "12",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S12@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S13@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S14@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S15@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S11@",
+      "tag": "_RIN",
+      "value": "11",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S11@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_RIN",
+      "value": "5",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_RIN",
+      "value": "5",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_RIN",
+      "value": "5",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_RIN",
+      "value": "5",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S5@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S24@",
+      "tag": "_RIN",
+      "value": "24",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S24@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S24@",
+      "tag": "_RIN",
+      "value": "24",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S24@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S25@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S26@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S27@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S28@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S29@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S30@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S31@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S32@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S65@",
+      "tag": "_RIN",
+      "value": "65",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S65@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S65@",
+      "tag": "_RIN",
+      "value": "65",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S65@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S66@",
+      "tag": "_RIN",
+      "value": "66",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S66@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S66@",
+      "tag": "_RIN",
+      "value": "66",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S66@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S67@",
+      "tag": "_RIN",
+      "value": "67",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S67@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S67@",
+      "tag": "_RIN",
+      "value": "67",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S67@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S68@",
+      "tag": "_RIN",
+      "value": "68",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S68@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S68@",
+      "tag": "_RIN",
+      "value": "68",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S68@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S69@",
+      "tag": "_RIN",
+      "value": "69",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S69@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S69@",
+      "tag": "_RIN",
+      "value": "69",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S69@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S70@",
+      "tag": "_RIN",
+      "value": "70",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S70@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S70@",
+      "tag": "_RIN",
+      "value": "70",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S70@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S43@",
+      "tag": "_RIN",
+      "value": "43",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S43@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S44@",
+      "tag": "_RIN",
+      "value": "44",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S44@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_RIN",
+      "value": "45",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S44@",
+      "tag": "_RIN",
+      "value": "44",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S44@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_RIN",
+      "value": "45",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S44@",
+      "tag": "_RIN",
+      "value": "44",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S44@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_RIN",
+      "value": "45",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S43@",
+      "tag": "_RIN",
+      "value": "43",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S43@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S60@",
+      "tag": "_RIN",
+      "value": "60",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S60@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_RIN",
+      "value": "45",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S43@",
+      "tag": "_RIN",
+      "value": "43",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S43@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S60@",
+      "tag": "_RIN",
+      "value": "60",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S60@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_RIN",
+      "value": "45",
+      "handling": "citation-note"
+    },
+    {
+      "source": "@S45@",
+      "tag": "_FREE",
+      "handling": "empty-citation-metadata"
+    }
+  ],
+  "addedIdentities": [
+    {
+      "kind": "source",
+      "id": "source-061cf6a8e3d5c1cb027ff424"
+    },
+    {
+      "kind": "source",
+      "id": "source-5923b92be39e74789587b1b6"
+    },
+    {
+      "kind": "source",
+      "id": "source-0adddae78903e80ab09d3997"
+    },
+    {
+      "kind": "source",
+      "id": "source-c7257fdf63eeaeeca26cfab2"
+    },
+    {
+      "kind": "source",
+      "id": "source-29875ef1678e28ae266a71f7"
+    },
+    {
+      "kind": "source",
+      "id": "source-75feffc591de9bca77b788b0"
+    },
+    {
+      "kind": "source",
+      "id": "source-2470c45ccbe1579243ea29ef"
+    },
+    {
+      "kind": "source",
+      "id": "source-2badc49af598ffc292fd4fc6"
+    },
+    {
+      "kind": "source",
+      "id": "source-67a4bebc67ad2a74a9aa4590"
+    },
+    {
+      "kind": "source",
+      "id": "source-177e20de8e9136307efa014b"
+    },
+    {
+      "kind": "source",
+      "id": "source-3d84c36afa9cf12165497013"
+    },
+    {
+      "kind": "source",
+      "id": "source-f4d2ca8a5e8c6283bf0439e0"
+    },
+    {
+      "kind": "source",
+      "id": "source-389f1c651493c57476063dd3"
+    },
+    {
+      "kind": "source",
+      "id": "source-83d6be319011f7354ad8f338"
+    },
+    {
+      "kind": "source",
+      "id": "source-ae189953a1b805561d1f4795"
+    },
+    {
+      "kind": "source",
+      "id": "source-7f4478b66833c827ec77d39a"
+    },
+    {
+      "kind": "source",
+      "id": "source-3a6e774f423e2a3593231258"
+    },
+    {
+      "kind": "source",
+      "id": "source-189a36c738ffc0580a47772d"
+    },
+    {
+      "kind": "source",
+      "id": "source-4ecc7fdc81d9764fb6640a2f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ecee89cf9cccf50d9bace947"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f9fbf1e4c56a2c1553b0cfd9"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-0633fe6d3f0fc09c1a7aafe7"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-677830c7ebfa194442eaa411"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-346dbdfa72219eda0c1a5fe5"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f145644ba91e1325b78d87cd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-208cbfe7a87000b0c39ac13f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-8eea9969ea9651bb31f00b51"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d15a8d9adfe2eea962c9bc61"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-dd616dd261d740771685258a"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-1c0515b4ce245723759c74a0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d813a4a7a55c538a66f24179"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-523511e77118d378fc3cdbb0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-0b68d2676aff82d613013b1e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-249a3b1252954ddef169248c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-21af3b4ee334e52aa8d0cd9b"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-bfd4f40f5580a8d61367ef78"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-2a101467af7153eab04fde43"
+    },
+    {
+      "kind": "event",
+      "id": "event-2d2bae5dfe3875d08ac2be79"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-bfaff830daaea5c7d347272f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9a81318ee480474bc6cb34c3"
+    },
+    {
+      "kind": "event",
+      "id": "event-dd671a77601f8c6531098782"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-1c02cb8f482892ca1040e1a5"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-7f76fed7dd392877850ae760"
+    },
+    {
+      "kind": "event",
+      "id": "event-8ae8766ee43eaf62f127f776"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d2fcedd0611cb5b86d10f284"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-615dcc6c839d7798ebb80e77"
+    },
+    {
+      "kind": "event",
+      "id": "event-c2e29a99226ce68fdcb40235"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ef554fb9c748a59f13d24cb3"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-1887ab6a4dbc0b7a3c7afe2a"
+    },
+    {
+      "kind": "event",
+      "id": "event-e91c48cb206e3b652d069b8d"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8e1211295018370dba140df5"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d8ae2c83c40a4cda1e6e1677"
+    },
+    {
+      "kind": "event",
+      "id": "event-e090b05e13f57d6b5b535443"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-bb5c40166d31562d603dffb2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ad79a92fa27c86b999ea6374"
+    },
+    {
+      "kind": "event",
+      "id": "event-369b76e9690e6ea53370916e"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d4a081bfaf86c1717801e7cf"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-16b6ac6f357257be7f123856"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2e3d1e177b9adb5df98578b1"
+    },
+    {
+      "kind": "event",
+      "id": "event-4eca28d5b30b493a230c2674"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-cdfe45900eb835419eb9d008"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-fca632b97deb711a1da1e145"
+    },
+    {
+      "kind": "event",
+      "id": "event-3be8d528fd8213ac103c4961"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0adc81c9d7b765e43147bf08"
+    },
+    {
+      "kind": "event",
+      "id": "event-9ae028999c762b125a51f12c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-a4fda1b8e1041cd40d2724bf"
+    },
+    {
+      "kind": "event",
+      "id": "event-f2db9c797302a7f151ed2794"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-1f614f104a1d27819d0ecf6c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-520c09fe173799bc3d16f439"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9b21a9407eff06b266f6ef71"
+    },
+    {
+      "kind": "event",
+      "id": "event-536928e1ccc40318e554f351"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-1b2a69d6b760a2521b81aab0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-97c04a9ec5eeb0ea51cd3fe9"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-768d97bf3d88b9f4718c8dd9"
+    },
+    {
+      "kind": "event",
+      "id": "event-e654a1e6e2d5d91f897ec67f"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-9b170c56fb7f4ff0503a1d99"
+    },
+    {
+      "kind": "event",
+      "id": "event-68c0d915746e768670b7b233"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0c5a1c0d32b68c3d2e13fdde"
+    },
+    {
+      "kind": "event",
+      "id": "event-f7355b454845dc2f8dd7adc9"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d5f084be19d3a7d3bc410fe7"
+    },
+    {
+      "kind": "event",
+      "id": "event-2e6e30ef50667552282c00da"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-10b1e65fcc65a1c30f4f1336"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-f4bb2e98ee49d2591e396feb"
+    },
+    {
+      "kind": "event",
+      "id": "event-b1ef21e7e7580ab86482c656"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-18064f2744a0c294ba70b018"
+    },
+    {
+      "kind": "event",
+      "id": "event-d0e39f5722e7d328c815d60a"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-c37c27c757677557e490c0c6"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5beb2dfe707f6e692b48171f"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-1b2c9263af0b33e29ed9bbfa"
+    },
+    {
+      "kind": "place",
+      "id": "place-9b031223094f18685275e793"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-856a654331683009399e8358"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-b061ad5323cc63ca4efcd15c"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-a0e2fb845f6cd74b4b872569"
+    },
+    {
+      "kind": "event",
+      "id": "event-ca145a5b97b02018c868189e"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-044f99bf8c595b9648156705"
+    }
+  ],
+  "sourceRecordFiles": [
+    {
+      "id": "file-source-061cf6a8e3d5c1cb027ff424",
+      "sourceId": "source-061cf6a8e3d5c1cb027ff424",
+      "evidenceLinkIds": [
+        "evidenceLink-d813a4a7a55c538a66f24179",
+        "evidenceLink-b061ad5323cc63ca4efcd15c"
+      ],
+      "jsonFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXF.json"
+    },
+    {
+      "id": "file-source-5923b92be39e74789587b1b6",
+      "sourceId": "source-5923b92be39e74789587b1b6",
+      "evidenceLinkIds": [
+        "evidenceLink-21af3b4ee334e52aa8d0cd9b",
+        "evidenceLink-f4bb2e98ee49d2591e396feb"
+      ],
+      "mediaId": "media-file-source-5923b92be39e74789587b1b6",
+      "jsonFile": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-CJKT.json"
+    },
+    {
+      "id": "file-source-0adddae78903e80ab09d3997",
+      "sourceId": "source-0adddae78903e80ab09d3997",
+      "evidenceLinkIds": [
+        "evidenceLink-bfd4f40f5580a8d61367ef78",
+        "evidenceLink-a0e2fb845f6cd74b4b872569"
+      ],
+      "jsonFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXZ.json"
+    },
+    {
+      "id": "file-source-c7257fdf63eeaeeca26cfab2",
+      "sourceId": "source-c7257fdf63eeaeeca26cfab2",
+      "evidenceLinkIds": [
+        "evidenceLink-5beb2dfe707f6e692b48171f"
+      ],
+      "mediaId": "media-file-source-c7257fdf63eeaeeca26cfab2",
+      "jsonFile": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ4.json"
+    },
+    {
+      "id": "file-source-29875ef1678e28ae266a71f7",
+      "sourceId": "source-29875ef1678e28ae266a71f7",
+      "evidenceLinkIds": [
+        "evidenceLink-ecee89cf9cccf50d9bace947",
+        "evidenceLink-9a81318ee480474bc6cb34c3"
+      ],
+      "mediaId": "media-file-source-29875ef1678e28ae266a71f7",
+      "jsonFile": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4J8.json"
+    },
+    {
+      "id": "file-source-75feffc591de9bca77b788b0",
+      "sourceId": "source-75feffc591de9bca77b788b0",
+      "evidenceLinkIds": [
+        "evidenceLink-f9fbf1e4c56a2c1553b0cfd9",
+        "evidenceLink-7f76fed7dd392877850ae760"
+      ],
+      "mediaId": "media-file-source-75feffc591de9bca77b788b0",
+      "jsonFile": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCR4.json"
+    },
+    {
+      "id": "file-source-2470c45ccbe1579243ea29ef",
+      "sourceId": "source-2470c45ccbe1579243ea29ef",
+      "evidenceLinkIds": [
+        "evidenceLink-0633fe6d3f0fc09c1a7aafe7",
+        "evidenceLink-615dcc6c839d7798ebb80e77"
+      ],
+      "mediaId": "media-file-source-2470c45ccbe1579243ea29ef",
+      "jsonFile": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6V6.json"
+    },
+    {
+      "id": "file-source-2badc49af598ffc292fd4fc6",
+      "sourceId": "source-2badc49af598ffc292fd4fc6",
+      "evidenceLinkIds": [
+        "evidenceLink-677830c7ebfa194442eaa411",
+        "evidenceLink-1887ab6a4dbc0b7a3c7afe2a"
+      ],
+      "mediaId": "media-file-source-2badc49af598ffc292fd4fc6",
+      "jsonFile": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7S.json"
+    },
+    {
+      "id": "file-source-67a4bebc67ad2a74a9aa4590",
+      "sourceId": "source-67a4bebc67ad2a74a9aa4590",
+      "evidenceLinkIds": [
+        "evidenceLink-346dbdfa72219eda0c1a5fe5",
+        "evidenceLink-d8ae2c83c40a4cda1e6e1677"
+      ],
+      "mediaId": "media-file-source-67a4bebc67ad2a74a9aa4590",
+      "jsonFile": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRHP.json"
+    },
+    {
+      "id": "file-source-177e20de8e9136307efa014b",
+      "sourceId": "source-177e20de8e9136307efa014b",
+      "evidenceLinkIds": [
+        "evidenceLink-f145644ba91e1325b78d87cd",
+        "evidenceLink-ad79a92fa27c86b999ea6374"
+      ],
+      "mediaId": "media-file-source-177e20de8e9136307efa014b",
+      "jsonFile": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5YQ.json"
+    },
+    {
+      "id": "file-source-3d84c36afa9cf12165497013",
+      "sourceId": "source-3d84c36afa9cf12165497013",
+      "evidenceLinkIds": [
+        "evidenceLink-523511e77118d378fc3cdbb0",
+        "evidenceLink-9b21a9407eff06b266f6ef71"
+      ],
+      "mediaId": "media-file-source-3d84c36afa9cf12165497013",
+      "jsonFile": "assets/documents/source-records/зубенко-мина-смерть-PNK8-SXG-6X37-MW5W.json"
+    },
+    {
+      "id": "file-source-f4d2ca8a5e8c6283bf0439e0",
+      "sourceId": "source-f4d2ca8a5e8c6283bf0439e0",
+      "evidenceLinkIds": [
+        "evidenceLink-0b68d2676aff82d613013b1e",
+        "evidenceLink-520c09fe173799bc3d16f439"
+      ],
+      "mediaId": "media-file-source-f4d2ca8a5e8c6283bf0439e0",
+      "jsonFile": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMNG.json"
+    },
+    {
+      "id": "file-source-389f1c651493c57476063dd3",
+      "sourceId": "source-389f1c651493c57476063dd3",
+      "evidenceLinkIds": [
+        "evidenceLink-249a3b1252954ddef169248c",
+        "evidenceLink-768d97bf3d88b9f4718c8dd9"
+      ],
+      "mediaId": "media-file-source-389f1c651493c57476063dd3",
+      "jsonFile": "assets/documents/source-records/зубенко-емелиан-смерть-PNK8-2S8-6X3Q-87C1.json"
+    },
+    {
+      "id": "file-source-83d6be319011f7354ad8f338",
+      "sourceId": "source-83d6be319011f7354ad8f338",
+      "evidenceLinkIds": [
+        "evidenceLink-97c04a9ec5eeb0ea51cd3fe9"
+      ],
+      "mediaId": "media-file-source-83d6be319011f7354ad8f338",
+      "jsonFile": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBG.json"
+    },
+    {
+      "id": "file-source-ae189953a1b805561d1f4795",
+      "sourceId": "source-ae189953a1b805561d1f4795",
+      "evidenceLinkIds": [
+        "evidenceLink-208cbfe7a87000b0c39ac13f",
+        "evidenceLink-16b6ac6f357257be7f123856"
+      ],
+      "mediaId": "media-file-source-ae189953a1b805561d1f4795",
+      "jsonFile": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKZ.json"
+    },
+    {
+      "id": "file-source-7f4478b66833c827ec77d39a",
+      "sourceId": "source-7f4478b66833c827ec77d39a",
+      "evidenceLinkIds": [
+        "evidenceLink-8eea9969ea9651bb31f00b51",
+        "evidenceLink-2e3d1e177b9adb5df98578b1"
+      ],
+      "mediaId": "media-file-source-7f4478b66833c827ec77d39a",
+      "jsonFile": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTK6.json"
+    },
+    {
+      "id": "file-source-3a6e774f423e2a3593231258",
+      "sourceId": "source-3a6e774f423e2a3593231258",
+      "evidenceLinkIds": [
+        "evidenceLink-d15a8d9adfe2eea962c9bc61",
+        "evidenceLink-fca632b97deb711a1da1e145"
+      ],
+      "mediaId": "media-file-source-3a6e774f423e2a3593231258",
+      "jsonFile": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVYY.json"
+    },
+    {
+      "id": "file-source-189a36c738ffc0580a47772d",
+      "sourceId": "source-189a36c738ffc0580a47772d",
+      "evidenceLinkIds": [
+        "evidenceLink-dd616dd261d740771685258a"
+      ],
+      "jsonFile": "assets/documents/source-records/зубенко-тимофей-інша-подія-PFVV-7W1-6X3M-TDS3.json"
+    },
+    {
+      "id": "file-source-4ecc7fdc81d9764fb6640a2f",
+      "sourceId": "source-4ecc7fdc81d9764fb6640a2f",
+      "evidenceLinkIds": [
+        "evidenceLink-1c0515b4ce245723759c74a0"
+      ],
+      "jsonFile": "assets/documents/source-records/зубенко-тимофей-інша-подія-PFVV-7W1-6X3M-TDSW.json"
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 97,
+    "info": 2,
+    "status": "passed"
+  },
+  "unchangedRootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+}

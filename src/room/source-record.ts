@@ -27,7 +27,7 @@ export function sourceDocumentGroups(family: FamilyData, links: EvidenceLink[]) 
 
 /** Export instructions and bibliography are preserved in data, separate from a record's text. */
 export function recordDescription(value?: string): string {
-  return (value ?? '').split(/\r?\n/).filter(line => !/^\s*(?:Тип джерела в експорті \(_TYPE\):|Метадані експорту:|Посилання з GEDCOM OBJE\.FILE:|"[^"]+",\s*<i>FamilySearch<\/i>)/u.test(line))
+  return (value ?? '').split(/\r?\n/).filter(line => !/^\s*(?:Тип джерела в експорті \(_TYPE\):|Ідентифікатор цитування в експорті \(_RIN\):|Метадані експорту:|Посилання з GEDCOM OBJE\.FILE:|"[^"]+",\s*<i>FamilySearch<\/i>)/u.test(line))
     .join('\n').trim()
 }
 

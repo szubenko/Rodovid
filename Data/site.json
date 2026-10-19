@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "2026-10-18-export-6-sources",
+  "dataVersion": "2026-10-19-timofey-corrected",
   "title": "Родовід Зубенків і Дейкалів",
   "homePersonId": "I1",
   "personHeadingNames": {
@@ -9,7 +9,9 @@
   "initialGenerations": 11,
   "rooms": [],
   "audio": {
-    "musicMediaIds": ["music-bandura-seamless-loop"],
+    "musicMediaIds": [
+      "music-bandura-seamless-loop"
+    ],
     "effectMediaIds": [],
     "musicEnabled": false,
     "effectsEnabled": false

@@ -12,6 +12,8 @@ export const nataliaSourcesSha256 = 'c3f017c2760cec79dbf2aebbeebd9792c12b159b625
 export const export6SourcesSha256 = '7715a9ada900e0c17ac1e63d5dcce6c02384ef6e6050c8e64bbebfe49e32ac63'
 // Owner supplied the Deikalo marriage date (31 Jan 1921); all previous identities were retained.
 export const deikaloMarriageSha256 = 'a2b8ea7eaae60f6844cc5cb4a0bf3a3d6d84b707342205f19365e63d7924163f'
+export const october19ExportSha256 = 'ae71559e7098f40742bc84dbb9c78858a44f30739956ee353ae489a639865290'
+export const timofeyCorrectionSha256 = '3c289fccac4ee16dd740fc40c94ac3b536e32464356f95468f4616d954bdffa0'
 export const chronologyReviewId = 'relationship-259066879720fd7dd7184cf9'
 export const reviewedGraphIssues = [
   { code: 'CONFLICTING_ROLES', review: 'D07', recordIds: ['@F10@', '@F6@'],

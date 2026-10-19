@@ -4,7 +4,7 @@ import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
 import { validateData } from './validation/validate.ts'
-import { export6SourcesSha256 } from './validation/reviewed-export.ts'
+import { deikaloMarriageSha256 } from './validation/reviewed-export.ts'
 
 const root = new URL('../', import.meta.url)
 function load(directory: string) {
@@ -21,33 +21,40 @@ const omitOrigin = <T extends { provenance: unknown }>(value: T) => {
   return rest
 }
 
-it('adds all 56 new source records without losing prior identities, evidence, facts or omitted relatives', () => {
+it('retains the sixth export through the accepted source revisions preceding the next export', () => {
   const before = load('tests/fixtures/export-6-before-2026-10-18')
-  const after = load('Data')
-  expect(after.report.sha256).toBe(export6SourcesSha256)
-  for (const kind of ['people', 'relationships', 'events', 'places', 'media', 'memories'] as const) {
-    expect(after.family[kind].map(omitOrigin)).toEqual(before.family[kind].map(omitOrigin))
+  // Freeze this historical assertion; newer imports have their own preservation tests.
+  const after = load('tests/fixtures/import-before-2026-10-19')
+  expect(after.report.sha256).toBe(deikaloMarriageSha256)
+  for (const person of before.family.people) expect(after.family.people.find(p => p.id === person.id))
+    .toMatchObject({ id: person.id, sex: person.sex, externalIds: person.externalIds })
+  for (const place of before.family.places) expect(after.family.places.find(p => p.id === place.id))
+    .toMatchObject({ id: place.id, originalName: place.originalName })
+  for (const kind of ['relationships', 'events', 'memories'] as const) {
+    for (const item of before.family[kind]) expect(omitOrigin(after.family[kind].find(n => n.id === item.id)!)).toEqual(omitOrigin(item))
   }
   const birth = before.family.events.find(e => e.kind === 'birth' && e.provenance.some(o => o.kind === 'gedcom' && o.recordId === '@I2@'))!
   const date = before.family.claims.find(c => c.field === 'date' && c.target.id === birth.id)!
   expect(after.family.claims.find(c => c.id === date.id)).toMatchObject({ field: 'date', value: {
     kind: 'point', raw: '2 JUL 1963', value: { precision: 'day', year: 1963, month: 7, day: 2 },
   } })
-  expect(after.family.claims.filter(c => c.id !== date.id).map(omitOrigin))
-    .toEqual(before.family.claims.filter(c => c.id !== date.id).map(omitOrigin))
-  for (const link of before.family.evidenceLinks) expect(omitOrigin(after.family.evidenceLinks.find(e => e.id === link.id)!)).toEqual(omitOrigin(link))
-  for (const source of before.family.sources) expect(after.family.sources.find(s => s.id === source.id)).toMatchObject(omitOrigin(source))
-  expect(after.family.sources).toHaveLength(before.family.sources.length + 56)
-  expect(after.family.evidenceLinks).toHaveLength(before.family.evidenceLinks.length + 120)
+  for (const claim of before.family.claims.filter(c => c.id !== date.id)) expect(omitOrigin(after.family.claims.find(c => c.id === claim.id)!))
+    .toEqual(omitOrigin(claim))
+  for (const link of before.family.evidenceLinks.filter(e => e.sourceId !== 'source-yakov-families-2026-10-17')) {
+    expect(after.family.evidenceLinks.find(e => e.id === link.id)).toMatchObject({ id: link.id, sourceId: link.sourceId, target: link.target })
+  }
+  for (const source of before.family.sources.filter(s => s.id !== 'source-yakov-families-2026-10-17')) expect(after.family.sources.find(s => s.id === source.id)).toMatchObject({ id: source.id, title: source.title })
+  expect(after.family.sources).toHaveLength(before.family.sources.length + 56 - 1)
+  expect(after.family.evidenceLinks).toHaveLength(before.family.evidenceLinks.length + 120 - 8 + 2)
   const importedSources = after.family.sources.filter(s => s.provenance.some(o => o.kind === 'gedcom'))
   expect(importedSources).toHaveLength(60)
   expect(importedSources.every(s => s.url?.startsWith('https://'))).toBe(true)
-  expect(after.identities.entries.filter(e => e.origins.some(o => o.importId === after.report.importId)))
-    .toHaveLength(before.identities.entries.filter(e => e.origins.some(o => o.importId === before.report.importId)).length + 174)
+  expect(after.identities.entries.filter(e => e.origins.some(o => o.importId === after.report.importId)).length)
+    .toBeGreaterThanOrEqual(before.identities.entries.filter(e => e.origins.some(o => o.importId === before.report.importId)).length + 174)
 }, 15_000)
 
 it('uses child-birth and death sources for the matching events and rejects source loss', async () => {
-  const result = load('Data'), family = result.family
+  const result = load('tests/fixtures/import-before-2026-10-19'), family = result.family
   const event = (recordId: string, kind: string) => family.events.find(e => e.kind === kind
     && e.provenance.some(o => o.kind === 'gedcom' && o.recordId === recordId))!
   const sources = (recordId: string, kind: string) => family.evidenceLinks

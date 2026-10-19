@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,14 +99,17 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256].includes(report.sha256)) {
-    const deikaloMarriage = report.sha256 === deikaloMarriageSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256].includes(report.sha256)) {
+    const timofeyCorrected = report.sha256 === timofeyCorrectionSha256
+    const october19 = report.sha256 === october19ExportSha256 || timofeyCorrected
+    const deikaloMarriage = report.sha256 === deikaloMarriageSha256 || october19
     const export6 = report.sha256 === export6SourcesSha256 || deikaloMarriage
     const correctedSources = report.sha256 === nataliaSourcesSha256 || export6
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = deikaloMarriage
+    const expected = october19
+      ? { people: 85, relationships: 136, events: 172, claims: 403, places: 72 } : deikaloMarriage
       ? { people: 85, relationships: 136, events: 153, claims: 382, places: 71 } : screenshotFamilies
       ? { people: 85, relationships: 136, events: 152, claims: 381, places: 71 } : merged
       ? { people: 84, relationships: correctedOlenka ? 134 : 135, events: 151, claims: 379, places: 71 }
@@ -126,9 +129,22 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
       const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
-      if (imported(data.sources) !== (export6 ? 60 : 4) || imported(data.evidenceLinks) !== (export6 ? 126 : correctedSources ? 8 : 12)
-        || data.sources.length < (deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
-        || data.evidenceLinks.length < (deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
+      if (imported(data.sources) !== (october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
+        || data.sources.length < (october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
+        || data.evidenceLinks.length < (timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
+    }
+    if (timofeyCorrected) {
+      const date = data.claims.find(c => c.id === 'claim-844bdc5dfb7b9d883e16cd81')
+      const correctDate = date?.field === 'date' && date.value.kind === 'point'
+        && date.value.value.precision === 'day' && date.value.value.year === 1880
+        && date.value.value.month === 10 && date.value.value.day === 9
+      const cited = ['@S78@', '@S79@'].every(recordId => {
+        const source = data.sources.find(s => hasOrigin(s, recordId))
+        return source && source.mediaIds.length > 0 && data.evidenceLinks.some(link => link.sourceId === source.id
+          && link.target.kind === 'event' && link.target.id === 'event-aa67bc3609d7624d14aa47c7')
+      })
+      if (!correctDate || !cited) issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING',
+        message: '19.10.2026: за погодженим первинним актом смерть Тимофея — 09.10.1880; обидва джерела зі сканом мають посилатися на цю подію.' })
     }
     if (screenshotFamilies) {
       const nadia = data.people.find(person => person.id === 'I87')

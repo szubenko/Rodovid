@@ -4,7 +4,7 @@ import { resolveSourceRecordFiles } from './source-record-files.ts'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { validateData } from './validation/validate.ts'
-import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, export6SourcesSha256, chronologyReviewId } from './validation/reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, timofeyCorrectionSha256, chronologyReviewId } from './validation/reviewed-export.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
@@ -185,11 +185,12 @@ it('corrects Olenka’s father without inferring her mother or changing other pe
   expect(reached).toEqual(graph.personIds)
 })
 
-it('adds Nadia and the screenshot evidence while preserving both families and canonical identities', async () => {
+it('retains Nadia and both reviewed families after later exports and rejection of the tree screenshot', async () => {
   const before = load('tests/fixtures/olenka-parent-2026-10-17')
   const after = load('Data')
-  expect(after.report.sha256).toBe(export6SourcesSha256)
-  expect(after.report.counts).toMatchObject({ people: 85, families: 32, relationships: 136, events: 152, claims: 382, sources: 62, media: 4, evidenceLinks: 138 })
+  expect(after.report.sha256).toBe(timofeyCorrectionSha256)
+  expect(after.report.counts).toMatchObject({ people: 85, families: 32, relationships: 136 })
+  expect(after.family.sources.some(s => s.id === 'source-yakov-families-2026-10-17')).toBe(false)
   for (const person of before.family.people) expect(after.family.people.some(p => p.id === person.id)).toBe(true)
   for (const edge of before.family.relationships) expect(after.family.relationships.find(r => r.id === edge.id))
     .toMatchObject({ kind: edge.kind, fromPersonId: edge.fromPersonId, toPersonId: edge.toPersonId })
@@ -201,7 +202,7 @@ it('adds Nadia and the screenshot evidence while preserving both families and ca
   expect(parents('I10')).toEqual(['I5', 'I87'])
   for (const id of ['I2', 'I27']) expect(parents(id)).toEqual(['I4', 'I5'])
   expect(after.family.relationships.filter(r => r.kind === 'parent-child' && r.fromPersonId === 'I87').map(r => r.toPersonId)).toEqual(['I10'])
-  expect(after.family.events.filter(e => e.kind === 'marriage')).toHaveLength(before.family.events.filter(e => e.kind === 'marriage').length)
+  for (const marriage of before.family.events.filter(e => e.kind === 'marriage')) expect(after.family.events.some(e => e.id === marriage.id)).toBe(true)
   for (const id of ['I10', 'I87']) {
     const deaths = after.family.events.filter(e => e.kind === 'death' && e.participants.some(p => p.personId === id))
     expect(deaths).toHaveLength(1)

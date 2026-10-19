@@ -6,10 +6,10 @@
 3 ADDR PO Box 95543
 4 CONT South Jordan, UT 84095
 4 CONT USA
-1 DEST PAF
-1 DATE 18 OCT 2026
-2 TIME 13:27:24
-1 FILE ZubenkoNewFormat.reviewed.10.17.26_6.ged
+1 DEST Ancestral Quest
+1 DATE 19 OCT 2026
+2 TIME 21:20:04
+1 FILE ZubenkoNewFormat.reviewed.10.19.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -48,6 +48,7 @@
 1 SEX F
 1 BIRT
 2 PLAC Vatutine, Cherkasy, Ukraine
+2 DATE 19 AUG 1963
 1 _FSFTID PFF9-VHP
 1 _UID 2F30A6E0D09982488D8636DDFF8D52E0FCF1
 1 FAMS @F1@
@@ -667,6 +668,8 @@
 1 SOUR @S4@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-6N4T
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 EVEN Крестьянка
+2 TYPE Caste Name 
 0 @I40@ INDI
 1 NAME Василь Михайлович /Пластун/
 2 ROMN Vasyl Mykhailovych /Plastun/
@@ -1015,6 +1018,10 @@
 2 SOUR @S30@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-J4JL
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S65@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-J4J8
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 65
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFJ2-ZQD
@@ -1023,6 +1030,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:22:44
+1 SOUR @S65@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-J4J8
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 65
+1 EVEN Козачка
+2 TYPE Caste Name 
 0 @I55@ INDI
 1 NAME Иван /Зубенко/
 2 ROMN Yvan /Zubenko/
@@ -1036,6 +1049,10 @@
 2 SOUR @S29@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-WCRF
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S66@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-WCR4
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 66
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFJ2-2KK
@@ -1044,6 +1061,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:22:45
+1 SOUR @S66@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-WCR4
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 66
+1 EVEN Козак
+2 TYPE Caste Name 
 0 @I56@ INDI
 1 NAME Елена /Зубенко/
 2 ROMN Elena /Zubenko/
@@ -1057,6 +1080,10 @@
 2 SOUR @S25@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-P6VF
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S67@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-P6V6
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 67
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFJK-1H6
@@ -1065,6 +1092,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:22:45
+1 SOUR @S67@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-P6V6
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 67
+1 EVEN Козачка
+2 TYPE Caste Name 
 0 @I57@ INDI
 1 NAME Никифор /Зубенко/
 2 ROMN Nykyfor /Zubenko/
@@ -1078,6 +1111,10 @@
 2 SOUR @S26@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NT7W
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S68@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NT7S
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 68
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFJ2-JF1
@@ -1086,6 +1123,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:22:46
+1 SOUR @S68@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NT7S
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 68
+1 EVEN Козак
+2 TYPE Caste Name 
 0 @I58@ INDI
 1 NAME Мелания /Зубенко/
 2 ROMN Melanyia /Zubenko/
@@ -1099,6 +1142,10 @@
 2 SOUR @S27@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-PRC7
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S69@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-PRHP
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 69
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFJK-J3V
@@ -1107,6 +1154,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:22:46
+1 SOUR @S69@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-PRHP
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 69
+1 EVEN Козачка
+2 TYPE Caste Name 
 0 @I59@ INDI
 1 NAME Трофим /Зубенко/
 2 ROMN Trofym /Zubenko/
@@ -1120,6 +1173,10 @@
 2 SOUR @S28@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-Y5YZ
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S70@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-Y5YQ
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 70
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFJ2-3L3
@@ -1128,6 +1185,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:22:46
+1 SOUR @S70@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3K-Y5YQ
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 70
+1 EVEN Козак
+2 TYPE Caste Name 
 0 @I60@ INDI
 1 NAME Феодор /Зубенко/
 2 ROMN Feodor Petrov /Zubenko/
@@ -1137,7 +1200,7 @@
 2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
 1 DEAT
 2 DATE 3 SEP 1896
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
 2 SOUR @S56@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X34-S4NV
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
@@ -1220,6 +1283,14 @@
 2 SOUR @S49@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-BTKX
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S75@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-BTKZ
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 75
+2 SOUR @S76@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-BTK6
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 76
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFVV-2N5
@@ -1228,6 +1299,16 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:05
+1 SOUR @S75@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-BTKZ
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 75
+1 SOUR @S76@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-BTK6
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 76
+1 EVEN Козачка
+2 TYPE Caste Name 
 0 @I63@ INDI
 1 NAME Пантелеимон /Зубенко/
 2 ROMN Panteleymon /Zubenko/
@@ -1241,6 +1322,10 @@
 2 SOUR @S57@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-LVBM
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S77@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-LVYY
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 77
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFVV-JHC
@@ -1249,6 +1334,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:06
+1 SOUR @S77@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-LVYY
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 77
+1 EVEN Козак
+2 TYPE Caste Name 
 0 @I64@ INDI
 1 NAME Тимофей /Зубенко/
 2 ROMN Tymofei /Zubenko/
@@ -1257,13 +1348,31 @@
 2 DATE 1875
 2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
 1 DEAT
-2 DATE 8 OCT 1980
+2 DATE 9 OCT 1880
+2 SOUR @S78@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3M-TDS3
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 78
+2 SOUR @S79@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3M-TDSW
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 79
 1 _FSFTID PFVV-7W1
 1 _UID E56ED8EA534A2B45A4BED715B19587ED2AE4
 1 FAMC @F21@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:06
+1 SOUR @S78@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3M-TDS3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 78
+1 SOUR @S79@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3M-TDSW
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 79
+1 EVEN Козак
+2 TYPE Caste Name 
 0 @I66@ INDI
 1 NAME Прокофий /Волинцов/
 2 ROMN Agafij /Volontsov/
@@ -1332,6 +1441,11 @@
 1 SOUR @S37@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NTX6
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S61@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X39-QQXF
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 EVEN Крестьянинъ-собственникъ
+2 TYPE Caste Name 
 0 @I70@ INDI
 1 NAME Александр /Дейкало/
 2 ROMN Aleksandr /Deikalo/
@@ -1605,18 +1719,36 @@
 2 SOUR @S55@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-WMNP
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S72@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-WMNG
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 72
 1 DEAT
 2 DATE 28 MAR 1858
 2 PLAC Kharkiv Guberniya, Russian Empire
 2 SOUR @S54@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-MW54
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S71@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-MW5W
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 71
 1 _FSFTID PNK8-SXG
 1 _UID 6025044F180C0949AA5B7D1AE8452E7ABF77
 1 FAMC @F21@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:05
+1 SOUR @S71@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X37-MW5W
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 71
+1 SOUR @S72@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-WMNG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 72
+1 EVEN Козачка
+2 TYPE Caste Name 
 0 @I76@ INDI
 1 NAME Емелиан /Зубенко/
 2 ROMN Emelyan //
@@ -1630,18 +1762,31 @@
 2 SOUR @S53@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-SWB5
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S74@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-SWBG
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE 10 AUG 1859
 2 PLAC Kharkiv Guberniya, Russian Empire
 2 SOUR @S52@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3Q-VQT2
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S73@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3Q-87C1
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 73
 1 _FSFTID PNK8-2S8
 1 _UID 519E9D121B63C8449CECEB67CD882A2EAFB2
 1 FAMC @F21@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:05
+1 SOUR @S73@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X3Q-87C1
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 73
+1 EVEN Козак
+2 TYPE Caste Name 
 0 @I77@ INDI
 1 NAME Евдокия Аврамова //
 2 ROMN Evdokyia Avramova //
@@ -1670,6 +1815,10 @@
 1 SOUR @S42@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NTXF
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 EVEN Селянка
+2 TYPE Caste Name 
+1 EVEN Крестьянка-собственница
+2 TYPE Caste Name 
 0 @I78@ INDI
 1 NAME Максим /Заприса/
 2 ROMN Maksym /Zaprysa/
@@ -1691,6 +1840,8 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:32
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
 0 @I79@ INDI
 1 NAME Николай /Заприса/
 2 ROMN Nykolai //
@@ -1704,6 +1855,10 @@
 2 SOUR @S40@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-HYT5
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S62@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-CJKT
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 62
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PNKZ-DMH
@@ -1712,6 +1867,12 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:32
+1 SOUR @S62@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-CJKT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 62
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
 0 @I80@ INDI
 1 NAME Елисавета /Заприса/
 2 ROMN Elysaveta //
@@ -1733,6 +1894,8 @@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:33
+1 EVEN Крестьянка
+2 TYPE Caste Name 
 0 @I81@ INDI
 1 NAME Александр /Заприса/
 2 ROMN Aleksandr /Zaprysa/
@@ -1746,14 +1909,31 @@
 2 SOUR @S38@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-JWQX
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 SOUR @S64@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-JWQ4
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 DEAT
+2 DATE 2 MAR 1907
+2 PLAC Kharkiv Guberniya, Russian Empire
+2 SOUR @S61@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X39-QQXF
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S63@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X39-QQXZ
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+3 NOTE Ідентифікатор цитування в експорті (_RIN): 63
 1 _FSFTID PN26-LCG
 1 _UID 8FA8F6B665667E4F8CB895EE39A761F17463
 1 FAMC @F25@
 1 CHAN
 2 DATE 17 OCT 2026
 3 TIME 19:07:33
+1 SOUR @S63@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X39-QQXZ
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 NOTE Ідентифікатор цитування в експорті (_RIN): 63
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
 0 @I82@ INDI
 1 NAME Григорій /Заприса/
 2 ROMN Hryhorii /Zaprysa/
@@ -2285,4 +2465,119 @@
 2 CONT Anastasia Karpinska (Анастасія Карпінська) = Antonius Karpinski (Антон Ка
 2 CONC рпінський) + Maria n. Martyniak (Марія, уроджена Мартиняк)
 2 CONT Шлюб: 8 лютого 1874 року, будинок №179.
+0 @S61@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Симеон Григориев Заприса, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X39-QQXF : Tue Dec 10 23:35:04 UT
+2 CONC C 2024), Симеон Григориев Заприса in entry for Александр Заприса, 2 Mar 1
+2 CONC 907.
+0 @S62@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Николай Заприса, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-CJKT : Tue Dec 10 01:26:34 UT
+2 CONC C 2024), Николай Заприса, 9 May 1883.
+0 @S63@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Александр Заприса, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X39-QQXZ : Tue Dec 10 23:35:04 UT
+2 CONC C 2024), Александр Заприса, 2 Mar 1907.
+0 @S64@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Александр Заприса, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-JWQ4 : Tue Dec 10 22:37:48 UT
+2 CONC C 2024), Александр Заприса, 13 May 1896.
+0 @S65@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Акилина Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-J4J8 : Tue Dec 10 00:51:28 UT
+2 CONC C 2024), Акилина Зубенко, 11 Jun 1883.
+0 @S66@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Иван Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-WCR4 : Tue Dec 10 00:40:10 UT
+2 CONC C 2024), Иван Зубенко, 22 Jun 1886.
+0 @S67@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Елена Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X3K-P6V6 : Tue Dec 10 01:01:51 UT
+2 CONC C 2024), Елена Зубенко, 13 May 1889.
+0 @S68@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Никифор Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NT7S : Tue Dec 10 23:13:22 UT
+2 CONC C 2024), Никифор Зубенко, 8 Feb 1892.
+0 @S69@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Мелания Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X3K-PRHP : Tue Dec 10 14:39:54 UT
+2 CONC C 2024), Мелания Зубенко, 26 Dec 1894.
+0 @S70@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Трофим Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X3K-Y5YQ : Tue Dec 10 23:26:39 UT
+2 CONC C 2024), Трофим Зубенко, 22 Jul 1897.
+0 @S71@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Мина Зубенка, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X37-MW5W : Mon Dec 09 22:51:48 UT
+2 CONC C 2024), Мина Зубенка, 28 Mar 1858.
+0 @S72@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Мина Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQS-WMNG : Tue Dec 10 01:07:10 UT
+2 CONC C 2024), Мина Зубенко, 10 Dec 1855.
+0 @S73@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Емелиан Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X3Q-87C1 : Mon Dec 09 23:49:07 UT
+2 CONC C 2024), Емелиан Зубенко, 10 Aug 1859.
+0 @S74@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Емелиан Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQ3-SWBG : Mon Dec 09 23:51:07 UT
+2 CONC C 2024), Емелиан Зубенко, 5 Aug 1858.
+0 @S75@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Анна Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQS-BTKZ : Tue Dec 10 23:58:28 UT
+2 CONC C 2024), Анна Зубенко, 8 Sep 1860.
+0 @S76@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Феодор Петров Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQS-BTK6 : Tue Dec 10 23:58:28 UT
+2 CONC C 2024), Феодор Петров Зубенко in entry for Анна Зубенко, 8 Sep 1860.
+0 @S77@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Пантелеимон Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQS-LVYY : Tue Dec 10 16:43:09 UT
+2 CONC C 2024), Пантелеимон Зубенко, 26 Jul 1865.
+0 @S78@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Тимофей Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X3M-TDS3 : Tue Dec 10 00:50:38 UT
+2 CONC C 2024), Тимофей Зубенко, 9 Oct 1880.
+0 @S79@ SOUR
+1 NOTE Тип джерела в експорті (_TYPE): Unspecified
+1 TITL Феодор Петров Зубенко, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X3M-TDSW : Tue Dec 10 00:50:38 UT
+2 CONC C 2024), Феодор Петров Зубенко in entry for Тимофей Зубенко, 9 Oct 1880.
 0 TRLR

@@ -102,6 +102,15 @@
       "relativeOrder": {
         "I4": 2
       }
+    },
+    {
+      "id": "timofey-death-1880-owner-approved",
+      "target": {
+        "kind": "claim",
+        "id": "claim-844bdc5dfb7b9d883e16cd81"
+      },
+      "confidence": "unassessed",
+      "explanation": "Дата уточнена за погодженим власником метричним записом № 14 за 1880 рік: смерть 9 жовтня, поховання 11 жовтня, вік 5 років. Календар не перераховувався."
     }
   ],
   "primaryClaimIds": [
@@ -196,6 +205,7 @@
   "additionalClaims": [
     {
       "reason": "18.10.2026: власник ідентифікував наданий акт №17 як народження Олександри (Саші) Петрівни, PN3F-KPN, і уточнив дату 3 лютого 1935 року. За його уточненням, невідповідність статі в акті є помилкою документа; стать F та основне ім’я в родоводі збережені.",
+      "publishReason": true,
       "claim": {
         "id": "claim-oleksandra-PN3F-KPN-birth-date-1935",
         "isPrimary": true,
@@ -258,6 +268,14 @@
           }
         }
       }
+    }
+  ],
+  "personEnrichments": [
+    {
+      "id": "owner-mykola-PFVG-PWS-alive-2026-10-18",
+      "personId": "I27",
+      "explanation": "18.10.2026: власник прямо повідомив статус «Живий» для Николая Зубенка, PFVG-PWS. Статус не виведено з відсутності дати смерті.",
+      "lifeStatus": "alive"
     }
   ],
   "placeEnrichments": [
@@ -832,6 +850,11 @@
         "latitude": 51.71987,
         "longitude": 33.210036
       }
+    },
+    {
+      "id": "review-place-9b031223094f18685275e793",
+      "placeId": "place-9b031223094f18685275e793",
+      "explanation": "D06: оригінальну назву місця з експорту 19.10.2026 збережено; нормалізацію й координати не встановлено."
     }
   ],
   "sources": [
@@ -2166,6 +2189,194 @@
       "jsonFile": "assets/documents/source-records/чабан-степан-шлюб-PNSR-5CW-33S7-9R9B-741.json"
     },
     {
+      "id": "file-source-061cf6a8e3d5c1cb027ff424",
+      "sourceId": "source-061cf6a8e3d5c1cb027ff424",
+      "evidenceLinkIds": [
+        "evidenceLink-d813a4a7a55c538a66f24179",
+        "evidenceLink-b061ad5323cc63ca4efcd15c"
+      ],
+      "mediaId": "media-file-source-061cf6a8e3d5c1cb027ff424",
+      "jsonFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXF.json"
+    },
+    {
+      "id": "file-source-5923b92be39e74789587b1b6",
+      "sourceId": "source-5923b92be39e74789587b1b6",
+      "evidenceLinkIds": [
+        "evidenceLink-21af3b4ee334e52aa8d0cd9b",
+        "evidenceLink-f4bb2e98ee49d2591e396feb"
+      ],
+      "mediaId": "media-file-source-5923b92be39e74789587b1b6",
+      "jsonFile": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-CJKT.json"
+    },
+    {
+      "id": "file-source-0adddae78903e80ab09d3997",
+      "sourceId": "source-0adddae78903e80ab09d3997",
+      "evidenceLinkIds": [
+        "evidenceLink-bfd4f40f5580a8d61367ef78",
+        "evidenceLink-a0e2fb845f6cd74b4b872569"
+      ],
+      "mediaId": "media-file-source-0adddae78903e80ab09d3997",
+      "jsonFile": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXZ.json"
+    },
+    {
+      "id": "file-source-c7257fdf63eeaeeca26cfab2",
+      "sourceId": "source-c7257fdf63eeaeeca26cfab2",
+      "evidenceLinkIds": [
+        "evidenceLink-5beb2dfe707f6e692b48171f"
+      ],
+      "mediaId": "media-file-source-c7257fdf63eeaeeca26cfab2",
+      "jsonFile": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ4.json"
+    },
+    {
+      "id": "file-source-29875ef1678e28ae266a71f7",
+      "sourceId": "source-29875ef1678e28ae266a71f7",
+      "evidenceLinkIds": [
+        "evidenceLink-ecee89cf9cccf50d9bace947",
+        "evidenceLink-9a81318ee480474bc6cb34c3"
+      ],
+      "mediaId": "media-file-source-29875ef1678e28ae266a71f7",
+      "jsonFile": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4J8.json"
+    },
+    {
+      "id": "file-source-75feffc591de9bca77b788b0",
+      "sourceId": "source-75feffc591de9bca77b788b0",
+      "evidenceLinkIds": [
+        "evidenceLink-f9fbf1e4c56a2c1553b0cfd9",
+        "evidenceLink-7f76fed7dd392877850ae760"
+      ],
+      "mediaId": "media-file-source-75feffc591de9bca77b788b0",
+      "jsonFile": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCR4.json"
+    },
+    {
+      "id": "file-source-2470c45ccbe1579243ea29ef",
+      "sourceId": "source-2470c45ccbe1579243ea29ef",
+      "evidenceLinkIds": [
+        "evidenceLink-0633fe6d3f0fc09c1a7aafe7",
+        "evidenceLink-615dcc6c839d7798ebb80e77"
+      ],
+      "mediaId": "media-file-source-2470c45ccbe1579243ea29ef",
+      "jsonFile": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6V6.json"
+    },
+    {
+      "id": "file-source-2badc49af598ffc292fd4fc6",
+      "sourceId": "source-2badc49af598ffc292fd4fc6",
+      "evidenceLinkIds": [
+        "evidenceLink-677830c7ebfa194442eaa411",
+        "evidenceLink-1887ab6a4dbc0b7a3c7afe2a"
+      ],
+      "mediaId": "media-file-source-2badc49af598ffc292fd4fc6",
+      "jsonFile": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7S.json"
+    },
+    {
+      "id": "file-source-67a4bebc67ad2a74a9aa4590",
+      "sourceId": "source-67a4bebc67ad2a74a9aa4590",
+      "evidenceLinkIds": [
+        "evidenceLink-346dbdfa72219eda0c1a5fe5",
+        "evidenceLink-d8ae2c83c40a4cda1e6e1677"
+      ],
+      "mediaId": "media-file-source-67a4bebc67ad2a74a9aa4590",
+      "jsonFile": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRHP.json"
+    },
+    {
+      "id": "file-source-177e20de8e9136307efa014b",
+      "sourceId": "source-177e20de8e9136307efa014b",
+      "evidenceLinkIds": [
+        "evidenceLink-f145644ba91e1325b78d87cd",
+        "evidenceLink-ad79a92fa27c86b999ea6374"
+      ],
+      "mediaId": "media-file-source-177e20de8e9136307efa014b",
+      "jsonFile": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5YQ.json"
+    },
+    {
+      "id": "file-source-3d84c36afa9cf12165497013",
+      "sourceId": "source-3d84c36afa9cf12165497013",
+      "evidenceLinkIds": [
+        "evidenceLink-523511e77118d378fc3cdbb0",
+        "evidenceLink-9b21a9407eff06b266f6ef71"
+      ],
+      "mediaId": "media-file-source-3d84c36afa9cf12165497013",
+      "jsonFile": "assets/documents/source-records/зубенко-мина-смерть-PNK8-SXG-6X37-MW5W.json"
+    },
+    {
+      "id": "file-source-f4d2ca8a5e8c6283bf0439e0",
+      "sourceId": "source-f4d2ca8a5e8c6283bf0439e0",
+      "evidenceLinkIds": [
+        "evidenceLink-0b68d2676aff82d613013b1e",
+        "evidenceLink-520c09fe173799bc3d16f439"
+      ],
+      "mediaId": "media-file-source-f4d2ca8a5e8c6283bf0439e0",
+      "jsonFile": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMNG.json"
+    },
+    {
+      "id": "file-source-389f1c651493c57476063dd3",
+      "sourceId": "source-389f1c651493c57476063dd3",
+      "evidenceLinkIds": [
+        "evidenceLink-249a3b1252954ddef169248c",
+        "evidenceLink-768d97bf3d88b9f4718c8dd9"
+      ],
+      "mediaId": "media-file-source-389f1c651493c57476063dd3",
+      "jsonFile": "assets/documents/source-records/зубенко-емелиан-смерть-PNK8-2S8-6X3Q-87C1.json"
+    },
+    {
+      "id": "file-source-83d6be319011f7354ad8f338",
+      "sourceId": "source-83d6be319011f7354ad8f338",
+      "evidenceLinkIds": [
+        "evidenceLink-97c04a9ec5eeb0ea51cd3fe9"
+      ],
+      "mediaId": "media-file-source-83d6be319011f7354ad8f338",
+      "jsonFile": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBG.json"
+    },
+    {
+      "id": "file-source-ae189953a1b805561d1f4795",
+      "sourceId": "source-ae189953a1b805561d1f4795",
+      "evidenceLinkIds": [
+        "evidenceLink-208cbfe7a87000b0c39ac13f",
+        "evidenceLink-16b6ac6f357257be7f123856"
+      ],
+      "mediaId": "media-file-source-ae189953a1b805561d1f4795",
+      "jsonFile": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKZ.json"
+    },
+    {
+      "id": "file-source-7f4478b66833c827ec77d39a",
+      "sourceId": "source-7f4478b66833c827ec77d39a",
+      "evidenceLinkIds": [
+        "evidenceLink-8eea9969ea9651bb31f00b51",
+        "evidenceLink-2e3d1e177b9adb5df98578b1"
+      ],
+      "mediaId": "media-file-source-7f4478b66833c827ec77d39a",
+      "jsonFile": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTK6.json"
+    },
+    {
+      "id": "file-source-3a6e774f423e2a3593231258",
+      "sourceId": "source-3a6e774f423e2a3593231258",
+      "evidenceLinkIds": [
+        "evidenceLink-d15a8d9adfe2eea962c9bc61",
+        "evidenceLink-fca632b97deb711a1da1e145"
+      ],
+      "mediaId": "media-file-source-3a6e774f423e2a3593231258",
+      "jsonFile": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVYY.json"
+    },
+    {
+      "id": "file-source-189a36c738ffc0580a47772d",
+      "sourceId": "source-189a36c738ffc0580a47772d",
+      "evidenceLinkIds": [
+        "evidenceLink-dd616dd261d740771685258a",
+        "evidenceLink-00b5574531385ece53c7bb1c"
+      ],
+      "mediaId": "media-file-source-189a36c738ffc0580a47772d",
+      "jsonFile": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDS3.json"
+    },
+    {
+      "id": "file-source-4ecc7fdc81d9764fb6640a2f",
+      "sourceId": "source-4ecc7fdc81d9764fb6640a2f",
+      "evidenceLinkIds": [
+        "evidenceLink-1c0515b4ce245723759c74a0",
+        "evidenceLink-860579f57b5d289d5d4c26a4"
+      ],
+      "mediaId": "media-file-source-4ecc7fdc81d9764fb6640a2f",
+      "jsonFile": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDSW.json"
+    },
+    {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
       "sourceId": "source-oleksandra-PN3F-KPN-birth-1935-act-17",
       "evidenceLinkIds": [
@@ -3191,6 +3402,253 @@
           "entryId": "media-record-260c554b79946d7727ac"
         }
       ]
+    },
+    {
+      "id": "media-file-source-5923b92be39e74789587b1b6",
+      "path": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-CJKT.png",
+      "mimeType": "image/png",
+      "title": "Николай Заприса, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-5923b92be39e74789587b1b6"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-c7257fdf63eeaeeca26cfab2",
+      "path": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ4.png",
+      "mimeType": "image/png",
+      "title": "Александр Заприса, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-c7257fdf63eeaeeca26cfab2"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-29875ef1678e28ae266a71f7",
+      "path": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4J8.png",
+      "mimeType": "image/png",
+      "title": "Акилина Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-29875ef1678e28ae266a71f7"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-75feffc591de9bca77b788b0",
+      "path": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCR4.png",
+      "mimeType": "image/png",
+      "title": "Иван Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-75feffc591de9bca77b788b0"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-2470c45ccbe1579243ea29ef",
+      "path": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6V6.png",
+      "mimeType": "image/png",
+      "title": "Елена Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-2470c45ccbe1579243ea29ef"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-2badc49af598ffc292fd4fc6",
+      "path": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7S.png",
+      "mimeType": "image/png",
+      "title": "Никифор Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-2badc49af598ffc292fd4fc6"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-67a4bebc67ad2a74a9aa4590",
+      "path": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRHP.png",
+      "mimeType": "image/png",
+      "title": "Мелания Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-67a4bebc67ad2a74a9aa4590"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-177e20de8e9136307efa014b",
+      "path": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5YQ.png",
+      "mimeType": "image/png",
+      "title": "Трофим Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-177e20de8e9136307efa014b"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-3d84c36afa9cf12165497013",
+      "path": "assets/documents/source-records/зубенко-мина-смерть-PNK8-SXG-6X37-MW5W.png",
+      "mimeType": "image/png",
+      "title": "Мина Зубенка, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-3d84c36afa9cf12165497013"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-f4d2ca8a5e8c6283bf0439e0",
+      "path": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMNG.png",
+      "mimeType": "image/png",
+      "title": "Мина Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-f4d2ca8a5e8c6283bf0439e0"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-389f1c651493c57476063dd3",
+      "path": "assets/documents/source-records/зубенко-емелиан-смерть-PNK8-2S8-6X3Q-87C1.png",
+      "mimeType": "image/png",
+      "title": "Емелиан Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-389f1c651493c57476063dd3"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-83d6be319011f7354ad8f338",
+      "path": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBG.png",
+      "mimeType": "image/png",
+      "title": "Емелиан Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-83d6be319011f7354ad8f338"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-ae189953a1b805561d1f4795",
+      "path": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKZ.png",
+      "mimeType": "image/png",
+      "title": "Анна Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-ae189953a1b805561d1f4795"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-7f4478b66833c827ec77d39a",
+      "path": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTK6.png",
+      "mimeType": "image/png",
+      "title": "Феодор Петров Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-7f4478b66833c827ec77d39a"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-3a6e774f423e2a3593231258",
+      "path": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVYY.png",
+      "mimeType": "image/png",
+      "title": "Пантелеимон Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-3a6e774f423e2a3593231258"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-061cf6a8e3d5c1cb027ff424",
+      "path": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXF.png",
+      "mimeType": "image/png",
+      "title": "Симеон Григориев Заприса, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-061cf6a8e3d5c1cb027ff424"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-0adddae78903e80ab09d3997",
+      "path": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXZ.png",
+      "mimeType": "image/png",
+      "title": "Александр Заприса, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-0adddae78903e80ab09d3997"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-189a36c738ffc0580a47772d",
+      "path": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDS3.png",
+      "mimeType": "image/png",
+      "title": "Тимофей Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-189a36c738ffc0580a47772d"
+        }
+      ]
+    },
+    {
+      "id": "media-file-source-4ecc7fdc81d9764fb6640a2f",
+      "path": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDSW.png",
+      "mimeType": "image/png",
+      "title": "Феодор Петров Зубенко, \"Ukraine, Kharkiv Church Records, 1710-1938\"",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-file-source-4ecc7fdc81d9764fb6640a2f"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
@@ -3297,13 +3755,5 @@
       ]
     }
   ],
-  "memories": [],
-  "personEnrichments": [
-    {
-      "id": "owner-mykola-PFVG-PWS-alive-2026-10-18",
-      "personId": "I27",
-      "lifeStatus": "alive",
-      "explanation": "18.10.2026: власник прямо повідомив статус «Живий» для Николая Зубенка, PFVG-PWS. Статус не виведено з відсутності дати смерті."
-    }
-  ]
+  "memories": []
 }

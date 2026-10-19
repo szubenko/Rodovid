@@ -23,7 +23,7 @@ const withoutOrigin = <T extends { provenance: unknown }>(item: T) => {
 }
 
 it('retains accepted identities and evidence, adds the two dates, and imports all 19 new sources', () => {
-  const before = load('tests/fixtures/import-before-2026-10-19'), after = load('Data')
+  const before = load('tests/fixtures/import-before-2026-10-19'), after = load('tests/fixtures/petro-before-2026-10-19')
   expect(after.report.sha256).toBe(timofeyCorrectionSha256)
   expect(after.report.counts).toMatchObject({ people: 85, relationships: 136, events: 172,
     claims: 405, places: 72, sources: 80, evidenceLinks: 168 })

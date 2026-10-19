@@ -60,3 +60,29 @@ test('Timofey shows the corrected 1880 death date and the approved shared act', 
   expect(await page.locator('html').evaluate(element => element.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width)
   await source.screenshot({ path: info.outputPath('timofey-death-1880-source.png') })
 })
+
+test('Petro shows the exact birth date, Ksenia as mother and one local birth act', async ({ page }, info) => {
+  await page.setViewportSize({ width: info.project.name.includes('mobile') ? 320 : 1280, height: 900 })
+  const family = await (await page.request.get('/data/family.json')).json() as FamilyData
+  const petro = family.people.find(p => p.externalIds.some(id => id.value === 'PFF9-B5D'))!
+  const birth = family.events.find(e => e.kind === 'birth' && e.participants.some(p => p.personId === petro.id))!
+  await page.goto(`/person/${petro.id}`)
+  await expect(page.locator('body')).toContainText('28 червня 1900')
+  await expect(page.locator('body')).toContainText('Ксения Никифорова')
+  const source = page.locator(`[data-source-for="${birth.id}"]`)
+  await source.locator('summary').click()
+  await expect(source.locator('img')).toHaveCount(1)
+  await expect(source.locator('blockquote')).toHaveCount(1)
+  await expect(source.locator('blockquote')).toHaveText('Петръ. Родился 28 іюня 1900 года, крещенъ 29 іюня 1900 года. Родители: козакъ с. Чеплеевки Александръ Дейкал и законная его жена Ксения Никифорова, оба православные. Запись № 36.')
+  await expect(source.locator('a[href*="familysearch.org"]')).toHaveCount(0)
+  await expect.poll(() => source.locator('img').evaluate(image => (image as HTMLImageElement).naturalWidth)).toBe(1412)
+  expect(await page.locator('html').evaluate(element => element.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width)
+  await source.screenshot({ path: info.outputPath('petro-birth-1900-source.png') })
+  await page.goto('/person/I88')
+  await expect(page.getByRole('heading', { name: 'Ксения Никифорова', exact: true })).toBeVisible()
+  await expect(page.locator('body')).toContainText('Петро Дейкало')
+  const maternalSource = page.locator(`[data-source-for="${birth.id}"]`)
+  await maternalSource.locator('summary').click()
+  await expect(maternalSource.locator('img')).toHaveCount(1)
+  await expect(maternalSource.locator('blockquote')).toContainText('Ксения Никифорова')
+})

@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-19",
+  "ownerDecision": "Власник надав остаточний опис: Александръ Дейкал, мати Ксения Никифорова; підтвердив Петра PFF9-B5D у відповідь на пропозицію уточнити дату й додати матір.",
+  "previousSha256": "3c289fccac4ee16dd740fc40c94ac3b536e32464356f95468f4616d954bdffa0",
+  "sha256": "6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+  "backup": "tests/fixtures/petro-before-2026-10-19",
+  "imageSha256": "cc783938942245f7c65daa050c7ae8a68df71ac124270f32a089082a68e2007a",
+  "description": "Петръ. Родился 28 іюня 1900 года, крещенъ 29 іюня 1900 года. Родители: козакъ с. Чеплеевки Александръ Дейкал и законная его жена Ксения Никифорова, оба православные. Запись № 36.",
+  "personId": "I8",
+  "familySearchId": "PFF9-B5D",
+  "fatherId": "I35",
+  "motherId": "I88",
+  "eventId": "event-24de72684a0d23588ed45900",
+  "claimId": "claim-b34a18ae26b7ae1e40737ea2",
+  "beforeDate": {
+    "kind": "point",
+    "raw": "1900",
+    "calendar": "unspecified",
+    "qualifier": "exact",
+    "value": {
+      "precision": "year",
+      "year": 1900
+    }
+  },
+  "afterDate": {
+    "kind": "point",
+    "raw": "28 JUN 1900",
+    "calendar": "unspecified",
+    "qualifier": "exact",
+    "value": {
+      "precision": "day",
+      "year": 1900,
+      "month": 6,
+      "day": 28
+    }
+  },
+  "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+  "mediaId": "media-record-deikalo-petro-birth-1900-act36",
+  "jsonFile": "assets/documents/source-records/дейкало-петро-народження-PFF9-B5D-акт-36.json",
+  "scanFile": "assets/documents/source-records/дейкало-петро-народження-PFF9-B5D-акт-36.png",
+  "evidenceLinkIds": [
+    "evidence-petro-birth-1900-act36-1",
+    "evidence-petro-birth-1900-act36-2",
+    "evidence-petro-birth-1900-act36-3",
+    "evidence-petro-birth-1900-act36-4",
+    "evidence-petro-birth-1900-act36-5",
+    "evidence-petro-birth-1900-act36-6",
+    "evidence-petro-birth-1900-act36-7",
+    "evidence-petro-birth-1900-act36-8"
+  ],
+  "newRelationshipIds": [
+    "relationship-406c0ead8291fbd7bc8cb0c6",
+    "relationship-bf7a3f7da534d00f193e4872"
+  ],
+  "addedIdentities": [
+    {
+      "kind": "person",
+      "id": "I88"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-100d5b008b9f1aa6d5906e60"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-406c0ead8291fbd7bc8cb0c6"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-bf7a3f7da534d00f193e4872"
+    }
+  ],
+  "counts": {
+    "people": 86,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 138,
+    "events": 172,
+    "claims": 406,
+    "places": 72,
+    "sources": 81,
+    "media": 82,
+    "evidenceLinks": 176,
+    "memories": 0
+  },
+  "validation": {
+    "errors": 0,
+    "warnings": 98,
+    "info": 2,
+    "status": "passed"
+  },
+  "remaining": {
+    "all": 0,
+    "directAncestors": 0
+  },
+  "editorialNotes": [
+    "Читання матері Ксения Никифорова та прізвища батька Дейкал надане власником; початковий проєкт із Пелагія відхилено.",
+    "Опис збережено дослівно за остаточним повідомленням власника. Батькове ім’я в наявній картці Александр Дейкало не змінено.",
+    "По батькові батька не встановлено. Матері не додано прізвище чи вигаданий FamilySearch ID. Її ім’я збережено як Ксения Никифорова.",
+    "Існуючий зв’язок батька з Петром збережено. Додано матір–дитина й подружжя відповідно до прямих слів акта про законну дружину.",
+    "Дата хрещення лишається в описі; місце народження не уточнювалося, календар не перераховувався, оцінки достовірності не підвищено.",
+    "Посилання, архівний шифр і номер кадру не надані. Джерело локальне, url: null."
+  ],
+  "originalImage": "E:/RodovidZubenko/SelectedBooks/дейкало-петро-народження-1900-акт-36.png",
+  "unchangedRootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e",
+  "verification": {
+    "focusedTests": 17,
+    "finalNewTestsRepeated": 3,
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "reactSvgBuild": "passed",
+    "browser": {
+      "earlierSourceScenariosPassed": 6,
+      "petroAndMotherFinalScenariosPassed": 2,
+      "devices": [
+        "desktop",
+        "mobile"
+      ],
+      "mobileSourceScreenshotReviewed": true
+    },
+    "sourceSync": {
+      "records": 81,
+      "created": 0,
+      "updated": 0,
+      "conflicts": []
+    },
+    "notes": "Повний набір не повторювався: попередні не пов’язані падіння описані в журналі імпорту."
+  }
+}

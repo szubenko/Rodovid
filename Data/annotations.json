@@ -111,6 +111,15 @@
       },
       "confidence": "unassessed",
       "explanation": "Дата уточнена за погодженим власником метричним записом № 14 за 1880 рік: смерть 9 жовтня, поховання 11 жовтня, вік 5 років. Календар не перераховувався."
+    },
+    {
+      "id": "petro-birth-1900-owner-approved",
+      "target": {
+        "kind": "claim",
+        "id": "claim-b34a18ae26b7ae1e40737ea2"
+      },
+      "confidence": "unassessed",
+      "explanation": "Дату 1900 уточнено до 28.06.1900 за метричним актом № 36 і читанням, погодженим власником 19.10.2026. Дата хрещення 29.06.1900 лишається в описі; календар не перераховувався."
     }
   ],
   "primaryClaimIds": [
@@ -869,6 +878,20 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "source-oleksandra-PN3F-KPN-birth-1935-act-17"
+        }
+      ]
+    },
+    {
+      "id": "source-record-deikalo-petro-birth-1900-act36",
+      "title": "Народження Петра Дейкала, 28 червня 1900 року, запис № 36",
+      "mediaIds": [
+        "media-record-deikalo-petro-birth-1900-act36"
+      ],
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "source-record-deikalo-petro-birth-1900-act36"
         }
       ]
     }
@@ -2385,6 +2408,22 @@
       ],
       "mediaId": "media-oleksandra-PN3F-KPN-birth-1935-act-17",
       "jsonFile": "assets/documents/source-records/дейкало-олександра-народження-PN3F-KPN-акт-17.json"
+    },
+    {
+      "id": "record-file-deikalo-petro-birth-1900-act36",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "evidenceLinkIds": [
+        "evidence-petro-birth-1900-act36-1",
+        "evidence-petro-birth-1900-act36-2",
+        "evidence-petro-birth-1900-act36-3",
+        "evidence-petro-birth-1900-act36-4",
+        "evidence-petro-birth-1900-act36-5",
+        "evidence-petro-birth-1900-act36-6",
+        "evidence-petro-birth-1900-act36-7",
+        "evidence-petro-birth-1900-act36-8"
+      ],
+      "mediaId": "media-record-deikalo-petro-birth-1900-act36",
+      "jsonFile": "assets/documents/source-records/дейкало-петро-народження-PFF9-B5D-акт-36.json"
     }
   ],
   "media": [
@@ -3649,6 +3688,23 @@
           "entryId": "media-file-source-4ecc7fdc81d9764fb6640a2f"
         }
       ]
+    },
+    {
+      "id": "media-record-deikalo-petro-birth-1900-act36",
+      "path": "assets/documents/source-records/дейкало-петро-народження-PFF9-B5D-акт-36.png",
+      "dimensions": {
+        "width": 1412,
+        "height": 683
+      },
+      "mimeType": "image/png",
+      "title": "Акт народження Петра Дейкала — 1900, № 36",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-deikalo-petro-birth-1900-act36"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
@@ -3751,6 +3807,151 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "evidence-record-b93d22f86aa19810e966"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-1",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "event",
+        "id": "event-24de72684a0d23588ed45900"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36",
+        "recordNumber": "36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-1"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-2",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "claim",
+        "id": "claim-b34a18ae26b7ae1e40737ea2"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-2"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-3",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "person",
+        "id": "I8"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-3"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-4",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "person",
+        "id": "I35"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-4"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-5",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "person",
+        "id": "I88"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-5"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-6",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-386c227f790be2fd03a50cfb"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-6"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-7",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-406c0ead8291fbd7bc8cb0c6"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-7"
+        }
+      ]
+    },
+    {
+      "id": "evidence-petro-birth-1900-act36-8",
+      "sourceId": "source-record-deikalo-petro-birth-1900-act36",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-bf7a3f7da534d00f193e4872"
+      },
+      "fragment": {
+        "mediaId": "media-record-deikalo-petro-birth-1900-act36"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-petro-birth-1900-act36-8"
         }
       ]
     }

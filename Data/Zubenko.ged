@@ -733,7 +733,7 @@
 1 SEX M
 1 BIRT
 2 PLAC Russian Empire
-2 DATE 1900
+2 DATE 28 JUN 1900
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFF9-B5D
@@ -1697,6 +1697,7 @@
 1 HUSB @I70@
 1 _UID 65043D8C7BDD274AAC753A0A14DB3B26B0FF
 1 CHIL @I44@
+1 WIFE @I88@
 0 @F27@ FAM
 1 MARR
 1 HUSB @I71@
@@ -2580,4 +2581,10 @@
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
 2 CONC //www.familysearch.org/ark:/61903/1:1:6X3M-TDSW : Tue Dec 10 00:50:38 UT
 2 CONC C 2024), Феодор Петров Зубенко in entry for Тимофей Зубенко, 9 Oct 1880.
+0 @I88@ INDI
+1 NAME Ксения Никифорова
+2 GIVN Ксения
+2 NOTE Ім’я за актом народження Петра № 36 від 28.06.1900 у читанні, погодженому власником 19.10.2026. Прізвище матері в акті окремо не зазначено.
+1 SEX F
+1 FAMS @F26@
 0 TRLR

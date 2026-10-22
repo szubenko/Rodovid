@@ -1,6 +1,6 @@
 import { readFileSync, realpathSync } from 'node:fs'
 import { createHash } from 'node:crypto'
-import { basename, dirname, extname, isAbsolute, relative, resolve } from 'node:path'
+import { isAbsolute, relative, resolve } from 'node:path'
 import { z } from 'zod'
 import { sourceSchema } from '../src/data/schema.ts'
 import { supplementsSchema } from '../src/data/supplements.ts'
@@ -38,10 +38,7 @@ export function resolveSourceRecordFiles(input: unknown, dataDirectory: string, 
     evidenceIds.forEach(id => targets.add(id))
     const media = entry.mediaId ? supplements.media.find(media => media.id === entry.mediaId) : undefined
     if (entry.mediaId && !media) throw new Error(`Unresolved source record image: ${entry.mediaId}`)
-    if (media && (dirname(entry.jsonFile) !== dirname(media.path)
-      || basename(entry.jsonFile, '.json') !== basename(media.path, extname(media.path)))) {
-      throw new Error(`Source record JSON and image must have the same filename: ${entry.jsonFile}`)
-    }
+    // A source owns its editable JSON; several indexed sources can share a scan.
     let value = overrides.get(entry.jsonFile)
     if (!overrides.has(entry.jsonFile)) {
       const root = realpathSync(dataDirectory)

@@ -18,6 +18,7 @@ import { validateData } from './validation/validate.ts'
 import { recordEvidenceIds, resolveSourceRecordFiles, sourceRecordFileSchema } from './source-record-files.ts'
 import { eventTokens, sourceArk, sourceRecordBaseName } from './source-record-names.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
+import { findSourceScan } from './source-scan-files.ts'
 export { sourceRecordBaseName } from './source-record-names.ts'
 
 const defaultRoot = fileURLToPath(new URL('../', import.meta.url))
@@ -76,7 +77,9 @@ export async function addSourceRecord(root: string, value: unknown, inputDirecto
   const url = record.url !== undefined ? record.url : (existing ? recordUrl(existing, family.evidenceLinks.filter(link => link.sourceId === sourceId)) : undefined) ?? null
   const fsSourceId = record.familySearchSourceId ?? sourceArk(url) ?? `локальне-${recordId}`
   const priorBinding = additions.sourceRecordFiles.find(entry => entry.sourceId === sourceId)
-  const baseName = priorBinding ? basename(priorBinding.jsonFile, '.json') : record.baseName ?? sourceRecordBaseName(family, event, fsSourceId, record.personId)
+  let baseName = priorBinding ? basename(priorBinding.jsonFile, '.json') : record.baseName ?? sourceRecordBaseName(family, event, fsSourceId, record.personId)
+  if (!priorBinding && additions.sourceRecordFiles.some(entry => entry.sourceId !== sourceId
+    && entry.jsonFile === `assets/documents/source-records/${baseName}.json`)) baseName += `-${sourceId.slice(-8)}`
   const jsonPath = `assets/documents/source-records/${baseName}.json`
   const description = record.descriptionFile
     ? (await readFile(resolve(inputDirectory, record.descriptionFile), 'utf8')).replace(/^\uFEFF/u, '').trim() : record.description
@@ -97,13 +100,27 @@ export async function addSourceRecord(root: string, value: unknown, inputDirecto
     const signature = mimeType === 'image/png' ? bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
       : mimeType === 'image/jpeg' ? bytes.subarray(0, 3).equals(Buffer.from([255, 216, 255])) : bytes.subarray(0, 5).toString() === '%PDF-'
     if (!signature) throw new Error('Вміст скану не відповідає розширенню.')
-    const path = `assets/documents/source-records/${baseName}${extension}`
-    mediaId = priorBinding?.mediaId ?? additions.media.find(media => media.path === path)?.id ?? `media-record-${recordId}`
+    const dataDirectory = resolve(root, 'Data')
+    const sharedPath = findSourceScan(dataDirectory, additions.media, bytes, mimeType)
+    let path = sharedPath ?? `assets/documents/source-records/${baseName}${extension}`
+    // Never overwrite a shared scan when one source receives a different image.
+    if (!sharedPath) {
+      try {
+        if (!(await readFile(resolve(dataDirectory, path))).equals(bytes)) {
+          path = `assets/documents/source-records/${baseName}-${createHash('sha256').update(bytes).digest('hex')}${extension}`
+        }
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
+      }
+    }
+    const priorMediaShared = priorBinding?.mediaId && additions.sourceRecordFiles.some(entry => entry.sourceId !== sourceId && entry.mediaId === priorBinding.mediaId)
+    mediaId = priorBinding?.mediaId && !priorMediaShared ? priorBinding.mediaId
+      : `media-record-${recordId}${priorMediaShared ? `-${createHash('sha256').update(bytes).digest('hex')}` : ''}`
     const dimensions = mimeType.startsWith('image/') ? imageSize(bytes) : undefined
     const rotated = dimensions?.orientation !== undefined && dimensions.orientation >= 5
     upsert(additions.media, { id: mediaId, path, mimeType, title: record.title ?? `Скан запису: ${baseName}`,
       ...(dimensions ? { dimensions: { width: rotated ? dimensions.height : dimensions.width, height: rotated ? dimensions.width : dimensions.height } } : {}), provenance: provenance(mediaId) })
-    asset = { path, bytes }
+    if (!sharedPath) asset = { path, bytes }
   } else if (priorBinding) {
     mediaId = priorBinding.mediaId
   }

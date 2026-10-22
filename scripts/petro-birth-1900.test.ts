@@ -32,8 +32,16 @@ it('retains every accepted identity and fact apart from the approved refinement 
   expect(after.report.sha256).toBe(petroBirthReviewSha256)
   expect(after.report.counts).toMatchObject({ people: 86, families: 32, relationships: 138,
     events: 172, claims: 406, places: 72, sources: 81, media: 82, evidenceLinks: 176 })
-  for (const kind of ['people', 'relationships', 'events', 'places', 'sources', 'media', 'evidenceLinks', 'memories'] as const) {
+  for (const kind of ['people', 'relationships', 'events', 'places', 'sources', 'evidenceLinks', 'memories'] as const) {
     for (const item of before[kind]) expect(withoutOrigin(after.family[kind].find(n => n.id === item.id)!)).toEqual(withoutOrigin(item))
+  }
+  for (const item of before.media) {
+    const current = after.family.media.find(media => media.id === item.id)!
+    expect(withoutOrigin(current)).toEqual({ ...withoutOrigin(item), path: current.path })
+    if (!item.mimeType.startsWith('audio/')) {
+      expect(createHash('sha256').update(read(`Data/${current.path}`)).digest('hex'))
+        .toBe(item.sha256)
+    }
   }
   for (const claim of before.claims.filter(c => c.id !== dateId)) expect(withoutOrigin(after.family.claims.find(n => n.id === claim.id)!)).toEqual(withoutOrigin(claim))
   expect(after.family.claims.find(c => c.id === dateId)).toMatchObject({ target: { kind: 'event', id: birthId },

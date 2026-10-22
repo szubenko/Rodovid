@@ -1,4 +1,5 @@
 import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -62,11 +63,14 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
     await put('Data/assets/photos/shared.png', replacement)
     await run()
     expect(await get('dist/assets/photos/shared.png')).toEqual(replacement)
+    const lastGood = await get('dist/data/family.json')
+    const updated = familyDataSchema.parse(JSON.parse(lastGood.toString()))
+    expect(updated.media.every(media => media.sha256 === createHash('sha256').update(replacement).digest('hex'))).toBe(true)
 
     // An invalid declared thumbnail blocks the actual Vite build, preserving the last good output.
     await put('Data/assets/thumbs/shared.png', 'invalid')
     await expect(run()).rejects.toThrow('Validation failed')
-    expect(await get('dist/data/family.json')).toEqual(first)
+    expect(await get('dist/data/family.json')).toEqual(lastGood)
     expect(JSON.parse((await get('tmp/data-conversion.json')).toString()).validation.status).toBe('failed')
     await put('Data/assets/thumbs/shared.png', png)
     await json('Data/annotations.json', { schemaVersion: 1, media: [{ ...photo, path: 'assets/missing.png' }] })

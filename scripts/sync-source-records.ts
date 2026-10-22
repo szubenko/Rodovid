@@ -119,7 +119,7 @@ export function planSourceRecordSync(input: ConversionInput, dataDirectory: stri
       ? `${dirname(media.path).replaceAll('\\', '/')}/${basename(media.path).replace(/\.[^.]+$/u, '')}.json`
       : `assets/documents/source-records/${baseName}.json`)
     if (claimed.has(jsonFile.toLocaleLowerCase('uk')) && claimed.get(jsonFile.toLocaleLowerCase('uk')) !== source.id) {
-      if (oldBinding || media) throw new Error(`Два джерела використовують один JSON: ${jsonFile}`)
+      if (oldBinding) throw new Error(`Два джерела використовують один JSON: ${jsonFile}`)
       jsonFile = jsonFile.replace(/\.json$/u, `-${source.id.slice(-8)}.json`)
     }
     claimed.set(jsonFile.toLocaleLowerCase('uk'), source.id)

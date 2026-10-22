@@ -77,6 +77,33 @@ it('adds a new source without loosening checks on the original citations', async
   expect((await validateData(after.family, { assetsRoot: resolve(directory, 'Data'), conversion: after.report })).status).toBe('failed')
 }, 20_000)
 
+it('reuses a scan for different sources and replaces one source image without overwriting the shared bytes', async () => {
+  const directory = await fixture()
+  const scans = resolve(directory, 'Data/assets/documents/source-records')
+  const beforeFiles = await readdir(scans)
+  const first = await addSourceRecord(directory, { ...record, id: 'shared-first', sourceId: undefined }, directory, true)
+  const second = await addSourceRecord(directory, { ...record, id: 'shared-second', sourceId: undefined,
+    url: 'https://example.org/second', descriptionFile: undefined, description: 'Окремий опис другого індексу.' }, directory, true)
+  const shared = await load(directory)
+  const media = (id: string) => shared.family.media.find(item => item.id === id)!
+  const sharedPath = media(first.mediaId!).path
+  expect(media(second.mediaId!).path).toBe(sharedPath)
+  expect(first.jsonFile).not.toBe(second.jsonFile)
+  expect((await readdir(scans)).filter(file => file.endsWith('.png')).length
+    - beforeFiles.filter(file => file.endsWith('.png')).length).toBe(1)
+  expect(shared.family.sources.find(source => source.id === second.sourceId)?.description).toBe('Окремий опис другого індексу.')
+  const original = await readFile(resolve(directory, 'scan.png'))
+  const replacement = Buffer.concat([original, Buffer.from('different scan')])
+  await writeFile(resolve(directory, 'replacement.png'), replacement)
+  await addSourceRecord(directory, { ...record, id: 'shared-first', sourceId: first.sourceId, screenshot: 'replacement.png' }, directory, true)
+  const replaced = await load(directory)
+  const firstMedia = replaced.family.media.find(item => item.id === first.mediaId)!
+  const secondMedia = replaced.family.media.find(item => item.id === second.mediaId)!
+  expect(firstMedia.path).not.toBe(secondMedia.path)
+  expect(await readFile(resolve(directory, 'Data', firstMedia.path))).toEqual(replacement)
+  expect(await readFile(resolve(directory, 'Data', secondMedia.path))).toEqual(original)
+}, 20_000)
+
 it('keeps the rejected FamilySearch tree screenshot out of sources and rejects restoring it', async () => {
   const directory = await fixture()
   const result = await load(directory)
@@ -100,7 +127,8 @@ it('imports the two-field JSON by filename IDs and reads later edits directly fr
   const path = resolve(directory, 'Data', result.jsonFile)
   expect(JSON.parse(await readFile(path, 'utf8'))).toEqual(metadata)
   const before = await load(directory)
-  expect(before.family.media.find(media => media.id === result.mediaId)!.path).toBe(`assets/documents/source-records/${name}.png`)
+  const scan = before.family.media.find(media => media.id === result.mediaId)!
+  expect(await readFile(resolve(directory, 'Data', scan.path))).toEqual(await readFile(resolve(directory, 'scan.png')))
   const link = () => before.family.evidenceLinks.find(link => link.sourceId === record.sourceId && link.target.id === record.eventId)!
   expect(link().transcription).toBe(metadata.description)
   await writeFile(path, JSON.stringify({ ...metadata, description: 'Виправлений опис із JSON.' }))

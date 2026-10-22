@@ -15,6 +15,7 @@
     "source:list": "node scripts/source-records.ts --list",
     "source:add": "node scripts/source-records.ts",
     "source:sync": "node scripts/sync-source-records.ts",
+    "source:dedupe": "node scripts/deduplicate-source-scans.ts",
     "dev": "vite",
     "dev:react-svg": "vite --config vite.react-svg.config.ts",
     "typecheck": "tsc -b",

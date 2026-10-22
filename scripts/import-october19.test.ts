@@ -57,7 +57,11 @@ it('creates a separate editable record per source, reuses 15 approved scans byte
   expect(after.plan.summary.conflicts).toEqual([])
   expect(after.plan.outputs.size).toBe(0)
   const hash = (path: string) => createHash('sha256').update(read(`Data/${path}`)).digest('hex')
-  for (const scan of audit.reusedScans) expect(hash(scan.file)).toBe(scan.sha256)
+  for (const scan of audit.reusedScans) {
+    const binding = after.plan.annotations.sourceRecordFiles.find(b => b.jsonFile === scan.file.replace(/\.png$/u, '.json'))!
+    const media = after.family.media.find(item => item.id === binding.mediaId)!
+    expect(hash(media.path)).toBe(scan.sha256)
+  }
   for (const binding of audit.sourceRecordFiles) {
     const current = after.plan.annotations.sourceRecordFiles.find(b => b.sourceId === binding.sourceId)!
     const record = json(`Data/${current.jsonFile}`)

@@ -141,6 +141,26 @@ it('does not merge distinct acts on one frame, even for the same event and perso
   expect(family.sources.map(source => source.description).sort()).toEqual(['Інший акт.', 'Перший акт.'].sort())
 })
 
+it('retains separate descriptions and URLs when two source JSON files share one scan across repeated syncs', async () => {
+  const f = fixture(), first = f.prepare()
+  await f.apply(first.plan)
+  const bindings = first.plan.annotations.sourceRecordFiles
+  const scan = 'assets/documents/source-records/shared.png'
+  writeFileSync(resolve(f.data, scan), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII=', 'base64'))
+  const annotations = f.read('annotations.json')
+  annotations.media.push({ id: 'shared-scan', path: scan, mimeType: 'image/png', title: 'Спільний скан',
+    provenance: [{ kind: 'supplement', file: 'Data/annotations.json', entryId: 'shared-scan' }] })
+  for (const binding of annotations.sourceRecordFiles) binding.mediaId = 'shared-scan'
+  writeFileSync(f.annotations, JSON.stringify(annotations))
+  const shared = f.prepare()
+  expect(shared.family.sources.map(source => source.description)).toEqual(['Початковий опис.', 'Інший опис.'])
+  expect(shared.family.sources.map(source => source.url)).toEqual(['https://example.org/first', null])
+  expect(shared.plan.annotations.sourceRecordFiles.map(binding => binding.jsonFile)).toEqual(bindings.map(binding => binding.jsonFile))
+  expect(shared.plan.annotations.sourceRecordFiles.every(binding => binding.mediaId === 'shared-scan')).toBe(true)
+  await f.apply(shared.plan)
+  expect(f.prepare().plan.outputs.size).toBe(0)
+})
+
 it('allows the local editor to update a source retained from an omitted export', async () => {
   const f = fixture(), initial = f.prepare()
   await f.apply(initial.plan)

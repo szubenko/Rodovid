@@ -1,0 +1,286 @@
+{
+  "applied": true,
+  "before": 81,
+  "after": 38,
+  "removed": 43,
+  "savedBytes": 29211738,
+  "backup": "tmp/source-scan-dedupe/1792697868204-28484",
+  "replacements": [
+    {
+      "from": "assets/documents/source-records/волинцова-агафия-шлюб-PFNJ-1Z1-6XST-BTTV.png",
+      "to": "assets/documents/source-records/зубенко-ілія-шлюб-PFNV-X2B-6XST-BTTJ.png",
+      "sha256": "751c0d4208e79346ca2e7f364fee864b24388cfe5a2419006ad89e3f8c8afb17",
+      "bytes": 415939
+    },
+    {
+      "from": "assets/documents/source-records/дейкало-іван-народження-PNQW-HRJ-6X3L-MPJ8.png",
+      "to": "assets/documents/source-records/дейкало-іван-народження-PNQW-HRJ-6X3L-MPJH.png",
+      "sha256": "3b0d04838c3d09ce43c019ba2e1640e7e190a5d5bb1eb996c78862f2b785745c",
+      "bytes": 885219
+    },
+    {
+      "from": "assets/documents/source-records/дейкало-ксения-шлюб-PFFS-19F-6XST-5XXK.png",
+      "to": "assets/documents/source-records/дейкало-петро-шлюб-PFF9-B5D-6XST-5XXV.png",
+      "sha256": "356d5cb214d4afda191cde1a165dd5f4e46885eaaeac64710b6c9fc3ebeef096",
+      "bytes": 1086994
+    },
+    {
+      "from": "assets/documents/source-records/дейкало-павло-народження-PNQW-JSX-6X3L-D39P.png",
+      "to": "assets/documents/source-records/дейкало-павло-народження-PNQW-JSX-6X3L-D392.png",
+      "sha256": "4c2e641c3d79e970e617979c5105747065e2db72841dc8ee4c1a60a1bc783ebf",
+      "bytes": 487408
+    },
+    {
+      "from": "assets/documents/source-records/дейкало-петро-народження-PNQW-KPP-6X3L-7QF2.png",
+      "to": "assets/documents/source-records/дейкало-петро-народження-PNQW-KPP-6X3L-7QFV.png",
+      "sha256": "ba0ecd6dd56cc102f66dbd53746257fd5330bd269cb6286aa4229f5c75ded98f",
+      "bytes": 447408
+    },
+    {
+      "from": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQX.png",
+      "to": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ8.png",
+      "sha256": "d3b15d2005034818796b84cd65b453114786e06284cfd8451cf8fee421e6bd4a",
+      "bytes": 595203
+    },
+    {
+      "from": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ4.png",
+      "to": "assets/documents/source-records/заприса-александр-народження-PN26-LCG-6X32-JWQ8.png",
+      "sha256": "d3b15d2005034818796b84cd65b453114786e06284cfd8451cf8fee421e6bd4a",
+      "bytes": 595203
+    },
+    {
+      "from": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXZ.png",
+      "to": "assets/documents/source-records/заприса-александр-смерть-PN26-LCG-6X39-QQXF.png",
+      "sha256": "1fe94940321ada4bf95740373ff1f10ee64138dc6a884d753dc6e62b91e36eb7",
+      "bytes": 642109
+    },
+    {
+      "from": "assets/documents/source-records/заприса-елисавета-народження-PNKC-1Z6-6X32-Q5LR.png",
+      "to": "assets/documents/source-records/заприса-елисавета-народження-PNKC-1Z6-6X32-Q5LP.png",
+      "sha256": "25e30271839a86e27b97146f2ef279ec62c5e412a2ea67899390170482c31fab",
+      "bytes": 697335
+    },
+    {
+      "from": "assets/documents/source-records/заприса-максим-народження-PNKC-F54-6X32-3PXN.png",
+      "to": "assets/documents/source-records/заприса-максим-народження-PNKC-F54-6X32-3PX8.png",
+      "sha256": "6409e84a226c148f0628a35473333d57860e34fdb1914554795e1574b9baae3d",
+      "bytes": 566326
+    },
+    {
+      "from": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NTX6.png",
+      "to": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.png",
+      "sha256": "cf550e64689add5559f9c71d57bee9c9aae05651e3ceef2f103635f440b0d6c7",
+      "bytes": 637648
+    },
+    {
+      "from": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NTXF.png",
+      "to": "assets/documents/source-records/заприса-наталія-народження-PFFS-2YZ-6X32-NT61.png",
+      "sha256": "cf550e64689add5559f9c71d57bee9c9aae05651e3ceef2f103635f440b0d6c7",
+      "bytes": 637648
+    },
+    {
+      "from": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-HYT5.png",
+      "to": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-HYTL.png",
+      "sha256": "da68eda2682cc45165ed93b481353f96c7fd7315e48c56c6d192146a9d7237a6",
+      "bytes": 720360
+    },
+    {
+      "from": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-CJKT.png",
+      "to": "assets/documents/source-records/заприса-николай-народження-PNKZ-DMH-6X32-HYTL.png",
+      "sha256": "da68eda2682cc45165ed93b481353f96c7fd7315e48c56c6d192146a9d7237a6",
+      "bytes": 720360
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-ілія-народження-PFNV-X2B-6XQS-12S5.png",
+      "to": "assets/documents/source-records/зубенко-ілія-народження-PFNV-X2B-6XQS-12SL.png",
+      "sha256": "1a66ec736d540cb3f98b586aea4d8ae61e3d76d6ec13168f25ad09e856e448df",
+      "bytes": 694201
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-ілія-народження-PFNV-X2B-6XQS-12ST.png",
+      "to": "assets/documents/source-records/зубенко-ілія-народження-PFNV-X2B-6XQS-12SL.png",
+      "sha256": "1a66ec736d540cb3f98b586aea4d8ae61e3d76d6ec13168f25ad09e856e448df",
+      "bytes": 694201
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4JL.png",
+      "to": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4JX.png",
+      "sha256": "a3048ef23418d06adad536271876646cfa290aa579e738badaf2812b840d39cb",
+      "bytes": 522662
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4J8.png",
+      "to": "assets/documents/source-records/зубенко-акилина-народження-PFJ2-ZQD-6X32-J4JX.png",
+      "sha256": "a3048ef23418d06adad536271876646cfa290aa579e738badaf2812b840d39cb",
+      "bytes": 522662
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKZ.png",
+      "to": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKX.png",
+      "sha256": "25d0d05e638c87d74cf688f2554b0e1847c482af4e68faf10f9c7c18b16113a6",
+      "bytes": 746264
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTK6.png",
+      "to": "assets/documents/source-records/зубенко-анна-народження-PFVV-2N5-6XQS-BTKX.png",
+      "sha256": "25d0d05e638c87d74cf688f2554b0e1847c482af4e68faf10f9c7c18b16113a6",
+      "bytes": 746264
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6VF.png",
+      "to": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6VX.png",
+      "sha256": "f47f9c4b9558daa07ac704075f706ad58890419d043587bb96a78f3a29e4f5db",
+      "bytes": 655066
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6V6.png",
+      "to": "assets/documents/source-records/зубенко-елена-народження-PFJK-1H6-6X3K-P6VX.png",
+      "sha256": "f47f9c4b9558daa07ac704075f706ad58890419d043587bb96a78f3a29e4f5db",
+      "bytes": 655066
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWB5.png",
+      "to": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBB.png",
+      "sha256": "02eef196dc47949dfca129caf7d533f430645ee2caa7b31e89b8d6cfc28351e0",
+      "bytes": 1050465
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBG.png",
+      "to": "assets/documents/source-records/зубенко-емелиан-народження-PNK8-2S8-6XQ3-SWBB.png",
+      "sha256": "02eef196dc47949dfca129caf7d533f430645ee2caa7b31e89b8d6cfc28351e0",
+      "bytes": 1050465
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-емелиан-смерть-PNK8-2S8-6X3Q-87C1.png",
+      "to": "assets/documents/source-records/зубенко-емелиан-смерть-PNK8-2S8-6X3Q-VQT2.png",
+      "sha256": "5678b948cf485506bb39af0fd784ce5c9a4f74355bcfb5ddd3d3d2a5440a2520",
+      "bytes": 731057
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCRF.png",
+      "to": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCRD.png",
+      "sha256": "63cb9393b2b9f3573aa340564d6d0869319432746b291fe8aaeedc69e41a28df",
+      "bytes": 586013
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCR4.png",
+      "to": "assets/documents/source-records/зубенко-иван-народження-PFJ2-2KK-6X32-WCRD.png",
+      "sha256": "63cb9393b2b9f3573aa340564d6d0869319432746b291fe8aaeedc69e41a28df",
+      "bytes": 586013
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-макарій-народження-PFF3-CN2-6X32-97QK.png",
+      "to": "assets/documents/source-records/зубенко-макарій-народження-PFF3-CN2-6X32-97QV.png",
+      "sha256": "7ead4a5d08d95d48ae2e1c8f18da42a2f8b884937f5822c76308852adc04960f",
+      "bytes": 650045
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-макарій-народження-PFF3-CN2-6X32-97Q2.png",
+      "to": "assets/documents/source-records/зубенко-макарій-народження-PFF3-CN2-6X32-97QV.png",
+      "sha256": "7ead4a5d08d95d48ae2e1c8f18da42a2f8b884937f5822c76308852adc04960f",
+      "bytes": 650045
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRC7.png",
+      "to": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRH5.png",
+      "sha256": "a3612726065282b660cd4586391fc2b1d3ac211a2435953ed9745096b63c6d93",
+      "bytes": 981755
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRHP.png",
+      "to": "assets/documents/source-records/зубенко-мелания-народження-PFJK-J3V-6X3K-PRH5.png",
+      "sha256": "a3612726065282b660cd4586391fc2b1d3ac211a2435953ed9745096b63c6d93",
+      "bytes": 981755
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMNP.png",
+      "to": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMN5.png",
+      "sha256": "931796d205c7b1756dba955aa94fec6ce18680686cf2ffe634cf1d8c158bc4ec",
+      "bytes": 636852
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMNG.png",
+      "to": "assets/documents/source-records/зубенко-мина-народження-PNK8-SXG-6XQS-WMN5.png",
+      "sha256": "931796d205c7b1756dba955aa94fec6ce18680686cf2ffe634cf1d8c158bc4ec",
+      "bytes": 636852
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-мина-смерть-PNK8-SXG-6X37-MW5W.png",
+      "to": "assets/documents/source-records/зубенко-мина-смерть-PNK8-SXG-6X37-MW54.png",
+      "sha256": "8f697ee67071d9d3e13f41b5ec4df1ba6801ddbd066701b8b2730d1fab3ad868",
+      "bytes": 915107
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7W.png",
+      "to": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7Q.png",
+      "sha256": "5f0c212c085df9baa50ec266fcd2895e2e54e18f045eed46f4fb3148de7e06a0",
+      "bytes": 799184
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7S.png",
+      "to": "assets/documents/source-records/зубенко-никифор-народження-PFJ2-JF1-6X32-NT7Q.png",
+      "sha256": "5f0c212c085df9baa50ec266fcd2895e2e54e18f045eed46f4fb3148de7e06a0",
+      "bytes": 799184
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVBM.png",
+      "to": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVB3.png",
+      "sha256": "c43bb80edf091dd82a5bb3c316eb6053fe94eccb018122f0532a4f60c31cba52",
+      "bytes": 589907
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVYY.png",
+      "to": "assets/documents/source-records/зубенко-пантелеимон-народження-PFVV-JHC-6XQS-LVB3.png",
+      "sha256": "c43bb80edf091dd82a5bb3c316eb6053fe94eccb018122f0532a4f60c31cba52",
+      "bytes": 589907
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDSW.png",
+      "to": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDS3.png",
+      "sha256": "ae583dcbe3cfb0d0ebdf710fb5900cb62c63f88b275e41c714c6c09208f6ed23",
+      "bytes": 661933
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5YZ.png",
+      "to": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5Y4.png",
+      "sha256": "47c0ff494aba50ca3efdc4205a2def80ad44660e0216a9605814d28c08a9283e",
+      "bytes": 540455
+    },
+    {
+      "from": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5YQ.png",
+      "to": "assets/documents/source-records/зубенко-трофим-народження-PFJ2-3L3-6X3K-Y5Y4.png",
+      "sha256": "47c0ff494aba50ca3efdc4205a2def80ad44660e0216a9605814d28c08a9283e",
+      "bytes": 540455
+    },
+    {
+      "from": "assets/documents/source-records/пальчикова-анна-шлюб-PFJ2-SRZ-6XSY-GR64.png",
+      "to": "assets/documents/source-records/зубенко-феодор-шлюб-PFJ2-7SW-6XSY-GR6Q.png",
+      "sha256": "29bec79b21f0ff3c3a85b322b62e9ada982ae0d5686643199f2d4fddc03d1e94",
+      "bytes": 427289
+    },
+    {
+      "from": "assets/documents/source-records/чабан-степан-шлюб-PNSR-5CW-33S7-9R9B-741.png",
+      "to": "assets/documents/source-records/карпінська-анастасія-шлюб-PN7G-3MV-33S7-9R9B-741.png",
+      "sha256": "ea1218e62ccb2bd23bf28850b5ccab44af188c2d9231db64c21895ff76cc8a5b",
+      "bytes": 435454
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 98,
+    "info": 2
+  },
+  "counts": {
+    "people": 86,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 138,
+    "events": 172,
+    "claims": 406,
+    "places": 72,
+    "sources": 81,
+    "media": 82,
+    "evidenceLinks": 176,
+    "memories": 0
+  }
+}

@@ -83,7 +83,9 @@ test('розгорнута діаграма використовує весь е
       const svg = dialog.locator('[data-map-viewport] > svg')
       await expect.poll(() => svg.evaluate(svg => {
         const box = svg.getBoundingClientRect()
-        return box.width > innerWidth * 0.9 && box.height > innerHeight * 0.75
+        const legend = svg.closest('section')?.querySelector('[aria-label="Країна народження"]')?.getBoundingClientRect()
+        const drawingWidth = legend && legend.left >= box.right ? legend.right - box.left : box.width
+        return drawingWidth > innerWidth * 0.9 && box.height > innerHeight * 0.75
           && box.bottom <= innerHeight && box.right <= innerWidth
       })).toBe(true)
       expect(await page.getByRole('navigation', { name: 'Основна навігація' }).evaluate(nav => !!nav.closest('[inert]'))).toBe(true)

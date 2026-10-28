@@ -2,6 +2,10 @@
 .map > * { order: 2; }
 .map > .controls { order: 0; }
 .map > [data-map-viewport] { order: 1; }
+.map.withCountryLegend { display: grid; grid-template-columns: minmax(0, 1fr) 13rem; grid-auto-rows: max-content; column-gap: 1rem; align-items: start; align-content: start; }
+.withCountryLegend > * { grid-column: 1 / -1; }
+.withCountryLegend > .canvas { grid-column: 1; grid-row: 2; min-width: 0; }
+.withCountryLegend > .countryLegend { grid-column: 2; grid-row: 2; order: 1; }
 .map > .hint { margin-top: 0.75rem; }
 .map[data-map-expanded='true'] { position: fixed; inset: 0; z-index: 1000; margin: 0; padding: 0.5rem; background: var(--color-background, #fcfdfa); overflow: auto; }
 .map[data-map-expanded='true'] > .controls { flex-wrap: nowrap; flex-shrink: 0; overflow-x: auto; scrollbar-width: thin; }
@@ -30,9 +34,9 @@
 .rim { fill: none; stroke: var(--branch-color); stroke-width: 3; pointer-events: none; }
 .node[data-center='true'] .sector { stroke: var(--branch-color); stroke-width: 3; }
 .node .sector { fill: var(--birth-country-color); }
-.countryLegend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 0.75rem 0; font-size: 0.8rem; color: var(--color-muted); }
+.countryLegend { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; margin: 0.75rem 0; font-size: 0.8rem; color: var(--color-muted); overflow-wrap: anywhere; }
 .countryKey { display: inline-flex; align-items: center; gap: 0.4rem; }
-.countryKey i { width: 1rem; height: 1rem; border: 1px solid #86928f; border-radius: 3px; }
+.countryKey i { width: 1rem; height: 1rem; flex-shrink: 0; border: 1px solid #86928f; border-radius: 3px; }
 .emptyLabel { fill: #6d5c48; font-family: system-ui, sans-serif; pointer-events: none; }
 .node:hover .sector { stroke: #572019; stroke-width: 3; }
 .node:focus { outline: none; }
@@ -59,6 +63,8 @@
 .map button { min-height: 44px; border: 1px solid #bea47f; border-radius: 0.25rem; padding: 0.75rem; color: var(--color-text); background: #fff8e9; font: inherit; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
 .map button:hover { background: #ecddc7; }
 @media (max-width: 760px) {
+  .map.withCountryLegend { grid-template-columns: minmax(0, 1fr); }
+  .withCountryLegend > .countryLegend { grid-column: 1; grid-row: auto; order: 2; }
   .controls { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; scrollbar-width: thin; }
   .controls > * { flex-shrink: 0; }
   .controls button { white-space: nowrap; }

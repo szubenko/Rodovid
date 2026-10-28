@@ -81,7 +81,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     }
   }
 
-  return <section className={styles.map} aria-label="Радіальна карта родини"
+  return <section className={`${styles.map} ${styles.withCountryLegend}`} aria-label="Радіальна карта родини"
     data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>

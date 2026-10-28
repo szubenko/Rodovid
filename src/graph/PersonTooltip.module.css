@@ -25,7 +25,6 @@
 .card .meta { color: #697461; font-size: 12px; }
 .card .meta { margin-top: 3px; }
 .meta [data-confidence='hypothesis'], .meta [data-confidence='probable'], .meta[data-confidence='hypothesis'], .meta[data-confidence='probable'] { color: #895d28; }
-.card .explanation { margin-top: 4px; color: #66705f; font-size: 12px; white-space: pre-line; }
 .fact > p:first-child { white-space: pre-line; }
 .timeline { --timeline-year-width: 36px; position: relative; margin: 0; padding: 0; list-style: none; }
 .timeline::before { content: ''; position: absolute; left: var(--timeline-year-width); top: 8px; bottom: 0; width: 1px; background: #d9e3cf; }

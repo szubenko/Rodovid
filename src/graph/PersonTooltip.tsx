@@ -4,7 +4,7 @@ import { confidenceLabels, type Claim } from '../data/schema'
 import { useFamily } from '../navigation/context'
 import { ViewLink } from '../navigation/ViewLink'
 import { eventAge, formatEventAge } from '../room/event-age'
-import { tooltipClaimText, tooltipLifeYears, tooltipPersonTitle, tooltipRelatives, tooltipText, tooltipTimeline, tooltipTimelineYear } from './person-tooltip-data'
+import { tooltipClaimText, tooltipLifeYears, tooltipPersonTitle, tooltipRelatives, tooltipTimeline, tooltipTimelineYear } from './person-tooltip-data'
 import styles from './PersonTooltip.module.css'
 
 type Preview = { personId: string; anchor: Element; x: number; y: number }
@@ -157,7 +157,6 @@ export function PersonTooltip({ container }: { container: RefObject<HTMLDivEleme
       {claim.field === 'name' && claim.value.patronymic && !claim.value.display.includes(claim.value.patronymic)
         && <p>{claim.value.patronymic}</p>}
       {claim.confidence !== 'unassessed' && <p className={styles.meta} data-confidence={claim.confidence}>{confidenceLabels[claim.confidence]}</p>}
-      {claim.explanation && claim.field !== 'name' && tooltipText(claim.explanation) && <p className={styles.explanation}>{tooltipText(claim.explanation)}</p>}
     </div>
   }
 
@@ -206,7 +205,6 @@ export function PersonTooltip({ container }: { container: RefObject<HTMLDivEleme
               {relation.confidence !== 'unassessed' && confidenceLabels[relation.confidence]}
               {relation.reviewStatus === 'disputed' && `${relation.confidence !== 'unassessed' ? ' · ' : ''}Потребує уточнення`}
             </p>}
-            {relation.explanation && tooltipText(relation.explanation) && <p className={styles.explanation}>{tooltipText(relation.explanation)}</p>}
           </div>
         )}
       </section>}

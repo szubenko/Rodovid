@@ -137,7 +137,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
       : exportState === 'saved' ? 'PNG збережено у файл.' : 'Не вдалося створити PNG. Спробуйте ще раз.'}</p>}
     <div ref={container} className={styles.canvas} data-map-viewport>
       <svg ref={svg} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={`${title}: ${labels.get(personId)}`}>
-        {vertical && !includeRelatives && <defs><PersonCardArtwork id={`${prefix}-skin-artwork`} /></defs>}
+        <defs><PersonCardArtwork id={`${prefix}-skin-artwork`} /></defs>
         <g data-layer="camera" transform={`translate(${settings.pan.x * width} ${settings.pan.y * height}) scale(${settings.zoom})`}>
           <g data-layer="coordinates"><g data-layer="layout" transform={`translate(${offset.x} ${offset.y})`}>
             <g data-layer="connections">{layout.edges.map(edge => {
@@ -162,10 +162,10 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
               const branchExpanded = settings.expandedRelativeIds?.includes(node.personId) === true
               const branchAction = () => toggleBranch(node.personId)
               const hiddenCount = new Set(node.hiddenConnections.map(connection => connection.personId)).size
-              const skin = vertical && !includeRelatives ? skins.get(node.personId) : undefined
+              const skin = skins.get(node.personId)!
               return <g key={node.appearanceId}>
                 <g className={styles.node} data-person-id={node.personId}
-                data-card-skin={skin?.id}
+                data-card-skin={skin.id}
                 data-appearance-id={node.appearanceId} data-center={central} data-lane={node.lane}
                 data-generation={node.generation}
                 data-direct-line={vertical && !includeRelatives ? directLine.has(node.personId) : undefined}
@@ -173,12 +173,9 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
                 data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
-                {skin ? <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
+                <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
                   name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin} cardClassName={styles.card}
                   artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />
-                  : <><rect className={styles.card} x={node.x - node.width / 2} y={node.y - node.height / 2} width={node.width} height={node.height} rx="10" />
-                {node.text.lines.map((line, index) => <text key={index} className={line.date ? styles.date : styles.label}
-                  x={node.x} y={node.y + line.y} fontSize={line.fontSize} textAnchor="middle" dominantBaseline="central">{line.text}</text>)}</>}
                 {hidden && !includeRelatives && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
                 </g>
                 {includeRelatives && !settings.showAllRelatives && (hidden || branchExpanded) && <g className={styles.branch}
@@ -198,7 +195,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
     </div>
     <PersonTooltip key={`${personId}/${settings.zoom}/${settings.pan.x}/${settings.pan.y}/${generations}/${expanded}/${settings.showAllRelatives}/${settings.expandedRelativeIds?.join(',')}`} container={container} />
     {'relatedCount' in projection && <p className={styles.count} role="status" data-testid="relatives-count">
-      Людей у схемі: {projection.appearances.length} із {projection.relatedCount}. Зелені картки — предки, блакитні — нащадки, світлі — бокові гілки.
+      Людей у схемі: {projection.appearances.length} із {projection.relatedCount}.
     </p>}
     {projection.truncated && <p role="status">Показано частину гілок. Інші люди доступні в покажчику.</p>}
     <div aria-live="polite" aria-atomic="true">{selected && <div className={shared.selection} data-testid="relationship-details" data-relationship-id={selected.id}>

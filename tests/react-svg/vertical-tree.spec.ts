@@ -1,9 +1,11 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
+import family from '../../generated/family.json' with { type: 'json' }
 
-test('скіни всіх карток вертикального родоводу відповідають стану й заняттю', async ({ page }, testInfo) => {
+for (const diagram of ['vertical', 'horizontal', 'relatives']) {
+test(`скіни всіх карток ${diagram}: стан, заняття та ілюстрації в PNG`, async ({ page }, testInfo) => {
   test.setTimeout(60_000)
-  await page.goto('/vertical/I1')
+  await page.goto(`/${diagram}/I1`)
   const card = page.locator('[data-person-id="I1"]')
   const nodes = page.locator('[data-person-id]')
   await expect(card).toHaveAttribute('data-card-skin', 'man')
@@ -21,7 +23,7 @@ test('скіни всіх карток вертикального родовод
     })
   }))).toBe(true)
   await card.screenshot({ path: testInfo.outputPath('owner-skin.png') })
-  await page.screenshot({ path: testInfo.outputPath('vertical-owner-skin.png'), fullPage: true })
+  await page.screenshot({ path: testInfo.outputPath(`${diagram}-owner-skin.png`), fullPage: true })
   await page.getByLabel('Покоління', { exact: true }).selectOption('1')
   const picture = await card.evaluate(element => {
     const bounds = element.closest('svg')!.querySelector<SVGGraphicsElement>('[data-layer="layout"]')!.getBBox()
@@ -53,24 +55,30 @@ test('скіни всіх карток вертикального родовод
     }
     return warmPixels > 400
   }, { png, picture })).toBe(true)
-  await page.goto('/vertical/I2')
+  await page.goto(`/${diagram}/I2`)
   await expect(page.locator('[data-center="true"][data-person-id]')).toHaveAttribute('data-person-id', 'I2')
   await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
   await expect(page.locator('[data-person-id="I1"]')).toHaveAttribute('data-card-skin', 'man')
   for (const [id, skin] of [['I9', 'cossack-male'], ['I19', 'cossack-female'], ['I56', 'peasant-male'],
     ['I57', 'peasant-female'], ['I62', 'potter-male'], ['I11', 'woman']]) {
-    await page.goto(`/vertical/${id}`)
+    await page.goto(`/${diagram}/${id}`)
     const center = page.locator('[data-center="true"][data-person-id]')
     await expect(center).toHaveAttribute('data-card-skin', skin!)
     await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
     await page.getByRole('button', { name: 'До центру', exact: true }).click()
     await center.screenshot({ path: testInfo.outputPath(`skin-${id}.png`) })
   }
-  for (const diagram of ['horizontal', 'relatives', 'tree']) {
-    await page.goto(`/${diagram}/I1`)
-    await expect(page.locator('[data-card-skin]')).toHaveCount(0)
+  if (diagram === 'relatives') {
+    await page.getByRole('button', { name: 'Показати всіх родичів', exact: true }).click()
+    await expect(page.getByTestId('relatives-count')).toContainText(`${family.people.length} із ${family.people.length}`)
+    await expect(page.locator('[data-card-skin]')).toHaveCount(family.people.length)
+    await expect(page.locator('[data-card-artwork]')).toHaveCount(1)
   }
+  await page.goto('/tree/I1')
+  await expect(page.locator('[data-person-id="I1"]')).toBeVisible()
+  await expect(page.locator('[data-card-skin]')).toHaveCount(0)
 })
+}
 
 test('вертикальна вкладка: напрям поколінь, докази, кімната й відновлення камери', async ({ page, isMobile }) => {
   const errors: string[] = []

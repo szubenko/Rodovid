@@ -5,6 +5,55 @@ import family from '../../generated/family.json' with { type: 'json' }
 const peopleCount = family.people.length
 const relationshipCount = family.relationships.length
 
+test('Іван і Василь залишаються поруч при зміні глибини', async ({ page, isMobile }, testInfo) => {
+  await page.goto('/relatives/I28')
+  const svg = page.getByRole('group', { name: /^Родовід з усіма родичами:/ })
+  for (const depth of ['1', '3', '5']) {
+    await page.getByLabel('Покоління', { exact: true }).selectOption(depth)
+    const gap = await svg.evaluate(element => {
+      const ivan = element.querySelector<SVGRectElement>('[data-person-id="I28"] rect')!.getBBox()
+      const vasyl = element.querySelector<SVGRectElement>('[data-person-id="I47"] rect')!.getBBox()
+      return vasyl.x - ivan.x - ivan.width
+    })
+    expect(gap).toBeCloseTo(120, 2)
+  }
+  if (!isMobile) {
+    const ivanCard = svg.locator('[data-person-id="I28"] rect').first()
+    const vasylCard = svg.locator('[data-person-id="I47"] rect').first()
+    await expect(ivanCard).toBeVisible()
+    await expect(vasylCard).toBeVisible()
+    const ivan = (await ivanCard.boundingBox())!
+    const vasyl = (await vasylCard.boundingBox())!
+    await page.screenshot({ path: testInfo.outputPath('ivan-vasyl-compact.png'), clip: {
+      x: ivan.x - 12, y: ivan.y - 54, width: vasyl.x + vasyl.width - ivan.x + 24,
+      height: Math.max(ivan.height, vasyl.height) + 100,
+    } })
+  }
+  await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
+  await page.screenshot({ path: testInfo.outputPath('ivan-siblings.png'), fullPage: true })
+})
+
+test('компактний ряд Керницьких у початкових гілках і повному показі', async ({ page }, testInfo) => {
+  await page.goto('/relatives/I1')
+  const svg = page.getByRole('group', { name: /^Родовід з усіма родичами:/ })
+  for (const showAll of [false, true]) {
+    if (showAll) await page.getByRole('button', { name: 'Показати всіх родичів', exact: true }).click()
+    await expect(svg.locator('[data-person-id="I51"]')).toHaveCount(1)
+    const cards = await svg.evaluate(element => ['I47', 'I48', 'I49', 'I50', 'I51'].map(id => {
+      const box = element.querySelector<SVGRectElement>(`[data-person-id="${id}"] rect`)!.getBBox()
+      return { x: box.x, y: box.y, width: box.width, height: box.height }
+    }).sort((a, b) => a.x - b.x))
+    for (let i = 1; i < cards.length; i++) {
+      const left = cards[i - 1]!, right = cards[i]!
+      expect(right.x - left.x - left.width).toBeGreaterThanOrEqual(24 - .002)
+      expect(right.x - left.x - left.width).toBeLessThanOrEqual(120.002)
+      expect(right.y).toBe(left.y)
+    }
+    await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
+    await page.screenshot({ path: testInfo.outputPath(`compact-relatives-${showAll ? 'full' : 'initial'}.png`), fullPage: true })
+  }
+})
+
 test('окрема вкладка усіх родичів зберігає попередній вертикальний родовід', async ({ page, isMobile }) => {
   await page.goto('/vertical/I1')
   await page.getByLabel('Покоління', { exact: true }).selectOption('3')

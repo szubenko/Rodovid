@@ -15,7 +15,7 @@ type FamilyJoin = { parents: RelativeAppearance[]; children: RelativeAppearance[
 export function layoutRelatives(projection: Pick<RelativeProjection, 'appearances' | 'edges'>, graph: FamilyGraph,
   labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure,
   directLine?: ReadonlySet<string>): Omit<TreeLayout, 'nodes'> & { nodes: RelativeNode[] } {
-  const padding = 28, familyGap = directLine ? 80 : 360, spouseGap = 24
+  const padding = 28, familyGap = directLine ? 80 : 120, spouseGap = 24
   const blocks = new Map(projection.appearances.map(node => [node.appearanceId,
     labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', directLine || node.lane === 'relatives' ? 20 : 22, 18, measure, 264)]))
   const cardWidth = Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
@@ -298,7 +298,11 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   const centeringFamilies = [...families.values()].filter(family => family.children.length > 0).map(family => ({
     parents: family.parents.map(parent => parent.personId), children: family.children.map(child => child.personId),
   }))
-  let centered = centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap, Boolean(directLine))
+  // Prefer compact leaf siblings; conflicting family constraints can still
+  // use the existing centered layout without forcing a different row order.
+  const centerParents = () => centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap, true)
+    || (!directLine && centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap))
+  let centered = centerParents()
   if (!centered && !directLine) {
     // Reordering a shared spouse's children can reverse the next descendant
     // row. Repair that order before retrying exact centering and separation.
@@ -319,7 +323,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       pack(row, new Map(row.map(group => [group, group.x])), false)
     }
     for (const node of nodes) node.x = memberX(node.personId)
-    centered = centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap)
+    centered = centerParents()
   }
   if (!centered && directLine) {
     // Half siblings can prevent every birth family from being centered in the

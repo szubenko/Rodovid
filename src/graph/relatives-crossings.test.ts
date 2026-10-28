@@ -27,19 +27,19 @@ function crosses(a: Segment, b: Segment) {
     && horizontal.y1 > Math.min(vertical.y1, vertical.y2) && horizontal.y1 < Math.max(vertical.y1, vertical.y2)
 }
 
-it('reduces crossings and gives family branches more horizontal space', () => {
+it('reduces crossings with separate family buses', () => {
   const family = familyDataSchema.parse(data)
   const graph = buildFamilyGraph(family)
   const labels = new Map(family.people.map(p => [p.id, personName(family, p.id)]))
   const dates = new Map(family.people.map(p => [p.id, lifeYears(family, p.id)]))
   const measure = (text: string, size: number) => text.length * size * 0.65
-  // Measurements from the compact layout before widening and family buses.
+  // Crossing counts before separate family buses were introduced.
   const before = [
-    { center: 'I1', crossings: 136, width: 7360.724395557318, maxCrossings: 4 },
-    { center: 'I3', crossings: 112, width: 7938.677172773516, maxCrossings: 2 },
-    { center: 'I29', crossings: 128, width: 6647.6576551388835, maxCrossings: 10 },
+    { center: 'I1', crossings: 136, maxCrossings: 4 },
+    { center: 'I3', crossings: 112, maxCrossings: 2 },
+    { center: 'I29', crossings: 128, maxCrossings: 10 },
   ]
-  for (const { center, crossings: previousCrossings, width: previousWidth, maxCrossings } of before) {
+  for (const { center, crossings: previousCrossings, maxCrossings } of before) {
     const layout = layoutRelatives(projectRelatives(graph, center, { showAll: true }), graph, labels, dates, measure)
     const edges = layout.edges.map(edge => ({ ...edge, segments: segments(edge.path) }))
     let count = 0
@@ -51,7 +51,6 @@ it('reduces crossings and gives family branches more horizontal space', () => {
     expect(layout.nodes).toHaveLength(family.people.length)
     expect(count).toBeLessThanOrEqual(maxCrossings)
     expect(count).toBeLessThan(previousCrossings / 2)
-    expect(layout.width).toBeGreaterThan(previousWidth * 1.9)
   }
 })
 

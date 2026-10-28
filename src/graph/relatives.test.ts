@@ -76,6 +76,41 @@ describe('vertical full-family geometry on the real archive', () => {
   const dates = new Map(family.people.map(p => [p.id, lifeYears(family, p.id)]))
   const measure = (text: string, size: number) => text.length * size * 0.65
 
+  it('keeps Ivan next to his unexpanded siblings when he is centered', () => {
+    for (const generations of [1, 2, 3, 4, 5]) {
+      const projection = projectRelatives(real, 'I28', { generations })
+      const layout = layoutRelatives(projection, real, labels, dates, measure)
+      const siblings = layout.nodes.filter(node => ['I28', 'I47', 'I48', 'I49', 'I50', 'I51'].includes(node.personId))
+        .sort((a, b) => a.x - b.x)
+      expect(siblings).toHaveLength(6)
+      for (let i = 1; i < siblings.length; i++) {
+        const left = siblings[i - 1]!, right = siblings[i]!
+        expect(right.x - left.x - (left.width + right.width) / 2).toBeCloseTo(120, 2)
+      }
+      for (const node of layout.nodes) expect(layout.nodes.some(other => other !== node
+        && Math.abs(node.x - other.x) < (node.width + other.width) / 2
+        && Math.abs(node.y - other.y) < (node.height + other.height) / 2)).toBe(false)
+    }
+  })
+
+  it('keeps the Kernytskyi sibling row compact in initial and full views without shrinking cards', () => {
+    for (const showAll of [false, true]) {
+      const layout = layoutRelatives(projectRelatives(real, 'I1', { showAll }), real, labels, dates, measure)
+      const siblings = layout.nodes.filter(node => ['I47', 'I48', 'I49', 'I50', 'I51'].includes(node.personId))
+        .sort((a, b) => a.x - b.x)
+      expect(siblings).toHaveLength(5)
+      for (let i = 1; i < siblings.length; i++) {
+        const left = siblings[i - 1]!, right = siblings[i]!
+        const gap = right.x - left.x - (left.width + right.width) / 2
+        expect(gap).toBeGreaterThanOrEqual(24 - .002)
+        expect(gap).toBeLessThanOrEqual(120.002)
+        expect(right.y).toBe(left.y)
+        expect(right.width).toBeGreaterThanOrEqual(272)
+      }
+      expect(layout.nodes).toHaveLength(showAll ? family.people.length : projectRelatives(real, 'I1').appearances.length)
+    }
+  })
+
   it('centers the Deikalo parents strictly above all five children from the screenshot', () => {
     const layout = layoutRelatives(projectRelatives(real, 'I1', { showAll: true }), real, labels, dates, measure)
     const nodes = new Map(layout.nodes.map(node => [node.personId, node]))

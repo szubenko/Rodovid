@@ -83,7 +83,6 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
 
   return <section className={styles.map} aria-label="Радіальна карта родини"
     data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
-    <p className={styles.hint}>Натисніть ім’я, щоб змінити центр, або лінію зв’язку, щоб побачити її докази. «Вмістити карту» показує все коло, «До центру» повертає читабельні підписи.</p>
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>

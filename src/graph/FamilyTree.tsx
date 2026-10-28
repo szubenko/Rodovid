@@ -31,8 +31,6 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const title = includeRelatives ? 'Родовід з усіма родичами' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
   const vertical = orientation === 'vertical'
   const mapScreen = includeRelatives ? 'relatives' : orientation
-  const directionHint = includeRelatives ? 'Предки зверху, нащадки знизу, брати й сестри та подружжя поруч. «+» додає родичів до гілки.'
-    : 'Предки ліворуч, нащадки праворуч.'
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -112,7 +110,6 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   }
   return <section className={shared.map} aria-label={title}
     data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
-    {(!vertical || includeRelatives) && <p className={shared.hint}>{directionHint} Натисніть ім’я, щоб змінити центр, або лінію, щоб переглянути докази. Кнопка «Назад» повертає до попереднього перегляду.</p>}
     <div className={shared.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={settings.zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>

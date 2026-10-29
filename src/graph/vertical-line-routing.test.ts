@@ -3,7 +3,7 @@ import data from '../../generated/family.json'
 import { familyDataSchema, relationshipSchema } from '../data/schema'
 import { personName } from '../data/person-name'
 import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFamily } from './projection'
-import { projectVerticalFamily } from './vertical-projection'
+import { ancestorPersonIds, projectVerticalFamily } from './vertical-projection'
 import { layoutRelatives } from './relatives-layout'
 import { lifeYears } from './presentation'
 import { portraitCardMetrics, portraitLayoutOptions } from './portrait-card-layout'
@@ -37,19 +37,21 @@ function crosses(a: Segment, b: Segment): boolean {
   return false
 }
 
-for (const mode of ['original', 'portrait', 'compact'] as const) it(`separates unrelated family lines in ${mode} cards`, () => {
+for (const mode of ['original', 'portrait', 'compact', 'siblings', 'compact-siblings'] as const) it(`separates unrelated family lines in ${mode} cards`, () => {
   const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
   const directLine = directLinePersonIds(graph, family.config.homePersonId)
   const labels = new Map(family.people.map(person => [person.id, personName(family, person.id)]))
   const dates = new Map(family.people.map(person => [person.id, lifeYears(family, person.id)]))
-  const compact = mode === 'compact'
+  const compact = mode === 'compact' || mode === 'compact-siblings'
   const metrics = portraitCardMetrics(labels.values(), dates.values(), compact, text => text.length * 24 * .65, text => text.length * 15 * .65)
   const options = mode === 'original' ? undefined : portraitLayoutOptions(metrics, compact)
   for (const { id: center } of family.people) for (let generations = 1;
     generations <= Math.min(12, availableGenerations(graph, center) + 1); generations++) {
-    const projection = projectVerticalFamily(graph, center, { generations })
+    const base = projectVerticalFamily(graph, center, { generations })
+    const projection = mode.endsWith('siblings') ? projectVerticalFamily(graph, center, { generations,
+      expandedSiblingPersonIds: base.appearances.map(node => node.personId) }) : base
     const layout = layoutRelatives(projection, graph, labels, dates, (text, size) => text.length * size * .65,
-      mode === 'original' ? directLine : new Set(projection.appearances.map(node => node.personId)), options)
+      mode === 'original' ? directLine : ancestorPersonIds(graph, center), options)
     const shown = new Set(layout.nodes.map(node => node.personId))
     const sergiy = layout.nodes.find(node => node.personId === 'I1')
     const parents = layout.nodes.filter(node => ['I2', 'I3'].includes(node.personId))
@@ -81,9 +83,15 @@ for (const mode of ['original', 'portrait', 'compact'] as const) it(`separates u
     for (const parent of layout.nodes) {
       const branches = new Map<string, typeof edges[number]>()
       for (const edge of edges) if (edge.relation.fromPersonId === parent.personId) branches.set(edge.familyKey, edge)
-      const starts = [...branches.values()].map(edge => edge.segments[0]!.x1)
-      expect(new Set(starts).size, `${center}/${generations}: separate exits from ${parent.personId}`).toBe(branches.size)
-      expect(starts.every(x => x > parent.x - parent.width / 2 && x < parent.x + parent.width / 2)).toBe(true)
+      const starts = [...branches.values()].map(edge => edge.segments[0]!)
+      expect(new Set(starts.map(point => `${point.x1},${point.y1}`)).size,
+        `${center}/${generations}: separate exits from ${parent.personId}`).toBe(branches.size)
+      expect(starts.every(({ x1: x, y1: y }) => {
+        const left = parent.x - parent.width / 2, right = parent.x + parent.width / 2
+        const top = parent.y - parent.height / 2, bottom = parent.y + parent.height / 2
+        return (x > left && x < right && Math.abs(y - bottom) < .01)
+          || (Math.abs(x - left) < .01 || Math.abs(x - right) < .01) && y > top && y < bottom
+      }), `${center}/${generations}: exits on ${parent.personId}'s frame`).toBe(true)
     }
     for (const edge of edges) {
       const children = new Set(edges.filter(other => other.relation.fromPersonId === edge.relation.fromPersonId)

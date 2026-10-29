@@ -11,18 +11,19 @@ function RoleSymbol({ skin }: { skin: PersonCardSkin }) {
   return <>{Array.from({ length: 6 }, (_, index) => <ellipse key={index} cx="0" cy="-7" rx="3" ry="5" transform={`rotate(${index * 60})`} />)}<circle r="2.5" /></>
 }
 
-export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artworkId, measureName, measureYears }: {
+export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artworkId, measureName, measureYears, scale = 1 }: {
   x: number; y: number; name: string; years: string; skin: PersonCardSkin; metrics: PortraitCardMetrics
   artworkId: string; measureName: (text: string) => number; measureYears: (text: string) => number
+  scale?: number
 }) {
   const id = useId().replaceAll(':', '')
-  const left = x - m.width / 2, top = y - m.height / 2
+  const left = x - m.width * scale / 2, top = y - m.height * scale / 2
   const names = portraitTextLines(name, m.textWidth, text => measureName(text) * m.nameSize / 24, true)
   const dates = portraitTextLines(years, m.textWidth, text => measureYears(text) * m.yearSize / 15)
   const radius = skin.portrait?.radius ?? 100
   return <>
-    <rect className={styles.frame} data-tone={skin.tone} x={left} y={top} width={m.width} height={m.height} rx="12" />
-    <g className={styles.art} data-tone={skin.tone} transform={`translate(${left} ${top})`} pointerEvents="none" aria-hidden="true">
+    <rect className={styles.frame} data-tone={skin.tone} x={left} y={top} width={m.width * scale} height={m.height * scale} rx={12 * scale} />
+    <g className={styles.art} data-tone={skin.tone} transform={`translate(${left} ${top}) scale(${scale})`} pointerEvents="none" aria-hidden="true">
       <defs>
         {skin.portrait && <pattern id={`${id}-portrait`} x={(m.width - m.portraitSize) / 2} y={m.portraitTop}
           width={m.portraitSize} height={m.portraitSize} patternUnits="userSpaceOnUse"

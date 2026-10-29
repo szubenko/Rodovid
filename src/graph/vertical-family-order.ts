@@ -4,7 +4,7 @@ type Family = { parents: string[]; children: string[] }
 /** Order actual family endpoints, including the members of each spouse group.
  * Collapsing spouses to one endpoint hides crossings between their marriages. */
 export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, families: Family[], preservePartnerOrder = false,
-  partnerChains: string[][] = []) {
+  partnerChains: string[][] = [], orderedPairs: readonly (readonly [string, string])[] = []) {
   const generations = [...rows.keys()].sort((a, b) => a - b)
   const generationById = new Map([...rows].flatMap(([generation, row]) => row.flatMap(group =>
     group.ids.map(id => [id, generation] as const))))
@@ -12,6 +12,26 @@ export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, f
   for (const family of families) {
     const generation = generationById.get(family.parents[0]!)!
     byRow.set(generation, [...byRow.get(generation) ?? [], family])
+  }
+  // Seed a valid parent orientation and keep it above crossing minimization.
+  // Stable topological ordering leaves unrelated families in their current order.
+  const constrainedOrder = <V,>(values: V[], pairs: readonly (readonly [V, V])[]) => {
+    const remaining = [...values], result: V[] = []
+    while (remaining.length) {
+      const index = remaining.findIndex(value => !pairs.some(([left, right]) => left !== right
+        && right === value && remaining.includes(left)))
+      if (index < 0) return values
+      result.push(...remaining.splice(index, 1))
+    }
+    return result
+  }
+  if (orderedPairs.length) for (const [generation, row] of rows) {
+    for (const group of row) group.ids = constrainedOrder(group.ids,
+      orderedPairs.filter(([left, right]) => group.ids.includes(left) && group.ids.includes(right)))
+    const groupById = new Map(row.flatMap(group => group.ids.map(id => [id, group] as const)))
+    const constraints = orderedPairs.filter(([left, right]) => groupById.has(left) && groupById.has(right))
+      .map(([left, right]) => [groupById.get(left)!, groupById.get(right)!] as const)
+    rows.set(generation, constrainedOrder(row, constraints))
   }
   const positions = new Map<string, number>()
   const signatures = new Map<number, string>()
@@ -35,14 +55,18 @@ export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, f
     if (known !== undefined) return known
     const row = byRow.get(generation) ?? []
     let total = 0
+    for (const [left, right] of orderedPairs) if (generationById.get(left) === generation
+      && generationById.get(right) === generation && positions.get(left)! > positions.get(right)!) {
+      total += orientationWeight ** 2
+    }
     for (let i = 0; i < row.length; i++) for (let j = i + 1; j < row.length; j++) {
       const a = row[i]!, b = row[j]!
       total += Math.min(inversions(a.parents, b.parents) + inversions(a.children, b.children),
         inversions(b.parents, a.parents) + inversions(b.children, a.children))
       if (preservePartnerOrder && a.parents.some(id => b.parents.includes(id))
-        && [...a.parents, ...b.parents].every(id => !parentsByChild.has(id))) {
-        // At the visible ancestry boundary there are no older endpoints to
-        // orient the marriages. Their children must still follow the partners.
+        && (orderedPairs.length > 0 || [...a.parents, ...b.parents].every(id => !parentsByChild.has(id)))) {
+        // Children of separate marriages follow their individual parent.
+        // Fixed M/F orientation also applies above the visible boundary.
         const mean = (ids: string[]) => ids.reduce((sum, id) => sum + positions.get(id)!, 0) / ids.length
         const direction = Math.sign(mean(a.parents) - mean(b.parents))
         for (const left of a.children) for (const right of b.children) {

@@ -22,6 +22,12 @@
 .branch:hover rect:not(.branchHit), .branch:focus-visible rect:not(.branchHit) { stroke: #29664f; stroke-width: 3; }
 .branch:focus-visible { outline: none; }
 .branch:focus-visible rect:not(.branchHit) { stroke-dasharray: 5 3; }
+.siblingToggle { cursor: pointer; }
+.siblingHit { fill: transparent; stroke: transparent; stroke-width: 4; vector-effect: non-scaling-stroke; }
+.siblingToggle path { fill: none; stroke: #147a93; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.siblingToggle:hover path, .siblingToggle:focus-visible path { stroke: #084f70; stroke-width: 2.4; }
+.siblingToggle:focus-visible { outline: none; }
+.siblingToggle:focus-visible .siblingHit { stroke: #147a93; stroke-width: 1; stroke-dasharray: 3 3; }
 .count { margin: 0.4rem 0 0; color: #596850; font-size: 0.8rem; }
 .connection { cursor: pointer; }
 .line { fill: none; stroke: #90a585; stroke-width: 1.5; pointer-events: none; }
@@ -30,6 +36,8 @@
 .connection[data-selected='true'] .line, .connection:hover .line, .connection:focus-visible .line { stroke: #29664f; stroke-width: 3; }
 .connection:focus-visible { outline: none; }
 @media (forced-colors: active) {
+  .siblingToggle path { stroke: ButtonText; }
+  .siblingToggle:focus-visible .siblingHit { stroke: Highlight; }
   .node[data-lane] .card { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .card, .node:focus-visible .card { stroke: Highlight; }
   .label, .date, .marker { fill: CanvasText; }

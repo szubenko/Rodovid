@@ -7,7 +7,7 @@ import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFam
 import { layoutTree, type TreeOrientation } from './tree-layout'
 import { availableRelativeGenerations, projectRelatives } from './relatives-projection'
 import { layoutRelatives } from './relatives-layout'
-import { availableVerticalGenerations, projectVerticalFamily } from './vertical-projection'
+import { ancestorPersonIds, availableVerticalGenerations, projectVerticalFamily, siblingPersonIds } from './vertical-projection'
 import { lifeYears, relationshipName } from './presentation'
 import { useMapCamera } from './useMapCamera'
 import { useMapViewport } from './useMapViewport'
@@ -42,7 +42,9 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
   const graph = useMemo(() => buildFamilyGraph(family), [family])
+  const siblings = useMemo(() => new Map(family.people.map(person => [person.id, siblingPersonIds(graph, person.id)])), [family, graph])
   const homeLine = useMemo(() => directLinePersonIds(graph, state.homePersonId), [graph, state.homePersonId])
+  const portraitMainLine = useMemo(() => portraitCards ? ancestorPersonIds(graph, personId) : undefined, [graph, personId, portraitCards])
   const labels = useMemo(() => new Map(family.people.map(person => [person.id, personName(family, person.id)])), [family])
   const dates = useMemo(() => new Map(family.people.map(person => {
     const years = lifeYears(family, person.id)
@@ -78,11 +80,14 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     generations, expandedPersonIds: settings.expandedRelativeIds, showAll: settings.showAllRelatives,
   }) : (vertical ? projectVerticalFamily(graph, personId, {
     generations: Math.min(12, generations + 1), collapsedAppearanceIds: settings.collapsedAppearanceIds,
+    expandedSiblingPersonIds: portraitCards ? settings.expandedSiblingIds : undefined,
+    collapsedAncestorPersonIds: portraitCards ? settings.collapsedAncestorIds : undefined,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
     collapsedAppearanceIds: settings.collapsedAppearanceIds })), [graph, personId, generations, includeRelatives, vertical,
-    settings.collapsedAppearanceIds, settings.expandedRelativeIds, settings.showAllRelatives])
+    settings.collapsedAppearanceIds, settings.expandedRelativeIds, settings.showAllRelatives, settings.expandedSiblingIds, settings.collapsedAncestorIds, portraitCards])
   const directLine = useMemo(() => vertical && !includeRelatives
-    ? new Set(projection.appearances.map(node => node.personId)) : homeLine, [projection, vertical, includeRelatives, homeLine])
+    ? portraitMainLine ?? new Set(projection.appearances.map(node => node.personId)) : homeLine,
+  [projection, vertical, includeRelatives, homeLine, portraitMainLine])
   const layout = useMemo(() => 'relatedCount' in projection ? layoutRelatives(projection, graph, labels, dates, measure)
     : 'familyMode' in projection ? layoutRelatives(projection, graph, labels, dates, measure, directLine, portraitLayout)
     : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine, portraitLayout])
@@ -108,6 +113,30 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     const expanded = settings.expandedRelativeIds ?? []
     dispatch({ type: 'map', settings: { expandedRelativeIds: expanded.includes(id)
       ? expanded.filter(person => person !== id) : [...expanded, id] } })
+  }
+  const changeBranches = (id: string, changes: { expandedSiblingIds?: string[]; collapsedAncestorIds?: string[] }) => {
+    const nextProjection = projectVerticalFamily(graph, personId, {
+      generations: Math.min(12, generations + 1), collapsedAppearanceIds: settings.collapsedAppearanceIds,
+      expandedSiblingPersonIds: changes.expandedSiblingIds ?? settings.expandedSiblingIds,
+      collapsedAncestorPersonIds: changes.collapsedAncestorIds ?? settings.collapsedAncestorIds,
+    })
+    const nextLayout = layoutRelatives(nextProjection, graph, labels, dates, measure,
+      directLine, portraitLayout)
+    const before = layout.nodes.find(node => node.personId === id)!
+    const after = nextLayout.nodes.find(node => node.personId === id)!
+    const nextCenter = nextLayout.nodes.find(node => node.lane === 'center')!
+    dispatch({ type: 'map', settings: { ...changes, pan: {
+      x: settings.pan.x + (before.x - center.x - after.x + nextCenter.x) * settings.zoom / width,
+      y: settings.pan.y + (before.y - center.y - after.y + nextCenter.y) * settings.zoom / height,
+    } } })
+  }
+  const toggleSiblings = (id: string) => {
+    const expanded = settings.expandedSiblingIds ?? []
+    changeBranches(id, { expandedSiblingIds: expanded.includes(id) ? expanded.filter(person => person !== id) : [...expanded, id] })
+  }
+  const toggleAncestors = (id: string) => {
+    const collapsed = settings.collapsedAncestorIds ?? []
+    changeBranches(id, { collapsedAncestorIds: collapsed.includes(id) ? collapsed.filter(person => person !== id) : [...collapsed, id] })
   }
   const savePng = async () => {
     if (!svg.current) return
@@ -181,13 +210,13 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
                 data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
-                {portraitCards ? <PortraitPersonCard x={node.x} y={node.y} metrics={portraitMetrics}
+                {portraitCards ? <PortraitPersonCard x={node.x} y={node.y} metrics={portraitMetrics} scale={node.width / portraitMetrics.width}
                   name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin}
                   artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />
                 : <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
                   name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin} cardClassName={styles.card}
                   artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />}
-                {hidden && !includeRelatives && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
+                {hidden && !includeRelatives && !portraitCards && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
                 </g>
                 {includeRelatives && !settings.showAllRelatives && (hidden || branchExpanded) && <g className={styles.branch}
                   data-branch-person-id={node.personId} role="button" tabIndex={0} aria-expanded={branchExpanded}
@@ -200,11 +229,49 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
                 </g>}
               </g>
             })}
+            {portraitCards && <g data-layer="sibling-controls">{layout.nodes.map(node => {
+              const siblingIds = siblings.get(node.personId) ?? []
+              const siblingsExpanded = settings.expandedSiblingIds?.includes(node.personId) === true
+              const hiddenSiblings = siblingIds.filter(id => !layout.nodes.some(shown => shown.personId === id))
+              if (!hiddenSiblings.length && !siblingsExpanded) return null
+              const action = () => toggleSiblings(node.personId)
+              // Keep arrows readable at normal viewing scales; cap enlargement
+              // in a very distant overview so controls do not cover whole cards.
+              const controlScale = Math.min(3, 1 / settings.zoom)
+              const right = graph.sexByPerson.get(node.personId) === 'F'
+              return <g key={node.personId} className={styles.siblingToggle}
+                transform={`translate(${node.x + (right ? 1 : -1) * (node.width / 2 + 2)} ${node.y}) scale(${controlScale})`}
+                data-sibling-side={right ? 'right' : 'left'}
+                data-sibling-person-id={node.personId} role="button" tabIndex={0} aria-expanded={siblingsExpanded}
+                aria-label={`${siblingsExpanded ? 'Сховати' : 'Показати'} братів і сестер: ${labels.get(node.personId)}. ${siblingIds.length}`}
+                onClick={event => { event.stopPropagation(); action() }} onKeyDown={event => activate(event, action)}>
+                <title>{siblingsExpanded ? 'Сховати братів і сестер' : `Показати братів і сестер: ${siblingIds.length}`}</title>
+                <rect data-hit="true" className={styles.siblingHit} x="-22" y="-22" width="44" height="44" />
+                <path d={right !== siblingsExpanded ? 'M-4-8 4 0-4 8' : 'M4-8-4 0 4 8'} />
+              </g>
+            })}</g>}
+            {portraitCards && <g data-layer="ancestor-controls">{layout.nodes.map(node => {
+              if (!portraitMainLine?.has(node.personId)) return null
+              const parents = graph.neighbors.get(node.personId)!.filter(neighbor => neighbor.direction === 'parents')
+              const collapsed = settings.collapsedAncestorIds?.includes(node.personId) === true
+              if (!parents.length || !collapsed && !parents.some(parent => layout.nodes.some(shown => shown.personId === parent.personId))) return null
+              const controlScale = Math.min(3, 1 / settings.zoom)
+              const action = () => toggleAncestors(node.personId)
+              return <g key={node.personId} className={styles.siblingToggle}
+                transform={`translate(${node.x} ${node.y - node.height / 2 - 2}) scale(${controlScale})`}
+                data-ancestor-person-id={node.personId} role="button" tabIndex={0} aria-expanded={!collapsed}
+                aria-label={`${collapsed ? 'Розгорнути' : 'Згорнути'} предкову гілку: ${labels.get(node.personId)}`}
+                onClick={event => { event.stopPropagation(); action() }} onKeyDown={event => activate(event, action)}>
+                <title>{collapsed ? 'Розгорнути предкову гілку' : 'Згорнути предкову гілку'}</title>
+                <rect data-hit="true" className={styles.siblingHit} x="-22" y="-22" width="44" height="44" />
+                <path d={collapsed ? 'M-8 4 0-4 8 4' : 'M-8-4 0 4 8-4'} />
+              </g>
+            })}</g>}
           </g></g>
         </g>
       </svg>
     </div>
-    <PersonTooltip key={`${personId}/${settings.zoom}/${settings.pan.x}/${settings.pan.y}/${generations}/${expanded}/${settings.showAllRelatives}/${settings.expandedRelativeIds?.join(',')}/${compact}`} container={container} />
+    <PersonTooltip key={`${personId}/${settings.zoom}/${settings.pan.x}/${settings.pan.y}/${generations}/${expanded}/${settings.showAllRelatives}/${settings.expandedRelativeIds?.join(',')}/${compact}/${settings.expandedSiblingIds?.join(',')}/${settings.collapsedAncestorIds?.join(',')}`} container={container} />
     {'relatedCount' in projection && <p className={styles.count} role="status" data-testid="relatives-count">
       Людей у схемі: {projection.appearances.length} із {projection.relatedCount}.
     </p>}

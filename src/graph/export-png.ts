@@ -10,6 +10,8 @@ function snapshotDiagram(source: SVGSVGElement) {
   copy.querySelector('[data-layer="camera"]')?.removeAttribute('transform')
   copy.querySelector('[data-layer="layout"]')?.removeAttribute('transform')
   copy.querySelectorAll('[data-hit="true"]').forEach(hit => hit.remove())
+  // Screen-sized interaction buttons are not part of the exported family tree.
+  copy.querySelectorAll('[data-layer="sibling-controls"], [data-layer="ancestor-controls"]').forEach(control => control.remove())
   // Resolve the normal diagram styles on an inert offscreen copy. Hover and
   // focus are transient input feedback; explicit selection stays in the copy.
   copy.setAttribute('inert', '')

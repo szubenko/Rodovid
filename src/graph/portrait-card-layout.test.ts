@@ -19,6 +19,25 @@ const metrics = (compact: boolean) => portraitCardMetrics(labels.values(), dates
   text => measure(text, 24), text => measure(text, 15))
 
 describe('portrait genealogy cards', () => {
+  it('adds 15% to the space between generation rows while preserving card size', () => {
+    const projection = projectVerticalFamily(graph, 'I12', { generations: 2 })
+    const directLine = new Set(projection.appearances.map(node => node.personId))
+    for (const compact of [false, true]) {
+      const options = portraitLayoutOptions(metrics(compact), compact)
+      const before = { ...options, familyGap: compact ? 28 : 44, minimumRowGap: compact ? 88 : 112,
+        trackSpacing: compact ? 8 : 12, joinOffset: compact ? 24 : 32, channelOffset: compact ? 48 : 64 }
+      const old = layoutRelatives(projection, graph, labels, dates, measure, directLine, before)
+      const next = layoutRelatives(projection, graph, labels, dates, measure, directLine, options)
+      const gap = (layout: typeof next) => {
+        const child = layout.nodes.find(node => node.lane === 'center')!
+        const parent = layout.nodes.find(node => node.lane === 'parents')!
+        return child.y - child.height / 2 - parent.y - parent.height / 2
+      }
+      expect(gap(next)).toBeCloseTo(gap(old) * 1.15, 6)
+      expect(next.nodes[0]!.width).toBe(old.nodes[0]!.width)
+      expect(next.nodes[0]!.height).toBe(old.nodes[0]!.height)
+    }
+  })
   it('retains complete long names and qualified dates within both card formats', () => {
     for (const compact of [false, true]) {
       const m = metrics(compact)

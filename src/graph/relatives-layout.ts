@@ -4,6 +4,9 @@ import { labelBlock, type TextMeasure } from './text-block'
 import type { TreeLayout, TreeNode } from './tree-layout'
 import { centerFamilyParents } from './family-centering'
 import { orderVerticalFamilies } from './vertical-family-order'
+import { ancestorBranchOrder } from './ancestor-branch-order'
+import type { SiblingGroup } from './vertical-projection'
+import { routeSiblingDetours } from './sibling-line-detours'
 
 export type RelativeNode = Omit<TreeNode, 'lane'> & { lane: RelativeAppearance['lane'] }
 type Group = { ids: string[]; generation: number; x: number; width: number }
@@ -12,12 +15,17 @@ const familyOrderCache = new WeakMap<FamilyGraph, Map<string, string[][][]>>()
 export type RelativeLayoutOptions = {
   cardWidth: number; cardHeight: number; familyGap: number; spouseGap: number
   minimumRowGap: number; trackSpacing: number; joinOffset: number; channelOffset: number
+  maleBranchLeft?: boolean
+  lateralScale?: number
+  femaleSiblingsRight?: boolean
+  maleSiblingsLeft?: boolean
+  alignCardTops?: boolean
 }
 
 /** Pack spouses together, then order and align family groups between rows.
  * Every row has its own nonoverlap constraint; lateral branches never create
  * duplicate cards. Long/conflicting edges use a gutter outside all cards. */
-export function layoutRelatives(projection: Pick<RelativeProjection, 'appearances' | 'edges'>, graph: FamilyGraph,
+export function layoutRelatives(projection: Pick<RelativeProjection, 'appearances' | 'edges'> & { siblingGroups?: SiblingGroup[] }, graph: FamilyGraph,
   labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure,
   directLine?: ReadonlySet<string>, options?: RelativeLayoutOptions): Omit<TreeLayout, 'nodes'> & { nodes: RelativeNode[] } {
   const padding = 28, familyGap = options?.familyGap ?? (directLine ? 80 : 120), spouseGap = options?.spouseGap ?? 24
@@ -27,9 +35,11 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   const cardWidth = options?.cardWidth ?? Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
   const cardHeight = options?.cardHeight ?? Math.max(128, ...[...blocks.values()].map(block => block.height + 40))
   const mainHeight = directLine ? cardHeight : Math.max(152, cardHeight * 1.18)
+  const cardScale = (node: RelativeAppearance) => directLine && node.lane !== 'center' && !directLine.has(node.personId)
+    ? options?.lateralScale ?? .8 : 1
   const sizes = new Map(projection.appearances.map(node => [node.personId, directLine ? {
-    width: cardWidth * (node.lane === 'center' || directLine.has(node.personId) ? 1 : 0.8),
-    height: cardHeight * (node.lane === 'center' || directLine.has(node.personId) ? 1 : 0.8),
+    width: cardWidth * cardScale(node),
+    height: cardHeight * cardScale(node),
   } : {
     width: node.lane === 'relatives' ? cardWidth : cardWidth * 1.16,
     height: node.lane === 'relatives' ? cardHeight : mainHeight,
@@ -105,6 +115,19 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   }
   const couples = groups.map(group => [...group.ids])
   const partnerChains: string[][] = []
+  if (options?.maleBranchLeft) {
+    // A maternal half sibling can lie between a man and his wife. Keeping
+    // every couple indivisible would force crossings after fixing M/F order.
+    const individualGroups = groups.flatMap(group => {
+      partnerChains.push([...group.ids])
+      return group.ids.map(id => {
+        const individual = { ...group, ids: [id], width: sizes.get(id)!.width }
+        groupByPerson.set(id, individual)
+        return individual
+      })
+    })
+    groups.splice(0, groups.length, ...individualGroups)
+  }
   // A remarried person's partners have separate birth families. Packing the
   // entire chain as one indivisible block traps those ancestry branches on
   // the wrong side. Keep the couple with the largest descendant branch as a
@@ -337,8 +360,25 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     const endpoints = [...families.values()].map(family => ({
       parents: family.parents.map(parent => parent.personId), children: family.children.map(child => child.personId),
     }))
+    const orderedPairs: [string, string][] = options?.maleBranchLeft ? [...families.values()].flatMap(family => {
+      const men = family.parents.filter(parent => graph.sexByPerson.get(parent.personId) === 'M')
+      const women = family.parents.filter(parent => graph.sexByPerson.get(parent.personId) === 'F')
+      return men.flatMap(man => women.map(woman => [man.personId, woman.personId] as [string, string]))
+    }) : []
+    for (const group of projection.siblingGroups ?? []) {
+      const sex = graph.sexByPerson.get(group.personId)
+      if (options?.femaleSiblingsRight && sex === 'F') {
+        for (const id of group.addedPersonIds) orderedPairs.push([group.personId, id])
+      } else if (options?.maleSiblingsLeft && sex === 'M') {
+        for (const id of group.addedPersonIds) orderedPairs.push([id, group.personId])
+      }
+    }
+    if (options?.maleBranchLeft) {
+      const compareBranches = ancestorBranchOrder(graph, projection.appearances)
+      for (const row of rows.values()) row.sort((a, b) => compareBranches(a.ids[0]!, b.ids[0]!))
+    }
     const key = JSON.stringify([generations.map(generation => rows.get(generation)!.map(group => [...group.ids].sort())
-      .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))), endpoints, partnerChains])
+      .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))), endpoints, partnerChains, orderedPairs])
     const cache = familyOrderCache.get(graph) ?? new Map<string, string[][][]>()
     // Topology stays the same when a different center changes card sizes.
     // Reuse its order rather than repeating the crossing search on navigation.
@@ -349,7 +389,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       return group
     })))
     else {
-      orderVerticalFamilies(rows, endpoints, !directLine, partnerChains)
+      orderVerticalFamilies(rows, endpoints, !directLine || options?.maleBranchLeft === true, partnerChains, orderedPairs)
       if (!directLine) {
         if (cache.size >= 128) cache.delete(cache.keys().next().value!)
         cache.set(key, generations.map(generation => rows.get(generation)!.map(group => [...group.ids])))
@@ -378,10 +418,11 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   const minGeneration = generations[0]!
   const nodes = projection.appearances.map((node): RelativeNode => {
     const block = blocks.get(node.appearanceId)!
-    const scale = directLine && node.lane !== 'center' && !directLine.has(node.personId) ? 0.8 : 1
+    const scale = cardScale(node)
     return { ...node,
       x: memberX(node.personId) - minX + padding,
-      y: (node.generation - minGeneration) * step + (directLine ? mainHeight : sizes.get(node.personId)!.height) / 2 + padding,
+      y: (node.generation - minGeneration) * step
+        + (directLine && !options?.alignCardTops ? mainHeight : sizes.get(node.personId)!.height) / 2 + padding,
       ...sizes.get(node.personId)!,
       text: { width: block.width * scale, height: block.height * scale,
         lines: block.lines.map(line => ({ ...line, y: line.y * scale, fontSize: line.fontSize * scale })) },
@@ -392,11 +433,21 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   }))
   // Prefer compact leaf siblings; conflicting family constraints can still
   // use the existing centered layout without forcing a different row order.
-  const centeredCouples = directLine ? groups.map(group => group.ids) : couples
+  const centeredCouples = directLine && !options?.maleBranchLeft ? groups.map(group => group.ids) : couples
   const centerParents = () => centerFamilyParents(nodes, centeringFamilies, centeredCouples, familyGap, spouseGap,
     { compactLeafSiblings: true, reflowCouples: !directLine })
     || (!directLine && centerFamilyParents(nodes, centeringFamilies, centeredCouples, familyGap, spouseGap, { reflowCouples: true }))
   let centered = centerParents()
+  if (!centered && options?.maleBranchLeft && directLine && projection.siblingGroups?.length) {
+    // Half siblings from another marriage can make simultaneous centering
+    // impossible. Keep the direct ancestry above its child; lateral families
+    // may use an offset bus instead of displacing the whole parent branch.
+    const mainFamilies = centeringFamilies.map(family => ({
+      parents: family.parents.filter(id => directLine.has(id)),
+      children: family.children.filter(id => directLine.has(id)),
+    })).filter(family => family.parents.length && family.children.length)
+    centered = centerFamilyParents(nodes, mainFamilies, centeredCouples, familyGap, spouseGap)
+  }
   if (!centered && !directLine) {
     // Reordering a shared spouse's children can reverse the next descendant
     // row. Repair that order before retrying exact centering and separation.
@@ -445,7 +496,18 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     const endpoints = family.children.length ? family.children : family.parents
     return endpoints.reduce((sum, person) => sum + nodeX(person), 0) / endpoints.length
   }
-  for (const branches of branchesByParent.values()) branches.sort((a, b) => branchTarget(a) - branchTarget(b))
+  for (const [parentId, branches] of branchesByParent) {
+    // A spouse's U-shaped join encloses the side facing that spouse. Keep
+    // other families' exits outside it so a lateral detour can escape.
+    const exitSide = (family: FamilyJoin) => {
+      const partners = family.parents.filter(parent => parent.personId !== parentId)
+      return partners.length ? partners.reduce((sum, parent) => sum + nodeX(parent), 0) / partners.length
+        : byId.get(family.parents.find(parent => parent.personId === parentId)!.appearanceId)!.x
+    }
+    branches.sort((a, b) => options?.maleSiblingsLeft && projection.siblingGroups?.length
+      ? exitSide(a) - exitSide(b) || branchTarget(a) - branchTarget(b)
+      : branchTarget(a) - branchTarget(b))
+  }
   const familyPort = (parent: RelativeNode, family: FamilyJoin) => {
     if (!directLine) return parent.x
     const branches = branchesByParent.get(parent.personId)!
@@ -553,5 +615,13 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   // otherwise creates microscopic sideways segments at a shared junction.
   if (!directLine) for (const edge of edges) edge.path = edge.path.replace(/-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi,
     value => String(Math.round(Number(value) * 1e6) / 1e6))
+  if (options?.femaleSiblingsRight || options?.maleSiblingsLeft) {
+    const siblingIds = new Set(projection.siblingGroups?.filter(group =>
+      (options.femaleSiblingsRight && graph.sexByPerson.get(group.personId) === 'F')
+      || (options.maleSiblingsLeft && graph.sexByPerson.get(group.personId) === 'M'))
+      .flatMap(group => group.addedPersonIds))
+    const routed = routeSiblingDetours(edges, nodes, graph, siblingIds, width, height)
+    width = routed.width; height = routed.height
+  }
   return { nodes, edges, width, height }
 }

@@ -6,6 +6,7 @@ export type FamilyGraph = {
   personIds: ReadonlySet<string>
   relationships: ReadonlyMap<string, Relationship>
   neighbors: ReadonlyMap<string, readonly Neighbor[]>
+  sexByPerson: ReadonlyMap<string, FamilyData['people'][number]['sex']>
 }
 
 const compare = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0
@@ -30,7 +31,7 @@ export function buildFamilyGraph(data: Pick<FamilyData, 'people' | 'relationship
     ? ({ M: 0, F: 1, U: 2 }[sex.get(neighbor.personId) ?? 'U']) : 0
   for (const list of neighbors.values()) list.sort((a, b) => parentOrder(a) - parentOrder(b)
     || compare(a.personId, b.personId) || compare(a.relationshipId, b.relationshipId))
-  return { personIds, relationships, neighbors }
+  return { personIds, relationships, neighbors, sexByPerson: sex }
 }
 
 export type HiddenConnection = Neighbor & { reason: 'depth' | 'collapsed' | 'cycle' | 'limit' | 'recenter' }

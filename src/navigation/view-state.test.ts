@@ -9,10 +9,11 @@ describe('view history', () => {
     let state = initialView('I1', 3, 'original', { screen: 'vertical', personId: 'I1' }, .6)
     const original = state.current
     state = viewReducer(state, visit('portrait', 'vertical-design', 'I1'))
-    state = viewReducer(state, { type: 'map', settings: { compactCards: true, zoom: 1.25, generations: 5 } })
+    state = viewReducer(state, { type: 'map', settings: { compactCards: true, zoom: 1.25, generations: 5, expandedSiblingIds: ['I12'] } })
     const portrait = state.current
     state = viewReducer(state, visit('parent', 'vertical-design', 'I2'))
     expect(state.current).toMatchObject({ mapScreen: 'vertical-design', map: { compactCards: true, zoom: .6 } })
+    expect(state.current.map.expandedSiblingIds).toBeUndefined()
     state = viewReducer(state, visit('portrait', 'vertical-design', 'I1', 'POP'))
     expect(state.current).toEqual(portrait)
     state = viewReducer(state, visit('original', 'vertical', 'I1', 'POP'))

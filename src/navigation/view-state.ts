@@ -9,6 +9,8 @@ export type MapSettings = {
   expandedRelativeIds?: string[]
   showAllRelatives?: boolean
   compactCards?: boolean
+  expandedSiblingIds?: string[]
+  collapsedAncestorIds?: string[]
 }
 export type View = ViewRoute & {
   mapScreen: MapScreen

@@ -15,7 +15,7 @@ export function portraitTextLines(text: string, width: number, measure: (text: s
 
 export function portraitCardMetrics(names: Iterable<string>, dates: Iterable<string>, compact: boolean,
   measureName: (text: string) => number, measureYears: (text: string) => number) {
-  const nameSize = compact ? 22 : 26, yearSize = compact ? 19 : 22
+  const nameSize = compact ? 22 : 26, yearSize = compact ? 21 : 24
   const nameMeasure = (text: string) => measureName(text) * nameSize / 24
   const yearMeasure = (text: string) => measureYears(text) * yearSize / 15
   const allNames = [...names], allDates = [...dates]
@@ -38,10 +38,16 @@ export function portraitCardMetrics(names: Iterable<string>, dates: Iterable<str
 export type PortraitCardMetrics = ReturnType<typeof portraitCardMetrics>
 
 export function portraitLayoutOptions(metrics: PortraitCardMetrics, compact: boolean): RelativeLayoutOptions {
+  const branchSpacing = 1.15
   return {
     cardWidth: metrics.width, cardHeight: metrics.height,
-    familyGap: compact ? 28 : 44, spouseGap: compact ? 12 : 18,
-    minimumRowGap: compact ? 88 : 112, trackSpacing: compact ? 8 : 12,
-    joinOffset: compact ? 24 : 32, channelOffset: compact ? 48 : 64,
+    familyGap: (compact ? 28 : 44) * branchSpacing, spouseGap: 28,
+    minimumRowGap: (compact ? 88 : 112) * branchSpacing, trackSpacing: (compact ? 8 : 12) * branchSpacing,
+    joinOffset: (compact ? 24 : 32) * branchSpacing, channelOffset: (compact ? 48 : 64) * branchSpacing,
+    maleBranchLeft: true,
+    lateralScale: .85,
+    femaleSiblingsRight: true,
+    maleSiblingsLeft: true,
+    alignCardTops: true,
   }
 }

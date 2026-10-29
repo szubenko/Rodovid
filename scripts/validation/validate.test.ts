@@ -19,7 +19,7 @@ const options = { assetsRoot: resolve('tmp/no-optional-assets-needed') }
 const baseline = () => convertGedcom({ bytes: read('tests/fixtures/baseline-2026-09-02/Zubenko.ged'), config: json('tests/fixtures/baseline-2026-09-02/site.json'),
   supplements: json('tests/fixtures/baseline-2026-09-02/annotations.json'), identities: json('tests/fixtures/baseline-2026-09-02/identities.json') })
 const synthetic = (extra = '') => convertGedcom({ bytes: Buffer.from(read('tests/fixtures/conversion/complex.ged')
-  .toString('utf8').replace('1 NAME Тест /Однакове/', `1 NAME Тест /Однакове/${extra ? `\n${extra}` : ''}`)),
+  .toString('utf8').replace('1 NAME Тест /Однакове/', `${extra ? `${extra}\n` : ''}1 NAME Тест /Однакове/`)),
   config: minimal().config, supplements: { schemaVersion: 1 }, datasetKind: 'synthetic' })
 
 describe('preparation validation', () => {
@@ -36,16 +36,41 @@ describe('preparation validation', () => {
     const report = await validateData(family, { ...options, conversion })
     expect(report.status).toBe('passed')
     expect(report.counts).toMatchObject({ people: 25, families: 9, childLinks: 32, events: 48, relationships: 71, places: 24 })
-    expect(report.totals.warnings).toBe(34)
+    expect(report.totals.warnings).toBe(9)
     expect(report.issues.filter((issue) => /^D0[1-6]$/.test(issue.code)).map((issue) => issue.code)).toEqual(['D01', 'D02', 'D03', 'D04', 'D05', 'D06'])
     expect(report.issues.find((issue) => issue.code === 'CONFLICTING_ROLES')?.recordIds).toEqual(['@F3@', '@F5@'])
     expect(report.issues.filter((issue) => issue.code === 'POSSIBLE_DUPLICATE_FAMILY').map((issue) => issue.recordIds))
       .toEqual([['@F6@', '@F7@'], ['@F8@', '@F9@']])
-    expect(report.issues.filter((issue) => issue.code === 'UNMAPPED_SEX')).toHaveLength(25)
+    expect(report.issues.filter((issue) => issue.code === 'UNMAPPED_SEX')).toEqual([])
+    expect(conversion.unhandledNodes.filter(node => node.tag === 'SEX')).toEqual([])
     expect(renderReport(report)).toContain('Не встановлюється автоматично')
     expect(await validateData(family, { ...options, conversion })).toEqual(report)
     expect(family).toEqual(before)
   })
+
+  it.each(['M', 'F', 'U'] as const)('preserves supported SEX %s without reporting it as lost data', async sex => {
+    const { family, report: conversion } = synthetic(`1 SEX ${sex}`)
+    expect(family.people.find(person => person.id === 'I1')?.sex).toBe(sex)
+    expect(conversion.unhandledNodes.filter(node => node.tag === 'SEX')).toEqual([])
+    expect((await validateData(family, { ...options, conversion })).status).toBe('passed')
+  })
+
+  it('allows absent SEX without inventing a value or reporting lost data', async () => {
+    const { family, report: conversion } = synthetic()
+    expect(family.people.find(person => person.id === 'I1')?.sex).toBeUndefined()
+    expect((await validateData(family, { ...options, conversion })).status).toBe('passed')
+  })
+
+  it.each(['1 SEX X', '1 SEX', '1 SEX M\n1 SEX F', '1 SEX M\n2 _DETAIL important'])(
+    'rejects unsupported or ambiguous SEX information: %s', async extra => {
+      const { family, report: conversion } = synthetic(extra)
+      const report = await validateData(family, { ...options, conversion })
+      expect(report.status).toBe('failed')
+      expect(report.issues).toContainEqual(expect.objectContaining({
+        severity: 'error', code: 'UNSUPPORTED_STRUCTURE', recordIds: ['@I1@'], path: expect.stringMatching(/^SEX\[/u),
+      }))
+    },
+  )
 
   it.each(['explanation', 'confidence', 'reviewStatus'] as const)('blocks bypass of reviewed uncertainty through %s', async (field) => {
     const { family, report: conversion } = baseline()

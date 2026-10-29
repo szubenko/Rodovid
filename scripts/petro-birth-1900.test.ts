@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
 import type { FamilyData } from '../src/data/schema.ts'
+import { supplementsSchema } from '../src/data/supplements.ts'
 import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
 import { validateData } from './validation/validate.ts'
@@ -26,8 +27,9 @@ const withoutOrigin = <T extends { provenance: unknown }>(item: T) => {
 const sourceId = 'source-record-deikalo-petro-birth-1900-act36'
 const dateId = 'claim-b34a18ae26b7ae1e40737ea2'
 const birthId = 'event-24de72684a0d23588ed45900'
+const privateReasonClaimId = 'claim-oleksandra-PN3F-KPN-birth-date-1935'
 
-it('retains every accepted identity and fact apart from the approved refinement of Petro’s birth date', () => {
+it('retains every accepted identity and fact apart from the approved birth-date refinement and private working note', () => {
   const before = json('tests/fixtures/petro-before-2026-10-19/family.json') as FamilyData, after = load('Data')
   expect(after.report.sha256).toBe(petroBirthReviewSha256)
   expect(after.report.counts).toMatchObject({ people: 86, families: 32, relationships: 138,
@@ -43,7 +45,17 @@ it('retains every accepted identity and fact apart from the approved refinement 
         .toBe(item.sha256)
     }
   }
-  for (const claim of before.claims.filter(c => c.id !== dateId)) expect(withoutOrigin(after.family.claims.find(n => n.id === claim.id)!)).toEqual(withoutOrigin(claim))
+  const privateReason = supplementsSchema.parse(json('Data/annotations.json')).additionalClaims
+    .find(entry => entry.claim.id === privateReasonClaimId)!
+  expect(privateReason.publishReason).toBe(false)
+  expect(privateReason.reason).toBeTruthy()
+  expect(privateReason.reason).toBe(before.claims.find(claim => claim.id === privateReasonClaimId)!.explanation)
+  for (const claim of before.claims.filter(c => c.id !== dateId)) {
+    const expected = withoutOrigin(claim)
+    // The owner hid only this working note on 28.10.2026; keep comparing every factual field.
+    if (claim.id === privateReasonClaimId) delete expected.explanation
+    expect(withoutOrigin(after.family.claims.find(n => n.id === claim.id)!)).toEqual(expected)
+  }
   expect(after.family.claims.find(c => c.id === dateId)).toMatchObject({ target: { kind: 'event', id: birthId },
     value: { raw: '28 JUN 1900', calendar: 'unspecified', value: { precision: 'day', year: 1900, month: 6, day: 28 } },
     confidence: 'unassessed', isPrimary: false })

@@ -101,13 +101,18 @@ describe('age at an event date', () => {
     expect(eventAge(family, 'I1', claim)).toEqual({ from: 20, to: 20 })
   })
 
-  it('shows Petro’s age range at Serhiy’s birth when only his birth year is known', () => {
+  it('shows Petro’s exact age at Serhiy’s birth using his known full birth date', () => {
     const family = familyDataSchema.parse(currentData)
     const birth = family.events.find(event => event.kind === 'birth'
       && event.participants.some(person => person.personId === 'I1' && person.role === 'subject'))!
     const claim = family.claims.find(claim => claim.field === 'date' && claim.target.id === birth.id)!
-    expect(eventAge(family, 'I2', claim)).toEqual({ from: 23, to: 24 })
+    expect(eventAge(family, 'I2', claim)).toEqual({ from: 24, to: 24 })
     expect(eventAge(family, 'I1', claim)).toBeUndefined()
+  })
+
+  it('shows the 23–24 age range on 21 December 1987 when only the birth year 1963 is known', () => {
+    const { family, claim } = setup(date(1963), date(1987, 12, 21))
+    expect(eventAge(family, 'I1', claim)).toEqual({ from: 23, to: 24 })
   })
 
   it.each([

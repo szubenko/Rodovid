@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { resolveSourceRecordFiles } from './source-record-files'
+import { sourceArk } from './source-record-names'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert'
 import { biographyTimeline } from '../src/graph/person-tooltip-data'
@@ -32,8 +33,11 @@ it('assigns Natalia’s four sources to her birth, marriage and two child births
   for (const [recordId, kind, ark] of expected) {
     const event = timeline.find(({ event }) => event && event.kind === kind && event.provenance.some(origin => origin.kind === 'gedcom' && origin.recordId === recordId))!.event!
     const links = family.evidenceLinks.filter(link => link.target.kind === 'event' && link.target.id === event.id)
-    const original = links.find(link => family.sources.find(source => source.id === link.sourceId)!.description?.includes(ark))
-    expect(original).toBeDefined()
+    const source = family.sources.find(source => sourceArk(source.url) === ark)
+    expect(source, `Missing source URL for ${ark}`).toBeDefined()
+    const original = links.find(link => link.sourceId === source!.id)
+    expect(original, `Missing ${ark} citation for ${recordId} ${kind}`).toBeDefined()
+    expect(original!.transcription).toBe(source!.description)
     expect(original!.explanation).toContain(ark)
   }
   const death = timeline.find(entry => entry.event?.kind === 'death')!.event!

@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
+import { resolveSourceRecordFiles } from './source-record-files.ts'
 import { availableGenerations, buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
 import { estimateTextWidth, layoutRadial } from '../src/graph/layout.ts'
 import { lifeYears } from '../src/graph/presentation'
@@ -9,7 +11,8 @@ import { personName } from '../src/data/person-name'
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
 const json = (path: string) => JSON.parse(read(path).toString())
 const { family } = convertGedcom({ bytes: read('Data/Zubenko.ged'), config: json('Data/site.json'),
-  supplements: json('Data/annotations.json'), identities: json('Data/identities.json') })
+  supplements: resolveSourceRecordFiles(json('Data/annotations.json'), fileURLToPath(new URL('../Data', import.meta.url))),
+  identities: json('Data/identities.json') })
 const graph = buildFamilyGraph(family)
 const labels = new Map(family.people.map((person) => [person.id, personName(family, person.id)]))
 const dates = new Map(family.people.map((person) => {

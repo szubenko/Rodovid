@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
+import type { FamilyData } from '../src/data/schema.ts'
 import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
 import { validateData } from './validation/validate.ts'
@@ -19,6 +21,26 @@ const omitOrigin = <T extends { provenance: unknown }>(value: T) => {
   const { provenance, ...rest } = value
   void provenance
   return rest
+}
+
+function withSharedScans(family: FamilyData) {
+  const historicalHashes = JSON.parse(readFileSync(new URL('../tests/fixtures/import-before-2026-10-19/media-sha256.json', import.meta.url), 'utf8')) as Record<string, string>
+  const { replacements } = JSON.parse(readFileSync(new URL('../Docs/Rodovid_Shared_Scans_2026-10-22.json', import.meta.url), 'utf8')) as {
+    replacements: { from: string; to: string; sha256: string }[]
+  }
+  const prepared = structuredClone(family)
+  for (const media of prepared.media) {
+    const originalPath = media.path
+    const replacement = replacements.find(entry => entry.from === originalPath)
+    // Historical snapshots keep their old paths; validate against the identical shared bytes.
+    if (replacement) {
+      expect(replacement.sha256, originalPath).toBe(historicalHashes[originalPath])
+      media.path = replacement.to
+    }
+    const bytes = readFileSync(new URL(`../Data/${media.path}`, import.meta.url))
+    expect(createHash('sha256').update(bytes).digest('hex'), originalPath).toBe(historicalHashes[originalPath])
+  }
+  return prepared
 }
 
 it('retains the sixth export through the accepted source revisions preceding the next export', () => {
@@ -54,7 +76,7 @@ it('retains the sixth export through the accepted source revisions preceding the
 }, 15_000)
 
 it('uses child-birth and death sources for the matching events and rejects source loss', async () => {
-  const result = load('tests/fixtures/import-before-2026-10-19'), family = result.family
+  const result = load('tests/fixtures/import-before-2026-10-19'), family = withSharedScans(result.family)
   const event = (recordId: string, kind: string) => family.events.find(e => e.kind === kind
     && e.provenance.some(o => o.kind === 'gedcom' && o.recordId === recordId))!
   const sources = (recordId: string, kind: string) => family.evidenceLinks
@@ -75,7 +97,7 @@ it('uses child-birth and death sources for the matching events and rejects sourc
   const makarDescription = family.evidenceLinks.find(e => e.sourceId === makarSource.id && e.target.kind === 'event')!.transcription
   expect(makarDescription).toContain('25 травня 1900 року — народився в селі Чапліївка.')
   expect(makarDescription).not.toContain('<i>FamilySearch</i>')
-  const options = { assetsRoot: 'Data', conversion: result.report }
+  const options = { assetsRoot: fileURLToPath(new URL('../Data', import.meta.url)), conversion: result.report }
   expect((await validateData(family, options)).status).toBe('passed')
   const wrong = structuredClone(family)
   const source = wrong.sources.find(s => s.provenance.some(o => o.kind === 'gedcom' && o.recordId === '@S60@'))!

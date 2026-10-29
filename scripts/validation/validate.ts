@@ -372,11 +372,8 @@ export async function validateData(input: unknown, options: { assetsRoot: string
     const conversion = options.conversion
     checkReview(data, conversion, issues)
     for (const entry of conversion.unhandledNodes) {
-      const optional = entry.tag === 'SEX' && /^SEX\[\d+\]$/.test(entry.path ?? '')
-        && data.people.some((person) => hasOrigin(person, entry.recordId ?? ''))
-      issues.push({ severity: optional ? 'warning' : 'error', code: optional ? 'UNMAPPED_SEX' : 'UNSUPPORTED_STRUCTURE',
-        message: optional ? 'SEX збережено у звіті; контракт v1 не використовує це поле.'
-          : `Непідтриманий ${entry.tag}: ${entry.value ?? '(без значення)'}. Відомості не можна мовчки втратити.`,
+      issues.push({ severity: 'error', code: 'UNSUPPORTED_STRUCTURE',
+        message: `Непідтриманий ${entry.tag}: ${entry.value ?? '(без значення)'}. Відомості не можна мовчки втратити.`,
         recordIds: entry.recordId ? [entry.recordId] : [], path: entry.path, line: entry.line })
     }
     for (const warning of conversion.warnings.filter((entry) => entry.code !== 'POSSIBLE_DUPLICATE_FAMILY')) {

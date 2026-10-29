@@ -6,7 +6,8 @@ export type PersonCardSkin = {
   id: string
   label: string
   tone: 'blue' | 'rose' | 'green' | 'clay' | 'neutral'
-  portrait?: { x: number; y: number }
+  portrait?: { x: number; y: number; radius?: number; artwork?: 'seamstress' }
+  badgeIcon?: 'sewing-machine'
 }
 
 type Role = 'cossack' | 'peasant' | 'potter'

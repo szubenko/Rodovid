@@ -7,6 +7,12 @@ import { availableRelativeGenerations, projectRelatives } from './relatives-proj
 import { layoutRelatives } from './relatives-layout'
 import { lifeYears } from './presentation'
 
+const archive = familyDataSchema.parse(data)
+const archiveGraph = buildFamilyGraph(archive)
+const centers = archive.people.map(person => person.id)
+const labels = new Map(archive.people.map(p => [p.id, personName(archive, p.id)]))
+const dates = new Map(archive.people.map(p => [p.id, lifeYears(archive, p.id)]))
+
 type Segment = { x1: number; y1: number; x2: number; y2: number }
 function segments(path: string): Segment[] {
   const numbers = path.match(/-?\d+(?:\.\d+)?/g)!.map(Number)
@@ -54,10 +60,9 @@ it('reduces crossings with separate family buses', () => {
   }
 })
 
-it('faces every couple toward their own parents, including the Chaban and Karpynskyi branches from the screenshot', () => {
-  const family = familyDataSchema.parse(data)
-  const graph = buildFamilyGraph(family)
-  for (const center of family.people.map(person => person.id)) {
+it.each(centers)('faces every couple toward their own parents, including the Chaban and Karpynskyi branches (%s)', center => {
+  const family = archive
+  const graph = archiveGraph
     const layout = layoutRelatives(projectRelatives(graph, center, { showAll: true }), graph, new Map(), new Map(), (text, size) => text.length * size)
     const nodes = new Map(layout.nodes.map(node => [node.personId, node]))
     const parentsX = (id: string) => {
@@ -82,15 +87,10 @@ it('faces every couple toward their own parents, including the Chaban and Karpyn
       }).flatMap(edge => segments(edge.path))
       expect(toChild('I56').some(a => toChild('I57').some(b => crosses(a, b)))).toBe(false)
     }
-  }
 })
 
-it('keeps Natalia between both spouses and separates the children of her two marriages at every center and depth', () => {
-  const family = familyDataSchema.parse(data)
-  const graph = buildFamilyGraph(family)
-  const labels = new Map(family.people.map(p => [p.id, personName(family, p.id)]))
-  const dates = new Map(family.people.map(p => [p.id, lifeYears(family, p.id)]))
-  for (const center of family.people.map(person => person.id)) {
+it.each(centers)('keeps Natalia between both spouses and separates their children at every depth (%s)', center => {
+  const graph = archiveGraph
     const maxDepth = availableRelativeGenerations(graph, center)
     for (let depth = 1; depth <= maxDepth + 1; depth++) {
       const context = `${center}, depth ${depth}`
@@ -114,5 +114,4 @@ it('keeps Natalia between both spouses and separates the children of her two mar
       }).flatMap(edge => segments(edge.path))
       expect(familyEdges('I67', vasylChildren).some(a => familyEdges('I9', makarChildren).some(b => crosses(a, b))), context).toBe(false)
     }
-  }
 })

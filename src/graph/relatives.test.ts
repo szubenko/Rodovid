@@ -83,6 +83,8 @@ describe('vertical full-family geometry on the real archive', () => {
       const siblings = layout.nodes.filter(node => ['I28', 'I47', 'I48', 'I49', 'I50', 'I51'].includes(node.personId))
         .sort((a, b) => a.x - b.x)
       expect(siblings).toHaveLength(6)
+      const ivan = siblings.find(node => node.personId === 'I28')!, vasyl = siblings.find(node => node.personId === 'I47')!
+      expect(Math.abs(ivan.x - vasyl.x) - (ivan.width + vasyl.width) / 2).toBeCloseTo(120, 2)
       for (let i = 1; i < siblings.length; i++) {
         const left = siblings[i - 1]!, right = siblings[i]!
         expect(right.x - left.x - (left.width + right.width) / 2).toBeCloseTo(120, 2)
@@ -145,8 +147,7 @@ describe('vertical full-family geometry on the real archive', () => {
       expect(full.appearances.every(n => n.hiddenConnections.length === 0)).toBe(true)
     }
   })
-  it('centers every visible family and keeps complete labels, partners on one row, generations ordered and cards disjoint at every center and depth', () => {
-    for (const person of family.people) {
+  it.each(family.people)('centers every family with complete labels, aligned partners, ordered generations and disjoint cards at every depth ($id)', person => {
       const maxDepth = availableRelativeGenerations(real, person.id)
       for (let depth = 1; depth <= maxDepth + 1; depth++) {
         const projection = projectRelatives(real, person.id, { generations: Math.min(depth, maxDepth), showAll: depth > maxDepth })
@@ -205,6 +206,5 @@ describe('vertical full-family geometry on the real archive', () => {
           }
         }
       }
-    }
-  }, 30_000)
+  })
 })

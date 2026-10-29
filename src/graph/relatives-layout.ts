@@ -8,6 +8,7 @@ import { orderVerticalFamilies } from './vertical-family-order'
 export type RelativeNode = Omit<TreeNode, 'lane'> & { lane: RelativeAppearance['lane'] }
 type Group = { ids: string[]; generation: number; x: number; width: number }
 type FamilyJoin = { parents: RelativeAppearance[]; children: RelativeAppearance[]; track: number }
+const familyOrderCache = new WeakMap<FamilyGraph, Map<string, string[][][]>>()
 
 /** Pack spouses together, then order and align family groups between rows.
  * Every row has its own nonoverlap constraint; lateral branches never create
@@ -68,7 +69,20 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   const step = mainHeight + Math.max(200, ...[...familiesByRow.values()].map(row => row.length * 16 + 100))
   const groups: Group[] = []
   const groupByPerson = new Map<string, Group>()
-  for (const node of projection.appearances) {
+  const orderedIds = new Set<string>()
+  for (const root of graph.personIds) {
+    if (orderedIds.has(root)) continue
+    const queue = [root]
+    orderedIds.add(root)
+    for (let cursor = 0; cursor < queue.length; cursor++) for (const neighbor of graph.neighbors.get(queue[cursor]!)!) {
+      if (!orderedIds.has(neighbor.personId)) { orderedIds.add(neighbor.personId); queue.push(neighbor.personId) }
+    }
+  }
+  const stableOrder = new Map([...orderedIds].map((id, index) => [id, index]))
+  // Recentring changes emphasis, not the tie-breaking order of family branches.
+  const ordered = directLine ? projection.appearances : [...projection.appearances]
+    .sort((a, b) => stableOrder.get(a.personId)! - stableOrder.get(b.personId)!)
+  for (const node of ordered) {
     if (groupByPerson.has(node.personId)) continue
     const group: Group = { ids: [node.personId], generation: node.generation, x: 0, width: 0 }
     groupByPerson.set(node.personId, group)
@@ -82,6 +96,43 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     }
     group.width = group.ids.reduce((sum, id) => sum + sizes.get(id)!.width, 0) + (group.ids.length - 1) * spouseGap
     groups.push(group)
+  }
+  const couples = groups.map(group => [...group.ids])
+  const partnerChains: string[][] = []
+  // A remarried person's partners have separate birth families. Packing the
+  // entire chain as one indivisible block traps those ancestry branches on
+  // the wrong side. Keep the couple with the largest descendant branch as a
+  // block and let the other partners move, retaining the chain's order.
+  if (!directLine) for (const group of [...groups]) {
+    if (group.ids.length <= 2) continue
+    const neighbors = new Map(group.ids.map(id => [id, [...new Set(graph.neighbors.get(id)!
+      .filter(neighbor => neighbor.direction === 'spouses' && group.ids.includes(neighbor.personId)).map(neighbor => neighbor.personId))]]))
+    const ends = group.ids.filter(id => neighbors.get(id)!.length === 1)
+    if (ends.length !== 2 || group.ids.some(id => neighbors.get(id)!.length > 2)) continue
+    const chain = [ends[0]!]
+    while (chain.length < group.ids.length) {
+      const next = neighbors.get(chain.at(-1)!)!.find(id => !chain.includes(id))
+      if (!next) break
+      chain.push(next)
+    }
+    if (chain.length !== group.ids.length) continue
+    partnerChains.push(chain)
+    const pairs = [...families.values()].filter(family => family.parents.length === 2
+      && family.parents.every(parent => group.ids.includes(parent.personId)))
+    const descendants = (family: FamilyJoin) => {
+      const seen = new Set(family.children.map(child => child.personId)), queue = [...seen]
+      for (let cursor = 0; cursor < queue.length; cursor++) for (const neighbor of graph.neighbors.get(queue[cursor]!)!) {
+        if (neighbor.direction === 'children' && !seen.has(neighbor.personId)) { seen.add(neighbor.personId); queue.push(neighbor.personId) }
+      }
+      return seen.size
+    }
+    const pair = pairs.sort((a, b) => descendants(b) - descendants(a))[0]?.parents.map(parent => parent.personId) ?? []
+    const units = [chain.filter(id => pair.includes(id)), ...chain.filter(id => !pair.includes(id)).map(id => [id])].filter(ids => ids.length)
+    groups.splice(groups.indexOf(group), 1, ...units.map(ids => {
+      const unit = { ...group, ids, width: ids.reduce((sum, id) => sum + sizes.get(id)!.width, 0) + (ids.length - 1) * spouseGap }
+      ids.forEach(id => groupByPerson.set(id, unit))
+      return unit
+    }))
   }
   const rows = new Map<number, Group[]>()
   for (const group of groups) rows.set(group.generation, [...rows.get(group.generation) ?? [], group])
@@ -173,7 +224,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       pack(row, targets, false)
     }
   }
-  if (directLine) {
+  {
     // Keep each birth family's children in one horizontal block. Group-only
     // crossing scores otherwise allow an unrelated couple between a child
     // and that child's siblings, creating a bus across the unrelated stems.
@@ -276,10 +327,45 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     slots.forEach((index, childIndex) => { nextRow[index] = children[childIndex]! })
     pack(nextRow, positions, false)
   }
-  if (directLine) {
-    orderVerticalFamilies(rows, [...families.values()].map(family => ({
+  {
+    const endpoints = [...families.values()].map(family => ({
       parents: family.parents.map(parent => parent.personId), children: family.children.map(child => child.personId),
+    }))
+    const key = JSON.stringify([generations.map(generation => rows.get(generation)!.map(group => [...group.ids].sort())
+      .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))), endpoints, partnerChains])
+    const cache = familyOrderCache.get(graph) ?? new Map<string, string[][][]>()
+    // Topology stays the same when a different center changes card sizes.
+    // Reuse its order rather than repeating the crossing search on navigation.
+    const cached = !directLine && cache.get(key)
+    if (cached) generations.forEach((generation, index) => rows.set(generation, cached[index]!.map(ids => {
+      const group = groupByPerson.get(ids[0]!)!
+      group.ids = [...ids]
+      return group
     })))
+    else {
+      orderVerticalFamilies(rows, endpoints, !directLine, partnerChains)
+      if (!directLine) {
+        if (cache.size >= 128) cache.delete(cache.keys().next().value!)
+        cache.set(key, generations.map(generation => rows.get(generation)!.map(group => [...group.ids])))
+        familyOrderCache.set(graph, cache)
+      }
+    }
+    // Leaf siblings can mirror with their family without losing their nearest
+    // neighbor beside the one expanded branch (for example Ivan and Vasyl).
+    if (!directLine) for (const family of families.values()) {
+      const generation = family.children[0]?.generation, row = generation === undefined ? undefined : rows.get(generation)
+      if (!row) continue
+      const children = new Set(family.children.map(child => groupByPerson.get(child.personId)!))
+      const leaf = (group: Group) => group.ids.length === 1 && ![...families.values()]
+        .some(other => other.parents.some(parent => parent.personId === group.ids[0]))
+      const anchors = [...children].filter(group => !leaf(group))
+      if (anchors.length !== 1) continue
+      const anchor = row.indexOf(anchors[0]!)
+      const slots = row.flatMap((group, index) => children.has(group) && leaf(group) ? [index] : [])
+        .sort((a, b) => Math.abs(a - anchor) - Math.abs(b - anchor))
+      const siblings = slots.map(slot => row[slot]!).sort((a, b) => stableOrder.get(a.ids[0]!)! - stableOrder.get(b.ids[0]!)!)
+      slots.forEach((slot, index) => { row[slot] = siblings[index]! })
+    }
     for (const row of rows.values()) pack(row, new Map(row.map(group => [group, group.x])), false)
   }
   const minX = Math.min(...projection.appearances.map(node => memberX(node.personId) - sizes.get(node.personId)!.width / 2))
@@ -300,8 +386,10 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   }))
   // Prefer compact leaf siblings; conflicting family constraints can still
   // use the existing centered layout without forcing a different row order.
-  const centerParents = () => centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap, true)
-    || (!directLine && centerFamilyParents(nodes, centeringFamilies, groups.map(group => group.ids), familyGap, spouseGap))
+  const centeredCouples = directLine ? groups.map(group => group.ids) : couples
+  const centerParents = () => centerFamilyParents(nodes, centeringFamilies, centeredCouples, familyGap, spouseGap,
+    { compactLeafSiblings: true, reflowCouples: !directLine })
+    || (!directLine && centerFamilyParents(nodes, centeringFamilies, centeredCouples, familyGap, spouseGap, { reflowCouples: true }))
   let centered = centerParents()
   if (!centered && !directLine) {
     // Reordering a shared spouse's children can reverse the next descendant
@@ -455,5 +543,9 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     height = Math.max(height, startY + padding, endY + padding)
     return { ...edge, path: `M${from.x},${from.y + from.height / 2} V${startY} H${channel} V${endY} H${to.x} V${to.y + to.height / 2}` }
   })
+  // Co-located joins must serialize to the same coordinate. Solver roundoff
+  // otherwise creates microscopic sideways segments at a shared junction.
+  if (!directLine) for (const edge of edges) edge.path = edge.path.replace(/-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi,
+    value => String(Math.round(Number(value) * 1e6) / 1e6))
   return { nodes, edges, width, height }
 }

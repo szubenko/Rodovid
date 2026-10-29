@@ -13,7 +13,7 @@ test('Іван і Василь залишаються поруч при змін
     const gap = await svg.evaluate(element => {
       const ivan = element.querySelector<SVGRectElement>('[data-person-id="I28"] rect')!.getBBox()
       const vasyl = element.querySelector<SVGRectElement>('[data-person-id="I47"] rect')!.getBBox()
-      return vasyl.x - ivan.x - ivan.width
+      return Math.abs(vasyl.x + vasyl.width / 2 - ivan.x - ivan.width / 2) - (ivan.width + vasyl.width) / 2
     })
     expect(gap).toBeCloseTo(120, 2)
   }
@@ -25,7 +25,8 @@ test('Іван і Василь залишаються поруч при змін
     const ivan = (await ivanCard.boundingBox())!
     const vasyl = (await vasylCard.boundingBox())!
     await page.screenshot({ path: testInfo.outputPath('ivan-vasyl-compact.png'), clip: {
-      x: ivan.x - 12, y: ivan.y - 54, width: vasyl.x + vasyl.width - ivan.x + 24,
+      x: Math.min(ivan.x, vasyl.x) - 12, y: ivan.y - 54,
+      width: Math.max(ivan.x + ivan.width, vasyl.x + vasyl.width) - Math.min(ivan.x, vasyl.x) + 24,
       height: Math.max(ivan.height, vasyl.height) + 100,
     } })
   }
@@ -58,7 +59,7 @@ test('окрема вкладка усіх родичів зберігає по�
   await page.goto('/vertical/I1')
   await page.getByLabel('Покоління', { exact: true }).selectOption('3')
   const original = page.getByRole('group', { name: /^Вертикальний родовід:/ })
-  await expect(original.locator('[data-person-id="I27"]')).toHaveCount(0)
+  const originalIds = await original.locator('[data-person-id]').evaluateAll(cards => cards.map(card => card.getAttribute('data-person-id')))
   await expect(page.getByRole('button', { name: 'Показати всіх родичів', exact: true })).toHaveCount(0)
   await expect(original.locator('[data-branch-person-id]')).toHaveCount(0)
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
@@ -74,6 +75,7 @@ test('окрема вкладка усіх родичів зберігає по�
   await page.getByRole('button', { name: 'Назад до попереднього перегляду', exact: true }).click()
   await expect(page).toHaveURL(/\/vertical\/I1$/)
   await expect(original.locator('[data-person-id]')).toHaveCount(cards)
+  expect(await original.locator('[data-person-id]').evaluateAll(cards => cards.map(card => card.getAttribute('data-person-id')))).toEqual(originalIds)
   await expect(original.locator('[data-layer="camera"]')).toHaveAttribute('transform', camera!)
   await expect(page.getByRole('button', { name: 'Показати всіх родичів', exact: true })).toHaveCount(0)
   await page.goto('/relatives/I1')

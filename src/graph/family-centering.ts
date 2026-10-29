@@ -6,12 +6,14 @@ type Basis = { coefficients: Float64Array; direction: Float64Array; target: numb
  * Couple members prefer moving together, but can spread to accommodate ancestry.
  * Contradictory inputs keep their original inspectable layout. */
 export function centerFamilyParents(cards: Card[], families: CenteredFamily[], couples: string[][],
-  familyGap: number, spouseGap: number, compactLeafSiblings = false) {
+  familyGap: number, spouseGap: number, { compactLeafSiblings = false, reflowCouples = false } = {}) {
   const count = cards.length
   const index = new Map(cards.map((card, i) => [card.personId, i]))
   const groups = couples.map(ids => ids.map(id => index.get(id)!))
   const groupByIndex = new Map(groups.flatMap((group, i) => group.map(member => [member, i] as const)))
-  const positions = Float64Array.from(cards, card => card.x)
+  // Row order comes from the cards. A neutral starting position lets a reflow
+  // find compact feasible distances instead of retaining barycentric gaps.
+  const positions = Float64Array.from(cards, card => reflowCouples ? 0 : card.x)
   const dot = (a: Float64Array, b: Float64Array) => {
     let result = 0
     for (let i = 0; i < count; i++) result += a[i]! * b[i]!
@@ -29,8 +31,8 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
     return result
   }
   const equations = families.map(family => {
-    const parents = family.parents.map(id => index.get(id)!).sort((a, b) => positions[a]! - positions[b]!)
-    const children = family.children.map(id => index.get(id)!).sort((a, b) => positions[a]! - positions[b]!)
+    const parents = family.parents.map(id => index.get(id)!).sort((a, b) => cards[a]!.x - cards[b]!.x)
+    const children = family.children.map(id => index.get(id)!).sort((a, b) => cards[a]!.x - cards[b]!.x)
     const coefficients = new Float64Array(count)
     for (const parent of parents) coefficients[parent] = coefficients[parent]! + 1 / parents.length
     coefficients[children[0]!] = coefficients[children[0]!]! - .5
@@ -40,8 +42,12 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
   })
   for (const group of groups.filter(group => group.length > 2)) {
     const main = group.filter(member => cards[member]!.lane !== undefined && cards[member]!.lane !== 'relatives')
-      .sort((a, b) => positions[a]! - positions[b]!)
+      .sort((a, b) => cards[a]!.x - cards[b]!.x)
     if (main.length !== 2 || Math.abs(group.indexOf(main[0]!) - group.indexOf(main[1]!)) !== 1) continue
+    // A wider sibling family may need this pair to spread. A rigid compact
+    // gap can contradict otherwise feasible family-centering constraints.
+    if (reflowCouples && families.some(family => family.parents.length === 2 && family.children.length > 1
+      && main.every(member => family.parents.includes(cards[member]!.personId)))) continue
     const coefficients = new Float64Array(count)
     coefficients[main[0]!] = -1; coefficients[main[1]!] = 1
     equations.push({ coefficients, target: (cards[main[0]!]!.width + cards[main[1]!]!.width) / 2 + spouseGap })
@@ -56,7 +62,7 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
     const rows = new Map<number, number[]>()
     cards.forEach((card, i) => rows.set(card.generation, [...rows.get(card.generation) ?? [], i]))
     for (const row of rows.values()) {
-      row.sort((a, b) => positions[a]! - positions[b]!)
+      row.sort((a, b) => cards[a]!.x - cards[b]!.x)
       for (let slot = 1; slot < row.length; slot++) {
         const left = row[slot - 1]!, right = row[slot]!
         const family = birthFamily.get(cards[left]!.personId)

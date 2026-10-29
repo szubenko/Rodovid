@@ -9,18 +9,23 @@ export type RelativeNode = Omit<TreeNode, 'lane'> & { lane: RelativeAppearance['
 type Group = { ids: string[]; generation: number; x: number; width: number }
 type FamilyJoin = { parents: RelativeAppearance[]; children: RelativeAppearance[]; track: number }
 const familyOrderCache = new WeakMap<FamilyGraph, Map<string, string[][][]>>()
+export type RelativeLayoutOptions = {
+  cardWidth: number; cardHeight: number; familyGap: number; spouseGap: number
+  minimumRowGap: number; trackSpacing: number; joinOffset: number; channelOffset: number
+}
 
 /** Pack spouses together, then order and align family groups between rows.
  * Every row has its own nonoverlap constraint; lateral branches never create
  * duplicate cards. Long/conflicting edges use a gutter outside all cards. */
 export function layoutRelatives(projection: Pick<RelativeProjection, 'appearances' | 'edges'>, graph: FamilyGraph,
   labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure,
-  directLine?: ReadonlySet<string>): Omit<TreeLayout, 'nodes'> & { nodes: RelativeNode[] } {
-  const padding = 28, familyGap = directLine ? 80 : 120, spouseGap = 24
+  directLine?: ReadonlySet<string>, options?: RelativeLayoutOptions): Omit<TreeLayout, 'nodes'> & { nodes: RelativeNode[] } {
+  const padding = 28, familyGap = options?.familyGap ?? (directLine ? 80 : 120), spouseGap = options?.spouseGap ?? 24
+  const trackSpacing = options?.trackSpacing ?? 16, joinOffset = options?.joinOffset ?? 56, channelOffset = options?.channelOffset ?? 100
   const blocks = new Map(projection.appearances.map(node => [node.appearanceId,
     labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', directLine || node.lane === 'relatives' ? 20 : 22, 18, measure, 264)]))
-  const cardWidth = Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
-  const cardHeight = Math.max(128, ...[...blocks.values()].map(block => block.height + 40))
+  const cardWidth = options?.cardWidth ?? Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
+  const cardHeight = options?.cardHeight ?? Math.max(128, ...[...blocks.values()].map(block => block.height + 40))
   const mainHeight = directLine ? cardHeight : Math.max(152, cardHeight * 1.18)
   const sizes = new Map(projection.appearances.map(node => [node.personId, directLine ? {
     width: cardWidth * (node.lane === 'center' || directLine.has(node.personId) ? 1 : 0.8),
@@ -66,7 +71,8 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     familiesByRow.set(generation, [...familiesByRow.get(generation) ?? [], family])
   }
   // Leave room for separate family buses rather than several crossing lines per child.
-  const step = mainHeight + Math.max(200, ...[...familiesByRow.values()].map(row => row.length * 16 + 100))
+  const step = mainHeight + Math.max(options?.minimumRowGap ?? 200,
+    ...[...familiesByRow.values()].map(row => row.length * trackSpacing + channelOffset))
   const groups: Group[] = []
   const groupByPerson = new Map<string, Group>()
   const orderedIds = new Set<string>()
@@ -516,11 +522,11 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     const from = byId.get(edge.fromAppearanceId)!, to = byId.get(edge.toAppearanceId)!
     const spouse = graph.relationships.get(edge.relationshipId)!.kind === 'spouse'
     if (spouse && from.generation === to.generation) {
-      const startY = from.y + from.height / 2, endY = to.y + to.height / 2, channel = rowBottom(from) + 56
+      const startY = from.y + from.height / 2, endY = to.y + to.height / 2, channel = rowBottom(from) + joinOffset
       if (directLine) {
         const family = branchesByParent.get(from.personId)!.find(family => family.parents.length === 2
           && family.parents.some(parent => parent.personId === to.personId))!
-        const familyChannel = channel + family.track * 16
+        const familyChannel = channel + family.track * trackSpacing
         height = Math.max(height, familyChannel + padding)
         return { ...edge, path: `M${familyPort(from, family)},${startY} V${familyChannel} H${familyPort(to, family)} V${endY}` }
       }
@@ -530,7 +536,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       const startY = from.y + from.height / 2, endY = to.y - to.height / 2
       const family = familyByChild.get(to.personId)!
       const startX = familyPort(from, family)
-      const joinX = anchor(family), joinY = rowBottom(from) + 56 + (directLine ? family.track * 16 : 0), channel = rowBottom(from) + 100 + family.track * 16
+      const joinX = anchor(family), joinY = rowBottom(from) + joinOffset + (directLine ? family.track * trackSpacing : 0), channel = rowBottom(from) + channelOffset + family.track * trackSpacing
       if (Math.abs(joinX - to.x) < .01) {
         return { ...edge, path: `M${startX},${startY} V${joinY} H${to.x} V${endY}` }
       }

@@ -1,4 +1,4 @@
-export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'relatives'
+export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'vertical-design' | 'relatives'
 export type ViewRoute = { screen: MapScreen | 'person' | 'missing'; personId: string | null }
 export type MapSettings = {
   generations: number
@@ -8,6 +8,7 @@ export type MapSettings = {
   collapsedAppearanceIds: string[]
   expandedRelativeIds?: string[]
   showAllRelatives?: boolean
+  compactCards?: boolean
 }
 export type View = ViewRoute & {
   mapScreen: MapScreen
@@ -36,7 +37,7 @@ function defaultMap(generations: number, zoom = 1): MapSettings {
 }
 
 function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
-  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'relatives'
+  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'vertical-design' || screen === 'relatives'
 }
 
 export function initialView(homePersonId: string, initialGenerations: number, key: string, route: ViewRoute, initialMapZoom = 1): ViewState {
@@ -59,7 +60,7 @@ export function viewReducer(state: ViewState, action: ViewAction): ViewState {
     ? action.route.personId : state.current.centerPersonId
   const mapScreen = isMapScreen(action.route.screen) ? action.route.screen : state.current.mapScreen
   const map = !action.resetMap && centerPersonId === state.current.centerPersonId ? state.current.map
-    : defaultMap(state.initialGenerations, state.initialMapZoom)
+    : { ...defaultMap(state.initialGenerations, state.initialMapZoom), compactCards: state.current.map.compactCards }
   const current = restored ?? {
     ...action.route, mapScreen, centerPersonId, selectedRelationshipId: null,
     map: mapScreen === state.current.mapScreen ? map : {

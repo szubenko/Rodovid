@@ -6,6 +6,7 @@ import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFam
 import { projectVerticalFamily } from './vertical-projection'
 import { layoutRelatives } from './relatives-layout'
 import { lifeYears } from './presentation'
+import { portraitCardMetrics, portraitLayoutOptions } from './portrait-card-layout'
 
 type Segment = { x1: number; y1: number; x2: number; y2: number }
 function segments(path: string): Segment[] {
@@ -36,15 +37,19 @@ function crosses(a: Segment, b: Segment): boolean {
   return false
 }
 
-it('separates family buses horizontally instead of crossing unrelated parent and child stems', () => {
+for (const mode of ['original', 'portrait', 'compact'] as const) it(`separates unrelated family lines in ${mode} cards`, () => {
   const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
   const directLine = directLinePersonIds(graph, family.config.homePersonId)
   const labels = new Map(family.people.map(person => [person.id, personName(family, person.id)]))
   const dates = new Map(family.people.map(person => [person.id, lifeYears(family, person.id)]))
+  const compact = mode === 'compact'
+  const metrics = portraitCardMetrics(labels.values(), dates.values(), compact, text => text.length * 24 * .65, text => text.length * 15 * .65)
+  const options = mode === 'original' ? undefined : portraitLayoutOptions(metrics, compact)
   for (const { id: center } of family.people) for (let generations = 1;
     generations <= Math.min(12, availableGenerations(graph, center) + 1); generations++) {
     const projection = projectVerticalFamily(graph, center, { generations })
-    const layout = layoutRelatives(projection, graph, labels, dates, (text, size) => text.length * size * .65, directLine)
+    const layout = layoutRelatives(projection, graph, labels, dates, (text, size) => text.length * size * .65,
+      mode === 'original' ? directLine : new Set(projection.appearances.map(node => node.personId)), options)
     const shown = new Set(layout.nodes.map(node => node.personId))
     const sergiy = layout.nodes.find(node => node.personId === 'I1')
     const parents = layout.nodes.filter(node => ['I2', 'I3'].includes(node.personId))

@@ -1,0 +1,25 @@
+.frame, .art { --portrait-accent: #1377b8; --portrait-border: #bedcef; --portrait-pale: #edf6fb; }
+.frame[data-tone='rose'], .art[data-tone='rose'] { --portrait-accent: #dc3456; --portrait-border: #f4c6cf; --portrait-pale: #fff0f2; }
+.frame[data-tone='green'], .art[data-tone='green'] { --portrait-accent: #308344; --portrait-border: #c6ddbf; --portrait-pale: #f0f6eb; }
+.frame[data-tone='clay'], .art[data-tone='clay'] { --portrait-accent: #e36a25; --portrait-border: #f3d0b2; --portrait-pale: #fff4e9; }
+.frame[data-tone='neutral'], .art[data-tone='neutral'] { --portrait-accent: #697a87; --portrait-border: #d0d9df; --portrait-pale: #f0f4f6; }
+.frame { fill: #fffdfa; stroke: var(--portrait-border); stroke-width: 1.2; }
+g[data-center='true'] > .frame { stroke: var(--portrait-accent); stroke-width: 2.5; }
+g:hover > .frame, g:focus-visible > .frame { stroke: var(--portrait-accent); stroke-width: 3; }
+g:focus-visible > .frame { stroke-dasharray: 5 3; }
+.art { color: var(--portrait-accent); }
+.ornament { opacity: .5; }
+.ring { fill: #fff; stroke: var(--portrait-border); stroke-width: 1.2; }
+.badge { fill: var(--portrait-accent); stroke: #fffdfa; stroke-width: 2; }
+.symbol { color: white; fill: currentColor; }
+.role { fill: var(--portrait-accent); font-family: Georgia, 'Times New Roman', serif; }
+.name { fill: #20262b; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; }
+.years { fill: #525e69; font-family: system-ui, sans-serif; }
+.silhouette { fill: #697a87; }
+.emptyPortrait { fill: var(--portrait-pale); }
+@media (forced-colors: active) {
+  .frame, .ring, .badge { fill: Canvas; stroke: CanvasText; }
+  g[data-center='true'] > .frame, g:focus-visible > .frame { stroke: Highlight; }
+  .art, .symbol { color: CanvasText; }
+  .role, .name, .years { fill: CanvasText; }
+}

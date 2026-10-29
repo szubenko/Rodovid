@@ -50,12 +50,13 @@ export function ViewProvider({ children, initialMapZoom = 1 }: { children: React
   const tree = useMatch('/tree/:personId')
   const horizontal = useMatch('/horizontal/:personId')
   const vertical = useMatch('/vertical/:personId')
+  const verticalDesign = useMatch('/vertical-design/:personId')
   const relatives = useMatch('/relatives/:personId')
   const person = useMatch('/person/:personId')
   const navigationType = useNavigationType()
   const route: ViewRoute = {
-    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : relatives ? 'relatives' : person ? 'person' : 'missing',
-    personId: tree?.params.personId ?? horizontal?.params.personId ?? vertical?.params.personId ?? relatives?.params.personId ?? person?.params.personId ?? null,
+    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : verticalDesign ? 'vertical-design' : relatives ? 'relatives' : person ? 'person' : 'missing',
+    personId: tree?.params.personId ?? horizontal?.params.personId ?? vertical?.params.personId ?? verticalDesign?.params.personId ?? relatives?.params.personId ?? person?.params.personId ?? null,
   }
   if (route.personId && !family.people.some((entry) => entry.id === route.personId)) {
     route.screen = 'missing'

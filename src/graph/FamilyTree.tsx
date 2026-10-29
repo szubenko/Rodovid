@@ -20,17 +20,19 @@ import styles from './FamilyTree.module.css'
 import { PersonTooltip } from './PersonTooltip'
 import { PersonCardArtwork, SkinnedPersonCard } from './SkinnedPersonCard'
 import { personCardSkin } from './person-card-skin'
+import { PortraitPersonCard } from './PortraitPersonCard'
+import { portraitCardMetrics, portraitLayoutOptions } from './portrait-card-layout'
 
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
 }
 
-export function FamilyTree({ personId, orientation, includeRelatives = false }: {
-  personId: string; orientation: TreeOrientation; includeRelatives?: boolean
+export function FamilyTree({ personId, orientation, includeRelatives = false, portraitCards = false }: {
+  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; portraitCards?: boolean
 }) {
-  const title = includeRelatives ? 'Родовід з усіма родичами' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
+  const title = includeRelatives ? 'Родовід з усіма родичами' : portraitCards ? 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
   const vertical = orientation === 'vertical'
-  const mapScreen = includeRelatives ? 'relatives' : orientation
+  const mapScreen = includeRelatives ? 'relatives' : portraitCards ? 'vertical-design' : orientation
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -64,6 +66,11 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
     }
   }, [])
   const settings = state.current.map
+  const compact = settings.compactCards === true
+  const portraitMetrics = useMemo(() => portraitCardMetrics(labels.values(), dates.values(), compact,
+    measureCardName, text => measure(text, 18) * 15 / 18), [labels, dates, compact, measureCardName, measure])
+  const portraitLayout = useMemo(() => portraitCards ? portraitLayoutOptions(portraitMetrics, compact)
+    : undefined, [portraitCards, portraitMetrics, compact])
   const maxGenerations = useMemo(() => includeRelatives ? availableRelativeGenerations(graph, personId)
     : vertical ? availableVerticalGenerations(graph, personId) : availableGenerations(graph, personId), [graph, personId, includeRelatives, vertical])
   const generations = Math.min(settings.generations, maxGenerations)
@@ -77,8 +84,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const directLine = useMemo(() => vertical && !includeRelatives
     ? new Set(projection.appearances.map(node => node.personId)) : homeLine, [projection, vertical, includeRelatives, homeLine])
   const layout = useMemo(() => 'relatedCount' in projection ? layoutRelatives(projection, graph, labels, dates, measure)
-    : 'familyMode' in projection ? layoutRelatives(projection, graph, labels, dates, measure, directLine)
-    : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine])
+    : 'familyMode' in projection ? layoutRelatives(projection, graph, labels, dates, measure, directLine, portraitLayout)
+    : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine, portraitLayout])
   const center = layout.nodes.find(node => node.lane === 'center')!
   const offset = { x: width / 2 - center.x, y: height / 2 - center.y }
   useMapCamera(container, width, settings, dispatch, height)
@@ -111,9 +118,11 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
     } catch { setExportState('error') }
   }
   return <section className={shared.map} aria-label={title}
+    data-card-design={portraitCards ? 'portrait' : 'original'} data-card-density={portraitCards ? compact ? 'compact' : 'full' : undefined}
     data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
     <div className={shared.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
+      {portraitCards && <button aria-pressed={compact} onClick={() => dispatch({ type: 'map', settings: { compactCards: !compact } })}>Компактні картки</button>}
       <button aria-label="Зменшити масштаб" disabled={settings.zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
       <output aria-label="Масштаб карти">{Math.round(settings.zoom * 100)}%</output>
       <button aria-label="Збільшити масштаб" disabled={settings.zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
@@ -172,9 +181,12 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
                 data-parent-appearance-id={node.parentAppearanceId ?? undefined}
                 role="link" tabIndex={0} onClick={event => { if (event.detail < 2) action() }} onKeyDown={event => activate(event, action)}
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
-                <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
-                  name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin} cardClassName={styles.card}
+                {portraitCards ? <PortraitPersonCard x={node.x} y={node.y} metrics={portraitMetrics}
+                  name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin}
                   artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />
+                : <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
+                  name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin} cardClassName={styles.card}
+                  artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />}
                 {hidden && !includeRelatives && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
                 </g>
                 {includeRelatives && !settings.showAllRelatives && (hidden || branchExpanded) && <g className={styles.branch}
@@ -192,7 +204,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
         </g>
       </svg>
     </div>
-    <PersonTooltip key={`${personId}/${settings.zoom}/${settings.pan.x}/${settings.pan.y}/${generations}/${expanded}/${settings.showAllRelatives}/${settings.expandedRelativeIds?.join(',')}`} container={container} />
+    <PersonTooltip key={`${personId}/${settings.zoom}/${settings.pan.x}/${settings.pan.y}/${generations}/${expanded}/${settings.showAllRelatives}/${settings.expandedRelativeIds?.join(',')}/${compact}`} container={container} />
     {'relatedCount' in projection && <p className={styles.count} role="status" data-testid="relatives-count">
       Людей у схемі: {projection.appearances.length} із {projection.relatedCount}.
     </p>}

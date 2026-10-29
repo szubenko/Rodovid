@@ -16,7 +16,7 @@ import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
 import styles from './AtlasApp.module.css'
 
-function Icon({ kind }: { kind: MapScreen | 'book' | 'search' | 'home' }) {
+function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design'> | 'book' | 'search' | 'home' }) {
   const paths = {
     tree: <><circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /><path d="M12 7v6M5 17v-4h14v4" /></>,
     horizontal: <><rect x="2" y="9" width="6" height="6" rx="1" /><rect x="16" y="2" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M8 12h4V5h4M12 12v7h4" /></>,
@@ -72,7 +72,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const previousView = useRef({ key: location.key, screen })
   useEffect(() => {
     const name = personId ? personName(family, personId) : 'Родовід'
-    document.title = `${name} — ${screen === 'relatives' ? 'Родовід з усіма родичами' : screen === 'vertical' ? 'Вертикальний родовід' : screen === 'horizontal' ? 'Горизонтальний родовід' : screen === 'tree' ? 'Сімейний атлас' : 'Особиста кімната'}`
+    document.title = `${name} — ${screen === 'relatives' ? 'Родовід з усіма родичами' : screen === 'vertical-design' ? 'Вертикальний родовід · новий дизайн' : screen === 'vertical' ? 'Вертикальний родовід' : screen === 'horizontal' ? 'Горизонтальний родовід' : screen === 'tree' ? 'Сімейний атлас' : 'Особиста кімната'}`
     if (previousView.current.key !== location.key) heading.current?.focus({ preventScroll: isMap && previousView.current.screen !== 'person' })
     previousView.current = { key: location.key, screen }
   }, [family, personId, screen, isMap, location.key])
@@ -93,6 +93,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
       <Link to={`/horizontal/${personId}`} aria-current={screen === 'horizontal' ? 'page' : undefined}><Icon kind="horizontal" />Горизонтальний родовід</Link>
       <Link to={`/vertical/${personId}`} aria-current={screen === 'vertical' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний родовід</Link>
+      <Link to={`/vertical-design/${personId}`} aria-current={screen === 'vertical-design' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний · новий дизайн</Link>
       <Link to={`/relatives/${personId}`} aria-current={screen === 'relatives' ? 'page' : undefined}><Icon kind="relatives" />Усі родичі</Link>
       <Link to={`/person/${personId}`} aria-current={screen === 'person' ? 'page' : undefined}><Icon kind="book" />Історія життя</Link>
       <span>{relationCount} рідних · {eventCount} подій</span>
@@ -101,7 +102,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       {isMap ? <>
         <div className={styles.mapIntro}><p className={styles.eyebrow}>Кожна людина — центр свого світу</p>
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
-        {screen === 'relatives' ? <RelativesTree key={personId} personId={personId} /> : screen === 'vertical' ? <VerticalTree key={personId} personId={personId} />
+        {screen === 'relatives' ? <RelativesTree key={personId} personId={personId} /> : screen === 'vertical' || screen === 'vertical-design' ? <VerticalTree key={`${screen}/${personId}`} personId={personId} portraitCards={screen === 'vertical-design'} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
       </> : <PersonRoom key={personId} personId={personId} showBiographyHeader={false} />}
     </div>
@@ -138,6 +139,7 @@ function Workspace() {
           <Route path="/tree/:personId" element={<PersonView screen="tree" />} />
           <Route path="/horizontal/:personId" element={<PersonView screen="horizontal" />} />
           <Route path="/vertical/:personId" element={<PersonView screen="vertical" />} />
+          <Route path="/vertical-design/:personId" element={<PersonView screen="vertical-design" />} />
           <Route path="/relatives/:personId" element={<PersonView screen="relatives" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
           <Route path="*" element={<Missing />} />

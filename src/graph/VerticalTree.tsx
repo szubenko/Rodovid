@@ -1,5 +1,5 @@
 import { FamilyTree } from './FamilyTree'
 
-export function VerticalTree({ personId }: { personId: string }) {
-  return <FamilyTree personId={personId} orientation="vertical" />
+export function VerticalTree({ personId, portraitCards = false }: { personId: string; portraitCards?: boolean }) {
+  return <FamilyTree personId={personId} orientation="vertical" portraitCards={portraitCards} />
 }

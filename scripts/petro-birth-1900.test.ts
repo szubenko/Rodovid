@@ -28,9 +28,14 @@ const sourceId = 'source-record-deikalo-petro-birth-1900-act36'
 const dateId = 'claim-b34a18ae26b7ae1e40737ea2'
 const birthId = 'event-24de72684a0d23588ed45900'
 const privateReasonClaimId = 'claim-oleksandra-PN3F-KPN-birth-date-1935'
+// The original correction is a historical contract; later owner-approved imports enrich the mother.
+const correctedOctober19 = () => ({
+  family: json('tests/fixtures/import-before-2026-10-29/family.json') as FamilyData,
+  report: json('tests/fixtures/import-before-2026-10-29/conversion.json') as ReturnType<typeof convertGedcom>['report'],
+})
 
 it('retains every accepted identity and fact apart from the approved birth-date refinement and private working note', () => {
-  const before = json('tests/fixtures/petro-before-2026-10-19/family.json') as FamilyData, after = load('Data')
+  const before = json('tests/fixtures/petro-before-2026-10-19/family.json') as FamilyData, after = correctedOctober19()
   expect(after.report.sha256).toBe(petroBirthReviewSha256)
   expect(after.report.counts).toMatchObject({ people: 86, families: 32, relationships: 138,
     events: 172, claims: 406, places: 72, sources: 81, media: 82, evidenceLinks: 176 })
@@ -67,7 +72,7 @@ it('retains every accepted identity and fact apart from the approved birth-date 
 }, 20_000)
 
 it('adds Ksenia as Petro’s mother without a guessed surname, external ID or additional life events', () => {
-  const { family } = load('Data')
+  const { family } = correctedOctober19()
   expect(family.people.find(p => p.id === 'I88')).toMatchObject({ externalIds: [], sex: 'F', lifeStatus: 'unknown' })
   const name = family.claims.find(c => c.target.id === 'I88' && c.field === 'name')!
   expect(name).toMatchObject({ value: { display: 'Ксения Никифорова', given: 'Ксения' }, confidence: 'unassessed' })
@@ -104,8 +109,9 @@ it('keeps one editable local act with the exact owner-approved text, original sc
   expect(links.filter(l => l.target.kind === 'person').map(l => l.target.id).sort()).toEqual(['I35', 'I8', 'I88'])
   for (const link of links) expect(link).toMatchObject({ transcription: record.description, fragment: { mediaId: image.id } })
   expect(links.filter(link => link.fragment?.recordNumber === '36')).toHaveLength(1)
-  expect(family.config.personHeadingNames?.I88).toBe('Ксения Никифорова')
-  expect(family.sources.every(s => s.mediaIds.length > 0)).toBe(true)
+  expect(family.config.personHeadingNames?.I88).toBe('Ксения Никифорова Сальникова')
+  const previousSources = new Set(correctedOctober19().family.sources.map(s => s.id))
+  expect(family.sources.filter(s => previousSources.has(s.id)).every(s => s.mediaIds.length > 0)).toBe(true)
   const options = { assetsRoot: 'Data', conversion: after.report }
   expect((await validateData(family, options)).status).toBe('passed')
   const reverted = structuredClone(family), date = reverted.claims.find(c => c.id === dateId)!

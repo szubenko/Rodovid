@@ -84,8 +84,8 @@ it.each([
 
 it('shows the screenshot person’s full heading and preserves all already recorded full names', () => {
   const family = familyDataSchema.parse(currentData)
-  expect(personFullName(family, 'I8')).toBe('Петро Олександрович Дейкало')
-  expect(personName(family, 'I8')).toBe('Петро Дейкало')
+  expect(personFullName(family, 'I8')).toBe('Петр Олександрович Дейкал')
+  expect(personName(family, 'I8')).toBe('Петр Дейкал')
   expect(personFullName(family, 'I1')).toBe('Сегрій Петрович Зубенко')
   expect(personFullName(family, 'I19')).toBe('Анна Герасимівна Пальчикова')
   expect(personFullName(family, 'I6')).toBe('Наталія Семенівна Заприса')

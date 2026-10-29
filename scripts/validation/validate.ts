@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,8 +99,9 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256].includes(report.sha256)) {
-    const petroBirthReviewed = report.sha256 === petroBirthReviewSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256].includes(report.sha256)) {
+    const october29 = report.sha256 === october29MergeSha256
+    const petroBirthReviewed = report.sha256 === petroBirthReviewSha256 || october29
     const timofeyCorrected = report.sha256 === timofeyCorrectionSha256 || petroBirthReviewed
     const october19 = report.sha256 === october19ExportSha256 || timofeyCorrected
     const deikaloMarriage = report.sha256 === deikaloMarriageSha256 || october19
@@ -109,7 +110,8 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = petroBirthReviewed
+    const expected = october29
+      ? { people: 97, relationships: 152, events: 203, claims: 477, places: 79 } : petroBirthReviewed
       ? { people: 86, relationships: 138, events: 172, claims: 404, places: 72 } : october19
       ? { people: 85, relationships: 136, events: 172, claims: 403, places: 72 } : deikaloMarriage
       ? { people: 85, relationships: 136, events: 153, claims: 382, places: 71 } : screenshotFamilies
@@ -131,9 +133,9 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
       const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
-      if (imported(data.sources) !== (october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
-        || data.sources.length < (petroBirthReviewed ? 81 : october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
-        || data.evidenceLinks.length < (petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
+      if (imported(data.sources) !== (october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
+        || data.sources.length < (october29 ? 89 : petroBirthReviewed ? 81 : october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
+        || data.evidenceLinks.length < (october29 ? 203 : petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
     }
     if (timofeyCorrected) {
       const date = data.claims.find(c => c.id === 'claim-844bdc5dfb7b9d883e16cd81')
@@ -163,12 +165,22 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         { kind: 'person', id: 'I88' }, { kind: 'relationship', id: maternal?.id },
       ].every(target => data.evidenceLinks.some(link => link.sourceId === source.id
         && link.target.kind === target.kind && link.target.id === target.id))
-      if (!correctDate || mother?.field !== 'name' || mother.value.display !== 'Ксения Никифорова'
-        || mother.value.surname !== undefined || parents.length !== 2 || !parents.some(r => r.fromPersonId === 'I35')
+      if (!correctDate || mother?.field !== 'name' || mother.value.display !== (october29 ? 'Ксения Сальникова' : 'Ксения Никифорова')
+        || mother.value.surname !== (october29 ? 'Сальникова' : undefined) || parents.length !== 2 || !parents.some(r => r.fromPersonId === 'I35')
         || !maternal || !cited) issues.push({
         severity: 'error', code: 'REVIEW_POLICY_MISSING',
         message: '19.10.2026: народження Петра PFF9-B5D — 28.06.1900; мати Ксения Никифорова та акт № 36 збережені за погодженим читанням власника.',
       })
+    }
+    if (october29) {
+      const ustina = data.people.filter(p => p.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PNPT-HVQ'))
+      const ksenia = data.people.filter(p => p.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PNP7-NFP'))
+      const children = data.relationships.filter(r => r.kind === 'parent-child' && r.fromPersonId === 'I93').map(r => r.toPersonId).sort()
+      if (ustina.length !== 1 || ustina[0]?.id !== 'I93' || ksenia.length !== 1 || ksenia[0]?.id !== 'I88'
+        || JSON.stringify(children) !== JSON.stringify(['I20', 'I94', 'I95'])
+        || !data.relationships.some(r => r.kind === 'parent-child' && r.fromPersonId === 'I90' && r.toPersonId === 'I88')) {
+        issues.push({severity:'error',code:'REVIEW_POLICY_MISSING',message:'29.10.2026: обидві Устини PNPT-HVQ об’єднані; Ксения Сальникова PNP7-NFP доповнює збережену матір I88, її батько — Никифор Сальников I90.'})
+      }
     }
     if (screenshotFamilies) {
       const nadia = data.people.find(person => person.id === 'I87')

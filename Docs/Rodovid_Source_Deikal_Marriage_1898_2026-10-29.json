@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-29",
+  "ownerDecision": "29.10.2026: власник відповів «окей» на наведений остаточний опис для обох джерел.",
+  "description": "Козакъ Александръ Акимовъ Дейкалъ, православнаго вѣроисповѣданія, первымъ бракомъ. Лѣта жениха — 18.\nСобственница Ксенія Никифорова Сальникова, православнаго вѣроисповѣданія, первымъ бракомъ. Лѣта невѣсты — 19.\n1898 годъ. Января 21. Запись № 9.",
+  "eventId": "event-f167f8e0cbe294ac8602c340",
+  "sources": [
+    "source-ce97d590244a82b8e1e8d7b1",
+    "source-375c0c7a46ccf03770d06262"
+  ],
+  "urls": [
+    "https://familysearch.org/ark:/61903/1:1:6XST-N8HW",
+    "https://familysearch.org/ark:/61903/1:1:6XST-N8H4"
+  ],
+  "archive": "E:/RodovidZubenko/SelectedBooks/дейкал-александр-ксения-шлюб-1898-акт-9.png",
+  "sha256": "1e1c95b2fbf066fb9fb91c0da0992bd7518291776e13ef88e859bf4baa1a0d17",
+  "sharedScan": "assets/documents/source-records/дейкал-александр-шлюб-PFVP-ZZV-6XST-N8HW.png",
+  "mediaIds": [
+    "media-record-deikal-marriage-1898-s81",
+    "media-record-deikal-marriage-1898-s82"
+  ],
+  "backup": "E:/RodovidZubenko/tmp/source-review-2026-10-29-deikal-marriage/before",
+  "unchanged": [
+    "people",
+    "relationships",
+    "events",
+    "claims",
+    "places",
+    "memories",
+    "Zubenko.ged",
+    "identities.json",
+    "site.json"
+  ],
+  "counts": {
+    "people": 97,
+    "sources": 89,
+    "media": 84,
+    "evidenceLinks": 203,
+    "physicalScanFiles": 39,
+    "missingScans": 2,
+    "missingScansAmongAncestors": 2
+  },
+  "next": [
+    {
+      "title": "Казка двір Петр Никифирович Зубенко",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en"
+    },
+    {
+      "title": "Казка двір Григорій Елисеев Зубенко",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en"
+    }
+  ],
+  "validation": {
+    "sourceSync": {
+      "created": 0,
+      "updated": 0,
+      "conflicts": 0
+    },
+    "removed": 0,
+    "errors": 0,
+    "warnings": 13,
+    "info": 2
+  }
+}

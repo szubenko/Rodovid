@@ -93,7 +93,8 @@ it('uses the approved Timofey death date and both scanned sources while rejectin
     expect(source.description).toContain('Причина смерти — «Отъ Крупа». Запись № 14.')
     expect(source.mediaIds).toHaveLength(1)
   }
-  expect(family.sources.every(s => s.mediaIds.length > 0)).toBe(true)
+  const previousSources = new Set((json('tests/fixtures/import-before-2026-10-29/family.json').sources as { id: string }[]).map(s => s.id))
+  expect(family.sources.filter(s => previousSources.has(s.id)).every(s => s.mediaIds.length > 0)).toBe(true)
   const options = { assetsRoot: 'Data', conversion: after.report }
   expect((await validateData(family, options)).status).toBe('passed')
   const wrong = structuredClone(family)

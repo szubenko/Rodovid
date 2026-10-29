@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-29",
+  "sourceId": "source-0f23409aee0d4d4b0e1fd4d9",
+  "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en",
+  "eventId": "event-f04c9de182bc79980a3f47d4",
+  "ownerDecision": "29.10.2026: власник відповів «так» на наведений витяг із запису №134.",
+  "description": "№ 134.\nГригорій Елисеевъ сынъ Зубенко: по послѣдней ревизіи — 53 лѣта; нынѣ на лицо — 69.\nГригорьевъ сынъ Никифоръ: по послѣдней ревизіи — 18 лѣтъ; нынѣ на лицо — 34.\nНикифоровы дѣти: Петръ — 8 лѣтъ; Василій — 6 лѣтъ.",
+  "archive": "E:/RodovidZubenko/SelectedBooks/зубенко-григорий-елисеев-сказка-1811-запись-134.png",
+  "sha256": "ddc1f3ad286912b36c808a1e556e51e60c5dec409c9605e64451ff50a6f79600",
+  "scan": "assets/documents/source-records/зубенко-никифор-народження-PNPR-VLH-3Q9M-CSSV-ZQHK.png",
+  "mediaId": "media-record-grigoriy-eliseyev-household-1811-134",
+  "backup": "E:/RodovidZubenko/tmp/source-review-2026-10-29-grigoriy-household/before",
+  "cliBackup": "tmp/source-records/1793310302265-grigoriy-eliseyev-household-1811-134/",
+  "unchanged": [
+    "people",
+    "relationships",
+    "events",
+    "claims",
+    "places",
+    "memories",
+    "all-other-sources",
+    "all-prior-media",
+    "all-other-source-json",
+    "Zubenko.ged",
+    "identities.json",
+    "site.json"
+  ],
+  "counts": {
+    "people": 97,
+    "sources": 89,
+    "media": 86,
+    "evidenceLinks": 203,
+    "physicalScanFiles": 41,
+    "missingScans": 0,
+    "missingScansAmongAncestors": 0
+  },
+  "validation": {
+    "sourceSync": {
+      "created": 0,
+      "updated": 0,
+      "conflicts": 0
+    },
+    "removed": 0,
+    "errors": 0,
+    "warnings": 13,
+    "info": 2
+  }
+}

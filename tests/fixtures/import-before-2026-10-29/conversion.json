@@ -1,0 +1,4084 @@
+{
+  "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+  "sha256": "6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+  "rawCounts": {
+    "people": 86,
+    "families": 32,
+    "events": 150,
+    "births": 57,
+    "deaths": 77,
+    "marriages": 16,
+    "familySearchIds": 85,
+    "childLinks": 62,
+    "eventDefinitions": 0,
+    "sourceRecords": 79,
+    "sourceCitations": 162,
+    "mediaRecords": 0
+  },
+  "counts": {
+    "people": 86,
+    "families": 32,
+    "childLinks": 62,
+    "relationships": 138,
+    "events": 172,
+    "claims": 406,
+    "places": 72,
+    "sources": 81,
+    "media": 82,
+    "evidenceLinks": 176,
+    "memories": 0
+  },
+  "rawFamilies": [
+    {
+      "id": "family-022fa9cf0faad75bde1b1810",
+      "recordId": "@F1@",
+      "husbands": [
+        "@I2@"
+      ],
+      "wives": [
+        "@I3@"
+      ],
+      "childIds": [
+        "@I1@"
+      ]
+    },
+    {
+      "id": "family-27090478d731089b03c44858",
+      "recordId": "@F2@",
+      "husbands": [
+        "@I4@"
+      ],
+      "wives": [
+        "@I5@"
+      ],
+      "childIds": [
+        "@I3@"
+      ]
+    },
+    {
+      "id": "family-44f76b40715124c8dea330ad",
+      "recordId": "@F3@",
+      "husbands": [
+        "@I6@"
+      ],
+      "wives": [
+        "@I7@"
+      ],
+      "childIds": [
+        "@I8@",
+        "@I4@",
+        "@I9@",
+        "@I10@",
+        "@I11@",
+        "@I12@"
+      ]
+    },
+    {
+      "id": "family-7f3f1d6e3c9d38f674c6403d",
+      "recordId": "@F4@",
+      "husbands": [
+        "@I13@"
+      ],
+      "wives": [
+        "@I14@"
+      ],
+      "childIds": [
+        "@I15@",
+        "@I5@",
+        "@I16@"
+      ]
+    },
+    {
+      "id": "family-4abe3a52e967dcdaa67f3d99",
+      "recordId": "@F5@",
+      "husbands": [
+        "@I17@"
+      ],
+      "wives": [
+        "@I18@"
+      ],
+      "childIds": [
+        "@I6@"
+      ]
+    },
+    {
+      "id": "family-60ed10c5fd8cceabe13851a5",
+      "recordId": "@F6@",
+      "husbands": [
+        "@I19@"
+      ],
+      "wives": [
+        "@I20@"
+      ],
+      "childIds": [
+        "@I7@"
+      ]
+    },
+    {
+      "id": "family-51df642102d86b381535a02c",
+      "recordId": "@F7@",
+      "husbands": [
+        "@I21@"
+      ],
+      "wives": [
+        "@I22@"
+      ],
+      "childIds": [
+        "@I13@",
+        "@I23@",
+        "@I24@"
+      ]
+    },
+    {
+      "id": "family-53c76bdcb158b0fc3a56792e",
+      "recordId": "@F8@",
+      "husbands": [
+        "@I25@"
+      ],
+      "wives": [
+        "@I26@"
+      ],
+      "childIds": [
+        "@I14@"
+      ]
+    },
+    {
+      "id": "family-662e1ddcf5e918c60c9dcd34",
+      "recordId": "@F9@",
+      "husbands": [
+        "@I27@"
+      ],
+      "wives": [
+        "@I28@"
+      ],
+      "childIds": [
+        "@I21@",
+        "@I29@"
+      ]
+    },
+    {
+      "id": "family-9b3c08b41b7805dd1852e85e",
+      "recordId": "@F10@",
+      "husbands": [
+        "@I30@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I22@"
+      ]
+    },
+    {
+      "id": "family-6428144d7b13f00653891f49",
+      "recordId": "@F11@",
+      "husbands": [
+        "@I31@"
+      ],
+      "wives": [
+        "@I32@"
+      ],
+      "childIds": [
+        "@I27@"
+      ]
+    },
+    {
+      "id": "family-2a609bce80cda5ac37a5e417",
+      "recordId": "@F12@",
+      "husbands": [
+        "@I33@"
+      ],
+      "wives": [
+        "@I34@"
+      ],
+      "childIds": [
+        "@I28@"
+      ]
+    },
+    {
+      "id": "family-8aefb24295474b19710ab32e",
+      "recordId": "@F13@",
+      "husbands": [
+        "@I35@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I33@"
+      ]
+    },
+    {
+      "id": "family-6d7b766d8b44520118706e82",
+      "recordId": "@F14@",
+      "husbands": [
+        "@I36@"
+      ],
+      "wives": [
+        "@I37@"
+      ],
+      "childIds": [
+        "@I34@"
+      ]
+    },
+    {
+      "id": "family-703b5834d066096a5e1b5a8b",
+      "recordId": "@F15@",
+      "husbands": [
+        "@I40@"
+      ],
+      "wives": [
+        "@I39@"
+      ],
+      "childIds": [
+        "@I41@",
+        "@I42@"
+      ]
+    },
+    {
+      "id": "family-3cf67419a07756bb0442e7c5",
+      "recordId": "@F16@",
+      "husbands": [],
+      "wives": [
+        "@I42@"
+      ],
+      "childIds": [
+        "@I43@"
+      ]
+    },
+    {
+      "id": "family-0d678f6923be72e12c82a6ce",
+      "recordId": "@F17@",
+      "husbands": [
+        "@I44@"
+      ],
+      "wives": [
+        "@I45@"
+      ],
+      "childIds": [
+        "@I46@",
+        "@I47@",
+        "@I48@",
+        "@I49@",
+        "@I51@"
+      ]
+    },
+    {
+      "id": "family-14a274de6f6c07a926b70a28",
+      "recordId": "@F18@",
+      "husbands": [
+        "@I50@"
+      ],
+      "wives": [
+        "@I51@"
+      ],
+      "childIds": [
+        "@I2@",
+        "@I73@"
+      ]
+    },
+    {
+      "id": "family-8aa6b22db858d925da3fbdb7",
+      "recordId": "@F19@",
+      "husbands": [
+        "@I38@"
+      ],
+      "wives": [
+        "@I39@"
+      ],
+      "childIds": [
+        "@I50@"
+      ]
+    },
+    {
+      "id": "family-bc077203a812c79397bf83f3",
+      "recordId": "@F20@",
+      "husbands": [
+        "@I52@"
+      ],
+      "wives": [
+        "@I53@"
+      ],
+      "childIds": [
+        "@I54@",
+        "@I55@",
+        "@I56@",
+        "@I57@",
+        "@I58@",
+        "@I59@",
+        "@I38@"
+      ]
+    },
+    {
+      "id": "family-dec76bf71cfcd427aef1de29",
+      "recordId": "@F21@",
+      "husbands": [
+        "@I60@"
+      ],
+      "wives": [
+        "@I61@"
+      ],
+      "childIds": [
+        "@I62@",
+        "@I52@",
+        "@I63@",
+        "@I64@",
+        "@I75@",
+        "@I76@"
+      ]
+    },
+    {
+      "id": "family-1ae2f5d7e4ecbde7fac163b2",
+      "recordId": "@F22@",
+      "husbands": [
+        "@I66@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I53@"
+      ]
+    },
+    {
+      "id": "family-175016e1dabeebadff013a21",
+      "recordId": "@F23@",
+      "husbands": [
+        "@I67@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I60@"
+      ]
+    },
+    {
+      "id": "family-64ff759cca707f757cf294cf",
+      "recordId": "@F24@",
+      "husbands": [
+        "@I68@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I61@"
+      ]
+    },
+    {
+      "id": "family-8d26282d90e316e5680418cf",
+      "recordId": "@F25@",
+      "husbands": [
+        "@I69@"
+      ],
+      "wives": [
+        "@I77@"
+      ],
+      "childIds": [
+        "@I39@",
+        "@I78@",
+        "@I79@",
+        "@I80@",
+        "@I81@"
+      ]
+    },
+    {
+      "id": "family-a335d4b239536bd88918170d",
+      "recordId": "@F26@",
+      "husbands": [
+        "@I70@"
+      ],
+      "wives": [
+        "@I88@"
+      ],
+      "childIds": [
+        "@I44@"
+      ]
+    },
+    {
+      "id": "family-d6e94ec65c486e1ed2a937f8",
+      "recordId": "@F27@",
+      "husbands": [
+        "@I71@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I45@"
+      ]
+    },
+    {
+      "id": "family-fa54d25b605b73b734c77a8f",
+      "recordId": "@F28@",
+      "husbands": [
+        "@I1@"
+      ],
+      "wives": [
+        "@I72@"
+      ],
+      "childIds": []
+    },
+    {
+      "id": "family-39dfeb5129e104a8823c90dd",
+      "recordId": "@F29@",
+      "husbands": [
+        "@I82@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I69@"
+      ]
+    },
+    {
+      "id": "family-c0b0834a9352fb257c62c191",
+      "recordId": "@F30@",
+      "husbands": [
+        "@I83@"
+      ],
+      "wives": [],
+      "childIds": [
+        "@I77@"
+      ]
+    },
+    {
+      "id": "family-3d3374a335bb467444f2ba27",
+      "recordId": "@F31@",
+      "husbands": [
+        "@I84@"
+      ],
+      "wives": [
+        "@I85@"
+      ],
+      "childIds": [
+        "@I40@"
+      ]
+    },
+    {
+      "id": "family-f08d8b90117e75d6167fc2c7",
+      "recordId": "@F32@",
+      "husbands": [
+        "@I50@"
+      ],
+      "wives": [
+        "@I86@"
+      ],
+      "childIds": [
+        "@I74@"
+      ]
+    }
+  ],
+  "familyMetadata": [
+    {
+      "recordId": "@F1@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "17233DBD3E1E9B48BB89386CF7C8CC775D7A",
+      "line": 1514
+    },
+    {
+      "recordId": "@F2@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "EA7E79691AEE494F86AD0E1C3896DC6C5D99",
+      "line": 1519
+    },
+    {
+      "recordId": "@F3@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "4D8E9B9FCED5B74EAFA772E7F7A600A6AF0E",
+      "line": 1524
+    },
+    {
+      "recordId": "@F4@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "D0AF6DD592950D43B97DF6BFF46AE36CD016",
+      "line": 1534
+    },
+    {
+      "recordId": "@F5@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "D5A072B3EB63CA48946B62CD4A8532113ABA",
+      "line": 1541
+    },
+    {
+      "recordId": "@F6@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "1AEC9116ED3CFE48A6C1520C0C3F1ED62042",
+      "line": 1546
+    },
+    {
+      "recordId": "@F7@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "CF884FF0B1D25048A2DD8D36673C3F4B20F4",
+      "line": 1551
+    },
+    {
+      "recordId": "@F8@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "278E678C9465874295B9E25584B65056CF33",
+      "line": 1558
+    },
+    {
+      "recordId": "@F9@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "4116F48EB5C50048BFECC3C120971234C7C3",
+      "line": 1563
+    },
+    {
+      "recordId": "@F10@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "A7B9910C10B880468EBEE5375C7EE120CECE",
+      "line": 1569
+    },
+    {
+      "recordId": "@F11@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "DB11A9ED555DA6429C1B2F3DCBB170739E39",
+      "line": 1574
+    },
+    {
+      "recordId": "@F12@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "DE07BAAD25924749977806340F577E793975",
+      "line": 1579
+    },
+    {
+      "recordId": "@F13@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "69A4DEBB80FDE2469CB6DF6683C56FA23BE5",
+      "line": 1584
+    },
+    {
+      "recordId": "@F14@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "26F69B808362CC48B1B9DB3145E515CBB004",
+      "line": 1589
+    },
+    {
+      "recordId": "@F15@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "E1F004C12993144C91F98B25D7519E7D2F30",
+      "line": 1594
+    },
+    {
+      "recordId": "@F16@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "419FBD0ADAD09A47BC368D4F66DC553FD62C",
+      "line": 1605
+    },
+    {
+      "recordId": "@F17@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "93A4A6CBA12BFD459DAE4BD340B0032F41B3",
+      "line": 1610
+    },
+    {
+      "recordId": "@F18@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "BD85236A646F124BB8B773625626B9920ADE",
+      "line": 1622
+    },
+    {
+      "recordId": "@F19@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "A53EA399BAE6D6449403FEF0C1ACA0E24D7E",
+      "line": 1629
+    },
+    {
+      "recordId": "@F20@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "F6E7CE888A973B488D9369E7799EA9A5ACFB",
+      "line": 1634
+    },
+    {
+      "recordId": "@F21@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "99E3E416003CA74CB777EF06F5835D09A60A",
+      "line": 1654
+    },
+    {
+      "recordId": "@F22@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "5061517769B5E64AB4F38DF499FB4C2EFDE3",
+      "line": 1673
+    },
+    {
+      "recordId": "@F23@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "D4386BF54203A240A385C2B24977FE28150E",
+      "line": 1678
+    },
+    {
+      "recordId": "@F24@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "A492B7C21964394F81E78A22035310204EA7",
+      "line": 1683
+    },
+    {
+      "recordId": "@F25@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "5C717FA4EB87C642A5B459E878D3DE628FAD",
+      "line": 1688
+    },
+    {
+      "recordId": "@F26@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "65043D8C7BDD274AAC753A0A14DB3B26B0FF",
+      "line": 1698
+    },
+    {
+      "recordId": "@F27@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "C6AF543505358B46B2DB3DF50A7BC20A193C",
+      "line": 1704
+    },
+    {
+      "recordId": "@F28@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "9E899DA90E83CF41B2993AD03F98DD0A216D",
+      "line": 1709
+    },
+    {
+      "recordId": "@F29@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "95393896D73C7F43A47CED595DCEDC2402D7",
+      "line": 1989
+    },
+    {
+      "recordId": "@F30@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "D608282604B20548BF4E7C110D885349FA98",
+      "line": 1994
+    },
+    {
+      "recordId": "@F31@",
+      "path": "_UID[0]",
+      "tag": "_UID",
+      "value": "B031E6FFCDA82B4E9502797DE1D088F7719E",
+      "line": 1999
+    }
+  ],
+  "warnings": [
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F10@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F13@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F18@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F19@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F22@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F23@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F24@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F25@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F26@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F27@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F29@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    },
+    {
+      "code": "EMPTY_EVENT_CONTEXT",
+      "recordId": "@F30@",
+      "path": "MARR[0]",
+      "message": "Порожній MARR збережено у звіті; він не встановлює події шлюбу."
+    }
+  ],
+  "unhandledNodes": [],
+  "reviewNotes": [
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-4b4d59b1f9e75b701b54ce7d"
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "HUSB[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "WIFE[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-order-relationship-4b4d59b1f9e75b701b54ce7d"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-53e7c072a326f78fdcc4f227"
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "HUSB[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "CHIL[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-order-relationship-53e7c072a326f78fdcc4f227"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-aefe85aa7c3a414ece600694"
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "HUSB[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "CHIL[1]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-order-relationship-aefe85aa7c3a414ece600694"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-1506ad402ddf8d538ec1610f"
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "WIFE[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "CHIL[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-order-relationship-1506ad402ddf8d538ec1610f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-4775585b390a934cb6413f61"
+      },
+      "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "WIFE[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F18@",
+          "path": "CHIL[1]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-order-relationship-4775585b390a934cb6413f61"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-321a6e63b988bf6c76a388ad"
+      },
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.\n17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F32@",
+          "path": "HUSB[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F32@",
+          "path": "WIFE[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "screenshot-relationship-321a6e63b988bf6c76a388ad"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-8bef8a05b7d9a22dda4afe54"
+      },
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.\n17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F32@",
+          "path": "HUSB[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F32@",
+          "path": "CHIL[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "screenshot-relationship-8bef8a05b7d9a22dda4afe54"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-97568b90812b58547384edd8"
+      },
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F32@",
+          "path": "WIFE[0]"
+        },
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F32@",
+          "path": "CHIL[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "screenshot-relationship-97568b90812b58547384edd8"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-9c80842dfb5af2a8be42d49f"
+      },
+      "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I1@",
+          "path": "NAME[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-claim-9c80842dfb5af2a8be42d49f"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-9c80842dfb5af2a8be42d49f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-5643c3504d02af7d81dde692"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I1@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-9c80842dfb5af2a8be42d49f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-f506ca5043d014b609a11497"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I2@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-6826f79bf4673f599e2cb51b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-e120aa5bcf3c8a4a155988e2"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I3@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-e849bfa28a098a27a39d62ae"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-13cc87d8b8cfa3e11edb6826"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I4@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-776063399b7f8e630073e4ee"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-5cca87578bf29422df67b961"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I5@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-27c9d912c0fce7be20a91644"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-6b508354897d18e712be9bc4"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I6@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-3a26e6767831416d78cbf212"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-05a59d80ad1a6869dd0219d2"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I7@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-8c5519a8dd8171f9cbb37c67"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-c1be98792471cce58e857afd"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I8@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-fe55b426b123104626caa42b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-96f15672c4dd0f805ac53872"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I9@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-88829db0ff039682750730b4"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-c373e969ca685e7deaf347f7"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I10@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-80f884977c8880b85496dd05"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-c43ee0815db8c882d97cd788"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I11@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-3d06a9a6868531dc504c4559"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-2e0e22f256382cdbbfdcb6e3"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I12@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-102422847a479cca3e60d767"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-f2363a0c7e20857702e1321d"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I13@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-07c9cc6b8165e8367cd532eb"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-4f5e022d0731b4702df200ac"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I14@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-119e6606c7b53dc6901826f1"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-ddb14c00059d230040b07353"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I15@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-84d8ae8a36866bd9d8eff23c"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-ee5ee519428b17900159a585"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I16@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-03a8db16ac9ed225f29fb63d"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-5171796156cc4c23f3aa21a4"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I17@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-370164d7b87595a03243f80f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-66f2d77122258965d2145714"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I18@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-57f23b6887a80c2b4b4f341d"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-5db9135f6b23f37bc17f60d7"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I19@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-812c0b32e1b1315cc5c9e5d6"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-73fce1f5e59b0c1cbc4f6ad7"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I20@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-ce3d9d8fffca6d322b24b706"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-51f8689c74ad5be97e960254"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I21@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-ff864a4911fb20fa6072a1db"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-e05bd31d2223ba1ae962889b"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I22@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-9a89893488147cd907f68bf7"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-c96106345d3bc369957c9bc7"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I23@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-2d34e8c13a22ef27540fa02e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-31ef31e920fe8d5a502aadc4"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I24@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-f04ab35315863a453840b70d"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-40a1200eb08a80a42d997fec"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I25@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-d8ddb4ce3725d731ae18e71b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-a3188e058e328ae546a031f2"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I26@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-85f754689fdabb864457b936"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-e644411c1c52d668d115397b"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I27@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-75625385f4af24435fa0d469"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-6dbe056550a4b645b5c42c1f"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I28@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-9235681d1c5d1aaa92ec230e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-8a69a3db381f341491c5519a"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I29@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-1a9c782ccc82afa57c712ca8"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-88cb8abcd5473ec64aa71e9b"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I30@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-eced5644842261fcb8ed0f68"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-4bd6467e95f8561d41d8e117"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I31@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-0478cdaec30e83972eccc6e4"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-09afaba607367597ae963aaa"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I32@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-c8ca5c6fe586ad8d50fb742a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-2d0bfc175a04ad91dea40d2f"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I33@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-e00f0bf4bd6a0ff735511ed6"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-8eec66a6ff60ba8cf112450b"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I34@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-e849cee4f49bec3fdfd340b7"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-ca685ab7854946b886088200"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I35@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-e7cdbcebd33dc82589b18d77"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-55289d7539ee2b9a1cc5d42c"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I36@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-8333cf4497090060e49f2370"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-cee268961b558d7c1f4fefca"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I37@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-20eee9c80456bf183d0721a9"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-fd0d41f4c3b313808513b028"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I38@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-4adc22f2ca94eb903729661a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-2316c8b6991ff0a2aaa959fe"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I39@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-dd150068ecb3e7ca41caa310"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-884dfedc1450d4d84854866a"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I40@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-064315828868644b8196eb95"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-8cd6694b47934fdfdd761f3e"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I41@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-333555f197f7b32dbd1c71cd"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-8dad7eb9d4fa2de7a44ff1ce"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I42@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-12043e6c86cd6b80a3d8b4ac"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-5a15b160453cb68ac001d7cc"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I43@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-02bd40b4779ef5c88e02b568"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-a953f181d78834ad5986c0b2"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I44@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-de307b209c0a7c3c744d2497"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-2a14d153b947c3bbdee693e8"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I45@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-a3fea2c00cae33b329fc69ea"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-b1f37195d1f63606e081b4fc"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I46@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-a91ca16d314871d2e40cb3b3"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-af39ffabe724688be41f50e3"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I47@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-8d3c6c3e7fd717cc655be482"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-d508ed97e0b40b8342a39080"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I48@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-d04f3d19388ef08dc1882ea6"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-2cff5160031bdff7dfd8e054"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I49@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-793c6f9fa953c3253cfed9d1"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-ee001a8010813f36f50d9caf"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I52@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-adcd059dd8aac02147275425"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-722faa91975d4e5e75953f39"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I53@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-9c5c5374000be9ccbb44593b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-3a8039b7e16ea2d2a099ff31"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I54@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-34109b7676fe21388a308c66"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-f0fd1b9e42fb6de469cce124"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I55@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-05d1a513d0e8df87650e7a20"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-22ac29b0cf503aaa10375fe9"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I56@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-ec97435410ebad3e99937578"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-7f3e9a7e0b17ba0e73d00560"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I57@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-f2c38871f408d05a3d4e2405"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-2c1f555ef79f3fc87a464b92"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I58@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-0a598da7bb18da304304cc5a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-947e595f4444e372f643c323"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I59@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-e0f9a26c016e4a745e44a85d"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-c38d7e44cd1cc7a49b1c05f6"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I60@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-8d2f675a93d5e4f4d30e4d3a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-c357f63c88ec1b05f6a1e4f5"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I61@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-534cd52b09f69cf1163032c9"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-31cd4a8dc85269f4b4b63bb8"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I62@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-63e1509b15554797ea4b6a9f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-651ffc446d0906b77fe96741"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I63@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-4e7a7dffd253cd754e89f734"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-08957315115bc4cb5ae8531a"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I64@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-1bbbba62789b745030eaacc9"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-e1910b00962941db50b72f2f"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I66@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-3d88a23585ec72d534cfc8fa"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-13993f381f872a11e2c0c668"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I67@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-76b7468018b1989916f696b1"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-d7674e4192136b39cc9c5e90"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I68@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-7f31d054673c86ad88702812"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-5ae8e39456aca3b0e226b6cb"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I69@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-c841b16392085b035c92a139"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-7037472aebba2731e8c846f8"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I70@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-3f48e50d3ccf175c583eb741"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-e2e7c78393faf8ccabba00ec"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I71@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-ba24251f7fa4d8f877290daf"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-35ac1f26f6e09738abb6ad56"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I72@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-6706488f1d276d0ff386f801"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-248c77af109c39f07156ce96"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I75@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-5894c0e218162243aa6262f0"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-eef2d091ff0c0d08cb98159e"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I76@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-6d14020aadf51d32eec2ab9c"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-3c23baa8c2cfb6b59bc46eda"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I77@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-7d34e1bbdeafd569c4ca2910"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-660ffa1b2eae3d4ccf5e3a2e"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I78@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-8bbbbb3eabbce9ec6dfbf250"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-e140ff1c8a867bd344694e2b"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I79@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-ea891ef8b38abb9166b93c39"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-d6c4761bb148b21916af4f49"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I80@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-5c75061d0abb574c796554c8"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-9bd82896430edf95da7fe4ca"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I81@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-e643abee1de6c2ab1c60113b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-525024ceabde491f6d207d37"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I82@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-8fd072bc2d49bd607a974599"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-8b168329c19850bbdeaf1988"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I83@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-4dfad059970b6e088f6cee7b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-b2476fb17d50e9e80bac0443"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I84@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-9f1b515318b5e80d5513c573"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-90c3bebcb827dfb5992ca67c"
+      },
+      "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I85@",
+          "path": "NAME[0].ROMN[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "claim-46ee1ce4b58ae55b33857fb2"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-100d5b008b9f1aa6d5906e60"
+      },
+      "explanation": "Ім’я за актом народження Петра № 36 від 28.06.1900 у читанні, погодженому власником 19.10.2026. Прізвище матері в акті окремо не зазначено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I88@",
+          "path": "NAME[0]"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-b34a18ae26b7ae1e40737ea2"
+      },
+      "explanation": "Дату 1900 уточнено до 28.06.1900 за метричним актом № 36 і читанням, погодженим власником 19.10.2026. Дата хрещення 29.06.1900 лишається в описі; календар не перераховувався.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I44@",
+          "path": "BIRT[0].DATE[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "petro-birth-1900-owner-approved"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "claim",
+        "id": "claim-844bdc5dfb7b9d883e16cd81"
+      },
+      "explanation": "Дата уточнена за погодженим власником метричним записом № 14 за 1880 рік: смерть 9 жовтня, поховання 11 жовтня, вік 5 років. Календар не перераховувався.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I64@",
+          "path": "DEAT[0].DATE[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "timofey-death-1880-owner-approved"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-bc03b4e76a343f211b98608e"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I1@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-bc03b4e76a343f211b98608e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-025cf4b65753053459934468"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I2@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-025cf4b65753053459934468"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-6b5be36a47e3939cbf234bad"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I3@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-6b5be36a47e3939cbf234bad"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-f7bf24befa4758d4367e3b36"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I4@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-f7bf24befa4758d4367e3b36"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-beae826f3f638360ed9681f9"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I4@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-beae826f3f638360ed9681f9"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-19235062e711bd70493ade5c"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I4@",
+          "path": "BURI[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-19235062e711bd70493ade5c"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-becd59493d9543d61e23fdd5"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I5@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-becd59493d9543d61e23fdd5"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-25cdc88460ef118b0e3b69a0"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I6@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-25cdc88460ef118b0e3b69a0"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-7a335eaaead1fb5ad03882b2"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I7@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-7a335eaaead1fb5ad03882b2"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-1d10a1eacd277bcef005c3b5"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I7@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-1d10a1eacd277bcef005c3b5"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-4022ce3338d0bf570332d2cd"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I8@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-4022ce3338d0bf570332d2cd"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-b514206c9c82b52aee790c86"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I8@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-b514206c9c82b52aee790c86"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-3f559945b217f5e0cfe62d80"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I9@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-3f559945b217f5e0cfe62d80"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-129adb64c36cbce2dc1f66ad"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I9@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-129adb64c36cbce2dc1f66ad"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-9977191dd7cdcf85f1985234"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I10@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-9977191dd7cdcf85f1985234"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-147b32fc05296de8f9e30fec"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I10@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-147b32fc05296de8f9e30fec"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-2f382119d127a3338bbb47f1"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I13@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-2f382119d127a3338bbb47f1"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-6960353f1760032c31dd8ea7"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I13@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-6960353f1760032c31dd8ea7"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-02ab1b02dbb47906011369eb"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I14@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-02ab1b02dbb47906011369eb"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-209f6603418c167183138e1e"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I15@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-209f6603418c167183138e1e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-9e0b9966c7873e165b01807c"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I17@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-9e0b9966c7873e165b01807c"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-144ccd44cbdd92b90f314a31"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I21@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-144ccd44cbdd92b90f314a31"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-5a95cbcc66b5f3eaddff3d7a"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I22@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-5a95cbcc66b5f3eaddff3d7a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-1120d1e2a88dfa271e84ea7b"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I23@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-1120d1e2a88dfa271e84ea7b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-5c423e293cde8db8e814fdbd"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I24@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-5c423e293cde8db8e814fdbd"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-23759b6da6f0d79443e26d58"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I25@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-23759b6da6f0d79443e26d58"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-a9c8ea3ae868ce910caf1254"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I26@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-a9c8ea3ae868ce910caf1254"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-3fa8a5376537162785209629"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I28@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-3fa8a5376537162785209629"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-2165ea56dfa6d8a09feb286e"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I29@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-2165ea56dfa6d8a09feb286e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-446650028adb461f66b3032e"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I33@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-446650028adb461f66b3032e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-293eeb3f3347ce5c6b833555"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I38@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-293eeb3f3347ce5c6b833555"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-9e63c4d24e9a96e2e25fd35a"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I38@",
+          "path": "BURI[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-9e63c4d24e9a96e2e25fd35a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-a0f90d909d2937d2d22c0f73"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I39@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-a0f90d909d2937d2d22c0f73"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-d200bc391e6ab10a58425bea"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I39@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-d200bc391e6ab10a58425bea"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-dee46591db883768c0b50689"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I40@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-dee46591db883768c0b50689"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-1cd3eca880f0f21f3a8e9d2c"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/i/STL1NMCIS. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I41@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-1cd3eca880f0f21f3a8e9d2c"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-e445d4b7e3ce03920d1b289f"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I41@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-e445d4b7e3ce03920d1b289f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-ee57f82de56ed529efc1a083"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I44@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-ee57f82de56ed529efc1a083"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-d19795fb954f351a96fa0198"
+      },
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв потребують перевірки.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I46@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-d19795fb954f351a96fa0198"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-0b8aa0b8839280e623983506"
+      },
+      "explanation": "D06: вихідну назву збережено; координати та зіставлення назв потребують перевірки.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I47@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-0b8aa0b8839280e623983506"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-a5035e832b7d02f6f3c811d9"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I48@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-a5035e832b7d02f6f3c811d9"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-d2fbb86dd5ad516bc0d284df"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I49@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-d2fbb86dd5ad516bc0d284df"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-8f8f0d5038ae54d9c1edd915"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I50@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-8f8f0d5038ae54d9c1edd915"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-7a755c648526392b489e5540"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I51@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-7a755c648526392b489e5540"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-2fcc49617d81d7034b12e05d"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I52@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-2fcc49617d81d7034b12e05d"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-c5187cadaf27030429e11780"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I53@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-c5187cadaf27030429e11780"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-f1cdf1ed7688ead2561f3cca"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I54@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-f1cdf1ed7688ead2561f3cca"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-0a871dafb642ddbfea8b0ef0"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I55@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-0a871dafb642ddbfea8b0ef0"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-e2572bef5a4fbaaec1b68791"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I56@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-e2572bef5a4fbaaec1b68791"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-c25bfece57734a0ce2d12259"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I57@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-c25bfece57734a0ce2d12259"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-5a9c573a809e5cf14b7b0b7a"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I58@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-5a9c573a809e5cf14b7b0b7a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-7964e4a0eca3511470df9de6"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I59@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-7964e4a0eca3511470df9de6"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-cfbfd6ae66c906b699f4bf28"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I60@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-cfbfd6ae66c906b699f4bf28"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-1bdb4f5a91a9ee687f04d5cc"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I60@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-1bdb4f5a91a9ee687f04d5cc"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-a5f1d1064b82613609025adb"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I61@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-a5f1d1064b82613609025adb"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-979f4ada1fdefe863f9bfce1"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I62@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-979f4ada1fdefe863f9bfce1"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-63bdd0281a0103f86e86b5ca"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I63@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-63bdd0281a0103f86e86b5ca"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-235aa93bcbf6393ae37148c6"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I64@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-235aa93bcbf6393ae37148c6"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-36c4e76051dd7f6dc14f78e0"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I72@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-36c4e76051dd7f6dc14f78e0"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-a58bec669cff452f9ab3a20e"
+      },
+      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I73@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-a58bec669cff452f9ab3a20e"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-d978bac4f340688e3ca779da"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F15@",
+          "path": "MARR[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-d978bac4f340688e3ca779da"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-b07ea20784052317c575b3b8"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F20@",
+          "path": "MARR[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-b07ea20784052317c575b3b8"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-830e1e3e287cfdd8020048e8"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@F21@",
+          "path": "MARR[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-830e1e3e287cfdd8020048e8"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-0a5a5c513ca422943c1e508a"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I75@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-0a5a5c513ca422943c1e508a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-6f52ad7a7099ddfde33f3d9f"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I75@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-6f52ad7a7099ddfde33f3d9f"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-44bd9da689c7597fa70a6cbe"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I76@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-44bd9da689c7597fa70a6cbe"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-cb99a46ac87ce40955107ace"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I76@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-cb99a46ac87ce40955107ace"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-303b4196273331178496fb3a"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I78@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-303b4196273331178496fb3a"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-9fff6941a99450718aa4bb14"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I79@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-9fff6941a99450718aa4bb14"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-349ccde6144be07c9347439b"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I80@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-349ccde6144be07c9347439b"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-cfc686b973d3602564e6b558"
+      },
+      "explanation": "D06, уточнення власника 2026-10-17: місце цієї події — Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія. Харківська губернія в імпортованому записі FamilySearch позначає місце архіву, а не події. Вихідну назву збережено; координати не уточнені. Уточнення координат 2026-10-18 для погодженої карти: центр населеного пункту за Візіком, https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир місця; точна адреса події не встановлена.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I81@",
+          "path": "BIRT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-cfc686b973d3602564e6b558"
+        }
+      ]
+    },
+    {
+      "target": {
+        "kind": "place",
+        "id": "place-9b031223094f18685275e793"
+      },
+      "explanation": "D06: оригінальну назву місця з експорту 19.10.2026 збережено; нормалізацію й координати не встановлено.",
+      "provenance": [
+        {
+          "kind": "gedcom",
+          "importId": "import-6d268c5a8e5fda209c790e395ae180618cad45302ae0092084ebb9d20d99681c",
+          "recordId": "@I81@",
+          "path": "DEAT[0].PLAC[0]"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "review-place-9b031223094f18685275e793"
+        }
+      ]
+    }
+  ]
+}

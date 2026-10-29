@@ -864,6 +864,41 @@
       "id": "review-place-9b031223094f18685275e793",
       "placeId": "place-9b031223094f18685275e793",
       "explanation": "D06: оригінальну назву місця з експорту 19.10.2026 збережено; нормалізацію й координати не встановлено."
+    },
+    {
+      "id": "review-place-fd7d4e660d0705c88838f76a",
+      "placeId": "place-fd7d4e660d0705c88838f76a",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-496e77c1055f006e1935aad2",
+      "placeId": "place-496e77c1055f006e1935aad2",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-3e9993b5640efe5a0daf2873",
+      "placeId": "place-3e9993b5640efe5a0daf2873",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-553398c338625723f62670fa",
+      "placeId": "place-553398c338625723f62670fa",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-dc0f7d584269ff8989e5d957",
+      "placeId": "place-dc0f7d584269ff8989e5d957",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-87d4d4a074ea252b217c2e45",
+      "placeId": "place-87d4d4a074ea252b217c2e45",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-f82e8364fa1eebbe0204fd2e",
+      "placeId": "place-f82e8364fa1eebbe0204fd2e",
+      "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
     }
   ],
   "sources": [
@@ -1253,6 +1288,34 @@
       "mediaIds": [
         "media-record-260c554b79946d7727ac"
       ]
+    },
+    {
+      "id": "source-details-deikal-marriage-1898-s81",
+      "sourceId": "source-ce97d590244a82b8e1e8d7b1",
+      "mediaIds": [
+        "media-record-deikal-marriage-1898-s81"
+      ]
+    },
+    {
+      "id": "source-details-deikal-marriage-1898-s82",
+      "sourceId": "source-375c0c7a46ccf03770d06262",
+      "mediaIds": [
+        "media-record-deikal-marriage-1898-s82"
+      ]
+    },
+    {
+      "id": "source-details-petro-nikiforov-household-1858",
+      "sourceId": "source-dedc12fa73dae14cd89e10c6",
+      "mediaIds": [
+        "media-record-petro-nikiforov-household-1858"
+      ]
+    },
+    {
+      "id": "source-details-grigoriy-eliseyev-household-1811-134",
+      "sourceId": "source-0f23409aee0d4d4b0e1fd4d9",
+      "mediaIds": [
+        "media-record-grigoriy-eliseyev-household-1811-134"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -1597,6 +1660,37 @@
       "evidenceLinkId": "evidenceLink-5420b22debe9c995ccb61bcd",
       "fragment": {
         "mediaId": "media-record-260c554b79946d7727ac"
+      }
+    },
+    {
+      "id": "evidence-details-deikal-marriage-1898-s81",
+      "evidenceLinkId": "evidenceLink-b5e89d297f0267c4f749bc81",
+      "fragment": {
+        "mediaId": "media-record-deikal-marriage-1898-s81",
+        "recordNumber": "9"
+      }
+    },
+    {
+      "id": "evidence-details-deikal-marriage-1898-s82",
+      "evidenceLinkId": "evidenceLink-341534d2736176d1ab655eb4",
+      "fragment": {
+        "mediaId": "media-record-deikal-marriage-1898-s82",
+        "recordNumber": "9"
+      }
+    },
+    {
+      "id": "evidence-details-petro-nikiforov-household-1858",
+      "evidenceLinkId": "evidenceLink-7ac108acb3ab02277f18b26c",
+      "fragment": {
+        "mediaId": "media-record-petro-nikiforov-household-1858"
+      }
+    },
+    {
+      "id": "evidence-details-grigoriy-eliseyev-household-1811-134",
+      "evidenceLinkId": "evidenceLink-4a63cb4b209eb442d960697e",
+      "fragment": {
+        "mediaId": "media-record-grigoriy-eliseyev-household-1811-134",
+        "recordNumber": "134"
       }
     }
   ],
@@ -2398,6 +2492,97 @@
       ],
       "mediaId": "media-file-source-4ecc7fdc81d9764fb6640a2f",
       "jsonFile": "assets/documents/source-records/зубенко-тимофей-смерть-PFVV-7W1-6X3M-TDSW.json"
+    },
+    {
+      "id": "file-source-78f9bbb803c9e562be31b380",
+      "sourceId": "source-78f9bbb803c9e562be31b380",
+      "evidenceLinkIds": [
+        "evidenceLink-16d0f5eeb1f578c1e47d4994",
+        "evidenceLink-0b7d9e53712f4d5db7cdae4e"
+      ],
+      "mediaId": "media-record-deikalo-petro-birth-1900-act36",
+      "jsonFile": "assets/documents/source-records/дейкал-петр-народження-PFF9-B5D-6X32-8MMR.json"
+    },
+    {
+      "id": "file-source-ce97d590244a82b8e1e8d7b1",
+      "sourceId": "source-ce97d590244a82b8e1e8d7b1",
+      "evidenceLinkIds": [
+        "evidenceLink-4f1d415f99322b89d09db3f0",
+        "evidenceLink-b5e89d297f0267c4f749bc81"
+      ],
+      "mediaId": "media-record-deikal-marriage-1898-s81",
+      "jsonFile": "assets/documents/source-records/дейкал-александр-шлюб-PFVP-ZZV-6XST-N8HW.json"
+    },
+    {
+      "id": "file-source-375c0c7a46ccf03770d06262",
+      "sourceId": "source-375c0c7a46ccf03770d06262",
+      "evidenceLinkIds": [
+        "evidenceLink-4d62ca367e4d2f38139e155f",
+        "evidenceLink-341534d2736176d1ab655eb4"
+      ],
+      "mediaId": "media-record-deikal-marriage-1898-s82",
+      "jsonFile": "assets/documents/source-records/сальникова-ксения-шлюб-PNP7-NFP-6XST-N8H4.json"
+    },
+    {
+      "id": "file-source-edf529fb90b60171fa327595",
+      "sourceId": "source-edf529fb90b60171fa327595",
+      "evidenceLinkIds": [
+        "evidenceLink-5dd931c2cddfe363cbd9a423",
+        "evidenceLink-87568c630471446ff915ed9e",
+        "evidenceLink-706512ff73d899f9367de549",
+        "evidenceLink-6ab5c0e0a617efda1751e46c",
+        "evidenceLink-317250b5f894c83ee099348f"
+      ],
+      "mediaId": "media-file-source-bff78fa43a93474bab352bde",
+      "jsonFile": "assets/documents/source-records/карпінська-анастасія-народження-PN7G-3MV-33S7-9R9B-QZW-fa327595.json"
+    },
+    {
+      "id": "file-source-64b79cadc01010a455e5b71f",
+      "sourceId": "source-64b79cadc01010a455e5b71f",
+      "evidenceLinkIds": [
+        "evidenceLink-57659fdc77a533b92fb4ac7e",
+        "evidenceLink-0f547101650748f8f497921b"
+      ],
+      "mediaId": "media-record-deikalo-petro-birth-1900-act36",
+      "jsonFile": "assets/documents/source-records/дейкал-петр-народження-PFF9-B5D-6X32-8MMT.json"
+    },
+    {
+      "id": "file-source-b412ee2b706ec435c5f97fb0",
+      "sourceId": "source-b412ee2b706ec435c5f97fb0",
+      "evidenceLinkIds": [
+        "evidenceLink-6ab821049ad29c808e672e9a",
+        "evidenceLink-1bdfe46b584d08db0b112196"
+      ],
+      "mediaId": "media-record-deikalo-petro-birth-1900-act36",
+      "jsonFile": "assets/documents/source-records/дейкал-петр-народження-PFF9-B5D-6X32-8MM1.json"
+    },
+    {
+      "id": "file-source-dedc12fa73dae14cd89e10c6",
+      "sourceId": "source-dedc12fa73dae14cd89e10c6",
+      "evidenceLinkIds": [
+        "evidenceLink-a778a53cf7ad8818000d79a5",
+        "evidenceLink-20cb35cbd71e448e71d3b1ef",
+        "evidenceLink-0cc3319180b2f94733862ce1",
+        "evidenceLink-7a7b2a3a477c99d489db7a81",
+        "evidenceLink-7ac108acb3ab02277f18b26c",
+        "evidenceLink-4e993864d3433919ac3ac6c2"
+      ],
+      "mediaId": "media-record-petro-nikiforov-household-1858",
+      "jsonFile": "assets/documents/source-records/зубенко-петр-народження-PFVP-JC5-3Q9M-CSSV-J94C-W.json"
+    },
+    {
+      "id": "file-source-0f23409aee0d4d4b0e1fd4d9",
+      "sourceId": "source-0f23409aee0d4d4b0e1fd4d9",
+      "evidenceLinkIds": [
+        "evidenceLink-42747914dbc78bbedcf727f2",
+        "evidenceLink-170869540e7c4a3f3eace6ed",
+        "evidenceLink-6b2c83df755d639f5c242308",
+        "evidenceLink-34ca3e7277da1ed6893859ba",
+        "evidenceLink-4a63cb4b209eb442d960697e",
+        "evidenceLink-2018c2b86dee34245241646a"
+      ],
+      "mediaId": "media-record-grigoriy-eliseyev-household-1811-134",
+      "jsonFile": "assets/documents/source-records/зубенко-никифор-народження-PNPR-VLH-3Q9M-CSSV-ZQHK.json"
     },
     {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
@@ -3703,6 +3888,74 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "media-record-deikalo-petro-birth-1900-act36"
+        }
+      ]
+    },
+    {
+      "id": "media-record-deikal-marriage-1898-s81",
+      "path": "assets/documents/source-records/дейкал-александр-шлюб-PFVP-ZZV-6XST-N8HW.png",
+      "dimensions": {
+        "width": 1217,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: дейкал-александр-шлюб-PFVP-ZZV-6XST-N8HW",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-deikal-marriage-1898-s81"
+        }
+      ]
+    },
+    {
+      "id": "media-record-deikal-marriage-1898-s82",
+      "path": "assets/documents/source-records/дейкал-александр-шлюб-PFVP-ZZV-6XST-N8HW.png",
+      "dimensions": {
+        "width": 1217,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальникова-ксения-шлюб-PNP7-NFP-6XST-N8H4",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-deikal-marriage-1898-s82"
+        }
+      ]
+    },
+    {
+      "id": "media-record-petro-nikiforov-household-1858",
+      "path": "assets/documents/source-records/зубенко-петр-народження-PFVP-JC5-3Q9M-CSSV-J94C-W.png",
+      "dimensions": {
+        "width": 1380,
+        "height": 700
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: зубенко-петр-народження-PFVP-JC5-3Q9M-CSSV-J94C-W",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-petro-nikiforov-household-1858"
+        }
+      ]
+    },
+    {
+      "id": "media-record-grigoriy-eliseyev-household-1811-134",
+      "path": "assets/documents/source-records/зубенко-никифор-народження-PNPR-VLH-3Q9M-CSSV-ZQHK.png",
+      "dimensions": {
+        "width": 1317,
+        "height": 362
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: зубенко-никифор-народження-PNPR-VLH-3Q9M-CSSV-ZQHK",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-grigoriy-eliseyev-household-1811-134"
         }
       ]
     }

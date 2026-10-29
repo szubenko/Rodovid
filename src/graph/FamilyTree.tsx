@@ -7,7 +7,7 @@ import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFam
 import { layoutTree, type TreeOrientation } from './tree-layout'
 import { availableRelativeGenerations, projectRelatives } from './relatives-projection'
 import { layoutRelatives } from './relatives-layout'
-import { projectVerticalFamily } from './vertical-projection'
+import { availableVerticalGenerations, projectVerticalFamily } from './vertical-projection'
 import { lifeYears, relationshipName } from './presentation'
 import { useMapCamera } from './useMapCamera'
 import { useMapViewport } from './useMapViewport'
@@ -40,7 +40,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
   const graph = useMemo(() => buildFamilyGraph(family), [family])
-  const directLine = useMemo(() => directLinePersonIds(graph, state.homePersonId), [graph, state.homePersonId])
+  const homeLine = useMemo(() => directLinePersonIds(graph, state.homePersonId), [graph, state.homePersonId])
   const labels = useMemo(() => new Map(family.people.map(person => [person.id, personName(family, person.id)])), [family])
   const dates = useMemo(() => new Map(family.people.map(person => {
     const years = lifeYears(family, person.id)
@@ -65,15 +65,17 @@ export function FamilyTree({ personId, orientation, includeRelatives = false }: 
   }, [])
   const settings = state.current.map
   const maxGenerations = useMemo(() => includeRelatives ? availableRelativeGenerations(graph, personId)
-    : availableGenerations(graph, personId), [graph, personId, includeRelatives])
+    : vertical ? availableVerticalGenerations(graph, personId) : availableGenerations(graph, personId), [graph, personId, includeRelatives, vertical])
   const generations = Math.min(settings.generations, maxGenerations)
   const projection = useMemo(() => includeRelatives ? projectRelatives(graph, personId, {
     generations, expandedPersonIds: settings.expandedRelativeIds, showAll: settings.showAllRelatives,
-  }) : (vertical ? projectVerticalFamily(graph, personId, directLine, {
+  }) : (vertical ? projectVerticalFamily(graph, personId, {
     generations: Math.min(12, generations + 1), collapsedAppearanceIds: settings.collapsedAppearanceIds,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
-    collapsedAppearanceIds: settings.collapsedAppearanceIds })), [graph, personId, generations, includeRelatives, vertical, directLine,
+    collapsedAppearanceIds: settings.collapsedAppearanceIds })), [graph, personId, generations, includeRelatives, vertical,
     settings.collapsedAppearanceIds, settings.expandedRelativeIds, settings.showAllRelatives])
+  const directLine = useMemo(() => vertical && !includeRelatives
+    ? new Set(projection.appearances.map(node => node.personId)) : homeLine, [projection, vertical, includeRelatives, homeLine])
   const layout = useMemo(() => 'relatedCount' in projection ? layoutRelatives(projection, graph, labels, dates, measure)
     : 'familyMode' in projection ? layoutRelatives(projection, graph, labels, dates, measure, directLine)
     : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine])

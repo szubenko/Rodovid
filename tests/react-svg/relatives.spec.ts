@@ -59,6 +59,8 @@ test('окрема вкладка усіх родичів зберігає по�
   await page.goto('/vertical/I1')
   await page.getByLabel('Покоління', { exact: true }).selectOption('3')
   const original = page.getByRole('group', { name: /^Вертикальний родовід:/ })
+  await expect(original.locator('[data-person-id="I27"]')).toHaveCount(0)
+  await expect(original.locator('[data-lane="children"], [data-lane="spouses"], [data-lane="relatives"]')).toHaveCount(0)
   const originalIds = await original.locator('[data-person-id]').evaluateAll(cards => cards.map(card => card.getAttribute('data-person-id')))
   await expect(page.getByRole('button', { name: 'Показати всіх родичів', exact: true })).toHaveCount(0)
   await expect(original.locator('[data-branch-person-id]')).toHaveCount(0)

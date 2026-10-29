@@ -43,7 +43,7 @@ it('separates family buses horizontally instead of crossing unrelated parent and
   const dates = new Map(family.people.map(person => [person.id, lifeYears(family, person.id)]))
   for (const { id: center } of family.people) for (let generations = 1;
     generations <= Math.min(12, availableGenerations(graph, center) + 1); generations++) {
-    const projection = projectVerticalFamily(graph, center, directLine, { generations })
+    const projection = projectVerticalFamily(graph, center, { generations })
     const layout = layoutRelatives(projection, graph, labels, dates, (text, size) => text.length * size * .65, directLine)
     const shown = new Set(layout.nodes.map(node => node.personId))
     const sergiy = layout.nodes.find(node => node.personId === 'I1')

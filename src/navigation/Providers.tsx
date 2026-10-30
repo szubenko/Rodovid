@@ -5,6 +5,7 @@ import type { FamilyData } from '../data/schema'
 import { FamilyContext, ViewContext, useFamily } from './context'
 import { initialView, viewReducer, type ViewRoute } from './view-state'
 import styles from '../App.module.css'
+import { LoadingScreen } from './LoadingScreen'
 
 type LoadingState = { status: 'loading' } | { status: 'error'; message: string } | { status: 'ready'; family: FamilyData }
 
@@ -24,17 +25,16 @@ export function FamilyProvider({ children }: { children: ReactNode }) {
   }, [attempt])
 
   if (state.status === 'ready') return <FamilyContext value={state.family}>{children}</FamilyContext>
+  if (state.status === 'loading') return <LoadingScreen />
   return <main className={styles.page}>
     <section className={styles.panel} aria-labelledby="loading-title">
       <p className={styles.eyebrow}>Сімейна історія</p>
       <h1 id="loading-title">Мій родовід</h1>
-      {state.status === 'loading' ? <p role="status">Завантажуємо родовід…</p> : <>
-        <p role="alert">{state.message}</p>
-        <div className={styles.actions}>
-          <button onClick={() => { setState({ status: 'loading' }); setAttempt((value) => value + 1) }}>Спробувати ще раз</button>
-          <Link to="/">На головну</Link>
-        </div>
-      </>}
+      <p role="alert">{state.message}</p>
+      <div className={styles.actions}>
+        <button onClick={() => { setState({ status: 'loading' }); setAttempt((value) => value + 1) }}>Спробувати ще раз</button>
+        <Link to="/">На головну</Link>
+      </div>
     </section>
   </main>
 }

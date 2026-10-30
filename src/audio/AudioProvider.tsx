@@ -2,9 +2,10 @@ import { useRef, useState, type ReactNode } from 'react'
 import { useFamily } from '../navigation/context'
 import { readAudioPreferences, saveAudioPreferences, type AudioPreferences } from './preferences'
 import { useAudioChannel } from './useAudioChannel'
+import { AudioContext } from './context'
 import styles from './Audio.module.css'
 
-export function AudioProvider({ children }: { children?: ReactNode }) {
+export function AudioProvider({ children, showControls = true }: { children?: ReactNode; showControls?: boolean }) {
   const family = useFamily()
   const [preferences, setPreferences] = useState(readAudioPreferences)
   const firstAudio = (ids: string[]) => ids.map(id => family.media.find(media => media.id === id && media.mimeType.startsWith('audio/'))).find(Boolean)
@@ -37,10 +38,10 @@ export function AudioProvider({ children }: { children?: ReactNode }) {
           </fieldset>
         </div>
       </details>
-      <audio ref={musicRef} data-audio="music" preload="none" loop onEnded={music.ended} onError={music.fail} />
     </div>
-  return <>
-    {controls}
+  return <AudioContext value={{ musicAvailable: !!musicFile, musicActive, status: music.status, toggleMusic }}>
+    {showControls && controls}
+    <audio ref={musicRef} data-audio="music" preload="none" loop onEnded={music.ended} onError={music.fail} />
     {children}
-  </>
+  </AudioContext>
 }

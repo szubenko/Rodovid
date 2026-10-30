@@ -9,7 +9,9 @@ test('unprepared places show events and years without invented markers or tile r
   let tiles = 0
   await page.route('https://tile.openstreetmap.org/**', route => { tiles++; return route.abort() })
   await page.goto('/person/I1')
-  await expect(page.locator('#places')).toContainText('Розташування цих місць ще уточнюється')
+  await page.locator('#places').scrollIntoViewIfNeeded()
+  await expect(page.getByLabel('Географічна карта місць')).toBeVisible()
+  await expect(page.locator('#places')).toContainText('Точне розташування не вказано')
   await expect(page.locator('#places')).toContainText('Шлюб')
   await expect(page.locator('[data-place-marker]')).toHaveCount(0)
   expect(tiles).toBe(0)

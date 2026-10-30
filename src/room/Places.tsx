@@ -13,28 +13,30 @@ export function Places({ personId }: { personId: string }) {
   const [showMap, setShowMap] = useState(false)
   const [selectedPlaceId, selectPlace] = useState<string>()
   const selected = entries.some(entry => entry.place.id === selectedPlaceId) ? selectedPlaceId : entries[0]?.place.id
-  const hasCoordinates = entries.some(entry => entry.place.coordinates)
+  const unlocated = entries.filter(entry => !entry.place.coordinates).length
 
   useEffect(() => {
-    if (!hasCoordinates || showMap) return
+    if (showMap) return
     const observer = new IntersectionObserver(items => {
       if (items.some(item => item.isIntersecting)) { setShowMap(true); observer.disconnect() }
     }, { rootMargin: '150px' })
     observer.observe(section.current!)
     return () => observer.disconnect()
-  }, [hasCoordinates, showMap])
+  }, [showMap])
 
   return <section ref={section} className={`${room.paper} ${styles.places}`} id="places" aria-label="Місця життя">
     <h2>Місця життя</h2>
-    {entries.length === 0 ? <p className={room.empty}>Місць подій у записах немає.</p> : <div className={styles.layout}>
+    <div className={styles.layout}>
       <div className={styles.mapColumn}>
-        {hasCoordinates && showMap ? <Suspense fallback={<div className={styles.placeholder} role="status">Відкриваємо карту…</div>}>
+        {showMap ? <Suspense fallback={<div className={styles.placeholder} role="status">Відкриваємо карту…</div>}>
           <PlacesMap entries={entries} selectedPlaceId={selected} onSelect={selectPlace} />
         </Suspense> : <div className={styles.placeholder}>
-          <p>{hasCoordinates ? 'Карта місць життя' : 'Розташування цих місць ще уточнюється.'}</p>
+          <p>Карта місць життя</p>
         </div>}
+        {unlocated > 0 && <p className={styles.locationNote}>Місця без точних координат наведено у списку.</p>}
       </div>
       <div className={styles.list} aria-label="Місця та події">
+        {entries.length === 0 && <p className={room.empty}>Місць подій у записах немає. Показано оглядову карту.</p>}
         {entries.map(({ place, events }) => <article key={place.id} id={`place-${place.id}`} className={styles.entry}>
           <button type="button" className={styles.placeChoice} onClick={() => selectPlace(place.id)} aria-pressed={selected === place.id}>
             <span className={styles.dot} aria-hidden="true" />
@@ -43,10 +45,11 @@ export function Places({ personId }: { personId: string }) {
               {events.map(({ event }) => <span key={event.id} className={styles.event}>
                 {event.label ?? eventLabels[event.kind]} · {placeEventYear(family, event.id)}
               </span>)}
+              {!place.coordinates && <span className={styles.event}>Точне розташування не вказано.</span>}
             </span>
           </button>
         </article>)}
       </div>
-    </div>}
+    </div>
   </section>
 }

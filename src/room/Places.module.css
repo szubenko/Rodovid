@@ -4,6 +4,7 @@
 .map { height: 22rem; width: 100%; z-index: 0; border-radius: 7px; background: #e7ebe3; }
 .placeholder { display: grid; place-content: center; min-height: 22rem; padding: 1rem; border-radius: 7px; background: #eef2e8; color: #66776b; text-align: center; }
 .placeholder p { margin: 0; }
+.locationNote { margin-top: 0.6rem; color: #66776b; font-size: 0.8rem; }
 .list { display: grid; gap: 0.55rem; }
 .entry { min-width: 0; }
 .places .placeChoice { display: flex; align-items: flex-start; gap: 12px; width: 100%; min-height: 60px; padding: 14px 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #344b3e; text-align: left; }

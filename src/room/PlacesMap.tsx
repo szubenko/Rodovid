@@ -5,6 +5,8 @@ import './places-map.css'
 import type { GeoJsonObject } from 'geojson'
 import ukraineRegions from './maps/ukraine-regions.json'
 import regionsUrl from './maps/ukraine-regions.json?url'
+import easternContext from './maps/eastern-context.json'
+import contextUrl from './maps/eastern-context.json?url'
 import { placeName, type PlaceEvents } from './places-data'
 import { eventLabels } from './biography'
 import styles from './Places.module.css'
@@ -20,8 +22,14 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
     const outline = L.geoJSON(ukraineRegions as GeoJsonObject, {
       interactive: false,
       style: { className: 'rodovid-place-region', color: '#cbcdbb', weight: 0.8, fillColor: '#f6f4e9', fillOpacity: 1, opacity: 1 },
-    }).addTo(map)
+    })
     const bounds = outline.getBounds()
+    const outsideUkraine = entries.some(({ place }) => place.coordinates && !bounds.contains([place.coordinates.latitude, place.coordinates.longitude]))
+    if (outsideUkraine) L.geoJSON(easternContext as GeoJsonObject, {
+      interactive: false,
+      style: { className: 'rodovid-place-country', color: '#cbcdbb', weight: 0.8, fillColor: '#f6f4e9', fillOpacity: 1, opacity: 1 },
+    }).addTo(map)
+    outline.addTo(map)
     for (const { place } of entries) if (place.coordinates) bounds.extend([place.coordinates.latitude, place.coordinates.longitude])
     const fit = () => {
       map.invalidateSize({ animate: false, pan: false })
@@ -38,6 +46,7 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       ['geoBoundaries', 'https://www.geoboundaries.org/'],
       ['© OSM', 'https://www.openstreetmap.org/copyright'],
       ['Дані карти', regionsUrl],
+      ...(outsideUkraine ? [['Natural Earth', 'https://www.naturalearthdata.com/'], ['Контекст карти', contextUrl]] : []),
     ]) {
       if (attribution.childNodes.length) attribution.append(' · ')
       const link = document.createElement('a'); link.textContent = label!; link.href = href!

@@ -1,0 +1,41 @@
+.screen { --loading-ink: #174c40; display: grid; place-items: center; min-height: 100svh; padding: clamp(16px, 7.5vw, 120px); color: var(--loading-ink); background: radial-gradient(ellipse at center, #fff 0%, #f2f6f3 100%); }
+.card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; gap: 24px clamp(12px, 2vw, 32px); width: min(100%, 1420px); padding: clamp(28px, 4vw, 64px) clamp(20px, 3vw, 48px) 24px; border: 1px solid var(--loading-ink); border-top-width: 2px; border-radius: 16px; background: linear-gradient(120deg, #fcfaf3, #fbfaf5 55%, #fcfaf7); box-shadow: 0 20px 60px #174c4010; overflow: clip; }
+.message { grid-column: 2; grid-row: 1; text-align: center; min-width: 0; padding-top: 16px; }
+.eyebrow { margin: 0 0 18px; font: 700 clamp(0.75rem, 1.3vw, 1.2rem)/1.4 var(--font-body); letter-spacing: 0.16em; text-transform: uppercase; }
+.message h1 { margin: 0; font: 400 clamp(2.5rem, 5.6vw, 5.5rem)/1.12 var(--font-heading); }
+.status { margin: 18px 0 0; color: #7b958a; font-size: clamp(1rem, 1.7vw, 1.65rem); line-height: 1.5; }
+.dots { display: flex; justify-content: center; gap: 16px; margin-top: 28px; }
+.dots span { width: clamp(14px, 1.5vw, 24px); aspect-ratio: 1; border-radius: 50%; background: var(--loading-ink); opacity: 0.18; animation: loading-pulse 1.2s ease-in-out infinite; }
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes loading-pulse { 0%, 65%, 100% { opacity: 0.18; transform: translateY(0); } 25% { opacity: 1; transform: translateY(-3px); } }
+.emblem { position: relative; grid-row: 1 / 3; min-width: 0; margin: 0; text-align: center; }
+.left { grid-column: 1; }
+.right { grid-column: 3; }
+.emblem img { position: relative; display: block; width: min(100%, 230px); height: clamp(160px, 20vw, 310px); margin: 0 auto; object-fit: contain; }
+.emblem figcaption { position: relative; display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 18px; white-space: nowrap; font: 400 clamp(1.1rem, 1.8vw, 2rem)/1.4 var(--font-heading); }
+.emblem figcaption::before, .emblem figcaption::after { content: ''; flex: 1; height: 1px; background: #aabcb0; }
+.foliage { position: absolute; top: 46%; left: 50%; width: 125%; max-width: none; transform: translate(-50%, -50%); fill: #acb69e; stroke: #8b9d89; stroke-width: 1; opacity: 0.2; pointer-events: none; }
+.ornament { grid-column: 2; grid-row: 2; width: 100%; max-width: 400px; margin: 0 auto; }
+.ornament svg { display: block; width: 100%; height: 88px; fill: #aab69f33; stroke: #aab69f66; stroke-width: 1.1; }
+@media (max-width: 760px) {
+  .screen { padding: 16px; }
+  .card { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 20px; padding: 28px 20px 16px; }
+  .message { grid-column: 1 / -1; padding: 0; }
+  .message h1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+  .eyebrow { margin-bottom: 12px; }
+  .status { margin-top: 12px; }
+  .dots { margin-top: 20px; gap: 12px; }
+  .emblem { grid-row: 2; }
+  .right { grid-column: 2; }
+  .emblem img { height: clamp(128px, 30vw, 195px); }
+  .emblem figcaption { gap: 8px; margin-top: 12px; font-size: clamp(1rem, 4vw, 1.5rem); }
+  .ornament { grid-column: 1 / -1; grid-row: 3; max-width: 280px; }
+  .ornament svg { height: 60px; }
+}
+@media (prefers-reduced-motion: reduce) { .dots span { animation: none; opacity: 0.35; } .dots span:first-child { opacity: 1; } }
+@media (forced-colors: active) {
+  .screen, .card { background: Canvas; color: CanvasText; border-color: CanvasText; }
+  .status { color: CanvasText; }
+  .dots span { background: CanvasText; }
+}

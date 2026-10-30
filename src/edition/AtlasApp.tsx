@@ -15,9 +15,10 @@ import type { MapScreen } from '../navigation/view-state'
 import { PersonRoom } from '../room/PersonRoom'
 import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
+import { useAudio } from '../audio/context'
 import styles from './AtlasApp.module.css'
 
-function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical-minimal'> | 'book' | 'search' | 'home' }) {
+function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical-minimal'> | 'book' | 'search' | 'home' | 'music' }) {
   const paths = {
     tree: <><circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /><path d="M12 7v6M5 17v-4h14v4" /></>,
     horizontal: <><rect x="2" y="9" width="6" height="6" rx="1" /><rect x="16" y="2" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M8 12h4V5h4M12 12v7h4" /></>,
@@ -26,6 +27,7 @@ function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical
     book: <><path d="M12 5v15M12 5C8 2 3 4 3 4v14s5-2 9 2c4-4 9-2 9-2V4s-5-2-9 1Z" /></>,
     search: <><circle cx="10" cy="10" r="6" /><path d="m15 15 5 5" /></>,
     home: <><path d="m3 10 9-7 9 7v10H3Zm6 10v-7h6v7" /></>,
+    music: <><path d="M9 18V5l11-2v13M9 9l11-2" /><ellipse cx="6" cy="18" rx="3" ry="2" /><ellipse cx="17" cy="16" rx="3" ry="2" /></>,
   }
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[kind]}</svg>
 }
@@ -66,6 +68,8 @@ function Missing() {
 
 function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const family = useFamily()
+  const { musicAvailable, musicActive, status: audioStatus, toggleMusic } = useAudio()
+  const soundLabel = !musicAvailable ? 'Музика ще не підготовлена' : musicActive ? 'Вимкнути звук' : 'Увімкнути звук'
   const isMap = screen !== 'person'
   const { personId } = useParams()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -90,7 +94,10 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
         {years && <p className={styles.years}>{years}</p>}
       </div>
       <nav className={styles.navigation} aria-label="Основна навігація">
-        <Link to={`/tree/${family.config.homePersonId}`} resetMap><Icon kind="home" />До мене</Link>
+        <Link to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><Icon kind="home" /></Link>
+        <button type="button" onClick={toggleMusic} disabled={!musicAvailable} aria-label={soundLabel} title={soundLabel} aria-pressed={musicActive}><Icon kind="music" /></button>
+        {audioStatus === 'starting' && <span role="status" className={styles.srOnly}>Музика завантажується…</span>}
+        {audioStatus === 'error' && <p role="status" className={styles.audioStatus}>Музика недоступна або браузер заблокував відтворення. Натисніть ноту, щоб спробувати ще раз.</p>}
       </nav>
     </header>
     <div className={styles.viewTabs} aria-label="Перегляд людини">
@@ -156,12 +163,10 @@ function Sidebar() {
       <div className={styles.sidebarContent}>
         <div className={styles.sidebarBrand}>
           <Link className={styles.brand} to={`/${state.current.mapScreen}/${state.homePersonId}`} resetMap><span className={styles.brandIcon}><Icon kind="tree" /></span><span>Родовід<small>СІМЕЙНИЙ АТЛАС</small></span></Link>
-          <p className={styles.familyTitle}>{family.config.title}</p>
         </div>
         <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2></div>
         <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
         <PeopleDirectory />
-        <div className={styles.sidebarAudio}><AudioProvider /></div>
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
       </div>
     </details>
@@ -169,7 +174,7 @@ function Sidebar() {
 }
 
 function Providers({ children }: { children: ReactNode }) {
-  return <FamilyProvider><ViewProvider initialMapZoom={0.6}><MotionPreferences>{children}</MotionPreferences></ViewProvider></FamilyProvider>
+  return <FamilyProvider><ViewProvider initialMapZoom={0.6}><AudioProvider showControls={false}><MotionPreferences>{children}</MotionPreferences></AudioProvider></ViewProvider></FamilyProvider>
 }
 
 export function AtlasApp() { return <Providers><Workspace /></Providers> }

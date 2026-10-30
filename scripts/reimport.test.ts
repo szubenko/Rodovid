@@ -188,8 +188,8 @@ it('corrects Olenka’s father without inferring her mother or changing other pe
 it('retains Nadia and both reviewed families after later exports and rejection of the tree screenshot', async () => {
   const before = load('tests/fixtures/olenka-parent-2026-10-17')
   const after = load('Data')
-  expect(after.family.config.dataVersion).toBe('2026-10-29-reviewed-merged')
-  expect(after.report.counts).toMatchObject({ people: 97, families: 39, relationships: 152 })
+  expect(after.family.config.dataVersion).toBe('2026-10-30-reviewed-merged')
+  expect(after.report.counts).toMatchObject({ people: 102, families: 41, relationships: 159 })
   expect(after.family.sources.some(s => s.id === 'source-yakov-families-2026-10-17')).toBe(false)
   for (const person of before.family.people) expect(after.family.people.some(p => p.id === person.id)).toBe(true)
   for (const edge of before.family.relationships) expect(after.family.relationships.find(r => r.id === edge.id))

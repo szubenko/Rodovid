@@ -7,7 +7,7 @@ import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
 import { validateData } from './validation/validate.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
-import { october29MergeSha256 } from './validation/reviewed-export.ts'
+import { october30MergeSha256 } from './validation/reviewed-export.ts'
 
 const root = new URL('../', import.meta.url)
 const read = (path: string) => readFileSync(new URL(path, root))
@@ -27,8 +27,8 @@ const clean = <T extends {provenance:unknown}>(value:T) => {
 
 it('retains every accepted identity, source text, scan byte, and relationship while adding the new branches', () => {
   const {family,report,plan}=load()
-  expect(report.sha256).toBe(october29MergeSha256)
-  expect(report.counts).toMatchObject({people:97,families:39,relationships:152,sources:89})
+  expect(report.sha256).toBe(october30MergeSha256)
+  expect(report.counts).toMatchObject({people:102,families:41,relationships:159,sources:89})
   expect(plan.outputs.size).toBe(0)
   expect(plan.summary.conflicts).toEqual([])
   for(const kind of ['people','relationships','events','claims','places','sources','media','evidenceLinks','memories'] as const) {

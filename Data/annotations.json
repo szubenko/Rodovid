@@ -899,6 +899,36 @@
       "id": "review-place-f82e8364fa1eebbe0204fd2e",
       "placeId": "place-f82e8364fa1eebbe0204fd2e",
       "explanation": "D06: 29.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-6f84762b34502d1f3bbba5a1",
+      "placeId": "place-6f84762b34502d1f3bbba5a1",
+      "explanation": "D06: 30.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-3bc9aa6f03749e040b0c3ac9",
+      "placeId": "place-3bc9aa6f03749e040b0c3ac9",
+      "explanation": "D06: 30.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-b1c141cd74b0469d80862138",
+      "placeId": "place-b1c141cd74b0469d80862138",
+      "explanation": "D06: 30.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-1f6d8527a9d9bf582140a061",
+      "placeId": "place-1f6d8527a9d9bf582140a061",
+      "explanation": "D06: 30.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-5fb843a9374b441f0eeaa134",
+      "placeId": "place-5fb843a9374b441f0eeaa134",
+      "explanation": "D06: 30.10.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-0961aa1418448d1837861a1c",
+      "placeId": "place-0961aa1418448d1837861a1c",
+      "explanation": "D06: 30.10.2026 оригінальна назва місця з нового експорту; координати не додані."
     }
   ],
   "sources": [
@@ -2564,8 +2594,14 @@
         "evidenceLink-20cb35cbd71e448e71d3b1ef",
         "evidenceLink-0cc3319180b2f94733862ce1",
         "evidenceLink-7a7b2a3a477c99d489db7a81",
+        "evidenceLink-f004246e259870eab0ab9008",
+        "evidenceLink-c235c423c01ffb534abf69a8",
         "evidenceLink-7ac108acb3ab02277f18b26c",
-        "evidenceLink-4e993864d3433919ac3ac6c2"
+        "evidenceLink-4e993864d3433919ac3ac6c2",
+        "evidenceLink-d8979c2b124a8d094ca6160f",
+        "evidenceLink-fa9bfb810a5ad060da1b3d86",
+        "evidenceLink-286248a1bcd262d299cae355",
+        "evidenceLink-519e51c25ddd1489a1cada32"
       ],
       "mediaId": "media-record-petro-nikiforov-household-1858",
       "jsonFile": "assets/documents/source-records/зубенко-петр-народження-PFVP-JC5-3Q9M-CSSV-J94C-W.json"

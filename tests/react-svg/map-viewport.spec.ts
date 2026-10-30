@@ -42,7 +42,7 @@ test('вікно кожної діаграми підлаштовується п
       })
       expect(position.x).toBeCloseTo(0.5, 2)
       expect(position.y).toBeCloseTo(0.5, 2)
-      await expect(center.locator('text').first()).toHaveCSS('font-size', screen === 'relatives' ? '22px' : '20px')
+      await expect(center.locator('text').first()).toHaveCSS('font-size', screen === 'tree' ? '20px' : '24px')
       await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
       await expect.poll(() => svg.evaluate(svg => {
         const viewport = svg.getBoundingClientRect()
@@ -83,20 +83,37 @@ test('розгорнута діаграма використовує весь е
       const svg = dialog.locator('[data-map-viewport] > svg')
       await expect.poll(() => svg.evaluate(svg => {
         const box = svg.getBoundingClientRect()
-        const legend = svg.closest('section')?.querySelector('[aria-label="Країна народження"]')?.getBoundingClientRect()
+        const section = svg.closest('section')!
+        const legend = section.querySelector('[aria-label="Країна народження"]')?.getBoundingClientRect()
         const drawingWidth = legend && legend.left >= box.right ? legend.right - box.left : box.width
-        return drawingWidth > innerWidth * 0.9 && box.height > innerHeight * 0.75
+        // Classic scrollbars reserve space on both the page and the scrollable dialog.
+        return section.getBoundingClientRect().width > document.documentElement.clientWidth * 0.9
+          && drawingWidth > section.clientWidth * 0.9 && box.height > innerHeight * 0.75
           && box.bottom <= innerHeight && box.right <= innerWidth
       })).toBe(true)
       expect(await page.getByRole('navigation', { name: 'Основна навігація' }).evaluate(nav => !!nav.closest('[inert]'))).toBe(true)
       await page.keyboard.press('Tab')
       expect(await page.evaluate(() => !!document.activeElement?.closest('[role="dialog"]'))).toBe(true)
+      // A hover preview adds its own links after the SVG; move off the drawing before checking its boundary.
+      await page.mouse.move(0, 0)
+      await expect(page.getByRole('tooltip')).toHaveCount(0)
       const lastControl = dialog.locator('svg [tabindex="0"]').last()
       await lastControl.focus()
+      if (await lastControl.getAttribute('data-person-id')) {
+        await expect(dialog.getByRole('tooltip')).toBeVisible()
+        await page.keyboard.press('Escape')
+        await expect(dialog.getByRole('tooltip')).toHaveCount(0)
+        await expect(lastControl).toBeFocused()
+      }
       await page.keyboard.press('Tab')
       await expect(dialog.getByRole('button', { name: 'Зменшити масштаб', exact: true })).toBeFocused()
       await page.keyboard.press('Shift+Tab')
       await expect(lastControl).toBeFocused()
+      if (await lastControl.getAttribute('data-person-id')) {
+        await expect(dialog.getByRole('tooltip')).toBeVisible()
+        await page.keyboard.press('Escape')
+        await expect(dialog.getByRole('tooltip')).toHaveCount(0)
+      }
       await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
       await expect.poll(() => svg.evaluate(svg => {
         const viewport = svg.getBoundingClientRect()

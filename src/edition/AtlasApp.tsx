@@ -79,16 +79,19 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   }, [family, personId, screen, isMap, location.key])
   const person = family.people.find(entry => entry.id === personId)
   if (!person || !personId) return <Missing />
-  const years = tooltipLifeYears(family, personId)
+  const years = tooltipLifeYears(family, personId).replaceAll(' - ', '–')
   const eventCount = family.events.filter(event => event.participants.some(participant => participant.personId === personId)).length
   const relationCount = new Set(family.relationships.flatMap(relation => relation.fromPersonId === personId ? [relation.toPersonId]
     : relation.toPersonId === personId ? [relation.fromPersonId] : [])).size
   return <>
     <header className={styles.personHeader}>
-      <div>
+      <div className={styles.personHeading}>
         <h1 ref={heading} tabIndex={-1}>{personFullName(family, personId)}</h1>
         {years && <p className={styles.years}>{years}</p>}
       </div>
+      <nav className={styles.navigation} aria-label="Основна навігація">
+        <Link to={`/tree/${family.config.homePersonId}`} resetMap><Icon kind="home" />До мене</Link>
+      </nav>
     </header>
     <div className={styles.viewTabs} aria-label="Перегляд людини">
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
@@ -112,28 +115,11 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
 }
 
 function Workspace() {
-  const family = useFamily()
   const { state } = useView()
-  const location = useLocation()
-  // Remounting the mobile menu on navigation closes it without an effect-driven state update.
   return <div className={styles.app}>
     <a className={styles.skipLink} href="#atlas-content">До вмісту</a>
-    <header className={styles.topbar}>
-      <Link className={styles.brand} to={`/${state.current.mapScreen}/${state.homePersonId}`} resetMap><span className={styles.brandIcon}><Icon kind="tree" /></span><span>Родовід<small>СІМЕЙНИЙ АТЛАС</small></span></Link>
-      <p className={styles.familyTitle}>{family.config.title}</p>
-      <nav className={styles.navigation} aria-label="Основна навігація">
-        <Link to={`/tree/${state.homePersonId}`} resetMap><Icon kind="home" />До мене</Link>
-      </nav>
-    </header>
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
-        <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2></div>
-        <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
-        <MobileDirectory key={location.pathname} />
-        <div className={styles.desktopDirectory}><PeopleDirectory /></div>
-        <div className={styles.sidebarAudio}><AudioProvider /></div>
-        <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
-      </aside>
+      <Sidebar />
       <main className={styles.main} id="atlas-content" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Navigate to={`/tree/${state.homePersonId}`} replace />} />
@@ -151,11 +137,35 @@ function Workspace() {
   </div>
 }
 
-function MobileDirectory() {
-  // Native details provides keyboard behavior and closes when this keyed component remounts.
-  return <details className={styles.mobileDirectory}>
-    <summary>Знайти людину · покажчик родоводу</summary><PeopleDirectory />
-  </details>
+function Sidebar() {
+  const family = useFamily()
+  const { state } = useView()
+  const { pathname } = useLocation()
+  const menu = useRef<HTMLDetailsElement>(null)
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 761px)')
+    const update = () => { if (menu.current) menu.current.open = desktop.matches }
+    update()
+    desktop.addEventListener('change', update)
+    return () => desktop.removeEventListener('change', update)
+  }, [pathname])
+  // Native details supplies keyboard access; navigation closes only the mobile menu.
+  return <aside className={styles.sidebar}>
+    <details ref={menu} className={styles.sidebarMenu}>
+      <summary>Знайти людину · покажчик родоводу</summary>
+      <div className={styles.sidebarContent}>
+        <div className={styles.sidebarBrand}>
+          <Link className={styles.brand} to={`/${state.current.mapScreen}/${state.homePersonId}`} resetMap><span className={styles.brandIcon}><Icon kind="tree" /></span><span>Родовід<small>СІМЕЙНИЙ АТЛАС</small></span></Link>
+          <p className={styles.familyTitle}>{family.config.title}</p>
+        </div>
+        <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2></div>
+        <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
+        <PeopleDirectory />
+        <div className={styles.sidebarAudio}><AudioProvider /></div>
+        <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
+      </div>
+    </details>
+  </aside>
 }
 
 function Providers({ children }: { children: ReactNode }) {

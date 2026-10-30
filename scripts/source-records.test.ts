@@ -25,6 +25,7 @@ async function fixture() {
     await cp(resolve(root, 'Data', file), resolve(directory, 'Data', file))
   }
   await cp(resolve(root, 'Data/assets'), resolve(directory, 'Data/assets'), { recursive: true })
+  await cp(resolve(root, 'Data/memories'), resolve(directory, 'Data/memories'), { recursive: true })
   await writeFile(resolve(directory, 'scan.png'), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/l9sAAAAASUVORK5CYII=', 'base64'))
   await writeFile(resolve(directory, 'description.txt'), 'Умовна розшифровка для тесту.\nДругий рядок.', 'utf8')
   return directory

@@ -11,7 +11,7 @@ test('all 74 rooms resolve the same IDs with readable missing information', asyn
     await page.goto(`/person/${id}`)
     await expect(page.locator('#person-title')).toBeVisible()
     await expect(page.getByRole('article', { name: 'Відомості про людину' })).toBeVisible()
-    await expect(page.getByRole('navigation', { name: 'Розділи кімнати' })).toBeVisible()
+    await expect(page.getByRole('navigation', { name: 'Розділи кімнати' })).toHaveCount(0)
     await expect(page.locator('#photos img')).toHaveCount(0)
     await expect(page.locator('input[type="file"], textarea, [contenteditable]')).toHaveCount(0)
     expect(await page.locator('html').evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(page.viewportSize()!.width)

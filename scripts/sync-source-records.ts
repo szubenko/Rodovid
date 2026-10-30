@@ -14,7 +14,7 @@ import { resolveSourceRecordFiles, sourceRecordFileSchema } from './source-recor
 import type { SourceRecord } from './source-record-files.ts'
 import { sourceArk, sourceRecordBaseName } from './source-record-names.ts'
 import { validateData } from './validation/validate.ts'
-import { resolveMemoryFiles } from './memory-files.ts'
+import { resolveMemoryFiles, resolveMemoryFilesSync } from './memory-files.ts'
 
 const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`
 const stateSchema = z.strictObject({ schemaVersion: z.literal(1), records: z.array(z.strictObject({
@@ -80,7 +80,7 @@ export function planSourceRecordSync(input: ConversionInput, dataDirectory: stri
     for (const link of entry.evidenceLinks) if (!incoming.evidenceLinks.some(item => item.id === link.id)
       && !materialized.evidenceLinks.some(item => item.id === link.id)) materialized.evidenceLinks.push(link)
   }
-  const discovery = convertGedcom({ ...input, supplements: materialized }).family
+  const discovery = convertGedcom({ ...input, supplements: resolveMemoryFilesSync(materialized, dataDirectory) }).family
   const bindings = additions.sourceRecordFiles
   const overrides = new Map<string, SourceRecord>()
   const expected = new Map<string, Buffer | undefined>([[statePath, stateBytes]])

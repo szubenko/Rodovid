@@ -4,6 +4,7 @@ import { isAbsolute, relative, resolve } from 'node:path'
 import { z } from 'zod'
 import { sourceSchema } from '../src/data/schema.ts'
 import { supplementsSchema } from '../src/data/supplements.ts'
+import { resolveMemoryFilesSync } from './memory-files.ts'
 
 export const sourceRecordFileSchema = z.strictObject({
   url: sourceSchema.shape.url.unwrap(), description: z.string(),
@@ -14,7 +15,7 @@ export const recordEvidenceIds = (entry: ReturnType<typeof supplementsSchema.par
 
 /** Local JSON is authoring input, never a browser editor or a second transcript copy. */
 export function resolveSourceRecordFiles(input: unknown, dataDirectory: string, overrides: ReadonlyMap<string, unknown> = new Map()) {
-  const supplements = supplementsSchema.parse(input)
+  const supplements = resolveMemoryFilesSync(input, dataDirectory)
   // Byte identity lets the view share one scan across distinct indexed people and URLs.
   const root = realpathSync(dataDirectory)
   for (const media of supplements.media.filter(item => item.mimeType.startsWith('image/') || item.mimeType === 'application/pdf')) {

@@ -23,7 +23,14 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
     }).addTo(map)
     const bounds = outline.getBounds()
     for (const { place } of entries) if (place.coordinates) bounds.extend([place.coordinates.latitude, place.coordinates.longitude])
-    const fit = () => { map.invalidateSize({ animate: false, pan: false }); map.fitBounds(bounds, { padding: [24, 32], animate: false }) }
+    const fit = () => {
+      map.invalidateSize({ animate: false, pan: false })
+      // Outlying points can sit at the edge of the bounds; fit their labels too.
+      const labels = [...markers.current.values()].map(marker => marker.getTooltip()?.getElement())
+      const horizontal = Math.max(24, ...labels.map(label => (label?.offsetWidth ?? 0) / 2 + 8))
+      const vertical = Math.max(32, ...labels.map(label => (label?.offsetHeight ?? 0) + 16))
+      map.fitBounds(bounds, { padding: [horizontal, vertical], animate: false })
+    }
     fit()
     map.attributionControl.setPrefix(false)
     const attribution = document.createElement('span')
@@ -55,6 +62,7 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       marker.on('click', () => onSelect(place.id))
       markers.current.set(place.id, marker)
     }
+    fit()
     const resize = new ResizeObserver(fit)
     resize.observe(element)
     const activeMarkers = markers.current

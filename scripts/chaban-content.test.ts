@@ -9,7 +9,7 @@ const read = (name: string) => readFileSync(new URL(`../Data/${name}`, import.me
 const json = (name: string) => JSON.parse(read(name).toString())
 const hash = (bytes: Buffer | string) => createHash('sha256').update(bytes).digest('hex')
 
-it('publishes the complete supplied biography and the two original images for I103 with their distinct purposes', () => {
+it('publishes the referenced biography Markdown and the two original images for I103 with their distinct purposes', () => {
   const input = { bytes: read('Zubenko.ged'), config: json('site.json'), identities: json('identities.json'), supplements: json('annotations.json') }
   const plan = planSourceRecordSync(input, fileURLToPath(new URL('../Data', import.meta.url)))
   const { family } = convertGedcom({ ...input, supplements: plan.supplements })
@@ -19,7 +19,10 @@ it('publishes the complete supplied biography and the two original images for I1
   const biography = family.memories.find(memory => memory.id === 'biography-i103-chaban-yaroslav-ivanovych')!
   expect(biography.personIds).toEqual(['I103'])
   expect(biography.mediaIds).toEqual(['media-i103-history-photo'])
-  expect(hash(biography.markdown)).toBe('c1f976edfd59700da7c705a2422bf4756f4ba405b0ddb0e0fea120018b193904')
+  const binding = input.supplements.memoryFiles.find((entry: { id: string }) => entry.id === biography.id)
+  expect(binding.markdownFile).toBe('memories/чабан-ярослав-іванович-біографія.md')
+  expect(input.supplements.memories.some((entry: { id: string }) => entry.id === biography.id)).toBe(false)
+  expect(biography.markdown).toBe(read(binding.markdownFile).toString('utf8'))
   for (const id of [...person.photoIds, person.portraitId!]) {
     const media = family.media.find(media => media.id === id)!
     expect(hash(read(media.path))).toBe(media.sha256)

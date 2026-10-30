@@ -1,7 +1,5 @@
 .room { padding: clamp(0.65rem, 2vw, 1.5rem); margin-bottom: 2rem; border: 6px solid #74503a; border-radius: 0.35rem; background: linear-gradient(90deg, #e9e0cf, #f1eadd 45%, #e9e0cf); box-shadow: 0 8px 28px #382b2312; overflow-wrap: anywhere; }
 .room::before { content: ''; display: block; height: 16px; margin-bottom: 1rem; background: url('../appearance/ornament.svg') repeat-x center; opacity: 0.7; }
-.sections { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-bottom: 1rem; border-bottom: 3px double #8c3d32; }
-.sections a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-text); }
 .paper { --room-inset: clamp(0.8rem, 3vw, 1.7rem); min-width: 0; margin-bottom: 1rem; border: 1px solid #d5ded1; scroll-margin-top: 1rem; }
 .room .paper { padding: 18px var(--room-inset); color: #243b34; background: #fffefa; border-radius: 12px; box-shadow: none; }
 .room .paper > h2 { margin: -18px calc(-1 * var(--room-inset)) 18px; padding: 14px var(--room-inset) 10px; color: #58714f; border-bottom: 1px solid #e1e7da; border-radius: 12px 12px 0 0; background: linear-gradient(125deg, #edf3e7, #f8f9f1); font: 650 11px/1.4 var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -70,7 +68,7 @@
 .biography .biographyName { margin: 0; color: #213f31; font: 400 clamp(25px, 2.6vw, 32px)/1.2 var(--font-heading); }
 .biography .biographyYears { margin: 3px 0 0; color: #52684b; font-size: 14px; line-height: 1.35; }
 .biography .biographyBody { padding: 0 var(--biography-inset); }
-.memoryStory { display: flow-root; max-width: 85ch; overflow-wrap: anywhere; }
+.memoryStory { display: flow-root; max-width: none; overflow-wrap: anywhere; }
 .memoryStory > :first-child + h4, .memoryPortrait + h4 { margin-top: 0; }
 .memoryPortrait { float: left; width: min(38%, 322px); margin: 0 24px 16px 0; }
 .memoryPortrait img { display: block; width: 100%; height: auto; border-radius: 8px; }

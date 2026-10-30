@@ -61,6 +61,9 @@ export const supplementsSchema = z.strictObject({
   media: z.array(mediaSchema).default([]),
   evidenceLinks: z.array(evidenceLinkSchema).default([]),
   memories: z.array(memorySchema).default([]),
+  memoryFiles: z.array(memorySchema.omit({ markdown: true }).extend({
+    markdownFile: z.string().regex(/^(?:[\p{L}\p{N}_-]+\/)*[\p{L}\p{N}_-]+\.md$/u),
+  })).default([]),
 })
 
 export type Supplements = z.infer<typeof supplementsSchema>

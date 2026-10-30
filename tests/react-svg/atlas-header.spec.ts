@@ -87,8 +87,7 @@ test('шапка й вкладки не зміщуються між усіма �
           await expect(page.locator('#biography > header')).toHaveCount(0)
           await expect(page.getByRole('region', { name: 'Відомості', exact: true })).toBeVisible()
           await expect(page.getByRole('region', { name: 'Біографічні події', exact: true })).toBeVisible()
-          const sections = page.getByRole('navigation', { name: 'Розділи кімнати' })
-          await expect(sections.getByRole('link', { name: 'Життєпис', exact: true })).toHaveCount(0)
+          await expect(page.getByRole('navigation', { name: 'Розділи кімнати' })).toHaveCount(0)
           await expect(page.getByRole('link', { name: 'Показати на карті', exact: true })).toHaveCount(0)
         }
         if (personId === anna.id && (screen === 'person' || screen === 'tree')) {

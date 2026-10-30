@@ -346,11 +346,7 @@ function checkMediaRoles(data: FamilyData, issues: Diagnostic[]) {
   }
   for (const person of data.people) {
     person.photoIds.forEach((id) => needType(id, 'image/', person.id))
-    if (person.portraitId) {
-      needType(person.portraitId, 'image/', person.id)
-      if (!person.photoIds.includes(person.portraitId)) issues.push({ severity: 'error', code: 'PORTRAIT_NOT_IN_PHOTOS',
-        message: 'Основний портрет має входити до фото людини.', entityIds: [person.id, person.portraitId] })
-    }
+    if (person.portraitId) needType(person.portraitId, 'image/', person.id)
   }
   for (const room of data.config.rooms) if (room.backgroundMediaId) needType(room.backgroundMediaId, 'image/', `room:${room.personId}`)
   for (const id of [...data.config.audio.musicMediaIds, ...data.config.audio.effectMediaIds]) needType(id, 'audio/', 'config.audio')

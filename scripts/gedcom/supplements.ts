@@ -108,6 +108,17 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
     person.lifeStatus = entry.lifeStatus
     person.provenance.push(origin(entry.id))
   }
+  const personMedia = new Set<string>()
+  for (const entry of supplements.personMedia) {
+    uniqueEntry(entry.id)
+    const person = data.people.find(person => person.id === entry.personId)
+    if (!person) throw new Error(`Unresolved person media: ${entry.personId}`)
+    if (personMedia.has(person.id)) throw new Error(`Conflicting person media: ${person.id}`)
+    personMedia.add(person.id)
+    person.photoIds = [...new Set([...person.photoIds, ...entry.photoIds])]
+    if (entry.portraitId) person.portraitId = entry.portraitId
+    person.provenance.push(origin(entry.id))
+  }
   const sourceEnrichments = new Set<string>()
   for (const entry of supplements.sourceEnrichments) {
     uniqueEntry(entry.id)

@@ -77,7 +77,7 @@ describe('family data contract v1', () => {
       if (room.backgroundMediaId) hasId(data.media, room.backgroundMediaId)
     }
     for (const person of data.people) {
-      if (person.portraitId) expect(person.photoIds).toContain(person.portraitId)
+      if (person.portraitId) hasId(data.media, person.portraitId)
     }
     [...data.config.audio.musicMediaIds, ...data.config.audio.effectMediaIds].forEach((id) => hasId(data.media, id))
   })

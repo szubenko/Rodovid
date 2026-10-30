@@ -32,7 +32,7 @@ it('keeps the wife and the two father-only daughters in their separate recorded 
 })
 
 it('reuses the existing S86 scan and reviewed text for the additional citations without pending synchronization', () => {
-  expect(report.counts).toMatchObject({people:102,families:41,sources:89,media:86,evidenceLinks:209})
+  expect(report.counts).toMatchObject({people:102,families:41,sources:89,media:88,evidenceLinks:209})
   expect(report.unhandledNodes).toEqual([])
   expect(plan.outputs.size).toBe(0)
   expect(plan.summary.conflicts).toEqual([])

@@ -14,9 +14,9 @@ export function PersonCardArtwork({ id, skins = [] }: { id: string; skins?: Iter
   </>
 }
 
-export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, name, years, skin, cardClassName, artworkId, measureName, measureYears }: {
+export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, name, years, skin, cardClassName, artworkId, measureName, measureYears, photoPath }: {
   x: number; y: number; width: number; height: number; name: string; years: string
-  skin: PersonCardSkin; cardClassName?: string
+  skin: PersonCardSkin; cardClassName?: string; photoPath?: string
   artworkId: string; measureName: (text: string) => number; measureYears: (text: string) => number
 }) {
   const prefix = useId().replaceAll(':', '')
@@ -40,6 +40,7 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
       x={left} y={top} width={cardWidth} height={cardHeight} rx="11" />
     <g className={styles.art} data-tone={skin.tone} transform={`translate(${left} ${top}) scale(${scale})`} pointerEvents="none" aria-hidden="true">
       <defs>
+        {photoPath && <clipPath id={`${prefix}-photo`}><circle cx={portraitX} cy={portraitY} r={size / 2} /></clipPath>}
         {skin.portrait && <pattern id={`${prefix}-portrait`} x="19" y={(height - size) / 2}
           width={size} height={size} patternUnits="userSpaceOnUse"
           viewBox={`${skin.portrait.x - portraitRadius} ${skin.portrait.y - portraitRadius} ${portraitRadius * 2} ${portraitRadius * 2}`}>
@@ -55,7 +56,10 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
         <path d={`M${edge},9 l3,4 -6,6 6,6 -6,6 3,3 M${edge},${height - 34} l3,3 -6,6 6,6 -6,6 3,4`} />
       </g>)}
       <circle className={styles.portraitRing} cx={portraitX} cy={portraitY} r={size / 2 + 3} />
-      {skin.portrait && <circle cx={portraitX} cy={portraitY} r={size / 2} fill={`url(#${prefix}-portrait)`} />}
+      {photoPath ? <image data-card-portrait="true" href={`${import.meta.env.BASE_URL}${photoPath}`}
+        x="19" y={(height - size) / 2} width={size} height={size}
+        preserveAspectRatio="xMidYMid slice" clipPath={`url(#${prefix}-photo)`} />
+        : skin.portrait && <circle cx={portraitX} cy={portraitY} r={size / 2} fill={`url(#${prefix}-portrait)`} />}
       <rect className={styles.badge} x={textX - 3} y="14" width={Math.min(textWidth + 4, 120)} height="24" rx="12" />
       {skin.badgeIcon === 'sewing-machine'
         ? <g fill="currentColor" transform={`translate(${textX + 1} 17) scale(.75)`}>

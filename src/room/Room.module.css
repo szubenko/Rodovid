@@ -70,6 +70,13 @@
 .biography .biographyName { margin: 0; color: #213f31; font: 400 clamp(25px, 2.6vw, 32px)/1.2 var(--font-heading); }
 .biography .biographyYears { margin: 3px 0 0; color: #52684b; font-size: 14px; line-height: 1.35; }
 .biography .biographyBody { padding: 0 var(--biography-inset); }
+.memoryStory { display: flow-root; max-width: 85ch; overflow-wrap: anywhere; }
+.memoryStory > :first-child + h4, .memoryPortrait + h4 { margin-top: 0; }
+.memoryPortrait { float: left; width: min(38%, 322px); margin: 0 24px 16px 0; }
+.memoryPortrait img { display: block; width: 100%; height: auto; border-radius: 8px; }
+@media (max-width: 650px) {
+  .memoryPortrait { float: none; display: block; width: min(100%, 322px); margin: 0 auto 20px; }
+}
 .biography .biographySection { padding: 18px 0; border-radius: 0; background: transparent; }
 .biography .biographySection + .biographySection { border-top: 1px solid #e7ebdf; }
 .biography .biographySectionTitle { margin: 0 0 12px; color: #426344; font: 650 11px/1.4 var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; }

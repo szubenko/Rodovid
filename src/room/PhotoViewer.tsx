@@ -4,7 +4,7 @@ import type { Media } from '../data/schema'
 import 'photoswipe/style.css'
 import './photo-viewer.css'
 
-export function PhotoViewer({ items, index, onClose }: { items: Media[]; index: number; onClose: () => void }) {
+export function PhotoViewer({ items, index, onClose, showCaptions = true }: { items: Media[]; index: number; onClose: () => void; showCaptions?: boolean }) {
   const close = useRef(onClose)
   const [error, setError] = useState(false)
   useEffect(() => {
@@ -17,9 +17,9 @@ export function PhotoViewer({ items, index, onClose }: { items: Media[]; index: 
         showHideAnimationType: 'none',
         closeTitle: 'Закрити галерею', zoomTitle: 'Збільшити / зменшити', arrowPrevTitle: 'Попереднє фото', arrowNextTitle: 'Наступне фото',
         errorMsg: 'Зображення недоступне. Закрийте галерею або перейдіть до іншого фото.',
-        preload: [0, 1], padding: { top: 60, bottom: 110, left: 10, right: 10 },
+        preload: [0, 1], padding: { top: 60, bottom: showCaptions ? 110 : 10, left: 10, right: 10 },
       })
-      viewer.on('uiRegister', () => viewer?.ui?.registerElement({ name: 'caption', order: 9, isButton: false, appendTo: 'root', onInit: element => {
+      if (showCaptions) viewer.on('uiRegister', () => viewer?.ui?.registerElement({ name: 'caption', order: 9, isButton: false, appendTo: 'root', onInit: element => {
         const update = () => { const item = items[viewer!.currIndex]!; element.textContent = `${item.title}${item.description ? ` — ${item.description}` : ''}` }
         viewer!.on('change', update)
         update()
@@ -30,6 +30,6 @@ export function PhotoViewer({ items, index, onClose }: { items: Media[]; index: 
       viewer.element?.setAttribute('aria-label', 'Перегляд зображень')
     }).catch(() => { if (!disposed) setError(true) })
     return () => { disposed = true; viewer?.destroy(); if (trigger?.isConnected) trigger.focus({ preventScroll: true }) }
-  }, [items, index])
-  return error ? <p role="alert">Не вдалося відкрити галерею. Скористайтеся прямим посиланням на файл. <button onClick={onClose}>Закрити повідомлення</button></p> : null
+  }, [items, index, showCaptions])
+  return error ? <p role="alert">Не вдалося відкрити галерею. Спробуйте ще раз. <button onClick={onClose}>Закрити повідомлення</button></p> : null
 }

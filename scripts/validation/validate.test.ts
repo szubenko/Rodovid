@@ -192,7 +192,7 @@ describe('preparation validation', () => {
   it.each(['photo', 'portrait', 'background', 'audio', 'pdf-page', 'image-region'])('checks media semantics for %s', async (role) => {
     const data = familyDataSchema.parse(json('tests/fixtures/data-contract/full.json'))
     if (role === 'photo') data.people[0]!.photoIds.push('media-audio')
-    if (role === 'portrait') data.people[0]!.photoIds = []
+    if (role === 'portrait') data.people[0]!.portraitId = 'media-audio'
     if (role === 'background') data.config.rooms[0]!.backgroundMediaId = 'media-audio'
     if (role === 'audio') data.config.audio.musicMediaIds = ['media-photo']
     if (role === 'pdf-page') {
@@ -203,6 +203,6 @@ describe('preparation validation', () => {
       data.evidenceLinks[0]!.fragment = { region: { x: 0, y: 0, width: 1, height: 1 } }
     }
     const report = await validateData(data, options)
-    expect(report.issues).toContainEqual(expect.objectContaining({ code: role === 'portrait' ? 'PORTRAIT_NOT_IN_PHOTOS' : 'INVALID_MEDIA_ROLE' }))
+    expect(report.issues).toContainEqual(expect.objectContaining({ code: 'INVALID_MEDIA_ROLE' }))
   })
 })

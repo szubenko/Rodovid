@@ -33,6 +33,11 @@ export const supplementsSchema = z.strictObject({
     id, personId: personIdSchema, explanation: text,
     lifeStatus: personSchema.shape.lifeStatus,
   })).default([]),
+  personMedia: z.array(z.strictObject({
+    id, personId: personIdSchema, photoIds: z.array(id).default([]), portraitId: id.optional(),
+  }).refine(entry => entry.photoIds.length > 0 || Boolean(entry.portraitId), {
+    message: 'Provide photos or a portrait',
+  })).default([]),
   placeEnrichments: z.array(z.strictObject({
     id, placeId: id, explanation: text,
     displayName: text.optional(), historicalNames: z.array(text).optional(),

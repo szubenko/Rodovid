@@ -52,6 +52,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     return [person.id, years === 'Роки життя невідомі' ? '' : years]
   })), [family])
   const skins = useMemo(() => new Map(family.people.map(person => [person.id, personCardSkin(family, person.id)])), [family])
+  const portraits = useMemo(() => new Map(family.people.map(person => [person.id,
+    family.media.find(media => media.id === person.portraitId && media.mimeType.startsWith('image/'))?.path])), [family])
   const measureCardName = useMemo(() => {
     const context = document.createElement('canvas').getContext('2d')
     if (context) context.font = '700 24px Georgia, "Times New Roman", serif'
@@ -213,9 +215,11 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
                 aria-label={`${central ? 'У центрі. Відкрити кімнату' : 'Показати в центрі'}: ${labels.get(node.personId)}. ${dates.get(node.personId)}${hidden ? '. Є родичі поза цим показом' : ''}`}>
                 {portraitCards ? <PortraitPersonCard x={node.x} y={node.y} metrics={portraitMetrics} scale={node.width / portraitMetrics.width}
                   name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin}
+                  photoPath={portraits.get(node.personId)}
                   artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />
                 : <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
                   name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin} cardClassName={styles.card}
+                  photoPath={portraits.get(node.personId)}
                   artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />}
                 {hidden && !includeRelatives && !portraitCards && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
                 </g>

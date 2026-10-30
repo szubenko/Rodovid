@@ -5,22 +5,22 @@ const visit = (key: string, screen: MapScreen | 'person', personId: string, navi
   ({ type: 'visit', key, route: { screen, personId }, navigationType })
 
 describe('view history', () => {
-  it('restores the portrait copy and density independently of the original vertical diagram', () => {
+  it.each(['vertical-design', 'vertical-minimal'] as const)('restores %s and density independently of the original vertical diagram', screen => {
     let state = initialView('I1', 3, 'original', { screen: 'vertical', personId: 'I1' }, .6)
     const original = state.current
-    state = viewReducer(state, visit('portrait', 'vertical-design', 'I1'))
+    state = viewReducer(state, visit('portrait', screen, 'I1'))
     state = viewReducer(state, { type: 'map', settings: { compactCards: true, zoom: 1.25, generations: 5, expandedSiblingIds: ['I12'] } })
     const portrait = state.current
-    state = viewReducer(state, visit('parent', 'vertical-design', 'I2'))
-    expect(state.current).toMatchObject({ mapScreen: 'vertical-design', map: { compactCards: true, zoom: .6 } })
+    state = viewReducer(state, visit('parent', screen, 'I2'))
+    expect(state.current).toMatchObject({ mapScreen: screen, map: { compactCards: true, zoom: .6 } })
     expect(state.current.map.expandedSiblingIds).toBeUndefined()
-    state = viewReducer(state, visit('portrait', 'vertical-design', 'I1', 'POP'))
+    state = viewReducer(state, visit('portrait', screen, 'I1', 'POP'))
     expect(state.current).toEqual(portrait)
     state = viewReducer(state, visit('original', 'vertical', 'I1', 'POP'))
     expect(state.current).toEqual(original)
   })
   it('starts every atlas diagram at 60%, centers new views, and restores saved cameras', () => {
-    for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'relatives'] as const) {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'] as const) {
       const initial = initialView('I1', 3, 'direct', { screen, personId: 'I1' }, 0.6)
       expect(initial.current.map).toMatchObject({ zoom: 0.6, pan: { x: 0.2, y: 0.2 } })
       const changed = viewReducer(initial, { type: 'map', settings: { zoom: 2, pan: { x: -0.1, y: 0.4 } } })

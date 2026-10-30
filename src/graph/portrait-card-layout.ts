@@ -14,7 +14,7 @@ export function portraitTextLines(text: string, width: number, measure: (text: s
 }
 
 export function portraitCardMetrics(names: Iterable<string>, dates: Iterable<string>, compact: boolean,
-  measureName: (text: string) => number, measureYears: (text: string) => number) {
+  measureName: (text: string) => number, measureYears: (text: string) => number, showPortrait = true) {
   const nameSize = compact ? 22 : 26, yearSize = compact ? 21 : 24
   const nameMeasure = (text: string) => measureName(text) * nameSize / 24
   const yearMeasure = (text: string) => measureYears(text) * yearSize / 15
@@ -24,8 +24,9 @@ export function portraitCardMetrics(names: Iterable<string>, dates: Iterable<str
     ...allNames.flatMap(name => name.split(/\s+/u).map(word => nameMeasure(word) + inset * 2)),
     ...allDates.flatMap(date => date.split(/\s+/u).map(word => yearMeasure(word) + inset * 2))))
   const textWidth = width - inset * 2
-  const portraitSize = width - (compact ? 44 : 52), portraitTop = compact ? 12 : 14
-  const badgeY = portraitTop + portraitSize + 2, badgeRadius = compact ? 14 : 18
+  const portraitSize = showPortrait ? width - (compact ? 44 : 52) : 0, portraitTop = showPortrait ? compact ? 12 : 14 : 0
+  const badgeRadius = compact ? 14 : 18
+  const badgeY = showPortrait ? portraitTop + portraitSize + 2 : badgeRadius + 12
   const labelY = badgeY + badgeRadius + (compact ? 15 : 19)
   const nameY = labelY + nameSize + 6, nameStep = nameSize * 1.1
   const nameRows = Math.max(2, ...allNames.map(name => portraitTextLines(name, textWidth, nameMeasure, true).length))

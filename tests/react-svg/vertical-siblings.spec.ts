@@ -198,7 +198,7 @@ test('незалежні гілки, відновлення через кімн�
   await page.locator('[data-center="true"][data-person-id]').focus()
   await page.keyboard.press('Enter')
   await expect(page).toHaveURL(/\/person\/I1$/)
-  await page.getByRole('button', { name: '← Назад', exact: true }).click()
+  await page.goBack()
   await expect(makar).toHaveAttribute('aria-expanded', 'true')
   await expect(page.locator('[data-person-id="I13"]')).toHaveCount(1)
   await page.locator('[data-person-id="I13"]').focus()

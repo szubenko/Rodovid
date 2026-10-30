@@ -25,7 +25,7 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
     <rect className={styles.frame} data-tone={skin.tone} x={left} y={top} width={m.width * scale} height={m.height * scale} rx={12 * scale} />
     <g className={styles.art} data-tone={skin.tone} transform={`translate(${left} ${top}) scale(${scale})`} pointerEvents="none" aria-hidden="true">
       <defs>
-        {skin.portrait && <pattern id={`${id}-portrait`} x={(m.width - m.portraitSize) / 2} y={m.portraitTop}
+        {m.portraitSize > 0 && skin.portrait && <pattern id={`${id}-portrait`} x={(m.width - m.portraitSize) / 2} y={m.portraitTop}
           width={m.portraitSize} height={m.portraitSize} patternUnits="userSpaceOnUse"
           viewBox={`${skin.portrait.x - radius} ${skin.portrait.y - radius} ${radius * 2} ${radius * 2}`}>
           <use href={`#${artworkId}${skin.portrait.artwork ? `-${skin.portrait.artwork}` : ''}`} />
@@ -39,12 +39,12 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
         {Array.from({ length: Math.floor((m.height - 28) / 24) }, (_, row) =>
           <use key={row} href={`#${id}-stitch`} transform={`translate(${edge} ${24 + row * 24}) scale(.58)`} />)}
       </g>)}
-      <circle className={styles.ring} cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2} r={m.portraitSize / 2 + 3} />
+      {m.portraitSize > 0 && <><circle className={styles.ring} cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2} r={m.portraitSize / 2 + 3} />
       {skin.portrait ? <circle data-card-portrait="true" cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2}
         r={m.portraitSize / 2} fill={`url(#${id}-portrait)`} />
         : <g className={styles.silhouette} transform={`translate(${m.width / 2} ${m.portraitTop + m.portraitSize / 2}) scale(${m.portraitSize / 100})`}>
           <circle r="49" className={styles.emptyPortrait} /><circle cy="-10" r="15" /><path d="M-30 35v-6a30 22 0 0 1 60 0v6Z" />
-        </g>}
+        </g>}</>}
       <circle className={styles.badge} cx={m.width / 2} cy={m.badgeY} r={m.badgeRadius} />
       <g className={styles.symbol} transform={`translate(${m.width / 2} ${m.badgeY}) scale(${m.badgeRadius / 23})`}><RoleSymbol skin={skin} /></g>
       <text className={styles.role} x={m.width / 2} y={m.labelY} fontSize={m.nameSize * .78} textAnchor="middle">{skin.label}</text>

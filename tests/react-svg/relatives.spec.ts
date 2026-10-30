@@ -172,7 +172,7 @@ test('вся родина: всі унікальні картки й зв’яз
   await page.keyboard.press('Enter')
   await expect(page).toHaveURL(/\/person\/I1$/)
   await expect(page.getByRole('link', { name: 'Усі родичі', exact: true })).toHaveAttribute('href', '/relatives/I1')
-  await page.getByRole('button', { name: '← Назад', exact: true }).click()
+  await page.goBack()
   await expect(svg.locator('[data-person-id]')).toHaveCount(peopleCount)
   await expect(page.getByRole('button', { name: 'Початкові гілки', exact: true })).toHaveAttribute('aria-pressed', 'true')
   if (isMobile) {

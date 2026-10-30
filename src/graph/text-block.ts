@@ -1,6 +1,18 @@
 export type TextMeasure = (text: string, size: number) => number
-export type LabelLine = { text: string; date: boolean; fontSize: number; y: number }
+export type LabelLine = { text: string; date: boolean; fontSize: number; y: number; x?: number }
 export type LabelBlock = { lines: LabelLine[]; width: number; height: number }
+
+/** Keep the complete name and years on one baseline at the requested font size. */
+export function singleLineLabelBlock(name: string, date: string, fontSize: number, measure: TextMeasure): LabelBlock {
+  const nameWidth = measure(name, fontSize)
+  const dateWidth = date ? measure(date, fontSize) : 0
+  const gap = date ? measure('  ', fontSize) : 0
+  return { width: nameWidth + gap + dateWidth, height: fontSize * 1.25,
+    lines: [
+      { text: name, date: false, fontSize, x: -(gap + dateWidth) / 2, y: 0 },
+      ...(date ? [{ text: date, date: true, fontSize, x: (nameWidth + gap) / 2, y: 0 }] : []),
+    ] }
+}
 
 /** Whole words on up to two balanced lines; an unbroken word is never shortened. */
 export function nameLines(text: string, width: number, measure: (text: string) => number): string[] {

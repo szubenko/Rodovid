@@ -7,6 +7,7 @@ import { availableGenerations, buildFamilyGraph, projectFamily } from '../src/gr
 import { estimateTextWidth, layoutRadial } from '../src/graph/layout.ts'
 import { lifeYears } from '../src/graph/presentation'
 import { personName } from '../src/data/person-name'
+import { minZoom } from '../src/graph/camera'
 
 const read = (path: string) => readFileSync(new URL(`../${path}`, import.meta.url))
 const json = (path: string) => JSON.parse(read(path).toString())
@@ -26,7 +27,7 @@ it.each([320, 1024])('fits every full name and date at a readable size inside th
     const layout = layoutRadial(projection, { width, height: width, labels, dates, fontSize: 20, fitToViewport: false })
     expect(new Set(layout.nodes.flatMap((node) => node.text.lines.map((line) => line.fontSize))).size).toBe(1)
     expect(layout.nodes[0]!.fontSize).toBe(20)
-    expect(layout.fitScale).toBeGreaterThanOrEqual(0.05)
+    expect(layout.fitScale).toBeGreaterThanOrEqual(minZoom)
     expect(layout.ringRadii.at(-1)! * layout.fitScale).toBeCloseTo(width / 2 - 16)
     for (const node of layout.nodes) {
       expect(node.text.lines.filter((line) => !line.date).map((line) => line.text).join(' ')).toBe(labels.get(node.personId))
@@ -137,5 +138,32 @@ it('keeps the last three Chaban ancestors comparable to their neighboring ring f
     const parent = layout.nodes.find(parent => parent.appearanceId === node.parentAppearanceId)!
     expect(node.outerRadius - node.innerRadius).toBeLessThanOrEqual((parent.outerRadius - parent.innerRadius) * 1.6)
     expect(node.labelRadius - node.innerRadius).toBeCloseTo(node.outerRadius - node.labelRadius)
+  }
+})
+
+it('keeps full names and years on one baseline only from the narrow sixth ancestor ring', () => {
+  for (const person of family.people) {
+    const layout = layoutRadial(projectFamily(graph, person.id, { generations: 12 }),
+      { width: 1024, height: 768, labels, dates, fitToViewport: false })
+    for (const node of layout.nodes.filter(node => node.lane === 'parents' && node.ring >= 6)) {
+      expect(node.text.lines.every(line => line.y === 0 && line.fontSize === 20)).toBe(true)
+      expect(node.text.lines.filter(line => !line.date).map(line => line.text)).toEqual([labels.get(node.personId)])
+      const [name, date] = node.text.lines
+      if (date) expect(name!.x! + estimateTextWidth(name!.text, 20) * 1.03 / 2)
+        .toBeLessThan(date.x! - estimateTextWidth(date.text, 20) * 1.03 / 2)
+    }
+  }
+  const layout = layoutRadial(projectFamily(graph, 'I1', { generations: 12 }),
+    { width: 1024, height: 768, labels, dates, fitToViewport: false,
+      measureText: (text, size) => Array.from(text).length * size * 0.5 })
+  // The unaffected five inner rings keep their measured geometry and wrapping.
+  for (const [index, radius] of [120, 233.94340575098596, 317.94340575098596,
+    512.9516930364977, 657.157472793091, 891.4987671368939].entries()) {
+    expect(layout.ringRadii[index]).toBeCloseTo(radius)
+  }
+  expect(layout.nodes.some(node => node.ring === 5 && new Set(node.text.lines.map(line => line.y)).size > 1)).toBe(true)
+  for (const [id, maxWidth] of [['I45', 500], ['I91', 400], ['I98', 1200]] as const) {
+    const node = layout.nodes.find(node => node.personId === id)!
+    expect(node.outerRadius - node.innerRadius).toBeLessThan(maxWidth)
   }
 })

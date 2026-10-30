@@ -1,4 +1,4 @@
-export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'vertical-design' | 'relatives'
+export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'vertical-design' | 'vertical-minimal' | 'relatives'
 export type ViewRoute = { screen: MapScreen | 'person' | 'missing'; personId: string | null }
 export type MapSettings = {
   generations: number
@@ -39,7 +39,7 @@ function defaultMap(generations: number, zoom = 1): MapSettings {
 }
 
 function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
-  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'vertical-design' || screen === 'relatives'
+  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives'
 }
 
 export function initialView(homePersonId: string, initialGenerations: number, key: string, route: ViewRoute, initialMapZoom = 1): ViewState {

@@ -15,10 +15,30 @@ const dates = new Map(family.people.map(person => {
   return [person.id, years === 'Роки життя невідомі' ? '' : years]
 }))
 const measure = (text: string, size: number) => text.length * size * .6
-const metrics = (compact: boolean) => portraitCardMetrics(labels.values(), dates.values(), compact,
-  text => measure(text, 24), text => measure(text, 15))
+const metrics = (compact: boolean, showPortrait = true) => portraitCardMetrics(labels.values(), dates.values(), compact,
+  text => measure(text, 24), text => measure(text, 15), showPortrait)
 
 describe('portrait genealogy cards', () => {
+  it('removes portrait space in minimal cards while retaining complete names and large dates', () => {
+    for (const compact of [false, true]) {
+      const original = metrics(compact)
+      const minimal = portraitCardMetrics(labels.values(), dates.values(), compact,
+        text => measure(text, 24), text => measure(text, 15), false)
+      expect(minimal.portraitSize).toBe(0)
+      expect(minimal.height).toBeLessThan(original.height * .65)
+      expect(minimal.width).toBe(original.width)
+      expect(minimal.nameSize).toBe(original.nameSize)
+      expect(minimal.yearSize).toBe(original.yearSize)
+      for (const [id, name] of labels) {
+        const names = portraitTextLines(name, minimal.textWidth, text => measure(text, minimal.nameSize), true)
+        const years = portraitTextLines(dates.get(id)!, minimal.textWidth, text => measure(text, minimal.yearSize))
+        expect(names.join(' ')).toBe(name)
+        expect(minimal.nameY + (names.length - 1) * minimal.nameStep).toBeLessThan(minimal.yearsY - minimal.yearSize)
+        expect(minimal.yearsY + (years.length - 1) * (minimal.yearSize + 3)).toBeLessThan(minimal.height - 8)
+      }
+    }
+  })
+
   it('adds 15% to the space between generation rows while preserving card size', () => {
     const projection = projectVerticalFamily(graph, 'I12', { generations: 2 })
     const directLine = new Set(projection.appearances.map(node => node.personId))
@@ -56,9 +76,9 @@ describe('portrait genealogy cards', () => {
     }
   })
 
-  it('packs all real ancestor trees without overlaps and reduces both dimensions in compact mode', () => {
-    const fullOptions = portraitLayoutOptions(metrics(false), false)
-    const compactOptions = portraitLayoutOptions(metrics(true), true)
+  it.each([true, false])('packs all real trees without overlaps and reduces both compact dimensions (portraits: %s)', showPortrait => {
+    const fullOptions = portraitLayoutOptions(metrics(false, showPortrait), false)
+    const compactOptions = portraitLayoutOptions(metrics(true, showPortrait), true)
     for (const person of family.people) for (const generations of new Set([2, availableVerticalGenerations(graph, person.id) + 1])) {
       const projection = projectVerticalFamily(graph, person.id, { generations })
       const directLine = new Set(projection.appearances.map(node => node.personId))

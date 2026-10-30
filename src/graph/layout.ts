@@ -1,5 +1,5 @@
 import type { Appearance, Projection } from './projection.ts'
-import { labelBlock, type LabelBlock } from './text-block.ts'
+import { labelBlock, singleLineLabelBlock, type LabelBlock } from './text-block.ts'
 
 export type Point = { x: number; y: number }
 export type BranchTone = 'cyan' | 'lime' | 'coral' | 'yellow' | 'violet'
@@ -156,9 +156,12 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
       const reverse = angle > 90 && angle < 270
       const arcBlock = blocks.get(node.appearanceId)!
       const arcRadius = arcOuterRadius(inner, arcBlock, span, reverse)
-      // Narrow descendants need the same compact radial option as distant
-      // ancestors. Compare complete one/two-line names without shrinking text.
-      const candidates = [blockFor(node, Infinity), blockFor(node, 0)]
+      // Keep the established labels in nearer rings. Starting with the narrow
+      // sixth ancestor ring, name and years share one baseline at full size.
+      const candidates = node.lane === 'parents' && node.ring >= 6
+        ? [singleLineLabelBlock(options.labels.get(node.personId) ?? 'Ім’я невідоме',
+          options.dates?.get(node.personId) ?? '', fontSize, measure)]
+        : [blockFor(node, Infinity), blockFor(node, 0)]
       const radialBlock = candidates.reduce((best, candidate) => radialOuterRadius(inner, candidate, span)
         < radialOuterRadius(inner, best, span) ? candidate : best)
       const radialRadius = radialOuterRadius(inner, radialBlock, span)
@@ -190,7 +193,8 @@ export function layoutRadial(projection: Projection, options: LayoutOptions): Ra
     // complete text above; zoom scales every label together.
     const reverseLabel = angle > 90 && angle < 270
     const text: LabelBlock = { width: block.width * textScale, height: block.height * textScale,
-      lines: block.lines.map((line) => ({ ...line, fontSize: line.fontSize * textScale, y: line.y * textScale })) }
+      lines: block.lines.map((line) => ({ ...line, fontSize: line.fontSize * textScale, y: line.y * textScale,
+        ...(line.x === undefined ? {} : { x: line.x * textScale }) })) }
     const fullLabel = options.labels.get(appearance.personId) ?? 'Ім’я невідоме'
     return { ...appearance, tone, ...(appearance.ring === 0 ? center : radialPoint(center, labelRadius, angle)),
       startAngle, endAngle, innerRadius, outerRadius, labelRadius, labelWidth: text.width,

@@ -20,7 +20,7 @@ for (const [center, siblings] of [['I12', ['I25', 'I21', 'I23', 'I76', 'I77']], 
     }
     await page.locator(`[data-person-id="${center}"]`).press('Enter')
     await expect(page).toHaveURL(new RegExp(`/person/${center}$`))
-    await page.getByRole('button', { name: '← Назад', exact: true }).click()
+    await page.goBack()
     await expect(top).toHaveAttribute('aria-expanded', 'false')
     await expect(side).toHaveAttribute('aria-expanded', 'true')
     await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
@@ -108,7 +108,7 @@ test('згортання всіх предків, відновлення іст�
   await page.screenshot({ path: testInfo.outputPath('all-ancestors-folded.png'), fullPage: true })
   await page.locator('[data-person-id="I1"]').press('Enter')
   await expect(page).toHaveURL(/\/person\/I1$/)
-  await page.getByRole('button', { name: '← Назад', exact: true }).click()
+  await page.goBack()
   await expect(page.locator('[data-person-id]')).toHaveCount(1)
   await expect(arrow).toHaveAttribute('aria-expanded', 'false')
   await arrow.click()

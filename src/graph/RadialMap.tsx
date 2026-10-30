@@ -153,7 +153,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
                   transform={`translate(${textPosition.x} ${textPosition.y}) rotate(${rotation})`}>
                   {node.text.lines.map((line, lineIndex) => <text key={lineIndex} className={line.date ? styles.date : styles.label}
                     data-label-kind={line.date ? 'date' : 'name'} data-label-width={node.text.width}
-                    fontSize={line.fontSize} x={0} y={line.y} textAnchor="middle" dominantBaseline="central">{line.text}</text>)}
+                    fontSize={line.fontSize} x={line.x ?? 0} y={line.y} textAnchor="middle" dominantBaseline="central">{line.text}</text>)}
                 </g> : <>
                   <defs>
                     {node.text.lines.map((line, lineIndex) => <path key={lineIndex} id={`${nameId}-${lineIndex}`}

@@ -39,7 +39,7 @@ test('окрема копія, компактна геометрія, довгі
   await page.locator('[data-center="true"][data-person-id]').focus()
   await page.keyboard.press('Enter')
   await expect(page).toHaveURL(/\/person\/I1$/)
-  await page.getByRole('button', { name: '← Назад', exact: true }).click()
+  await page.goBack()
   await expect(section).toHaveAttribute('data-card-density', 'compact')
   await expect(page.locator('[data-layer="camera"]')).toHaveAttribute('transform', camera!)
   await page.getByRole('button', { name: 'Назад до попереднього перегляду', exact: true }).click()

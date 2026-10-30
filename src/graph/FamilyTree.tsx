@@ -27,12 +27,13 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
 }
 
-export function FamilyTree({ personId, orientation, includeRelatives = false, portraitCards = false }: {
-  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; portraitCards?: boolean
+export function FamilyTree({ personId, orientation, includeRelatives = false, portraitCards = false, portraitVariant = 'design' }: {
+  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; portraitCards?: boolean; portraitVariant?: 'design' | 'minimal'
 }) {
-  const title = includeRelatives ? 'Родовід з усіма родичами' : portraitCards ? 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
+  const minimalCards = portraitCards && portraitVariant === 'minimal'
+  const title = includeRelatives ? 'Родовід з усіма родичами' : portraitCards ? portraitVariant === 'minimal' ? 'Вертикальна мінімальна' : 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
   const vertical = orientation === 'vertical'
-  const mapScreen = includeRelatives ? 'relatives' : portraitCards ? 'vertical-design' : orientation
+  const mapScreen = includeRelatives ? 'relatives' : portraitCards ? portraitVariant === 'minimal' ? 'vertical-minimal' : 'vertical-design' : orientation
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -70,7 +71,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
   const settings = state.current.map
   const compact = settings.compactCards === true
   const portraitMetrics = useMemo(() => portraitCardMetrics(labels.values(), dates.values(), compact,
-    measureCardName, text => measure(text, 18) * 15 / 18), [labels, dates, compact, measureCardName, measure])
+    measureCardName, text => measure(text, 18) * 15 / 18, !minimalCards), [labels, dates, compact, measureCardName, measure, minimalCards])
   const portraitLayout = useMemo(() => portraitCards ? portraitLayoutOptions(portraitMetrics, compact)
     : undefined, [portraitCards, portraitMetrics, compact])
   const maxGenerations = useMemo(() => includeRelatives ? availableRelativeGenerations(graph, personId)
@@ -147,7 +148,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     } catch { setExportState('error') }
   }
   return <section className={shared.map} aria-label={title}
-    data-card-design={portraitCards ? 'portrait' : 'original'} data-card-density={portraitCards ? compact ? 'compact' : 'full' : undefined}
+    data-card-design={minimalCards ? 'minimal' : portraitCards ? 'portrait' : 'original'} data-card-density={portraitCards ? compact ? 'compact' : 'full' : undefined}
     data-map-expanded={expanded} role={expanded ? 'dialog' : undefined} aria-modal={expanded || undefined}>
     <div className={shared.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
@@ -174,7 +175,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
       : exportState === 'saved' ? 'PNG збережено у файл.' : 'Не вдалося створити PNG. Спробуйте ще раз.'}</p>}
     <div ref={container} className={styles.canvas} data-map-viewport>
       <svg ref={svg} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={`${title}: ${labels.get(personId)}`}>
-        <defs><PersonCardArtwork id={`${prefix}-skin-artwork`} skins={skins.values()} /></defs>
+        {!minimalCards && <defs><PersonCardArtwork id={`${prefix}-skin-artwork`} skins={skins.values()} /></defs>}
         <g data-layer="camera" transform={`translate(${settings.pan.x * width} ${settings.pan.y * height}) scale(${settings.zoom})`}>
           <g data-layer="coordinates"><g data-layer="layout" transform={`translate(${offset.x} ${offset.y})`}>
             <g data-layer="connections">{layout.edges.map(edge => {

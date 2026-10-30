@@ -1,5 +1,27 @@
 import { expect, test } from '@playwright/test'
 
+test('лише вузькі зовнішні клітинки показують ім’я та роки в один рядок без зміни шрифту', async ({ page }, testInfo) => {
+  await page.goto('/tree/I1')
+  const svg = page.locator('[data-map-viewport] > svg')
+  await expect(svg.locator('[data-person-id="I91"]')).toHaveCount(1)
+  const outer = svg.locator('[data-person-id="I45"], [data-person-id="I93"], [data-person-id="I91"], [data-person-id="I98"]')
+  expect(await outer.evaluateAll(nodes => nodes.every(node => {
+    const texts = [...node.querySelectorAll<SVGTextElement>('text')]
+    const path = node.querySelector<SVGPathElement>('path')!
+    return texts.length === 2 && texts.every(text => {
+      if (text.getAttribute('font-size') !== '20' || text.y.baseVal[0]!.value !== 0) return false
+      const box = text.getBBox()
+      const toSector = path.getCTM()!.inverse().multiply(text.getCTM()!)
+      return [box.x, box.x + box.width].every(x => [box.y, box.y + box.height].every(y =>
+        path.isPointInFill(new DOMPoint(x, y).matrixTransform(toSector))))
+    }) && texts[0]!.getBBox().x + texts[0]!.getBBox().width < texts[1]!.getBBox().x
+  }))).toBe(true)
+  expect(await svg.locator('[data-ring="5"] [data-label-orientation="radial"]').evaluateAll(labels =>
+    labels.some(label => new Set([...label.querySelectorAll('text')].map(text => text.getAttribute('y'))).size > 1))).toBe(true)
+  await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
+  await svg.screenshot({ path: testInfo.outputPath('outer-single-line.png') })
+})
+
 test('у Івана без відомого подружжя дитячий сектор прилягає до центрального кола', async ({ page }, testInfo) => {
   await page.goto('/tree/I59')
   const svg = page.locator('[data-map-viewport] > svg')
@@ -29,13 +51,28 @@ test('вибір людей з великими сім’ями зберігає
   let previousCamera = ''
 
   for (const personId of ['I12', 'I20']) {
+    // Keep these nearby relatives tappable when the archive gains deeper ancestors.
+    await page.getByLabel('Покоління', { exact: true }).selectOption('5')
     await fit.click()
     await expect(svg.locator('[data-layer="coordinates"]')).toHaveAttribute('data-transition', 'idle')
     previousCamera = (await camera.getAttribute('transform'))!
     const label = svg.locator(`[data-person-id="${personId}"] [data-label-kind="name"]`).first()
-    const box = (await label.boundingBox())!
-    if (isMobile) await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2)
-    else await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2)
+    const point = await label.evaluate(element => {
+      const text = element as SVGTextElement
+      const id = text.closest('[data-person-id]')!.getAttribute('data-person-id')
+      // A curved label's rectangle can fall outside the sector, and an edge's
+      // hit area can cover a letter. Choose a visible letter belonging to it.
+      for (let index = 0; index < text.getNumberOfChars(); index++) {
+        const glyph = text.getExtentOfChar(index)
+        const point = new DOMPoint(glyph.x + glyph.width / 2, glyph.y + glyph.height / 2).matrixTransform(text.getScreenCTM()!)
+        if (document.elementFromPoint(point.x, point.y)?.closest('[data-person-id]')?.getAttribute('data-person-id') === id) {
+          return { x: point.x, y: point.y }
+        }
+      }
+      throw new Error(`No tappable letter for ${id}`)
+    })
+    if (isMobile) await page.touchscreen.tap(point.x, point.y)
+    else await page.mouse.click(point.x, point.y)
     await expect(page).toHaveURL(`/tree/${personId}`)
     await expect(svg.locator('[data-center="true"]')).toHaveAttribute('data-person-id', personId)
     await expect(scale).toHaveText('60%')

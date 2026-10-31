@@ -34,7 +34,7 @@
 .connection[data-uncertain='true'] .line { stroke-dasharray: 5 4; }
 .hit { fill: none; stroke: transparent; stroke-width: 24; pointer-events: stroke; vector-effect: non-scaling-stroke; }
 .connection[data-selected='true'] .line, .connection:hover .line, .connection:focus-visible .line { stroke: #29664f; stroke-width: 3; }
-.connection:focus-visible { outline: none; }
+.connection:focus { outline: none; }
 @media (forced-colors: active) {
   .siblingToggle path { stroke: ButtonText; }
   .siblingToggle:focus-visible .siblingHit { stroke: Highlight; }

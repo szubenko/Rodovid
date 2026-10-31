@@ -4,7 +4,6 @@
   "installCommand": "npx --yes npm@11.16.0 ci",
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist-vercel",
-  "public": false,
   "headers": [
     {
       "source": "/(.*)",

@@ -11,7 +11,7 @@ export function AudioProvider({ children, showControls = true }: { children?: Re
   const firstAudio = (ids: string[]) => ids.map(id => family.media.find(media => media.id === id && media.mimeType.startsWith('audio/'))).find(Boolean)
   const musicFile = firstAudio(family.config.audio.musicMediaIds)
   const musicRef = useRef<HTMLAudioElement>(null)
-  const music = useAudioChannel(musicRef, musicFile?.path, preferences.musicVolume)
+  const music = useAudioChannel(musicRef, musicFile?.path, preferences.musicVolume * 0.9)
   const update = (change: Partial<AudioPreferences>) => {
     const next = { ...preferences, ...change }
     setPreferences(next)

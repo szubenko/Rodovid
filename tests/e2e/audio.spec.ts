@@ -90,7 +90,7 @@ test('quiet music, silent relative transitions and stored preferences without au
   await expect(page.getByText('Запускайте звук кнопками нижче.', { exact: false })).toHaveCount(0)
   await page.getByRole('button', { name: 'Увімкнути музику', exact: true }).click()
   await expect(music).toHaveJSProperty('paused', false)
-  await expect(music).toHaveJSProperty('volume', 0.02)
+  await expect(music).toHaveJSProperty('volume', 0.02 * 0.9)
   await volume(page, 'music', 20)
   await expect(music).toHaveJSProperty('volume', 0.2)
   await page.locator('#relatives').getByRole('button', { name: 'Приклад Вигаданий', exact: true }).evaluate((button: HTMLButtonElement) => { button.click(); button.click(); button.click() })

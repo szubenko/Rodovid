@@ -21,7 +21,7 @@ Vercel account, не має отримувати HTML застосунку, JSON
 | Середній | Не було production-політики кешування, CSP, framing/referrer headers | Додано global private/no-store для браузера/CDN, CSP, nosniff, DENY, no-referrer, noindex і Permissions-Policy |
 | Середній | Catch-all SPA rewrite може повертати HTML замість відсутніх JSON/PDF | Налаштовано тільки сім чинних маршрутів з числовим personId; невідомі файли залишаються 404 на платформі |
 | Середній | Помилкова публікація сирих файлів, source maps, звітів або старої family-збірки | publicDir:false збережено; post-build allowlist і заборонені розширення; smoke очищає попередню dist-vercel; .vercelignore для CLI |
-| Невизначений | Відомі вразливості встановлених залежностей | npm audit не завершений: sandbox DNS ENOTFOUND; мережеву спробу відхилив auto-review через передачу dependency metadata; дозволу власника на цю передачу ще немає |
+| Середній, залишковий | minimatch у dev-ланцюжку ESLint/TypeScript-ESLint | Після виправлень 12 помірних позначок від одного advisory; high/critical — 0, production — 0. Виправлений minimatch 11.0.1 не входить у заявлені upstream-діапазони; major override не застосовано |
 
 ## Переглянуті механізми
 
@@ -47,7 +47,78 @@ Vercel account, не має отримувати HTML застосунку, JSON
 - Залежності зафіксовані lockfile; віддалена збірка використовує npm ci,
   Node major 24 та зафіксований npm. Автоматичний `npm audit fix` не виконувався.
 
+## Аудит залежностей і виправлення — 31.10.2026
+
+Після явного дозволу власника виконано `npm audit --json` через офіційний
+`registry.npmjs.org`, окремо — `npm audit --omit=dev --json`.
+Попередню перешкоду дозволів знято; назви/версії залежностей передано
+реєстру в межах погодженого аудиту, сімейні файли не передавалися.
+
+| Набір | Critical | High | Moderate | Разом |
+| --- | ---: | ---: | ---: | ---: |
+| Повне дерево до виправлень | 0 | 5 | 14 | 19 |
+| Повне дерево після виправлень | 0 | 0 | 12 | 12 |
+| Production після виправлень (`--omit=dev`) | 0 | 0 | 0 | 0 |
+
+Це кількість позначених пакетів npm, включно з транзитивними ефектами;
+вона не дорівнює кількості незалежних вразливостей чи доступних з інтернету атак.
+
+Внесено сумісні оновлення й зафіксовано новий lockfile:
+
+| Пакет | Було | Стало | Призначення |
+| --- | --- | --- | --- |
+| zod | 4.5.4 | 4.6.7 | Валідація підготовлених даних; production |
+| vite | 8.2.2 | 8.3.5 | Збірка, локальний dev/preview server |
+| vitest / @vitest/mocker | 5.0.0 | 5.0.5 | Локальні тести |
+| image-size | 2.0.2 | 2.0.4 | Розміри підготовлених зображень під час імпорту/збірки |
+| brace-expansion | 5.0.9 | 5.0.12 | Транзитивна залежність інструментів |
+| source-map-js | 1.2.1 | 1.2.2 | Транзитивна залежність PostCSS у збірці |
+
+Zod усуває [GHSA-mrhx-c7xc-m3w5](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5),
+image-size — [GHSA-5p2g-fcmc-qvqq](https://github.com/advisories/GHSA-5p2g-fcmc-qvqq)
+та [GHSA-w3rx-r6r6-pgpr](https://github.com/advisories/GHSA-w3rx-r6r6-pgpr).
+Оновлення Vite усуває позначки його dev server / launch-editor, зокрема
+[GHSA-587h-7wmj-h5pm](https://github.com/advisories/GHSA-587h-7wmj-h5pm).
+Vercel видає статичний результат, а не запущений Vite dev server.
+
+Залишився один кореневий advisory:
+[minimatch GHSA-g3hv-75wg-m249](https://github.com/isaacs/minimatch/security/advisories/GHSA-g3hv-75wg-m249).
+За описом автора атака потребує контрольованого зловмисником glob-патерна
+та `optimizationLevel >= 2`. У переглянутих викликах @eslint/config-array
+і @typescript-eslint/typescript-estree задається `dot: true`, без цього
+підвищеного рівня; встановлений minimatch за замовчуванням використовує 1.
+Це знижує застосовність до поточного запуску lint, але не прибирає advisory
+зі звіту пакета. Сайт не приймає glob-патерни від відвідувача; цей ланцюжок
+належить інструментам розробки і не входить до браузерної збірки.
+
+Офіційно виправлений minimatch — 11.0.1, тоді як ESLint/TypeScript-ESLint
+декларують 10.x. Перевірені актуальні eslint 10.14.0 і typescript-eslint 8.72.1
+не дали сумісного рішення цього діапазону. Автоматичний force/downgrade
+чи override на непідтримуваний major не застосовувалися.
+До наступного оновлення upstream запускати lint лише над довіреним checkout
+і конфігурацією; залишок не оголошувати нульовим аудитом усього проєкту.
+
+Повні локальні результати: `tmp/security-npm-audit-2026-10-31-before.json`,
+`tmp/security-npm-audit-2026-10-31.json`,
+`tmp/security-npm-audit-production-2026-10-31.json`.
+`npm audit` після виправлень повертає 1 через moderate; production-аудит — 0.
+Встановлення виконано без lifecycle-скриптів; `npm audit fix --force` не запускався.
+
 ## Перевірки та межі
+
+Після оновлень пройшли типи, lint, family build (260 файлів) і smoke build
+(5 файлів), 4 браузерні сценарії Chromium desktop/Pixel 7 з CSP та
+170 цільових модульних перевірок у восьми suites: schema, load-family,
+build-vercel, static-data-plugin, reimport, import-export-6, petro-birth-1900,
+relatives. JSON родоводу після family build побайтово незмінний.
+
+Широкі запуски з типовим паралелізмом і двома workers зупинено після таймаутів;
+вони не зараховані як успішна повна регресія. Цільовий повтор виконано
+з `--maxWorkers=1 --testTimeout=30000 --reporter=verbose`;
+усі 170 перевірок пройшли, зокрема попередні збої імпорту/геометрії.
+Тести й їхні твердження не послаблювалися, конфігурація таймаутів репозиторію
+не змінювалася. Журнал — `tmp/security-focused-tests-2026-10-31.log`.
+Після перевірок `dist-vercel` повернуто до п'яти нешкідливих probe-файлів.
 
 Підсумкові виконані команди й результати записані в
 [ROD-030](tickets/030-vercel-config.md). Тести охоплюють відсутність сімейних

@@ -17,11 +17,19 @@
 | Output | `dist-vercel` |
 | Вміст за замовчуванням | Нешкідлива заглушка, п'ять файлів, жодного читання архіву |
 | Сімейна версія | «Сімейний атлас» із `vite.react-svg.config.ts` |
-| Публічність build logs/source | `public: false`; це не контроль доступу до самого сайту |
+| Захист сайту | Vercel Authentication / All Deployments у dashboard; не задається полем `public` у vercel.json |
 
 Усе, крім Deployment Protection, задано у [vercel.json](../vercel.json).
 Не перевизначати build/output у dashboard на звичайні `build`/`dist`:
 це обійде безпечний початковий режим.
+На екрані імпорту вибрати Application Preset **Other** замість автоматично
+визначеного Vite. Build/Output/Install мають відповідати таблиці вище.
+Поле `public` не додавати: API імпорту його відхиляє як додаткову властивість.
+Актуальна [документація Vercel](https://vercel.com/docs/project-configuration/vercel-json#public)
+прямо позначає його як непідтримуване; source/logs уже захищені автентифікацією
+провайдера. Захист самих сторінок і сімейних файлів потребує окремого All Deployments.
+Після оновлення vercel.json у GitHub повторно відкрити імпорт, щоб Vercel
+прочитав актуальну версію конфігурації.
 Змінна `RODOVID_DEPLOY_MODE` використовується тільки під час збірки;
 префікс `VITE_` їй не потрібний. Секретів застосунку немає.
 

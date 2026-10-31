@@ -21,7 +21,7 @@ test('нота керує справжньою музикою й зберіга�
   await expect(note).toHaveAttribute('aria-label', 'Вимкнути звук')
   await expect(note).toHaveAttribute('aria-pressed', 'true')
   await expect(music).toHaveJSProperty('paused', false)
-  await expect(music).toHaveJSProperty('volume', 0.02)
+  await expect(music).toHaveJSProperty('volume', 0.02 * 0.9)
   await expect(music).toHaveAttribute('src', /Rodovid_Bandura_Seamless_Loop\.ogg$/)
   const player = (await music.elementHandle())!
   await page.getByRole('link', { name: 'Горизонтальний родовід', exact: true }).click()

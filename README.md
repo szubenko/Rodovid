@@ -163,19 +163,24 @@ playwright.config.ts    наскрізні перевірки готової з�
 виключені з Git. Публікація та захист доступу належать до ROD-029…ROD-034;
 поточна версія призначена для локальної роботи.
 
-## Перевірений стек — 2026-09-09
+## Поточний зафіксований стек — 2026-10-31
 
 | Пакет / інструмент | Версія |
 | --- | --- |
 | React / React DOM | 19.2.8 |
-| Vite / React plugin | 8.2.2 / 6.1.1 |
+| Vite / React plugin | 8.3.5 / 6.1.1 |
 | TypeScript | 6.0.3 |
 | ESLint / typescript-eslint | 10.10.0 / 8.70.0 |
-| Vitest | 5.0.0 |
+| Vitest | 5.0.5 |
 | Playwright | 1.63.0 |
-| Zod | 4.5.4 |
+| Zod | 4.6.7 |
+| image-size | 2.0.4 |
 | read-gedcom | 0.3.2 |
 | React Router (додано 2026-09-13) | 8.3.1 |
+
+Оновлення безпеки 31.10.2026: production-аудит — 0 вразливостей;
+повний npm audit має 12 moderate від одного advisory minimatch у dev-інструментах,
+0 high/critical. [Версії, залишковий ризик і перевірки](Docs/Rodovid_Security_Audit_2026-10-31.md).
 
 Точні версії та вимоги `engines` / `peerDependencies` звірено через офіційний
 реєстр npm командою `npm view <package> version engines peerDependencies --json`.

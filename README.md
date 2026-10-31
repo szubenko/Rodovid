@@ -99,7 +99,8 @@ Node.js потрібний для розробки та збірки; власн
 
 | Команда | Призначення |
 | --- | --- |
-| `npm run typecheck` | Строга перевірка TypeScript застосунку, конфігурацій, майбутніх скриптів і E2E-тестів. |
+| `npm run typecheck` | Повна строга перевірка TypeScript разом із тестами; у чистому checkout спочатку `npm run data:convert`, бо тести читають generated/family.json. |
+| `npm run typecheck:build` | Строга перевірка коду застосунку й скриптів без тестів; використовується build-командами й не потребує generated JSON. |
 | `npm run lint` | ESLint для TypeScript/JavaScript, React Hooks і Fast Refresh; попередження вважаються помилками. |
 | `npm run build` | Типи, свіжа конвертація й валідація, статична збірка Vite з JSON і оголошеними матеріалами. |
 | `npm run data:check-gedcom` | Звірка історичного GEDCOM 02.09.2026 у `tests/fixtures/baseline-2026-09-02/`: SHA-256, рядки й посилання; звіт у `tmp/gedcom-probe.json`. Поточні дані перевіряє `data:validate`. |

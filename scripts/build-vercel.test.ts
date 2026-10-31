@@ -1,10 +1,48 @@
-import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { access, cp, mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'
+import { execFile } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
+import { promisify } from 'node:util'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { expect, it } from 'vitest'
 import { buildDeployment, deploymentMode, smokeFiles, verifyDeployment } from './build-vercel.ts'
 import fixture from '../tests/fixtures/data-contract/full.json' with { type: 'json' }
 import deployment from '../vercel.json' with { type: 'json' }
+
+it('runs the npm deployment build without Data/generated and still rejects production type errors', async () => {
+  const repo = fileURLToPath(new URL('../', import.meta.url))
+  const cache = resolve(repo, '.cache')
+  await mkdir(cache, { recursive: true })
+  const root = await mkdtemp(join(cache, 'vercel-clean-'))
+  if (!root.startsWith(join(cache, 'vercel-clean-'))) throw new Error('Unexpected clean-build directory')
+  const npmCli = process.env.npm_execpath
+  if (!npmCli) throw new Error('Run this regression through npm run test')
+  const exec = promisify(execFile)
+  const env = { ...process.env }
+  delete env.RODOVID_DEPLOY_MODE
+  const run = () => exec(process.execPath, [npmCli, 'run', 'build:vercel'], { cwd: root, env, timeout: 90_000 })
+  try {
+    for (const name of ['src', 'scripts', 'package.json', 'vercel.json']) {
+      await cp(join(repo, name), join(root, name), { recursive: true })
+    }
+    for (const name of await readdir(repo)) if (/^tsconfig.*\.json$|\.config\.ts$/.test(name)) {
+      await cp(join(repo, name), join(root, name))
+    }
+    // Node/TypeScript resolve installed dependencies from the ancestor repo.
+    // The isolated copy has no archive, generated JSON or previous build cache.
+    await expect(access(join(root, 'Data'))).rejects.toThrow()
+    await expect(access(join(root, 'generated'))).rejects.toThrow()
+    const result = await run()
+    expect(result.stdout).toContain('Vercel build: smoke; 5 files')
+    expect(await verifyDeployment(join(root, 'dist-vercel'), 'smoke')).toHaveLength(5)
+    await expect(access(join(root, 'generated'))).rejects.toThrow()
+
+    await writeFile(join(root, 'src/deployment-type-error.ts'), 'export const value: number = "invalid"\n')
+    await expect(run()).rejects.toMatchObject({ stdout: expect.stringContaining('TS2322') })
+  } finally {
+    await rm(root, { recursive: true, force: true })
+  }
+}, 120_000)
 
 it('restricts SPA rewrites to current screens and numeric person IDs, leaving missing files to 404', () => {
   // These rules use named regexp captures; actual platform behavior still needs ROD-031.

@@ -1,0 +1,21 @@
+# Never upload archive originals, generated output, reports or local tools with CLI.
+.git
+.env*
+!.env.example
+node_modules
+dist
+dist-react-svg
+dist-vercel
+generated
+tmp
+temp
+coverage
+test-results
+playwright-report
+blob-report
+Docs
+**/*.tmp
+**/*.rmtree
+**/*.ged
+# The family build needs this one explicit source; never copies it to output.
+!Data/Zubenko.ged

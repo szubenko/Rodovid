@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "engines": {
-    "node": "24.18.0",
+    "node": "24.x",
     "npm": "11.16.0"
   },
   "packageManager": "npm@11.16.0",
@@ -22,6 +22,7 @@
     "lint": "eslint . --max-warnings 0",
     "build": "npm run typecheck && vite build",
     "build:react-svg": "npm run typecheck && vite build --config vite.react-svg.config.ts",
+    "build:vercel": "npm run typecheck && node scripts/build-vercel.ts",
     "preview": "vite preview",
     "preview:react-svg": "vite preview --config vite.react-svg.config.ts",
     "test": "vitest run",

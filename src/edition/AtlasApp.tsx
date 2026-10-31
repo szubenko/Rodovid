@@ -170,7 +170,6 @@ function Sidebar() {
             <img className={styles.brandArms} src={staraSilArms} alt="Герб Старої Солі" />
           </Link>
         </div>
-        <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2></div>
         <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
         <PeopleDirectory />
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>

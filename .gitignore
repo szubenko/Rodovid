@@ -2,6 +2,7 @@
 node_modules/
 dist/
 dist-react-svg/
+dist-vercel/
 generated/
 
 # Звіти й артефакти перевірок

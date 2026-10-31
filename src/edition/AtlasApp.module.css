@@ -8,7 +8,7 @@
 .brandOrnament::before, .brandOrnament::after { content: ''; height: 1px; flex: 1; background: #aabbaa; }
 .brandOrnament svg { width: 15px; height: 15px; flex-shrink: 0; }
 .brand small { display: block; color: #668174; font: 7px/1.5 var(--font-body); letter-spacing: 0.14em; white-space: nowrap; }
-.sidebarBrand { padding-block: 0.75rem 1.4rem; margin-bottom: 1.4rem; border-bottom: 1px solid #bccabb; }
+.sidebarBrand { padding-block: 0.75rem 1.4rem; border-bottom: 1px solid #bccabb; }
 .navigation { position: relative; display: flex; flex-shrink: 0; align-items: center; gap: 12px; }
 .navigation a, .navigation button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid #d9e1d5; border-radius: 8px; background: #fff; color: var(--color-text); font: inherit; text-decoration: none; cursor: pointer; }
 .navigation a:hover, .navigation button:enabled:hover { background: #edf3e9; }
@@ -19,8 +19,7 @@
 .sidebar { min-width: 0; background: linear-gradient(110deg, #faf9f2, #f3f5ee); border-right: 1px solid #e1e7de; padding: 1rem 0.75rem; }
 .sidebarMenu > summary { display: none; }
 .eyebrow { color: #46674f; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.17em; }
-.sidebarIntro h2 { margin: 0.8rem 0; font-size: 1.7rem; line-height: 1.2; }
-.stats { display: flex; justify-content: space-between; margin: 1rem 0; padding: 0.75rem 0; border-block: 1px solid #dce4d5; }
+.stats { display: flex; justify-content: space-between; margin: 1rem 0; padding: 0.75rem 0; border-bottom: 1px solid #dce4d5; }
 .stats strong, .stats span { display: block; }
 .stats strong { font: 1.35rem var(--font-heading); }
 .stats span { margin-top: 0.25rem; color: var(--color-muted); font-size: 0.7rem; }
@@ -99,6 +98,14 @@
 .skipLink:focus { top: 1rem; }
 @media (max-width: 1100px) {
   .viewTabs { gap: 1rem; }
+}
+@media (min-width: 761px) {
+  .sidebar { height: 100dvh; }
+  .sidebarContent { display: flex; flex-direction: column; height: calc(100dvh - 2rem); min-height: 0; }
+  .sidebarBrand, .stats, .sidebarFooter { flex-shrink: 0; }
+  .directory { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .directory > :not(.personList) { flex-shrink: 0; }
+  .personList { flex: 1; min-height: 0; max-height: none; }
 }
 @media (max-width: 760px) {
   .sidebarBrand { max-width: 340px; margin-inline: auto; }

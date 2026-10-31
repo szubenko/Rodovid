@@ -129,7 +129,7 @@ test('брендинг і всі дії бічної панелі доступн
   }
   await expect(sidebar.getByRole('link', { name: 'Родовід СІМЕЙНИЙ АТЛАС' })).toBeVisible()
   await expect(sidebar.getByText(family.config.title, { exact: true })).toHaveCount(0)
-  await expect(sidebar.getByText('Наше коріння', { exact: true })).toBeVisible()
+  await expect(sidebar.getByText('Наше коріння', { exact: true })).toHaveCount(0)
   await expect(sidebar.getByText('Звук · вимкнено', { exact: true })).toHaveCount(0)
   await expect(page.getByRole('button', { name: 'Увімкнути звук', exact: true })).toBeVisible()
   const search = sidebar.getByRole('searchbox', { name: 'Пошук людей' })

@@ -1,5 +1,11 @@
 # Мій родовід
 
+Підготовлено **приватний тест на Vercel** через Vercel Authentication / All Deployments.
+`npm run build:vercel` за замовчуванням створює нешкідливу заглушку в `dist-vercel/`.
+Параметри, перехід до сімейної версії та перевірки доступу — в
+[інструкції Vercel](Docs/Rodovid_Vercel_Deployment.md);
+[аудит безпеки від 31.10.2026](Docs/Rodovid_Security_Audit_2026-10-31.md).
+
 Окрема версія з оновленим дизайном **«Сімейний атлас»**: `npm run dev:react-svg`,
 адреса <http://127.0.0.1:5175>. Збірка — `npm run build:react-svg`, результат у
 `dist-react-svg/`. [Запуск та архітектура](Docs/Rodovid_React_SVG_Edition.md).
@@ -34,7 +40,7 @@ ROD-010/011 додають [проєкцію графа](Docs/Rodovid_Graph_Layo
 
 - Node.js **24.18.0 LTS** — зафіксовано в `.nvmrc`, `.node-version` та `package.json`.
 - npm **11.16.0** — зафіксовано в `package.json`.
-- `.npmrc` перевіряє версії середовища й зберігає точні версії нових залежностей.
+- `.npmrc` перевіряє Node.js 24.x та npm 11.16.0 і зберігає точні версії нових залежностей.
 - `package-lock.json` фіксує повне дерево залежностей; повторне встановлення — `npm ci`.
 
 Перевірте `node --version` і `npm --version`. За іншої версії переключіть

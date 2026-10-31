@@ -101,6 +101,16 @@ GEDCOM залишається джерелом генеалогічних від
 
 ## 5. Захищена публікація
 
+**Реалізована підготовка 31.10.2026:** власник обрав приватний тест тільки
+для себе через Vercel Authentication / All Deployments. Чинні параметри:
+`npm run build:vercel`, `dist-vercel`, Node.js 24.x, npm 11.16.0;
+за замовчуванням — нешкідлива заглушка, за явного
+`RODOVID_DEPLOY_MODE=family` — «Сімейний атлас».
+`vercel.json` використовує framework Other і обмежені rewrites замість
+автоматичного catch-all. [Порядок деплою](Rodovid_Vercel_Deployment.md)
+має пріоритет над первісними рекомендаціями нижче. Фактичний доступ і сесію
+ще потрібно перевірити у Vercel; dashboard налаштовує власник.
+
 **Хостинг — Vercel.** Він підтримує Vite та публікацію через Git або CLI. Для проєкту пропоную preset Vite, команду `npm run build`, яка включатиме підготовку GEDCOM, і вихідну папку `dist`. Для прямих адрес `/tree/I1` та `/person/I1` потрібні SPA rewrites у `vercel.json`. Правила мають зберігати коректну видачу JSON і матеріалів та помилки для відсутніх файлів. Джерело: [Vite on Vercel](https://vercel.com/docs/frameworks/frontend/vite).
 
 **Базовий захист — Deployment Protection у режимі All Deployments.** Він охоплює production і preview-адреси; Standard Protection залишає production-домени відкритими. Перевірка виконується перед видачею ресурсів, тому захищає також прямі запити до JSON, фото й PDF. Джерело: [Vercel Deployment Protection](https://vercel.com/docs/deployment-protection).

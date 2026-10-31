@@ -1,6 +1,9 @@
 # Мій родовід
 
 Підготовлено **приватний тест на Vercel** через Vercel Authentication / All Deployments.
+Розгорнутий сайт: [Родовід](https://rodovid-eta.vercel.app/tree/I1).
+Власник підтвердив вхід; [перевірка без авторизації](Docs/Rodovid_Vercel_Protection_Check_2026-10-31.md)
+показала захист сторінок, JSON і прямих матеріалів на production hostname.
 За рішенням власника `npm run build:vercel` одразу збирає повний сімейний атлас
 у `dist-vercel/`: конвертація даних → перевірка типів коду → збірка.
 Режим заглушки й змінну `RODOVID_DEPLOY_MODE` прибрано.

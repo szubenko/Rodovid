@@ -9,14 +9,19 @@ import { transitionDuration, transitionOffset, transitionOrigins, type Positione
 /** One frame clock owns node positions and connection ports. The camera keeps its own transform. */
 export function useMapTransition(container: RefObject<HTMLDivElement | null>, layout: RadialLayout, personId: string, camera: MapSettings) {
   const { reduced } = useMotionPreference()
-  const displayed = useRef<{ personId: string; people: PositionedPerson[]; camera: MapSettings } | null>(null)
+  const displayed = useRef<{ personId: string; layout: RadialLayout; people: PositionedPerson[]; camera: MapSettings } | null>(null)
   useLayoutEffect(() => {
     const root = container.current!
     const layer = root.querySelector<SVGGElement>('[data-layer="coordinates"]')!
+    const previous = displayed.current
+    // Camera changes do not change world coordinates, paths or opacity.
+    if (previous?.layout === layout && previous.personId === personId && layer.dataset.transition === 'idle') {
+      displayed.current = { ...previous, camera }
+      return
+    }
     const elements = [...root.querySelectorAll<SVGGElement>('[data-appearance-id]')]
     const edges = [...root.querySelectorAll<SVGGElement>('[data-relationship-id]')]
     const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
-    const previous = displayed.current
     const people = previous?.people.map((point) => ({ ...point,
       x: (point.x * previous.camera.zoom + previous.camera.pan.x - camera.pan.x) / camera.zoom,
       y: (point.y * previous.camera.zoom + previous.camera.pan.y - camera.pan.y) / camera.zoom,
@@ -38,7 +43,7 @@ export function useMapTransition(container: RefObject<HTMLDivElement | null>, la
         element.querySelectorAll('path').forEach((part) => part.setAttribute('d', path))
         element.setAttribute('opacity', String(1 - (1 - progress) ** 3))
       })
-      displayed.current = { personId, camera, people: layout.nodes.map((node) => {
+      displayed.current = { personId, layout, camera, people: layout.nodes.map((node) => {
         const offset = offsets.get(node.appearanceId)!
         return { personId: node.personId, appearanceId: node.appearanceId, x: node.x + offset.x, y: node.y + offset.y }
       }) }
@@ -47,6 +52,11 @@ export function useMapTransition(container: RefObject<HTMLDivElement | null>, la
     if (!previous || previous.personId === personId || reduced) { draw(1); return }
     draw(0)
     const animation = animate(0, 1, { duration: transitionDuration / 1000, ease: 'linear', onUpdate: draw, onComplete: () => draw(1) })
-    return () => { animation.stop() }
+    const settle = () => { animation.stop(); draw(1) }
+    root.querySelector('svg')!.addEventListener('map-camera-start', settle)
+    return () => {
+      animation.stop()
+      root.querySelector('svg')?.removeEventListener('map-camera-start', settle)
+    }
   }, [container, layout, personId, camera, reduced])
 }

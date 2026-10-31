@@ -86,7 +86,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
-      <output aria-label="Масштаб карти">{Math.round(zoom * 100)}%</output>
+      <output aria-label="Масштаб карти">{`${Math.round(zoom * 100)}%`}</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={fitMap}>Вмістити карту</button>
       <button onClick={() => dispatch({ type: 'map', settings: { zoom: 1, pan: { x: 0, y: 0 } } })}>До центру</button>

@@ -156,7 +156,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       {portraitCards && <button aria-pressed={compact} onClick={() => dispatch({ type: 'map', settings: { compactCards: !compact } })}>Компактні картки</button>}
       <button aria-label="Зменшити масштаб" disabled={settings.zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
-      <output aria-label="Масштаб карти">{Math.round(settings.zoom * 100)}%</output>
+      <output aria-label="Масштаб карти">{`${Math.round(settings.zoom * 100)}%`}</output>
       <button aria-label="Збільшити масштаб" disabled={settings.zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={() => dispatch({ type: 'map', settings: fitCamera({ x: offset.x, y: offset.y,
         width: layout.width, height: layout.height }, width, height) })}>Вмістити карту</button>
@@ -247,7 +247,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
               return <g key={node.personId} className={styles.siblingToggle}
                 transform={`translate(${node.x + (right ? 1 : -1) * (node.width / 2 + 2)} ${node.y}) scale(${controlScale})`}
                 data-sibling-side={right ? 'right' : 'left'}
-                data-sibling-person-id={node.personId} role="button" tabIndex={0} aria-expanded={siblingsExpanded}
+                data-camera-control data-sibling-person-id={node.personId} role="button" tabIndex={0} aria-expanded={siblingsExpanded}
                 aria-label={`${siblingsExpanded ? 'Сховати' : 'Показати'} братів і сестер: ${labels.get(node.personId)}. ${siblingIds.length}`}
                 onClick={event => { event.stopPropagation(); action() }} onKeyDown={event => activate(event, action)}>
                 <title>{siblingsExpanded ? 'Сховати братів і сестер' : `Показати братів і сестер: ${siblingIds.length}`}</title>
@@ -264,7 +264,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
               const action = () => toggleAncestors(node.personId)
               return <g key={node.personId} className={styles.siblingToggle}
                 transform={`translate(${node.x} ${node.y - node.height / 2 - 2}) scale(${controlScale})`}
-                data-ancestor-person-id={node.personId} role="button" tabIndex={0} aria-expanded={!collapsed}
+                data-camera-control data-ancestor-person-id={node.personId} role="button" tabIndex={0} aria-expanded={!collapsed}
                 aria-label={`${collapsed ? 'Розгорнути' : 'Згорнути'} предкову гілку: ${labels.get(node.personId)}`}
                 onClick={event => { event.stopPropagation(); action() }} onKeyDown={event => activate(event, action)}>
                 <title>{collapsed ? 'Розгорнути предкову гілку' : 'Згорнути предкову гілку'}</title>

@@ -16,6 +16,8 @@ import { PersonRoom } from '../room/PersonRoom'
 import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
 import { useAudio } from '../audio/context'
+import chapliivkaArms from '../appearance/loading/chapliivka.png'
+import staraSilArms from '../appearance/loading/stara-sil.svg'
 import styles from './AtlasApp.module.css'
 
 function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical-minimal'> | 'book' | 'search' | 'home' | 'music' }) {
@@ -162,7 +164,11 @@ function Sidebar() {
       <summary>Знайти людину · покажчик родоводу</summary>
       <div className={styles.sidebarContent}>
         <div className={styles.sidebarBrand}>
-          <Link className={styles.brand} to={`/${state.current.mapScreen}/${state.homePersonId}`} resetMap><span className={styles.brandIcon}><Icon kind="tree" /></span><span>Родовід<small>СІМЕЙНИЙ АТЛАС</small></span></Link>
+          <Link className={styles.brand} to={`/${state.current.mapScreen}/${state.homePersonId}`} resetMap aria-label="Родовід СІМЕЙНИЙ АТЛАС">
+            <img className={styles.brandArms} src={chapliivkaArms} alt="Герб Чапліївки" />
+            <span className={styles.brandText}>Родовід<span className={styles.brandOrnament} aria-hidden="true"><Icon kind="tree" /></span><small>СІМЕЙНИЙ АТЛАС</small></span>
+            <img className={styles.brandArms} src={staraSilArms} alt="Герб Старої Солі" />
+          </Link>
         </div>
         <div className={styles.sidebarIntro}><p className={styles.eyebrow}>Наше коріння</p><h2>Історія, що<br />об’єднує нас.</h2></div>
         <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>

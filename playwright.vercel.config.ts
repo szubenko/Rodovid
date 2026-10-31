@@ -12,7 +12,7 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     { name: 'mobile-chromium', use: { ...devices['Pixel 7'] } },
   ],
-  // Requires an explicit family build first; this command never enables family mode.
+  // Requires npm run build:vercel first; checks local browser compatibility.
   webServer: {
     command: 'npx --no-install vite preview --config vite.vercel-preview.config.ts',
     url: 'http://127.0.0.1:4180', reuseExistingServer: false, timeout: 30_000,

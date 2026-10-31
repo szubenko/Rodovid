@@ -1,8 +1,10 @@
 # Мій родовід
 
 Підготовлено **приватний тест на Vercel** через Vercel Authentication / All Deployments.
-`npm run build:vercel` за замовчуванням створює нешкідливу заглушку в `dist-vercel/`.
-Параметри, перехід до сімейної версії та перевірки доступу — в
+За рішенням власника `npm run build:vercel` одразу збирає повний сімейний атлас
+у `dist-vercel/`: конвертація даних → перевірка типів коду → збірка.
+Режим заглушки й змінну `RODOVID_DEPLOY_MODE` прибрано.
+Параметри та перевірки доступу — в
 [інструкції Vercel](Docs/Rodovid_Vercel_Deployment.md);
 [аудит безпеки від 31.10.2026](Docs/Rodovid_Security_Audit_2026-10-31.md).
 

@@ -23,7 +23,7 @@
     "lint": "eslint . --max-warnings 0",
     "build": "npm run typecheck:build && vite build",
     "build:react-svg": "npm run typecheck:build && vite build --config vite.react-svg.config.ts",
-    "build:vercel": "npm run typecheck:build && node scripts/build-vercel.ts",
+    "build:vercel": "npm run data:convert && npm run typecheck:build && node scripts/build-vercel.ts",
     "preview": "vite preview",
     "preview:react-svg": "vite preview --config vite.react-svg.config.ts",
     "test": "vitest run",

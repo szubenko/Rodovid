@@ -7,7 +7,7 @@ export function pdfAssetsPlugin(): Plugin {
   async function files() {
     const output: { name: string; bytes: Buffer }[] = []
     for (const directory of ['cmaps', 'standard_fonts', 'wasm', 'iccs']) {
-      const root = new URL(`../node_modules/pdfjs-dist/${directory}/`, import.meta.url)
+      const root = new URL(`${directory}/`, new URL('./', import.meta.resolve('pdfjs-dist/package.json')))
       for (const file of await readdir(fileURLToPath(root), { withFileTypes: true })) if (file.isFile()) {
         output.push({ name: `app-assets/pdfjs/${directory}/${file.name}`, bytes: await readFile(new URL(file.name, root)) })
       }

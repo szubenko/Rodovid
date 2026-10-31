@@ -1,186 +1,122 @@
-# Vercel: приватна тестова публікація
+# Vercel: повний сімейний атлас для приватного тесту
 
-Рішення власника від **31.10.2026**: на цьому етапі доступ має тільки власник,
-вхід — **Vercel Authentication**. Налаштування облікового запису, проєкту,
-доменів і Deployment Protection власник виконує самостійно.
-Підготовка коду не означає, що фактичний деплой уже захищений.
+**Чинне рішення власника від 31.10.2026:** заглушку прибрано, перший деплой
+одразу містить усі підготовлені дані та матеріали сімейного атласу.
+Єдиний відвідувач — власник; доступ — Vercel Authentication / All Deployments.
+Dashboard налаштовує власник. Перевірки ROD-031/032 виконуються на повному
+деплої; їх ще не зараховано як успішні.
 
-## Параметри репозиторію
+## Налаштування
 
 | Параметр | Значення |
 | --- | --- |
-| Framework preset | Other (`framework: null`), щоб уникнути автоматичного SPA fallback |
-| Root directory | Корінь цього репозиторію |
-| Node.js | `24.x`; Vercel керує minor/patch, локальні `.nvmrc` і `.node-version` зберігають 24.18.0 |
-| Install | `npx --yes npm@11.16.0 ci` — та сама версія npm і lockfile |
-| Build | `npm run build:vercel` |
-| Output | `dist-vercel` |
-| Вміст за замовчуванням | Нешкідлива заглушка, п'ять файлів, жодного читання архіву |
-| Сімейна версія | «Сімейний атлас» із `vite.react-svg.config.ts` |
-| Захист сайту | Vercel Authentication / All Deployments у dashboard; не задається полем `public` у vercel.json |
+| Application Preset | Other (`framework: null`) |
+| Root directory | Корінь репозиторію, `./` |
+| Node.js Version | 24.x, як у package.json; локально зафіксовано 24.18.0 |
+| Install Command | `npx --yes npm@11.16.0 ci` |
+| Build Command | `npm run build:vercel` |
+| Output Directory | `dist-vercel` |
+| Deployment Protection | Vercel Authentication → All Deployments |
+| Вміст | Повний «Сімейний атлас», підготовлений JSON та оголошені матеріали |
 
-Усе, крім Deployment Protection, задано у [vercel.json](../vercel.json).
-Не перевизначати build/output у dashboard на звичайні `build`/`dist`:
-це обійде безпечний початковий режим.
-На екрані імпорту вибрати Application Preset **Other** замість автоматично
-визначеного Vite. Build/Output/Install мають відповідати таблиці вище.
-Поле `public` не додавати: API імпорту його відхиляє як додаткову властивість.
-Актуальна [документація Vercel](https://vercel.com/docs/project-configuration/vercel-json#public)
-прямо позначає його як непідтримуване; source/logs уже захищені автентифікацією
-провайдера. Захист самих сторінок і сімейних файлів потребує окремого All Deployments.
-Після оновлення vercel.json у GitHub повторно відкрити імпорт, щоб Vercel
-прочитав актуальну версію конфігурації.
-Змінна `RODOVID_DEPLOY_MODE` використовується тільки під час збірки;
-префікс `VITE_` їй не потрібний. Секретів застосунку немає.
+`RODOVID_DEPLOY_MODE` більше не використовується: режимів smoke/family немає,
+збірка завжди сімейна. Попередні probe HTML/JSON/PNG/PDF/WAV вилучено з коду.
+Поле `public` у vercel.json не додавати — поточний API його не підтримує.
+Автентифікація сайту налаштовується в dashboard, а не цим полем.
 
-У dashboard **Settings → Build and Deployment → Node.js Version** вибрати
-**24.x**, як у `package.json`. Vercel за замовчуванням може пропонувати 26.x;
-`engines.node: 24.x` має пріоритет над цим налаштуванням. Розбіжність може
-спричинити попередження, але помилка відсутнього generated JSON до Node не
-належить. Node 24.x підтримується платформою.
+У **Settings → Build and Deployment → Node.js Version** встановити **24.x**.
+Vercel може пропонувати 26.x за замовчуванням; `engines.node` має пріоритет.
+Попередження про розбіжність версій не є причиною TS2307.
 
-Усі три build-команди запускають `typecheck:build` (`tsconfig.build.json`):
-це строга перевірка коду застосунку, конфігурацій і скриптів без test/spec-файлів.
-Тому чистий checkout не потребує `generated/family.json` до початку збірки,
-а smoke не читає і не генерує сімейні дані. Сімейний JSON створює й перевіряє
-static-data-plugin тільки у family-збірці.
-Повна локальна перевірка тестів залишається `npm run typecheck`;
-її запускати після `npm run data:convert`, якщо generated JSON ще відсутній.
+## Порядок збірки та чистий checkout
 
-## Перший деплой: тільки заглушка
+`npm run build:vercel` виконує:
 
-1. Переконатися, що Git-репозиторій приватний, його колаборатори та інтеграції
-   відповідають потрібному доступу. Приватність GitHub тут не підтверджена.
-   Захист Vercel не приховує відкритий Git-репозиторій та його історію.
-2. Імпортувати репозиторій у Vercel без `RODOVID_DEPLOY_MODE` або зі значенням
-   `smoke`. Порожнє чи невідоме значення завершує збірку помилкою.
-3. Увімкнути **Vercel Authentication → All Deployments**.
-   Standard Protection залишає production-домени відкритими.
-4. Перевірити team/project membership, access groups і раніше надані доступи:
-   доступ Vercel не стає автоматично «тільки власник» від увімкнення входу.
-   Не залишати Shareable Links, Protection Bypass for Automation, Trusted Sources
-   чи Deployment Protection Exceptions, що допускають інших відвідувачів.
-   Не вмикати додатковий спільний пароль, який дав би альтернативний вхід.
-5. Вимкнути Vercel Toolbar для тестової сімейної версії: CSP навмисно не дозволяє
-   сторонніх скриптів/фреймів. Аналітику й сторонні інтеграції сайт не підключає.
-6. Заповнити матрицю нижче в приватному браузері, після власного входу
-   й у сесії Vercel-користувача без дозволу. Не схвалювати його запит доступу.
-   Не використовувати bypass-токени для перевірки неавторизованого доступу.
+1. `npm run data:convert` — створює й перевіряє свіжий generated/family.json.
+2. `npm run typecheck:build` — строго перевіряє код сайту та скриптів без тестів.
+3. `node scripts/build-vercel.ts` — збирає атлас через Vite та перевіряє склад output.
 
-Заглушка містить `/`, `/data/probe.json`, `/assets/probe.png`,
-`/assets/probe.pdf`, `/assets/probe.wav`. У її HTML/JSON є маркер
-`RODOVID-ACCESS-PROBE-2026`. Прямі `/tree/I1`, `/person/I1` та інші маршрути
-атласу теж відкривають нешкідливу сторінку; родинних відомостей у ній немає.
+Перед збіркою готовий generated JSON не потрібний і в Git не додається.
+Vite також перевіряє свіжі дані через static-data-plugin.
+Після успіху журнал містить `Vercel build: family; ... files in dist-vercel/`.
+Повна локальна перевірка разом із тестами — `npm run typecheck` після конвертації.
 
-| Адреса | Фактичний hostname/URL | Без входу / без дозволу | Після входу власника | Після завершення доступу |
+Якщо Vercel знову показує TS2307 у `*.test.ts` / `tests/react-svg/*.spec.ts`,
+звірити **Source Commit** невдалого deployment з новим комітом у main,
+Build Command і vercel.json. Поточний build typecheck не включає ці файли.
+Створити деплой саме з оновленого main; не покладатися на повтор старого запуску.
+У логу перед типами має бути `data:convert`, а сама перевірка — `typecheck:build`.
+
+## Дані для віддаленої збірки
+
+Потрібні Data/Zubenko.ged, site.json, annotations.json, identities.json,
+підготовлені тексти, реєстри джерел та оголошені Data/assets/.
+Вони доставляються через приватний Git-репозиторій або приватний build-процес.
+Приватність GitHub і фактичні права тут ще не підтверджені.
+
+`.vercelignore` виключає з CLI upload RootsMagic, інші GEDCOM, тести,
+документацію, локальні env, звіти й попередні збірки. Він не видаляє файли
+з Git/Git history і не замінює приватність репозиторію при Git integration.
+Архівні оригінали й резервні копії зберігаються локально.
+
+У dist-vercel потрапляють index.html, data/family.json, оголошені зображення,
+документи, аудіо, мініатюри та app-assets runtime. Сирі GEDCOM/RootsMagic,
+source maps, звіти й неоголошені файли відхиляються перевіркою output.
+`publicDir: false` виключає довільне копіювання public/.
+
+## Перевірка реального деплою — ROD-031
+
+Перевірити All Deployments, team/project membership, access groups, granted
+access, Shareable Links, automation bypass, Trusted Sources та Exceptions,
+щоб коло відвідувачів відповідало рішенню «тільки власник».
+Standard Protection залишає production-домени відкритими.
+Vercel Toolbar вимкнути: CSP не дозволяє сторонні scripts/frames.
+
+| Адреса | Фактичний hostname/URL | Без входу / без дозволу | Після входу | Після завершення доступу |
 | --- | --- | --- | --- | --- |
-| Основний production `*.vercel.app` | Заповнити | Не перевірено | Не перевірено | Не перевірено |
-| Згенерована адреса production deployment | Заповнити | Не перевірено | Не перевірено | Не перевірено |
-| Preview deployment URL | Заповнити | Не перевірено | Не перевірено | Не перевірено |
-| Preview branch alias | Заповнити / відсутній | Не перевірено | Не перевірено | Не перевірено |
-| Custom domain та інші aliases | Заповнити / явно записати відсутність | Не перевірено | Не перевірено | Не перевірено |
-| Попередні активні deployments | Перелічити всі / відсутні | Не перевірено | Не перевірено | Не перевірено |
+| Production vercel.app | Заповнити | Не перевірено | Не перевірено | Не перевірено |
+| Згенерована production deployment URL | Заповнити | Не перевірено | Не перевірено | Не перевірено |
+| Preview deployment і branch alias | Заповнити / відсутні | Не перевірено | Не перевірено | Не перевірено |
+| Custom domain та інші aliases | Заповнити / відсутні | Не перевірено | Не перевірено | Не перевірено |
+| Старі активні deployments | Перелічити / відсутні | Не перевірено | Не перевірено | Не перевірено |
 
-Для **кожного hostname** перевірити всі п'ять типів файлів і прямі маршрути
-через GET та HEAD, з query string і без неї. Без допуску допустимі сторінка
-входу, відмова або redirect до входу; **не допускаються тіло/маркер заглушки
-чи байти тестових JSON/PNG/PDF/WAV**. Код 200 сам по собі не доводить витік:
-сторінка провайдера також може мати 200. Після входу файли мають правильні
-Content-Type та `Cache-Control: private, no-store, max-age=0`.
-Зберігати лише статус, кінцевий тип відповіді, результат і дату, без cookies,
-Authorization, bypass-параметрів, session IDs чи повних HAR.
+На кожному hostname перевірити `/`, `/tree/I1`, `/person/I1`,
+`/vertical-minimal/I1`, `/data/family.json` та реальні файли фото/сканів/аудіо
+з поля media.path. PDF перевірити, якщо він є в поточному наборі.
+Використати GET/HEAD, query string і прямі адреси. Без допуску сімейний HTML,
+JSON та байти матеріалів не мають видаватися; сторінка входу провайдера з 200
+сама по собі не є витоком. Після входу перевірити Content-Type і no-store.
 
-Після входу перевірити `/data/missing.json`, `/assets/missing.png`,
-`/assets/missing.pdf`, `/app-assets/missing.js`, `/tree/I1/missing.json`,
-`/Data/Zubenko.ged`, `/Data/Zubenko.rmtree`, `/.env`, `/unknown`:
-очікується **404**, а не HTML зі статусом 200. Rewrites дозволяють лише
-сім чинних типів екрана та `I` з цифрами. Перезавантаження справжніх маршрутів
-має працювати. Фактичне виконання цих правил перевіряється на Vercel, а не
-звичайним Vite preview, у якого власна SPA-поведінка.
+Відсутні `/data/missing.json`, `/assets/missing.pdf`, `/app-assets/missing.js`,
+`/tree/I1/missing.json`, `/Data/Zubenko.ged`, `/Data/Zubenko.rmtree`, `/.env`
+мають давати 404, а не HTML зі статусом 200. Зберігати лише статус, результат
+і дату, без cookies, токенів чи повних HAR. Локальний preview не доводить
+фактичну поведінку Vercel Authentication, CDN або platform rewrites.
 
-## Вихід і завершення доступу — ROD-032
+## Сесія та локальна перевірка
 
-Cookie доступу встановлює Vercel для конкретної адреси. У дослідженій
-документації Deployment Protection не знайдено контракту прикладного logout
-endpoint або гарантованого строку сесії. Тому сайт не має фіктивної кнопки
-«Вийти», яка лише приховує UI, і не звертається до вигаданого `/_vercel/logout`.
-Вихід із dashboard Vercel, вимкнення/повторне ввімкнення захисту та закриття
-однієї вкладки не зараховуються як доведене відкликання cookie деплою.
-
-На нешкідливій версії власник перевіряє доступний у провайдера механізм виходу,
-повторні запити до кожної адреси, Back/reload та повторний вхід. Окремо
-фіксує фактичну поведінку завершення сесії. Для операційного тесту на власному
-пристрої можна використовувати окрему приватну сесію, закривати **всі** її
-вікна й повторно перевіряти адреси у новій; це не доводить природне закінчення
-сесії чи автоматичне очищення відкритого застосунку. Для перевірки втрати cookie
-можна очистити site data кожного hostname через браузер; це теж окремий сценарій.
-
-Повна вимога ROD-032 щодо виходу, очищення завантаженого стану й зупинки звуку
-ще не реалізована/не підтверджена. Якщо стандартний механізм Vercel її не
-задовольняє, потрібне окреме рішення щодо сесії перед закриттям релізного тікета.
-Завантажені користувачем файли та вже показані дані відкликати неможливо;
-`no-store` не є обіцянкою стерти їх із пам'яті чи всіх історій браузера.
-
-## Перехід до сімейної збірки
-
-Лише після успішних ROD-031 і погодженого результату ROD-032:
-встановити `RODOVID_DEPLOY_MODE=family` у потрібних Vercel environments
-і виконати новий deploy. Зміна env не перебудовує старі деплої сама.
-Preview може залишатися `smoke`, якщо сімейна версія там не потрібна.
-Не вимикати All Deployments при діагностиці чи відкаті.
-
-Віддалена family-збірка читає `Data/Zubenko.ged`, налаштування, доповнення,
-реєстр ID, тексти й оголошені `Data/assets/`. Ці файли мають бути в приватному
-Git-репозиторії або доставлені через приватний build-процес.
-`.vercelignore` обмежує CLI upload; він **не видаляє файли з Git/Git history**
-і не замінює приватність репозиторію при Git integration.
-RootsMagic, інші GEDCOM, документація, звіти й локальні env у CLI upload
-не потрібні. Тестові TypeScript/JSON не потрібні для deploy typecheck;
-`.vercelignore` виключає їх із CLI upload, а до dist-vercel вони не потрапляють.
-Оригінали та резервні копії зберігаються локально.
-
-Конвертер готує й перевіряє свіжий JSON; `publicDir: false` виключає
-довільне копіювання `public/`. До `dist-vercel` потрапляють лише `index.html`,
-`data/family.json`, оголошені матеріали/мініатюри та runtime `app-assets/`.
-Додаткова перевірка забороняє GEDCOM, RootsMagic, source maps, TS, звіти
-й неоголошені файли. Завантаження всієї папки архіву не використовується.
-
-Локальна перевірка у PowerShell:
+ROD-032 ще відкритий: документованого app logout endpoint або гарантованого
+TTL cookie Deployment Protection не підтверджено. Вихід із Vercel dashboard
+не прирівнюємо до втрати cookie всіх deployment URLs. Перевірити нові прямі
+запити, Back/reload, повторний вхід і завершення сесії на реальному деплої.
+Приватна сесія й очищення site data — допоміжні тести втрати cookie.
+Завантажені відвідувачем файли відкликати неможливо.
 
 ```powershell
-npm run build:vercel # без env: тільки заглушка
-$env:RODOVID_DEPLOY_MODE = 'family'
+npm ci
 npm run build:vercel
 npx --no-install playwright test --config playwright.vercel.config.ts
-Remove-Item Env:RODOVID_DEPLOY_MODE
-npm run build:vercel # повертає вихідну папку до заглушки
 ```
 
-Браузерний тест перевіряє сумісність CSP з картою, PNG, музикою та PDF
-на локальному preview. Він **не перевіряє Vercel Authentication**, Vercel CDN
-чи фактичні platform rewrites. Заголовки no-store застосовані до всіх ресурсів,
-включно з HTML і JS/CSS; ціною є повторне завантаження ресурсів.
-`style-src 'unsafe-inline'` потрібний для React/Motion/Leaflet/PhotoSwipe;
-`wasm-unsafe-eval` і локальні/blob workers — для PDF.js. Довільні JS eval,
-inline scripts і зовнішні мережеві підключення CSP не дозволяє.
+Браузерний тест локально перевіряє CSP з картою, PNG, музикою та PDF.
+No-store заданий для всіх ресурсів; `style-src 'unsafe-inline'` потрібний
+бібліотекам інтерфейсу, wasm/локальні workers — PDF.js.
+Для відкату використовувати перевірений deployment, зберігаючи All Deployments;
+після відкату повторити матрицю всіх активних адрес.
 
-## Відкат
+## Офіційні джерела
 
-Зберегти commit, dataVersion, deployment ID і перевірені hostnames у приватному
-журналі. У Vercel можна відкотитися до перевіреного deployment, зберігаючи
-All Deployments і membership. Аварійний варіант — прибрати family env та
-перебудувати нешкідливу заглушку. Старі сімейні deployment URLs залишаються
-під захистом; заміна основної адреси сама по собі їх не видаляє й не відкликає
-вже видані cookie. Після відкату повторити матрицю доступу.
-
-## Офіційні джерела, перевірені 31.10.2026
-
-- [Deployment Protection: All Deployments і Standard Protection](https://vercel.com/docs/deployment-protection).
-- [Vercel Authentication: допуски, bypass і cookie конкретної адреси](https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/vercel-authentication).
-- [All Deployments включено в усі тарифи](https://vercel.com/changelog/protect-production-deployments-for-free-on-every-plan).
-- [Конфігурація vercel.json](https://vercel.com/docs/project-configuration/vercel-json).
-- [Node.js: вибір major-версії, автоматичні minor/patch](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).
-
-Для цього етапу достатньо базової адреси `vercel.app`; конкретні тариф,
-hostname і відсутність/наявність custom domain власник записує після створення
-проєкту. Платні опції цією роботою не підключаються.
+- [Deployment Protection](https://vercel.com/docs/deployment-protection).
+- [Vercel Authentication](https://vercel.com/docs/deployment-protection/methods-to-protect-deployments/vercel-authentication).
+- [vercel.json та непідтримуване public](https://vercel.com/docs/project-configuration/vercel-json#public).
+- [Версії Node.js і пріоритет engines](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).

@@ -101,6 +101,7 @@
 }
 @media (min-width: 761px) {
   .sidebar { height: 100dvh; }
+  .sidebarBrand { padding-bottom: 1rem; }
   .sidebarContent { display: flex; flex-direction: column; height: calc(100dvh - 2rem); min-height: 0; }
   .sidebarBrand, .stats, .sidebarFooter { flex-shrink: 0; }
   .directory { display: flex; flex-direction: column; flex: 1; min-height: 0; }

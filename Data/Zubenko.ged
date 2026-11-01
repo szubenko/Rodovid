@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 30 OCT 2026
-2 TIME 19:55:59
-1 FILE ZubenkoNewFormat.reviewed.10.30.26.ged
+1 DATE 1 NOV 2026
+2 TIME 10:36:38
+1 FILE ZubenkoNewFormat.reviewed.11.01.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -216,6 +216,7 @@
 1 SEX M
 1 BIRT
 2 PLAC Stara Ropa, Bezirk Stary Sambor, Галичина
+2 DATE 1893
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PFPR-Y62
@@ -260,6 +261,7 @@
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE 20 JUL 1950
+2 PLAC Челябинская область, Росія, Радянський Союз
 1 _FSFTID PF5Q-H4F
 1 _UID 1F7B312013C91448870891AA47B29F79FE5B
 1 FAMS @F7@
@@ -1394,6 +1396,7 @@
 1 CHIL @I13@
 1 CHIL @I23@
 1 CHIL @I24@
+1 CHIL @I105@
 0 @F8@ FAM
 1 HUSB @I25@
 1 WIFE @I26@
@@ -2767,4 +2770,15 @@
 1 _UID 6C08051E496DB44682A46F7F685AD9D7CD75
 1 CHIL @I101@
 1 CHIL @I102@
+0 @I105@ INDI
+1 NAME Катерина Іллівна /Чабан/
+2 ROMN Kateryna Illivna /Chaban/
+1 SEX F
+1 BIRT
+2 PLAC Stara Sól, Sambir, Lwów, Poland
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ99-PN6
+1 _UID B4A96C6DA4E65C49862FDD855858B71BFE84
+1 FAMC @F7@
 0 TRLR

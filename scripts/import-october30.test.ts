@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
-import { october30MergeSha256 } from './validation/reviewed-export.ts'
+import { november1MergeSha256 } from './validation/reviewed-export.ts'
 
 const read = (name: string) => readFileSync(new URL(`../Data/${name}`, import.meta.url))
 const json = (name: string) => JSON.parse(read(name).toString())
@@ -13,7 +13,7 @@ const { family, report } = convertGedcom({...input,supplements:plan.supplements}
 const parents = (id: string) => family.relationships.filter(r => r.kind === 'parent-child' && r.toPersonId === id).map(r => r.fromPersonId).sort()
 
 it('imports both Chaban brothers with exact dates from Ukrainian source text and their recorded parents', () => {
-  expect(report.sha256).toBe(october30MergeSha256)
+  expect(report.sha256).toBe(november1MergeSha256)
   for (const [id,birth,death] of [['I103','5 JUN 1942','5 JAN 2025'],['I104','17 APR 1947','14 OCT 2005']]) {
     expect(parents(id!)).toEqual(['I32','I34'])
     for (const [kind,raw] of [['birth',birth],['death',death]]) {
@@ -32,7 +32,7 @@ it('keeps the wife and the two father-only daughters in their separate recorded 
 })
 
 it('reuses the existing S86 scan and reviewed text for the additional citations without pending synchronization', () => {
-  expect(report.counts).toMatchObject({people:102,families:41,sources:89,media:88,evidenceLinks:209})
+  expect(report.counts).toMatchObject({people:103,families:41,sources:89,media:88,evidenceLinks:209})
   expect(report.unhandledNodes).toEqual([])
   expect(plan.outputs.size).toBe(0)
   expect(plan.summary.conflicts).toEqual([])

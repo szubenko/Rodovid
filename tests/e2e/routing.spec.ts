@@ -24,7 +24,8 @@ test('home, center, room, back and forward share a single dataset', async ({ pag
   await page.getByRole('link', { name: 'До мене' }).click()
   await expect(page).toHaveURL(/\/tree\/I1$/)
   expect(requests).toBe(1)
-  expect(await page.evaluate(() => ({ local: localStorage.length, session: sessionStorage.length }))).toEqual({ local: 0, session: 0 })
+  expect(await page.evaluate(() => ({ local: localStorage.length, session: Object.keys(sessionStorage) })))
+    .toEqual({ local: 0, session: ['rodovid:view-session:v1'] })
 })
 
 test('direct addresses, reload and a new root visit follow the URL', async ({ page }) => {

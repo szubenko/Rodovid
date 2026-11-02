@@ -1,9 +1,10 @@
-import { useEffect, useReducer, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useReducer, useRef, useState, type ReactNode } from 'react'
 import { Link, useLocation, useMatch, useNavigate, useNavigationType } from 'react-router'
 import { loadFamily } from '../data/load-family'
 import type { FamilyData } from '../data/schema'
 import { FamilyContext, ViewContext, useFamily } from './context'
 import { initialView, viewReducer, type ViewRoute } from './view-state'
+import { restoreViewSession, saveViewSession } from './view-session'
 import styles from '../App.module.css'
 import { LoadingScreen } from './LoadingScreen'
 
@@ -64,7 +65,10 @@ export function ViewProvider({ children, initialMapZoom = 1 }: { children: React
     route.personId = null
   }
   const [state, dispatch] = useReducer(viewReducer, undefined, () =>
-    initialView(family.config.homePersonId, family.config.initialGenerations, location.key, route, initialMapZoom))
+    restoreViewSession(initialView(family.config.homePersonId, family.config.initialGenerations, location.key, route, initialMapZoom),
+      new Set(family.people.map(person => person.id))))
+  // Save committed changes immediately; discarded tabs may receive no unload event.
+  useLayoutEffect(() => { saveViewSession(state) }, [state])
   // Reconcile before rendering consumers; the URL is authoritative.
   if (state.key !== location.key) dispatch({ type: 'visit', key: location.key, route, navigationType,
     resetMap: (location.state as { resetMap?: boolean } | null)?.resetMap === true })

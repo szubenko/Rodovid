@@ -53,6 +53,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
     // A new click/key may navigate or use a camera button before wheel's end timer.
     // Save that camera before React's handler reads it or records the history entry.
     const interrupt = () => { if (pending) flushSync(commit) }
+    const hide = () => { if (document.visibilityState === 'hidden') interrupt() }
     const behavior = zoom<SVGSVGElement, unknown>()
       .extent([[0, 0], [width, height]])
       .scaleExtent([minZoom, maxZoom])
@@ -108,6 +109,8 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
     svg.addEventListener('click', click, true)
     document.addEventListener('pointerdown', interrupt, true)
     document.addEventListener('keydown', interrupt, true)
+    document.addEventListener('visibilitychange', hide, true)
+    window.addEventListener('pagehide', interrupt, true)
     return () => {
       active = false
       cancel()
@@ -118,6 +121,8 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       svg.removeEventListener('click', click, true)
       document.removeEventListener('pointerdown', interrupt, true)
       document.removeEventListener('keydown', interrupt, true)
+      document.removeEventListener('visibilitychange', hide, true)
+      window.removeEventListener('pagehide', interrupt, true)
     }
   }, [container, width, height, dispatch])
 

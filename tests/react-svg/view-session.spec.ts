@@ -1,0 +1,78 @@
+import { expect, test } from '@playwright/test'
+
+for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives']) {
+  test(`${screen}: перезавантаження відновлює камеру й покоління`, async ({ page }) => {
+    await page.goto(`/${screen}/I1`)
+    await page.getByLabel('Покоління', { exact: true }).selectOption('4')
+    await page.getByRole('button', { name: 'Зменшити масштаб', exact: true }).click()
+    const camera = page.locator('[data-layer="camera"]')
+    const svg = page.locator('[data-map-viewport] > svg')
+    const box = (await svg.boundingBox())!
+    await page.mouse.move(box.x + 20, box.y + 20)
+    await page.mouse.down()
+    await page.mouse.move(box.x + 65, box.y + 45, { steps: 5 })
+    await page.mouse.up()
+    const transform = await camera.getAttribute('transform')
+    const zoom = await page.getByLabel('Масштаб карти', { exact: true }).textContent()
+    const ids = await page.locator('[data-person-id]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-person-id')))
+    await page.reload()
+    await expect(page.getByLabel('Покоління', { exact: true })).toHaveValue('4')
+    await expect(page.getByLabel('Масштаб карти', { exact: true })).toHaveText(zoom!)
+    await expect(camera).toHaveAttribute('transform', transform!)
+    expect(await page.locator('[data-person-id]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-person-id')))).toEqual(ids)
+  })
+}
+
+test('гілки, компактність та Назад/Вперед зберігаються після reload кімнати', async ({ page, context }) => {
+  await page.goto('/vertical-minimal/I12')
+  const top = page.locator('[data-ancestor-person-id="I12"]')
+  const side = page.locator('[data-sibling-person-id="I12"]')
+  await top.press('Enter')
+  await side.press('Enter')
+  await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
+  await page.getByRole('button', { name: 'Зменшити масштаб', exact: true }).click()
+  const transform = await page.locator('[data-layer="camera"]').getAttribute('transform')
+  await page.getByRole('link', { name: 'Історія життя', exact: true }).click()
+  await page.reload()
+  await page.goBack()
+  await expect(page).toHaveURL(/\/vertical-minimal\/I12$/)
+  await expect(top).toHaveAttribute('aria-expanded', 'false')
+  await expect(side).toHaveAttribute('aria-expanded', 'true')
+  await expect(page.locator('[data-card-design="minimal"]')).toHaveAttribute('data-card-density', 'compact')
+  await expect(page.locator('[data-layer="camera"]')).toHaveAttribute('transform', transform!)
+  await page.goForward()
+  await expect(page).toHaveURL(/\/person\/I12$/)
+  await page.goBack()
+  await expect(side).toHaveAttribute('aria-expanded', 'true')
+  // A second tab gets its own settings, even for the same URL.
+  const other = await context.newPage()
+  await other.goto('/vertical-minimal/I12')
+  await expect(other.getByLabel('Масштаб карти', { exact: true })).toHaveText('60%')
+  await expect(other.locator('[data-sibling-person-id="I12"]')).toHaveAttribute('aria-expanded', 'false')
+  await other.close()
+  await expect(side).toHaveAttribute('aria-expanded', 'true')
+})
+
+test('незавершене колесо зберігається при приховуванні вкладки', async ({ page }) => {
+  await page.clock.install({ time: new Date('2026-11-02T12:00:00Z') })
+  await page.clock.pauseAt(new Date('2026-11-02T12:00:01Z'))
+  await page.goto('/vertical-minimal/I1')
+  const svg = page.locator('[data-map-viewport] > svg')
+  await expect(svg).toBeVisible()
+  await page.clock.runFor(1000)
+  await svg.hover()
+  await page.mouse.wheel(0, -80)
+  await expect.poll(() => svg.evaluate(element => Reflect.get(element, '__zoom').k as number)).toBeGreaterThan(.6)
+  await page.clock.runFor(32)
+  const matrix = () => page.locator('[data-layer="camera"]').evaluate(element => {
+    const m = (element as SVGGElement).transform.baseVal.consolidate()!.matrix
+    return [m.a, m.e, m.f].map(value => Number(value.toFixed(6)))
+  })
+  const transform = await matrix()
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' })
+    document.dispatchEvent(new Event('visibilitychange'))
+  })
+  await page.reload()
+  await expect.poll(matrix).toEqual(transform)
+})

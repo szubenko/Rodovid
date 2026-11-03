@@ -295,6 +295,49 @@
         "media-i103-history-photo"
       ],
       "portraitId": "media-i103-diagram-portrait"
+    },
+    {
+      "id": "person-media-i105",
+      "personId": "I105",
+      "photoIds": [
+        "media-wedding-zemlianska-kravchyk-1946"
+      ]
+    },
+    {
+      "id": "person-media-i47",
+      "personId": "I47",
+      "photoIds": [
+        "media-kernytskyi-endzevych-stara-ropa-1957",
+        "media-i47-kopeysk-1956",
+        "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
+      ],
+      "portraitId": "media-i47-avatar"
+    },
+    {
+      "id": "person-media-i49",
+      "personId": "I49",
+      "photoIds": [
+        "media-kernytskyi-endzevych-stara-ropa-1957",
+        "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
+      ],
+      "portraitId": "media-i49-avatar"
+    },
+    {
+      "id": "person-media-i48",
+      "personId": "I48",
+      "photoIds": [
+        "media-kernytskyi-endzevych-stara-ropa-1957",
+        "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
+      ],
+      "portraitId": "media-i48-avatar"
+    },
+    {
+      "id": "person-media-i29",
+      "personId": "I29",
+      "photoIds": [
+        "media-i29-kustanay-1958"
+      ],
+      "portraitId": "media-i29-avatar"
     }
   ],
   "placeEnrichments": [
@@ -4256,6 +4299,258 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/People/чабан-ярослав-іванович-1942-2025/чабан-ярослав-іванович-діаграми.png",
           "entryId": "media-i103-diagram-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-wedding-zemlianska-kravchyk-1946",
+      "path": "assets/photos/весілля-землянської-кравчика-1946-виправлене.png",
+      "sha256": "9ecbffe117ed0f5e900cb383717e1b234f236ad12662f6c0ea33352c5082fb3f",
+      "dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/весілля-землянської-кравчика-1946-виправлене.png",
+        "mimeType": "image/png"
+      },
+      "title": "Весілля Антоніни Івановни Землянської та Володимира Кравчика, 1946 рік",
+      "description": "Весілля Антоніни Івановни Землянської та Володимира Кравчика\nІлля Степанович Чабан (бітько ц. Касі дідусь Наталі Іванівни Чабан)\nсвати - батьки нареченого\nцеця Кася з чоловіком Іваном\n1946 рік",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/чабан-катерина-іллівна/весілля-землянської-кравчика-1946-виправлене-фото.png",
+          "entryId": "media-wedding-zemlianska-kravchyk-1946"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-corrected-wedding-photo-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-kernytskyi-endzevych-stara-ropa-1957",
+      "path": "assets/photos/керницькі-ендзевич-стара-ропа-1957.png",
+      "sha256": "359720509e248fed95d823c4aec558b2f3325084a4b473282b95b6d415d6cf22",
+      "dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/керницькі-ендзевич-стара-ропа-1957.png",
+        "mimeType": "image/png"
+      },
+      "title": "Керницькі та Стефанія-Марія Ендзевич — Стара Ропа, 1957",
+      "description": "Керницький Василь Миколайович\nКерницький Петро Миколайович\nКерницький Марія Миколайович\nЕндзевич Стефанія - Марія (Василівна в вишиванці)\nСидять батьки Стефанії Марії ?\n\nСтара Ропа 1957",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/керницькі-ендзевич-стара-ропа-1957.png",
+          "entryId": "media-kernytskyi-endzevych-stara-ropa-1957"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-kernytskyi-photo-description-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-i47-avatar",
+      "path": "assets/photos/керницький-василь-миколайович-аватар.png",
+      "sha256": "166141f7a36df0149e925a6da2ea19ebe8c61a728e39251ca551caf37d24212d",
+      "dimensions": {
+        "width": 428,
+        "height": 428
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/керницький-василь-миколайович-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Василь Миколайович Керницький — кругла аватарка",
+      "description": "Кругла аватарка з фрагмента, наданого власником 03.11.2026. Просте обрізання та прозорі кути; без генерації, ретуші чи зміни рис обличчя.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницький-василь-миколайович-1926-1965/керницький-василь-миколайович-аватар.png",
+          "entryId": "media-i47-avatar"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницький-василь-миколайович-1926-1965/керницький-василь-миколайович-вихідний-фрагмент.png",
+          "entryId": "owner-vasyl-avatar-crop-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-i48-avatar",
+      "path": "assets/photos/керницька-марія-миколаївна-аватар.png",
+      "sha256": "f38bc92a406ebdde9cf5d5dee7bdd7ee9d552791dd3dbdca1af30e5c935b08ac",
+      "dimensions": {
+        "width": 422,
+        "height": 422
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/керницька-марія-миколаївна-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Марія Керницька — кругла аватарка",
+      "description": "Кругла аватарка з фрагмента, наданого власником 03.11.2026. Прозорість за межами кола; оригінальні пікселі портрета збережені без генерації та ретуші.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницька-марія-миколаївна-1934-2001/керницька-марія-миколаївна-аватар.png",
+          "entryId": "media-i48-avatar"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницька-марія-миколаївна-1934-2001/керницька-марія-миколаївна-вихідний-фрагмент.png",
+          "entryId": "owner-mariia-avatar-crop-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-i49-avatar",
+      "path": "assets/photos/керницький-петро-миколайович-аватар.png",
+      "sha256": "da36f0b131abca072d23a5311d35c0cccfb2b638e32b428f07fc2b4f97ff14fb",
+      "dimensions": {
+        "width": 337,
+        "height": 337
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/керницький-петро-миколайович-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Петро Миколайович Керницький — кругла аватарка",
+      "description": "Кругла аватарка з фрагмента, наданого власником 03.11.2026. Просте обрізання та прозорість за межами кола; оригінальні пікселі портрета збережені без генерації та ретуші.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницький-петро-миколайович-1938-2002/керницький-петро-миколайович-аватар.png",
+          "entryId": "media-i49-avatar"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницький-петро-миколайович-1938-2002/керницький-петро-миколайович-вихідний-фрагмент.png",
+          "entryId": "owner-petro-avatar-crop-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-i47-kopeysk-1956",
+      "path": "assets/photos/керницький-василь-миколайович-копейськ-1956.png",
+      "sha256": "06a8d36f5387e74c7d78ff7516c33b3abe8fa812cc3f29425163479631cab684",
+      "dimensions": {
+        "width": 1110,
+        "height": 1450
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/керницький-василь-миколайович-копейськ-1956.png",
+        "mimeType": "image/png"
+      },
+      "title": "Керницький Василь Миколайович — Копейськ, 1956",
+      "description": "Керницький Василь Миколайович 1956 Копейськ\nпісля Себірської каторги\nповернувся хворий, незадовго помер",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/керницький-василь-миколайович-1926-1965/керницький-василь-миколайович-копейськ-1956.png",
+          "entryId": "media-i47-kopeysk-1956"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-vasyl-kopeysk-1956-description-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-kernytskyi-visit-after-katorha-stara-ropa-1957",
+      "path": "assets/photos/керницькі-ендзевич-відвідини-після-каторги-стара-ропа-1957.png",
+      "sha256": "bb2706a716c4cba060ba963676a423e27261e68d5db0d77d737073c07e1c288f",
+      "dimensions": {
+        "width": 1107,
+        "height": 1549
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/керницькі-ендзевич-відвідини-після-каторги-стара-ропа-1957.png",
+        "mimeType": "image/png"
+      },
+      "title": "Василь Керницький відвідав родичів після каторги — Стара Ропа, 1957",
+      "description": "Керницький Василь Миколайович\nКерницький Петро Миколайович\nКерницький Марія Миколайович\nЕндзевич Стефанія - Марія (Василівна в вишиванці)\nВасиль відвідав родичів після каторги\nСтара Ропа 1957",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/керницькі-ендзевич-відвідини-після-каторги-стара-ропа-1957.png",
+          "entryId": "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-kernytskyi-visit-photo-description-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-i29-kustanay-1958",
+      "path": "assets/photos/чабан-наталія-іванівна-кустанай-1958.png",
+      "sha256": "80e9f007875c08a568740719101f307cad9e59aa7019bdbbf74ea90fe798abb7",
+      "dimensions": {
+        "width": 1086,
+        "height": 1448
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабан-наталія-іванівна-кустанай-1958.png",
+        "mimeType": "image/png"
+      },
+      "title": "Наталія Іванівна Чабан — Кустанай, 1958 рік",
+      "description": "Наталія Іванівна Чабан\nКустанай 1958 рік",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/чабан-наталія-іванівна-1938/чабан-наталія-іванівна-кустанай-1958.png",
+          "entryId": "media-i29-kustanay-1958"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-nataliia-kustanay-photo-2026-11-03"
+        }
+      ]
+    },
+    {
+      "id": "media-i29-avatar",
+      "path": "assets/photos/чабан-наталія-іванівна-аватар.png",
+      "sha256": "cf160d2c272d2809e0b5c25cf45ac25828a27a1399d61d7c3f9edc40ebc1edfe",
+      "dimensions": {
+        "width": 840,
+        "height": 840
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабан-наталія-іванівна-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Наталія Іванівна Чабан — кругла аватарка",
+      "description": "Кругла аватарка з фотографії «Кустанай, 1958 рік», наданої власником 03.11.2026. Просте обрізання та прозорість за межами кола; оригінальні пікселі портрета збережені без генерації та ретуші.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/чабан-наталія-іванівна-1938/чабан-наталія-іванівна-аватар.png",
+          "entryId": "media-i29-avatar"
+        },
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "owner-nataliia-kustanay-photo-2026-11-03"
         }
       ]
     }

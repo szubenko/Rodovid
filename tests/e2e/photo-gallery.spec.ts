@@ -2,12 +2,13 @@ import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 
-test('primary photo, lazy full files, zoom, next, close focus and failure', async ({ page, context, isMobile }, info) => {
+test('photo carousel switches by buttons, image and keyboard without a popup', async ({ page, isMobile }, info) => {
   const family = familyDataSchema.parse(fixture)
   family.datasetKind = 'family'
   const photo = family.media.find(m => m.id === 'media-photo')!
   photo.dimensions = { width: 2400, height: 1600 }
-  const second = { ...photo, id: 'second-photo', path: 'assets/photos/second.png', mimeType: 'image/png' as const, title: 'Друге тестове фото', thumbnail: { path: 'assets/thumbs/second.png', mimeType: 'image/png' as const } }
+  photo.thumbnail = { path: 'assets/thumbs/first.png', mimeType: 'image/png' }
+  const second = { ...photo, id: 'second-photo', path: 'assets/photos/second.png', mimeType: 'image/png' as const, title: 'Друге тестове фото', description: 'Оригінальний опис фотографії.\nМісце та рік з імпорту.', thumbnail: { path: 'assets/thumbs/second.png', mimeType: 'image/png' as const } }
   family.media.push(second)
   family.people[0]!.photoIds = [photo.id, second.id]
   family.people[0]!.portraitId = second.id
@@ -26,46 +27,61 @@ test('primary photo, lazy full files, zoom, next, close focus and failure', asyn
   await page.goto('/person/I1')
   const gallery = page.locator('#photos')
   await gallery.scrollIntoViewIfNeeded()
+  await expect(gallery.locator('figure')).toHaveCount(1)
   await expect(gallery.locator('figure').first()).toHaveAttribute('data-media-id', second.id)
+  await expect(gallery.getByRole('status')).toHaveText('Фото 1 з 2')
+  await gallery.getByRole('button', { name: 'Наступна фотографія', exact: true }).click()
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
+  await expect(gallery.locator('figcaption')).toHaveText(photo.title)
+  await expect(gallery.getByRole('status')).toHaveText('Фото 2 з 2')
+  await gallery.getByRole('button', { name: 'Наступна фотографія', exact: true }).click()
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
+  await gallery.getByRole('button', { name: 'Попередня фотографія', exact: true }).click()
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
+  await gallery.getByRole('button', { name: 'Попередня фотографія', exact: true }).click()
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
   expect(fullRequests).toBe(0)
-  const open = gallery.getByRole('button', { name: `Відкрити: ${second.title}` })
-  await open.click()
-  await expect(page.locator('.pswp')).toBeVisible()
-  await expect(page.locator('.pswp')).toHaveAttribute('data-ready', 'true')
-  await page.getByRole('button', { name: 'Збільшити / зменшити' }).click()
-  await expect(page.locator('.pswp')).toHaveClass(/pswp--zoomed-in/)
+  const imageButton = gallery.locator('figure button')
+  const caption = gallery.locator('figure').first().locator('figcaption')
+  await expect(caption).toHaveText(second.description)
+  await expect(caption).toHaveCSS('white-space', 'pre-wrap')
+  const imageBox = (await imageButton.locator('img').boundingBox())!
+  const captionBox = (await caption.boundingBox())!
   if (isMobile) {
-    const session = await context.newCDPSession(page)
-    const x = page.viewportSize()!.width / 2, y = page.viewportSize()!.height / 2
-    const transform = () => page.locator('.pswp__item[aria-hidden="false"] .pswp__zoom-wrap').getAttribute('style')
-    const before = await transform()
-    await session.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: x - 30, y, id: 1 }, { x: x + 30, y, id: 2 }] })
-    for (let step = 1; step <= 8; step++) await session.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: x - 30 - step * 5, y, id: 1 }, { x: x + 30 + step * 5, y, id: 2 }] })
-    await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] })
-    await expect.poll(transform).not.toBe(before)
-    await session.detach()
+    expect(captionBox.y).toBeGreaterThanOrEqual(imageBox.y + imageBox.height)
+  } else {
+    expect(imageBox.height).toBeGreaterThanOrEqual(352)
+    expect(captionBox.x).toBeGreaterThan(imageBox.x + imageBox.width)
   }
-  await page.screenshot({ path: info.outputPath('gallery-zoom.png') })
-  await page.keyboard.press('Escape')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await page.screenshot({ path: info.outputPath('gallery-layout.png') })
+  await imageButton.click()
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
+  await expect(caption).toHaveText(photo.title)
+  await expect(gallery.getByRole('status')).toHaveText('Фото 2 з 2')
   await expect(page.locator('.pswp')).toHaveCount(0)
-  await expect(open).toBeFocused()
-  await open.click()
-  await expect(page.locator('.pswp')).toHaveAttribute('data-ready', 'true')
-  await page.getByRole('button', { name: 'Наступне фото' }).click()
-  await expect(page.locator('.pswp__caption')).toHaveCount(0)
-  await expect(page.locator('.pswp__item[aria-hidden="false"] .pswp__img').last()).toHaveAttribute('alt', photo.title)
-  await page.getByRole('button', { name: 'Закрити галерею' }).click()
+  await imageButton.click()
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
+  await expect(caption).toHaveText(second.description)
+  await imageButton.focus()
+  await page.keyboard.press('Enter')
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
+  await expect(imageButton).toBeFocused()
+  await page.keyboard.press('Space')
+  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
+  await expect(imageButton).toBeFocused()
+  await expect(page.locator('.pswp')).toHaveCount(0)
+  expect(fullRequests).toBe(0)
   family.people[0]!.photoIds = [second.id]
   await page.reload()
   await expect(gallery.locator('figure')).toHaveCount(1)
-  await open.click()
-  await expect(page.locator('.pswp__caption')).toHaveCount(0)
-  await page.getByRole('button', { name: 'Закрити галерею' }).click()
+  await expect(gallery.getByRole('group', { name: 'Перемикання фотографій' })).toHaveCount(0)
+  await expect(imageButton).toHaveCount(0)
+  await gallery.locator('img').click()
+  await expect(page.locator('.pswp')).toHaveCount(0)
   await page.route(/\/assets\/.*\.(png|jpe?g)$/, route => route.abort())
   await page.reload()
-  await open.click()
-  await expect(page.locator('.pswp__error-msg').first()).toBeVisible()
-  await page.getByRole('button', { name: 'Закрити галерею' }).click()
+  await expect(gallery.getByText('Мініатюра недоступна')).toBeVisible()
   await page.getByRole('link', { name: 'Показати на карті', exact: true }).click()
   await expect(page).toHaveURL(/\/tree\/I1$/)
 })

@@ -9,12 +9,25 @@ function Thumbnail({ item }: { item: Media }) {
   return item.thumbnail && !failed ? <img src={`/${item.thumbnail.path}`} alt="" loading="lazy" onError={() => setFailed(true)} /> : <span className={styles.empty}>{failed ? 'Мініатюра недоступна' : 'Переглянути зображення'}</span>
 }
 
-export function ImageGallery({ items, primaryId, showCaptions = true }: { items: Media[]; primaryId?: string; showCaptions?: boolean }) {
+export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Media[]; primaryId?: string; layout?: 'grid' | 'details' }) {
   const [opened, setOpened] = useState<number | null>(null)
+  const [selectedId, setSelectedId] = useState(items[0]?.id)
   const viewable = useMemo(() => items.filter(item => item.dimensions), [items])
+  const showCaptions = layout === 'grid'
+  const selectedIndex = Math.max(0, items.findIndex(item => item.id === selectedId))
+  const visibleItems = layout === 'details' ? items.slice(selectedIndex, selectedIndex + 1) : items
+  const selectPhoto = (offset: number) => setSelectedId(items[(selectedIndex + offset + items.length) % items.length]!.id)
   return <>
-    <div className={styles.photos}>{items.map(item => <figure key={item.id} data-media-id={item.id}>
-      {item.dimensions ? <button aria-label={`Відкрити: ${item.title}`} onClick={() => setOpened(viewable.findIndex(m => m.id === item.id))}><Thumbnail item={item} /></button> : <Thumbnail item={item} />}
+    {layout === 'details' && items.length > 1 && <div className={styles.photoControls} role="group" aria-label="Перемикання фотографій">
+      <button type="button" aria-label="Попередня фотографія" onClick={() => selectPhoto(-1)}>←<span className={styles.photoControlLabel}> Попередня</span></button>
+      <span role="status" aria-live="polite" aria-atomic="true">Фото {selectedIndex + 1} з {items.length}</span>
+      <button type="button" aria-label="Наступна фотографія" onClick={() => selectPhoto(1)}><span className={styles.photoControlLabel}>Наступна </span>→</button>
+    </div>}
+    <div className={`${styles.photos}${layout === 'details' ? ` ${styles.photoDetails}` : ''}`}>{visibleItems.map(item => <figure key={layout === 'details' ? 'current-photo' : item.id} data-media-id={item.id}>
+      {layout === 'details'
+        ? items.length > 1 ? <button type="button" aria-label={`Наступна фотографія: ${item.title}`} onClick={() => selectPhoto(1)}><Thumbnail key={item.id} item={item} /></button> : <Thumbnail key={item.id} item={item} />
+        : item.dimensions ? <button aria-label={`Відкрити: ${item.title}`} onClick={() => setOpened(viewable.findIndex(m => m.id === item.id))}><Thumbnail item={item} /></button> : <Thumbnail item={item} />}
+      {layout === 'details' && <figcaption><p>{item.description || item.title}</p></figcaption>}
       {showCaptions && <>
         <figcaption>{item.id === primaryId && <strong>Основне фото · </strong>}{item.title}{item.description && <p>{item.description}</p>}</figcaption>
         <a href={`/${item.path}`} target="_blank" rel="noopener noreferrer">Відкрити файл: {item.title}</a>
@@ -31,6 +44,6 @@ export function PhotoGallery({ personId }: { personId: string }) {
   const items = ids.flatMap(id => { const media = family.media.find(m => m.id === id && m.mimeType.startsWith('image/')); return media ? [media] : [] })
   return <section className={styles.paper} id="photos" aria-label="Фотографії">
     <h2>Фотографії</h2>
-    {items.length ? <ImageGallery items={items} primaryId={person.portraitId} showCaptions={false} /> : <p className={styles.empty}>Фотографій поки немає.</p>}
+    {items.length ? <ImageGallery key={personId} items={items} primaryId={person.portraitId} layout="details" /> : <p className={styles.empty}>Фотографій поки немає.</p>}
   </section>
 }

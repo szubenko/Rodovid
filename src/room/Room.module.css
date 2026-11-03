@@ -40,6 +40,18 @@
 .photos img { display: block; width: 100%; height: 10rem; object-fit: contain; }
 .photos figcaption { margin-block: 0.6rem; line-height: 1.6; }
 .photos a { display: inline-flex; align-items: center; min-height: 44px; }
+.photoDetails { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.photoDetails figure { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start; gap: clamp(1rem, 3vw, 2.5rem); }
+.photoDetails img { height: clamp(22rem, 35vw, 32rem); }
+.photoDetails figcaption { margin: 0; white-space: pre-wrap; }
+.photoDetails figcaption p { margin: 0; }
+.photoControls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.photoControls > span { color: #596c54; font-size: 14px; }
+@media (max-width: 650px) {
+  .photoControlLabel { display: none; }
+  .photoDetails figure { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .photoDetails img { height: auto; max-height: 32rem; }
+}
 .memory { max-width: 65ch; line-height: 1.75; }
 .memory pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .memory blockquote { margin-inline: 0; padding-left: 1rem; border-left: 3px solid #9e7b62; }

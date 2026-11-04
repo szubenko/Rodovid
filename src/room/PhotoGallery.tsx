@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import type { Media } from '../data/schema'
 import { useFamily } from '../navigation/context'
 import { PhotoViewer } from './PhotoViewer'
-import { AlbumIcon, AlbumOrnament, PhotoDescription } from './PhotoDecoration'
+import { AlbumIcon, PhotoDescription } from './PhotoDecoration'
 import { sortPhotosChronologically } from './photo-chronology'
 import styles from './Room.module.css'
 
@@ -58,9 +58,6 @@ export function PhotoGallery({ personId }: { personId: string }) {
   return <section className={`${styles.paper} ${styles.photoAlbum}`} id="photos" aria-label="Фотографії">
     <div className={styles.photoAlbumHeading}>
       <h2><AlbumIcon kind="camera" />Фотографії</h2>
-      <span className={styles.photoAlbumRule} aria-hidden="true" />
-      <AlbumOrnament />
-      <span className={styles.photoAlbumRule} aria-hidden="true" />
     </div>
     {items.length ? <ImageGallery key={personId} items={items} primaryId={person.portraitId} layout="details" /> : <p className={styles.empty}>Фотографій поки немає.</p>}
   </section>

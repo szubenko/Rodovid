@@ -63,9 +63,6 @@
 .photoAlbumHeading { position: relative; display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); margin: -18px calc(-1 * var(--room-inset)) 18px; padding: 14px var(--room-inset) 10px; border-bottom: 1px solid #e1e7da; border-radius: 12px 12px 0 0; background: var(--album-header); }
 .photoAlbum .photoAlbumHeading h2 { display: flex; align-items: center; flex-shrink: 0; gap: 8px; margin: 0; color: var(--album-ink); font: 650 11px/1.4 var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; }
 .photoAlbumHeading h2 svg { width: 14px; height: 14px; color: var(--album-detail); }
-.photoAlbumRule { height: 1px; flex: 1; background: var(--album-rule); box-shadow: 0 2px #ffffff80; }
-.photoAlbumRule:first-of-type { display: none; }
-.photoEmbroidery { position: absolute; left: 50%; transform: translateX(-50%); width: 70px; height: 20px; padding-inline: 6px; color: var(--album-detail); background: var(--album-header); }
 .photoAlbum .photoDetails { position: relative; }
 .photoAlbum .photoDetails figure { grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr); gap: clamp(24px, 4vw, 64px); }
 .photoAlbum .photoFrame { position: relative; isolation: isolate; padding: 15px; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
@@ -80,8 +77,6 @@
 @media (prefers-reduced-motion: reduce) { .room .photoDetails .photoArrow { transition: none; } }
 @media (max-width: 650px) {
   .photoAlbumHeading { gap: 12px; }
-  .photoEmbroidery { position: static; transform: none; width: 60px; height: 16px; margin-left: auto; padding: 0; background: transparent; }
-  .photoAlbumRule { display: none; }
   .photoAlbum .photoDetails figure { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .photoAlbum .photoCaption { padding-top: 0; font-size: 18px; gap: 20px; }
   .photoDescriptionGroup { grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }

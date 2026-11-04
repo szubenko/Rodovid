@@ -9,14 +9,6 @@ export function AlbumIcon({ kind }: { kind: 'camera' | 'people' | 'calendar' }) 
   </svg>
 }
 
-export function AlbumOrnament() {
-  return <svg className={styles.photoEmbroidery} viewBox="0 0 180 64" aria-hidden="true" shapeRendering="crispEdges">
-    <g fill="currentColor"><path d="m90 10 12 12-12 12-12-12zM90 34l12 12-12 12-12-12zM66 22l12 12-12 12-12-12zM114 22l12 12-12 12-12-12z" /><path d="M87 0h6v8h-6zM87 58h6v6h-6zM54 31h8v6h-8zM118 31h8v6h-8z" /></g>
-    <g fill="currentColor"><path d="m6 31 4-4 4 4-4 4zM14 31h36v4H14zM20 23h8v4h-8zM16 19h8v4h-8zM32 39h8v4h-8zM36 43h8v4h-8zM36 21h4v8h-4zM40 17h4v8h-4zM22 37h4v8h-4zM26 41h4v8h-4z" /><path d="m174 31-4-4-4 4 4 4zM130 31h36v4h-36zM152 23h8v4h-8zM156 19h8v4h-8zM140 39h8v4h-8zM136 43h8v4h-8zM140 21h4v8h-4zM136 17h4v8h-4zM154 37h4v8h-4zM150 41h4v8h-4z" /></g>
-    <path d="m90 25 9 9-9 9-9-9z" fill="currentColor" />
-  </svg>
-}
-
 export function PhotoDescription({ text }: { text: string }) {
   const { body, date } = photoDescriptionParts(text)
   return <figcaption className={styles.photoCaption}>

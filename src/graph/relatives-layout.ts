@@ -484,6 +484,34 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       && family.children.length === 1 && childrenByParent.get(family.parents[0]!)!.size === 1)
     if (straightFamilies.length) centerFamilyParents(nodes, straightFamilies, groups.map(group => group.ids), familyGap, spouseGap)
   }
+  if (options?.femaleSiblingsRight || options?.maleSiblingsLeft) {
+    // Conflicting half-sibling families can fall back to centering only the
+    // main ancestry. That leaves the initial barycentric spacing on leaf
+    // siblings, which grows when an older sibling branch is expanded.
+    // Close that unused space without moving ancestry, couples or other rows.
+    const anchored = new Set([
+      ...centeringFamilies.flatMap(family => family.parents),
+      ...couples.filter(couple => couple.length > 1).flat(),
+      ...(projection.siblingGroups?.map(group => group.personId) ?? []),
+    ])
+    for (const group of projection.siblingGroups ?? []) {
+      const owner = nodes.find(node => node.personId === group.personId)!
+      const sex = graph.sexByPerson.get(owner.personId)
+      const direction = options.maleSiblingsLeft && sex === 'M' ? -1
+        : options.femaleSiblingsRight && sex === 'F' ? 1 : 0
+      if (!direction) continue
+      const added = new Set(group.addedPersonIds)
+      const row = nodes.filter(node => node.generation === owner.generation).sort((a, b) => a.x - b.x)
+      let neighbor = owner
+      for (let slot = row.indexOf(owner) + direction; slot >= 0 && slot < row.length; slot += direction) {
+        const sibling = row[slot]!
+        if (!added.has(sibling.personId) || anchored.has(sibling.personId)) break
+        const target = neighbor.x + direction * ((neighbor.width + sibling.width) / 2 + familyGap)
+        sibling.x = direction < 0 ? Math.max(sibling.x, target) : Math.min(sibling.x, target)
+        neighbor = sibling
+      }
+    }
+  }
   const centeredLeft = Math.min(...nodes.map(node => node.x - node.width / 2))
   for (const node of nodes) node.x += padding - centeredLeft
   const byId = new Map(nodes.map(node => [node.appearanceId, node]))

@@ -6,6 +6,7 @@ type Point = { x: number; y: number }
 type Segment = { a: Point; b: Point }
 type Interval = [number, number]
 type Edge = TreeLayout['edges'][number]
+const crossingGap = 14
 
 function segments(path: string): Segment[] {
   let current = { x: 0, y: 0 }
@@ -13,7 +14,10 @@ function segments(path: string): Segment[] {
   for (const match of path.matchAll(/([MVH])([^MVH]+)/gu)) {
     const values = match[2]!.split(',').map(Number)
     const next = { x: match[1] === 'V' ? current.x : values[0]!, y: match[1] === 'H' ? current.y : values.at(-1)! }
-    if (match[1] !== 'M') result.push({ a: current, b: next })
+    // Empty H/V commands are junctions, not obstacles for another family.
+    if (match[1] !== 'M' && (Math.abs(current.x - next.x) > .01 || Math.abs(current.y - next.y) > .01)) {
+      result.push({ a: current, b: next })
+    }
     current = next
   }
   return result
@@ -139,7 +143,6 @@ function detour(start: Point, end: Point, cards: RelativeNode[], obstacles: Segm
 }
 
 export function routeSiblingDetours(edges: Edge[], nodes: RelativeNode[], graph: FamilyGraph, siblingIds: ReadonlySet<string>, width: number, height: number) {
-  if (!siblingIds.size) return { width, height }
   const familyKey = (edge: Edge) => {
     const relation = graph.relationships.get(edge.relationshipId)!
     return (relation.kind === 'spouse' ? [relation.fromPersonId, relation.toPersonId]
@@ -170,8 +173,8 @@ export function routeSiblingDetours(edges: Edge[], nodes: RelativeNode[], graph:
       }
       return false
     })))
-  const targets = new Set(edges.filter(edge => graph.relationships.get(edge.relationshipId)!.kind === 'parent-child'
-    && crossesOtherFamily(edge)).map(edge => keys.get(edge)!)
+  const targets = new Set((siblingIds.size ? edges.filter(edge => graph.relationships.get(edge.relationshipId)!.kind === 'parent-child'
+    && crossesOtherFamily(edge)) : []).map(edge => keys.get(edge)!)
     // Route younger families first. A long detour for an older marriage must
     // avoid their finished lines instead of enclosing their unfinished exits.
     .sort((a, b) => generationByFamily.get(b)! - generationByFamily.get(a)!
@@ -219,6 +222,9 @@ export function routeSiblingDetours(edges: Edge[], nodes: RelativeNode[], graph:
     }
   }
   const routes = new Map(edges.map(edge => [edge, edgeSegments(edge)]))
+  // Apply underpasses to every visible family, including ancestry already
+  // present before any sibling expansion. Leave several dash lengths clear:
+  // a one-dash gap looks like an ordinary dashed junction when the tree is fit.
   for (const edge of edges) {
     const others = edges.filter(other => keys.get(other) !== keys.get(edge)).flatMap(other => routes.get(other)!)
     edge.path = routes.get(edge)!.flatMap(segment => {
@@ -226,7 +232,7 @@ export function routeSiblingDetours(edges: Edge[], nodes: RelativeNode[], graph:
       if (a.x === b.x) return [`M${a.x},${a.y} V${b.y}`]
       const low = Math.min(a.x, b.x), high = Math.max(a.x, b.x)
       const gaps = others.filter(other => other.a.x === other.b.x && intersects(segment, other))
-        .map(other => [Math.max(low, other.a.x - 7), Math.min(high, other.a.x + 7)] as Interval)
+        .map(other => [Math.max(low, other.a.x - crossingGap), Math.min(high, other.a.x + crossingGap)] as Interval)
         .sort((left, right) => left[0] - right[0])
       const visible: Interval[] = []
       let cursor = low

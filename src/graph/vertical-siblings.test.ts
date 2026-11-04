@@ -12,6 +12,29 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
+  it('keeps the Plastun cards beside Yakov when Makariy’s siblings are expanded', () => {
+    const labels = new Map(family.people.map(person => [person.id, personName(family, person.id)]))
+    const dates = new Map(family.people.map(person => [person.id, lifeYears(family, person.id)]))
+    const measure = (text: string, size: number) => text.length * size * .65
+    for (const showPortrait of [true, false]) for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics(labels.values(), dates.values(), compact,
+        text => measure(text, 24), text => measure(text, 15), showPortrait)
+      const options = portraitLayoutOptions(metrics, compact)
+      const projection = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: ['I5', 'I9'] })
+      const layout = layoutRelatives(projection, graph, labels, dates, measure, ancestorPersonIds(graph, 'I1'), options)
+      const byId = new Map(layout.nodes.map(node => [node.personId, node]))
+      const yakov = byId.get('I5')!, tanya = byId.get('I69')!
+      const gap = yakov.x - yakov.width / 2 - tanya.x - tanya.width / 2
+      expect(gap, `${showPortrait}/${compact}: Tanya beside Yakov`).toBeCloseTo(options.familyGap, 2)
+      for (let i = 0; i < layout.nodes.length; i++) for (const other of layout.nodes.slice(i + 1)) {
+        const node = layout.nodes[i]!
+        if (node.generation === other.generation) {
+          expect(Math.abs(node.x - other.x)).toBeGreaterThanOrEqual((node.width + other.width) / 2 - .01)
+        }
+      }
+    }
+  }, 30_000)
+
   it('keeps the Plastun half-sibling links inside their generation channel without staircases', () => {
     const projection = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: ['I5'] })
     const labels = new Map(family.people.map(person => [person.id, personName(family, person.id)]))

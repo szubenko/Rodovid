@@ -1,5 +1,5 @@
 export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'vertical-design' | 'vertical-minimal' | 'relatives'
-export type ViewRoute = { screen: MapScreen | 'person' | 'missing'; personId: string | null }
+export type ViewRoute = { screen: MapScreen | 'person' | 'photos' | 'missing'; personId: string | null }
 export type MapSettings = {
   generations: number
   zoom: number

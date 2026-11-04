@@ -55,9 +55,10 @@ export function ViewProvider({ children, initialMapZoom = 1 }: { children: React
   const verticalMinimal = useMatch('/vertical-minimal/:personId')
   const relatives = useMatch('/relatives/:personId')
   const person = useMatch('/person/:personId')
+  const photos = useMatch('/photos')
   const navigationType = useNavigationType()
   const route: ViewRoute = {
-    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : verticalDesign ? 'vertical-design' : verticalMinimal ? 'vertical-minimal' : relatives ? 'relatives' : person ? 'person' : 'missing',
+    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : verticalDesign ? 'vertical-design' : verticalMinimal ? 'vertical-minimal' : relatives ? 'relatives' : person ? 'person' : photos ? 'photos' : 'missing',
     personId: tree?.params.personId ?? horizontal?.params.personId ?? vertical?.params.personId ?? verticalDesign?.params.personId ?? verticalMinimal?.params.personId ?? relatives?.params.personId ?? person?.params.personId ?? null,
   }
   if (route.personId && !family.people.some((entry) => entry.id === route.personId)) {

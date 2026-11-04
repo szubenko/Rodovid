@@ -1,7 +1,17 @@
 import { describe, expect, it } from 'vitest'
-import { photoDescriptionParts } from './photo-description'
+import { photoDescriptionParts, photoYear } from './photo-description'
 
 describe('photo description dates', () => {
+  it('does not display or date a photo by the owner delivery notice', () => {
+    const text = 'Фотографія для вкладки «Історія життя». Надано власником 30.10.2026.'
+    expect(photoDescriptionParts(text)).toEqual({ body: 'Фотографія для вкладки «Історія життя».', date: null })
+    expect(photoYear(text)).toBeNull()
+    expect(photoDescriptionParts('Надано власником 30.10.2026.')).toEqual({ body: '', date: null })
+  })
+
+  it('preserves the actual photo date when a delivery date is also present', () => {
+    expect(photoDescriptionParts('Кустанай 1958 рік. Надано власником 30.10.2026.')).toEqual({ body: 'Кустанай 1958 рік.', date: '1958' })
+  })
   it('shows the 1956 year from the first line without rewriting the description', () => {
     const text = 'Керницький Василь Миколайович 1956 Копейськ\nпісля Себірської каторги\nповернувся хворий, незадовго помер'
     expect(photoDescriptionParts(text)).toEqual({ body: text, date: '1956' })

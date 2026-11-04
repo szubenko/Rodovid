@@ -5,7 +5,7 @@ export const viewSessionKey = 'rodovid:view-session:v1'
 
 const mapScreen = z.enum(['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'])
 const view = z.object({
-  screen: z.enum([...mapScreen.options, 'person', 'missing']),
+  screen: z.enum([...mapScreen.options, 'person', 'photos', 'missing']),
   personId: z.string().nullable(),
   mapScreen,
   centerPersonId: z.string(),
@@ -54,7 +54,7 @@ export function restoreViewSession(fallback: ViewState, personIds: ReadonlySet<s
       || target.personId !== fallback.current.personId) return fallback
     if (Object.values(views).some(entry => !personIds.has(entry.centerPersonId)
       || entry.personId !== null && !personIds.has(entry.personId)
-      || entry.screen !== 'person' && entry.screen !== 'missing'
+      || entry.screen !== 'person' && entry.screen !== 'photos' && entry.screen !== 'missing'
         && (entry.screen !== entry.mapScreen || entry.centerPersonId !== entry.personId))) return fallback
     return viewReducer(saved, { type: 'visit', key: fallback.key, route: fallback.current, navigationType: 'POP' })
   } catch { return fallback }

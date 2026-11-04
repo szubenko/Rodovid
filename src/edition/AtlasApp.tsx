@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
-import { Navigate, Route, Routes, useLocation, useParams } from 'react-router'
+import { Link as RouteLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router'
 import { FamilyProvider, ViewProvider } from '../navigation/Providers'
 import { useFamily, useView } from '../navigation/context'
 import { ViewLink as Link } from '../navigation/ViewLink'
@@ -13,6 +13,7 @@ import { VerticalMinimalTree } from '../graph/VerticalMinimalTree'
 import { RelativesTree } from '../graph/RelativesTree'
 import type { MapScreen } from '../navigation/view-state'
 import { PersonRoom } from '../room/PersonRoom'
+import { PhotoCollectionPage } from '../room/PhotoCollectionPage'
 import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
 import { useAudio } from '../audio/context'
@@ -20,7 +21,7 @@ import chapliivkaArms from '../appearance/loading/chapliivka.png'
 import staraSilArms from '../appearance/loading/stara-sil.svg'
 import styles from './AtlasApp.module.css'
 
-function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical-minimal'> | 'book' | 'search' | 'home' | 'music' }) {
+function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical-minimal'> | 'book' | 'search' | 'home' | 'music' | 'photos' }) {
   const paths = {
     tree: <><circle cx="12" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /><path d="M12 7v6M5 17v-4h14v4" /></>,
     horizontal: <><rect x="2" y="9" width="6" height="6" rx="1" /><rect x="16" y="2" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M8 12h4V5h4M12 12v7h4" /></>,
@@ -30,6 +31,7 @@ function Icon({ kind }: { kind: Exclude<MapScreen, 'vertical-design' | 'vertical
     search: <><circle cx="10" cy="10" r="6" /><path d="m15 15 5 5" /></>,
     home: <><path d="m3 10 9-7 9 7v10H3Zm6 10v-7h6v7" /></>,
     music: <><path d="M9 18V5l11-2v13M9 9l11-2" /><ellipse cx="6" cy="18" rx="3" ry="2" /><ellipse cx="17" cy="16" rx="3" ry="2" /></>,
+    photos: <><path d="M3 7h5l2-3h4l2 3h5v13H3Z" /><circle cx="12" cy="13" r="4" /></>,
   }
   return <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[kind]}</svg>
 }
@@ -96,6 +98,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
         {years && <p className={styles.years}>{years}</p>}
       </div>
       <nav className={styles.navigation} aria-label="Основна навігація">
+        <RouteLink to="/photos" state={{ returnTo: `/${screen}/${personId}` }} aria-label="Галерея" title="Галерея"><Icon kind="photos" /></RouteLink>
         <Link to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><Icon kind="home" /></Link>
         <button type="button" onClick={toggleMusic} disabled={!musicAvailable} aria-label={soundLabel} title={soundLabel} aria-pressed={musicActive}><Icon kind="music" /></button>
         {audioStatus === 'starting' && <span role="status" className={styles.srOnly}>Музика завантажується…</span>}
@@ -139,6 +142,7 @@ function Workspace() {
           <Route path="/vertical-minimal/:personId" element={<PersonView screen="vertical-minimal" />} />
           <Route path="/relatives/:personId" element={<PersonView screen="relatives" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
+          <Route path="/photos" element={<PhotoCollectionPage />} />
           <Route path="*" element={<Missing />} />
         </Routes>
       </main>

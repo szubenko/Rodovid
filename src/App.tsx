@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Navigate, Route, Routes, useLocation, useParams } from 'react-router'
+import { Link as RouteLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router'
 import { ViewLink as Link } from './navigation/ViewLink'
 import { personName } from './data/load-family'
 import { personFullName } from './data/person-name'
@@ -9,14 +9,17 @@ import { RadialMap } from './graph/RadialMap'
 import { PersonSearch } from './search/PersonSearch'
 import { KinshipExplanation } from './kinship/KinshipExplanation'
 import { PersonRoom } from './room/PersonRoom'
+import { PhotoCollectionPage } from './room/PhotoCollectionPage'
 import { MotionPreferences } from './appearance/MotionPreferences'
 import { AudioProvider } from './audio/AudioProvider'
 import styles from './App.module.css'
 
 function Navigation() {
   const { state, goBack } = useView()
+  const location = useLocation()
   return <nav className={styles.actions} aria-label="Основна навігація">
     <button disabled={state.position === 0} onClick={goBack}>Назад</button>
+    <RouteLink to="/photos" state={{ returnTo: location.pathname }}>Галерея</RouteLink>
     <Link to={`/tree/${state.homePersonId}`} resetMap>До мене</Link>
   </nav>
 }
@@ -63,7 +66,7 @@ function Workspace() {
   const heading = useRef<HTMLHeadingElement>(null)
   const previousPath = useRef(location.pathname)
   useEffect(() => {
-    document.title = `${family.config.title} — ${location.pathname.startsWith('/person/') ? 'Кімната' : 'Карта родини'}`
+    document.title = `${family.config.title} — ${location.pathname === '/photos' ? 'Фотогалерея' : location.pathname.startsWith('/person/') ? 'Кімната' : 'Карта родини'}`
     const recentering = previousPath.current.startsWith('/tree/') && location.pathname.startsWith('/tree/')
     heading.current?.focus({ preventScroll: recentering })
     previousPath.current = location.pathname
@@ -79,6 +82,7 @@ function Workspace() {
       <Route path="/" element={<Navigate to={`/tree/${family.config.homePersonId}`} replace />} />
       <Route path="/tree/:personId" element={<PersonScreen screen="tree" />} />
       <Route path="/person/:personId" element={<PersonScreen screen="person" />} />
+      <Route path="/photos" element={<PhotoCollectionPage />} />
       <Route path="*" element={<Missing />} />
     </Routes>
     </AudioProvider>

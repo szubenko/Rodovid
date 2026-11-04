@@ -67,6 +67,8 @@ it('restricts SPA rewrites to current screens and numeric person IDs, leaving mi
   // These rules use named regexp captures; actual platform behavior still needs ROD-031.
   const patterns = deployment.rewrites.map(rule => new RegExp(`^${rule.source.replace(/:[A-Za-z]+/g, '')}$`))
   const rewrites = (path: string) => patterns.some(pattern => pattern.test(path))
+  expect(rewrites('/photos')).toBe(true)
+  expect(rewrites('/photos/missing.png')).toBe(false)
   for (const screen of ['tree', 'person', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives']) {
     expect(rewrites(`/${screen}/I1`)).toBe(true)
     expect(rewrites(`/${screen}/I103`)).toBe(true)

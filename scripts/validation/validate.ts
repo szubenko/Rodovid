@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,8 +99,9 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256].includes(report.sha256)) {
-    const november1 = report.sha256 === november1MergeSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256].includes(report.sha256)) {
+    const november4 = report.sha256 === november4MergeSha256
+    const november1 = report.sha256 === november1MergeSha256 || november4
     const october30 = report.sha256 === october30MergeSha256 || november1
     const october29 = report.sha256 === october29MergeSha256 || october30
     const petroBirthReviewed = report.sha256 === petroBirthReviewSha256 || october29
@@ -112,7 +113,8 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = november1
+    const expected = november4
+      ? { people: 106, relationships: 167, events: 228, claims: 546, places: 97 } : november1
       ? { people: 103, relationships: 161, events: 222, claims: 518, places: 87 } : october30
       ? { people: 102, relationships: 159, events: 220, claims: 512, places: 85 } : october29
       ? { people: 97, relationships: 152, events: 203, claims: 477, places: 79 } : petroBirthReviewed
@@ -137,9 +139,9 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
       const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
-      if (imported(data.sources) !== (october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (october30 ? 195 : october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
+      if (imported(data.sources) !== (october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (november4 ? 196 : october30 ? 195 : october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
         || data.sources.length < (october29 ? 89 : petroBirthReviewed ? 81 : october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
-        || data.evidenceLinks.length < (october30 ? 209 : october29 ? 203 : petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
+        || data.evidenceLinks.length < (november4 ? 210 : october30 ? 209 : october29 ? 203 : petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
     }
     if (timofeyCorrected) {
       const date = data.claims.find(c => c.id === 'claim-844bdc5dfb7b9d883e16cd81')

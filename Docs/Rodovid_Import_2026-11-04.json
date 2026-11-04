@@ -1,0 +1,900 @@
+{
+  "date": "2026-11-04",
+  "source": "E:/RodovidZubenko/Magic/ZubenkoNewFormat.reviewed.11.04.26.ged",
+  "sourceSha256": "c1c6d27d172c911c88a7fda3b70580026620daccab2cdbb3937ee1b125fb0e22",
+  "previousOriginalSha256": "a663d2d09a5c043119473001b3d4379243841ba9839738aa547ecd9f7a16890e",
+  "previousSha256": "2e273838553f66051ea5eef3e58774cc32f273dcdf7e4e16b77f1c384e711620",
+  "sha256": "f690231d77ee26f557479f3798b90f08f80ab20a427876a28cf20c3724f61351",
+  "backup": "E:\\PETprojects\\Rodovid\\tmp\\import-2026-11-04\\before",
+  "incomingCounts": {
+    "people": 104,
+    "families": 41,
+    "events": 180,
+    "births": 72,
+    "deaths": 94,
+    "marriages": 14,
+    "familySearchIds": 100,
+    "childLinks": 81,
+    "eventDefinitions": 0,
+    "sourceRecords": 87,
+    "sourceCitations": 152,
+    "mediaRecords": 0
+  },
+  "beforeCounts": {
+    "people": 103,
+    "families": 41,
+    "childLinks": 76,
+    "relationships": 161,
+    "events": 222,
+    "claims": 520,
+    "places": 87,
+    "sources": 89,
+    "media": 97,
+    "evidenceLinks": 209,
+    "memories": 1
+  },
+  "counts": {
+    "people": 106,
+    "families": 41,
+    "childLinks": 79,
+    "relationships": 167,
+    "events": 228,
+    "claims": 548,
+    "places": 97,
+    "sources": 89,
+    "media": 97,
+    "evidenceLinks": 210,
+    "memories": 1
+  },
+  "personMap": {
+    "@I1@": "@I1@",
+    "@I2@": "@I2@",
+    "@I3@": "@I3@",
+    "@I4@": "@I4@",
+    "@I5@": "@I5@",
+    "@I6@": "@I6@",
+    "@I7@": "@I7@",
+    "@I8@": "@I8@",
+    "@I9@": "@I9@",
+    "@I10@": "@I10@",
+    "@I11@": "@I11@",
+    "@I12@": "@I12@",
+    "@I13@": "@I13@",
+    "@I14@": "@I14@",
+    "@I15@": "@I15@",
+    "@I16@": "@I16@",
+    "@I17@": "@I17@",
+    "@I18@": "@I18@",
+    "@I19@": "@I19@",
+    "@I20@": "@I20@",
+    "@I21@": "@I21@",
+    "@I22@": "@I22@",
+    "@I23@": "@I23@",
+    "@I24@": "@I24@",
+    "@I25@": "@I25@",
+    "@I26@": "@I26@",
+    "@I27@": "@I50@",
+    "@I28@": "@I51@",
+    "@I29@": "@I52@",
+    "@I30@": "@I60@",
+    "@I31@": "@I61@",
+    "@I32@": "@I75@",
+    "@I33@": "@I76@",
+    "@I34@": "@I62@",
+    "@I35@": "@I63@",
+    "@I36@": "@I64@",
+    "@I37@": "@I67@",
+    "@I38@": "@I68@",
+    "@I39@": "@I39@",
+    "@I40@": "@I69@",
+    "@I41@": "@I77@",
+    "@I42@": "@I78@",
+    "@I43@": "@I79@",
+    "@I44@": "@I80@",
+    "@I45@": "@I81@",
+    "@I46@": "@I82@",
+    "@I47@": "@I83@",
+    "@I48@": "@I44@",
+    "@I49@": "@I70@",
+    "@I50@": "@I45@",
+    "@I51@": "@I71@",
+    "@I52@": "@I38@",
+    "@I53@": "@I53@",
+    "@I54@": "@I54@",
+    "@I55@": "@I55@",
+    "@I56@": "@I56@",
+    "@I57@": "@I57@",
+    "@I58@": "@I58@",
+    "@I59@": "@I59@",
+    "@I60@": "@I66@",
+    "@I61@": "@I48@",
+    "@I62@": "@I47@",
+    "@I63@": "@I46@",
+    "@I64@": "@I49@",
+    "@I65@": "@I72@",
+    "@I66@": "@I40@",
+    "@I67@": "@I41@",
+    "@I68@": "@I42@",
+    "@I69@": "@I27@",
+    "@I70@": "@I28@",
+    "@I71@": "@I29@",
+    "@I72@": "@I30@",
+    "@I73@": "@I31@",
+    "@I74@": "@I32@",
+    "@I75@": "@I33@",
+    "@I76@": "@I34@",
+    "@I77@": "@I35@",
+    "@I78@": "@I36@",
+    "@I79@": "@I37@",
+    "@I80@": "@I84@",
+    "@I81@": "@I85@",
+    "@I82@": "@I43@",
+    "@I83@": "@I88@",
+    "@I84@": "@I89@",
+    "@I85@": "@I90@",
+    "@I86@": "@I91@",
+    "@I87@": "@I92@",
+    "@I88@": "@I93@",
+    "@I89@": "@I94@",
+    "@I90@": "@I95@",
+    "@I91@": "@I96@",
+    "@I92@": "@I93@",
+    "@I93@": "@I97@",
+    "@I94@": "@I98@",
+    "@I95@": "@I99@",
+    "@I96@": "@I100@",
+    "@I97@": "@I101@",
+    "@I98@": "@I102@",
+    "@I99@": "@I103@",
+    "@I100@": "@I104@",
+    "@I101@": "@I105@",
+    "@I102@": "@I106@",
+    "@I103@": "@I107@",
+    "@I104@": "@I108@"
+  },
+  "familyMap": {
+    "@F1@": "@F1@",
+    "@F2@": "@F2@",
+    "@F3@": "@F3@",
+    "@F4@": "@F4@",
+    "@F5@": "@F5@",
+    "@F6@": "@F6@",
+    "@F7@": "@F7@",
+    "@F8@": "@F8@",
+    "@F9@": "@F18@",
+    "@F10@": "@F21@",
+    "@F11@": "@F23@",
+    "@F12@": "@F24@",
+    "@F13@": "@F25@",
+    "@F14@": "@F29@",
+    "@F15@": "@F30@",
+    "@F16@": "@F26@",
+    "@F17@": "@F27@",
+    "@F18@": "@F19@",
+    "@F19@": "@F20@",
+    "@F20@": "@F22@",
+    "@F21@": "@F17@",
+    "@F22@": "@F28@",
+    "@F23@": "@F15@",
+    "@F24@": "@F9@",
+    "@F25@": "@F10@",
+    "@F26@": "@F11@",
+    "@F27@": "@F12@",
+    "@F28@": "@F13@",
+    "@F29@": "@F14@",
+    "@F30@": "@F31@",
+    "@F31@": "@F33@",
+    "@F32@": "@F34@",
+    "@F33@": "@F35@",
+    "@F34@": "@F23@",
+    "@F35@": "@F36@",
+    "@F36@": "@F37@",
+    "@F37@": "@F38@",
+    "@F38@": "@F39@",
+    "@F39@": "@F40@",
+    "@F40@": "@F41@",
+    "@F41@": "@F16@"
+  },
+  "newPeople": [
+    {
+      "incoming": "@I102@",
+      "recordId": "@I106@",
+      "name": "Ганна Іллівна /Чабан/",
+      "familySearchIds": [
+        "PJ3Z-VDR"
+      ],
+      "uids": [
+        "37F230FB020545498E35E96E308A3807FCE3"
+      ]
+    },
+    {
+      "incoming": "@I103@",
+      "recordId": "@I107@",
+      "name": "Степан Антонович /Чабан/",
+      "familySearchIds": [
+        "PJ3Z-FLP"
+      ],
+      "uids": [
+        "6838BECE8F36E042A9649FF1DFEBB2E410B2"
+      ]
+    },
+    {
+      "incoming": "@I104@",
+      "recordId": "@I108@",
+      "name": "Василь Антонович /Чабан/",
+      "familySearchIds": [
+        "PJ3C-NJB"
+      ],
+      "uids": [
+        "D34750DC1365A54F9CD69EEC0EA900F65B8C"
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "record": "@I21@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S45@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I22@",
+      "path": "DEAT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Стара Сіль, Старосамбірський район, Львівська область, Україна, Радянський Союз",
+        "children": []
+      }
+    },
+    {
+      "record": "@I22@",
+      "path": "NOTE",
+      "node": {
+        "tag": "NOTE",
+        "pointer": null,
+        "value": "мужливо 1877",
+        "children": []
+      }
+    },
+    {
+      "record": "@I23@",
+      "path": "DEAT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Стара Сіль, Старосамбірський район, Львівська область, Україна",
+        "children": []
+      }
+    },
+    {
+      "record": "@I71@",
+      "path": "DEAT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Ватутіне, Звенигородський район, Черкаська область, Україна, Радянський Союз",
+        "children": []
+      }
+    },
+    {
+      "record": "@I86@",
+      "path": "BIRT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Чапліївка, Російська Імперія",
+        "children": []
+      }
+    },
+    {
+      "record": "@I94@",
+      "path": "BIRT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Чапліївка, Гетьманщина",
+        "children": []
+      }
+    },
+    {
+      "record": "@I101@",
+      "path": "BIRT.DATE",
+      "node": {
+        "tag": "DATE",
+        "pointer": null,
+        "value": "27 NOV 1904",
+        "children": []
+      }
+    },
+    {
+      "record": "@I101@",
+      "path": "DEAT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Стара Сіль, Старосамбірський район, Львівська область, Україна",
+        "children": []
+      }
+    },
+    {
+      "record": "@F7@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I106@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F8@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I107@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F8@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I108@",
+        "children": []
+      }
+    }
+  ],
+  "normalizations": [
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en",
+      "handling": "citation-note"
+    }
+  ],
+  "reused": [
+    {
+      "record": "@I21@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S45@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    }
+  ],
+  "changes": [
+    {
+      "incoming": "@I22@",
+      "record": "@I22@",
+      "path": "DEAT.DATE",
+      "previous": "DECEASED",
+      "incomingValue": "1961",
+      "chosen": "1961",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I23@",
+      "record": "@I23@",
+      "path": "NAME",
+      "previous": "Михайло Ілліч /ЧАБАН/",
+      "incomingValue": "Михайло Ілліч /Чабан/",
+      "chosen": "Михайло Ілліч /Чабан/",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I23@",
+      "record": "@I23@",
+      "path": "BIRT.DATE",
+      "previous": "1921",
+      "incomingValue": "6 JUL 1921",
+      "chosen": "6 JUL 1921",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I23@",
+      "record": "@I23@",
+      "path": "DEAT.DATE",
+      "previous": "DECEASED",
+      "incomingValue": "4 FEB 2007",
+      "chosen": "4 FEB 2007",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I24@",
+      "record": "@I24@",
+      "path": "NAME",
+      "previous": "Стефанія Іллівна /ЧАБАН/",
+      "incomingValue": "Стефанія Іллівна /Чабан/",
+      "chosen": "Стефанія Іллівна /Чабан/",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I24@",
+      "record": "@I24@",
+      "path": "BIRT.DATE",
+      "previous": "1926",
+      "incomingValue": "4 JAN 1926",
+      "chosen": "4 JAN 1926",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I71@",
+      "record": "@I29@",
+      "path": "DEAT.DATE",
+      "previous": "DECEASED",
+      "incomingValue": "30 MAY 1988",
+      "chosen": "30 MAY 1988",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I101@",
+      "record": "@I105@",
+      "path": "BIRT.PLAC",
+      "previous": "Stara Sól, Sambir, Lwów, Poland",
+      "incomingValue": "Стара Сіль, Самбірський район, Львівське воєводство, Польща",
+      "chosen": "Стара Сіль, Самбірський район, Львівське воєводство, Польща",
+      "reason": "Owner-reviewed 4 November export update."
+    },
+    {
+      "incoming": "@I101@",
+      "record": "@I105@",
+      "path": "DEAT.DATE",
+      "previous": "DECEASED",
+      "incomingValue": "12 APR 2002",
+      "chosen": "12 APR 2002",
+      "reason": "Owner-reviewed 4 November export update."
+    }
+  ],
+  "permittedChanges": [
+    {
+      "collection": "claims",
+      "id": "claim-2d34e8c13a22ef27540fa02e",
+      "before": {
+        "id": "claim-2d34e8c13a22ef27540fa02e",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I54"
+        },
+        "value": {
+          "raw": "Михайло Ілліч /ЧАБАН/",
+          "display": "Михайло Ілліч ЧАБАН",
+          "given": "Михайло Ілліч",
+          "surname": "ЧАБАН"
+        }
+      },
+      "after": {
+        "id": "claim-2d34e8c13a22ef27540fa02e",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I54"
+        },
+        "value": {
+          "raw": "Михайло Ілліч /Чабан/",
+          "display": "Михайло Ілліч Чабан",
+          "given": "Михайло Ілліч",
+          "surname": "Чабан"
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-f04ab35315863a453840b70d",
+      "before": {
+        "id": "claim-f04ab35315863a453840b70d",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I55"
+        },
+        "value": {
+          "raw": "Стефанія Іллівна /ЧАБАН/",
+          "display": "Стефанія Іллівна ЧАБАН",
+          "given": "Стефанія Іллівна",
+          "surname": "ЧАБАН"
+        }
+      },
+      "after": {
+        "id": "claim-f04ab35315863a453840b70d",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I55"
+        },
+        "value": {
+          "raw": "Стефанія Іллівна /Чабан/",
+          "display": "Стефанія Іллівна Чабан",
+          "given": "Стефанія Іллівна",
+          "surname": "Чабан"
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-fdbe418f8a55af5adda5c6c4",
+      "before": {
+        "id": "claim-fdbe418f8a55af5adda5c6c4",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-ca04796aedbd69f349d68318"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1921",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1921
+          }
+        }
+      },
+      "after": {
+        "id": "claim-fdbe418f8a55af5adda5c6c4",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-ca04796aedbd69f349d68318"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "6 JUL 1921",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "day",
+            "year": 1921,
+            "month": 7,
+            "day": 6
+          }
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-8fe6ef9e59302cbdb15aa3f0",
+      "before": {
+        "id": "claim-8fe6ef9e59302cbdb15aa3f0",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-2a4e37a78056c0e09b7ed9d6"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1926",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1926
+          }
+        }
+      },
+      "after": {
+        "id": "claim-8fe6ef9e59302cbdb15aa3f0",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-2a4e37a78056c0e09b7ed9d6"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "4 JAN 1926",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "day",
+            "year": 1926,
+            "month": 1,
+            "day": 4
+          }
+        }
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-205d772a262c92cb00143330",
+      "before": {
+        "id": "place-205d772a262c92cb00143330",
+        "originalName": "Stara Sól, Sambir, Lwów, Poland",
+        "historicalNames": [],
+        "description": "D06: 01.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      },
+      "after": {
+        "id": "place-205d772a262c92cb00143330",
+        "originalName": "Стара Сіль, Самбірський район, Львівське воєводство, Польща",
+        "historicalNames": [],
+        "description": "D06: 01.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      }
+    }
+  ],
+  "addedIdentities": [
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-b77c51dbc953233fa6123253"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-83dd70bb6be376429bbcf995"
+    },
+    {
+      "kind": "person",
+      "id": "I106"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-9234a27a3d77d63661db4d6a"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-717165364ed388fadd895131"
+    },
+    {
+      "kind": "person",
+      "id": "I107"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-21f58667650d1fad440aff03"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-17c67f6a6e3eea367d8fe539"
+    },
+    {
+      "kind": "person",
+      "id": "I108"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-66ab49ae8ec6013a1394c611"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-125cb63ff961a85fd79b16dc"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-45ac7f94188373859d5f9b0e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-fb1eb8e51ed8aa7259effabd"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-ed5b4b07d8bdcd27970beb36"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-22daead67f1f9a8096c666a8"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-60b1361233bb2fc8d71ae82d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-0f3525e03aab64030b63733a"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-689ed96e90b4d3d2449af0ca"
+    },
+    {
+      "kind": "place",
+      "id": "place-58c8e04d84929eb95b842574"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-7026eb5ccb352c7cff37a8c5"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e0b69abae49d1ce461ae10c5"
+    },
+    {
+      "kind": "place",
+      "id": "place-c9e42d7d9f21676a90d1f1a2"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-47737da6b80af697c3f9d784"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-cfdb89ff97dec1c67761a456"
+    },
+    {
+      "kind": "place",
+      "id": "place-1e10f4cf637ee0c15a42f5ec"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8489ff2d9b23fc25d1c331e7"
+    },
+    {
+      "kind": "place",
+      "id": "place-98d33015bff07b3074dc9f38"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-675a308df0b19db5d9029da1"
+    },
+    {
+      "kind": "place",
+      "id": "place-3356aaf9939b4b5ffa2538fb"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-01be80420a39f7b4e6dabce6"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-44aa39f620b648a3114887f0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-181283355b55c38c53769dff"
+    },
+    {
+      "kind": "place",
+      "id": "place-6d7751b3688bf0905ed5631c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-012ea74bb8af252995dc6f1b"
+    },
+    {
+      "kind": "event",
+      "id": "event-a51f2b91b796fb890e954958"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-bd738196935b2e976e9d90a2"
+    },
+    {
+      "kind": "event",
+      "id": "event-b83a3017485d876ef15e94ff"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-10f3f0e67aa764781d72a2fd"
+    },
+    {
+      "kind": "event",
+      "id": "event-1a4f7b210fbb4ff9b86ae7c2"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-73651cf83ff53441b7b9e96e"
+    },
+    {
+      "kind": "place",
+      "id": "place-ad81ee5c61ee72fc0c00a775"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-6393b2c8e5423bab6f213ccc"
+    },
+    {
+      "kind": "event",
+      "id": "event-c319cdfdbd2484eff9c03f04"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8e436a301ebf8dc2d3c19a06"
+    },
+    {
+      "kind": "place",
+      "id": "place-ec1240f5b5e1043c13de951c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-41af3ccc7fad691c73e63fd0"
+    },
+    {
+      "kind": "event",
+      "id": "event-7ac21fd356c8cc834a646bd1"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ce5ee030600a63de4aa7b21e"
+    },
+    {
+      "kind": "place",
+      "id": "place-dd8cd402d5953b47c209090e"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-875f640a3b84ad2fc5c6f52f"
+    },
+    {
+      "kind": "event",
+      "id": "event-9eb533cbce0f345389513806"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-97fd1902bee52f5ba1076109"
+    },
+    {
+      "kind": "place",
+      "id": "place-8b4dd3c4071e4519f28d0a93"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-c964e9420dae223230eb3ae9"
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 13,
+    "info": 2,
+    "status": "passed"
+  },
+  "unhandledNodes": [],
+  "preservedSourceRecords": 89,
+  "unchangedRootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+}

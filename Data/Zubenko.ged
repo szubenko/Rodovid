@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 1 NOV 2026
-2 TIME 10:36:38
-1 FILE ZubenkoNewFormat.reviewed.11.01.26.ged
+1 DATE 4 NOV 2026
+2 TIME 21:48:53
+1 FILE ZubenkoNewFormat.reviewed.11.04.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -268,6 +268,9 @@
 1 FAMC @F9@
 1 EVEN Селянин
 2 TYPE Caste Name 
+1 SOUR @S45@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:33SQ-GR9B-QD9?wc=QV25-XY7%3A180600901%2C203864301%2C203864302%26cc%3D1910265&cc=1910265&lang=en&i=125&groupId=1910265
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I22@ INDI
 1 NAME Марія Іванівна //
 2 ROMN Mariia Ivanivna //
@@ -277,28 +280,33 @@
 2 PLAC Stara Sól, Bezirk Stary Sambor, Galicia
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 DATE 1961
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна, Радянський Союз
 1 _FSFTID PF5Q-6RK
 1 _UID 381C5EBC6F4E684B9B029C67265D11FF1176
 1 FAMS @F7@
 1 FAMC @F10@
+1 NOTE мужливо 1877
 0 @I23@ INDI
-1 NAME Михайло Ілліч /ЧАБАН/
+1 NAME Михайло Ілліч /Чабан/
 2 ROMN Mykhailo Illich /Chaban/
 1 SEX M
 1 BIRT
-2 DATE 1921
+2 DATE 6 JUL 1921
 2 PLAC Стара Сіль, Самбірський район, Львівське воєводство, Польща
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 DATE 4 FEB 2007
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна
 1 _FSFTID PNST-KQB
 1 _UID 1A186B289188D3449863B6931126C3255829
 1 FAMC @F7@
 0 @I24@ INDI
-1 NAME Стефанія Іллівна /ЧАБАН/
+1 NAME Стефанія Іллівна /Чабан/
 2 ROMN Stefaniia Illivna /Chaban/
 1 SEX F
 1 BIRT
-2 DATE 1926
+2 DATE 4 JAN 1926
 2 PLAC Стара Сіль, Самбірський район, Львівське воєводство, Польща
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -383,6 +391,8 @@
 2 PLAC Стара Сіль, Львівське воєводство, Польща
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 DATE 30 MAY 1988
+2 PLAC Ватутіне, Звенигородський район, Черкаська область, Україна, Радянський Союз
 1 _FSFTID PNSY-NT6
 1 _UID 7E05D36191B8E04FA23FB33199A0546AEB23
 1 FAMC @F9@
@@ -1397,11 +1407,14 @@
 1 CHIL @I23@
 1 CHIL @I24@
 1 CHIL @I105@
+1 CHIL @I106@
 0 @F8@ FAM
 1 HUSB @I25@
 1 WIFE @I26@
 1 _UID 278E678C9465874295B9E25584B65056CF33
 1 CHIL @I14@
+1 CHIL @I107@
+1 CHIL @I108@
 0 @F9@ FAM
 1 HUSB @I27@
 1 WIFE @I28@
@@ -2455,6 +2468,7 @@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
 2 SOUR @S87@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+2 PLAC Чапліївка, Російська Імперія
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PNPR-VLH
@@ -2568,6 +2582,7 @@
 2 DATE BET 1741 AND 1742
 2 SOUR @S87@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+2 PLAC Чапліївка, Гетьманщина
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PN56-11M
@@ -2775,10 +2790,50 @@
 2 ROMN Kateryna Illivna /Chaban/
 1 SEX F
 1 BIRT
-2 PLAC Stara Sól, Sambir, Lwów, Poland
+2 PLAC Стара Сіль, Самбірський район, Львівське воєводство, Польща
+2 DATE 27 NOV 1904
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 DATE 12 APR 2002
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна
 1 _FSFTID PJ99-PN6
 1 _UID B4A96C6DA4E65C49862FDD855858B71BFE84
 1 FAMC @F7@
+0 @I106@ INDI
+1 NAME Ганна Іллівна /Чабан/
+2 ROMN Hanna Illivna /Chaban/
+1 SEX F
+1 BIRT
+2 DATE 1904
+1 DEAT
+2 DATE 1934
+1 _FSFTID PJ3Z-VDR
+1 _UID 37F230FB020545498E35E96E308A3807FCE3
+1 FAMC @F7@
+0 @I107@ INDI
+1 NAME Степан Антонович /Чабан/
+2 ROMN Stepan Antonovych /Chaban/
+1 SEX M
+1 BIRT
+2 DATE 1905
+2 PLAC Stara Sól, Bezirk Stary Sambor, Галичина
+1 DEAT
+2 DATE 1980
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна, Радянський Союз
+1 _FSFTID PJ3Z-FLP
+1 _UID 6838BECE8F36E042A9649FF1DFEBB2E410B2
+1 FAMC @F8@
+0 @I108@ INDI
+1 NAME Василь Антонович /Чабан/
+2 ROMN Vasyl Antonovych /Chaban/
+1 SEX M
+1 BIRT
+2 DATE 1909
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна, Радянський Союз
+1 DEAT
+2 DATE 1970
+2 PLAC Омск, Омская Область, Росія, Радянський Союз
+1 _FSFTID PJ3C-NJB
+1 _UID D34750DC1365A54F9CD69EEC0EA900F65B8C
+1 FAMC @F8@
 0 TRLR

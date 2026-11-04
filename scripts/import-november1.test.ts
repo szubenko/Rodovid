@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
-import { november1MergeSha256 } from './validation/reviewed-export.ts'
+import { november4MergeSha256 } from './validation/reviewed-export.ts'
 
 const read = (name: string) => readFileSync(new URL(`../Data/${name}`, import.meta.url))
 const json = (name: string) => JSON.parse(read(name).toString())
@@ -12,9 +12,9 @@ const plan = planSourceRecordSync(input, fileURLToPath(new URL('../Data', import
 const { family, report } = convertGedcom({ ...input, supplements: plan.supplements })
 const parents = (id: string) => family.relationships.filter(r => r.kind === 'parent-child' && r.toPersonId === id).map(r => r.fromPersonId).sort()
 
-it('adds Kateryna to the existing Chaban parents with both original name forms and no invented dates', () => {
-  expect(report.sha256).toBe(november1MergeSha256)
-  expect(report.counts).toMatchObject({ people: 103, families: 41, relationships: 161, events: 222, claims: 520, sources: 89, evidenceLinks: 209, media: 88, memories: 1 })
+it('retains Kateryna with both name forms, the same parents, and the later owner-supplied dates', () => {
+  expect(report.sha256).toBe(november4MergeSha256)
+  expect(report.counts).toMatchObject({ people: 106, families: 41, relationships: 167, events: 228, claims: 548, sources: 89, evidenceLinks: 210, media: 97, memories: 1 })
   expect(family.people.find(p => p.id === 'I105')).toMatchObject({ lifeStatus: 'deceased' })
   expect(family.people.find(p => p.id === 'I105')?.externalIds).toContainEqual({ system: 'FamilySearch', value: 'PJ99-PN6' })
   expect(parents('I105')).toEqual(['I41', 'I43'])
@@ -22,7 +22,8 @@ it('adds Kateryna to the existing Chaban parents with both original name forms a
     .toEqual(['Катерина Іллівна Чабан', 'Kateryna Illivna Chaban'])
   const events = family.events.filter(e => e.participants.some(p => p.personId === 'I105'))
   expect(events.map(e => e.kind).sort()).toEqual(['birth', 'death'])
-  expect(family.claims.filter(c => c.field === 'date' && events.some(e => e.id === c.target.id))).toEqual([])
+  expect(family.claims.filter(c => c.field === 'date' && events.some(e => e.id === c.target.id))
+    .map(c => c.field === 'date' && c.value.raw).sort()).toEqual(['12 APR 2002', '27 NOV 1904'])
   expect(report.unhandledNodes).toEqual([])
 })
 

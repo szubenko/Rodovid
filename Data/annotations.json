@@ -1190,6 +1190,56 @@
       "id": "review-place-205d772a262c92cb00143330",
       "placeId": "place-205d772a262c92cb00143330",
       "explanation": "D06: 01.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-58c8e04d84929eb95b842574",
+      "placeId": "place-58c8e04d84929eb95b842574",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-c9e42d7d9f21676a90d1f1a2",
+      "placeId": "place-c9e42d7d9f21676a90d1f1a2",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-1e10f4cf637ee0c15a42f5ec",
+      "placeId": "place-1e10f4cf637ee0c15a42f5ec",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-98d33015bff07b3074dc9f38",
+      "placeId": "place-98d33015bff07b3074dc9f38",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-3356aaf9939b4b5ffa2538fb",
+      "placeId": "place-3356aaf9939b4b5ffa2538fb",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-6d7751b3688bf0905ed5631c",
+      "placeId": "place-6d7751b3688bf0905ed5631c",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-ad81ee5c61ee72fc0c00a775",
+      "placeId": "place-ad81ee5c61ee72fc0c00a775",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-ec1240f5b5e1043c13de951c",
+      "placeId": "place-ec1240f5b5e1043c13de951c",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-dd8cd402d5953b47c209090e",
+      "placeId": "place-dd8cd402d5953b47c209090e",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+    },
+    {
+      "id": "review-place-8b4dd3c4071e4519f28d0a93",
+      "placeId": "place-8b4dd3c4071e4519f28d0a93",
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
     }
   ],
   "sources": [
@@ -2435,6 +2485,7 @@
       "id": "file-source-3afa8e67dcf8ebca553eafc9",
       "sourceId": "source-3afa8e67dcf8ebca553eafc9",
       "evidenceLinkIds": [
+        "evidenceLink-b77c51dbc953233fa6123253",
         "evidenceLink-e1be66bd570c47f582e8c614",
         "evidenceLink-664b175d76bcddeb1fe76ec2",
         "evidenceLink-aa1fd806dd2039d41fff4998",

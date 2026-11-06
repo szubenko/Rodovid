@@ -113,7 +113,7 @@ export const mediaSchema = z.strictObject({
   thumbnail: z.strictObject({
     path: assetPath, mimeType: z.enum(['image/jpeg', 'image/png']),
   }).optional(),
-  title: text, description: text.optional(), provenance,
+  title: text, description: text.optional(), photoPlace: text.optional(), provenance,
 }).refine((media) => !media.thumbnail || !media.mimeType.startsWith('audio/'), {
   message: 'Thumbnails belong to images or PDF documents', path: ['thumbnail'],
 })
@@ -155,6 +155,7 @@ export const siteConfigSchema = z.strictObject({
   homePersonId: personIdSchema.default('I1'),
   // Presentation overrides for the page heading only; never primary name claims.
   personHeadingNames: z.record(personIdSchema, text).optional(),
+  photoCaptionNames: z.record(personIdSchema, z.array(text)).optional(),
   initialGenerations: z.number().int().min(1).max(11).default(3),
   rooms: z.array(z.strictObject({
     personId: personIdSchema, theme: text.optional(), backgroundMediaId: id.optional(),

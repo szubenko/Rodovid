@@ -1,8 +1,33 @@
 import type { FamilyData, Media } from '../data/schema'
 import { sortPhotosChronologically } from './photo-chronology'
-import { photoDisplayDescription } from './photo-description'
+import { photoDescriptionParts, photoDisplayDescription, photoYear } from './photo-description'
 
 export type CollectedPhoto = { media: Media; descriptions: string[]; personIds: string[] }
+
+export function photoCollectionCaption(photo: CollectedPhoto) {
+  const originalTitle = photo.media.title
+  const place = photo.media.photoPlace
+  const year = photoYear([originalTitle, ...photo.descriptions].join('\n'))
+  if (year === null) return {
+    title: originalTitle,
+    dates: place ? [place] : [],
+    descriptions: photo.descriptions.filter(description => description !== originalTitle),
+  }
+
+  const parts = photo.descriptions.map(photoDescriptionParts)
+  const detailedDates = [...new Set(parts.flatMap(({ date }) => date && date !== String(year) ? [date] : []))]
+  const dates = detailedDates.length ? detailedDates : [[place, year].filter(Boolean).join(' ')]
+  const normalizeDate = (text: string) => text.replace(/[,\s]+/g, ' ').trim()
+  const titlePlaceAndDate = originalTitle.match(/\s+[—–]\s+(.+)$/u)
+  const title = titlePlaceAndDate && dates.some(date => normalizeDate(date) === normalizeDate(titlePlaceAndDate[1]!))
+    ? originalTitle.slice(0, titlePlaceAndDate.index)
+    : originalTitle.replace(/[,\s]+\d{4}(?:\s+(?:рік|року)|\s*р\.)?\.?$/u, '') || originalTitle
+  const descriptions = parts.map(({ body }) => {
+    const [firstLine, ...rest] = body.split('\n')
+    return firstLine?.trim() === title ? rest.join('\n').trimStart() : body.trimEnd()
+  }).filter(Boolean)
+  return { title, dates, descriptions: [...new Set(descriptions)] }
+}
 
 export function collectFamilyPhotos(family: FamilyData): CollectedPhoto[] {
   const mediaById = new Map(family.media.map(item => [item.id, item]))

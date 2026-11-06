@@ -4,29 +4,31 @@ import { viewReducer, type ViewState } from './view-state'
 export const viewSessionKey = 'rodovid:view-session:v1'
 
 const mapScreen = z.enum(['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'])
+const mapSettings = z.object({
+  generations: z.number().int().positive(),
+  zoom: z.number().positive(),
+  pan: z.object({ x: z.number(), y: z.number() }),
+  collapsedAppearanceIds: z.array(z.string()),
+  expandedRelativeIds: z.array(z.string()).optional(),
+  showAllRelatives: z.boolean().optional(),
+  compactCards: z.boolean().optional(),
+  expandedSiblingIds: z.array(z.string()).optional(),
+  collapsedAncestorIds: z.array(z.string()).optional(),
+})
 const view = z.object({
   screen: z.enum([...mapScreen.options, 'person', 'photos', 'missing']),
   personId: z.string().nullable(),
   mapScreen,
   centerPersonId: z.string(),
   selectedRelationshipId: z.string().nullable(),
-  map: z.object({
-    generations: z.number().int().positive(),
-    zoom: z.number().positive(),
-    pan: z.object({ x: z.number(), y: z.number() }),
-    collapsedAppearanceIds: z.array(z.string()),
-    expandedRelativeIds: z.array(z.string()).optional(),
-    showAllRelatives: z.boolean().optional(),
-    compactCards: z.boolean().optional(),
-    expandedSiblingIds: z.array(z.string()).optional(),
-    collapsedAncestorIds: z.array(z.string()).optional(),
-  }),
+  map: mapSettings,
 })
 const snapshot = z.object({
   version: z.literal(1),
   state: z.object({
     homePersonId: z.string(), initialGenerations: z.number().int().positive(), initialMapZoom: z.number().positive(),
     key: z.string(), current: view, entries: z.record(z.string(), view),
+    diagramMaps: z.record(z.string(), mapSettings).default({}),
     trail: z.array(z.string()).min(1), position: z.number().int().nonnegative(),
   }),
 })

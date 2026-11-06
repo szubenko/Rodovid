@@ -12,7 +12,7 @@ export function AlbumIcon({ kind }: { kind: 'camera' | 'people' | 'calendar' }) 
 export function PhotoDescription({ text }: { text: string }) {
   const { body, date } = photoDescriptionParts(text)
   return <figcaption className={styles.photoCaption}>
+    {date && <><div className={styles.photoDescriptionGroup} data-photo-date><AlbumIcon kind="calendar" /><p>{date}</p></div>{'\n'}</>}
     <div className={styles.photoDescriptionGroup}><AlbumIcon kind="people" /><p>{body}</p></div>
-    {date && <>{'\n'}<div className={styles.photoDescriptionGroup} data-photo-date><AlbumIcon kind="calendar" /><p>{date}</p></div></>}
   </figcaption>
 }

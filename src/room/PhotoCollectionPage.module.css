@@ -11,6 +11,8 @@
 .image { display: grid; place-items: center; min-height: 160px; padding: 16px; background: #eff4e9; }
 .image img { display: block; width: 100%; height: clamp(240px, 32vw, 440px); object-fit: contain; }
 .card figcaption { padding: 20px; overflow-wrap: anywhere; }
+.date { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; color: #35512b; font: 400 17px/1.4 var(--font-heading); }
+.date svg { width: 22px; height: 22px; flex-shrink: 0; color: #58714f; }
 .card h2 { margin: 0 0 14px; color: #35512b; font: 400 20px/1.4 var(--font-heading); }
 .description { margin: 0 0 16px; white-space: pre-wrap; font: 400 17px/1.65 var(--font-heading); }
 .muted, .empty { color: #697461; }

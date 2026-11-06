@@ -19,7 +19,7 @@ describe('view history', () => {
     state = viewReducer(state, visit('original', 'vertical', 'I1', 'POP'))
     expect(state.current).toEqual(original)
   })
-  it('starts portrait diagrams at 30% and other atlas diagrams at 60%, and restores saved cameras', () => {
+  it('starts portrait diagrams at 30% and other atlas diagrams at 60%, and restores saved cameras on tab switches', () => {
     for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'] as const) {
       const initial = initialView('I1', 3, 'direct', { screen, personId: 'I1' }, 0.6)
       const portrait = screen === 'vertical-design' || screen === 'vertical-minimal'
@@ -37,11 +37,27 @@ describe('view history', () => {
     state = viewReducer(state, visit('b', 'horizontal', 'I1'))
     expect(state.current.map).toMatchObject({ zoom: 0.6, pan: { x: 0.2, y: 0.2 } })
     state = viewReducer(state, visit('c', 'tree', 'I1'))
-    expect(state.current.map.zoom).toBe(0.6)
+    expect(state.current.map).toEqual(circle.map)
     state = viewReducer(state, visit('a', 'tree', 'I1', 'POP'))
     expect(state.current).toEqual(circle)
     state = viewReducer(state, visit('d', 'tree', 'I2'))
     expect(state.current.map.zoom).toBe(0.6)
+  })
+
+  it('keeps the same diagram separate for different centers and honors explicit resets', () => {
+    let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' }, .6)
+    state = viewReducer(state, { type: 'map', settings: { zoom: 2 } })
+    state = viewReducer(state, visit('b', 'horizontal', 'I1'))
+    state = viewReducer(state, visit('c', 'horizontal', 'I2'))
+    state = viewReducer(state, visit('d', 'tree', 'I2'))
+    expect(state.current.map.zoom).toBe(.6)
+    state = viewReducer(state, { type: 'map', settings: { zoom: 3 } })
+    state = viewReducer(state, visit('e', 'person', 'I1'))
+    state = viewReducer(state, visit('f', 'tree', 'I1'))
+    expect(state.current.map.zoom).toBe(2)
+    state = viewReducer(state, visit('g', 'horizontal', 'I1'))
+    state = viewReducer(state, { type: 'visit', key: 'h', route: { screen: 'tree', personId: 'I1' }, navigationType: 'PUSH', resetMap: true })
+    expect(state.current.map.zoom).toBe(.6)
   })
   it('starts in vertical mode and restores its camera and evidence after rooms or other maps', () => {
     let state = initialView('I1', 3, 'vertical', { screen: 'vertical', personId: 'I2' })

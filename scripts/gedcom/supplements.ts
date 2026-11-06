@@ -26,6 +26,7 @@ export function assertReferences(data: FamilyData) {
   }
   need('person', data.config.homePersonId)
   Object.keys(data.config.personHeadingNames ?? {}).forEach(id => need('person', id))
+  Object.keys(data.config.photoCaptionNames ?? {}).forEach(id => need('person', id))
   for (const room of data.config.rooms) {
     need('person', room.personId)
     if (room.backgroundMediaId) need('media', room.backgroundMediaId)

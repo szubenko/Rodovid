@@ -50,6 +50,12 @@ describe('tab view session', () => {
     }
   })
 
+  it('restores earlier session snapshots without saved diagram tabs', () => {
+    const state = viewReducer(start(), { type: 'map', settings: { zoom: 2 } })
+    sessionStorage.setItem(viewSessionKey, JSON.stringify({ version: 1, state: { ...state, diagramMaps: undefined } }))
+    expect(restoreViewSession(start(), people).current).toEqual(state.current)
+  })
+
   it('ignores incompatible configuration, removed people and invalid history', () => {
     const state = viewReducer(start(), { type: 'map', settings: { expandedSiblingIds: ['I12'] } })
     saveViewSession(state)

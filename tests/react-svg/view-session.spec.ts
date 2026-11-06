@@ -23,6 +23,54 @@ for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vert
   })
 }
 
+test('вкладки діаграм відновлюють власну камеру та гілки після перемикання й перезавантаження', async ({ page }) => {
+  await page.goto('/vertical-minimal/I12')
+  const top = page.locator('[data-ancestor-person-id="I12"]')
+  const side = page.locator('[data-sibling-person-id="I12"]')
+  const camera = page.locator('[data-layer="camera"]')
+  const zoom = page.getByLabel('Масштаб карти', { exact: true })
+  const generations = page.getByLabel('Покоління', { exact: true })
+  const minimal = page.getByRole('link', { name: 'Вертикальна мінімальна', exact: true })
+  const horizontal = page.getByRole('link', { name: 'Горизонтальний родовід', exact: true })
+  await generations.selectOption('4')
+  await top.press('Enter')
+  await side.press('Enter')
+  await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
+  await page.getByRole('button', { name: 'Зменшити масштаб', exact: true }).click()
+  await expect(zoom).toHaveText('80%')
+  const beforeDrag = await camera.getAttribute('transform')
+  const box = (await page.locator('[data-map-viewport] > svg').boundingBox())!
+  await page.mouse.move(box.x + 20, box.y + 20)
+  await page.mouse.down()
+  await page.mouse.move(box.x + 65, box.y + 45, { steps: 5 })
+  await page.mouse.up()
+  const minimalTransform = (await camera.getAttribute('transform'))!
+  expect(minimalTransform).not.toBe(beforeDrag)
+
+  await horizontal.click()
+  await expect(page).toHaveURL(/\/horizontal\/I12$/)
+  await expect(zoom).toHaveText('60%')
+  await generations.selectOption('3')
+  await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
+  await expect(zoom).toHaveText('75%')
+  const horizontalTransform = (await camera.getAttribute('transform'))!
+  await page.reload()
+
+  await minimal.click()
+  await expect(page).toHaveURL(/\/vertical-minimal\/I12$/)
+  await expect(zoom).toHaveText('80%')
+  await expect(camera).toHaveAttribute('transform', minimalTransform)
+  await expect(generations).toHaveValue('4')
+  await expect(top).toHaveAttribute('aria-expanded', 'false')
+  await expect(side).toHaveAttribute('aria-expanded', 'true')
+  await expect(page.getByRole('button', { name: 'Компактні картки', exact: true })).toHaveAttribute('aria-pressed', 'true')
+
+  await horizontal.click()
+  await expect(zoom).toHaveText('75%')
+  await expect(camera).toHaveAttribute('transform', horizontalTransform)
+  await expect(generations).toHaveValue('3')
+})
+
 test('гілки, компактність та Назад/Вперед зберігаються після reload кімнати', async ({ page, context }) => {
   await page.goto('/vertical-minimal/I12')
   const top = page.locator('[data-ancestor-person-id="I12"]')

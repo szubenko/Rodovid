@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import { useFamily } from '../navigation/context'
-import { personFullName } from '../data/person-name'
 import type { Media } from '../data/schema'
-import { collectFamilyPhotos } from './photo-collection'
+import { collectFamilyPhotos, photoCollectionCaption } from './photo-collection'
+import { photoPersonMentionMatcher } from './photo-person-mentions'
 import { AlbumIcon } from './PhotoDecoration'
 import styles from './PhotoCollectionPage.module.css'
 
@@ -17,6 +17,10 @@ export function PhotoCollectionPage() {
   const location = useLocation()
   const heading = useRef<HTMLHeadingElement>(null)
   const photos = collectFamilyPhotos(family)
+  const matchNames = useMemo(() => photoPersonMentionMatcher(family), [family])
+  const captionText = (text: string) => matchNames(text).map((part, index) => part.personId
+    ? <Link key={index} className={styles.titleLink} to={`/person/${part.personId}`}>{part.text}</Link>
+    : part.text)
   const returnTo: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
   const hasReturn = typeof returnTo === 'string' && /^\/(?:person|tree|horizontal|vertical|vertical-design|vertical-minimal|relatives)\/I\d+$/.test(returnTo) && family.people.some(person => person.id === returnTo.split('/').at(-1))
   useEffect(() => {
@@ -30,12 +34,18 @@ export function PhotoCollectionPage() {
       <Link className={styles.back} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`}>{hasReturn ? returnTo.startsWith('/person/') ? '← Повернутися до людини' : '← Повернутися до родоводу' : '← До родоводу'}</Link>
     </header>
     {photos.length === 0 ? <p className={styles.empty}>Фотографій поки немає.</p> : <div className={styles.grid}>
-      {photos.map(photo => <figure className={styles.card} key={photo.media.id} data-photo-id={photo.media.id}>
-        <CollectionImage media={photo.media} />
-        <figcaption><h2><Link className={styles.titleLink} to={`/person/${photo.personIds[0]!}`} title={`Відкрити: ${personFullName(family, photo.personIds[0]!)}`}>{photo.media.title}</Link></h2>
-          {photo.descriptions.length ? photo.descriptions.map(description => <p className={styles.description} key={description}>{description}</p>) : <p className={styles.muted}>Опису поки немає.</p>}
-        </figcaption>
-      </figure>)}
+      {photos.map(photo => {
+        const { title, dates, descriptions } = photoCollectionCaption(photo)
+        return <figure className={styles.card} key={photo.media.id} data-photo-id={photo.media.id}>
+          <CollectionImage media={photo.media} />
+          <figcaption>
+            {dates.map(date => <p className={styles.date} data-photo-date key={date}><AlbumIcon kind="calendar" />{date}</p>)}
+            <h2>{captionText(title)}</h2>
+            {descriptions.map(description => <p className={styles.description} key={description}>{captionText(description)}</p>)}
+            {!photo.descriptions.length && <p className={styles.muted}>Опису поки немає.</p>}
+          </figcaption>
+        </figure>
+      })}
     </div>}
   </section>
 }

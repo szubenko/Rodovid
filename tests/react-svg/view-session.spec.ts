@@ -47,7 +47,7 @@ test('гілки, компактність та Назад/Вперед збер
   // A second tab gets its own settings, even for the same URL.
   const other = await context.newPage()
   await other.goto('/vertical-minimal/I12')
-  await expect(other.getByLabel('Масштаб карти', { exact: true })).toHaveText('60%')
+  await expect(other.getByLabel('Масштаб карти', { exact: true })).toHaveText('100%')
   await expect(other.locator('[data-sibling-person-id="I12"]')).toHaveAttribute('aria-expanded', 'false')
   await other.close()
   await expect(side).toHaveAttribute('aria-expanded', 'true')
@@ -62,8 +62,10 @@ test('незавершене колесо зберігається при при
   await page.clock.runFor(1000)
   await svg.hover()
   await page.mouse.wheel(0, -80)
-  await expect.poll(() => svg.evaluate(element => Reflect.get(element, '__zoom').k as number)).toBeGreaterThan(.6)
+  await expect.poll(() => svg.evaluate(element => Reflect.get(element, '__zoom').k as number)).toBeGreaterThan(.3)
   await page.clock.runFor(32)
+  const liveZoom = await page.getByLabel('Масштаб карти', { exact: true }).textContent()
+  expect(Number.parseInt(liveZoom!, 10)).toBeGreaterThan(100)
   const matrix = () => page.locator('[data-layer="camera"]').evaluate(element => {
     const m = (element as SVGGElement).transform.baseVal.consolidate()!.matrix
     return [m.a, m.e, m.f].map(value => Number(value.toFixed(6)))

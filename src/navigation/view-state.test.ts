@@ -12,17 +12,19 @@ describe('view history', () => {
     state = viewReducer(state, { type: 'map', settings: { compactCards: true, zoom: 1.25, generations: 5, expandedSiblingIds: ['I12'] } })
     const portrait = state.current
     state = viewReducer(state, visit('parent', screen, 'I2'))
-    expect(state.current).toMatchObject({ mapScreen: screen, map: { compactCards: true, zoom: .6 } })
+    expect(state.current).toMatchObject({ mapScreen: screen, map: { compactCards: true, zoom: .3 } })
     expect(state.current.map.expandedSiblingIds).toBeUndefined()
     state = viewReducer(state, visit('portrait', screen, 'I1', 'POP'))
     expect(state.current).toEqual(portrait)
     state = viewReducer(state, visit('original', 'vertical', 'I1', 'POP'))
     expect(state.current).toEqual(original)
   })
-  it('starts every atlas diagram at 60%, centers new views, and restores saved cameras', () => {
+  it('starts portrait diagrams at 30% and other atlas diagrams at 60%, and restores saved cameras', () => {
     for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'] as const) {
       const initial = initialView('I1', 3, 'direct', { screen, personId: 'I1' }, 0.6)
-      expect(initial.current.map).toMatchObject({ zoom: 0.6, pan: { x: 0.2, y: 0.2 } })
+      const portrait = screen === 'vertical-design' || screen === 'vertical-minimal'
+      const pan = portrait ? .35 : .2
+      expect(initial.current.map).toMatchObject({ zoom: portrait ? .3 : .6, pan: { x: pan, y: pan } })
       const changed = viewReducer(initial, { type: 'map', settings: { zoom: 2, pan: { x: -0.1, y: 0.4 } } })
       expect(viewReducer(changed, { type: 'reset-map' }).current.map).toEqual(initial.current.map)
       expect(viewReducer(changed, visit('relative', screen, 'I2')).current.map).toEqual(initial.current.map)

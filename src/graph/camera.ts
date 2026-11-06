@@ -4,6 +4,10 @@ export type Camera = Pick<MapSettings, 'zoom' | 'pan'>
 export const minZoom = 0.01
 export const maxZoom = 6
 
+export function formatCameraZoom(zoom: number, reference = 1) {
+  return `${Math.round(zoom / reference * 100)}%`
+}
+
 /** Largest camera scale that keeps the actual drawing inside both viewport axes. */
 export function fitCamera(bounds: { x: number; y: number; width: number; height: number }, width: number, height: number): Camera {
   const zoom = Math.max(minZoom, Math.min(maxZoom, (width - 32) / bounds.width, (height - 32) / bounds.height))

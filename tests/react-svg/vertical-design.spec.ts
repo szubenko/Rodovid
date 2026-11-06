@@ -15,9 +15,9 @@ test('окрема копія, компактна геометрія, довгі
   expect(await page.locator('[data-person-id]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-person-id')))).toEqual(ids)
   const bounds = () => original.evaluate(node => { const b = (node as SVGGraphicsElement).getBBox(); return { width: b.width, height: b.height } })
   const full = await bounds()
-  expect(full.width).toBeLessThan(oldBounds.width)
+  const owner = page.locator('[data-center="true"][data-person-id="I1"]')
   await page.getByRole('button', { name: 'До центру', exact: true }).click()
-  await page.locator('[data-center="true"][data-person-id]').screenshot({ path: testInfo.outputPath('portrait-owner.png') })
+  await owner.screenshot({ path: testInfo.outputPath('portrait-owner.png') })
   await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
   await page.screenshot({ path: testInfo.outputPath('portrait-full.png'), fullPage: true })
   await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
@@ -59,6 +59,12 @@ test('повний родовід, скіни, зміна центру й екс
   for (const compact of [false, true]) {
     if (compact) await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
     expect(await page.locator('[data-person-id]').count()).toBe(people)
+    for (const caption of ['name', 'years', 'role']) {
+      const sizes = await page.locator(`[data-card-${caption}]`).evaluateAll(nodes =>
+        [...new Set(nodes.map(node => node.getAttribute('font-size')))])
+      expect(sizes).toHaveLength(1)
+      expect(Number(sizes[0])).toBeGreaterThan(0)
+    }
     await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
     await page.screenshot({ path: testInfo.outputPath(`ancestors-${compact ? 'compact' : 'full'}.png`), fullPage: true })
     expect(await page.locator('[data-person-id]').evaluateAll(nodes => nodes.every(node => {

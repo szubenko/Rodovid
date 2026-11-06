@@ -3,9 +3,10 @@ import { flushSync } from 'react-dom'
 import { select } from 'd3-selection'
 import { zoom, zoomIdentity, zoomTransform, type D3ZoomEvent, type ZoomBehavior, type ZoomTransform } from 'd3-zoom'
 import type { ViewAction } from '../navigation/view-state'
-import { maxZoom, minZoom, type Camera } from './camera'
+import { formatCameraZoom, maxZoom, minZoom, type Camera } from './camera'
 
-export function useMapCamera(container: RefObject<HTMLDivElement | null>, width: number, camera: Camera, dispatch: Dispatch<ViewAction>, height = width) {
+export function useMapCamera(container: RefObject<HTMLDivElement | null>, width: number, camera: Camera,
+  dispatch: Dispatch<ViewAction>, height = width, zoomReference = 1) {
   const suppressClickUntil = useRef(0)
   const synchronizing = useRef(false)
   const controller = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null)
@@ -33,7 +34,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       if (!pending || drawn === pending) return
       drawn = pending
       layer.setAttribute('transform', pending.toString())
-      const percentage = `${Math.round(pending.k * 100)}%`
+      const percentage = formatCameraZoom(pending.k, zoomReference)
       if (output && output.textContent !== percentage) output.textContent = percentage
       if (controlZoom !== pending.k) {
         const scale = Math.min(3, 1 / pending.k)
@@ -124,7 +125,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       document.removeEventListener('visibilitychange', hide, true)
       window.removeEventListener('pagehide', interrupt, true)
     }
-  }, [container, width, height, dispatch])
+  }, [container, width, height, dispatch, zoomReference])
 
   useLayoutEffect(() => {
     const svg = container.current!.querySelector('svg')!

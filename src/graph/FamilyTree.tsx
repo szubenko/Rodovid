@@ -2,6 +2,7 @@ import { useId, useMemo, useRef, useState, type KeyboardEvent } from 'react'
 import { personName } from '../data/person-name'
 import { confidenceLabels } from '../data/schema'
 import { useFamily, useView } from '../navigation/context'
+import { portraitMapBaseZoom } from '../navigation/view-state'
 import { EvidenceForTarget } from '../room/Evidence'
 import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFamily } from './projection'
 import { layoutTree, type TreeOrientation } from './tree-layout'
@@ -12,7 +13,7 @@ import { lifeYears, relationshipName } from './presentation'
 import { useMapCamera } from './useMapCamera'
 import { useMapViewport } from './useMapViewport'
 import { useMapExpansion } from './useMapExpansion'
-import { fitCamera, maxZoom, minZoom, scaleCamera } from './camera'
+import { fitCamera, formatCameraZoom, maxZoom, minZoom, scaleCamera } from './camera'
 import { closestRelationship } from './closest-relationship'
 import { downloadSvgAsPng } from './export-png'
 import shared from './RadialMap.module.css'
@@ -73,7 +74,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
   const settings = state.current.map
   const compact = settings.compactCards === true
   const portraitMetrics = useMemo(() => portraitCardMetrics(labels.values(), dates.values(), compact,
-    measureCardName, text => measure(text, 18) * 15 / 18, !minimalCards), [labels, dates, compact, measureCardName, measure, minimalCards])
+    measureCardName, text => measure(text, 18) * 15 / 18, !minimalCards, Array.from(skins.values(), skin => skin.label)),
+  [labels, dates, compact, measureCardName, measure, minimalCards, skins])
   const portraitLayout = useMemo(() => portraitCards ? portraitLayoutOptions(portraitMetrics, compact)
     : undefined, [portraitCards, portraitMetrics, compact])
   const maxGenerations = useMemo(() => includeRelatives ? availableRelativeGenerations(graph, personId)
@@ -96,7 +98,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine, portraitLayout])
   const center = layout.nodes.find(node => node.lane === 'center')!
   const offset = { x: width / 2 - center.x, y: height / 2 - center.y }
-  useMapCamera(container, width, settings, dispatch, height)
+  const zoomReference = portraitCards ? portraitMapBaseZoom : 1
+  useMapCamera(container, width, settings, dispatch, height, zoomReference)
   const relations = [...new Set(projection.edges.map(edge => edge.relationshipId))].map(id => graph.relationships.get(id)!)
   const selected = relations.find(relation => relation.id === state.current.selectedRelationshipId)
   const changeScale = (factor: number) => dispatch({ type: 'map', settings: scaleCamera(settings, factor) })
@@ -156,7 +159,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       {portraitCards && <button aria-pressed={compact} onClick={() => dispatch({ type: 'map', settings: { compactCards: !compact } })}>Компактні картки</button>}
       <button aria-label="Зменшити масштаб" disabled={settings.zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
-      <output aria-label="Масштаб карти">{`${Math.round(settings.zoom * 100)}%`}</output>
+      <output aria-label="Масштаб карти">{formatCameraZoom(settings.zoom, zoomReference)}</output>
       <button aria-label="Збільшити масштаб" disabled={settings.zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={() => dispatch({ type: 'map', settings: fitCamera({ x: offset.x, y: offset.y,
         width: layout.width, height: layout.height }, width, height) })}>Вмістити карту</button>

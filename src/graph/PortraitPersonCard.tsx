@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import type { PersonCardSkin } from './person-card-skin'
-import { portraitTextLines, type PortraitCardMetrics } from './portrait-card-layout'
+import { portraitOrnamentInset, portraitTextLines, type PortraitCardMetrics } from './portrait-card-layout'
 import styles from './PortraitPersonCard.module.css'
 
 function RoleSymbol({ skin }: { skin: PersonCardSkin }) {
@@ -18,8 +18,9 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
 }) {
   const id = useId().replaceAll(':', '')
   const left = x - m.width * scale / 2, top = y - m.height * scale / 2
-  const names = portraitTextLines(name, m.textWidth, text => measureName(text) * m.nameSize / 24, true)
-  const dates = portraitTextLines(years, m.textWidth, text => measureYears(text) * m.yearSize / 15)
+  const { nameTop, yearsTop, roleTop, nameSize, yearSize, roleSize } = m.typography
+  const names = portraitTextLines(name, m.textWidth, text => measureName(text) * nameSize / 24, true)
+  const dates = portraitTextLines(years, m.textWidth, text => measureYears(text) * yearSize / 15)
   const radius = skin.portrait?.radius ?? 100
   return <>
     <rect className={styles.frame} data-tone={skin.tone} x={left} y={top} width={m.width * scale} height={m.height * scale} rx={12 * scale} />
@@ -37,7 +38,7 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
           <path d="m0-12 2 2-2 2-2-2Zm0 20 2 2-2 2-2-2Zm-10-10 2 2-2 2-2-2Zm20 0 2 2-2 2-2-2Z" />
         </g>
       </defs>
-      {[12, m.width - 12].map(edge => <g key={edge} className={styles.ornament}>
+      {[portraitOrnamentInset, m.width - portraitOrnamentInset].map(edge => <g key={edge} className={styles.ornament}>
         {Array.from({ length: Math.floor((m.height - 28) / 24) }, (_, row) =>
           <use key={row} href={`#${id}-stitch`} transform={`translate(${edge} ${24 + row * 24}) scale(.58)`} />)}
       </g>)}
@@ -52,11 +53,11 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
         </g>}</>}
       <circle className={styles.badge} cx={m.width / 2} cy={m.badgeY} r={m.badgeRadius} />
       <g className={styles.symbol} transform={`translate(${m.width / 2} ${m.badgeY}) scale(${m.badgeRadius / 23})`}><RoleSymbol skin={skin} /></g>
-      <text className={styles.role} x={m.width / 2} y={m.labelY} fontSize={m.nameSize * .78} textAnchor="middle">{skin.label}</text>
+      <text className={styles.role} data-card-role="true" x={m.width / 2} y={roleTop + roleSize * .85} fontSize={roleSize} textAnchor="middle">{skin.label}</text>
       {names.map((line, index) => <text key={index} className={styles.name} data-card-name="true" x={m.width / 2}
-        y={m.nameY + index * m.nameStep} fontSize={m.nameSize} textAnchor="middle">{line}</text>)}
+        y={nameTop + nameSize * (.85 + index * 1.1)} fontSize={nameSize} textAnchor="middle">{line}</text>)}
       {dates.map((line, index) => <text key={index} className={styles.years} data-card-years="true" x={m.width / 2}
-        y={m.yearsY + index * (m.yearSize + 3)} fontSize={m.yearSize} textAnchor="middle">{line}</text>)}
+        y={yearsTop + yearSize * (.85 + index * 1.1)} fontSize={yearSize} textAnchor="middle">{line}</text>)}
     </g>
   </>
 }

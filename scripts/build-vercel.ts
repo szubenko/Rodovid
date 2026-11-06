@@ -28,7 +28,7 @@ export async function buildDeployment(root: string) {
   // Fixed child of the selected project; never accept an output path from env/CLI.
   const output = resolve(root, 'dist-vercel')
   const { build } = await import('vite')
-  await build({ root, configFile: resolve(root, 'vite.react-svg.config.ts'), logLevel: 'warn',
+  await build({ root, configFile: resolve(root, 'vite.config.ts'), logLevel: 'warn',
     build: { outDir: output, emptyOutDir: true, sourcemap: false } })
   const files = await verifyDeployment(output)
   console.log(`Vercel build: family; ${files.length} files in dist-vercel/`)

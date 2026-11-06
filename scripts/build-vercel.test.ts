@@ -11,7 +11,7 @@ import { familyDataSchema } from '../src/data/schema.ts'
 import fixture from '../tests/fixtures/data-contract/full.json' with { type: 'json' }
 import deployment from '../vercel.json' with { type: 'json' }
 
-it('builds the atlas from source data without generated JSON and still rejects production type errors', async () => {
+it('builds the base site from source data without generated JSON and still rejects production type errors', async () => {
   const repo = fileURLToPath(new URL('../', import.meta.url))
   const cache = resolve(repo, '.cache')
   await mkdir(cache, { recursive: true })
@@ -33,7 +33,7 @@ it('builds the atlas from source data without generated JSON and still rejects p
     // Node/TypeScript resolve installed dependencies from the ancestor repo.
     // Synthetic inputs are confined to this isolated test; the real archive is not copied.
     const bytes = await readFile(join(repo, 'tests/fixtures/conversion/complex.ged'))
-    const config = { schemaVersion: 1, title: 'Isolated atlas build', dataVersion: 'clean-build-test', homePersonId: 'I1' }
+    const config = { schemaVersion: 1, title: 'Isolated site build', dataVersion: 'clean-build-test', homePersonId: 'I1' }
     const supplements = { schemaVersion: 1 }
     const converted = convertGedcom({ bytes, config, supplements })
     await mkdir(join(root, 'Data'))
@@ -47,6 +47,7 @@ it('builds the atlas from source data without generated JSON and still rejects p
     await expect(access(join(root, 'generated'))).rejects.toThrow()
     const result = await run()
     expect(result.stdout).toContain('Vercel build: family;')
+    expect(await readFile(join(root, 'dist-vercel/index.html'), 'utf8')).toContain('<title>Мій родовід</title>')
     const outputFiles = await verifyDeployment(join(root, 'dist-vercel'))
     expect(outputFiles).toContain('data/family.json')
     expect(outputFiles.some(name => name.startsWith('app-assets/'))).toBe(true)
@@ -69,12 +70,12 @@ it('restricts SPA rewrites to current screens and numeric person IDs, leaving mi
   const rewrites = (path: string) => patterns.some(pattern => pattern.test(path))
   expect(rewrites('/photos')).toBe(true)
   expect(rewrites('/photos/missing.png')).toBe(false)
-  for (const screen of ['tree', 'person', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives']) {
+  for (const screen of ['tree', 'person']) {
     expect(rewrites(`/${screen}/I1`)).toBe(true)
     expect(rewrites(`/${screen}/I103`)).toBe(true)
   }
   for (const path of ['/data/missing.json', '/assets/missing.png', '/assets/missing.pdf', '/app-assets/missing.js',
-    '/tree/I1/missing.json', '/tree/missing.pdf', '/person/I1.pdf', '/unknown', '/Data/Zubenko.ged', '/.env']) {
+    '/tree/I1/missing.json', '/tree/missing.pdf', '/person/I1.pdf', '/vertical-minimal/I1', '/unknown', '/Data/Zubenko.ged', '/.env']) {
     expect(rewrites(path)).toBe(false)
   }
 })

@@ -1,9 +1,9 @@
 import { defineConfig, mergeConfig } from 'vite'
-import edition from './vite.react-svg.config.ts'
+import base from './vite.config.ts'
 import deployment from './vercel.json' with { type: 'json' }
 
 // Local compatibility check of CSP/cache headers, not a Vercel access emulator.
-export default mergeConfig(edition, defineConfig({
+export default mergeConfig(base, defineConfig({
   build: { outDir: 'dist-vercel' },
   preview: {
     port: 4180,

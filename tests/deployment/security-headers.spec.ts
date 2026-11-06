@@ -3,7 +3,7 @@ import { familyDataSchema } from '../../src/data/schema'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { pdfFixture } from '../e2e/helpers/pdf-fixture'
 
-test('CSP permits the base site, local map, PNG export and music without external requests', async ({ page }) => {
+test('CSP permits the atlas, local map, PNG export and music without external requests', async ({ page }) => {
   const violations: string[] = []
   const external: string[] = []
   page.on('console', message => { if (/violates.*Content Security Policy/i.test(message.text())) violations.push(message.text()) })
@@ -14,10 +14,10 @@ test('CSP permits the base site, local map, PNG export and music without externa
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await page.locator('#places').scrollIntoViewIfNeeded()
   await expect(page.getByLabel('Географічна карта місць', { exact: true })).toBeVisible()
-  await page.getByText('Звук · вимкнено', { exact: true }).click()
-  await page.getByRole('button', { name: 'Увімкнути музику', exact: true }).click()
+  const navigation = page.getByRole('navigation', { name: 'Основна навігація' })
+  await navigation.getByRole('button', { name: 'Увімкнути звук', exact: true }).click()
   await expect(page.locator('audio[data-audio="music"]')).toHaveJSProperty('paused', false)
-  await page.getByRole('link', { name: 'Показати на карті', exact: true }).click()
+  await page.getByRole('link', { name: 'Вертикальна мінімальна', exact: true }).click()
   const download = page.waitForEvent('download')
   await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
   expect((await download).suggestedFilename()).toMatch(/\.png$/)

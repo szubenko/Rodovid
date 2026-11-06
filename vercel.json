@@ -25,6 +25,6 @@
   ],
   "rewrites": [
     { "source": "/photos", "destination": "/index.html" },
-    { "source": "/:screen(tree|person)/:personId(I[0-9]+)", "destination": "/index.html" }
+    { "source": "/:screen(tree|person|horizontal|vertical|vertical-design|vertical-minimal|relatives)/:personId(I[0-9]+)", "destination": "/index.html" }
   ]
 }

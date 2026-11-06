@@ -4,14 +4,14 @@
 Розгорнутий сайт: [Родовід](https://rodovid-eta.vercel.app/tree/I1).
 Власник підтвердив вхід; [перевірка без авторизації](Docs/Rodovid_Vercel_Protection_Check_2026-10-31.md)
 показала захист сторінок, JSON і прямих матеріалів на production hostname.
-`npm run build:vercel` збирає базовий сайт із сімейними даними у `dist-vercel/`.
+`npm run build:vercel` збирає «Сімейний атлас» із сімейними даними у `dist-vercel/`.
 Команда послідовно конвертує дані, перевіряє типи й запускає збірку.
 Режим заглушки й змінну `RODOVID_DEPLOY_MODE` прибрано.
 Параметри та перевірки доступу — в
 [інструкції Vercel](Docs/Rodovid_Vercel_Deployment.md);
 [аудит безпеки від 31.10.2026](Docs/Rodovid_Security_Audit_2026-10-31.md).
 
-Для **Cloudflare Pages** команда збірки базового сайту — `npm run build`,
+Для **Cloudflare Pages** команда збірки «Сімейного атласу» — `npm run build`,
 каталог результату — `dist`. Перед деплоєм сімейних даних перевірте доступ
 до сторінок, JSON і прямих медіафайлів на основній і preview-адресах.
 [Параметри збірки Cloudflare Pages](https://developers.cloudflare.com/pages/configuration/build-configuration/).
@@ -113,7 +113,8 @@ Node.js потрібний для розробки та збірки; власн
 | `npm run data:validate` | Повна підготовка й перевірка в пам’яті, без запису family.json/журналу ID; ті самі звіти, код 1 за помилки. |
 | `npm test` | Одноразовий запуск Vitest; `src/**/*.test.{ts,tsx}` і `scripts/**/*.test.ts`, середовище Node.js. |
 | `npm run test:watch` | Vitest у режимі спостереження. |
-| `npm run test:e2e` | Playwright: Chromium на комп’ютері й мобільний профіль Pixel 7; окрема збірка та preview на порту 4174. |
+| `npm run test:e2e:react-svg` | Playwright перевіряє готову збірку атласу з `dist/` у Chromium і профілі Pixel 7. |
+| `npm run test:e2e` | Попередні сценарії Playwright використовують ізольовану збірку старого інтерфейсу та порт 4174. |
 
 Vitest перевіряє контракт даних, дати, налаштування, стабільні ID та парсер GEDCOM;
 порожній набір більше не вважається успіхом. Інтеграційні тести перевіряють
@@ -139,9 +140,7 @@ Data/                   робочий GEDCOM, копія RootsMagic, site.json,
 generated/              відтворюваний family.json; не редагувати вручну, не комітити
 Docs/                   ТЗ, технічні рішення, огляд даних і тікети
 src/
-  App.tsx               маршрути, базові екрани й покажчик людей
-  App.module.css        CSS Module екрана
-  main.tsx              точка входу React
+  edition/              інтерфейс атласу, маршрути, стилі та точка входу React
   data/                 Zod-схеми, типи, стабільні ID та предметні тести
   navigation/           Context, завантаження, reducer та історія перегляду
   graph/                проєкція, секторна геометрія, SVG-карта та підписи
@@ -154,7 +153,7 @@ scripts/convert-data.ts локальне перетворення на JSON
 scripts/review-graph.ts локальні HTML/PNG для огляду геометрії ROD-010
 vite.config.ts          локальні сервери та статична збірка
 vitest.config.ts        окремий набір предметних тестів
-playwright.config.ts    наскрізні перевірки готової збірки
+playwright.react-svg.config.ts  наскрізні перевірки атласу
 ```
 
 Вихідні `Data/Zubenko.ged` і `Data/Zubenko.rmtree` не імпортуються в застосунок

@@ -13,7 +13,7 @@ export default defineConfig({
     { name: 'mobile-chromium', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: 'npm run build:react-svg && npm run preview:react-svg -- --port 4176',
+    command: 'npm run build && npm run preview -- --port 4176',
     url: 'http://127.0.0.1:4176', reuseExistingServer: false, timeout: 120_000,
   },
 })

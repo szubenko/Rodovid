@@ -17,7 +17,7 @@ export default defineConfig({
     { name: 'mobile-chromium', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: 'npm run build && npm run preview -- --port 4174',
+    command: 'vite build --config tests/e2e/vite.legacy.config.ts && vite preview --config tests/e2e/vite.legacy.config.ts',
     url: 'http://127.0.0.1:4174',
     reuseExistingServer: false,
     timeout: 120_000,

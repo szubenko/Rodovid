@@ -49,10 +49,10 @@ test('вкладки діаграм відновлюють власну каме
 
   await horizontal.click()
   await expect(page).toHaveURL(/\/horizontal\/I12$/)
-  await expect(zoom).toHaveText('60%')
+  await expect(zoom).toHaveText('100%')
   await generations.selectOption('3')
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
-  await expect(zoom).toHaveText('75%')
+  await expect(zoom).toHaveText('125%')
   const horizontalTransform = (await camera.getAttribute('transform'))!
   await page.reload()
 
@@ -66,7 +66,7 @@ test('вкладки діаграм відновлюють власну каме
   await expect(page.getByRole('button', { name: 'Компактні картки', exact: true })).toHaveAttribute('aria-pressed', 'true')
 
   await horizontal.click()
-  await expect(zoom).toHaveText('75%')
+  await expect(zoom).toHaveText('125%')
   await expect(camera).toHaveAttribute('transform', horizontalTransform)
   await expect(generations).toHaveValue('3')
 })

@@ -26,7 +26,7 @@ test('у Івана без відомого подружжя дитячий се
   await page.goto('/tree/I59')
   const svg = page.locator('[data-map-viewport] > svg')
   await expect(svg.locator('[data-center="true"]')).toHaveAttribute('data-person-id', 'I59')
-  await expect(page.getByLabel('Масштаб карти', { exact: true })).toHaveText('60%')
+  await expect(page.getByLabel('Масштаб карти', { exact: true })).toHaveText('100%')
   const gap = await svg.evaluate(svg => {
     const center = svg.querySelector<SVGCircleElement>('[data-center="true"] > circle')!
     const child = svg.querySelector<SVGPathElement>('[data-person-id="I43"] > path')!
@@ -75,7 +75,7 @@ test('вибір людей з великими сім’ями зберігає
     else await page.mouse.click(point.x, point.y)
     await expect(page).toHaveURL(`/tree/${personId}`)
     await expect(svg.locator('[data-center="true"]')).toHaveAttribute('data-person-id', personId)
-    await expect(scale).toHaveText('60%')
+    await expect(scale).toHaveText('100%')
     await expect(svg.locator('[data-layer="coordinates"]')).toHaveAttribute('data-transition', 'idle')
     expect(await center.evaluate(circle => circle.getBoundingClientRect().width)).toBeCloseTo(diameter, 1)
     expect(await svg.locator('[data-center="true"] text').first().evaluate(text => {

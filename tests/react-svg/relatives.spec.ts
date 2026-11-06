@@ -71,7 +71,7 @@ test('окрема вкладка усіх родичів зберігає по�
   await expect(page).toHaveURL(/\/relatives\/I1$/)
   await expect(page.getByRole('link', { name: 'Усі родичі', exact: true })).toHaveAttribute('aria-current', 'page')
   await expect(page).toHaveTitle(/Родовід з усіма родичами$/)
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('60%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
   const full = page.getByRole('group', { name: /^Родовід з усіма родичами:/ })
   await expect(full.locator('[data-person-id="I27"]')).toHaveCount(1)
   await page.getByRole('button', { name: 'Назад до попереднього перегляду', exact: true }).click()
@@ -183,7 +183,7 @@ test('вся родина: всі унікальні картки й зв’яз
   }
   await page.getByRole('button', { name: 'Початкові гілки', exact: true }).click()
   expect(await svg.locator('[data-person-id]').count()).toBeLessThan(peopleCount)
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('60%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
 })
 
 test('Чабани й Карпінські: подружжя стоїть навпроти власних батьків без перехрестя', async ({ page }, testInfo) => {

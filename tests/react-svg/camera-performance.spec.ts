@@ -61,19 +61,21 @@ test('жива камера колеса зберігається перед к�
   await page.clock.runFor(1000)
   const camera = svg.locator('[data-layer="camera"]')
   const output = page.getByLabel('Масштаб карти', { exact: true })
+  const d3Scale = () => svg.evaluate(element => Reflect.get(element, '__zoom').k as number)
+  const initialScale = await d3Scale()
+  await expect(output).toHaveText('100%')
   await svg.hover()
   await page.mouse.wheel(0, -80)
-  const d3Scale = () => svg.evaluate(element => Reflect.get(element, '__zoom').k as number)
-  await expect.poll(d3Scale).toBeGreaterThan(.6)
+  await expect.poll(d3Scale).toBeGreaterThan(initialScale)
   await page.clock.runFor(32)
   const liveZoom = parseInt((await output.textContent())!, 10)
   const liveScale = await camera.evaluate(element => (element as SVGGElement).transform.baseVal.consolidate()!.matrix.a)
-  expect(liveZoom).toBeGreaterThan(60)
-  // Arrows keep their screen size while zooming, before the gesture is committed.
+  expect(liveZoom).toBeGreaterThan(100)
+  // Arrow compensation is capped at 3×, including during a live gesture.
   expect(await svg.locator('[data-camera-control]').first().evaluate(element =>
-    (element as SVGGElement).getCTM()!.a)).toBeCloseTo(1, 2)
+    (element as SVGGElement).getCTM()!.a)).toBeCloseTo(Math.min(1, liveScale * 3), 2)
   await page.getByRole('button', { name: 'Збільшити масштаб', exact: true }).click()
-  await expect(output).toHaveText(`${Math.round(liveScale * 1.25 * 100)}%`)
+  await expect(output).toHaveText(`${Math.round(liveScale / initialScale * 125)}%`)
   const afterButton = await camera.getAttribute('transform')
   await page.clock.runFor(300)
   await expect(camera).toHaveAttribute('transform', afterButton!)
@@ -142,7 +144,7 @@ test('дотик і pinch рухають усі діаграми та не ві�
       type: 'touchMove', touchPoints: [{ x: x - 25 - i * 5, y, id: 1 }, { x: x + 25 + i * 5, y, id: 2 }],
     })
     await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] })
-    await expect(page.getByLabel('Масштаб карти', { exact: true })).not.toHaveText('60%')
+    await expect(page.getByLabel('Масштаб карти', { exact: true })).not.toHaveText('100%')
     await expect(page).toHaveURL(new RegExp(`/${screen}/I1$`))
     await expect(page.getByTestId('relationship-details')).toHaveCount(0)
   }

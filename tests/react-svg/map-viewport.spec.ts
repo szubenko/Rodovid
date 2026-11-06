@@ -5,8 +5,9 @@ test('колесо плавно масштабує кожну діаграму �
     await page.goto(`/${screen}/I1`)
     const svg = page.locator('[data-map-viewport] > svg')
     const scale = page.getByLabel('Масштаб карти', { exact: true })
-    const initial = 60
+    const initial = 100
     await expect(scale).toHaveText(`${initial}%`)
+    await expect(svg.locator('[data-layer="camera"]')).toHaveAttribute('transform', /scale\(0\.6\)$/)
     await svg.hover()
     await page.mouse.wheel(0, -30)
     // Mobile Chromium converts wheel pixels to device-independent units.
@@ -32,7 +33,7 @@ test('вікно кожної діаграми підлаштовується п
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
       if (height! >= 668) expect(await svg.evaluate(svg => svg.getBoundingClientRect().bottom <= innerHeight)).toBe(true)
       if (height! >= 668) expect(await svg.evaluate(svg => svg.getBoundingClientRect().height / innerHeight)).toBeGreaterThan(0.45)
-      await expect(page.getByLabel('Масштаб карти')).toHaveText('60%')
+      await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
       const center = svg.locator('[data-center="true"]')
       const position = await center.evaluate(node => {
         const box = node.getBoundingClientRect()

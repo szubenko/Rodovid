@@ -146,6 +146,6 @@ test('брендинг і всі дії бічної панелі доступн
   const home = page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'До мене' })
   await home.click()
   await expect(page).toHaveURL('/tree/I1')
-  await expect(page.getByLabel('Масштаб карти')).toHaveText('60%')
+  await expect(page.getByLabel('Масштаб карти')).toHaveText('100%')
   await page.screenshot({ path: testInfo.outputPath('compact-atlas.png') })
 })

@@ -10,7 +10,7 @@ import { useMapTransition } from './useMapTransition'
 import { useMapCamera } from './useMapCamera'
 import { useMapViewport } from './useMapViewport'
 import { useMapExpansion } from './useMapExpansion'
-import { fitCamera, maxZoom, minZoom, scaleCamera } from './camera'
+import { fitCamera, formatCameraZoom, maxZoom, minZoom, scaleCamera } from './camera'
 import { EvidenceForTarget } from '../room/Evidence'
 import { emptySectors } from './empty-sectors'
 import { closestRelationship } from './closest-relationship'
@@ -57,7 +57,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     fontSize: 20, fitToViewport }), [projection, width, height, labels, dates, measureText, fitToViewport])
   const empty = useMemo(() => emptySectors(layout, projection.generations - 1), [layout, projection.generations])
   const renderedCamera = useMemo(() => ({ ...mapSettings, pan: { x: pan.x * width, y: pan.y * height } }), [mapSettings, pan.x, pan.y, width, height])
-  useMapCamera(container, width, mapSettings, dispatch, height)
+  useMapCamera(container, width, mapSettings, dispatch, height, state.initialMapZoom)
   useMapTransition(container, layout, personId, renderedCamera)
   const nodes = new Map(layout.nodes.map((node) => [node.appearanceId, node]))
   const visibleCountries = [...new Set(layout.nodes.map(node => countries.get(node.personId)!))]
@@ -86,7 +86,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
     <div className={styles.controls} role="group" aria-label="Керування картою">
       <button aria-label="Назад до попереднього перегляду" disabled={state.position === 0} onClick={goBack}>← Назад</button>
       <button aria-label="Зменшити масштаб" disabled={zoom <= minZoom} onClick={() => changeScale(1 / 1.25)}>−</button>
-      <output aria-label="Масштаб карти">{`${Math.round(zoom * 100)}%`}</output>
+      <output aria-label="Масштаб карти">{formatCameraZoom(zoom, state.initialMapZoom)}</output>
       <button aria-label="Збільшити масштаб" disabled={zoom >= maxZoom} onClick={() => changeScale(1.25)}>+</button>
       <button onClick={fitMap}>Вмістити карту</button>
       <button onClick={() => dispatch({ type: 'map', settings: { zoom: 1, pan: { x: 0, y: 0 } } })}>До центру</button>

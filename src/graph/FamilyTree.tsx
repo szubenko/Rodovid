@@ -98,7 +98,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     : layoutTree(projection, labels, dates, measure, orientation, directLine), [projection, graph, labels, dates, measure, orientation, directLine, portraitLayout])
   const center = layout.nodes.find(node => node.lane === 'center')!
   const offset = { x: width / 2 - center.x, y: height / 2 - center.y }
-  const zoomReference = portraitCards ? portraitMapBaseZoom : 1
+  const zoomReference = portraitCards ? portraitMapBaseZoom : state.initialMapZoom
   useMapCamera(container, width, settings, dispatch, height, zoomReference)
   const relations = [...new Set(projection.edges.map(edge => edge.relationshipId))].map(id => graph.relationships.get(id)!)
   const selected = relations.find(relation => relation.id === state.current.selectedRelationshipId)

@@ -1518,6 +1518,76 @@
         "latitude": 51.71987,
         "longitude": 33.210036
       }
+    },
+    {
+      "id": "review-place-c753e1f53c64ca3f6d1763b7",
+      "placeId": "place-c753e1f53c64ca3f6d1763b7",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-f7d97e0a872b2423fdb75991",
+      "placeId": "place-f7d97e0a872b2423fdb75991",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-8a04f802b58150b118f2b139",
+      "placeId": "place-8a04f802b58150b118f2b139",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-13f988bbf206b24ef6ada60b",
+      "placeId": "place-13f988bbf206b24ef6ada60b",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-c0dd5ef23ffdf9cca8c0f140",
+      "placeId": "place-c0dd5ef23ffdf9cca8c0f140",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-56a7f0e54d2d6902a2e3f119",
+      "placeId": "place-56a7f0e54d2d6902a2e3f119",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-fbce1990dc8a9d6283f5bda8",
+      "placeId": "place-fbce1990dc8a9d6283f5bda8",
+      "explanation": "D06: оригінальну назву збережено з експорту 08.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     }
   ],
   "sources": [
@@ -1942,6 +2012,34 @@
       "mediaIds": [
         "media-record-fe77ac182fab44bfd5c7"
       ]
+    },
+    {
+      "id": "source-details-0222ff7bcbe982ae0ecd",
+      "sourceId": "source-bca4e2f0c666ddcd394d4b35",
+      "mediaIds": [
+        "media-record-0222ff7bcbe982ae0ecd"
+      ]
+    },
+    {
+      "id": "source-details-a2017556d1f97b5e48ee",
+      "sourceId": "source-7b6f8868abbef2712d9832e6",
+      "mediaIds": [
+        "media-record-a2017556d1f97b5e48ee"
+      ]
+    },
+    {
+      "id": "source-details-564e095b7c1bd5905bde",
+      "sourceId": "source-c980e7fe68d1df40ce2a1a91",
+      "mediaIds": [
+        "media-record-564e095b7c1bd5905bde"
+      ]
+    },
+    {
+      "id": "source-details-52b13c07dc9983c73c11",
+      "sourceId": "source-ac0f250f4a8e482ce9626325",
+      "mediaIds": [
+        "media-record-52b13c07dc9983c73c11"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -2324,6 +2422,20 @@
       "evidenceLinkId": "evidenceLink-f72f37790d8ec58419433fb9",
       "fragment": {
         "mediaId": "media-record-fe77ac182fab44bfd5c7"
+      }
+    },
+    {
+      "id": "evidence-details-0222ff7bcbe982ae0ecd",
+      "evidenceLinkId": "evidenceLink-be4206f60b3070b8fea75941",
+      "fragment": {
+        "mediaId": "media-record-0222ff7bcbe982ae0ecd"
+      }
+    },
+    {
+      "id": "evidence-details-a2017556d1f97b5e48ee",
+      "evidenceLinkId": "evidence-record-a2017556d1f97b5e48ee",
+      "fragment": {
+        "mediaId": "media-record-a2017556d1f97b5e48ee"
       }
     }
   ],
@@ -3349,6 +3461,53 @@
         "evidenceLink-811d622ac29c72593eebb68c"
       ],
       "jsonFile": "assets/documents/source-records/романова-феодосия-інша-подія-PJ7W-ZLD-6XQ3-H8YT.json"
+    },
+    {
+      "id": "file-source-bca4e2f0c666ddcd394d4b35",
+      "sourceId": "source-bca4e2f0c666ddcd394d4b35",
+      "evidenceLinkIds": [
+        "evidenceLink-b5d6971263998809c8d2114b",
+        "evidenceLink-be4206f60b3070b8fea75941",
+        "evidenceLink-6439d1fcec2fc4c8487d6caf",
+        "evidenceLink-cb26241f36b3765541f843f2",
+        "evidenceLink-8f915d3f7d78e0862771c476",
+        "evidenceLink-11febbfc05aa6fdf230437eb"
+      ],
+      "mediaId": "media-record-0222ff7bcbe982ae0ecd",
+      "jsonFile": "assets/documents/source-records/сальникова-ксения-народження-PNP7-NFP-6X32-NFVB.json"
+    },
+    {
+      "id": "file-source-c980e7fe68d1df40ce2a1a91",
+      "sourceId": "source-c980e7fe68d1df40ce2a1a91",
+      "evidenceLinkIds": [
+        "evidenceLink-66d8def864b7359a2ab751d7",
+        "evidenceLink-462238b440ce9a6b1bd0dbee",
+        "evidenceLink-0f20c4e1d7ea119061eac9c5",
+        "evidenceLink-7d703d2a7656758cca1811e2",
+        "evidence-record-564e095b7c1bd5905bde"
+      ],
+      "mediaId": "media-record-564e095b7c1bd5905bde",
+      "jsonFile": "assets/documents/source-records/пукалова-васса-народження-PJW9-D9T-6XST-LB4S.json"
+    },
+    {
+      "id": "file-source-ac0f250f4a8e482ce9626325",
+      "sourceId": "source-ac0f250f4a8e482ce9626325",
+      "evidenceLinkIds": [
+        "evidenceLink-823b11337065fe974d45e764",
+        "evidence-record-52b13c07dc9983c73c11"
+      ],
+      "mediaId": "media-record-52b13c07dc9983c73c11",
+      "jsonFile": "assets/documents/source-records/пукалова-васса-інша-подія-PJW9-D9T-6X32-NFHG.json"
+    },
+    {
+      "id": "file-source-7b6f8868abbef2712d9832e6",
+      "sourceId": "source-7b6f8868abbef2712d9832e6",
+      "evidenceLinkIds": [
+        "evidenceLink-f1107e12e27bcd3876ba746a",
+        "evidence-record-a2017556d1f97b5e48ee"
+      ],
+      "mediaId": "media-record-a2017556d1f97b5e48ee",
+      "jsonFile": "assets/documents/source-records/пукалова-васса-інша-подія-PJW9-D9T-6X32-NFK3.json"
     },
     {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
@@ -5040,6 +5199,74 @@
           "entryId": "media-record-fe77ac182fab44bfd5c7"
         }
       ]
+    },
+    {
+      "id": "media-record-0222ff7bcbe982ae0ecd",
+      "path": "assets/documents/source-records/сальникова-ксения-народження-PNP7-NFP-6X32-NFVB-5911529bb2b8a66ecd1f20ca45c7f3de1a7e86de86ed8081e99cbc5429942213.png",
+      "dimensions": {
+        "width": 1363,
+        "height": 315
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальникова-ксения-народження-PNP7-NFP-6X32-NFVB",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-0222ff7bcbe982ae0ecd"
+        }
+      ]
+    },
+    {
+      "id": "media-record-a2017556d1f97b5e48ee",
+      "path": "assets/documents/source-records/сальникова-ксения-народження-PNP7-NFP-6X32-NFVB-5911529bb2b8a66ecd1f20ca45c7f3de1a7e86de86ed8081e99cbc5429942213.png",
+      "dimensions": {
+        "width": 1363,
+        "height": 315
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: пукалова-васса-інша-подія-PJW9-D9T-6X32-NFK3",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-a2017556d1f97b5e48ee"
+        }
+      ]
+    },
+    {
+      "id": "media-record-564e095b7c1bd5905bde",
+      "path": "assets/documents/source-records/пукалова-васса-народження-PJW9-D9T-6XST-LB4S.png",
+      "dimensions": {
+        "width": 1363,
+        "height": 345
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: пукалова-васса-народження-PJW9-D9T-6XST-LB4S",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-564e095b7c1bd5905bde"
+        }
+      ]
+    },
+    {
+      "id": "media-record-52b13c07dc9983c73c11",
+      "path": "assets/documents/source-records/пукалова-васса-інша-подія-PJW9-D9T-6X32-NFHG.png",
+      "dimensions": {
+        "width": 1245,
+        "height": 518
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: пукалова-васса-інша-подія-PJW9-D9T-6X32-NFHG",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-52b13c07dc9983c73c11"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
@@ -5287,6 +5514,60 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "evidence-petro-birth-1900-act36-8"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-a2017556d1f97b5e48ee",
+      "sourceId": "source-7b6f8868abbef2712d9832e6",
+      "target": {
+        "kind": "event",
+        "id": "event-da72f3e090e2b080b75099b1"
+      },
+      "fragment": {
+        "mediaId": "media-record-a2017556d1f97b5e48ee"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-a2017556d1f97b5e48ee"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-564e095b7c1bd5905bde",
+      "sourceId": "source-c980e7fe68d1df40ce2a1a91",
+      "target": {
+        "kind": "event",
+        "id": "event-c86dfad0c077dfb5c7aa1d19"
+      },
+      "fragment": {
+        "mediaId": "media-record-564e095b7c1bd5905bde"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-564e095b7c1bd5905bde"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-52b13c07dc9983c73c11",
+      "sourceId": "source-ac0f250f4a8e482ce9626325",
+      "target": {
+        "kind": "event",
+        "id": "event-ad189fd2bf1fddc128fcfb41"
+      },
+      "fragment": {
+        "mediaId": "media-record-52b13c07dc9983c73c11"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-52b13c07dc9983c73c11"
         }
       ]
     }

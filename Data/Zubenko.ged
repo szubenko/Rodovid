@@ -8,8 +8,8 @@
 4 CONT USA
 1 DEST PAF
 1 DATE 8 NOV 2026
-2 TIME 20:01:24
-1 FILE ZubenkoNewFormat.reviewed.11.08.26.ged
+2 TIME 21:55:48
+1 FILE ZubenkoNewFormat.reviewed.11.08.26 2.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -2479,7 +2479,11 @@
 2 GIVN Ксения
 2 NOTE Ім’я за актом народження Петра № 36 від 28.06.1900 у читанні, погодженому власником 19.10.2026. Прізвище матері в акті окремо не зазначено.
 1 BIRT
-2 DATE 1879
+2 DATE 19 JAN 1879
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S102@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFVB
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PNP7-NFP
@@ -2487,12 +2491,21 @@
 1 FAMC @F34@
 1 EVEN Козачка
 2 TYPE Caste Name 
+2 SOUR @S102@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFVB
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 EVEN Собственица
 2 TYPE Caste Name 
+2 SOUR @S102@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFVB
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S82@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-N8H4
 1 SOUR @S85@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-8MM1
+1 SOUR @S102@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFVB
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I89@ INDI
 1 NAME Иаким /Дейкал/
 2 ROMN Yakym /Deikal/
@@ -2513,6 +2526,7 @@
 1 FAMS @F34@
 1 EVEN Козак
 2 TYPE Caste Name 
+1 FAMC @F57@
 0 @I91@ INDI
 1 NAME Никифор /Зубенко/
 2 ROMN Nykyfor /Zubenko/
@@ -2670,6 +2684,12 @@
 1 HUSB @I90@
 1 CHIL @I88@
 1 _UID DFCDE738DE161A4F8A83447D4D6B9F38856B
+1 WIFE @I146@
+1 CHIL @I147@
+1 _UID 88C62372EF429743873DA1CE9824B71AAE1C
+1 MARR
+2 DATE 6 FEB 1870
+2 PLAC Kharkiv Guberniya, Russian Empire
 0 @F35@ FAM
 1 HUSB @I91@
 1 CHIL @I92@
@@ -3534,4 +3554,198 @@
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
 2 CONC //www.familysearch.org/ark:/61903/1:1:6XQ3-H8YT : Tue Dec 10 22:57:29 UT
 2 CONC C 2024), Феодосия Романова in entry for Евдокия Довгуля, 24 Feb 1863.
+0 @I146@ INDI
+1 NAME Васса /Пукалова/
+2 ROMN Vassa /Pukalova/
+1 SEX F
+1 BIRT
+2 DATE 1847
+2 SOUR @S103@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-LB4S
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJW9-D9T
+1 _UID F2F46B36D61CBB4EBF444ECE7F8BAC176E06
+1 FAMS @F34@
+1 FAMC @F59@
+1 _UID 12F4D72C761AE840923C973C5990686C1F9A
+1 EVEN Козачка
+2 TYPE Caste Name 
+2 SOUR @S103@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-LB4S
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S103@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-LB4S
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S104@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFHG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S105@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFK3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I147@ INDI
+1 NAME Прокофий /Сальников/
+2 ROMN Prokofyi /Salnykov/
+1 SEX M
+1 BIRT
+2 DATE 27 FEB 1876
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-WZ7
+1 _UID 2975F8C8C5269741953E974443E60D6F74AF
+1 FAMC @F34@
+1 FAMC @F34@
+0 @I148@ INDI
+1 NAME Семен Якович /Сальников/
+2 ROMN Semen Yakovych /Salnykov/
+1 SEX M
+1 BIRT
+2 DATE 1814
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-V24
+1 _UID 75FB6B51BFEC8043ABA6AE0D4F3B2C70CC5B
+1 FAMS @F57@
+1 FAMS @F61@
+1 FAMC @F58@
+0 @I149@ INDI
+1 NAME Яків Семенович /Сальников/
+2 ROMN Yakiv Semenovych /Salnykov/
+1 SEX M
+1 BIRT
+2 DATE 1841
+2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-KPK
+1 _UID 8E66A57E51423942B5D677C6A9D7872E2203
+1 FAMC @F57@
+0 @I150@ INDI
+1 NAME Семен Семенович /Сальников/
+2 ROMN Semen Semenovych /Salnykov/
+1 SEX M
+1 BIRT
+2 DATE 1844
+2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-CYY
+1 _UID 1C7504CE08E7F246AC20F7DFE55236C861A3
+1 FAMC @F57@
+0 @I151@ INDI
+1 NAME Яков /Сальников/
+2 ROMN Yakov /Salnykov/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJW3-SDW
+1 _UID 9C0917E710B68944B7AD598CA6578E515BE3
+1 FAMS @F58@
+0 @I152@ INDI
+1 NAME Стефан /Пукалова/
+2 ROMN Stefan /Pukalova/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-31T
+1 _UID E5F3A4D67314C548A1447B70786E681A1EE7
+1 FAMS @F59@
+1 FAMS @F59@
+1 EVEN Козак
+2 TYPE Caste Name 
+0 @I153@ INDI
+1 NAME Василиса Єгорівна //
+2 ROMN Vasylysa Yehorivna //
+1 SEX F
+1 BIRT
+2 DATE 1825
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-2RN
+1 _UID 4269493D89206449BEB2D7BB2F958A6C431D
+1 FAMS @F61@
+0 @I154@ INDI
+1 NAME Ірина Семенівна /Сальникова/
+2 ROMN Iryna Semenivna /Salnykova/
+1 SEX F
+1 BIRT
+2 DATE 1846
+2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-TZH
+1 _UID D90D03BB030B8548ADF24AE101EA252F88B5
+1 FAMC @F61@
+0 @I155@ INDI
+1 NAME Євфросинія Семенівна /Сальникова/
+2 ROMN Yevfrosyniia Semenivna /Salnykova/
+1 SEX F
+1 BIRT
+2 DATE 1852
+2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWS-13H
+1 _UID 513E3AA41E27A949BF6F5D475F0A124F4011
+1 FAMC @F61@
+0 @F57@ FAM
+1 MARR
+1 HUSB @I148@
+1 _UID 1FEE1724836A4848A4706E8F22F76C73CE49
+1 CHIL @I90@
+1 CHIL @I149@
+1 CHIL @I150@
+0 @F58@ FAM
+1 MARR
+1 HUSB @I151@
+1 _UID D5333B6EDF28A14EBB37821062239220623B
+1 CHIL @I148@
+0 @F59@ FAM
+1 MARR
+1 HUSB @I152@
+1 _UID EB275329432BDD4FA90D4D2632655ACD0FA5
+1 CHIL @I146@
+1 _UID 6137699FE72DAB47B734F994EDDE1FB3BB27
+0 @F61@ FAM
+1 HUSB @I148@
+1 WIFE @I153@
+1 _UID 92534842103B944F83532D5F787D54F53D59
+1 CHIL @I154@
+1 CHIL @I155@
+0 @S102@ SOUR
+1 TITL Народження Ксения Сальник, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFVB : Tue Dec 10 00:57:53 UT
+2 CONC C 2024), Ксения Сальник, 19 Jan 1879.
+2 CONT Народження Ксенії Никифорівни Сальникової
+2 CONT
+2 CONT 19 января 1879 года.
+2 CONT 20 января — крещена.
+2 CONT Запись № 3.
+2 CONT
+2 CONT Ксенія.
+2 CONT
+2 CONT Крестьянинъ Никифоръ Семеновъ Сальниковъ и законная жена его Васса [отчес
+2 CONC тво неразборчиво], оба православнаго вѣроисповѣданія.
+2 CONT
+2 CONT Місце: село Чапліївка, Кролевецький повіт, Чернігівська губернія.
+2 CONT Церква: Успенська.
+0 @S103@ SOUR
+1 TITL Ожруження Никифор Симеонов Сальник і Васса Стефанова Пукалова
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XST-LB4S : Mon Dec 09 23:11:08 UT
+2 CONC C 2024), Васса Стефанова Пукалова in entry for Никифор Симеонов Сальник
+2 CONC , 6 Feb 1870.
+0 @S104@ SOUR
+1 TITL Народження Прокофий Сальников
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFHG : Mon Dec 09 23:46:15 UT
+2 CONC C 2024), Васса Стефанова in entry for Прокофий Сальников, 27 Feb 1876.
+0 @S105@ SOUR
+1 TITL Народження Ксения Сальник
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFK3 : Tue Dec 10 00:57:53 UT
+2 CONC C 2024), Васса Стефанова in entry for Ксения Сальник, 19 Jan 1879.
 0 TRLR

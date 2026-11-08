@@ -157,8 +157,8 @@ it('keeps full names and years on one baseline only from the narrow sixth ancest
     { width: 1024, height: 768, labels, dates, fitToViewport: false,
       measureText: (text, size) => Array.from(text).length * size * 0.5 })
   // Keep the measured geometry and wrapping for the current home tree.
-  for (const [index, radius] of [120, 233.94340575098596, 317.94340575098596,
-    512.9516930364977, 657.157472793091, 922.3532738442836].entries()) {
+  for (const [index, radius] of [122.86027241532469, 231.8602724153247, 315.8602724153247,
+    510.8699161354396, 655.0825553479757, 920.2799279549901].entries()) {
     expect(layout.ringRadii[index]).toBeCloseTo(radius)
   }
   expect(layout.nodes.some(node => node.ring === 5 && new Set(node.text.lines.map(line => line.y)).size > 1)).toBe(true)

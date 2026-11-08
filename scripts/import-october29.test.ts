@@ -7,7 +7,7 @@ import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
 import { validateData } from './validation/validate.ts'
 import { buildFamilyGraph, projectFamily } from '../src/graph/projection.ts'
-import { november8MergeSha256 } from './validation/reviewed-export.ts'
+import { november8SecondMergeSha256 } from './validation/reviewed-export.ts'
 
 const root = new URL('../', import.meta.url)
 const read = (path: string) => readFileSync(new URL(path, root))
@@ -27,8 +27,8 @@ const clean = <T extends {provenance:unknown}>(value:T) => {
 
 it('retains every accepted identity, source text, scan byte, and relationship while adding the new branches', () => {
   const {family,report,plan}=load()
-  expect(report.sha256).toBe(november8MergeSha256)
-  expect(report.counts).toMatchObject({people:143,families:53,relationships:224,sources:103})
+  expect(report.sha256).toBe(november8SecondMergeSha256)
+  expect(report.counts).toMatchObject({people:153,families:57,relationships:238,sources:107})
   expect(plan.outputs.size).toBe(0)
   expect(plan.summary.conflicts).toEqual([])
   for(const kind of ['people','relationships','events','claims','places','sources','media','evidenceLinks','memories'] as const) {
@@ -53,7 +53,7 @@ it('merges both Ustina records and enriches the original mother rather than crea
   const parents=(id:string)=>family.relationships.filter(r=>r.kind==='parent-child'&&r.toPersonId===id).map(r=>r.fromPersonId).sort()
   for(const child of ['I20','I94','I95'])expect(parents(child)).toEqual(['I45','I93'])
   expect(parents('I93')).toEqual(['I97'])
-  expect(parents('I88')).toEqual(['I90'])
+  expect(parents('I88')).toEqual(['I146','I90'])
   expect(parents('I8')).toEqual(['I35','I88'])
   const ustinaFamilies=family.relationships.filter(r=>r.kind==='spouse'&&[r.fromPersonId,r.toPersonId].includes('I93'))
   expect(ustinaFamilies).toHaveLength(1)

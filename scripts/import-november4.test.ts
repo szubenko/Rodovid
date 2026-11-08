@@ -25,7 +25,7 @@ it('maps three new Chabans to distinct stable IDs and their recorded parents wit
     expect(date(id, 'death')).toMatchObject({ value: { kind: 'point', raw: String(death), value: { year: death, precision: 'year' } } })
     expect(family.claims.filter(c => c.field === 'name' && c.target.id === id)).toHaveLength(2)
   }
-  expect(report.counts).toMatchObject({ people: 143, relationships: 224, events: 306 })
+  expect(report.counts).toMatchObject({ people: 153, relationships: 238, events: 327 })
 })
 
 it('applies the supplied date precision and literal note without changing Yaroslav’s reviewed birthday', () => {

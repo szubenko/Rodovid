@@ -156,9 +156,9 @@ it('keeps full names and years on one baseline only from the narrow sixth ancest
   const layout = layoutRadial(projectFamily(graph, 'I1', { generations: 12 }),
     { width: 1024, height: 768, labels, dates, fitToViewport: false,
       measureText: (text, size) => Array.from(text).length * size * 0.5 })
-  // The unaffected five inner rings keep their measured geometry and wrapping.
+  // Keep the measured geometry and wrapping for the current home tree.
   for (const [index, radius] of [120, 233.94340575098596, 317.94340575098596,
-    512.9516930364977, 657.157472793091, 891.4987671368939].entries()) {
+    512.9516930364977, 657.157472793091, 922.3532738442836].entries()) {
     expect(layout.ringRadii[index]).toBeCloseTo(radius)
   }
   expect(layout.nodes.some(node => node.ring === 5 && new Set(node.text.lines.map(line => line.y)).size > 1)).toBe(true)

@@ -10,13 +10,13 @@ const graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('vertical blood ancestors', () => {
-  it('keeps the home person and 53 ancestors distinct from all 102 relatives', () => {
+  it('keeps the home person and 59 ancestors distinct from the full family', () => {
     const vertical = projectVerticalFamily(graph, 'I1', { generations: 12 })
     const relatives = projectRelatives(graph, 'I1', { showAll: true })
-    expect(vertical.appearances).toHaveLength(54)
-    expect(relatives.appearances).toHaveLength(102)
+    expect(vertical.appearances).toHaveLength(60)
+    expect(relatives.appearances).toHaveLength(family.people.length)
     for (const id of ['I2', 'I3', 'I4', 'I5', 'I6', 'I7', 'I8', 'I9', 'I28', 'I29']) expect(ids(vertical)).toContain(id)
-    for (const id of ['I89', 'I90', 'I91', 'I93', 'I97', 'I98', 'I99']) expect(ids(vertical)).toContain(id)
+    for (const id of ['I89', 'I90', 'I91', 'I93', 'I97', 'I98', 'I99', 'I111', 'I112', 'I115', 'I118', 'I119', 'I145']) expect(ids(vertical)).toContain(id)
     for (const id of ['I10', 'I27', 'I47', 'I68', 'I69', 'I74', 'I79', 'I92', 'I94', 'I95', 'I96']) {
       expect(ids(vertical)).not.toContain(id)
       expect(relatives.appearances.some(node => node.personId === id)).toBe(true)

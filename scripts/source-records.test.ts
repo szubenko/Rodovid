@@ -89,6 +89,32 @@ it('repeats an imported citation attachment without duplicating documents or cha
   expect(await readdir(resolve(directory, 'Data/assets/documents'), { recursive: true })).toEqual(documentFiles)
 }, 20_000)
 
+it('keeps separate sources with the same URL on a shared event', async () => {
+  const directory = await fixture()
+  const path = resolve(directory, 'Data/annotations.json')
+  const annotations = JSON.parse(await readFile(path, 'utf8'))
+  const sources = ['source-cd0de8716b65458c38cc71c1', 'source-3ad3e7821520952dd62e837e']
+  const bindings = annotations.sourceRecordFiles.filter((binding: { sourceId: string }) => sources.includes(binding.sourceId))
+  const evidenceIds = bindings.flatMap((binding: { evidenceLinkIds: string[] }) => binding.evidenceLinkIds)
+  annotations.sourceEnrichments = annotations.sourceEnrichments.filter((entry: { sourceId: string }) => !sources.includes(entry.sourceId))
+  annotations.evidenceEnrichments = annotations.evidenceEnrichments.filter((entry: { evidenceLinkId: string }) => !evidenceIds.includes(entry.evidenceLinkId))
+  for (const binding of bindings) delete binding.mediaId
+  for (const link of annotations.evidenceLinks.filter((entry: { sourceId: string }) => sources.includes(entry.sourceId))) delete link.fragment
+  await writeFile(path, JSON.stringify(annotations, null, 2))
+  const eventId = 'event-a64939c1accedb4178ff1c2b'
+  const url = 'https://familysearch.org/ark:/61903/1:1:6XQ3-H8YT'
+  for (const sourceId of sources) {
+    await addSourceRecord(directory, { eventId, sourceId, url, screenshot: 'scan.png', description: 'Спільний запис.' }, directory, true)
+  }
+  const result = await load(directory)
+  for (const sourceId of sources) {
+    const source = result.family.sources.find(item => item.id === sourceId)!
+    expect(source.mediaIds).toHaveLength(1)
+    expect(result.family.evidenceLinks.some(link => link.sourceId === sourceId && link.target.id === eventId)).toBe(true)
+  }
+  expect((await validateData(result.family, { assetsRoot: resolve(directory, 'Data'), conversion: result.report })).status).toBe('passed')
+}, 30_000)
+
 it('adds a new source without loosening checks on the original citations', async () => {
   const directory = await fixture()
   const before = await load(directory)

@@ -5886,6 +5886,52 @@
               "path": "SOUR[9]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-347c997d44b90d199572",
+          "sourceId": "source-4698a4d248b07327476ad6ce",
+          "target": {
+            "kind": "relationship",
+            "id": "relationship-c4c1604bda5999322e0d6a86"
+          },
+          "fragment": {
+            "mediaId": "media-record-347c997d44b90d199572"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-347c997d44b90d199572"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-347c997d44b90d199572"
+            }
+          ]
+        },
+        {
+          "id": "evidence-feodor-vassa-marriage-1869-vassa",
+          "sourceId": "source-4698a4d248b07327476ad6ce",
+          "target": {
+            "kind": "person",
+            "id": "I110"
+          },
+          "fragment": {
+            "mediaId": "media-record-347c997d44b90d199572"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-feodor-vassa-marriage-1869-vassa"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-feodor-vassa-marriage-1869-vassa"
+            }
+          ]
         }
       ]
     },
@@ -5924,6 +5970,52 @@
               "importId": "import-ef3a44e6c80181dbc6f56c0bb633fadf8da62d66fc36e6166bcc593845f69b9f",
               "recordId": "@I69@",
               "path": "SOUR[6]"
+            }
+          ]
+        },
+        {
+          "id": "evidence-record-8dbe7a3968cc3559fb0d",
+          "sourceId": "source-390b7632d486834f8020c816",
+          "target": {
+            "kind": "event",
+            "id": "event-38101de51ee11bbf88bd87c7"
+          },
+          "fragment": {
+            "mediaId": "media-record-8dbe7a3968cc3559fb0d"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-8dbe7a3968cc3559fb0d"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-8dbe7a3968cc3559fb0d"
+            }
+          ]
+        },
+        {
+          "id": "evidence-source-390b7632d486834f8020c816-date-1878-09-29",
+          "sourceId": "source-390b7632d486834f8020c816",
+          "target": {
+            "kind": "claim",
+            "id": "claim-zaprysa-dovhulia-marriage-1878-09-29"
+          },
+          "fragment": {
+            "mediaId": "media-record-8dbe7a3968cc3559fb0d"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-source-390b7632d486834f8020c816-date-1878-09-29"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-source-390b7632d486834f8020c816-date-1878-09-29"
             }
           ]
         }
@@ -5966,6 +6058,52 @@
               "path": "SOUR[5]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-a2d35aec339fad1e5287",
+          "sourceId": "source-72ddd02d9b3390121a403403",
+          "target": {
+            "kind": "event",
+            "id": "event-38101de51ee11bbf88bd87c7"
+          },
+          "fragment": {
+            "mediaId": "media-record-a2d35aec339fad1e5287"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-a2d35aec339fad1e5287"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-a2d35aec339fad1e5287"
+            }
+          ]
+        },
+        {
+          "id": "evidence-source-72ddd02d9b3390121a403403-date-1878-09-29",
+          "sourceId": "source-72ddd02d9b3390121a403403",
+          "target": {
+            "kind": "claim",
+            "id": "claim-zaprysa-dovhulia-marriage-1878-09-29"
+          },
+          "fragment": {
+            "mediaId": "media-record-a2d35aec339fad1e5287"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-source-72ddd02d9b3390121a403403-date-1878-09-29"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-source-72ddd02d9b3390121a403403-date-1878-09-29"
+            }
+          ]
         }
       ]
     },
@@ -6004,6 +6142,29 @@
               "importId": "import-ef3a44e6c80181dbc6f56c0bb633fadf8da62d66fc36e6166bcc593845f69b9f",
               "recordId": "@I77@",
               "path": "SOUR[6]"
+            }
+          ]
+        },
+        {
+          "id": "evidence-record-866b307098e1803240b4",
+          "sourceId": "source-78a7453ed38f73069a94b9d5",
+          "target": {
+            "kind": "event",
+            "id": "event-a64939c1accedb4178ff1c2b"
+          },
+          "fragment": {
+            "mediaId": "media-record-866b307098e1803240b4"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-866b307098e1803240b4"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-866b307098e1803240b4"
             }
           ]
         }
@@ -6315,6 +6476,29 @@
               "path": "SOUR[1]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-6f78b42db5d39c964c3c",
+          "sourceId": "source-f2573b4788bfe432be84cb35",
+          "target": {
+            "kind": "event",
+            "id": "event-f6815eccaef367a5a5bd11f5"
+          },
+          "fragment": {
+            "mediaId": "media-record-6f78b42db5d39c964c3c"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-6f78b42db5d39c964c3c"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-6f78b42db5d39c964c3c"
+            }
+          ]
         }
       ]
     },
@@ -6353,6 +6537,29 @@
               "importId": "import-ef3a44e6c80181dbc6f56c0bb633fadf8da62d66fc36e6166bcc593845f69b9f",
               "recordId": "@I83@",
               "path": "SOUR[2]"
+            }
+          ]
+        },
+        {
+          "id": "evidence-record-fd9d9ec87c0cc5451af8",
+          "sourceId": "source-71b6c440f5d1230a91f6f1b5",
+          "target": {
+            "kind": "event",
+            "id": "event-fd6397b205b5299d9597ef7f"
+          },
+          "fragment": {
+            "mediaId": "media-record-fd9d9ec87c0cc5451af8"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-fd9d9ec87c0cc5451af8"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-fd9d9ec87c0cc5451af8"
             }
           ]
         }
@@ -6395,6 +6602,29 @@
               "path": "SOUR[3]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-c9dde3c54965607a5609",
+          "sourceId": "source-185dff1db359cb0b3867d96c",
+          "target": {
+            "kind": "event",
+            "id": "event-aa5b94a3f6847e315627d0e8"
+          },
+          "fragment": {
+            "mediaId": "media-record-c9dde3c54965607a5609"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-c9dde3c54965607a5609"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-c9dde3c54965607a5609"
+            }
+          ]
         }
       ]
     },
@@ -6433,6 +6663,29 @@
               "importId": "import-ef3a44e6c80181dbc6f56c0bb633fadf8da62d66fc36e6166bcc593845f69b9f",
               "recordId": "@I83@",
               "path": "SOUR[4]"
+            }
+          ]
+        },
+        {
+          "id": "evidence-record-166db7fb0cbaaaccf07d",
+          "sourceId": "source-dfa4e961ebf61aa7d378ff73",
+          "target": {
+            "kind": "event",
+            "id": "event-4cd18724e3762c871801d6a4"
+          },
+          "fragment": {
+            "mediaId": "media-record-166db7fb0cbaaaccf07d"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-166db7fb0cbaaaccf07d"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-166db7fb0cbaaaccf07d"
             }
           ]
         }
@@ -6475,6 +6728,29 @@
               "path": "SOUR[5]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-5492ccd20074d9c24656",
+          "sourceId": "source-f8456e77c41e412e5af20b2b",
+          "target": {
+            "kind": "event",
+            "id": "event-a64939c1accedb4178ff1c2b"
+          },
+          "fragment": {
+            "mediaId": "media-record-5492ccd20074d9c24656"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-5492ccd20074d9c24656"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-5492ccd20074d9c24656"
+            }
+          ]
         }
       ]
     },
@@ -6506,6 +6782,9 @@
             "kind": "event",
             "id": "event-a64939c1accedb4178ff1c2b"
           },
+          "fragment": {
+            "mediaId": "media-record-d843f9ecee9d6fa84176"
+          },
           "explanation": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-H8YT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
           "provenance": [
             {
@@ -6513,6 +6792,11 @@
               "importId": "import-ef3a44e6c80181dbc6f56c0bb633fadf8da62d66fc36e6166bcc593845f69b9f",
               "recordId": "@I77@",
               "path": "BIRT[0].SOUR[0]"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-details-d843f9ecee9d6fa84176"
             }
           ]
         }
@@ -6555,6 +6839,29 @@
               "path": "SOUR[1]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-d31a5749e43bd2144c62",
+          "sourceId": "source-ab2d9e9db323b2a033c4fb85",
+          "target": {
+            "kind": "event",
+            "id": "event-aa5b94a3f6847e315627d0e8"
+          },
+          "fragment": {
+            "mediaId": "media-record-d31a5749e43bd2144c62"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-d31a5749e43bd2144c62"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-d31a5749e43bd2144c62"
+            }
+          ]
         }
       ]
     },
@@ -6595,6 +6902,29 @@
               "path": "SOUR[2]"
             }
           ]
+        },
+        {
+          "id": "evidence-record-ace58d40aeb9f79085e1",
+          "sourceId": "source-e06f9eab137e47665183bb37",
+          "target": {
+            "kind": "event",
+            "id": "event-4cd18724e3762c871801d6a4"
+          },
+          "fragment": {
+            "mediaId": "media-record-ace58d40aeb9f79085e1"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-ace58d40aeb9f79085e1"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-ace58d40aeb9f79085e1"
+            }
+          ]
         }
       ]
     },
@@ -6633,6 +6963,29 @@
               "importId": "import-ef3a44e6c80181dbc6f56c0bb633fadf8da62d66fc36e6166bcc593845f69b9f",
               "recordId": "@I119@",
               "path": "SOUR[3]"
+            }
+          ]
+        },
+        {
+          "id": "evidence-record-d843f9ecee9d6fa84176",
+          "sourceId": "source-3ad3e7821520952dd62e837e",
+          "target": {
+            "kind": "event",
+            "id": "event-a64939c1accedb4178ff1c2b"
+          },
+          "fragment": {
+            "mediaId": "media-record-d843f9ecee9d6fa84176"
+          },
+          "provenance": [
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-d843f9ecee9d6fa84176"
+            },
+            {
+              "kind": "supplement",
+              "file": "Data/annotations.json",
+              "entryId": "evidence-record-d843f9ecee9d6fa84176"
             }
           ]
         }

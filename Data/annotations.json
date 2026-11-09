@@ -209,7 +209,8 @@
     "claim-46ee1ce4b58ae55b33857fb2",
     "claim-f0d68a1502b336593d173f16",
     "claim-oleksandra-PN3F-KPN-birth-date-1935",
-    "claim-mykola-PFVG-PWS-birth-date-1952"
+    "claim-mykola-PFVG-PWS-birth-date-1952",
+    "claim-zaprysa-dovhulia-marriage-1878-09-29"
   ],
   "additionalClaims": [
     {
@@ -274,6 +275,39 @@
             "year": 1952,
             "month": 10,
             "day": 2
+          }
+        }
+      }
+    },
+    {
+      "reason": "09.11.2026: власник підтвердив вересень після звірки з метричним записом № 38. В імпорті GEDCOM та індексі збережено 29 AUG 1878.",
+      "publishReason": false,
+      "claim": {
+        "id": "claim-zaprysa-dovhulia-marriage-1878-09-29",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "provenance": [
+          {
+            "kind": "supplement",
+            "file": "Data/annotations.json",
+            "entryId": "claim-zaprysa-dovhulia-marriage-1878-09-29"
+          }
+        ],
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-38101de51ee11bbf88bd87c7"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "29 вересня 1878 року",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "day",
+            "year": 1878,
+            "month": 9,
+            "day": 29
           }
         }
       }
@@ -2164,6 +2198,97 @@
       "mediaIds": [
         "media-record-97aa9fe4fd9bd57f3e3e"
       ]
+    },
+    {
+      "id": "source-details-347c997d44b90d199572",
+      "sourceId": "source-4698a4d248b07327476ad6ce",
+      "mediaIds": [
+        "media-record-347c997d44b90d199572"
+      ]
+    },
+    {
+      "id": "source-details-8dbe7a3968cc3559fb0d",
+      "sourceId": "source-390b7632d486834f8020c816",
+      "mediaIds": [
+        "media-record-8dbe7a3968cc3559fb0d"
+      ]
+    },
+    {
+      "id": "source-details-a2d35aec339fad1e5287",
+      "sourceId": "source-72ddd02d9b3390121a403403",
+      "mediaIds": [
+        "media-record-a2d35aec339fad1e5287"
+      ]
+    },
+    {
+      "id": "source-details-866b307098e1803240b4",
+      "sourceId": "source-78a7453ed38f73069a94b9d5",
+      "mediaIds": [
+        "media-record-866b307098e1803240b4"
+      ]
+    },
+    {
+      "id": "source-details-5492ccd20074d9c24656",
+      "sourceId": "source-f8456e77c41e412e5af20b2b",
+      "mediaIds": [
+        "media-record-5492ccd20074d9c24656"
+      ]
+    },
+    {
+      "id": "source-details-d843f9ecee9d6fa84176",
+      "sourceId": "source-3ad3e7821520952dd62e837e",
+      "mediaIds": [
+        "media-record-d843f9ecee9d6fa84176"
+      ]
+    },
+    {
+      "id": "source-details-evdokia-1863-mother-index",
+      "sourceId": "source-cd0de8716b65458c38cc71c1",
+      "mediaIds": [
+        "media-record-d843f9ecee9d6fa84176"
+      ]
+    },
+    {
+      "id": "source-details-6f78b42db5d39c964c3c",
+      "sourceId": "source-f2573b4788bfe432be84cb35",
+      "mediaIds": [
+        "media-record-6f78b42db5d39c964c3c"
+      ]
+    },
+    {
+      "id": "source-details-fd9d9ec87c0cc5451af8",
+      "sourceId": "source-71b6c440f5d1230a91f6f1b5",
+      "mediaIds": [
+        "media-record-fd9d9ec87c0cc5451af8"
+      ]
+    },
+    {
+      "id": "source-details-c9dde3c54965607a5609",
+      "sourceId": "source-185dff1db359cb0b3867d96c",
+      "mediaIds": [
+        "media-record-c9dde3c54965607a5609"
+      ]
+    },
+    {
+      "id": "source-details-d31a5749e43bd2144c62",
+      "sourceId": "source-ab2d9e9db323b2a033c4fb85",
+      "mediaIds": [
+        "media-record-d31a5749e43bd2144c62"
+      ]
+    },
+    {
+      "id": "source-details-166db7fb0cbaaaccf07d",
+      "sourceId": "source-dfa4e961ebf61aa7d378ff73",
+      "mediaIds": [
+        "media-record-166db7fb0cbaaaccf07d"
+      ]
+    },
+    {
+      "id": "source-details-ace58d40aeb9f79085e1",
+      "sourceId": "source-e06f9eab137e47665183bb37",
+      "mediaIds": [
+        "media-record-ace58d40aeb9f79085e1"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -2581,6 +2706,13 @@
       "evidenceLinkId": "evidenceLink-4e64177a247b7a2ad1786464",
       "fragment": {
         "mediaId": "media-record-87712b1ad4774360e4ed"
+      }
+    },
+    {
+      "id": "evidence-details-d843f9ecee9d6fa84176",
+      "evidenceLinkId": "evidenceLink-2d544312e977bf12cf904ca5",
+      "fragment": {
+        "mediaId": "media-record-d843f9ecee9d6fa84176"
       }
     }
   ],
@@ -3485,32 +3617,43 @@
       "id": "file-source-4698a4d248b07327476ad6ce",
       "sourceId": "source-4698a4d248b07327476ad6ce",
       "evidenceLinkIds": [
-        "evidenceLink-bdcbf807bafbd78f9a483cb6"
+        "evidenceLink-bdcbf807bafbd78f9a483cb6",
+        "evidence-record-347c997d44b90d199572",
+        "evidence-feodor-vassa-marriage-1869-vassa"
       ],
+      "mediaId": "media-record-347c997d44b90d199572",
       "jsonFile": "assets/documents/source-records/зубенко-феодор-інша-подія-PFJ2-7SW-6XST-J64H.json"
     },
     {
       "id": "file-source-390b7632d486834f8020c816",
       "sourceId": "source-390b7632d486834f8020c816",
       "evidenceLinkIds": [
-        "evidenceLink-c983ac59c1087949292db390"
+        "evidenceLink-c983ac59c1087949292db390",
+        "evidence-record-8dbe7a3968cc3559fb0d",
+        "evidence-source-390b7632d486834f8020c816-date-1878-09-29"
       ],
+      "mediaId": "media-record-8dbe7a3968cc3559fb0d",
       "jsonFile": "assets/documents/source-records/заприса-семенъ-інша-подія-PFT9-P9B-6XST-BTPV.json"
     },
     {
       "id": "file-source-72ddd02d9b3390121a403403",
       "sourceId": "source-72ddd02d9b3390121a403403",
       "evidenceLinkIds": [
-        "evidenceLink-d927156380387d1dca3d3a88"
+        "evidenceLink-d927156380387d1dca3d3a88",
+        "evidence-record-a2d35aec339fad1e5287",
+        "evidence-source-72ddd02d9b3390121a403403-date-1878-09-29"
       ],
+      "mediaId": "media-record-a2d35aec339fad1e5287",
       "jsonFile": "assets/documents/source-records/довгуля-евдокия-інша-подія-PNKH-LDY-6XST-BTPL.json"
     },
     {
       "id": "file-source-78a7453ed38f73069a94b9d5",
       "sourceId": "source-78a7453ed38f73069a94b9d5",
       "evidenceLinkIds": [
-        "evidenceLink-f9b9d2d8284be497d419d131"
+        "evidenceLink-f9b9d2d8284be497d419d131",
+        "evidence-record-866b307098e1803240b4"
       ],
+      "mediaId": "media-record-866b307098e1803240b4",
       "jsonFile": "assets/documents/source-records/довгуля-евдокия-інша-подія-PNKH-LDY-6XQ3-H8YG.json"
     },
     {
@@ -3539,40 +3682,50 @@
       "id": "file-source-f2573b4788bfe432be84cb35",
       "sourceId": "source-f2573b4788bfe432be84cb35",
       "evidenceLinkIds": [
-        "evidenceLink-8b2ea4e5b1bb8c1785c9345e"
+        "evidenceLink-8b2ea4e5b1bb8c1785c9345e",
+        "evidence-record-6f78b42db5d39c964c3c"
       ],
+      "mediaId": "media-record-6f78b42db5d39c964c3c",
       "jsonFile": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6X3Q-LDXP.json"
     },
     {
       "id": "file-source-71b6c440f5d1230a91f6f1b5",
       "sourceId": "source-71b6c440f5d1230a91f6f1b5",
       "evidenceLinkIds": [
-        "evidenceLink-1d8ed63020f1a9d3d317f539"
+        "evidenceLink-1d8ed63020f1a9d3d317f539",
+        "evidence-record-fd9d9ec87c0cc5451af8"
       ],
+      "mediaId": "media-record-fd9d9ec87c0cc5451af8",
       "jsonFile": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6X3Q-22CP.json"
     },
     {
       "id": "file-source-185dff1db359cb0b3867d96c",
       "sourceId": "source-185dff1db359cb0b3867d96c",
       "evidenceLinkIds": [
-        "evidenceLink-48bfd84f0694aeeb6ab44248"
+        "evidenceLink-48bfd84f0694aeeb6ab44248",
+        "evidence-record-c9dde3c54965607a5609"
       ],
+      "mediaId": "media-record-c9dde3c54965607a5609",
       "jsonFile": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DHNN.json"
     },
     {
       "id": "file-source-dfa4e961ebf61aa7d378ff73",
       "sourceId": "source-dfa4e961ebf61aa7d378ff73",
       "evidenceLinkIds": [
-        "evidenceLink-0f5934af845b7ff175b9352d"
+        "evidenceLink-0f5934af845b7ff175b9352d",
+        "evidence-record-166db7fb0cbaaaccf07d"
       ],
+      "mediaId": "media-record-166db7fb0cbaaaccf07d",
       "jsonFile": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DWMV.json"
     },
     {
       "id": "file-source-f8456e77c41e412e5af20b2b",
       "sourceId": "source-f8456e77c41e412e5af20b2b",
       "evidenceLinkIds": [
-        "evidenceLink-7d23e140b73ddf4dae7d435f"
+        "evidenceLink-7d23e140b73ddf4dae7d435f",
+        "evidence-record-5492ccd20074d9c24656"
       ],
+      "mediaId": "media-record-5492ccd20074d9c24656",
       "jsonFile": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-H8Y5.json"
     },
     {
@@ -3581,30 +3734,37 @@
       "evidenceLinkIds": [
         "evidenceLink-2d544312e977bf12cf904ca5"
       ],
+      "mediaId": "media-record-d843f9ecee9d6fa84176",
       "jsonFile": "assets/documents/source-records/довгуля-евдокия-народження-PNKH-LDY-6XQ3-H8YT.json"
     },
     {
       "id": "file-source-ab2d9e9db323b2a033c4fb85",
       "sourceId": "source-ab2d9e9db323b2a033c4fb85",
       "evidenceLinkIds": [
-        "evidenceLink-01e2209807917a77bf36009f"
+        "evidenceLink-01e2209807917a77bf36009f",
+        "evidence-record-d31a5749e43bd2144c62"
       ],
+      "mediaId": "media-record-d31a5749e43bd2144c62",
       "jsonFile": "assets/documents/source-records/романова-феодосия-інша-подія-PJ7W-ZLD-6XQS-JQWL.json"
     },
     {
       "id": "file-source-e06f9eab137e47665183bb37",
       "sourceId": "source-e06f9eab137e47665183bb37",
       "evidenceLinkIds": [
-        "evidenceLink-ac152d010fc84bccb3262c88"
+        "evidenceLink-ac152d010fc84bccb3262c88",
+        "evidence-record-ace58d40aeb9f79085e1"
       ],
+      "mediaId": "media-record-ace58d40aeb9f79085e1",
       "jsonFile": "assets/documents/source-records/романова-феодосия-інша-подія-PJ7W-ZLD-6XQ3-DWMK.json"
     },
     {
       "id": "file-source-3ad3e7821520952dd62e837e",
       "sourceId": "source-3ad3e7821520952dd62e837e",
       "evidenceLinkIds": [
-        "evidenceLink-811d622ac29c72593eebb68c"
+        "evidenceLink-811d622ac29c72593eebb68c",
+        "evidence-record-d843f9ecee9d6fa84176"
       ],
+      "mediaId": "media-record-d843f9ecee9d6fa84176",
       "jsonFile": "assets/documents/source-records/романова-феодосия-інша-подія-PJ7W-ZLD-6XQ3-H8YT.json"
     },
     {
@@ -5745,6 +5905,210 @@
           "entryId": "media-record-97aa9fe4fd9bd57f3e3e"
         }
       ]
+    },
+    {
+      "id": "media-record-347c997d44b90d199572",
+      "path": "assets/documents/source-records/зубенко-феодор-інша-подія-PFJ2-7SW-6XST-J64H.png",
+      "dimensions": {
+        "width": 1297,
+        "height": 428
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: зубенко-феодор-інша-подія-PFJ2-7SW-6XST-J64H",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-347c997d44b90d199572"
+        }
+      ]
+    },
+    {
+      "id": "media-record-8dbe7a3968cc3559fb0d",
+      "path": "assets/documents/source-records/заприса-семенъ-інша-подія-PFT9-P9B-6XST-BTPV.png",
+      "dimensions": {
+        "width": 1357,
+        "height": 408
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: заприса-семенъ-інша-подія-PFT9-P9B-6XST-BTPV",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-8dbe7a3968cc3559fb0d"
+        }
+      ]
+    },
+    {
+      "id": "media-record-a2d35aec339fad1e5287",
+      "path": "assets/documents/source-records/заприса-семенъ-інша-подія-PFT9-P9B-6XST-BTPV.png",
+      "dimensions": {
+        "width": 1357,
+        "height": 408
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-евдокия-інша-подія-PNKH-LDY-6XST-BTPL",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-a2d35aec339fad1e5287"
+        }
+      ]
+    },
+    {
+      "id": "media-record-866b307098e1803240b4",
+      "path": "assets/documents/source-records/довгуля-евдокия-інша-подія-PNKH-LDY-6XQ3-H8YG.png",
+      "dimensions": {
+        "width": 1327,
+        "height": 667
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-евдокия-інша-подія-PNKH-LDY-6XQ3-H8YG",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-866b307098e1803240b4"
+        }
+      ]
+    },
+    {
+      "id": "media-record-5492ccd20074d9c24656",
+      "path": "assets/documents/source-records/довгуля-евдокия-інша-подія-PNKH-LDY-6XQ3-H8YG.png",
+      "dimensions": {
+        "width": 1327,
+        "height": 667
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-авраам-інша-подія-PN2F-H42-6XQ3-H8Y5",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-5492ccd20074d9c24656"
+        }
+      ]
+    },
+    {
+      "id": "media-record-d843f9ecee9d6fa84176",
+      "path": "assets/documents/source-records/довгуля-евдокия-інша-подія-PNKH-LDY-6XQ3-H8YG.png",
+      "dimensions": {
+        "width": 1327,
+        "height": 667
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: романова-феодосия-інша-подія-PJ7W-ZLD-6XQ3-H8YT",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-d843f9ecee9d6fa84176"
+        }
+      ]
+    },
+    {
+      "id": "media-record-6f78b42db5d39c964c3c",
+      "path": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6X3Q-LDXP.png",
+      "dimensions": {
+        "width": 1332,
+        "height": 335
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-авраам-інша-подія-PN2F-H42-6X3Q-LDXP",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-6f78b42db5d39c964c3c"
+        }
+      ]
+    },
+    {
+      "id": "media-record-fd9d9ec87c0cc5451af8",
+      "path": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6X3Q-22CP.png",
+      "dimensions": {
+        "width": 1417,
+        "height": 543
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-авраам-інша-подія-PN2F-H42-6X3Q-22CP",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-fd9d9ec87c0cc5451af8"
+        }
+      ]
+    },
+    {
+      "id": "media-record-c9dde3c54965607a5609",
+      "path": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DHNN.png",
+      "dimensions": {
+        "width": 1773,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DHNN",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-c9dde3c54965607a5609"
+        }
+      ]
+    },
+    {
+      "id": "media-record-d31a5749e43bd2144c62",
+      "path": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DHNN.png",
+      "dimensions": {
+        "width": 1773,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: романова-феодосия-інша-подія-PJ7W-ZLD-6XQS-JQWL",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-d31a5749e43bd2144c62"
+        }
+      ]
+    },
+    {
+      "id": "media-record-166db7fb0cbaaaccf07d",
+      "path": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DWMV.png",
+      "dimensions": {
+        "width": 1032,
+        "height": 667
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DWMV",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-166db7fb0cbaaaccf07d"
+        }
+      ]
+    },
+    {
+      "id": "media-record-ace58d40aeb9f79085e1",
+      "path": "assets/documents/source-records/довгуля-авраам-інша-подія-PN2F-H42-6XQ3-DWMV.png",
+      "dimensions": {
+        "width": 1032,
+        "height": 667
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: романова-феодосия-інша-подія-PJ7W-ZLD-6XQ3-DWMK",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-ace58d40aeb9f79085e1"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
@@ -6208,6 +6572,276 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "evidence-record-97aa9fe4fd9bd57f3e3e"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-347c997d44b90d199572",
+      "sourceId": "source-4698a4d248b07327476ad6ce",
+      "target": {
+        "kind": "relationship",
+        "id": "relationship-c4c1604bda5999322e0d6a86"
+      },
+      "fragment": {
+        "mediaId": "media-record-347c997d44b90d199572"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-347c997d44b90d199572"
+        }
+      ]
+    },
+    {
+      "id": "evidence-feodor-vassa-marriage-1869-vassa",
+      "sourceId": "source-4698a4d248b07327476ad6ce",
+      "target": {
+        "kind": "person",
+        "id": "I110"
+      },
+      "fragment": {
+        "mediaId": "media-record-347c997d44b90d199572"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-feodor-vassa-marriage-1869-vassa"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-8dbe7a3968cc3559fb0d",
+      "sourceId": "source-390b7632d486834f8020c816",
+      "target": {
+        "kind": "event",
+        "id": "event-38101de51ee11bbf88bd87c7"
+      },
+      "fragment": {
+        "mediaId": "media-record-8dbe7a3968cc3559fb0d"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-8dbe7a3968cc3559fb0d"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-a2d35aec339fad1e5287",
+      "sourceId": "source-72ddd02d9b3390121a403403",
+      "target": {
+        "kind": "event",
+        "id": "event-38101de51ee11bbf88bd87c7"
+      },
+      "fragment": {
+        "mediaId": "media-record-a2d35aec339fad1e5287"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-a2d35aec339fad1e5287"
+        }
+      ]
+    },
+    {
+      "id": "evidence-source-390b7632d486834f8020c816-date-1878-09-29",
+      "sourceId": "source-390b7632d486834f8020c816",
+      "target": {
+        "kind": "claim",
+        "id": "claim-zaprysa-dovhulia-marriage-1878-09-29"
+      },
+      "fragment": {
+        "mediaId": "media-record-8dbe7a3968cc3559fb0d"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-source-390b7632d486834f8020c816-date-1878-09-29"
+        }
+      ]
+    },
+    {
+      "id": "evidence-source-72ddd02d9b3390121a403403-date-1878-09-29",
+      "sourceId": "source-72ddd02d9b3390121a403403",
+      "target": {
+        "kind": "claim",
+        "id": "claim-zaprysa-dovhulia-marriage-1878-09-29"
+      },
+      "fragment": {
+        "mediaId": "media-record-a2d35aec339fad1e5287"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-source-72ddd02d9b3390121a403403-date-1878-09-29"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-866b307098e1803240b4",
+      "sourceId": "source-78a7453ed38f73069a94b9d5",
+      "target": {
+        "kind": "event",
+        "id": "event-a64939c1accedb4178ff1c2b"
+      },
+      "fragment": {
+        "mediaId": "media-record-866b307098e1803240b4"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-866b307098e1803240b4"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-5492ccd20074d9c24656",
+      "sourceId": "source-f8456e77c41e412e5af20b2b",
+      "target": {
+        "kind": "event",
+        "id": "event-a64939c1accedb4178ff1c2b"
+      },
+      "fragment": {
+        "mediaId": "media-record-5492ccd20074d9c24656"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-5492ccd20074d9c24656"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-d843f9ecee9d6fa84176",
+      "sourceId": "source-3ad3e7821520952dd62e837e",
+      "target": {
+        "kind": "event",
+        "id": "event-a64939c1accedb4178ff1c2b"
+      },
+      "fragment": {
+        "mediaId": "media-record-d843f9ecee9d6fa84176"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-d843f9ecee9d6fa84176"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-6f78b42db5d39c964c3c",
+      "sourceId": "source-f2573b4788bfe432be84cb35",
+      "target": {
+        "kind": "event",
+        "id": "event-f6815eccaef367a5a5bd11f5"
+      },
+      "fragment": {
+        "mediaId": "media-record-6f78b42db5d39c964c3c"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-6f78b42db5d39c964c3c"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-fd9d9ec87c0cc5451af8",
+      "sourceId": "source-71b6c440f5d1230a91f6f1b5",
+      "target": {
+        "kind": "event",
+        "id": "event-fd6397b205b5299d9597ef7f"
+      },
+      "fragment": {
+        "mediaId": "media-record-fd9d9ec87c0cc5451af8"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-fd9d9ec87c0cc5451af8"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-c9dde3c54965607a5609",
+      "sourceId": "source-185dff1db359cb0b3867d96c",
+      "target": {
+        "kind": "event",
+        "id": "event-aa5b94a3f6847e315627d0e8"
+      },
+      "fragment": {
+        "mediaId": "media-record-c9dde3c54965607a5609"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-c9dde3c54965607a5609"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-d31a5749e43bd2144c62",
+      "sourceId": "source-ab2d9e9db323b2a033c4fb85",
+      "target": {
+        "kind": "event",
+        "id": "event-aa5b94a3f6847e315627d0e8"
+      },
+      "fragment": {
+        "mediaId": "media-record-d31a5749e43bd2144c62"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-d31a5749e43bd2144c62"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-166db7fb0cbaaaccf07d",
+      "sourceId": "source-dfa4e961ebf61aa7d378ff73",
+      "target": {
+        "kind": "event",
+        "id": "event-4cd18724e3762c871801d6a4"
+      },
+      "fragment": {
+        "mediaId": "media-record-166db7fb0cbaaaccf07d"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-166db7fb0cbaaaccf07d"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-ace58d40aeb9f79085e1",
+      "sourceId": "source-e06f9eab137e47665183bb37",
+      "target": {
+        "kind": "event",
+        "id": "event-4cd18724e3762c871801d6a4"
+      },
+      "fragment": {
+        "mediaId": "media-record-ace58d40aeb9f79085e1"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-ace58d40aeb9f79085e1"
         }
       ]
     }

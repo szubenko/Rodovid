@@ -69,7 +69,9 @@ export async function addSourceRecord(root: string, value: unknown, inputDirecto
   if (!event) throw new Error(`Події немає: ${record.eventId}. Скористайтеся source:list.`)
   const additions = supplementsSchema.parse(current.supplements)
   const provenance = (entryId: string) => [{ kind: 'supplement' as const, file: 'Data/annotations.json', entryId }]
-  const recordId = record.id ?? createHash('sha256').update(`${record.eventId}:${record.familySearchSourceId ?? record.url}`).digest('hex').slice(0, 20)
+  const recordKey = `${record.eventId}:${record.familySearchSourceId ?? record.url}`
+  const recordId = record.id ?? createHash('sha256')
+    .update(record.sourceId ? `${recordKey}:${record.sourceId}` : recordKey).digest('hex').slice(0, 20)
   const sourceId = record.sourceId ?? `source-record-${recordId}`
   const existing = family.sources.find(source => source.id === sourceId)
   if (record.sourceId && !existing) throw new Error(`Джерела немає: ${sourceId}`)

@@ -1588,6 +1588,46 @@
         "latitude": 51.71987,
         "longitude": 33.210036
       }
+    },
+    {
+      "id": "review-place-434b6230fdfa768ab7e5756b",
+      "placeId": "place-434b6230fdfa768ab7e5756b",
+      "explanation": "D06: оригінальну назву збережено з експорту 09.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-bcc0ac68951736f6f6eca20a",
+      "placeId": "place-bcc0ac68951736f6f6eca20a",
+      "explanation": "D06: оригінальну назву збережено з експорту 09.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-b18f8bc5169bf315f05b578b",
+      "placeId": "place-b18f8bc5169bf315f05b578b",
+      "explanation": "D06: оригінальну назву збережено з експорту 09.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-66e6f287a4f84a4404bf919b",
+      "placeId": "place-66e6f287a4f84a4404bf919b",
+      "explanation": "D06: оригінальну назву збережено з експорту 09.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     }
   ],
   "sources": [
@@ -2040,6 +2080,90 @@
       "mediaIds": [
         "media-record-52b13c07dc9983c73c11"
       ]
+    },
+    {
+      "id": "source-details-5589fa8457fabe736193",
+      "sourceId": "source-925718fbaa555b21a2af5c6a",
+      "mediaIds": [
+        "media-record-5589fa8457fabe736193"
+      ]
+    },
+    {
+      "id": "source-details-6176e0d17bbe33c92e91",
+      "sourceId": "source-cc869a9dd399aceeea094f20",
+      "mediaIds": [
+        "media-record-6176e0d17bbe33c92e91"
+      ]
+    },
+    {
+      "id": "source-details-92e6b594b9854f159cc4",
+      "sourceId": "source-1c349c5e86bdf8c9efe07b81",
+      "mediaIds": [
+        "media-record-92e6b594b9854f159cc4"
+      ]
+    },
+    {
+      "id": "source-details-34b0289ff2be4926ee45",
+      "sourceId": "source-28d4d5bca64fd921209ef398",
+      "mediaIds": [
+        "media-record-34b0289ff2be4926ee45"
+      ]
+    },
+    {
+      "id": "source-details-d827292675bef50e35db",
+      "sourceId": "source-e0c0683a2a2e2b703d76ed4f",
+      "mediaIds": [
+        "media-record-d827292675bef50e35db"
+      ]
+    },
+    {
+      "id": "source-details-af95f5f9c9fa4edacfab",
+      "sourceId": "source-32aff4708446680207bda90f",
+      "mediaIds": [
+        "media-record-af95f5f9c9fa4edacfab"
+      ]
+    },
+    {
+      "id": "source-details-27a98c8c8f0497d66d69",
+      "sourceId": "source-e0d1e0b6ac7022ab0ed1ce71",
+      "mediaIds": [
+        "media-record-27a98c8c8f0497d66d69"
+      ]
+    },
+    {
+      "id": "source-details-3fcb77cbb50c5fcc3f6d",
+      "sourceId": "source-925e914f6e9029f66e6494e5",
+      "mediaIds": [
+        "media-record-3fcb77cbb50c5fcc3f6d"
+      ]
+    },
+    {
+      "id": "source-details-60f54af98e5ff0d921e0",
+      "sourceId": "source-e99135e120b0add707f913df",
+      "mediaIds": [
+        "media-record-60f54af98e5ff0d921e0"
+      ]
+    },
+    {
+      "id": "source-details-87712b1ad4774360e4ed",
+      "sourceId": "source-e07fa98657fc9c768254ec3c",
+      "mediaIds": [
+        "media-record-87712b1ad4774360e4ed"
+      ]
+    },
+    {
+      "id": "source-details-a33b05bfc97ad667a7f0",
+      "sourceId": "source-c23577a4b6f2ca8bd1b29469",
+      "mediaIds": [
+        "media-record-a33b05bfc97ad667a7f0"
+      ]
+    },
+    {
+      "id": "source-details-97aa9fe4fd9bd57f3e3e",
+      "sourceId": "source-87ea536e71a4cf9228fef8f6",
+      "mediaIds": [
+        "media-record-97aa9fe4fd9bd57f3e3e"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -2436,6 +2560,27 @@
       "evidenceLinkId": "evidence-record-a2017556d1f97b5e48ee",
       "fragment": {
         "mediaId": "media-record-a2017556d1f97b5e48ee"
+      }
+    },
+    {
+      "id": "evidence-details-34b0289ff2be4926ee45",
+      "evidenceLinkId": "evidenceLink-81ba03f2f3aea27ed8af3362",
+      "fragment": {
+        "mediaId": "media-record-34b0289ff2be4926ee45"
+      }
+    },
+    {
+      "id": "evidence-details-d827292675bef50e35db",
+      "evidenceLinkId": "evidenceLink-49a019f46b696a490b79ae1a",
+      "fragment": {
+        "mediaId": "media-record-d827292675bef50e35db"
+      }
+    },
+    {
+      "id": "evidence-details-87712b1ad4774360e4ed",
+      "evidenceLinkId": "evidenceLink-4e64177a247b7a2ad1786464",
+      "fragment": {
+        "mediaId": "media-record-87712b1ad4774360e4ed"
       }
     }
   ],
@@ -3508,6 +3653,135 @@
       ],
       "mediaId": "media-record-a2017556d1f97b5e48ee",
       "jsonFile": "assets/documents/source-records/пукалова-васса-інша-подія-PJW9-D9T-6X32-NFK3.json"
+    },
+    {
+      "id": "file-source-e0c0683a2a2e2b703d76ed4f",
+      "sourceId": "source-e0c0683a2a2e2b703d76ed4f",
+      "evidenceLinkIds": [
+        "evidenceLink-d2146076e5a09d2579e5e128",
+        "evidenceLink-e15b55e26e2def4f7aaf7f0d",
+        "evidenceLink-08e04fe9ea493ceca0f3dfe5",
+        "evidenceLink-3efa43a3d38b60bdf16fdca8",
+        "evidenceLink-f8f4e081e036a3497160d322",
+        "evidenceLink-b1e58f8ac88841455233f17d",
+        "evidenceLink-80f309fd5ff76d6a1825ae85",
+        "evidenceLink-7dd560b3aa38680487e461d6",
+        "evidenceLink-49a019f46b696a490b79ae1a",
+        "evidenceLink-5c4b0acd616d8f931f269a3c",
+        "evidenceLink-7bdd439d0c9420c7de875410"
+      ],
+      "mediaId": "media-record-d827292675bef50e35db",
+      "jsonFile": "assets/documents/source-records/сальников-никифор-смерть-PNP4-H19-3Q9M-CSSV-Z37J-Y.json"
+    },
+    {
+      "id": "file-source-925718fbaa555b21a2af5c6a",
+      "sourceId": "source-925718fbaa555b21a2af5c6a",
+      "evidenceLinkIds": [
+        "evidenceLink-cf71e286fe95d2f21be2147d",
+        "evidence-record-5589fa8457fabe736193"
+      ],
+      "mediaId": "media-record-5589fa8457fabe736193",
+      "jsonFile": "assets/documents/source-records/сальников-никифор-інша-подія-PNP4-H19-6XST-LB49.json"
+    },
+    {
+      "id": "file-source-cc869a9dd399aceeea094f20",
+      "sourceId": "source-cc869a9dd399aceeea094f20",
+      "evidenceLinkIds": [
+        "evidenceLink-8831a9979616786abecd039f",
+        "evidence-record-6176e0d17bbe33c92e91"
+      ],
+      "mediaId": "media-record-6176e0d17bbe33c92e91",
+      "jsonFile": "assets/documents/source-records/сальников-никифор-інша-подія-PNP4-H19-6X32-NFHL.json"
+    },
+    {
+      "id": "file-source-1c349c5e86bdf8c9efe07b81",
+      "sourceId": "source-1c349c5e86bdf8c9efe07b81",
+      "evidenceLinkIds": [
+        "evidenceLink-fec4b360c1df2f8cef865317",
+        "evidence-record-92e6b594b9854f159cc4"
+      ],
+      "mediaId": "media-record-92e6b594b9854f159cc4",
+      "jsonFile": "assets/documents/source-records/сальников-никифор-інша-подія-PNP4-H19-6X32-NFK9.json"
+    },
+    {
+      "id": "file-source-28d4d5bca64fd921209ef398",
+      "sourceId": "source-28d4d5bca64fd921209ef398",
+      "evidenceLinkIds": [
+        "evidenceLink-01db4388e48a71e0d6af4872",
+        "evidenceLink-81ba03f2f3aea27ed8af3362"
+      ],
+      "mediaId": "media-record-34b0289ff2be4926ee45",
+      "jsonFile": "assets/documents/source-records/сальников-прокофий-народження-PJWS-WZ7-6X32-NFH2.json"
+    },
+    {
+      "id": "file-source-32aff4708446680207bda90f",
+      "sourceId": "source-32aff4708446680207bda90f",
+      "evidenceLinkIds": [
+        "evidenceLink-22fdc02f9eba75d22c4dd1b3",
+        "evidence-record-af95f5f9c9fa4edacfab"
+      ],
+      "mediaId": "media-record-af95f5f9c9fa4edacfab",
+      "jsonFile": "assets/documents/source-records/дейкал-александр-інша-подія-PFVP-ZZV-6X32-S2MB.json"
+    },
+    {
+      "id": "file-source-925e914f6e9029f66e6494e5",
+      "sourceId": "source-925e914f6e9029f66e6494e5",
+      "evidenceLinkIds": [
+        "evidenceLink-a937699b16861b251fe426f4",
+        "evidence-record-3fcb77cbb50c5fcc3f6d"
+      ],
+      "mediaId": "media-record-3fcb77cbb50c5fcc3f6d",
+      "jsonFile": "assets/documents/source-records/дейкал-александр-інша-подія-PFVP-ZZV-6X32-8MRB.json"
+    },
+    {
+      "id": "file-source-e99135e120b0add707f913df",
+      "sourceId": "source-e99135e120b0add707f913df",
+      "evidenceLinkIds": [
+        "evidenceLink-d1baa7201a06b18dc3390f34",
+        "evidence-record-60f54af98e5ff0d921e0"
+      ],
+      "mediaId": "media-record-60f54af98e5ff0d921e0",
+      "jsonFile": "assets/documents/source-records/сальникова-ксения-інша-подія-PNP7-NFP-6X32-8MR1.json"
+    },
+    {
+      "id": "file-source-e0d1e0b6ac7022ab0ed1ce71",
+      "sourceId": "source-e0d1e0b6ac7022ab0ed1ce71",
+      "evidenceLinkIds": [
+        "evidenceLink-e97a39bea445321bc1e8e367",
+        "evidence-record-27a98c8c8f0497d66d69"
+      ],
+      "mediaId": "media-record-27a98c8c8f0497d66d69",
+      "jsonFile": "assets/documents/source-records/сальникова-ксения-інша-подія-PNP7-NFP-6X32-S299.json"
+    },
+    {
+      "id": "file-source-e07fa98657fc9c768254ec3c",
+      "sourceId": "source-e07fa98657fc9c768254ec3c",
+      "evidenceLinkIds": [
+        "evidenceLink-715346433603582730f47bd2",
+        "evidenceLink-4e64177a247b7a2ad1786464"
+      ],
+      "mediaId": "media-record-87712b1ad4774360e4ed",
+      "jsonFile": "assets/documents/source-records/заприса-семенъ-народження-PFT9-P9B-6XQ3-NQQ1.json"
+    },
+    {
+      "id": "file-source-c23577a4b6f2ca8bd1b29469",
+      "sourceId": "source-c23577a4b6f2ca8bd1b29469",
+      "evidenceLinkIds": [
+        "evidenceLink-cb6317c93cf7d773a5984816",
+        "evidence-record-a33b05bfc97ad667a7f0"
+      ],
+      "mediaId": "media-record-a33b05bfc97ad667a7f0",
+      "jsonFile": "assets/documents/source-records/заприса-григорий-інша-подія-PNKH-6H2-6XQ3-NQ7S.json"
+    },
+    {
+      "id": "file-source-87ea536e71a4cf9228fef8f6",
+      "sourceId": "source-87ea536e71a4cf9228fef8f6",
+      "evidenceLinkIds": [
+        "evidenceLink-43a079a0bee3acedc08cc2b4",
+        "evidence-record-97aa9fe4fd9bd57f3e3e"
+      ],
+      "mediaId": "media-record-97aa9fe4fd9bd57f3e3e",
+      "jsonFile": "assets/documents/source-records/без-прізвища-сигнклитикия-інша-подія-PJWN-RYY-6XQ3-NQ7Q.json"
     },
     {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
@@ -5267,6 +5541,210 @@
           "entryId": "media-record-52b13c07dc9983c73c11"
         }
       ]
+    },
+    {
+      "id": "media-record-5589fa8457fabe736193",
+      "path": "assets/documents/source-records/пукалова-васса-народження-PJW9-D9T-6XST-LB4S.png",
+      "dimensions": {
+        "width": 1363,
+        "height": 345
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальников-никифор-інша-подія-PNP4-H19-6XST-LB49",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-5589fa8457fabe736193"
+        }
+      ]
+    },
+    {
+      "id": "media-record-6176e0d17bbe33c92e91",
+      "path": "assets/documents/source-records/пукалова-васса-інша-подія-PJW9-D9T-6X32-NFHG.png",
+      "dimensions": {
+        "width": 1245,
+        "height": 518
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальников-никифор-інша-подія-PNP4-H19-6X32-NFHL",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-6176e0d17bbe33c92e91"
+        }
+      ]
+    },
+    {
+      "id": "media-record-92e6b594b9854f159cc4",
+      "path": "assets/documents/source-records/сальникова-ксения-народження-PNP7-NFP-6X32-NFVB-5911529bb2b8a66ecd1f20ca45c7f3de1a7e86de86ed8081e99cbc5429942213.png",
+      "dimensions": {
+        "width": 1363,
+        "height": 315
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальников-никифор-інша-подія-PNP4-H19-6X32-NFK9",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-92e6b594b9854f159cc4"
+        }
+      ]
+    },
+    {
+      "id": "media-record-34b0289ff2be4926ee45",
+      "path": "assets/documents/source-records/пукалова-васса-інша-подія-PJW9-D9T-6X32-NFHG.png",
+      "dimensions": {
+        "width": 1245,
+        "height": 518
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальников-прокофий-народження-PJWS-WZ7-6X32-NFH2",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-34b0289ff2be4926ee45"
+        }
+      ]
+    },
+    {
+      "id": "media-record-d827292675bef50e35db",
+      "path": "assets/documents/source-records/сальников-никифор-смерть-PNP4-H19-3Q9M-CSSV-Z37J-Y.png",
+      "dimensions": {
+        "width": 2294,
+        "height": 545
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальников-никифор-смерть-PNP4-H19-3Q9M-CSSV-Z37J-Y",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-d827292675bef50e35db"
+        }
+      ]
+    },
+    {
+      "id": "media-record-af95f5f9c9fa4edacfab",
+      "path": "assets/documents/source-records/дейкал-александр-інша-подія-PFVP-ZZV-6X32-S2MB.png",
+      "dimensions": {
+        "width": 1222,
+        "height": 561
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: дейкал-александр-інша-подія-PFVP-ZZV-6X32-S2MB",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-af95f5f9c9fa4edacfab"
+        }
+      ]
+    },
+    {
+      "id": "media-record-27a98c8c8f0497d66d69",
+      "path": "assets/documents/source-records/дейкал-александр-інша-подія-PFVP-ZZV-6X32-S2MB.png",
+      "dimensions": {
+        "width": 1222,
+        "height": 561
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальникова-ксения-інша-подія-PNP7-NFP-6X32-S299",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-27a98c8c8f0497d66d69"
+        }
+      ]
+    },
+    {
+      "id": "media-record-3fcb77cbb50c5fcc3f6d",
+      "path": "assets/documents/source-records/дейкал-александр-інша-подія-PFVP-ZZV-6X32-8MRB.png",
+      "dimensions": {
+        "width": 1265,
+        "height": 295
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: дейкал-александр-інша-подія-PFVP-ZZV-6X32-8MRB",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-3fcb77cbb50c5fcc3f6d"
+        }
+      ]
+    },
+    {
+      "id": "media-record-60f54af98e5ff0d921e0",
+      "path": "assets/documents/source-records/дейкал-александр-інша-подія-PFVP-ZZV-6X32-8MRB.png",
+      "dimensions": {
+        "width": 1265,
+        "height": 295
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: сальникова-ксения-інша-подія-PNP7-NFP-6X32-8MR1",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-60f54af98e5ff0d921e0"
+        }
+      ]
+    },
+    {
+      "id": "media-record-87712b1ad4774360e4ed",
+      "path": "assets/documents/source-records/заприса-семенъ-народження-PFT9-P9B-6XQ3-NQQ1.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: заприса-семенъ-народження-PFT9-P9B-6XQ3-NQQ1",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-87712b1ad4774360e4ed"
+        }
+      ]
+    },
+    {
+      "id": "media-record-a33b05bfc97ad667a7f0",
+      "path": "assets/documents/source-records/заприса-семенъ-народження-PFT9-P9B-6XQ3-NQQ1.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: заприса-григорий-інша-подія-PNKH-6H2-6XQ3-NQ7S",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-a33b05bfc97ad667a7f0"
+        }
+      ]
+    },
+    {
+      "id": "media-record-97aa9fe4fd9bd57f3e3e",
+      "path": "assets/documents/source-records/заприса-семенъ-народження-PFT9-P9B-6XQ3-NQQ1.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 580
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: без-прізвища-сигнклитикия-інша-подія-PJWN-RYY-6XQ3-NQ7Q",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-97aa9fe4fd9bd57f3e3e"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
@@ -5568,6 +6046,168 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "evidence-record-52b13c07dc9983c73c11"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-5589fa8457fabe736193",
+      "sourceId": "source-925718fbaa555b21a2af5c6a",
+      "target": {
+        "kind": "event",
+        "id": "event-c86dfad0c077dfb5c7aa1d19"
+      },
+      "fragment": {
+        "mediaId": "media-record-5589fa8457fabe736193"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-5589fa8457fabe736193"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-6176e0d17bbe33c92e91",
+      "sourceId": "source-cc869a9dd399aceeea094f20",
+      "target": {
+        "kind": "event",
+        "id": "event-ad189fd2bf1fddc128fcfb41"
+      },
+      "fragment": {
+        "mediaId": "media-record-6176e0d17bbe33c92e91"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-6176e0d17bbe33c92e91"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-92e6b594b9854f159cc4",
+      "sourceId": "source-1c349c5e86bdf8c9efe07b81",
+      "target": {
+        "kind": "event",
+        "id": "event-da72f3e090e2b080b75099b1"
+      },
+      "fragment": {
+        "mediaId": "media-record-92e6b594b9854f159cc4"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-92e6b594b9854f159cc4"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-af95f5f9c9fa4edacfab",
+      "sourceId": "source-32aff4708446680207bda90f",
+      "target": {
+        "kind": "event",
+        "id": "event-1a4a444b12a566f25afdfbe0"
+      },
+      "fragment": {
+        "mediaId": "media-record-af95f5f9c9fa4edacfab"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-af95f5f9c9fa4edacfab"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-27a98c8c8f0497d66d69",
+      "sourceId": "source-e0d1e0b6ac7022ab0ed1ce71",
+      "target": {
+        "kind": "event",
+        "id": "event-1a4a444b12a566f25afdfbe0"
+      },
+      "fragment": {
+        "mediaId": "media-record-27a98c8c8f0497d66d69"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-27a98c8c8f0497d66d69"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-3fcb77cbb50c5fcc3f6d",
+      "sourceId": "source-925e914f6e9029f66e6494e5",
+      "target": {
+        "kind": "event",
+        "id": "event-92b280c637d44e2386de706b"
+      },
+      "fragment": {
+        "mediaId": "media-record-3fcb77cbb50c5fcc3f6d"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-3fcb77cbb50c5fcc3f6d"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-60f54af98e5ff0d921e0",
+      "sourceId": "source-e99135e120b0add707f913df",
+      "target": {
+        "kind": "event",
+        "id": "event-92b280c637d44e2386de706b"
+      },
+      "fragment": {
+        "mediaId": "media-record-60f54af98e5ff0d921e0"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-60f54af98e5ff0d921e0"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-a33b05bfc97ad667a7f0",
+      "sourceId": "source-c23577a4b6f2ca8bd1b29469",
+      "target": {
+        "kind": "event",
+        "id": "event-07e3178231398dce60cbc25e"
+      },
+      "fragment": {
+        "mediaId": "media-record-a33b05bfc97ad667a7f0"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-a33b05bfc97ad667a7f0"
+        }
+      ]
+    },
+    {
+      "id": "evidence-record-97aa9fe4fd9bd57f3e3e",
+      "sourceId": "source-87ea536e71a4cf9228fef8f6",
+      "target": {
+        "kind": "event",
+        "id": "event-07e3178231398dce60cbc25e"
+      },
+      "fragment": {
+        "mediaId": "media-record-97aa9fe4fd9bd57f3e3e"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-97aa9fe4fd9bd57f3e3e"
         }
       ]
     }

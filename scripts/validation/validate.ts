@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,8 +99,9 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256].includes(report.sha256)) {
-    const november8Second = report.sha256 === november8SecondMergeSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256].includes(report.sha256)) {
+    const november9 = report.sha256 === november9MergeSha256
+    const november8Second = report.sha256 === november8SecondMergeSha256 || november9
     const november8 = report.sha256 === november8MergeSha256 || november8Second
     const november4 = report.sha256 === november4MergeSha256 || november8
     const november1 = report.sha256 === november1MergeSha256 || november4
@@ -115,7 +116,8 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = november8Second
+    const expected = november9
+      ? { people: 158, relationships: 246, events: 337, claims: 804, places: 140 } : november8Second
       ? { people: 153, relationships: 238, events: 327, claims: 779, places: 136 } : november8
       ? { people: 143, relationships: 224, events: 306, claims: 731, places: 129 } : november4
       ? { people: 106, relationships: 167, events: 228, claims: 546, places: 97 } : november1
@@ -143,9 +145,9 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
       const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
-      if (imported(data.sources) !== (november8Second ? 105 : november8 ? 101 : october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (november8Second ? 235 : november8 ? 223 : november4 ? 196 : october30 ? 195 : october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
-        || data.sources.length < (november8Second ? 107 : november8 ? 103 : october29 ? 89 : petroBirthReviewed ? 81 : october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
-        || data.evidenceLinks.length < (november8Second ? 249 : november8 ? 237 : november4 ? 210 : october30 ? 209 : october29 ? 203 : petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
+      if (imported(data.sources) !== (november9 ? 117 : november8Second ? 105 : november8 ? 101 : october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (november9 ? 259 : november8Second ? 235 : november8 ? 223 : november4 ? 196 : october30 ? 195 : october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
+        || data.sources.length < (november9 ? 119 : november8Second ? 107 : november8 ? 103 : october29 ? 89 : petroBirthReviewed ? 81 : october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
+        || data.evidenceLinks.length < (november9 ? 279 : november8Second ? 249 : november8 ? 237 : november4 ? 210 : october30 ? 209 : october29 ? 203 : petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
     }
     if (timofeyCorrected) {
       const date = data.claims.find(c => c.id === 'claim-844bdc5dfb7b9d883e16cd81')

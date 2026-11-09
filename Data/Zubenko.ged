@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 8 NOV 2026
-2 TIME 21:55:48
-1 FILE ZubenkoNewFormat.reviewed.11.08.26 2.ged
+1 DATE 9 NOV 2026
+2 TIME 21:10:35
+1 FILE ZubenkoNewFormat.reviewed.11.09.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -1276,7 +1276,8 @@
 2 TYPE Caste Name 
 0 @I69@ INDI
 1 NAME Семенъ /Заприса/
-2 ROMN Semen Hryhorev /Zaprysa/
+2 ROMN Semen Hryhorev /Zaprysa/ Symeon
+2 NSFX Симеон
 1 SEX M
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -1305,9 +1306,17 @@
 1 EVEN Крестьянинъ-собственникъ
 2 TYPE Caste Name 
 1 BIRT
-2 DATE 1851
+2 DATE 21 JUL 1851
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S115@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQQ1
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S89@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-BTPV
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 NOTE Ім’я в експорті GEDCOM (TITL): Симеон
+1 SOUR @S115@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQQ1
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I70@ INDI
 1 NAME Александр /Дейкал/
@@ -1329,6 +1338,12 @@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-N8HW
 1 SOUR @S84@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-8MMT
+1 SOUR @S111@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-S2MB
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S112@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-8MRB
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I71@ INDI
 1 NAME Николай /Дейкало/
 2 ROMN Nykolai /Deikalo/
@@ -1577,6 +1592,8 @@
 1 _UID 65043D8C7BDD274AAC753A0A14DB3B26B0FF
 1 CHIL @I44@
 1 WIFE @I88@
+1 CHIL @I156@
+1 CHIL @I157@
 0 @F27@ FAM
 1 MARR
 1 HUSB @I71@
@@ -1806,14 +1823,20 @@
 1 EVEN Крестьянинъ
 2 TYPE Caste Name 
 0 @I82@ INDI
-1 NAME Григорій /Заприса/
-2 ROMN Hryhorii /Zaprysa/
+1 NAME Григорий Несторов /Заприса/
+2 ROMN Hryhoryi Nestorov /Zaprysa/
 1 SEX M
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PNKH-6H2
 1 _UID BBA911374E43DD4E80D17C55A5AA93F35F2C
 1 FAMS @F29@
+1 FAMC @F62@
+1 EVEN Крестьянка
+2 TYPE Caste Name 
+1 SOUR @S116@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQ7S
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I83@ INDI
 1 NAME Авраам Василиев /Довгуля/
 2 ROMN Avraam Vasylyev /Dovhulia/
@@ -1870,6 +1893,8 @@
 1 HUSB @I82@
 1 _UID 95393896D73C7F43A47CED595DCEDC2402D7
 1 CHIL @I69@
+1 WIFE @I159@
+1 _UID 11198DD49569B0489FD9286B10EA08CB59AF
 0 @F30@ FAM
 1 MARR
 1 HUSB @I83@
@@ -2506,6 +2531,12 @@
 1 SOUR @S102@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFVB
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S113@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-8MR1
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S114@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-S299
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I89@ INDI
 1 NAME Иаким /Дейкал/
 2 ROMN Yakym /Deikal/
@@ -2521,12 +2552,35 @@
 1 SEX M
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 SOUR @S106@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PNP4-H19
 1 _UID C40DAC4E4E1B414881526E45CE7316EA841E
 1 FAMS @F34@
 1 EVEN Козак
 2 TYPE Caste Name 
+2 SOUR @S106@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 FAMC @F57@
+1 BIRT
+2 DATE 1848
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 EVEN Крестьянинъ-собственникъ
+2 TYPE Caste Name 
+1 SOUR @S106@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S107@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-LB49
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S108@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFHL
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S109@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFK9
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I91@ INDI
 1 NAME Никифор /Зубенко/
 2 ROMN Nykyfor /Zubenko/
@@ -3591,18 +3645,27 @@
 1 BIRT
 2 DATE 27 FEB 1876
 2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S110@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFH2
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWS-WZ7
 1 _UID 2975F8C8C5269741953E974443E60D6F74AF
 1 FAMC @F34@
 1 FAMC @F34@
+1 SOUR @S110@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6X32-NFH2
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I148@ INDI
 1 NAME Семен Якович /Сальников/
 2 ROMN Semen Yakovych /Salnykov/
 1 SEX M
 1 BIRT
 2 DATE 1814
+2 SOUR @S106@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWS-V24
@@ -3610,30 +3673,45 @@
 1 FAMS @F57@
 1 FAMS @F61@
 1 FAMC @F58@
+1 SOUR @S106@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I149@ INDI
 1 NAME Яків Семенович /Сальников/
 2 ROMN Yakiv Semenovych /Salnykov/
 1 SEX M
 1 BIRT
 2 DATE 1841
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S106@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWS-KPK
 1 _UID 8E66A57E51423942B5D677C6A9D7872E2203
 1 FAMC @F57@
+1 SOUR @S106@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I150@ INDI
 1 NAME Семен Семенович /Сальников/
 2 ROMN Semen Semenovych /Salnykov/
 1 SEX M
 1 BIRT
 2 DATE 1844
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S106@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWS-CYY
 1 _UID 1C7504CE08E7F246AC20F7DFE55236C861A3
 1 FAMC @F57@
+1 SOUR @S106@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I151@ INDI
 1 NAME Яков /Сальников/
 2 ROMN Yakov /Salnykov/
@@ -3643,6 +3721,9 @@
 1 _FSFTID PJW3-SDW
 1 _UID 9C0917E710B68944B7AD598CA6578E515BE3
 1 FAMS @F58@
+1 SOUR @S106@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I152@ INDI
 1 NAME Стефан /Пукалова/
 2 ROMN Stefan /Pukalova/
@@ -3748,4 +3829,145 @@
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
 2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFK3 : Tue Dec 10 00:57:53 UT
 2 CONC C 2024), Васса Стефанова in entry for Ксения Сальник, 19 Jan 1879.
+0 @I156@ INDI
+1 NAME Анастасия /Дейкал/
+2 ROMN Anastassiya /Deikal/
+1 SEX F
+1 BIRT
+2 DATE 22 DEC 1898
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWW-W1P
+1 _UID 5F83C0D2CB04AD47BE885AE25E3001196109
+1 FAMC @F26@
+0 @I157@ INDI
+1 NAME Михаил /Дейкал/
+2 ROMN Mikhail /Deikal/
+1 SEX M
+1 BIRT
+2 DATE 16 DEC 1902
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJW7-LMD
+1 _UID D76BD2F4DBF61F499125C0F7C61153401841
+1 FAMC @F26@
+0 @I158@ INDI
+1 NAME Нестор /Заприса/
+2 ROMN Nestor /Zaprysa/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWJ-742
+1 _UID 09F280E24434724A91C52D3416CD4C8A0190
+1 FAMS @F62@
+0 @I159@ INDI
+1 NAME Сигнклитикия Ефимова //
+2 ROMN Syhnklytykyia Efymova //
+1 SEX F
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWN-RYY
+1 _UID D0059D545313C546B0290A375C07A39BF256
+1 FAMS @F29@
+1 _UID 35ACBAC06C122243A56434C30F62C4F0639A
+1 FAMC @F64@
+1 SOUR @S117@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQ7Q
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I160@ INDI
+1 NAME Ефим //
+2 ROMN Efym //
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWN-LMF
+1 _UID 26306555CC6429419D149C66DB105E59FF91
+1 FAMS @F64@
+0 @F62@ FAM
+1 MARR
+1 HUSB @I158@
+1 _UID DB2FC66D9E1A2C4C875CF8200693140217DF
+1 CHIL @I82@
+0 @F64@ FAM
+1 HUSB @I160@
+1 _UID 28636E3412FE6541905BA1DFE2E1930EB26F
+1 CHIL @I159@
+0 @S106@ SOUR
+1 TITL 1858 Казка, двір Семен Якович Сальников
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", database, <i>FamilySearch</
+2 CONC i> (https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37J-Y),  > imag
+2 CONC e 1 of 1.
+2 CONT 		Родина Сальникових — ревізька казка 1858 року
+2 CONT 		Двір № 42 (за IX ревізією — № 41).
+2 CONT 		№	ПІБ	Родинний зв’язок	Вік у 1858 р.	Рік народження (≈)
+2 CONT 		1	Семен Якович Сальников	Голова родини	44	1814
+2 CONT 		2	Василиса Єгорівна	Дружина	33	1825
+2 CONT 		3	Яків Семенович Сальников	Син від першої дружини	17	1841
+2 CONT 		4	Семен Семенович Сальников	Син від першої дружини	14	1844
+2 CONT 		5	Никифор Семенович Сальников	Син від першої дружини	10	1848
+2 CONT 		6	Ірина Семенівна Сальникова	Дочка	12	1846
+2 CONT 		7	Євфросинія Семенівна Сальникова	Дочка	6	1852
+2 CONT 		8	Кузьма Климентійович (непевне прочитання)	Племінник Семена	14	1844
+0 @S107@ SOUR
+1 TITL Ожруження Никифор Симеонов Сальник і Васса Стефанова Пукалова
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XST-LB49 : Mon Dec 09 23:11:08 UT
+2 CONC C 2024), Никифор Симеонов Сальник, 6 Feb 1870.
+0 @S108@ SOUR
+1 TITL Народження Прокофий Сальников
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFHL : Mon Dec 09 23:46:15 UT
+2 CONC C 2024), Никифор Симеонов Сальников in entry for Прокофий Сальников, 27 F
+2 CONC eb 1876.
+0 @S109@ SOUR
+1 TITL Народження Ксения Сальник
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFK9 : Tue Dec 10 00:57:53 UT
+2 CONC C 2024), Никифор Семенов Сальник in entry for Ксения Сальник, 19 Jan 1879
+2 CONC .
+0 @S110@ SOUR
+1 TITL Прокофий Сальников, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-NFH2 : Mon Dec 09 23:46:15 UT
+2 CONC C 2024), Прокофий Сальников, 27 Feb 1876.
+0 @S111@ SOUR
+1 TITL Александр Иоакимов Дейкал, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-S2MB : Tue Dec 10 16:12:48 UT
+2 CONC C 2024), Александр Иоакимов Дейкал in entry for Анастасия Дейкал, 22 De
+2 CONC c 1898.
+0 @S112@ SOUR
+1 TITL Александр Иоакимов Дейкал, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-8MRB : Tue Dec 10 19:15:01 UT
+2 CONC C 2024), Александр Иоакимов Дейкал in entry for Михаил Дейкал, 16 Dec 190
+2 CONC 2.
+0 @S113@ SOUR
+1 TITL Ксения Никифорова, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-8MR1 : Tue Dec 10 19:15:01 UT
+2 CONC C 2024), Ксения Никифорова in entry for Михаил Дейкал, 16 Dec 1902.
+0 @S114@ SOUR
+1 TITL Ксения Никифорова, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6X32-S299 : Tue Dec 10 16:12:48 UT
+2 CONC C 2024), Ксения Никифорова in entry for Анастасия Дейкал, 22 Dec 1898.
+0 @S115@ SOUR
+1 TITL Симеон Заприса, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQ3-NQQ1 : Mon Nov 09 19:39:08 UT
+2 CONC C 2026), Симеон Заприса, 21 Jul 1851.
+0 @S116@ SOUR
+1 TITL Григорий Несторов Заприса, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQ3-NQ7S : Mon Nov 09 19:50:39 UT
+2 CONC C 2026), Григорий Несторов Заприса in entry for Симеон Заприса, 21 Jul 18
+2 CONC 51.
+0 @S117@ SOUR
+1 TITL Сигнклитикия Ефимова, "Ukraine, Kharkiv Church Records, 1710-1938"
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
+2 CONC //www.familysearch.org/ark:/61903/1:1:6XQ3-NQ7Q : Mon Nov 09 19:39:08 UT
+2 CONC C 2026), Сигнклитикия Ефимова in entry for Симеон Заприса, 21 Jul 1851.
 0 TRLR

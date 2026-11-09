@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { expect, it } from 'vitest'
 import { convertGedcom } from './gedcom/convert.ts'
 import { planSourceRecordSync } from './sync-source-records.ts'
-import { november8SecondMergeSha256 } from './validation/reviewed-export.ts'
+import { november9MergeSha256 } from './validation/reviewed-export.ts'
 
 const read = (name: string) => readFileSync(new URL(`../Data/${name}`, import.meta.url))
 const json = (name: string) => JSON.parse(read(name).toString())
@@ -13,8 +13,8 @@ const { family, report } = convertGedcom({ ...input, supplements: plan.supplemen
 const parents = (id: string) => family.relationships.filter(r => r.kind === 'parent-child' && r.toPersonId === id).map(r => r.fromPersonId).sort()
 
 it('retains Kateryna with both name forms, the same parents, and the later owner-supplied dates', () => {
-  expect(report.sha256).toBe(november8SecondMergeSha256)
-  expect(report.counts).toMatchObject({ people: 153, families: 57, relationships: 238, events: 327, claims: 781, sources: 107, evidenceLinks: 249, memories: 1 })
+  expect(report.sha256).toBe(november9MergeSha256)
+  expect(report.counts).toMatchObject({ people: 158, families: 59, relationships: 246, events: 337, claims: 806, sources: 119, evidenceLinks: 279, memories: 1 })
   expect(family.people.find(p => p.id === 'I105')).toMatchObject({ lifeStatus: 'deceased' })
   expect(family.people.find(p => p.id === 'I105')?.externalIds).toContainEqual({ system: 'FamilySearch', value: 'PJ99-PN6' })
   expect(parents('I105')).toEqual(['I41', 'I43'])

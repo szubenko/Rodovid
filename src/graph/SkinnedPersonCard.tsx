@@ -2,7 +2,10 @@ import { useId } from 'react'
 import reference from '../appearance/skins/stylepicture.png?no-inline'
 import seamstress from '../appearance/skins/seamstress.png?no-inline'
 import serfs from '../appearance/skins/serfs.png?no-inline'
+import recruit from '../appearance/skins/recruit.png?no-inline'
+import dressmaker from '../appearance/skins/dressmaker.png?no-inline'
 import type { PersonCardSkin } from './person-card-skin'
+import { RecruitSymbol } from './RecruitSymbol'
 import { ShacklesSymbol } from './ShacklesSymbol'
 import { nameLines } from './text-block'
 import styles from './SkinnedPersonCard.module.css'
@@ -16,13 +19,18 @@ export function PersonCardArtwork({ id, skins = [] }: { id: string; skins?: Iter
       <image id={`${id}-seamstress`} data-card-artwork="true" href={seamstress} width="2072" height="759" />}
     {artwork.has('serfs') &&
       <image id={`${id}-serfs`} data-card-artwork="true" href={serfs} width="1536" height="1024" />}
+    {artwork.has('recruit') &&
+      <image id={`${id}-recruit`} data-card-artwork="true" href={recruit} width="1024" height="1536" />}
+    {artwork.has('dressmaker') &&
+      <image id={`${id}-dressmaker`} data-card-artwork="true" href={dressmaker} width="1024" height="1536" />}
   </>
 }
 
-export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, name, years, skin, cardClassName, artworkId, measureName, measureYears, photoPath }: {
+export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, name, years, skin, cardClassName, artworkId, measureName, measureYears, measureRole, photoPath }: {
   x: number; y: number; width: number; height: number; name: string; years: string
   skin: PersonCardSkin; cardClassName?: string; photoPath?: string
   artworkId: string; measureName: (text: string) => number; measureYears: (text: string) => number
+  measureRole: (text: string) => number
 }) {
   const prefix = useId().replaceAll(':', '')
   const left = x - cardWidth / 2, top = y - cardHeight / 2
@@ -32,6 +40,9 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
   const size = Math.min(height - 24, width * 0.34)
   const portraitX = 19 + size / 2, portraitY = height / 2
   const textX = 32 + size, textWidth = width - textX - 23
+  const roleWidth = measureRole(skin.label)
+  const badgeWidth = Math.min(textWidth + 4, Math.max(120, roleWidth + 36))
+  const roleFontSize = Math.min(13, 13 * (badgeWidth - 36) / Math.max(1, roleWidth))
   const words = name.split(/\s+/u)
   const lines = words.length === 2 ? words : nameLines(name, textWidth, measureName)
   const yearLines = years ? nameLines(years, textWidth, measureYears) : []
@@ -65,7 +76,7 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
         x="19" y={(height - size) / 2} width={size} height={size}
         preserveAspectRatio="xMidYMid slice" clipPath={`url(#${prefix}-photo)`} />
         : skin.portrait && <circle cx={portraitX} cy={portraitY} r={size / 2} fill={`url(#${prefix}-portrait)`} />}
-      <rect className={styles.badge} x={textX - 3} y="14" width={Math.min(textWidth + 4, 120)} height="24" rx="12" />
+      <rect className={styles.badge} x={textX - 3} y="14" width={badgeWidth} height="24" rx="12" />
       {skin.badgeIcon === 'sewing-machine'
         ? <g fill="currentColor" transform={`translate(${textX + 1} 17) scale(.75)`}>
           <path d="M1 21h24v3H1zM4 4h4v2h9c4 0 6 2 6 6v5h-6v-5c0-1-1-2-2-2H8v7H4zM18 1h2v4h-2zM24 7h2v8h-2z" />
@@ -73,10 +84,12 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
         </g>
         : skin.badgeIcon === 'shackles'
           ? <g transform={`translate(${textX + 10} 26) scale(.68)`}><ShacklesSymbol /></g>
-          : <use href={`#${prefix}-flower`} transform={`translate(${textX + 10} 26) scale(.72)`} />}
+          : skin.badgeIcon === 'recruit'
+            ? <g transform={`translate(${textX + 10} 26) scale(.63)`}><RecruitSymbol /></g>
+            : <use href={`#${prefix}-flower`} transform={`translate(${textX + 10} 26) scale(.72)`} />}
       {lines.map((line, index) => <text key={index} className={styles.name} data-card-name="true"
         x={textX} y={nameY + index * (fontSize + 1)} fontSize={fontSize} dominantBaseline="central">{line}</text>)}
-      <text className={styles.badgeLabel} x={textX + 26} y="27" dominantBaseline="central">{skin.label}</text>
+      <text className={styles.badgeLabel} data-card-role="true" x={textX + 26} y="27" style={{ fontSize: roleFontSize }} dominantBaseline="central">{skin.label}</text>
       {yearLines.map((line, index) => <text key={index} className={styles.years} data-card-years="true" x={textX}
         y={height - 19 - (yearLines.length - 1 - index) * 16} style={{ fontSize: yearFontSize }} dominantBaseline="central">{line}</text>)}
       {flourish && <><path className={styles.flourish} d={`M${width - 61},${height - 19} h17`} />

@@ -1,10 +1,12 @@
 import { useId } from 'react'
 import type { PersonCardSkin } from './person-card-skin'
 import { portraitOrnamentInset, portraitTextLines, type PortraitCardMetrics } from './portrait-card-layout'
+import { RecruitSymbol } from './RecruitSymbol'
 import { ShacklesSymbol } from './ShacklesSymbol'
 import styles from './PortraitPersonCard.module.css'
 
 function RoleSymbol({ skin }: { skin: PersonCardSkin }) {
+  if (skin.badgeIcon === 'recruit') return <RecruitSymbol />
   if (skin.badgeIcon === 'shackles') return <ShacklesSymbol />
   if (skin.badgeIcon === 'sewing-machine') return <path d="M-12 10h24v3h-24zm3-17h4v2h10c4 0 6 2 6 6v5H5V1c0-1-1-2-2-2H-5v7h-4zm14-4h2v5H5zM-7 5h1v5h-1z" />
   if (skin.id.startsWith('potter')) return <path d="M-6-12H6v3H-6zm0 5H6c-2 3 5 5 5 10 0 4-3 8-5 10H-6c-2-2-5-6-5-10 0-5 7-7 5-10Z" />

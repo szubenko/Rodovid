@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 9 NOV 2026
-2 TIME 21:10:35
-1 FILE ZubenkoNewFormat.reviewed.11.09.26.ged
+1 DATE 10 NOV 2026
+2 TIME 11:26:19
+1 FILE ZubenkoNewFormat.reviewed.11.10.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -1318,6 +1318,9 @@
 1 SOUR @S115@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQQ1
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S118@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I70@ INDI
 1 NAME Александр /Дейкал/
 2 ROMN Aleksandr /Deikal/
@@ -1834,8 +1837,26 @@
 1 FAMC @F62@
 1 EVEN Крестьянка
 2 TYPE Caste Name 
+2 SOUR @S118@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S116@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQ7S
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 BIRT
+2 DATE 1814
+2 SOUR @S119@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
+1 SOUR @S118@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 EVEN Кріпак
+2 TYPE Caste Name 
+1 SOUR @S119@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I83@ INDI
 1 NAME Авраам Василиев /Довгуля/
@@ -1895,6 +1916,8 @@
 1 CHIL @I69@
 1 WIFE @I159@
 1 _UID 11198DD49569B0489FD9286B10EA08CB59AF
+1 CHIL @I161@
+1 CHIL @I162@
 0 @F30@ FAM
 1 MARR
 1 HUSB @I83@
@@ -3862,6 +3885,18 @@
 1 _FSFTID PJWJ-742
 1 _UID 09F280E24434724A91C52D3416CD4C8A0190
 1 FAMS @F62@
+1 BIRT
+2 DATE 1786
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 FAMC @F66@
+1 EVEN Кріпак
+2 TYPE Caste Name 
+1 SOUR @S118@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S119@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I159@ INDI
 1 NAME Сигнклитикия Ефимова //
 2 ROMN Syhnklytykyia Efymova //
@@ -3875,6 +3910,19 @@
 1 FAMC @F64@
 1 SOUR @S117@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQ3-NQ7Q
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 BIRT
+2 DATE 1816
+2 SOUR @S119@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
+1 SOUR @S118@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S119@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I160@ INDI
 1 NAME Ефим //
@@ -3890,6 +3938,9 @@
 1 HUSB @I158@
 1 _UID DB2FC66D9E1A2C4C875CF8200693140217DF
 1 CHIL @I82@
+1 CHIL @I163@
+1 WIFE @I167@
+1 _UID 89B0FB4B6515E34D993F81C0686B4B95F5F2
 0 @F64@ FAM
 1 HUSB @I160@
 1 _UID 28636E3412FE6541905BA1DFE2E1930EB26F
@@ -3970,4 +4021,158 @@
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
 2 CONC //www.familysearch.org/ark:/61903/1:1:6XQ3-NQ7Q : Mon Nov 09 19:39:08 UT
 2 CONC C 2026), Сигнклитикия Ефимова in entry for Симеон Заприса, 21 Jul 1851.
+0 @I161@ INDI
+1 NAME Михайло Григорович /Заприса/
+2 ROMN Mykhailo Hryhorovych /Zaprysa/
+1 SEX M
+1 BIRT
+2 DATE 1836
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S118@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWK-7LR
+1 _UID 53A7284F019E4C4C8418E4F4B0D7704B5EFA
+1 FAMS @F65@
+1 FAMC @F29@
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
+1 SOUR @S118@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I162@ INDI
+1 NAME Захар Григорович /Заприса/
+2 ROMN Zakhar Hryhorovych /Zaprysa/
+1 SEX M
+1 BIRT
+2 DATE 1844
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S118@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWK-9HY
+1 _UID DB92548C700A234C8D59F7E05B0A4DA64B75
+1 FAMC @F29@
+1 EVEN Крестьянинъ
+2 TYPE Caste Name 
+1 SOUR @S118@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I163@ INDI
+1 NAME Ігнатій Несторович /Заприса/
+2 ROMN Ihnatii Nestorovych /Zaprysa/
+1 SEX M
+1 BIRT
+2 DATE 1827
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWV-FFV
+1 _UID 5EE083ED57279F46B1A5C26C8865C776BFA6
+1 FAMC @F62@
+1 EVEN Рекрут
+2 TYPE Military Service 
+2 DATE 1855
+1 EVEN Кріпак
+2 TYPE Caste Name 
+0 @I164@ INDI
+1 NAME Маланья Максимівна //
+2 ROMN Malania Maksymivna //
+1 SEX F
+1 BIRT
+2 DATE 1841
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWV-VWB
+1 _UID 545849C03583C14BBE0A49250692661CC9CB
+1 FAMS @F65@
+0 @F65@ FAM
+1 HUSB @I161@
+1 WIFE @I164@
+1 _UID A9641BF71C4A3D499615BF816B20918597D7
+0 @S118@ SOUR
+1 TITL Казка селян, двір Григорія Несторовича Заприси
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", database, <i>FamilySearch</
+2 CONC i> (https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z37V-3),  > imag
+2 CONC e 1 of 1.
+2 CONT Родина Григорія Несторовича Заприси — ревізька казка 1858 року
+2 CONT Село Чапліївка, двір № 34 (у попередній ревізії — № 31).
+2 CONT Ім'я	Родинний зв'язок	Вік у 1850	Вік у 1858	Рік народження (≈)
+2 CONT Григорій Несторович Заприса	Голова родини	31	44	1814
+2 CONT Сигнклитикія Єфимівна	Дружина Григорія	—	42	1816
+2 CONT Михайло Григорович Заприса	Син	15	22	1836
+2 CONT Захар Григорович Заприса	Син	7	14	1844
+2 CONT Симеон (Семен) Григорович Заприса	Син	—	7	1851
+2 CONT Ігнатій Заприса	Брат Григорія	23	Відданий у рекрути 1855 р.	1827
+2 CONT Маланья Максимівна	Дружина Михайла	—	17	1841
+0 @I165@ INDI
+1 NAME Афанасій /Заприса/
+2 ROMN Afanasii /Zaprysa/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWV-DGD
+1 _UID 9D45A92FAFF83F4E8B0BC57AC49D2DF74869
+1 FAMS @F66@
+1 EVEN Кріпак
+2 TYPE Caste Name 
+1 SOUR @S119@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I166@ INDI
+1 NAME Олена Григорівна //
+2 ROMN Olena Hryhorivna //
+1 SEX F
+1 BIRT
+2 DATE 1764
+2 SOUR @S119@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWK-V2L
+1 _UID 055425402864C54483D6F2123B9FB493D180
+1 FAMS @F66@
+1 EVEN Кріпачка
+2 TYPE Caste Name 
+1 SOUR @S119@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I167@ INDI
+1 NAME Агафія //
+2 ROMN Ahafiia //
+1 SEX F
+1 BIRT
+2 DATE 1786
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJWK-NMH
+1 _UID F6FC5A7EACEE814C86B33C821CFF765C1532
+1 FAMS @F62@
+1 _UID 5D4A77227BDAD644858F2850CF9BE9911F45
+1 EVEN Кріпачка
+2 TYPE Caste Name 
+1 SOUR @S119@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @F66@ FAM
+1 HUSB @I165@
+1 WIFE @I166@
+1 _UID 8714D8988986644681396AC1A34A87789578
+1 CHIL @I158@
+0 @S119@ SOUR
+1 TITL Казка селян, Родина Нестора Заприси
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", database, <i>FamilySearch</
+2 CONC i> (https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG),  > image 1 o
+2 CONC f 1.
+2 CONT Родина Нестора Заприси — ревізька казка 1816 року
+2 CONT Чапліївка, двір №160.
+2 CONT Особа	Родинний зв'язок	Вік у 1816	Народження (≈)
+2 CONT Нестор Афанасійович Заприса	Голова родини	30	1786
+2 CONT Агафія (прізвище до шлюбу невідоме)	Дружина Нестора	30	1786
+2 CONT Григорій Несторович Заприса	Син Нестора	3	1813
+2 CONT Олена Григорівна	Мати Нестора	52	1764
 0 TRLR

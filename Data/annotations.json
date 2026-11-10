@@ -1662,6 +1662,36 @@
         "latitude": 51.71987,
         "longitude": 33.210036
       }
+    },
+    {
+      "id": "review-place-6c3215d9d9e6c61c39a62cab",
+      "placeId": "place-6c3215d9d9e6c61c39a62cab",
+      "explanation": "D06: оригінальну назву збережено з експорту 09.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-76c22393001a9173a3b07c7a",
+      "placeId": "place-76c22393001a9173a3b07c7a",
+      "explanation": "D06: оригінальну назву збережено з експорту 09.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
+    },
+    {
+      "id": "review-place-a9d11832a7bb975c972d9ff5",
+      "placeId": "place-a9d11832a7bb975c972d9ff5",
+      "explanation": "D06: оригінальну назву збережено з експорту 10.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     }
   ],
   "sources": [
@@ -2289,6 +2319,20 @@
       "mediaIds": [
         "media-record-ace58d40aeb9f79085e1"
       ]
+    },
+    {
+      "id": "source-details-75ed1ab3dba687ef8450",
+      "sourceId": "source-2c529357b24feda11bde6aa2",
+      "mediaIds": [
+        "media-record-75ed1ab3dba687ef8450"
+      ]
+    },
+    {
+      "id": "source-details-2ec5329fbf6735ab0eae",
+      "sourceId": "source-32bbc4f4bf881e8e168c05ec",
+      "mediaIds": [
+        "media-record-2ec5329fbf6735ab0eae"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -2713,6 +2757,20 @@
       "evidenceLinkId": "evidenceLink-2d544312e977bf12cf904ca5",
       "fragment": {
         "mediaId": "media-record-d843f9ecee9d6fa84176"
+      }
+    },
+    {
+      "id": "evidence-details-75ed1ab3dba687ef8450",
+      "evidenceLinkId": "evidenceLink-0a008e0ff40956492a4bc1b7",
+      "fragment": {
+        "mediaId": "media-record-75ed1ab3dba687ef8450"
+      }
+    },
+    {
+      "id": "evidence-details-2ec5329fbf6735ab0eae",
+      "evidenceLinkId": "evidenceLink-aa6cf1fc29af18e59d97f9aa",
+      "fragment": {
+        "mediaId": "media-record-2ec5329fbf6735ab0eae"
       }
     }
   ],
@@ -3942,6 +4000,41 @@
       ],
       "mediaId": "media-record-97aa9fe4fd9bd57f3e3e",
       "jsonFile": "assets/documents/source-records/без-прізвища-сигнклитикия-інша-подія-PJWN-RYY-6XQ3-NQ7Q.json"
+    },
+    {
+      "id": "file-source-2c529357b24feda11bde6aa2",
+      "sourceId": "source-2c529357b24feda11bde6aa2",
+      "evidenceLinkIds": [
+        "evidenceLink-becef12eb3710260873a63bc",
+        "evidenceLink-f7ede943ad141af462fbf630",
+        "evidenceLink-01efe94f239d13fea4b937fa",
+        "evidenceLink-9386c7acfe6ec0b1043d16eb",
+        "evidenceLink-1c35180a716a4a9a1c1366fa",
+        "evidenceLink-eb865a4f29c5d3d1b544e24e",
+        "evidenceLink-61682ca6fe7b3d852e4ccead",
+        "evidenceLink-f42e6a9312dfcdf5854ceae8",
+        "evidenceLink-0a008e0ff40956492a4bc1b7",
+        "evidenceLink-af22153da816a610b1245ef2"
+      ],
+      "mediaId": "media-record-75ed1ab3dba687ef8450",
+      "jsonFile": "assets/documents/source-records/заприса-григорий-інша-подія-PNKH-6H2-3Q9M-CSSV-Z37V-3.json"
+    },
+    {
+      "id": "file-source-32bbc4f4bf881e8e168c05ec",
+      "sourceId": "source-32bbc4f4bf881e8e168c05ec",
+      "evidenceLinkIds": [
+        "evidenceLink-fdecbb0260dd8e267f2ac6b0",
+        "evidenceLink-98e92d0a008ded3bbb9af428",
+        "evidenceLink-0de3bdb20c7101eece5e28f9",
+        "evidenceLink-50ae15959bf42b812f87bade",
+        "evidenceLink-ad1b22f0162c26d6f03b0c14",
+        "evidenceLink-be95c195570f49f2d2090e92",
+        "evidenceLink-aa6cf1fc29af18e59d97f9aa",
+        "evidenceLink-693029e1bc9558ab73314367",
+        "evidenceLink-2e116d848a93fa0096ea5965"
+      ],
+      "mediaId": "media-record-2ec5329fbf6735ab0eae",
+      "jsonFile": "assets/documents/source-records/заприса-григорий-народження-PNKH-6H2-3Q9M-CSSV-ZQPG.json"
     },
     {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
@@ -6107,6 +6200,40 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "media-record-ace58d40aeb9f79085e1"
+        }
+      ]
+    },
+    {
+      "id": "media-record-75ed1ab3dba687ef8450",
+      "path": "assets/documents/source-records/заприса-григорий-інша-подія-PNKH-6H2-3Q9M-CSSV-Z37V-3.png",
+      "dimensions": {
+        "width": 1561,
+        "height": 1170
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: заприса-григорий-інша-подія-PNKH-6H2-3Q9M-CSSV-Z37V-3",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-75ed1ab3dba687ef8450"
+        }
+      ]
+    },
+    {
+      "id": "media-record-2ec5329fbf6735ab0eae",
+      "path": "assets/documents/source-records/заприса-григорий-народження-PNKH-6H2-3Q9M-CSSV-ZQPG.png",
+      "dimensions": {
+        "width": 1492,
+        "height": 862
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: заприса-григорий-народження-PNKH-6H2-3Q9M-CSSV-ZQPG",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-2ec5329fbf6735ab0eae"
         }
       ]
     }

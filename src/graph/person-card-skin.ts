@@ -5,16 +5,17 @@ import { personOccupationEvents, personStatusEvents } from './person-tooltip-dat
 export type PersonCardSkin = {
   id: string
   label: string
-  tone: 'blue' | 'rose' | 'green' | 'clay' | 'neutral'
-  portrait?: { x: number; y: number; radius?: number; artwork?: 'seamstress' }
-  badgeIcon?: 'sewing-machine'
+  tone: 'blue' | 'rose' | 'green' | 'red' | 'clay' | 'neutral'
+  portrait?: { x: number; y: number; radius?: number; artwork?: 'seamstress' | 'serfs' }
+  badgeIcon?: 'sewing-machine' | 'shackles'
 }
 
-type Role = 'cossack' | 'peasant' | 'potter'
+type Role = 'cossack' | 'peasant' | 'potter' | 'serf'
 const roles: Record<Role, RegExp> = {
   cossack: /^(?:козак|казак|козаки|козачка|казачка|cossack)$/iu,
   peasant: /^(?:селянин|селянка|селяни|крестьянин|крестьянка|peasant)$/iu,
   potter: /^(?:гончар|гончарка|potter)$/iu,
+  serf: /^(?:кріпак|кріпачка)$/iu,
 }
 
 function recordedRoles(family: FamilyData, personId: string, events: FamilyEvent[]) {
@@ -36,8 +37,17 @@ export function personCardSkin(family: FamilyData, personId: string): PersonCard
   const female = sex === 'F'
   const occupations = recordedRoles(family, personId, personOccupationEvents(family, personId))
   const statuses = recordedRoles(family, personId, personStatusEvents(family, personId))
+  // The recorded serf status is more specific than the broader peasant category.
+  if (statuses.has('serf')) statuses.delete('peasant')
   const candidates = occupations.size ? occupations : statuses
   const role = candidates.size === 1 ? [...candidates][0] : undefined
+  if (role === 'serf') return {
+    id: female ? 'serf-female' : 'serf-male',
+    label: female ? 'Кріпачка' : 'Кріпак',
+    tone: female ? 'red' : 'green',
+    portrait: { artwork: 'serfs', x: female ? 1129 : 400, y: female ? 246 : 232, radius: female ? 178 : 168 },
+    badgeIcon: 'shackles',
+  }
   const portrait = { x: female ? 1015 : 260, y: role === 'cossack' ? 137 : role === 'peasant' ? 366 : role === 'potter' ? 594 : 824 }
   if (role === 'potter') return { id: female ? 'potter-female' : 'potter-male', label: female ? 'Гончарка' : 'Гончар', tone: 'clay', portrait }
   if (role === 'peasant') return { id: female ? 'peasant-female' : 'peasant-male', label: female ? 'Селянка' : 'Селянин', tone: 'green', portrait }

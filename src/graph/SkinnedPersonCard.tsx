@@ -1,16 +1,21 @@
 import { useId } from 'react'
 import reference from '../appearance/skins/stylepicture.png?no-inline'
 import seamstress from '../appearance/skins/seamstress.png?no-inline'
+import serfs from '../appearance/skins/serfs.png?no-inline'
 import type { PersonCardSkin } from './person-card-skin'
+import { ShacklesSymbol } from './ShacklesSymbol'
 import { nameLines } from './text-block'
 import styles from './SkinnedPersonCard.module.css'
 
 // Each raster is shared by its portraits and embedded once in the exported SVG.
 export function PersonCardArtwork({ id, skins = [] }: { id: string; skins?: Iterable<PersonCardSkin> }) {
+  const artwork = new Set(Array.from(skins, skin => skin.portrait?.artwork))
   return <>
     <image id={id} data-card-artwork="true" href={reference} width="1672" height="941" />
-    {Array.from(skins).some(skin => skin.portrait?.artwork === 'seamstress') &&
+    {artwork.has('seamstress') &&
       <image id={`${id}-seamstress`} data-card-artwork="true" href={seamstress} width="2072" height="759" />}
+    {artwork.has('serfs') &&
+      <image id={`${id}-serfs`} data-card-artwork="true" href={serfs} width="1536" height="1024" />}
   </>
 }
 
@@ -66,7 +71,9 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
           <path d="M1 21h24v3H1zM4 4h4v2h9c4 0 6 2 6 6v5h-6v-5c0-1-1-2-2-2H8v7H4zM18 1h2v4h-2zM24 7h2v8h-2z" />
           <path d="M6 15h1v5H6zM21 17h1v4h-1z" />
         </g>
-        : <use href={`#${prefix}-flower`} transform={`translate(${textX + 10} 26) scale(.72)`} />}
+        : skin.badgeIcon === 'shackles'
+          ? <g transform={`translate(${textX + 10} 26) scale(.68)`}><ShacklesSymbol /></g>
+          : <use href={`#${prefix}-flower`} transform={`translate(${textX + 10} 26) scale(.72)`} />}
       {lines.map((line, index) => <text key={index} className={styles.name} data-card-name="true"
         x={textX} y={nameY + index * (fontSize + 1)} fontSize={fontSize} dominantBaseline="central">{line}</text>)}
       <text className={styles.badgeLabel} x={textX + 26} y="27" dominantBaseline="central">{skin.label}</text>

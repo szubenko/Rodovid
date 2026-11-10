@@ -1,5 +1,6 @@
 .frame, .art { --portrait-accent: #1377b8; --portrait-border: #bedcef; --portrait-pale: #edf6fb; }
 .frame[data-tone='rose'], .art[data-tone='rose'] { --portrait-accent: #dc3456; --portrait-border: #f4c6cf; --portrait-pale: #fff0f2; }
+.frame[data-tone='red'], .art[data-tone='red'] { --portrait-accent: #c81c23; --portrait-border: #f6bdb6; --portrait-pale: #ffede7; }
 .frame[data-tone='green'], .art[data-tone='green'] { --portrait-accent: #308344; --portrait-border: #c6ddbf; --portrait-pale: #f0f6eb; }
 .frame[data-tone='clay'], .art[data-tone='clay'] { --portrait-accent: #e36a25; --portrait-border: #f3d0b2; --portrait-pale: #fff4e9; }
 .frame[data-tone='neutral'], .art[data-tone='neutral'] { --portrait-accent: #697a87; --portrait-border: #d0d9df; --portrait-pale: #f0f4f6; }

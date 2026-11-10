@@ -11,8 +11,7 @@ test(`скіни всіх карток ${diagram}: стан, заняття та
   await expect(card).toHaveAttribute('data-card-skin', 'man')
   await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
   await expect(card.getByText('Чоловік', { exact: true })).toHaveCount(1)
-  await expect(page.locator('[data-card-artwork]')).toHaveCount(1)
-  await expect(page.locator('[data-card-artwork]')).toHaveAttribute('href', /stylepicture.*\.png/)
+  await expect(page.locator('[data-card-artwork][href*="stylepicture"]')).toHaveCount(1)
   await page.getByRole('button', { name: 'До центру', exact: true }).click()
   // Illustrations, long names and dates stay inside the original card bounds.
   expect(await nodes.evaluateAll(elements => elements.every(element => {
@@ -61,7 +60,7 @@ test(`скіни всіх карток ${diagram}: стан, заняття та
   if (diagram === 'vertical') await expect(page.locator('[data-person-id="I1"]')).toHaveCount(0)
   else await expect(page.locator('[data-person-id="I1"]')).toHaveAttribute('data-card-skin', 'man')
   for (const [id, skin] of [['I9', 'cossack-male'], ['I19', 'cossack-female'], ['I56', 'peasant-male'],
-    ['I57', 'peasant-female'], ['I62', 'potter-male'], ['I11', 'woman']]) {
+    ['I57', 'peasant-female'], ['I62', 'potter-male'], ['I11', 'woman'], ['I83', 'serf-male'], ['I166', 'serf-female']]) {
     await page.goto(`/${diagram}/${id}`)
     const center = page.locator('[data-center="true"][data-person-id]')
     await expect(center).toHaveAttribute('data-card-skin', skin!)
@@ -73,7 +72,8 @@ test(`скіни всіх карток ${diagram}: стан, заняття та
     await page.getByRole('button', { name: 'Показати всіх родичів', exact: true }).click()
     await expect(page.getByTestId('relatives-count')).toContainText(`${family.people.length} із ${family.people.length}`)
     await expect(page.locator('[data-card-skin]')).toHaveCount(family.people.length)
-    await expect(page.locator('[data-card-artwork]')).toHaveCount(1)
+    await expect(page.locator('[data-card-artwork]')).toHaveCount(2)
+    await expect(page.locator('[data-card-artwork][href*="serfs"]')).toHaveCount(1)
   }
   await page.goto('/tree/I1')
   await expect(page.locator('[data-person-id="I1"]')).toBeVisible()

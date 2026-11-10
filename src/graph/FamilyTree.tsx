@@ -180,7 +180,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
       : exportState === 'saved' ? 'PNG збережено у файл.' : 'Не вдалося створити PNG. Спробуйте ще раз.'}</p>}
     <div ref={container} className={styles.canvas} data-map-viewport>
       <svg ref={svg} viewBox={`0 0 ${width} ${height}`} role="group" aria-label={`${title}: ${labels.get(personId)}`}>
-        {!minimalCards && <defs><PersonCardArtwork id={`${prefix}-skin-artwork`} skins={skins.values()} /></defs>}
+        {!minimalCards && <defs><PersonCardArtwork id={`${prefix}-skin-artwork`} skins={layout.nodes.map(node => skins.get(node.personId)!)} /></defs>}
         <g data-layer="camera" transform={`translate(${settings.pan.x * width} ${settings.pan.y * height}) scale(${settings.zoom})`}>
           <g data-layer="coordinates"><g data-layer="layout" transform={`translate(${offset.x} ${offset.y})`}>
             <g data-layer="connections">{layout.edges.map(edge => {

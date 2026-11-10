@@ -30,6 +30,7 @@ it('uses a neutral illustrated skin when occupation and status are absent', () =
 it.each([
   ['Caste Name', 'Козак', 'M', 'cossack-male'], ['Стан', 'Селянка', 'F', 'peasant-female'],
   ['OCCU', 'Гончар', 'M', 'potter-male'], ['Occupation', 'Гончарка', 'F', 'potter-female'],
+  ['Caste Name', 'Кріпак', 'M', 'serf-male'], ['Стан', 'Кріпачка', 'F', 'serf-female'],
 ] as const)('selects a skin from a recorded %s: %s', (label, value, sex, expected) => {
   const family = familyWithSex(sex)
   addRecord(family, label, value)
@@ -38,11 +39,20 @@ it.each([
 
 it('prefers an explicit occupation over social status and preserves source data', () => {
   const family = familyWithSex()
-  addRecord(family, 'Стан', 'Козак')
+  addRecord(family, 'Стан', 'Кріпак')
   addRecord(family, 'OCCU', 'Гончар')
   const before = JSON.stringify(family)
   expect(personCardSkin(family, 'I1').id).toBe('potter-male')
   expect(JSON.stringify(family)).toBe(before)
+})
+
+it('prefers the recorded serf status over a broader peasant status', () => {
+  const family = familyWithSex()
+  addRecord(family, 'Стан', 'Крестьянин')
+  addRecord(family, 'Стан', 'Кріпак')
+  expect(personCardSkin(family, 'I1').id).toBe('serf-male')
+  addRecord(family, 'Стан', 'Козак')
+  expect(personCardSkin(family, 'I1').id).toBe('man')
 })
 
 it('does not infer a role from a hypothesis, another participant, negation or unrelated prose', () => {

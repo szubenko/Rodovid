@@ -5691,7 +5691,7 @@
     {
       "id": "media-wedding-zemlianska-kravchyk-1946",
       "path": "assets/photos/весілля-землянської-кравчика-1946-виправлене.png",
-      "sha256": "9ecbffe117ed0f5e900cb383717e1b234f236ad12662f6c0ea33352c5082fb3f",
+      "sha256": "bcc2af226441c4c94b159bcc4751cebb81884b2db58246330bb6cf5adef2542b",
       "dimensions": {
         "width": 1086,
         "height": 1448
@@ -5713,13 +5713,18 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "owner-corrected-wedding-photo-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-wedding-zemlianska-kravchyk-1946-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-kernytskyi-endzevych-stara-ropa-1957",
       "path": "assets/photos/керницькі-ендзевич-стара-ропа-1957.png",
-      "sha256": "359720509e248fed95d823c4aec558b2f3325084a4b473282b95b6d415d6cf22",
+      "sha256": "84c7087c1bc2c71a3dfb4af3d1a2f2b7f93becee7923703399c200ccb4016838",
       "dimensions": {
         "width": 1086,
         "height": 1448
@@ -5741,16 +5746,21 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "owner-kernytskyi-photo-description-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-kernytskyi-endzevych-stara-ropa-1957-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i47-avatar",
       "path": "assets/photos/керницький-василь-миколайович-аватар.png",
-      "sha256": "166141f7a36df0149e925a6da2ea19ebe8c61a728e39251ca551caf37d24212d",
+      "sha256": "f80bd91f09770164bab4359b1bd0a39c7eda4f6d729b93e6ccb515335bac8699",
       "dimensions": {
-        "width": 428,
-        "height": 428
+        "width": 1254,
+        "height": 1254
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -5769,16 +5779,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/People/керницький-василь-миколайович-1926-1965/керницький-василь-миколайович-вихідний-фрагмент.png",
           "entryId": "owner-vasyl-avatar-crop-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i47-avatar-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i48-avatar",
       "path": "assets/photos/керницька-марія-миколаївна-аватар.png",
-      "sha256": "f38bc92a406ebdde9cf5d5dee7bdd7ee9d552791dd3dbdca1af30e5c935b08ac",
+      "sha256": "565c60e6155dfc8c101e76da9668b7df03f3742e0579e59979675b607b8481ff",
       "dimensions": {
-        "width": 422,
-        "height": 422
+        "width": 1254,
+        "height": 1254
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -5797,16 +5812,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/People/керницька-марія-миколаївна-1934-2001/керницька-марія-миколаївна-вихідний-фрагмент.png",
           "entryId": "owner-mariia-avatar-crop-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i48-avatar-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i49-avatar",
       "path": "assets/photos/керницький-петро-миколайович-аватар.png",
-      "sha256": "da36f0b131abca072d23a5311d35c0cccfb2b638e32b428f07fc2b4f97ff14fb",
+      "sha256": "8f470acfc25252d2ae3edbd6185c4f396dda4046b4c7925e6171eae6186bbdde",
       "dimensions": {
-        "width": 337,
-        "height": 337
+        "width": 1254,
+        "height": 1254
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -5825,16 +5845,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/People/керницький-петро-миколайович-1938-2002/керницький-петро-миколайович-вихідний-фрагмент.png",
           "entryId": "owner-petro-avatar-crop-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i49-avatar-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i47-kopeysk-1956",
       "path": "assets/photos/керницький-василь-миколайович-копейськ-1956.png",
-      "sha256": "06a8d36f5387e74c7d78ff7516c33b3abe8fa812cc3f29425163479631cab684",
+      "sha256": "24d8bb9e6d54605588d4a0d8efb97f1758d03d75dba5ee6552f9ce063cb50eb8",
       "dimensions": {
-        "width": 1110,
-        "height": 1450
+        "width": 1097,
+        "height": 1434
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -5853,16 +5878,21 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "owner-vasyl-kopeysk-1956-description-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i47-kopeysk-1956-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-kernytskyi-visit-after-katorha-stara-ropa-1957",
       "path": "assets/photos/керницькі-ендзевич-відвідини-після-каторги-стара-ропа-1957.png",
-      "sha256": "bb2706a716c4cba060ba963676a423e27261e68d5db0d77d737073c07e1c288f",
+      "sha256": "ea38f82b8d433f2c07b0a74f17cca19b8c6f378a9f94b19d36138c4e612664c8",
       "dimensions": {
-        "width": 1107,
-        "height": 1549
+        "width": 1060,
+        "height": 1484
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -5881,13 +5911,18 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "owner-kernytskyi-visit-photo-description-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-kernytskyi-visit-after-katorha-stara-ropa-1957-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i29-kustanay-1958",
       "path": "assets/photos/чабан-наталія-іванівна-кустанай-1958.png",
-      "sha256": "80e9f007875c08a568740719101f307cad9e59aa7019bdbbf74ea90fe798abb7",
+      "sha256": "fc5952e4851f1b20ab5da44c446a3ecd9856db4a95f70e9102a03c6b3e24f62a",
       "dimensions": {
         "width": 1086,
         "height": 1448
@@ -5909,16 +5944,21 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "owner-nataliia-kustanay-photo-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i29-kustanay-1958-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i29-avatar",
       "path": "assets/photos/чабан-наталія-іванівна-аватар.png",
-      "sha256": "cf160d2c272d2809e0b5c25cf45ac25828a27a1399d61d7c3f9edc40ebc1edfe",
+      "sha256": "cf8940741fa1f353df34d603de2d6b024bbd1b906714d4ef3b7f551cec405335",
       "dimensions": {
-        "width": 840,
-        "height": 840
+        "width": 1254,
+        "height": 1254
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -5937,6 +5977,11 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "owner-nataliia-kustanay-photo-2026-11-03"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i29-avatar-restoration-2026-11-11"
         }
       ]
     },
@@ -6504,10 +6549,10 @@
     {
       "id": "media-chabany-kopeysk-1961",
       "path": "assets/photos/чабани-копейськ-1961.png",
-      "sha256": "ac4fe2adbf7e655ba4e9bb46bb0c11ec7445bd9416447739f03647145d18b8a4",
+      "sha256": "e07a4be8732c69ea32922624c29f1f3375eec7f7e38352c3fad38345fb73d38a",
       "dimensions": {
-        "width": 1200,
-        "height": 1600
+        "width": 1086,
+        "height": 1448
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6522,16 +6567,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабани — Копейськ 1961.png",
           "entryId": "media-chabany-kopeysk-1961"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-chabany-kopeysk-1961-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i52-kopeysk-1961-portrait",
       "path": "assets/photos/i52-копейськ-1961-аватар.png",
-      "sha256": "0a1083b3a7618240afb4e54c4ad8f1c65c3266315545a194522e8692893ff92f",
+      "sha256": "9996efdc380833b3437832975e554d680a897a60d2737f1a4358704c69ff9401",
       "dimensions": {
-        "width": 217,
-        "height": 237
+        "width": 1200,
+        "height": 1310
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6546,16 +6596,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Богдан Іванович — Копейськ 1961.png",
           "entryId": "media-i52-kopeysk-1961-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i52-kopeysk-1961-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i34-kopeysk-1961-portrait",
       "path": "assets/photos/i34-копейськ-1961-аватар.png",
-      "sha256": "7795bae249c4cc28adc83b58aed22ca318de8b12e0ec259e14f62590e6118c45",
+      "sha256": "f258dc0177c9cc472d1ff87a333bc20fa5afe6fa4da19f97f88971067dcb1efd",
       "dimensions": {
-        "width": 225,
-        "height": 213
+        "width": 1289,
+        "height": 1220
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6570,16 +6625,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Іван Ількович — Копейськ 1961.png",
           "entryId": "media-i34-kopeysk-1961-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i34-kopeysk-1961-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i54-kopeysk-1961-portrait",
       "path": "assets/photos/i54-копейськ-1961-аватар.png",
-      "sha256": "bfd174eee6366ab8498cebf14bee5e6479a1a5dd1f23ea5a870fa2208a9a28fb",
+      "sha256": "36af405477ee223972a186b1b1695776421a1e87701dd252a68c8c27014f018e",
       "dimensions": {
-        "width": 227,
-        "height": 216
+        "width": 1286,
+        "height": 1223
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6594,16 +6654,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Михайло Ількович — Копейськ 1961.png",
           "entryId": "media-i54-kopeysk-1961-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i54-kopeysk-1961-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i32-kopeysk-1961-portrait",
       "path": "assets/photos/i32-копейськ-1961-аватар.png",
-      "sha256": "2dca0da039cf7e766272abb772a8ab99b11c64322b49ab4e1330a01b4515a90e",
+      "sha256": "b2d254102a8a97ae780e0168a2087c5ca819410b97a05762fde1a7f4aadaf9d8",
       "dimensions": {
-        "width": 201,
-        "height": 213
+        "width": 1218,
+        "height": 1291
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6618,16 +6683,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Марія Антонівна — Копейськ 1961.png",
           "entryId": "media-i32-kopeysk-1961-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i32-kopeysk-1961-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i58-kopeysk-1961-portrait",
       "path": "assets/photos/i58-копейськ-1961-аватар.png",
-      "sha256": "a4471b2817d965f84da66cc711825494df860090c373f1bf0afd9b13352afea7",
+      "sha256": "c1d68f5cd85af7720ead92bb800bfc66061ec6585feb0d77de6e88cb2c6c78a6",
       "dimensions": {
-        "width": 225,
-        "height": 228
+        "width": 1254,
+        "height": 1254
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6642,16 +6712,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Марія Степанівна — Копейськ 1961.png",
           "entryId": "media-i58-kopeysk-1961-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i58-kopeysk-1961-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i53-kopeysk-1961-portrait",
       "path": "assets/photos/i53-копейськ-1961-аватар.png",
-      "sha256": "aa607a397342c4b2b3984746f67b665ceebee40417ccf2c83ccfe981a1fd4414",
+      "sha256": "31c96ebb252bb6e342eb45a99408c6289195660970a00ab7268517c7255d04d0",
       "dimensions": {
-        "width": 212,
-        "height": 205
+        "width": 1275,
+        "height": 1233
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6666,16 +6741,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Семен Іванович — Копейськ 1961.png",
           "entryId": "media-i53-kopeysk-1961-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i53-kopeysk-1961-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-chabany-kopeysk-1965",
       "path": "assets/photos/чабани-копейськ-1965.png",
-      "sha256": "bfbe8f73035340bd2d17650b30780c5a0e885dea10de1672cbe8f1cdb7923542",
+      "sha256": "7dfa22c3c18cdb7d57efa1d32fce7bee3b2003b4d9f58416c4fb1c397862f186",
       "dimensions": {
-        "width": 1433,
-        "height": 1143
+        "width": 1404,
+        "height": 1120
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6690,16 +6770,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабани — Копейськ 1965.png",
           "entryId": "media-chabany-kopeysk-1965"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-chabany-kopeysk-1965-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i104-kopeysk-1965-portrait",
       "path": "assets/photos/i104-копейськ-1965-аватар.png",
-      "sha256": "dabde0dfc021f8e902a355493662041da23a9e398cf34edf6252f843e3c3025e",
+      "sha256": "8349bcd0e81718ce6836daa80e9a23741b2cb4578f1e2baacad874047e2018b8",
       "dimensions": {
-        "width": 162,
-        "height": 160
+        "width": 1262,
+        "height": 1246
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6714,6 +6799,11 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Михайло Іванович — Копейськ 1965.png",
           "entryId": "media-i104-kopeysk-1965-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i104-kopeysk-1965-portrait-restoration-2026-11-11"
         }
       ]
     },
@@ -6749,10 +6839,10 @@
     {
       "id": "media-i176-kopeysk-1958-portrait",
       "path": "assets/photos/i176-копейськ-1958-аватар.png",
-      "sha256": "921028bbccc3c02defa94a6edb36c268f9755b424d282f38ec93986d698f7d13",
+      "sha256": "0093a017702129a9c835f1eaa5f40be9ea858c5eea654a5b6c1061e2d2eede8c",
       "dimensions": {
-        "width": 210,
-        "height": 207
+        "width": 1268,
+        "height": 1241
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6767,16 +6857,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Гаваль Микола — Копейськ 1958.png",
           "entryId": "media-i176-kopeysk-1958-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i176-kopeysk-1958-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i55-kopeysk-1958-portrait",
       "path": "assets/photos/i55-копейськ-1958-аватар.png",
-      "sha256": "e7dfe0ecfa23a9713d242a9a5201ae1c5b9d0466de090edb453189995868e961",
+      "sha256": "4f78f3fa8ddc594b189e1d54506e10f54f4e85d0cc637c09106d330ae2f81739",
       "dimensions": {
-        "width": 170,
-        "height": 180
+        "width": 1219,
+        "height": 1290
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6791,16 +6886,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Гаваль Стефанія Ільківна — Копейськ 1958.png",
           "entryId": "media-i55-kopeysk-1958-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i55-kopeysk-1958-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i28-kopeysk-1958-portrait",
       "path": "assets/photos/i28-копейськ-1958-аватар.png",
-      "sha256": "65a243268022df4663c07dd34c899baad1296a4c053aace9ba0037bb03cdcc7c",
+      "sha256": "d0dd2ebf0ea9e4670aa44f74f6ba47afe871d9f7d5fc1bc819c8cdc6a4098d2a",
       "dimensions": {
-        "width": 200,
-        "height": 207
+        "width": 1233,
+        "height": 1276
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6815,16 +6915,21 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Керницький Іван Миколайович — Копейськ 1958.png",
           "entryId": "media-i28-kopeysk-1958-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i28-kopeysk-1958-portrait-restoration-2026-11-11"
         }
       ]
     },
     {
       "id": "media-i31-kopeysk-1958-portrait",
       "path": "assets/photos/i31-копейськ-1958-аватар.png",
-      "sha256": "6b6d482c354c155d466f8de154370fbfc485fde89f0886885a112543bded42e3",
+      "sha256": "7ca9759d1efde38f81a48fd14b14d13695842bef132e60f36da39b192fa410cf",
       "dimensions": {
-        "width": 177,
-        "height": 167
+        "width": 1291,
+        "height": 1218
       },
       "mimeType": "image/png",
       "thumbnail": {
@@ -6839,6 +6944,11 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Керницька Катерина Федірівна — Копейськ 1958.png",
           "entryId": "media-i31-kopeysk-1958-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/Restorations/2026-11-11/manifest.json",
+          "entryId": "media-i31-kopeysk-1958-portrait-restoration-2026-11-11"
         }
       ]
     },

@@ -369,9 +369,114 @@
       "id": "person-media-i29",
       "personId": "I29",
       "photoIds": [
-        "media-i29-kustanay-1958"
+        "media-i29-kustanay-1958",
+        "media-chabany-havali-kopeysk-1958"
       ],
       "portraitId": "media-i29-avatar"
+    },
+    {
+      "id": "person-media-i52",
+      "personId": "I52",
+      "photoIds": [
+        "media-chabany-kopeysk-1961",
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i52-kopeysk-1961-portrait"
+    },
+    {
+      "id": "person-media-i34",
+      "personId": "I34",
+      "photoIds": [
+        "media-chabany-kopeysk-1961",
+        "media-chabany-kopeysk-1965",
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i34-kopeysk-1961-portrait"
+    },
+    {
+      "id": "person-media-i54",
+      "personId": "I54",
+      "photoIds": [
+        "media-chabany-kopeysk-1961"
+      ],
+      "portraitId": "media-i54-kopeysk-1961-portrait"
+    },
+    {
+      "id": "person-media-i32",
+      "personId": "I32",
+      "photoIds": [
+        "media-chabany-kopeysk-1961",
+        "media-chabany-kopeysk-1965",
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i32-kopeysk-1961-portrait"
+    },
+    {
+      "id": "person-media-i58",
+      "personId": "I58",
+      "photoIds": [
+        "media-chabany-kopeysk-1961",
+        "media-chabany-kopeysk-1965"
+      ],
+      "portraitId": "media-i58-kopeysk-1961-portrait"
+    },
+    {
+      "id": "person-media-i53",
+      "personId": "I53",
+      "photoIds": [
+        "media-chabany-kopeysk-1961",
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i53-kopeysk-1961-portrait"
+    },
+    {
+      "id": "person-media-i104",
+      "personId": "I104",
+      "photoIds": [
+        "media-chabany-kopeysk-1965",
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i104-kopeysk-1965-portrait"
+    },
+    {
+      "id": "person-media-i28",
+      "personId": "I28",
+      "photoIds": [
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i28-kopeysk-1958-portrait"
+    },
+    {
+      "id": "person-media-i31",
+      "personId": "I31",
+      "photoIds": [
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i31-kopeysk-1958-portrait"
+    },
+    {
+      "id": "person-media-i30",
+      "personId": "I30",
+      "photoIds": [
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i30-kopeysk-1958-portrait"
+    },
+    {
+      "id": "person-media-i176",
+      "personId": "I176",
+      "photoIds": [
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i176-kopeysk-1958-portrait"
+    },
+    {
+      "id": "person-media-i55",
+      "personId": "I55",
+      "photoIds": [
+        "media-chabany-havali-kopeysk-1958"
+      ],
+      "portraitId": "media-i55-kopeysk-1958-portrait"
     }
   ],
   "placeEnrichments": [
@@ -1722,6 +1827,11 @@
         "latitude": 51.71987,
         "longitude": 33.210036
       }
+    },
+    {
+      "id": "review-place-98eb55f4eb009ff861d28774",
+      "placeId": "place-98eb55f4eb009ff861d28774",
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
     }
   ],
   "sources": [
@@ -6388,6 +6498,376 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "media-record-053390de306c7b2d377b"
+        }
+      ]
+    },
+    {
+      "id": "media-chabany-kopeysk-1961",
+      "path": "assets/photos/чабани-копейськ-1961.png",
+      "sha256": "ac4fe2adbf7e655ba4e9bb46bb0c11ec7445bd9416447739f03647145d18b8a4",
+      "dimensions": {
+        "width": 1200,
+        "height": 1600
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабани-копейськ-1961.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабани — Копейськ 1961",
+      "description": "1961 Копейськ\n\nЧабан Богдан Іванович  (19 роки)\nЧабан Іван Ількович (52 роки)\nЧабан Михайло Ількович (40 роки)\nЧабан Марія Антонівна (52 роки)\nЧабан Марія Степанівна (58 роки)\n\nЧабан Семен Іванович (дитина 7 років)",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабани — Копейськ 1961.png",
+          "entryId": "media-chabany-kopeysk-1961"
+        }
+      ]
+    },
+    {
+      "id": "media-i52-kopeysk-1961-portrait",
+      "path": "assets/photos/i52-копейськ-1961-аватар.png",
+      "sha256": "0a1083b3a7618240afb4e54c4ad8f1c65c3266315545a194522e8692893ff92f",
+      "dimensions": {
+        "width": 217,
+        "height": 237
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i52-копейськ-1961-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Богдан Іванович — Копейськ 1961",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1961». Вік за підписом власника: 19 років.",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Богдан Іванович — Копейськ 1961.png",
+          "entryId": "media-i52-kopeysk-1961-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i34-kopeysk-1961-portrait",
+      "path": "assets/photos/i34-копейськ-1961-аватар.png",
+      "sha256": "7795bae249c4cc28adc83b58aed22ca318de8b12e0ec259e14f62590e6118c45",
+      "dimensions": {
+        "width": 225,
+        "height": 213
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i34-копейськ-1961-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Іван Ількович — Копейськ 1961",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1961». Вік за підписом власника: 52 роки.",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Іван Ількович — Копейськ 1961.png",
+          "entryId": "media-i34-kopeysk-1961-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i54-kopeysk-1961-portrait",
+      "path": "assets/photos/i54-копейськ-1961-аватар.png",
+      "sha256": "bfd174eee6366ab8498cebf14bee5e6479a1a5dd1f23ea5a870fa2208a9a28fb",
+      "dimensions": {
+        "width": 227,
+        "height": 216
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i54-копейськ-1961-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Михайло Ількович — Копейськ 1961",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1961». Вік за підписом власника: 40 років.",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Михайло Ількович — Копейськ 1961.png",
+          "entryId": "media-i54-kopeysk-1961-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i32-kopeysk-1961-portrait",
+      "path": "assets/photos/i32-копейськ-1961-аватар.png",
+      "sha256": "2dca0da039cf7e766272abb772a8ab99b11c64322b49ab4e1330a01b4515a90e",
+      "dimensions": {
+        "width": 201,
+        "height": 213
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i32-копейськ-1961-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Марія Антонівна — Копейськ 1961",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1961». Вік за підписом власника: 52 роки.",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Марія Антонівна — Копейськ 1961.png",
+          "entryId": "media-i32-kopeysk-1961-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i58-kopeysk-1961-portrait",
+      "path": "assets/photos/i58-копейськ-1961-аватар.png",
+      "sha256": "a4471b2817d965f84da66cc711825494df860090c373f1bf0afd9b13352afea7",
+      "dimensions": {
+        "width": 225,
+        "height": 228
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i58-копейськ-1961-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Марія Степанівна — Копейськ 1961",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1961». Вік за підписом власника: 58 років.",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Марія Степанівна — Копейськ 1961.png",
+          "entryId": "media-i58-kopeysk-1961-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i53-kopeysk-1961-portrait",
+      "path": "assets/photos/i53-копейськ-1961-аватар.png",
+      "sha256": "aa607a397342c4b2b3984746f67b665ceebee40417ccf2c83ccfe981a1fd4414",
+      "dimensions": {
+        "width": 212,
+        "height": 205
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i53-копейськ-1961-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Семен Іванович — Копейськ 1961",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1961». Вік за підписом власника: 7 років.",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Семен Іванович — Копейськ 1961.png",
+          "entryId": "media-i53-kopeysk-1961-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-chabany-kopeysk-1965",
+      "path": "assets/photos/чабани-копейськ-1965.png",
+      "sha256": "bfbe8f73035340bd2d17650b30780c5a0e885dea10de1672cbe8f1cdb7923542",
+      "dimensions": {
+        "width": 1433,
+        "height": 1143
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабани-копейськ-1965.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабани — Копейськ 1965",
+      "description": "1965 Копейськ\nБіля бараку зі сторони квартири Чабанів, вікно кухні\n\nЧабан Михайло Іванович\nЧабан Іван Ількович\n\nЧабан Марія Антонівна\nЧабан Марія Степанівна\nБачинська Антоніна (хрестна мама Семена Івановича Чабана)",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабани — Копейськ 1965.png",
+          "entryId": "media-chabany-kopeysk-1965"
+        }
+      ]
+    },
+    {
+      "id": "media-i104-kopeysk-1965-portrait",
+      "path": "assets/photos/i104-копейськ-1965-аватар.png",
+      "sha256": "dabde0dfc021f8e902a355493662041da23a9e398cf34edf6252f843e3c3025e",
+      "dimensions": {
+        "width": 162,
+        "height": 160
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i104-копейськ-1965-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Михайло Іванович — Копейськ 1965",
+      "description": "Фрагмент групового фото «Чабани — Копейськ 1965».",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Михайло Іванович — Копейськ 1965.png",
+          "entryId": "media-i104-kopeysk-1965-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-chabany-havali-kopeysk-1958",
+      "path": "assets/photos/чабани-гавалі-копейськ-1958.png",
+      "sha256": "14ef9fc9b23dba6b1dc2d5440378e30bae43fba24d744b56bd0db88a6714d247",
+      "dimensions": {
+        "width": 1470,
+        "height": 1070
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабани-гавалі-копейськ-1958.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабани та Гавалі — Копейськ 1958",
+      "description": "1958 Копейськ\nВ гості до Чабанів завіталі Гавалі\n\nГаваль Микола\nЧабан Богдан Іванович\nГаваль Стефанія Ільківна\nКерницький Іван Миколайович\nЧабан Наталія Іванівна\nЧабан Михайло Іванович\nЧабан Іван Ількович та Марія Антонівна\nКерницькі Катерина Федірівна та Микола Йосопович\nЧабан Михайло Іванович\nГаваль Ольга Миколаївна\nЧабан Семен Іванович",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабани та Гавалі — Копейськ 1958.png",
+          "entryId": "media-chabany-havali-kopeysk-1958"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабани та Гавалі — Копейськ 1958 — реставрація.png",
+          "entryId": "media-chabany-havali-kopeysk-1958-restored"
+        }
+      ]
+    },
+    {
+      "id": "media-i176-kopeysk-1958-portrait",
+      "path": "assets/photos/i176-копейськ-1958-аватар.png",
+      "sha256": "921028bbccc3c02defa94a6edb36c268f9755b424d282f38ec93986d698f7d13",
+      "dimensions": {
+        "width": 210,
+        "height": 207
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i176-копейськ-1958-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Гаваль Микола — Копейськ 1958",
+      "description": "Фрагмент групового фото «Чабани та Гавалі — Копейськ 1958».",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Гаваль Микола — Копейськ 1958.png",
+          "entryId": "media-i176-kopeysk-1958-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i55-kopeysk-1958-portrait",
+      "path": "assets/photos/i55-копейськ-1958-аватар.png",
+      "sha256": "e7dfe0ecfa23a9713d242a9a5201ae1c5b9d0466de090edb453189995868e961",
+      "dimensions": {
+        "width": 170,
+        "height": 180
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i55-копейськ-1958-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Гаваль Стефанія Ільківна — Копейськ 1958",
+      "description": "Гаваль Стефанія Ільківна — Чабан Стефанія Іллівна. Фрагмент групового фото «Чабани та Гавалі — Копейськ 1958».",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Гаваль Стефанія Ільківна — Копейськ 1958.png",
+          "entryId": "media-i55-kopeysk-1958-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i28-kopeysk-1958-portrait",
+      "path": "assets/photos/i28-копейськ-1958-аватар.png",
+      "sha256": "65a243268022df4663c07dd34c899baad1296a4c053aace9ba0037bb03cdcc7c",
+      "dimensions": {
+        "width": 200,
+        "height": 207
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i28-копейськ-1958-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Керницький Іван Миколайович — Копейськ 1958",
+      "description": "Фрагмент групового фото «Чабани та Гавалі — Копейськ 1958».",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Керницький Іван Миколайович — Копейськ 1958.png",
+          "entryId": "media-i28-kopeysk-1958-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i31-kopeysk-1958-portrait",
+      "path": "assets/photos/i31-копейськ-1958-аватар.png",
+      "sha256": "6b6d482c354c155d466f8de154370fbfc485fde89f0886885a112543bded42e3",
+      "dimensions": {
+        "width": 177,
+        "height": 167
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i31-копейськ-1958-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Керницька Катерина Федірівна — Копейськ 1958",
+      "description": "Фрагмент групового фото «Чабани та Гавалі — Копейськ 1958».",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Керницька Катерина Федірівна — Копейськ 1958.png",
+          "entryId": "media-i31-kopeysk-1958-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i30-kopeysk-1958-portrait",
+      "path": "assets/photos/i30-копейськ-1958-аватар-покращений.png",
+      "sha256": "8aec64ed3df1192ede79e3fddfe30ba724d02f9f5de3f117a276d2bd1b9250dc",
+      "dimensions": {
+        "width": 1218,
+        "height": 1292
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i30-копейськ-1958-аватар-покращений.png",
+        "mimeType": "image/png"
+      },
+      "title": "Керницький Микола Йосопович — Копейськ 1958",
+      "description": "Покращений портрет, наданий власником. Фрагмент групового фото «Чабани та Гавалі — Копейськ 1958».",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Керницький Микола Йосопович — Копейськ 1958.png",
+          "entryId": "media-i30-kopeysk-1958-portrait"
+        },
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Керницький Микола Йосопович — Копейськ 1958 — покращений портрет.png",
+          "entryId": "media-i30-kopeysk-1958-portrait-improved"
         }
       ]
     }

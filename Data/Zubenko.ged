@@ -8,8 +8,8 @@
 4 CONT USA
 1 DEST PAF
 1 DATE 11 NOV 2026
-2 TIME 00:54:07
-1 FILE ZubenkoNewFormat.reviewed.11.11.26.ged
+2 TIME 22:20:19
+1 FILE ZubenkoNewFormat.reviewed.11.11.26 2.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -315,6 +315,7 @@
 1 _FSFTID PNSY-WL6
 1 _UID D0C236CB864C074FB5E65552F20AA3D975C9
 1 FAMC @F7@
+1 FAMS @F73@
 0 @I25@ INDI
 1 NAME Антон /Чабан/
 2 ROMN Anton /Chaban/
@@ -4441,4 +4442,20 @@
 2 CONT Агафія Фомівна	Дружина Василя	27	1789
 2 CONT Матрона	Дружина Афанасія	18	1798
 2 CONT Ксенія	Дружина Давида	25	1791
+0 @I176@ INDI
+1 NAME Микола /Гаваль/
+2 ROMN Mykola /Haval/
+1 SEX M
+1 BIRT
+2 DATE 1927
+1 DEAT
+2 DATE 1990
+2 PLAC Гребінки, Васильківський район, Київська область, Україна, Радянський Союз
+1 _FSFTID PJHQ-5WZ
+1 _UID 99E9FB4B04BE214D89CF21900F5950A05927
+1 FAMS @F73@
+0 @F73@ FAM
+1 HUSB @I176@
+1 WIFE @I24@
+1 _UID B74721BBB6DC4D4FB804E6E26616EFC3BAD0
 0 TRLR

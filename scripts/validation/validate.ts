@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -99,8 +99,9 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256].includes(report.sha256)) {
-    const november11 = report.sha256 === november11MergeSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256].includes(report.sha256)) {
+    const november11Second = report.sha256 === november11SecondMergeSha256
+    const november11 = report.sha256 === november11MergeSha256 || november11Second
     const november10 = report.sha256 === november10MergeSha256 || november11
     const november9Second = report.sha256 === november9SecondMergeSha256 || november10
     const november9 = report.sha256 === november9MergeSha256 || november9Second
@@ -119,7 +120,8 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = november11
+    const expected = november11Second
+      ? { people: 174, relationships: 278, events: 377, claims: 886, places: 149 } : november11
       ? { people: 173, relationships: 277, events: 375, claims: 881, places: 148 } : november10
       ? { people: 165, relationships: 258, events: 364, claims: 849, places: 143 } : november9Second
       ? { people: 162, relationships: 252, events: 351, claims: 828, places: 142 } : november9

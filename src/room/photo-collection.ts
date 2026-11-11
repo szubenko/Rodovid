@@ -14,10 +14,12 @@ export function photoCollectionCaption(photo: CollectedPhoto) {
     descriptions: photo.descriptions.filter(description => description !== originalTitle),
   }
 
-  const parts = photo.descriptions.map(photoDescriptionParts)
+  const parts = photo.descriptions.map(description => photoDescriptionParts(description, place))
+  const dateInBody = parts.some(({ body }) => photoYear(body) === year)
   const detailedDates = [...new Set(parts.flatMap(({ date }) => date && date !== String(year) ? [date] : []))]
-  const dates = detailedDates.length ? detailedDates : [[place, year].filter(Boolean).join(' ')]
-  const normalizeDate = (text: string) => text.replace(/[,\s]+/g, ' ').trim()
+  const fallbackDate = [place, dateInBody ? null : year].filter(Boolean).join(' ')
+  const dates = detailedDates.length ? detailedDates : [fallbackDate].filter(Boolean)
+  const normalizeDate = (text: string) => text.replace(/[,\s]+/g, ' ').trim().replace(/^(\d{4}) (.+)$/u, '$2 $1')
   const titlePlaceAndDate = originalTitle.match(/\s+[—–]\s+(.+)$/u)
   const title = titlePlaceAndDate && dates.some(date => normalizeDate(date) === normalizeDate(titlePlaceAndDate[1]!))
     ? originalTitle.slice(0, titlePlaceAndDate.index)

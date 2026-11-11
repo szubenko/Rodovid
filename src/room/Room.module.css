@@ -71,6 +71,7 @@
 .photoDescriptionGroup { display: grid; grid-template-columns: 28px minmax(0, 1fr); align-items: start; gap: 18px; }
 .photoDescriptionGroup > svg { width: 28px; height: 28px; margin-top: 4px; color: var(--album-detail); }
 .photoDescriptionGroup > p { min-width: 0; padding-left: 20px; border-left: 1px solid var(--album-rule); }
+.photoDescriptionBody { font-size: clamp(16px, 1.7cqi, 20px); }
 .photoAlbum .photoCounter { color: var(--album-ink); font: 400 16px/1.4 var(--font-heading); margin-top: 14px; }
 .photoAlbum .photoStage:focus-visible { outline-color: var(--album-ink); }
 @media (hover: none), (pointer: coarse) { .room .photoDetails .photoArrow { opacity: 1; } }

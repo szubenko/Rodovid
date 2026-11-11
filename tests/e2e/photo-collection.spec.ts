@@ -14,7 +14,7 @@ test('global gallery opens from a person, includes other people, preserves comme
   const originalComment = `${heading}\nДослівний коментар про ${secondName} та Антоніну Землянську.\nКустанай 1958 рік`
   first.description = `${originalComment}\nНадано власником 30.10.2026.`
   first.dimensions = { width: 420, height: 560 }
-  const second = { ...first, id: 'other-person-photo', path: 'assets/photos/other.jpg', title: 'Старіше фото — Копейськ, 1956', description: 'Коментар іншої людини\nКопейськ 1956' }
+  const second = { ...first, id: 'other-person-photo', path: 'assets/photos/other.jpg', title: 'Старіше фото — Копейськ, 1956', photoPlace: 'Копейськ', description: '1956 Копейськ\nКоментар іншої людини' }
   family.media.push(second)
   family.people[0]!.photoIds = [first.id]
   family.people[1]!.photoIds = [first.id, second.id]
@@ -37,7 +37,8 @@ test('global gallery opens from a person, includes other people, preserves comme
   const cards = page.locator('[data-photo-id]')
   await expect(cards).toHaveCount(2)
   await expect(cards.first()).toHaveAttribute('data-photo-id', second.id)
-  await expect(cards.first().locator('figcaption > *')).toHaveText(['Копейськ 1956', 'Старіше фото', 'Коментар іншої людини'])
+  await expect(cards.first().locator('figcaption > *')).toHaveText(['1956 Копейськ', 'Старіше фото', 'Коментар іншої людини'])
+  await expect(cards.first().getByText('Коментар іншої людини')).toHaveCSS('font-size', '16px')
   await expect(cards.last().locator('figcaption > *')).toHaveText(['Кустанай 1958 рік', heading, `Дослівний коментар про ${secondName} та Антоніну Землянську.`])
   await expect(page.getByText(/Надано власником/)).toHaveCount(0)
   await expect(page.getByLabel('Пов’язані сторінки людей')).toHaveCount(0)

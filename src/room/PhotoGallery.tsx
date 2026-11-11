@@ -40,7 +40,7 @@ export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Med
           {canNavigate && <div className={styles.photoCounter} role="status" aria-live="polite" aria-atomic="true" aria-label={`Фото ${selectedIndex + 1} з ${items.length}`}>{selectedIndex + 1} / {items.length}</div>}
         </div>
         : item.dimensions ? <button aria-label={`Відкрити: ${item.title}`} onClick={() => setOpened(viewable.findIndex(m => m.id === item.id))}><Thumbnail item={item} /></button> : <Thumbnail item={item} />}
-      {layout === 'details' && <PhotoDescription text={item.description || item.title} />}
+      {layout === 'details' && <PhotoDescription text={item.description || item.title} place={item.photoPlace} />}
       {showCaptions && <>
         <figcaption>{item.id === primaryId && <strong>Основне фото · </strong>}{item.title}{item.description && <p>{item.description}</p>}</figcaption>
         <a href={`/${item.path}`} target="_blank" rel="noopener noreferrer">Відкрити файл: {item.title}</a>

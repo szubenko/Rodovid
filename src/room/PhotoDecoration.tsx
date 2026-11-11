@@ -9,10 +9,10 @@ export function AlbumIcon({ kind }: { kind: 'camera' | 'people' | 'calendar' }) 
   </svg>
 }
 
-export function PhotoDescription({ text }: { text: string }) {
-  const { body, date } = photoDescriptionParts(text)
+export function PhotoDescription({ text, place }: { text: string; place?: string }) {
+  const { body, date } = photoDescriptionParts(text, place)
   return <figcaption className={styles.photoCaption}>
     {date && <><div className={styles.photoDescriptionGroup} data-photo-date><AlbumIcon kind="calendar" /><p>{date}</p></div>{'\n'}</>}
-    <div className={styles.photoDescriptionGroup}><AlbumIcon kind="people" /><p>{body}</p></div>
+    {body && <div className={styles.photoDescriptionGroup}><AlbumIcon kind="people" /><p className={styles.photoDescriptionBody}>{body}</p></div>}
   </figcaption>
 }

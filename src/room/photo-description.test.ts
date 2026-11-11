@@ -10,16 +10,21 @@ describe('photo description dates', () => {
   })
 
   it('preserves the actual photo date when a delivery date is also present', () => {
-    expect(photoDescriptionParts('Кустанай 1958 рік. Надано власником 30.10.2026.')).toEqual({ body: 'Кустанай 1958 рік.', date: '1958' })
+    expect(photoDescriptionParts('Кустанай 1958 рік. Надано власником 30.10.2026.')).toEqual({ body: 'Кустанай 1958 рік.', date: null })
   })
-  it('shows the 1956 year from the first line without rewriting the description', () => {
+  it('leaves a year embedded in the first line without adding a second date', () => {
     const text = 'Керницький Василь Миколайович 1956 Копейськ\nпісля Себірської каторги\nповернувся хворий, незадовго помер'
-    expect(photoDescriptionParts(text)).toEqual({ body: text, date: '1956' })
+    expect(photoDescriptionParts(text)).toEqual({ body: text, date: null })
   })
 
-  it('recognizes a year in a single-line description', () => {
+  it('preserves a year embedded in a single-line description', () => {
     const text = 'Керницький Василь Миколайович 1956 Копейськ після Себірської каторги повернувся хворий, незадовго помер'
-    expect(photoDescriptionParts(text)).toEqual({ body: text, date: '1956' })
+    expect(photoDescriptionParts(text)).toEqual({ body: text, date: null })
+  })
+
+  it('moves a leading year and known place to the calendar without duplicating them', () => {
+    const body = 'В гості до Чабанів завіталі Гавалі\n\nГаваль Микола'
+    expect(photoDescriptionParts(`1958 Копейськ\n${body}`, 'Копейськ')).toEqual({ body, date: '1958 Копейськ' })
   })
 
   it('keeps an existing separate place and date line intact', () => {

@@ -8,16 +8,20 @@ export function photoYear(text: string): number | null {
   return years.length === 1 ? Number(years[0]) : null
 }
 
-export function photoDescriptionParts(text: string): { body: string; date: string | null } {
+export function photoDescriptionParts(text: string, place?: string): { body: string; date: string | null } {
   const description = photoDisplayDescription(text)
   const parsedYear = photoYear(description)
   if (parsedYear === null) return { body: description, date: null }
   const year = String(parsedYear)
   const lines = description.split('\n')
+  const firstLine = lines[0] ?? ''
+  const firstLineDate = firstLine.replace(/[,\s]+/g, ' ')
+  if (firstLineDate === year || (place && [`${year} ${place}`, `${place} ${year}`].includes(firstLineDate))) {
+    return { body: lines.slice(1).join('\n').trimStart(), date: firstLine }
+  }
   const lastLine = lines.at(-1) ?? ''
-  if (lines.length > 1 && lastLine.includes(year)) {
+  if (lines.length > 1 && photoYear(lastLine) === parsedYear && photoYear(lines.slice(0, -1).join('\n')) === null) {
     return { body: lines.slice(0, -1).join('\n'), date: lastLine }
   }
-  // An embedded year stays in the original description as well as the summary.
-  return { body: description, date: year }
+  return { body: description, date: null }
 }

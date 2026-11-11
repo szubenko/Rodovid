@@ -7,8 +7,9 @@ test('photo carousel switches by buttons, image and keyboard without a popup', a
   family.datasetKind = 'family'
   const photo = family.media.find(m => m.id === 'media-photo')!
   photo.title = 'Нове тестове фото 1958'
-  photo.description = `${photo.title}\nСтара Ропа 1958`
-  const photoCaption = `Стара Ропа 1958\n${photo.title}`
+  photo.photoPlace = 'Стара Ропа'
+  const photoCaption = '1958 Стара Ропа\nНове тестове фото'
+  photo.description = photoCaption
   photo.dimensions = { width: 2400, height: 1600 }
   photo.thumbnail = { path: 'assets/thumbs/first.png', mimeType: 'image/png' }
   const second = { ...photo, id: 'second-photo', path: 'assets/photos/second.png', mimeType: 'image/png' as const, title: 'Старе тестове фото 1956', description: 'Оригінальний опис фотографії.\nМісце та рік з імпорту.', thumbnail: { path: 'assets/thumbs/second.png', mimeType: 'image/png' as const } }
@@ -49,7 +50,12 @@ test('photo carousel switches by buttons, image and keyboard without a popup', a
   await expect(gallery.getByRole('status')).toHaveText('1 / 2')
   await gallery.getByRole('button', { name: 'Наступна фотографія', exact: true }).click()
   await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
+  await expect(gallery.locator('[data-photo-date]')).toHaveText('1958 Стара Ропа')
   await expect(gallery.locator('figcaption')).toHaveText(photoCaption)
+  const description = gallery.getByText('Нове тестове фото', { exact: true })
+  const descriptionSize = await description.evaluate(element => parseFloat(getComputedStyle(element).fontSize))
+  expect(descriptionSize).toBeGreaterThanOrEqual(16)
+  expect(descriptionSize).toBeLessThanOrEqual(20)
   await expect(gallery.getByRole('status')).toHaveText('2 / 2')
   await gallery.getByRole('button', { name: 'Наступна фотографія', exact: true }).click()
   await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)

@@ -1,0 +1,3381 @@
+{
+  "mergedRecords": [
+    {
+      "from": "@F70@",
+      "into": "@F44@",
+      "reason": "Same parents and children in the export"
+    },
+    {
+      "from": "@F71@",
+      "into": "@F47@",
+      "reason": "Same father and children; new record adds wife"
+    },
+    {
+      "from": "@F72@",
+      "into": "@F48@",
+      "reason": "Same father and children; new record adds wife"
+    }
+  ],
+  "reusedScans": [],
+  "date": "2026-11-11",
+  "source": "E:/RodovidZubenko/Magic/ZubenkoNewFormat.reviewed.11.11.26.ged",
+  "sourceSha256": "484ad5e13ba6cd1c239802e1792539954885df0fe0378c4a1ff2886b3d41ba54",
+  "previousOriginalSha256": "aaf717056d94d459070e75f5ec0926470d51160d6d1a2ada04bad802e26ad69b",
+  "previousSha256": "68331cfc3797df6b2e11925e79f51b72fc9043e75022be2550d9141a9728d97b",
+  "sha256": "44f0a7679a0ecbb69514d13030f3ae148e608369168bf2cdc454b4e8dc5142a6",
+  "backup": "E:\\PETprojects\\Rodovid\\tmp\\import-2026-11-11\\before",
+  "incomingCounts": {
+    "people": 175,
+    "families": 72,
+    "events": 318,
+    "births": 139,
+    "deaths": 156,
+    "marriages": 23,
+    "familySearchIds": 171,
+    "childLinks": 150,
+    "eventDefinitions": 0,
+    "sourceRecords": 121,
+    "sourceCitations": 271,
+    "mediaRecords": 0
+  },
+  "beforeCounts": {
+    "people": 165,
+    "families": 61,
+    "childLinks": 124,
+    "relationships": 258,
+    "events": 364,
+    "claims": 852,
+    "places": 143,
+    "sources": 121,
+    "media": 128,
+    "evidenceLinks": 319,
+    "memories": 1
+  },
+  "counts": {
+    "people": 173,
+    "families": 63,
+    "childLinks": 129,
+    "relationships": 277,
+    "events": 375,
+    "claims": 884,
+    "places": 148,
+    "sources": 123,
+    "media": 128,
+    "evidenceLinks": 365,
+    "memories": 1
+  },
+  "personMap": {
+    "@I1@": "@I1@",
+    "@I2@": "@I2@",
+    "@I3@": "@I3@",
+    "@I4@": "@I4@",
+    "@I5@": "@I5@",
+    "@I6@": "@I6@",
+    "@I7@": "@I7@",
+    "@I8@": "@I8@",
+    "@I9@": "@I9@",
+    "@I10@": "@I10@",
+    "@I11@": "@I11@",
+    "@I12@": "@I12@",
+    "@I13@": "@I13@",
+    "@I14@": "@I14@",
+    "@I15@": "@I15@",
+    "@I16@": "@I16@",
+    "@I17@": "@I17@",
+    "@I18@": "@I18@",
+    "@I19@": "@I19@",
+    "@I20@": "@I20@",
+    "@I21@": "@I21@",
+    "@I22@": "@I22@",
+    "@I23@": "@I23@",
+    "@I24@": "@I24@",
+    "@I25@": "@I25@",
+    "@I26@": "@I26@",
+    "@I27@": "@I50@",
+    "@I28@": "@I51@",
+    "@I29@": "@I52@",
+    "@I30@": "@I60@",
+    "@I31@": "@I61@",
+    "@I32@": "@I75@",
+    "@I33@": "@I76@",
+    "@I34@": "@I62@",
+    "@I35@": "@I63@",
+    "@I36@": "@I64@",
+    "@I37@": "@I67@",
+    "@I38@": "@I68@",
+    "@I39@": "@I39@",
+    "@I40@": "@I69@",
+    "@I41@": "@I77@",
+    "@I42@": "@I78@",
+    "@I43@": "@I79@",
+    "@I44@": "@I80@",
+    "@I45@": "@I81@",
+    "@I46@": "@I82@",
+    "@I47@": "@I83@",
+    "@I48@": "@I44@",
+    "@I49@": "@I70@",
+    "@I50@": "@I45@",
+    "@I51@": "@I71@",
+    "@I52@": "@I38@",
+    "@I53@": "@I53@",
+    "@I54@": "@I54@",
+    "@I55@": "@I55@",
+    "@I56@": "@I56@",
+    "@I57@": "@I57@",
+    "@I58@": "@I58@",
+    "@I59@": "@I59@",
+    "@I60@": "@I66@",
+    "@I61@": "@I48@",
+    "@I62@": "@I47@",
+    "@I63@": "@I46@",
+    "@I64@": "@I49@",
+    "@I65@": "@I72@",
+    "@I66@": "@I40@",
+    "@I67@": "@I41@",
+    "@I68@": "@I42@",
+    "@I69@": "@I27@",
+    "@I70@": "@I28@",
+    "@I71@": "@I29@",
+    "@I72@": "@I30@",
+    "@I73@": "@I31@",
+    "@I74@": "@I32@",
+    "@I75@": "@I33@",
+    "@I76@": "@I34@",
+    "@I77@": "@I35@",
+    "@I78@": "@I36@",
+    "@I79@": "@I37@",
+    "@I80@": "@I84@",
+    "@I81@": "@I85@",
+    "@I82@": "@I43@",
+    "@I83@": "@I88@",
+    "@I84@": "@I89@",
+    "@I85@": "@I90@",
+    "@I86@": "@I91@",
+    "@I87@": "@I92@",
+    "@I88@": "@I93@",
+    "@I89@": "@I94@",
+    "@I90@": "@I95@",
+    "@I91@": "@I96@",
+    "@I92@": "@I93@",
+    "@I93@": "@I97@",
+    "@I94@": "@I98@",
+    "@I95@": "@I99@",
+    "@I96@": "@I100@",
+    "@I97@": "@I101@",
+    "@I98@": "@I102@",
+    "@I99@": "@I103@",
+    "@I100@": "@I104@",
+    "@I101@": "@I105@",
+    "@I102@": "@I106@",
+    "@I103@": "@I107@",
+    "@I104@": "@I108@",
+    "@I105@": "@I109@",
+    "@I106@": "@I110@",
+    "@I107@": "@I111@",
+    "@I108@": "@I112@",
+    "@I109@": "@I113@",
+    "@I110@": "@I114@",
+    "@I111@": "@I115@",
+    "@I112@": "@I116@",
+    "@I113@": "@I117@",
+    "@I114@": "@I118@",
+    "@I115@": "@I119@",
+    "@I116@": "@I120@",
+    "@I117@": "@I121@",
+    "@I118@": "@I122@",
+    "@I119@": "@I123@",
+    "@I120@": "@I124@",
+    "@I121@": "@I125@",
+    "@I122@": "@I126@",
+    "@I123@": "@I127@",
+    "@I124@": "@I128@",
+    "@I125@": "@I129@",
+    "@I126@": "@I130@",
+    "@I127@": "@I131@",
+    "@I128@": "@I132@",
+    "@I129@": "@I133@",
+    "@I130@": "@I134@",
+    "@I131@": "@I135@",
+    "@I132@": "@I136@",
+    "@I133@": "@I137@",
+    "@I134@": "@I138@",
+    "@I135@": "@I139@",
+    "@I136@": "@I140@",
+    "@I137@": "@I141@",
+    "@I138@": "@I142@",
+    "@I139@": "@I143@",
+    "@I140@": "@I144@",
+    "@I141@": "@I145@",
+    "@I142@": "@I119@",
+    "@I143@": "@I146@",
+    "@I144@": "@I147@",
+    "@I145@": "@I148@",
+    "@I146@": "@I149@",
+    "@I147@": "@I150@",
+    "@I148@": "@I151@",
+    "@I149@": "@I152@",
+    "@I151@": "@I153@",
+    "@I152@": "@I154@",
+    "@I153@": "@I155@",
+    "@I150@": "@I146@",
+    "@I154@": "@I156@",
+    "@I155@": "@I157@",
+    "@I156@": "@I158@",
+    "@I157@": "@I159@",
+    "@I159@": "@I160@",
+    "@I158@": "@I159@",
+    "@I160@": "@I161@",
+    "@I161@": "@I162@",
+    "@I162@": "@I163@",
+    "@I163@": "@I164@",
+    "@I164@": "@I165@",
+    "@I165@": "@I166@",
+    "@I166@": "@I167@",
+    "@I167@": "@I167@",
+    "@I168@": "@I168@",
+    "@I169@": "@I169@",
+    "@I170@": "@I170@",
+    "@I171@": "@I171@",
+    "@I172@": "@I172@",
+    "@I173@": "@I173@",
+    "@I174@": "@I174@",
+    "@I175@": "@I175@"
+  },
+  "familyMap": {
+    "@F1@": "@F1@",
+    "@F2@": "@F2@",
+    "@F3@": "@F3@",
+    "@F4@": "@F4@",
+    "@F5@": "@F5@",
+    "@F6@": "@F6@",
+    "@F7@": "@F7@",
+    "@F8@": "@F8@",
+    "@F9@": "@F18@",
+    "@F10@": "@F21@",
+    "@F11@": "@F23@",
+    "@F12@": "@F24@",
+    "@F13@": "@F25@",
+    "@F14@": "@F29@",
+    "@F15@": "@F30@",
+    "@F16@": "@F26@",
+    "@F17@": "@F27@",
+    "@F18@": "@F19@",
+    "@F19@": "@F20@",
+    "@F20@": "@F22@",
+    "@F21@": "@F17@",
+    "@F22@": "@F28@",
+    "@F23@": "@F15@",
+    "@F24@": "@F9@",
+    "@F25@": "@F10@",
+    "@F26@": "@F11@",
+    "@F27@": "@F12@",
+    "@F28@": "@F13@",
+    "@F29@": "@F14@",
+    "@F30@": "@F31@",
+    "@F31@": "@F33@",
+    "@F32@": "@F34@",
+    "@F33@": "@F35@",
+    "@F34@": "@F23@",
+    "@F35@": "@F36@",
+    "@F36@": "@F37@",
+    "@F37@": "@F38@",
+    "@F38@": "@F39@",
+    "@F39@": "@F40@",
+    "@F40@": "@F41@",
+    "@F41@": "@F16@",
+    "@F42@": "@F42@",
+    "@F43@": "@F43@",
+    "@F44@": "@F44@",
+    "@F45@": "@F45@",
+    "@F47@": "@F47@",
+    "@F48@": "@F48@",
+    "@F49@": "@F49@",
+    "@F50@": "@F50@",
+    "@F51@": "@F51@",
+    "@F52@": "@F52@",
+    "@F53@": "@F53@",
+    "@F54@": "@F54@",
+    "@F46@": "@F30@",
+    "@F55@": "@F54@",
+    "@F57@": "@F57@",
+    "@F58@": "@F58@",
+    "@F59@": "@F59@",
+    "@F61@": "@F61@",
+    "@F56@": "@F34@",
+    "@F60@": "@F59@",
+    "@F62@": "@F62@",
+    "@F64@": "@F64@",
+    "@F63@": "@F29@",
+    "@F65@": "@F65@",
+    "@F66@": "@F66@",
+    "@F67@": "@F62@",
+    "@F68@": "@F68@",
+    "@F69@": "@F69@",
+    "@F70@": "@F44@",
+    "@F71@": "@F47@",
+    "@F72@": "@F48@"
+  },
+  "newPeople": [
+    {
+      "incoming": "@I168@",
+      "recordId": "@I168@",
+      "name": "Парфен /Заприса/",
+      "familySearchIds": [
+        "PJ44-PGG"
+      ],
+      "uids": [
+        "FC438668EC9F0344A20FC6C2639F07327340"
+      ]
+    },
+    {
+      "incoming": "@I169@",
+      "recordId": "@I169@",
+      "name": "Агафія /Заприса/",
+      "familySearchIds": [
+        "PJ44-LNB"
+      ],
+      "uids": [
+        "9540B265B4101B49954B816D9346A1FE5AE6"
+      ]
+    },
+    {
+      "incoming": "@I170@",
+      "recordId": "@I170@",
+      "name": "Григорій /Заприса/",
+      "familySearchIds": [
+        "PJ4H-8P1"
+      ],
+      "uids": [
+        "D4DA7C8CE417344299562B0C5D7327FC4068"
+      ]
+    },
+    {
+      "incoming": "@I171@",
+      "recordId": "@I171@",
+      "name": "Сава /Довгуля/",
+      "familySearchIds": [
+        "PJ48-JPP"
+      ],
+      "uids": [
+        "BD984D36937B4D43A49782E104DE1EA4B872"
+      ]
+    },
+    {
+      "incoming": "@I172@",
+      "recordId": "@I172@",
+      "name": "Васса //",
+      "familySearchIds": [
+        "PJ4Z-Q15"
+      ],
+      "uids": [
+        "756B379FF40D7343BA5454DE53B83215FFD9"
+      ]
+    },
+    {
+      "incoming": "@I173@",
+      "recordId": "@I173@",
+      "name": "Кузьма Степанович /Довгуля/",
+      "familySearchIds": [
+        "PJ48-TQY"
+      ],
+      "uids": [
+        "E3ACD25CF693724D9B9DEC9A51E2B9701FE7"
+      ]
+    },
+    {
+      "incoming": "@I174@",
+      "recordId": "@I174@",
+      "name": "Матрона //",
+      "familySearchIds": [
+        "PJ48-4T4"
+      ],
+      "uids": [
+        "0B6F5DFEF61DE549B60D4D4FB9F39AF1ACBD"
+      ]
+    },
+    {
+      "incoming": "@I175@",
+      "recordId": "@I175@",
+      "name": "Ксенія //",
+      "familySearchIds": [
+        "PJ4Z-DGG"
+      ],
+      "uids": [
+        "30E678DE9E00BD408484D203F50098DB4CF0"
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "record": "@I107@",
+      "path": "EVEN.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I107@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I108@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I109@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I109@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I109@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I110@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I110@",
+      "path": "EVEN.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I110@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I111@",
+      "path": "BIRT",
+      "node": {
+        "tag": "BIRT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "1757",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I111@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F69@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I111@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I112@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I112@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I112@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I112@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I113@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I113@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I113@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S121@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I113@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I121@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I121@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I122@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I122@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I123@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I123@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I126@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I126@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I127@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I127@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I128@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I128@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I129@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I129@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I130@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I130@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I140@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I140@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S92@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I156@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S120@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I156@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S120@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I164@",
+      "path": "BIRT",
+      "node": {
+        "tag": "BIRT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "1754",
+            "children": []
+          },
+          {
+            "tag": "PLAC",
+            "pointer": null,
+            "value": "Чапліївка, Гетьманщина",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I164@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F68@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I164@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S120@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I165@",
+      "path": "BIRT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Чапліївка, Гетьманщина",
+        "children": []
+      }
+    },
+    {
+      "record": "@I165@",
+      "path": "BIRT.SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S120@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I165@",
+      "path": "SOUR",
+      "node": {
+        "tag": "SOUR",
+        "pointer": null,
+        "value": "@S120@",
+        "children": [
+          {
+            "tag": "NOTE",
+            "pointer": null,
+            "value": "Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N\nМетадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@F44@",
+      "path": "WIFE",
+      "node": {
+        "tag": "WIFE",
+        "pointer": null,
+        "value": "@I172@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F44@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I173@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F66@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I168@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F66@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I169@",
+        "children": []
+      }
+    }
+  ],
+  "normalizations": [
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I107@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F44@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I112@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F44@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I113@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F44@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I121@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F47@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I122@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F47@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I123@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F47@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I124@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F48@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "record": "@I125@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F48@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "record": "@I160@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F14@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "record": "@I161@",
+      "tag": "FAMC._PRIMARY",
+      "family": "@F14@",
+      "handling": "both parent family links map to the same family"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "record": "@S120@",
+      "tag": "_TYPE",
+      "value": "Unspecified",
+      "handling": "exporter placeholder retained in original"
+    },
+    {
+      "record": "@S121@",
+      "tag": "_TYPE",
+      "value": "Unspecified",
+      "handling": "exporter placeholder retained in original"
+    }
+  ],
+  "reused": [
+    {
+      "record": "@I107@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F44@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I111@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F44@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I112@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F47@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I112@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F44@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I113@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F48@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I113@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F44@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I121@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F47@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I122@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F47@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I123@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F47@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I124@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F48@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I125@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F48@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I160@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F29@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I161@",
+      "path": "FAMC",
+      "node": {
+        "tag": "FAMC",
+        "pointer": null,
+        "value": "@F29@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F63@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I161@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F63@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I162@",
+        "children": []
+      }
+    }
+  ],
+  "changes": [
+    {
+      "incoming": "@I107@",
+      "record": "@I111@",
+      "path": "DEAT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I109@",
+      "record": "@I113@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I109@",
+      "path": "DEAT",
+      "previous": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "DECEASED",
+            "children": []
+          }
+        ]
+      },
+      "handling": "Removed in 11 November export"
+    },
+    {
+      "incoming": "@I110@",
+      "record": "@I114@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I110@",
+      "path": "DEAT",
+      "previous": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "DECEASED",
+            "children": []
+          }
+        ]
+      },
+      "handling": "Removed in 11 November export"
+    },
+    {
+      "incoming": "@I111@",
+      "record": "@I115@",
+      "path": "NAME.ROMN",
+      "previous": "Stepan /Dovhul/",
+      "incomingValue": "Stepan Savyn /Dovhul/",
+      "chosen": "Stepan Savyn /Dovhul/",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I111@",
+      "record": "@I115@",
+      "path": "NAME",
+      "previous": "Степан /Довгуль/",
+      "incomingValue": "Степан Савин /Довгуль/",
+      "chosen": "Степан Савин /Довгуль/",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I112@",
+      "record": "@I116@",
+      "path": "DEAT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I113@",
+      "record": "@I117@",
+      "path": "DEAT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I121@",
+      "record": "@I125@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I122@",
+      "record": "@I126@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I123@",
+      "record": "@I127@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I127@",
+      "record": "@I131@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I127@",
+      "path": "DEAT",
+      "previous": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "DECEASED",
+            "children": []
+          }
+        ]
+      },
+      "handling": "Removed in 11 November export"
+    },
+    {
+      "incoming": "@I128@",
+      "record": "@I132@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I128@",
+      "path": "DEAT",
+      "previous": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "DECEASED",
+            "children": []
+          }
+        ]
+      },
+      "handling": "Removed in 11 November export"
+    },
+    {
+      "incoming": "@I129@",
+      "record": "@I133@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I129@",
+      "path": "DEAT",
+      "previous": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "DECEASED",
+            "children": []
+          }
+        ]
+      },
+      "handling": "Removed in 11 November export"
+    },
+    {
+      "incoming": "@I130@",
+      "record": "@I134@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I140@",
+      "record": "@I144@",
+      "path": "BIRT.PLAC",
+      "previous": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+      "incomingValue": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "chosen": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I156@",
+      "record": "@I158@",
+      "path": "BIRT.DATE",
+      "previous": "1786",
+      "incomingValue": "1785",
+      "chosen": "1785",
+      "reason": "Owner-reviewed 11 November export update."
+    },
+    {
+      "incoming": "@I165@",
+      "record": "@I166@",
+      "path": "BIRT.DATE",
+      "previous": "1764",
+      "incomingValue": "From 1760 to 1764",
+      "chosen": "From 1760 to 1764",
+      "reason": "Owner-reviewed 11 November export update."
+    }
+  ],
+  "permittedChanges": [
+    {
+      "collection": "people",
+      "id": "I113",
+      "before": {
+        "id": "I113",
+        "lifeStatus": "deceased",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJ71-6WZ"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "98DBBC8007409148BBD3EE526635A37C5727"
+          }
+        ],
+        "photoIds": []
+      },
+      "after": {
+        "id": "I113",
+        "lifeStatus": "unknown",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJ71-6WZ"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "98DBBC8007409148BBD3EE526635A37C5727"
+          }
+        ],
+        "photoIds": []
+      }
+    },
+    {
+      "collection": "people",
+      "id": "I114",
+      "before": {
+        "id": "I114",
+        "lifeStatus": "deceased",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJWM-7WR"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "F067AF97E517E74E98CAC62699952CC238A8"
+          }
+        ],
+        "photoIds": []
+      },
+      "after": {
+        "id": "I114",
+        "lifeStatus": "unknown",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJWM-7WR"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "F067AF97E517E74E98CAC62699952CC238A8"
+          }
+        ],
+        "photoIds": []
+      }
+    },
+    {
+      "collection": "people",
+      "id": "I131",
+      "before": {
+        "id": "I131",
+        "lifeStatus": "deceased",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJWM-7PL"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "6E7DCA9F95ABFE4FAB49022D7D8A00E1EC11"
+          }
+        ],
+        "photoIds": []
+      },
+      "after": {
+        "id": "I131",
+        "lifeStatus": "unknown",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJWM-7PL"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "6E7DCA9F95ABFE4FAB49022D7D8A00E1EC11"
+          }
+        ],
+        "photoIds": []
+      }
+    },
+    {
+      "collection": "people",
+      "id": "I132",
+      "before": {
+        "id": "I132",
+        "lifeStatus": "deceased",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJ71-BW6"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "7949785970A90E4683C2CB2B52DA1CEE716C"
+          }
+        ],
+        "photoIds": []
+      },
+      "after": {
+        "id": "I132",
+        "lifeStatus": "unknown",
+        "sex": "M",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJ71-BW6"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "7949785970A90E4683C2CB2B52DA1CEE716C"
+          }
+        ],
+        "photoIds": []
+      }
+    },
+    {
+      "collection": "people",
+      "id": "I133",
+      "before": {
+        "id": "I133",
+        "lifeStatus": "deceased",
+        "sex": "F",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJ71-1WH"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "BC801F78C111254A841936845DE62FC4A1CC"
+          }
+        ],
+        "photoIds": []
+      },
+      "after": {
+        "id": "I133",
+        "lifeStatus": "unknown",
+        "sex": "F",
+        "externalIds": [
+          {
+            "system": "FamilySearch",
+            "value": "PJ71-1WH"
+          },
+          {
+            "system": "AncestQuest-UID",
+            "value": "BC801F78C111254A841936845DE62FC4A1CC"
+          }
+        ],
+        "photoIds": []
+      }
+    },
+    {
+      "collection": "events",
+      "id": "event-a5cfca0fe51a732159637152",
+      "before": {
+        "id": "event-a5cfca0fe51a732159637152",
+        "kind": "death",
+        "participants": [
+          {
+            "personId": "I113",
+            "role": "subject"
+          }
+        ],
+        "relationshipIds": [],
+        "mediaIds": []
+      },
+      "after": null
+    },
+    {
+      "collection": "events",
+      "id": "event-66a3787dbb1865238684d2c4",
+      "before": {
+        "id": "event-66a3787dbb1865238684d2c4",
+        "kind": "death",
+        "participants": [
+          {
+            "personId": "I114",
+            "role": "subject"
+          }
+        ],
+        "relationshipIds": [],
+        "mediaIds": []
+      },
+      "after": null
+    },
+    {
+      "collection": "events",
+      "id": "event-77f756159f70fd05c1bd71d6",
+      "before": {
+        "id": "event-77f756159f70fd05c1bd71d6",
+        "kind": "death",
+        "participants": [
+          {
+            "personId": "I131",
+            "role": "subject"
+          }
+        ],
+        "relationshipIds": [],
+        "mediaIds": []
+      },
+      "after": null
+    },
+    {
+      "collection": "events",
+      "id": "event-61132d6eeb69fa9994c3d742",
+      "before": {
+        "id": "event-61132d6eeb69fa9994c3d742",
+        "kind": "death",
+        "participants": [
+          {
+            "personId": "I132",
+            "role": "subject"
+          }
+        ],
+        "relationshipIds": [],
+        "mediaIds": []
+      },
+      "after": null
+    },
+    {
+      "collection": "events",
+      "id": "event-8b69df3c58be26b45855beab",
+      "before": {
+        "id": "event-8b69df3c58be26b45855beab",
+        "kind": "death",
+        "participants": [
+          {
+            "personId": "I133",
+            "role": "subject"
+          }
+        ],
+        "relationshipIds": [],
+        "mediaIds": []
+      },
+      "after": null
+    },
+    {
+      "collection": "claims",
+      "id": "claim-979c8c22a99bb569442106f5",
+      "before": {
+        "id": "claim-979c8c22a99bb569442106f5",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I115"
+        },
+        "value": {
+          "raw": "Степан /Довгуль/",
+          "display": "Степан Довгуль",
+          "given": "Степан",
+          "surname": "Довгуль"
+        }
+      },
+      "after": {
+        "id": "claim-979c8c22a99bb569442106f5",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I115"
+        },
+        "value": {
+          "raw": "Степан Савин /Довгуль/",
+          "display": "Степан Савин Довгуль",
+          "given": "Степан Савин",
+          "surname": "Довгуль"
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-7f7819d75df5e75eb1c84f54",
+      "before": {
+        "id": "claim-7f7819d75df5e75eb1c84f54",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I115"
+        },
+        "value": {
+          "raw": "Stepan /Dovhul/",
+          "display": "Stepan Dovhul",
+          "given": "Stepan",
+          "surname": "Dovhul"
+        }
+      },
+      "after": {
+        "id": "claim-7f7819d75df5e75eb1c84f54",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "explanation": "Латинський варіант із GEDCOM ROMN; написання не перевірено.",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I115"
+        },
+        "value": {
+          "raw": "Stepan Savyn /Dovhul/",
+          "display": "Stepan Savyn Dovhul",
+          "given": "Stepan Savyn",
+          "surname": "Dovhul"
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-26e098ba41f6dbadc903d3f5",
+      "before": {
+        "id": "claim-26e098ba41f6dbadc903d3f5",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "description",
+        "target": {
+          "kind": "event",
+          "id": "event-a5cfca0fe51a732159637152"
+        },
+        "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+      },
+      "after": null
+    },
+    {
+      "collection": "claims",
+      "id": "claim-e72a227e5cfb0684b94a1f21",
+      "before": {
+        "id": "claim-e72a227e5cfb0684b94a1f21",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "description",
+        "target": {
+          "kind": "event",
+          "id": "event-66a3787dbb1865238684d2c4"
+        },
+        "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+      },
+      "after": null
+    },
+    {
+      "collection": "claims",
+      "id": "claim-a0e3dd9036f61eab677bfb6c",
+      "before": {
+        "id": "claim-a0e3dd9036f61eab677bfb6c",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "description",
+        "target": {
+          "kind": "event",
+          "id": "event-77f756159f70fd05c1bd71d6"
+        },
+        "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+      },
+      "after": null
+    },
+    {
+      "collection": "claims",
+      "id": "claim-18f760375331ea978e418bf9",
+      "before": {
+        "id": "claim-18f760375331ea978e418bf9",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "description",
+        "target": {
+          "kind": "event",
+          "id": "event-61132d6eeb69fa9994c3d742"
+        },
+        "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+      },
+      "after": null
+    },
+    {
+      "collection": "claims",
+      "id": "claim-6e6c593f4fb52621a9a6ff70",
+      "before": {
+        "id": "claim-6e6c593f4fb52621a9a6ff70",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "description",
+        "target": {
+          "kind": "event",
+          "id": "event-8b69df3c58be26b45855beab"
+        },
+        "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+      },
+      "after": null
+    },
+    {
+      "collection": "claims",
+      "id": "claim-ae616f0bb94f9cb8062d9f63",
+      "before": {
+        "id": "claim-ae616f0bb94f9cb8062d9f63",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-064a54b8da0986dd728cab0b"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1786",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1786
+          }
+        }
+      },
+      "after": {
+        "id": "claim-ae616f0bb94f9cb8062d9f63",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-064a54b8da0986dd728cab0b"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1785",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1785
+          }
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-2cd9443e9646d80c2de51660",
+      "before": {
+        "id": "claim-2cd9443e9646d80c2de51660",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-38ee89f31dbe9b7b3ab40671"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1764",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1764
+          }
+        }
+      },
+      "after": {
+        "id": "claim-2cd9443e9646d80c2de51660",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-38ee89f31dbe9b7b3ab40671"
+        },
+        "value": {
+          "kind": "phrase",
+          "raw": "From 1760 to 1764",
+          "calendar": "unspecified"
+        }
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-ab1154dfbecd52987debc980",
+      "before": {
+        "id": "place-ab1154dfbecd52987debc980",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-ab1154dfbecd52987debc980",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-63479de967aca0a76ddd7dec",
+      "before": {
+        "id": "place-63479de967aca0a76ddd7dec",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-63479de967aca0a76ddd7dec",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-f7eb4b18e847ad71a48d2806",
+      "before": {
+        "id": "place-f7eb4b18e847ad71a48d2806",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-f7eb4b18e847ad71a48d2806",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-a5b8f4fd97b965a829f657d1",
+      "before": {
+        "id": "place-a5b8f4fd97b965a829f657d1",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-a5b8f4fd97b965a829f657d1",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-bb9c000572cc6684fb7f8a72",
+      "before": {
+        "id": "place-bb9c000572cc6684fb7f8a72",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-bb9c000572cc6684fb7f8a72",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-00344e252609b1035c3e54f8",
+      "before": {
+        "id": "place-00344e252609b1035c3e54f8",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-00344e252609b1035c3e54f8",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-d25b321ae52aebbf00730bfa",
+      "before": {
+        "id": "place-d25b321ae52aebbf00730bfa",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-d25b321ae52aebbf00730bfa",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-77b960982ddbaacee735829d",
+      "before": {
+        "id": "place-77b960982ddbaacee735829d",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-77b960982ddbaacee735829d",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-f77f7f1a3387f07f9f4d89fd",
+      "before": {
+        "id": "place-f77f7f1a3387f07f9f4d89fd",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-f77f7f1a3387f07f9f4d89fd",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-8d217b66278d651b3d545a10",
+      "before": {
+        "id": "place-8d217b66278d651b3d545a10",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-8d217b66278d651b3d545a10",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-03235cc313d38e2488732e00",
+      "before": {
+        "id": "place-03235cc313d38e2488732e00",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-03235cc313d38e2488732e00",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-443dc2d53a9226e74156762c",
+      "before": {
+        "id": "place-443dc2d53a9226e74156762c",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-443dc2d53a9226e74156762c",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    },
+    {
+      "collection": "places",
+      "id": "place-ba9b94d4d0210182643e1e90",
+      "before": {
+        "id": "place-ba9b94d4d0210182643e1e90",
+        "originalName": "Chepleevka, Krolevets, Chernigov, Russian Empire",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      },
+      "after": {
+        "id": "place-ba9b94d4d0210182643e1e90",
+        "originalName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "historicalNames": [],
+        "coordinates": {
+          "latitude": 51.71987,
+          "longitude": 33.210036
+        },
+        "description": "D06: українське відображення вихідної назви місця. Центр Чапліївки за Візіком: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk. Це орієнтир населеного пункту."
+      }
+    }
+  ],
+  "addedIdentities": [
+    {
+      "kind": "source",
+      "id": "source-42034bc45accfe4848ee626f"
+    },
+    {
+      "kind": "source",
+      "id": "source-06fe49a21ce68fdf4c5fe7de"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-59f2909831fd3e62c78db780"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-7be500479eed1d8e1148f4d7"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-a19cc8fa66b25e90e3a3ce23"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-c0d8b0485e5ed7472ad23b0d"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2abd4011bd4dabe3fc5656eb"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4d3d73576719f82beb62adaa"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-840a7d67d93c9d7e49305042"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-feaa2e9ec942bd7cff02f44b"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-2019f74566ffb0399ba18efd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-d7e0136f853731b85ad7dbc3"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-7e9a419ea997c639f6c4dd5f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-69144afb5f558dc64b0ce403"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-b96a8ee46657e422ff91869e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-1aa3ad05077a3d9a7609383e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-71fc0aad7839aa0320f15da7"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-6eb3634e19a40e84f8a6442a"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-3ae3188230c45d8f6fcf8356"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-593b71de011b02bdf7a5c36f"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-9d22fc5c54a64a2bffac9e7e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ac5f45fccb8c9078039aefbf"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-806063de45eae55c75371bb0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-e99cff891ced0e48a1226da1"
+    },
+    {
+      "kind": "person",
+      "id": "I168"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-82b86c9cd3469f107b3c0198"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d28b5e564be6f53c8d3477b3"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-73e8b89d7e700f7ea4594bf5"
+    },
+    {
+      "kind": "person",
+      "id": "I169"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-2ed38a79cfc5258e565edd36"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-bf3ca206eece38c887a7ddb3"
+    },
+    {
+      "kind": "person",
+      "id": "I170"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-6db21e7bf433e0fad2a525b0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-98300cc643c762552fdf1d68"
+    },
+    {
+      "kind": "person",
+      "id": "I171"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d237b1760cacbfb6b0717002"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-1b2f047da1536c103018c3ae"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-db43290ba986041d2e77db1b"
+    },
+    {
+      "kind": "person",
+      "id": "I172"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4417e331de9ec717a5803f97"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-10a817eaa6f70fed0dc7403b"
+    },
+    {
+      "kind": "person",
+      "id": "I173"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b837a270714aed1f7425cc13"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8bc1c943c8e5b8e60aa3ba20"
+    },
+    {
+      "kind": "person",
+      "id": "I174"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e7d383bd72b28156be83c688"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b5a377ea31b3af65d5ebdb69"
+    },
+    {
+      "kind": "person",
+      "id": "I175"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-97fef73483da9b4d7a5c0380"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ecbb9a4993f4cecc3fa5503d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-1ea7f5f1ffaa57e8ead1b153"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-447bc846161cd61dd45909e8"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-e3ad44e476e97f4e3af3913d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-04e372a592790e8704d123bd"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-7d0c7be2c2dfc7406f160bbb"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-7e086b51020025b5418250b2"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-e4f5f2b04659a6aafeffbde0"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-6b68200b7196f21a8b93dace"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-a6fe51bc52529eeb2b23145d"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-484c14a7a99b3b99540ec429"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-a34c48cdd98863afa01eb349"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-1e591b0e370d73ae667fed1b"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-231fed65345cd9cc74b10d52"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-98e8befc20d6f52d1dbb50bc"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-7d9cadce654630c75f678300"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-7e7145f8cdc0b3cfc89fecd2"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-d1b8c076e2e9587f878fe713"
+    },
+    {
+      "kind": "family",
+      "id": "family-033c2fb3ab1d21e2e4861c01"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-32f1441e83d87ec1886c5b05"
+    },
+    {
+      "kind": "family",
+      "id": "family-f6d54fa96eb78d4e08c3a3b5"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-3e6e2e72e11088a8c6bd19ea"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4c2d036e5265b9bfb6b69514"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-84e28de6b4c9cbee8c05b610"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-197e7105d931cfeed019c2ec"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4eff28f2b9d43385c9b10cf2"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-23c3f09ce02e4e1e24cce891"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-7b85c9d566dfd1430b39cd5d"
+    },
+    {
+      "kind": "event",
+      "id": "event-5c4fe0213911595f91fcc31b"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-2fe6094502c28a897652fb36"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-4dec15d622cab695b81ce9ef"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-344ebc8afe1d7438a9ab27c3"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-266cf04d15154b7a558a8de0"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-b8f7e34ba6fde1f869f2ff64"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-ea823f7a67ff0da140e2c7dd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-68965c1cd96f452c2802de31"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5c6ddb4320d034801b266618"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5c51af03cf66152c1157a3cc"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-67e4a17b699463226d192cd8"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-5446b3eeee9218bc2b5275ed"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-fa9657fb65903b5a9c764bbd"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-c70e7d58c3f5305f98de3b62"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-89f1b2a428d385828cdb3051"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-358017694305d360b2bfa17f"
+    },
+    {
+      "kind": "event",
+      "id": "event-b8b249f5d7a6de52518db980"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-312c1a5cf465e69b0792e108"
+    },
+    {
+      "kind": "place",
+      "id": "place-296c185df7bf988a97fa3a12"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-076ecd54b999eaf6e97f1a8b"
+    },
+    {
+      "kind": "place",
+      "id": "place-e63b21b5fa83938df11874b3"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-163337501731d583d033c079"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-64a21540f23521f02e3af6a6"
+    },
+    {
+      "kind": "event",
+      "id": "event-2c0dd7e574560393296f5b8e"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-88cb37e8ba8975e83951c160"
+    },
+    {
+      "kind": "place",
+      "id": "place-55599dc50ca2eb35fbc6bbb9"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e1685904821293560f23646e"
+    },
+    {
+      "kind": "evidenceLink",
+      "id": "evidenceLink-a87f3e246ee3524ca948726a"
+    },
+    {
+      "kind": "event",
+      "id": "event-f0a6149e713c845e357f7545"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-dc3b4b75787807e69abe116f"
+    },
+    {
+      "kind": "event",
+      "id": "event-be98b717714c9813af50afeb"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-a0de0ac628df4319160c0e39"
+    },
+    {
+      "kind": "place",
+      "id": "place-a48d8ed562c886b04896b0a0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-dd6473a19f71dce673163efe"
+    },
+    {
+      "kind": "event",
+      "id": "event-892c9109fde7314f91c04677"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-5501f9d117416b7d39117af5"
+    },
+    {
+      "kind": "event",
+      "id": "event-9673257b238862766ee8d456"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8ec2945ab0b9195d35244f99"
+    },
+    {
+      "kind": "event",
+      "id": "event-590418941d416fa164dbcada"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-7bb0f04ba117ec3fe3af27af"
+    },
+    {
+      "kind": "event",
+      "id": "event-84fe7c922b0123b634b9a4c6"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f4866b411d68945365140631"
+    },
+    {
+      "kind": "event",
+      "id": "event-76d7e44f1b230ddf7f1de695"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f6b9eb532e8341135823366d"
+    },
+    {
+      "kind": "event",
+      "id": "event-8992039834026a2dd600ea87"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-c3d1fd113942d6601b6673e1"
+    },
+    {
+      "kind": "place",
+      "id": "place-df9d965b5dd1ecc2e03c072c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e5a6c6cee47919c2bf583861"
+    },
+    {
+      "kind": "event",
+      "id": "event-13a54d4daf3017369bc7ec6d"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-da4f473ab1489d287c66fc39"
+    },
+    {
+      "kind": "event",
+      "id": "event-3fc98b161b960e617b773c59"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-43317f0ea5a677708d46d837"
+    },
+    {
+      "kind": "event",
+      "id": "event-3eea2ac9c632b93616835c2b"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f0c81d0101b989aaf049e911"
+    },
+    {
+      "kind": "event",
+      "id": "event-e06e27fa50dce6d7064384e2"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d3097f46c127280cef87de28"
+    },
+    {
+      "kind": "event",
+      "id": "event-0974af1b26e0020720067da4"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-54873a9a133b2b296e24036d"
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 20,
+    "info": 2,
+    "status": "passed"
+  },
+  "unhandledNodes": [],
+  "preservedSourceRecords": 121,
+  "unchangedRootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+}

@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 10 NOV 2026
-2 TIME 11:26:19
-1 FILE ZubenkoNewFormat.reviewed.11.10.26.ged
+1 DATE 11 NOV 2026
+2 TIME 00:54:07
+1 FILE ZubenkoNewFormat.reviewed.11.11.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -3019,7 +3019,7 @@
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE 1855
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
 2 SOUR @S92@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
@@ -3032,8 +3032,14 @@
 2 SOUR @S92@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S121@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S92@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I112@ INDI
 1 NAME Агафія Фомівна //
@@ -3056,37 +3062,54 @@
 1 SOUR @S92@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I113@ INDI
 1 NAME Федот Васильович /Довгуль/
 2 ROMN Fedot Vasyl'ovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1812
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PJ71-6WZ
 1 _UID 98DBBC8007409148BBD3EE526635A37C5727
 1 FAMS @F49@
 1 FAMC @F43@
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I114@ INDI
 1 NAME Афанасий Васильович /Довгуль/
 2 ROMN Afanasyi Vasyl'ovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1830
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PJWM-7WR
 1 _UID F067AF97E517E74E98CAC62699952CC238A8
 1 FAMC @F43@
 1 EVEN Рекрут
 2 TYPE Military Service 
 2 DATE 1854
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I115@ INDI
-1 NAME Степан /Довгуль/
-2 ROMN Stepan /Dovhul/
+1 NAME Степан Савин /Довгуль/
+2 ROMN Stepan Savyn /Dovhul/
 1 SEX M
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -3096,32 +3119,62 @@
 1 SOUR @S92@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 BIRT
+2 DATE 1757
+1 FAMC @F69@
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I116@ INDI
 1 NAME Афанасій Степанович /Довгуль/
 2 ROMN Afanasii Stepanovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1790
+2 SOUR @S121@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE 1853
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
 1 _FSFTID PJ71-7X6
 1 _UID 47C9E9DF493A744697160B360E0B314390D0
 1 FAMS @F47@
 1 FAMC @F44@
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I117@ INDI
 1 NAME Давид Степанович /Довгуль/
 2 ROMN Davyd Stepanovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1792
+2 SOUR @S121@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT
 2 DATE 1850
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
 1 _FSFTID PJ71-7X2
 1 _UID 941F7CA86C8F854CBAA3F36586B41CC77597
 1 FAMS @F48@
 1 FAMC @F44@
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I118@ INDI
 1 NAME Фомін //
 2 ROMN Fomin //
@@ -3233,39 +3286,57 @@
 1 SEX M
 1 BIRT
 2 DATE 1819
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWM-Q7C
 1 _UID 39FB42382D46384CB4F7249BA60B176A4144
 1 FAMS @F50@
 1 FAMC @F47@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I126@ INDI
 1 NAME Федір Афанасійович /Довгуль/
 2 ROMN Fedir Afanasiiovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1824
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJ71-R6V
 1 _UID 9B75D7B13F0C744492B8376B0BCC2DE36E74
 1 FAMS @F51@
 1 FAMC @F47@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I127@ INDI
 1 NAME Гордій Афанасійович /Довгуль/
 2 ROMN Hordii Afanasiiovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1826
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWM-MBP
 1 _UID 96A4668AC2B7614BBE175DB1DA5C4635E365
 1 FAMS @F52@
 1 FAMC @F47@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I128@ INDI
 1 NAME Марія Давидівна /Довгуль/
 2 ROMN Mariia Davydivna /Dovhul/
@@ -3296,60 +3367,84 @@
 1 SEX F
 1 BIRT
 2 DATE 1826
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJ71-BW3
 1 _UID D6E9F6A3FE80FA47B3C34DE7CA51651A5BAA
 1 FAMS @F49@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I131@ INDI
 1 NAME Лук'ян Федотович /Довгуль/
 2 ROMN Lukian Fedotovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1835
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PJWM-7PL
 1 _UID 6E7DCA9F95ABFE4FAB49022D7D8A00E1EC11
 1 FAMS @F53@
 1 FAMC @F49@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I132@ INDI
 1 NAME Філіп Федотович /Довгуль/
 2 ROMN Filip Fedotovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1837
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PJ71-BW6
 1 _UID 7949785970A90E4683C2CB2B52DA1CEE716C
 1 FAMC @F49@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I133@ INDI
 1 NAME Варвара Федотівна /Довгуль/
 2 ROMN Varvara Fedotivna /Dovhul/
 1 SEX F
 1 BIRT
 2 DATE 1840
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 _FSFTID PJ71-1WH
 1 _UID BC801F78C111254A841936845DE62FC4A1CC
 1 FAMC @F49@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I134@ INDI
 1 NAME Петро Федотович /Довгуль/
 2 ROMN Petro Fedotovych /Dovhul/
 1 SEX M
 1 BIRT
 2 DATE 1842
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJWM-MTD
 1 _UID B1A7F19C6AF25F4F9408BE11C038FB77C484
 1 FAMC @F49@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I135@ INDI
 1 NAME Анна Самійлівна //
 2 ROMN Anna Samiilivna //
@@ -3461,12 +3556,18 @@
 1 SEX F
 1 BIRT
 2 DATE 1833
-2 PLAC Chepleevka, Krolevets, Chernigov, Russian Empire
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S92@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
 1 _FSFTID PJ71-KYF
 1 _UID ED1FFEABE4150845AF2F410E9939492D70E3
 1 FAMS @F53@
+1 SOUR @S92@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I145@ INDI
 1 NAME Роман //
 2 ROMN Roman //
@@ -3495,6 +3596,9 @@
 1 CHIL @I111@
 1 CHIL @I116@
 1 CHIL @I117@
+1 WIFE @I172@
+1 CHIL @I173@
+1 _UID 79E44021594AB948ACCCA1751537E887AB88
 0 @F45@ FAM
 1 MARR
 1 HUSB @I118@
@@ -3506,11 +3610,15 @@
 1 CHIL @I125@
 1 CHIL @I126@
 1 CHIL @I127@
+1 WIFE @I174@
+1 _UID 2C170AD761544A44BC779D5AADAC5A387C35
 0 @F48@ FAM
 1 HUSB @I117@
 1 _UID 70A1AD76B629C34CA19E7AD5E6DF88706D8C
 1 CHIL @I128@
 1 CHIL @I129@
+1 WIFE @I175@
+1 _UID 1D15F9CD8A15A44D90F071280C2313E2C5AD
 0 @F49@ FAM
 1 HUSB @I113@
 1 WIFE @I130@
@@ -3886,8 +3994,11 @@
 1 _UID 09F280E24434724A91C52D3416CD4C8A0190
 1 FAMS @F62@
 1 BIRT
-2 DATE 1786
+2 DATE 1785
 2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+2 SOUR @S120@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 FAMC @F66@
 1 EVEN Кріпак
 2 TYPE Caste Name 
@@ -3896,6 +4007,9 @@
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S119@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S120@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I159@ INDI
 1 NAME Сигнклитикия Ефимова //
@@ -4122,14 +4236,25 @@
 1 SOUR @S119@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 BIRT
+2 DATE 1754
+2 PLAC Чапліївка, Гетьманщина
+1 FAMC @F68@
+1 SOUR @S120@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I166@ INDI
 1 NAME Олена Григорівна //
 2 ROMN Olena Hryhorivna //
 1 SEX F
 1 BIRT
-2 DATE 1764
+2 DATE From 1760 to 1764
 2 SOUR @S119@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 PLAC Чапліївка, Гетьманщина
+2 SOUR @S120@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -4140,6 +4265,9 @@
 2 TYPE Caste Name 
 1 SOUR @S119@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPG
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 SOUR @S120@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I167@ INDI
 1 NAME Агафія //
@@ -4163,6 +4291,8 @@
 1 WIFE @I166@
 1 _UID 8714D8988986644681396AC1A34A87789578
 1 CHIL @I158@
+1 CHIL @I168@
+1 CHIL @I169@
 0 @S119@ SOUR
 1 TITL Казка селян, Родина Нестора Заприси
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", database, <i>FamilySearch</
@@ -4175,4 +4305,140 @@
 2 CONT Агафія (прізвище до шлюбу невідоме)	Дружина Нестора	30	1786
 2 CONT Григорій Несторович Заприса	Син Нестора	3	1813
 2 CONT Олена Григорівна	Мати Нестора	52	1764
+0 @I168@ INDI
+1 NAME Парфен /Заприса/
+2 ROMN Parfen /Zaprysa/
+1 SEX M
+1 BIRT
+2 DATE 1777
+2 PLAC Чапліївка, Гетьманщина
+2 SOUR @S120@
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
+4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ44-PGG
+1 _UID FC438668EC9F0344A20FC6C2639F07327340
+1 FAMC @F66@
+1 SOUR @S120@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-LY7N
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I169@ INDI
+1 NAME Агафія /Заприса/
+2 ROMN Ahafiia /Zaprysa/
+1 SEX F
+1 BIRT
+2 DATE 1780
+2 PLAC Чапліївка, Гетьманщина
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ44-LNB
+1 _UID 9540B265B4101B49954B816D9346A1FE5AE6
+1 FAMC @F66@
+0 @I170@ INDI
+1 NAME Григорій /Заприса/
+2 ROMN Hryhorii /Zaprysa/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ4H-8P1
+1 _UID D4DA7C8CE417344299562B0C5D7327FC4068
+1 FAMS @F68@
+0 @I171@ INDI
+1 NAME Сава /Довгуля/
+2 ROMN Sava /Dovhulia/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ48-JPP
+1 _UID BD984D36937B4D43A49782E104DE1EA4B872
+1 FAMS @F69@
+1 SOUR @S121@
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT
+3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+0 @I172@ INDI
+1 NAME Васса //
+2 ROMN Vassa //
+1 SEX F
+1 BIRT
+2 DATE 1757
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ4Z-Q15
+1 _UID 756B379FF40D7343BA5454DE53B83215FFD9
+1 FAMS @F44@
+1 FAMS @F44@
+0 @I173@ INDI
+1 NAME Кузьма Степанович /Довгуля/
+2 ROMN Kuzma Stepanovych /Dovhulia/
+1 SEX M
+1 BIRT
+2 DATE 1797
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ48-TQY
+1 _UID E3ACD25CF693724D9B9DEC9A51E2B9701FE7
+1 FAMC @F44@
+1 FAMC @F44@
+0 @I174@ INDI
+1 NAME Матрона //
+2 ROMN Matrona //
+1 SEX F
+1 BIRT
+2 DATE 1798
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ48-4T4
+1 _UID 0B6F5DFEF61DE549B60D4D4FB9F39AF1ACBD
+1 FAMS @F47@
+0 @I175@ INDI
+1 NAME Ксенія //
+2 ROMN Kseniia //
+1 SEX F
+1 BIRT
+2 DATE 1791
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJ4Z-DGG
+1 _UID 30E678DE9E00BD408484D203F50098DB4CF0
+1 FAMS @F48@
+0 @F68@ FAM
+1 HUSB @I170@
+1 _UID A5EF589DD1DDA64A8C9A5FCEF142A89BF0C6
+1 CHIL @I165@
+0 @F69@ FAM
+1 HUSB @I171@
+1 _UID A7786BB3A7100A429952077EFE05367F683B
+1 CHIL @I115@
+0 @S120@ SOUR
+1 TITL Споводи Афанас Гаврилов Заприса і всі члени сімї
+1 NOTE "Украина, Киевские исповедные ведомости 1741-1934," database with images
+2 CONC , <i>FamilySearch</i> (https://familysearch.org/ark:/61903/3:1:3Q9M-CSM4-
+2 CONC LY7N),  > image 1 of 1; Main Archive Administration, Kiev.
+2 CONT 5 членів сімї
+0 @S121@ SOUR
+1 TITL Сповіді, двір Степана Савиного Довгулі
+1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", database, <i>FamilySearch</
+2 CONC i> (https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQPT),  > image 1 o
+2 CONC f 1.
+2 CONT Родина Степана Савиного Довгулі — ревізька казка 1816 року
+2 CONT Село Чапліївка, Кролевецький повіт, Чернігівська губернія. Двір №72.
+2 CONT
+2 CONT Це ревізька казка, а не сповідальна відомість.
+2 CONT Чоловіки
+2 CONT Ім'я	Родинний зв'язок	Вік у 1811	Вік у 1816	Народження (≈)
+2 CONT Степан Савин Довгуля	Голова родини	55	59	1757
+2 CONT Василь Степанович Довгуля	Син Степана	24	28	1788
+2 CONT Федот Васильович Довгуля	Син Василя	1	5	1811
+2 CONT Афанасій Степанович Довгуля	Син Степана	22	26	1790
+2 CONT Давид Степанович Довгуля	Син Степана	20	24	1792
+2 CONT Кузьма Степанович Довгуля	Син Степана	15	19	1797
+2 CONT
+2 CONT Жінки
+2 CONT Ім'я	Родинний зв'язок	Вік у 1816	Народження (≈)
+2 CONT Васса	Дружина Степана	59	1757
+2 CONT Агафія Фомівна	Дружина Василя	27	1789
+2 CONT Матрона	Дружина Афанасія	18	1798
+2 CONT Ксенія	Дружина Давида	25	1791
 0 TRLR

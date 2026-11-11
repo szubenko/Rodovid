@@ -1692,6 +1692,36 @@
         "latitude": 51.71987,
         "longitude": 33.210036
       }
+    },
+    {
+      "id": "review-place-296c185df7bf988a97fa3a12",
+      "placeId": "place-296c185df7bf988a97fa3a12",
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+    },
+    {
+      "id": "review-place-e63b21b5fa83938df11874b3",
+      "placeId": "place-e63b21b5fa83938df11874b3",
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+    },
+    {
+      "id": "review-place-55599dc50ca2eb35fbc6bbb9",
+      "placeId": "place-55599dc50ca2eb35fbc6bbb9",
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+    },
+    {
+      "id": "review-place-a48d8ed562c886b04896b0a0",
+      "placeId": "place-a48d8ed562c886b04896b0a0",
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+    },
+    {
+      "id": "review-place-df9d965b5dd1ecc2e03c072c",
+      "placeId": "place-df9d965b5dd1ecc2e03c072c",
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026. Координати центру Чапліївки: https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk.",
+      "displayName": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     }
   ],
   "sources": [
@@ -2333,6 +2363,20 @@
       "mediaIds": [
         "media-record-2ec5329fbf6735ab0eae"
       ]
+    },
+    {
+      "id": "source-details-5b25404967c3fcf547b1",
+      "sourceId": "source-42034bc45accfe4848ee626f",
+      "mediaIds": [
+        "media-record-5b25404967c3fcf547b1"
+      ]
+    },
+    {
+      "id": "source-details-053390de306c7b2d377b",
+      "sourceId": "source-06fe49a21ce68fdf4c5fe7de",
+      "mediaIds": [
+        "media-record-053390de306c7b2d377b"
+      ]
     }
   ],
   "evidenceEnrichments": [
@@ -2771,6 +2815,20 @@
       "evidenceLinkId": "evidenceLink-aa6cf1fc29af18e59d97f9aa",
       "fragment": {
         "mediaId": "media-record-2ec5329fbf6735ab0eae"
+      }
+    },
+    {
+      "id": "evidence-details-5b25404967c3fcf547b1",
+      "evidenceLinkId": "evidenceLink-358017694305d360b2bfa17f",
+      "fragment": {
+        "mediaId": "media-record-5b25404967c3fcf547b1"
+      }
+    },
+    {
+      "id": "evidence-details-053390de306c7b2d377b",
+      "evidenceLinkId": "evidenceLink-84e28de6b4c9cbee8c05b610",
+      "fragment": {
+        "mediaId": "media-record-053390de306c7b2d377b"
       }
     }
   ],
@@ -3721,17 +3779,45 @@
         "evidenceLink-7c7239b082836347a182e79a",
         "evidenceLink-50e8ecda7473b633ffc9b0ca",
         "evidenceLink-81346656ddb7e68b94fdf78e",
+        "evidenceLink-c0d8b0485e5ed7472ad23b0d",
+        "evidenceLink-2abd4011bd4dabe3fc5656eb",
         "evidenceLink-e39454382606aa73a399ef33",
+        "evidenceLink-feaa2e9ec942bd7cff02f44b",
+        "evidenceLink-d7e0136f853731b85ad7dbc3",
         "evidenceLink-7e80f4e06dca525eb7ec8c03",
+        "evidenceLink-7e9a419ea997c639f6c4dd5f",
+        "evidenceLink-69144afb5f558dc64b0ce403",
+        "evidenceLink-b96a8ee46657e422ff91869e",
+        "evidenceLink-1aa3ad05077a3d9a7609383e",
+        "evidenceLink-71fc0aad7839aa0320f15da7",
+        "evidenceLink-6eb3634e19a40e84f8a6442a",
+        "evidenceLink-3ae3188230c45d8f6fcf8356",
+        "evidenceLink-593b71de011b02bdf7a5c36f",
+        "evidenceLink-9d22fc5c54a64a2bffac9e7e",
         "evidenceLink-eed71a87267ae4fa6cf2eeb2",
         "evidenceLink-f72f37790d8ec58419433fb9",
         "evidenceLink-ab0d2a7757c2c00a361956ba",
         "evidenceLink-8cc264f410f60b1faeaea474",
         "evidenceLink-14b12e5c2ce7cb7bfff3b64e",
         "evidenceLink-bafff4ac07521a4ff58a32aa",
+        "evidenceLink-197e7105d931cfeed019c2ec",
+        "evidenceLink-4eff28f2b9d43385c9b10cf2",
+        "evidenceLink-23c3f09ce02e4e1e24cce891",
+        "evidenceLink-7b85c9d566dfd1430b39cd5d",
+        "evidenceLink-344ebc8afe1d7438a9ab27c3",
+        "evidenceLink-b8f7e34ba6fde1f869f2ff64",
         "evidenceLink-9f177952b0d57d5c9857fba3",
         "evidenceLink-e3535e43d28458c67d9aa2c1",
-        "evidenceLink-7482f63b3ad5fed89139c5b1"
+        "evidenceLink-7482f63b3ad5fed89139c5b1",
+        "evidenceLink-ea823f7a67ff0da140e2c7dd",
+        "evidenceLink-68965c1cd96f452c2802de31",
+        "evidenceLink-5c6ddb4320d034801b266618",
+        "evidenceLink-5c51af03cf66152c1157a3cc",
+        "evidenceLink-67e4a17b699463226d192cd8",
+        "evidenceLink-5446b3eeee9218bc2b5275ed",
+        "evidenceLink-fa9657fb65903b5a9c764bbd",
+        "evidenceLink-c70e7d58c3f5305f98de3b62",
+        "evidenceLink-89f1b2a428d385828cdb3051"
       ],
       "mediaId": "media-record-fe77ac182fab44bfd5c7",
       "jsonFile": "assets/documents/source-records/довгуля-василь-народження-PJ7W-CCC-3Q9M-CSSV-Z343-B.json"
@@ -4035,6 +4121,40 @@
       ],
       "mediaId": "media-record-2ec5329fbf6735ab0eae",
       "jsonFile": "assets/documents/source-records/заприса-григорий-народження-PNKH-6H2-3Q9M-CSSV-ZQPG.json"
+    },
+    {
+      "id": "file-source-42034bc45accfe4848ee626f",
+      "sourceId": "source-42034bc45accfe4848ee626f",
+      "evidenceLinkIds": [
+        "evidenceLink-ac5f45fccb8c9078039aefbf",
+        "evidenceLink-806063de45eae55c75371bb0",
+        "evidenceLink-e99cff891ced0e48a1226da1",
+        "evidenceLink-73e8b89d7e700f7ea4594bf5",
+        "evidenceLink-358017694305d360b2bfa17f",
+        "evidenceLink-64a21540f23521f02e3af6a6",
+        "evidenceLink-a87f3e246ee3524ca948726a"
+      ],
+      "mediaId": "media-record-5b25404967c3fcf547b1",
+      "jsonFile": "assets/documents/source-records/заприса-нестор-народження-PJWJ-742-3Q9M-CSM4-LY7N.json"
+    },
+    {
+      "id": "file-source-06fe49a21ce68fdf4c5fe7de",
+      "sourceId": "source-06fe49a21ce68fdf4c5fe7de",
+      "evidenceLinkIds": [
+        "evidenceLink-59f2909831fd3e62c78db780",
+        "evidenceLink-7be500479eed1d8e1148f4d7",
+        "evidenceLink-a19cc8fa66b25e90e3a3ce23",
+        "evidenceLink-4d3d73576719f82beb62adaa",
+        "evidenceLink-840a7d67d93c9d7e49305042",
+        "evidenceLink-2019f74566ffb0399ba18efd",
+        "evidenceLink-db43290ba986041d2e77db1b",
+        "evidenceLink-4c2d036e5265b9bfb6b69514",
+        "evidenceLink-84e28de6b4c9cbee8c05b610",
+        "evidenceLink-4dec15d622cab695b81ce9ef",
+        "evidenceLink-266cf04d15154b7a558a8de0"
+      ],
+      "mediaId": "media-record-053390de306c7b2d377b",
+      "jsonFile": "assets/documents/source-records/довгуля-василь-інша-подія-PJ7W-CCC-3Q9M-CSSV-ZQPT.json"
     },
     {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
@@ -6234,6 +6354,40 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "media-record-2ec5329fbf6735ab0eae"
+        }
+      ]
+    },
+    {
+      "id": "media-record-5b25404967c3fcf547b1",
+      "path": "assets/documents/source-records/заприса-нестор-народження-PJWJ-742-3Q9M-CSM4-LY7N.png",
+      "dimensions": {
+        "width": 1462,
+        "height": 357
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: заприса-нестор-народження-PJWJ-742-3Q9M-CSM4-LY7N",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-5b25404967c3fcf547b1"
+        }
+      ]
+    },
+    {
+      "id": "media-record-053390de306c7b2d377b",
+      "path": "assets/documents/source-records/довгуля-василь-інша-подія-PJ7W-CCC-3Q9M-CSSV-ZQPT.png",
+      "dimensions": {
+        "width": 1953,
+        "height": 473
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: довгуля-василь-інша-подія-PJ7W-CCC-3Q9M-CSSV-ZQPT",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-053390de306c7b2d377b"
         }
       ]
     }

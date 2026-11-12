@@ -425,18 +425,21 @@
       "personId": "I53",
       "photoIds": [
         "media-chabany-kopeysk-1961",
-        "media-chabany-havali-kopeysk-1958"
+        "media-chabany-havali-kopeysk-1958",
+        "media-i104-i53-chabany-photo"
       ],
-      "portraitId": "media-i53-kopeysk-1961-portrait"
+      "portraitId": "media-i53-chabany-photo-avatar"
     },
     {
       "id": "person-media-i104",
       "personId": "I104",
       "photoIds": [
         "media-chabany-kopeysk-1965",
-        "media-chabany-havali-kopeysk-1958"
+        "media-chabany-havali-kopeysk-1958",
+        "media-i104-photo-portrait",
+        "media-i104-i53-chabany-photo"
       ],
-      "portraitId": "media-i104-kopeysk-1965-portrait"
+      "portraitId": "media-i104-chabany-photo-avatar"
     },
     {
       "id": "person-media-i28",
@@ -6978,6 +6981,98 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Керницький Микола Йосопович — Копейськ 1958 — покращений портрет.png",
           "entryId": "media-i30-kopeysk-1958-portrait-improved"
+        }
+      ]
+    },
+    {
+      "id": "media-i104-photo-portrait",
+      "path": "assets/photos/чабан-михайло-іванович-портрет.png",
+      "sha256": "efcf2524b04a7441f35e7cb8d026e93c883a616cd82f24f98154c3ef5204267a",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабан-михайло-іванович-портрет.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Михайло Іванович — портрет",
+      "description": "Михайло Іванович Чабан. Фотографію надав власник.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Михайло Іванович — портрет.png",
+          "entryId": "media-i104-photo-portrait"
+        }
+      ]
+    },
+    {
+      "id": "media-i104-i53-chabany-photo",
+      "path": "assets/photos/чабан-михайло-семен-івановичі.png",
+      "sha256": "d151ccaca159fccb3e943370d485eff4e1893c37a4203fd5b1d9a934b4517dcf",
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/чабан-михайло-семен-івановичі.png",
+        "mimeType": "image/png"
+      },
+      "title": "Михайло та Семен Івановичі Чабани",
+      "description": "Михайло Іванович Чабан\nСемен Іванович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Михайло та Семен Івановичі Чабани.png",
+          "entryId": "media-i104-i53-chabany-photo"
+        }
+      ]
+    },
+    {
+      "id": "media-i104-chabany-photo-avatar",
+      "path": "assets/photos/i104-чабани-спільне-фото-аватар.png",
+      "sha256": "1e4ef0432d4ba46c5f05ae6703851a9386ba9638dec66e1d1ba5aff33a646ae8",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i104-чабани-спільне-фото-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Михайло Іванович Чабан — аватарка зі спільного фото",
+      "description": "Портрет створено за допомогою ШІ зі спільної фотографії Михайла та Семена Чабанів.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Михайло Іванович Чабан — аватарка зі спільного фото.png",
+          "entryId": "media-i104-chabany-photo-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i53-chabany-photo-avatar",
+      "path": "assets/photos/i53-чабани-спільне-фото-аватар.png",
+      "sha256": "543a2f61a6f69685069a02c6db44fa0ad131ec537ec2930fdb51739ff4088b14",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i53-чабани-спільне-фото-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Семен Іванович Чабан — аватарка зі спільного фото",
+      "description": "Портрет створено за допомогою ШІ зі спільної фотографії Михайла та Семена Чабанів.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Семен Іванович Чабан — аватарка зі спільного фото.png",
+          "entryId": "media-i53-chabany-photo-avatar"
         }
       ]
     }

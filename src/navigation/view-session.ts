@@ -9,10 +9,9 @@ const mapSettings = z.object({
   zoom: z.number().positive(),
   pan: z.object({ x: z.number(), y: z.number() }),
   collapsedAppearanceIds: z.array(z.string()),
-  expandedRelativeIds: z.array(z.string()).optional(),
-  showAllRelatives: z.boolean().optional(),
   compactCards: z.boolean().optional(),
   expandedSiblingIds: z.array(z.string()).optional(),
+  collapsedSiblingIds: z.array(z.string()).optional(),
   collapsedAncestorIds: z.array(z.string()).optional(),
 })
 const view = z.object({

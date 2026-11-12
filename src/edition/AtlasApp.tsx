@@ -81,7 +81,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const previousView = useRef({ key: location.key, screen })
   useEffect(() => {
     const name = personId ? personName(family, personId) : 'Родовід'
-    document.title = `${name} — ${screen === 'relatives' ? 'Родовід з усіма родичами' : screen === 'vertical-minimal' ? 'Вертикальна мінімальна' : screen === 'vertical-design' ? 'Вертикальний родовід · новий дизайн' : screen === 'vertical' ? 'Вертикальний родовід' : screen === 'horizontal' ? 'Горизонтальний родовід' : screen === 'tree' ? 'Сімейний атлас' : 'Особиста кімната'}`
+    document.title = `${name} — ${screen === 'relatives' ? 'Усі Родичі New' : screen === 'vertical-minimal' ? 'Вертикальна мінімальна' : screen === 'vertical-design' ? 'Вертикальний родовід · новий дизайн' : screen === 'vertical' ? 'Вертикальний родовід' : screen === 'horizontal' ? 'Горизонтальний родовід' : screen === 'tree' ? 'Сімейний атлас' : 'Особиста кімната'}`
     if (previousView.current.key !== location.key) heading.current?.focus({ preventScroll: isMap && previousView.current.screen !== 'person' })
     previousView.current = { key: location.key, screen }
   }, [family, personId, screen, isMap, location.key])
@@ -111,7 +111,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <Link to={`/vertical/${personId}`} aria-current={screen === 'vertical' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний родовід</Link>
       <Link to={`/vertical-design/${personId}`} aria-current={screen === 'vertical-design' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний · новий дизайн</Link>
       <Link to={`/vertical-minimal/${personId}`} aria-current={screen === 'vertical-minimal' ? 'page' : undefined}><Icon kind="vertical" />Вертикальна мінімальна</Link>
-      <Link to={`/relatives/${personId}`} aria-current={screen === 'relatives' ? 'page' : undefined}><Icon kind="relatives" />Усі родичі</Link>
+      <Link to={`/relatives/${personId}`} aria-current={screen === 'relatives' ? 'page' : undefined}><Icon kind="relatives" />Усі Родичі New</Link>
       <Link to={`/person/${personId}`} aria-current={screen === 'person' ? 'page' : undefined}><Icon kind="book" />Історія життя</Link>
       <span>{relationCount} рідних · {eventCount} подій</span>
     </div>

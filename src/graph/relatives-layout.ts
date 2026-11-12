@@ -205,7 +205,8 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   // Collapse each couple to one group for scoring so large sibling families
   // do not outweigh several smaller families just because they have more edges.
   const groupIndices = new Map(groups.map((group, index) => [group, index]))
-  const linksByRow = new Map<number, { from: Group; to: Group }[]>()
+  const parentsByGroup = new Map<Group, Group[]>()
+  const childrenByGroup = new Map<Group, Group[]>()
   const indexedLinks = new Set<string>()
   for (const edge of projection.edges) {
     const from = groupByPerson.get(byAppearance.get(edge.fromAppearanceId)!.personId)!
@@ -213,18 +214,20 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     const key = `${groupIndices.get(from)}/${groupIndices.get(to)}`
     if (to.generation !== from.generation + 1 || indexedLinks.has(key)) continue
     indexedLinks.add(key)
-    linksByRow.set(from.generation, [...linksByRow.get(from.generation) ?? [], { from, to }])
+    parentsByGroup.set(to, [...parentsByGroup.get(to) ?? [], from])
+    childrenByGroup.set(from, [...childrenByGroup.get(from) ?? [], to])
   }
   const order = new Map<Group, number>()
   for (const row of rows.values()) row.forEach((group, index) => order.set(group, index))
-  const crossings = (generation: number) => {
-    const links = linksByRow.get(generation) ?? []
-    let count = 0
-    for (let i = 0; i < links.length; i++) for (let j = i + 1; j < links.length; j++) {
-      const a = links[i]!, b = links[j]!
-      if ((order.get(a.from)! - order.get(b.from)!) * (order.get(a.to)! - order.get(b.to)!) < 0) count++
+  // Swapping neighbors changes only pairs of links incident to both groups.
+  const swapCrossingDelta = (left: Group, right: Group) => {
+    let delta = 0
+    for (const links of [parentsByGroup, childrenByGroup]) {
+      for (const a of links.get(left) ?? []) for (const b of links.get(right) ?? []) {
+        delta += Math.sign(order.get(b)! - order.get(a)!)
+      }
     }
-    return count
+    return delta
   }
   for (let pass = 0; pass < 6; pass++) {
     let changed = false
@@ -232,11 +235,10 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       const row = rows.get(generation)!
       for (let index = 0; index < row.length - 1; index++) {
         const a = row[index]!, b = row[index + 1]!
-        const before = crossings(generation - 1) + crossings(generation)
-        order.set(a, index + 1); order.set(b, index)
-        if (crossings(generation - 1) + crossings(generation) < before) {
+        if (swapCrossingDelta(a, b) < 0) {
+          order.set(a, index + 1); order.set(b, index)
           row[index] = b; row[index + 1] = a; changed = true
-        } else { order.set(a, index); order.set(b, index + 1) }
+        }
       }
     }
     if (!changed) break
@@ -278,16 +280,17 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
         for (const group of [...row]) {
           const current = row.indexOf(group)
           let best = current, bestSplits = splits(generation)
-          let bestCrossings = crossings(generation - 1) + crossings(generation)
+          let bestCrossings = 0, crossingCount = 0
           row.splice(current, 1)
+          for (let index = current - 1; index >= 0; index--) crossingCount += swapCrossingDelta(row[index]!, group)
           for (let slot = 0; slot <= row.length; slot++) {
             row.splice(slot, 0, group); updateOrder(row)
             const splitCount = splits(generation)
-            const crossingCount = crossings(generation - 1) + crossings(generation)
             if (splitCount < bestSplits || (splitCount === bestSplits && crossingCount < bestCrossings)) {
               best = slot; bestSplits = splitCount; bestCrossings = crossingCount
             }
             row.splice(slot, 1)
+            if (slot < row.length) crossingCount += swapCrossingDelta(group, row[slot]!)
           }
           row.splice(best, 0, group); updateOrder(row)
           if (best !== current) changed = true
@@ -377,12 +380,16 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       const compareBranches = ancestorBranchOrder(graph, projection.appearances)
       for (const row of rows.values()) row.sort((a, b) => compareBranches(a.ids[0]!, b.ids[0]!))
     }
-    const key = JSON.stringify([generations.map(generation => rows.get(generation)!.map(group => [...group.ids].sort())
-      .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))), endpoints, partnerChains, orderedPairs])
+    const key = directLine
+      ? JSON.stringify(['portrait', [...rows].map(([generation, row]) => [generation, row.map(group => group.ids)]),
+        endpoints, options?.maleBranchLeft === true, partnerChains, orderedPairs])
+      : JSON.stringify([generations.map(generation => rows.get(generation)!.map(group => [...group.ids].sort())
+        .sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)))), endpoints, partnerChains, orderedPairs])
     const cache = familyOrderCache.get(graph) ?? new Map<string, string[][][]>()
     // Topology stays the same when a different center changes card sizes.
     // Reuse its order rather than repeating the crossing search on navigation.
-    const cached = !directLine && cache.get(key)
+    // Portrait search depends on the initial order too; its key preserves it.
+    const cached = cache.get(key)
     if (cached) generations.forEach((generation, index) => rows.set(generation, cached[index]!.map(ids => {
       const group = groupByPerson.get(ids[0]!)!
       group.ids = [...ids]
@@ -390,11 +397,9 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     })))
     else {
       orderVerticalFamilies(rows, endpoints, !directLine || options?.maleBranchLeft === true, partnerChains, orderedPairs)
-      if (!directLine) {
-        if (cache.size >= 128) cache.delete(cache.keys().next().value!)
-        cache.set(key, generations.map(generation => rows.get(generation)!.map(group => [...group.ids])))
-        familyOrderCache.set(graph, cache)
-      }
+      if (cache.size >= 128) cache.delete(cache.keys().next().value!)
+      cache.set(key, generations.map(generation => rows.get(generation)!.map(group => [...group.ids])))
+      familyOrderCache.set(graph, cache)
     }
     // Leaf siblings can mirror with their family without losing their nearest
     // neighbor beside the one expanded branch (for example Ivan and Vasyl).

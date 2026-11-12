@@ -6,6 +6,7 @@ type Family = { parents: string[]; children: string[] }
 export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, families: Family[], preservePartnerOrder = false,
   partnerChains: string[][] = [], orderedPairs: readonly (readonly [string, string])[] = []) {
   const generations = [...rows.keys()].sort((a, b) => a - b)
+  if (!generations.length) return
   const generationById = new Map([...rows].flatMap(([generation, row]) => row.flatMap(group =>
     group.ids.map(id => [id, generation] as const))))
   const byRow = new Map<number, Family[]>()
@@ -33,61 +34,93 @@ export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, f
       .map(([left, right]) => [groupById.get(left)!, groupById.get(right)!] as const)
     rows.set(generation, constrainedOrder(row, constraints))
   }
-  const positions = new Map<string, number>()
+  const personIndex = new Map([...generationById.keys()].map((id, index) => [id, index]))
+  const positions = new Int32Array(personIndex.size)
+  const index = (id: string) => personIndex.get(id)!
+  const position = (id: string) => positions[index(id)]!
   const signatures = new Map<number, string>()
   const update = (generation: number) => {
-    let index = 0
-    for (const group of rows.get(generation)!) for (const id of group.ids) positions.set(id, index++)
-    signatures.set(generation, JSON.stringify(rows.get(generation)!.flatMap(group => group.ids)))
+    let rank = 0, signature = ''
+    for (const group of rows.get(generation)!) for (const id of group.ids) {
+      const person = index(id)
+      positions[person] = rank++
+      signature += String.fromCodePoint(person + 1)
+    }
+    signatures.set(generation, signature)
   }
   generations.forEach(update)
   const parentsByChild = new Map(families.flatMap(family => family.children.map(id => [id, family.parents] as const)))
   const orientationWeight = 1 + families.reduce((sum, family) => sum + family.parents.length + family.children.length, 0) ** 2
-  const inversions = (a: string[], b: string[]) => {
+  // Compile invariant family relationships once. Search candidates only change ranks.
+  const numericFamilies = new Map(families.map(family => [family, {
+    parents: family.parents.map(index), children: family.children.map(index),
+  }]))
+  const mean = (ids: number[]) => ids.reduce((sum, id) => sum + positions[id]!, 0) / ids.length
+  const inversions = (a: number[], b: number[]) => {
     let total = 0
-    for (const left of a) for (const right of b) if (positions.get(left)! > positions.get(right)!) total++
+    for (const left of a) for (const right of b) if (positions[left]! > positions[right]!) total++
     return total
   }
-  const costs = new Map<string, number>()
-  const cost = (generation: number) => {
-    const key = `${signatures.get(generation)}|${signatures.get(generation + 1)}`
-    const known = costs.get(key)
-    if (known !== undefined) return known
+  const compiled = new Map([...new Set(generations.flatMap(generation => [generation - 1, generation]))].map(generation => {
     const row = byRow.get(generation) ?? []
-    let total = 0
-    for (const [left, right] of orderedPairs) if (generationById.get(left) === generation
-      && generationById.get(right) === generation && positions.get(left)! > positions.get(right)!) {
-      total += orientationWeight ** 2
-    }
-    for (let i = 0; i < row.length; i++) for (let j = i + 1; j < row.length; j++) {
-      const a = row[i]!, b = row[j]!
-      total += Math.min(inversions(a.parents, b.parents) + inversions(a.children, b.children),
-        inversions(b.parents, a.parents) + inversions(b.children, a.children))
-      if (preservePartnerOrder && a.parents.some(id => b.parents.includes(id))
-        && (orderedPairs.length > 0 || [...a.parents, ...b.parents].every(id => !parentsByChild.has(id)))) {
-        // Children of separate marriages follow their individual parent.
-        // Fixed M/F orientation also applies above the visible boundary.
-        const mean = (ids: string[]) => ids.reduce((sum, id) => sum + positions.get(id)!, 0) / ids.length
-        const direction = Math.sign(mean(a.parents) - mean(b.parents))
-        for (const left of a.children) for (const right of b.children) {
-          if ((positions.get(left)! - positions.get(right)!) * direction < 0) total += orientationWeight
-        }
+    const pairs = row.flatMap((a, i) => row.slice(i + 1).map(b => ({
+      a: numericFamilies.get(a)!, b: numericFamilies.get(b)!,
+      preserve: preservePartnerOrder && a.parents.some(id => b.parents.includes(id))
+        && (orderedPairs.length > 0 || [...a.parents, ...b.parents].every(id => !parentsByChild.has(id))),
+    })))
+    const chains = partnerChains.filter(chain => generationById.get(chain[0]!) === generation + 1)
+    // The penalty is symmetric in the two partners, so their current iteration order is immaterial.
+    const partners = preservePartnerOrder ? [...rows.get(generation + 1) ?? []].map(group => group.ids)
+      .concat(chains).flatMap(ids => ids.flatMap((left, i) => ids.slice(i + 1).flatMap(right => {
+        const a = parentsByChild.get(left), b = parentsByChild.get(right)
+        return a && b ? [{ left: index(left), right: index(right), a: a.map(index), b: b.map(index) }] : []
+      }))) : []
+    return [generation, {
+      pairs, partners, chains: chains.map(chain => chain.map(index)),
+      orientation: orderedPairs.filter(([left, right]) => generationById.get(left) === generation
+        && generationById.get(right) === generation).map(([left, right]) => [index(left), index(right)] as const),
+      parents: new Map<string, { inversions: number[]; reverse: number[]; directions: number[]; partners: number[]; orientation: number; costs: Map<string, number> }>(),
+      children: new Map<string, { inversions: number[]; reverse: number[]; partners: number[]; chains: number }>(),
+    }] as const
+  }))
+  const cost = (generation: number) => {
+    const parentKey = signatures.get(generation) ?? '', childKey = signatures.get(generation + 1) ?? ''
+    const data = compiled.get(generation)!
+    let parents = data.parents.get(parentKey)
+    if (!parents) {
+      parents = {
+        inversions: data.pairs.map(({ a, b }) => inversions(a.parents, b.parents)),
+        reverse: data.pairs.map(({ a, b }) => inversions(b.parents, a.parents)),
+        directions: data.pairs.map(({ a, b, preserve }) => preserve ? Math.sign(mean(a.parents) - mean(b.parents)) : 0),
+        partners: data.partners.map(({ a, b }) => mean(a) - mean(b)),
+        orientation: data.orientation.filter(([left, right]) => positions[left]! > positions[right]!).length * orientationWeight ** 2,
+        costs: new Map(),
       }
+      data.parents.set(parentKey, parents)
     }
-    if (preservePartnerOrder) for (const ids of [...rows.get(generation + 1) ?? []].map(group => group.ids)
-      .concat(partnerChains.filter(chain => generationById.get(chain[0]!) === generation + 1))) {
-      for (let i = 0; i < ids.length; i++) for (let j = i + 1; j < ids.length; j++) {
-        const a = parentsByChild.get(ids[i]!), b = parentsByChild.get(ids[j]!)
-        if (!a || !b) continue
-        const mean = (ids: string[]) => ids.reduce((sum, id) => sum + positions.get(id)!, 0) / ids.length
-        if ((mean(a) - mean(b)) * (positions.get(ids[i]!)! - positions.get(ids[j]!)!) < 0) total += orientationWeight
+    const known = parents.costs.get(childKey)
+    if (known !== undefined) return known
+    let children = data.children.get(childKey)
+    if (!children) {
+      children = {
+        inversions: data.pairs.map(({ a, b }) => inversions(a.children, b.children)),
+        reverse: data.pairs.map(({ a, b }) => inversions(b.children, a.children)),
+        partners: data.partners.map(({ left, right }) => positions[left]! - positions[right]!),
+        chains: data.chains.reduce((total, chain) => {
+          const direction = positions[chain[0]!]! < positions[chain.at(-1)!]! ? 1 : -1
+          return total + chain.slice(1).filter((id, i) => (positions[id]! - positions[chain[i]!]!) * direction < 0).length * orientationWeight
+        }, 0),
       }
+      data.children.set(childKey, children)
     }
-    for (const chain of partnerChains.filter(chain => generationById.get(chain[0]!) === generation + 1)) {
-      const direction = positions.get(chain[0]!)! < positions.get(chain.at(-1)!)! ? 1 : -1
-      for (let i = 1; i < chain.length; i++) if ((positions.get(chain[i]!)! - positions.get(chain[i - 1]!)!) * direction < 0) total += orientationWeight
+    let total = parents.orientation + children.chains
+    for (let i = 0; i < data.pairs.length; i++) {
+      total += Math.min(parents.inversions[i]! + children.inversions[i]!, parents.reverse[i]! + children.reverse[i]!)
+      // Positive direction penalizes a child before b; negative penalizes a child after b.
+      total += (parents.directions[i]! > 0 ? children.reverse[i]! : parents.directions[i]! < 0 ? children.inversions[i]! : 0) * orientationWeight
     }
-    costs.set(key, total)
+    for (let i = 0; i < data.partners.length; i++) if (parents.partners[i]! * children.partners[i]! < 0) total += orientationWeight
+    parents.costs.set(childKey, total)
     return total
   }
   const score = () => generations.reduce((sum, generation) => sum + cost(generation), cost(generations[0]! - 1))
@@ -100,8 +133,16 @@ export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, f
       update(generation)
     }
   }
+  const improved = new Map<string, ReturnType<typeof snapshot>>()
   const improve = () => {
+    const visited: string[] = []
     for (let pass = 0; pass < 12; pass++) {
+      // A search often converges to a state visited by another seed. Reuse the
+      // remaining passes only with the same pass number (direction and budget).
+      const key = `${pass}:` + generations.map(generation => signatures.get(generation)).join('\0')
+      const known = improved.get(key)
+      if (known) { restore(known); break }
+      visited.push(key)
       let changed = false
       for (const generation of pass % 2 ? generations : [...generations].reverse()) {
         const row = rows.get(generation)!
@@ -144,6 +185,8 @@ export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, f
       }
       if (!changed) break
     }
+    const result = snapshot()
+    for (const key of visited) improved.set(key, result)
   }
   improve()
   let bestScore = score(), best = snapshot()
@@ -159,8 +202,8 @@ export function orderVerticalFamilies<T extends Group>(rows: Map<number, T[]>, f
         const related = families.flatMap(family => downward
           ? family.children.includes(id) ? family.parents : []
           : family.parents.includes(id) ? family.children : [])
-        targets.set(id, related.length ? related.reduce((sum, relative) => sum + positions.get(relative)!, 0) / related.length
-          : positions.get(id)!)
+        targets.set(id, related.length ? related.reduce((sum, relative) => sum + position(relative), 0) / related.length
+          : position(id))
       }
       for (const group of row) {
         if (preservePartnerOrder && group.ids.length > 2) {

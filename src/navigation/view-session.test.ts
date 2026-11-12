@@ -22,7 +22,7 @@ describe('tab view session', () => {
       let state = viewReducer(fallback, { type: 'map', settings: {
         generations: 5, zoom: 1.25, pan: { x: -.3, y: .45 }, collapsedAppearanceIds: ['appearance'],
         expandedSiblingIds: ['I12'], collapsedAncestorIds: ['I2'], compactCards: true,
-        expandedRelativeIds: ['I12'], showAllRelatives: true,
+        collapsedSiblingIds: ['I12'],
       } })
       state = viewReducer(state, { type: 'relationship', id: 'relationship' })
       saveViewSession(state)

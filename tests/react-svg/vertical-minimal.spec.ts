@@ -40,7 +40,9 @@ test('мінімальні картки без портретів стають �
     if (compact) await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
     await expect(page.locator('[data-card-design="minimal"]')).toHaveAttribute('data-card-density', compact ? 'compact' : 'full')
     await expect(page.locator('[data-card-portrait="true"]')).toHaveCount(0)
-    await expect(page.locator('[data-map-viewport] svg image, [data-map-viewport] svg pattern')).toHaveCount(0)
+    // Ornament tiles are vector patterns; the minimal view has no raster artwork
+    // or portrait patterns referencing it.
+    await expect(page.locator('[data-map-viewport] svg image, [data-map-viewport] svg pattern use')).toHaveCount(0)
     expect(await page.locator('[data-person-id]').evaluateAll(nodes => nodes.every(node => {
       const card = node.querySelector('rect')!.getBoundingClientRect()
       return [...node.querySelectorAll('text')].every(text => {

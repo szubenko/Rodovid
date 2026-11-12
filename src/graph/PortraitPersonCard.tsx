@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { memo, useId } from 'react'
 import type { PersonCardSkin } from './person-card-skin'
 import { portraitOrnamentInset, portraitTextLines, type PortraitCardMetrics } from './portrait-card-layout'
 import { RecruitSymbol } from './RecruitSymbol'
@@ -15,7 +15,33 @@ function RoleSymbol({ skin }: { skin: PersonCardSkin }) {
   return <>{Array.from({ length: 6 }, (_, index) => <ellipse key={index} cx="0" cy="-7" rx="3" ry="5" transform={`rotate(${index * 60})`} />)}<circle r="2.5" /></>
 }
 
-export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artworkId, measureName, measureYears, scale = 1, photoPath }: {
+// Share paint servers across equal cards so zooming does not rasterize the same
+// portrait and ornament separately for every relative.
+export const PortraitCardDefinitions = memo(function PortraitCardDefinitions({ skins, metrics: m, artworkId }: {
+  skins: PersonCardSkin[]; metrics: PortraitCardMetrics; artworkId: string
+}) {
+  return <>
+    {[...new Map(skins.map(skin => [skin.id, skin])).values()].map(skin => {
+      if (!skin.portrait || !m.portraitSize) return null
+      const radius = skin.portrait.radius ?? 100
+      return <pattern key={skin.id} id={`${artworkId}-portrait-${skin.id}`} x={(m.width - m.portraitSize) / 2} y={m.portraitTop}
+        width={m.portraitSize} height={m.portraitSize} patternUnits="userSpaceOnUse"
+        viewBox={`${skin.portrait.x - radius} ${skin.portrait.y - radius} ${radius * 2} ${radius * 2}`}>
+        <use href={`#${artworkId}${skin.portrait.artwork ? `-${skin.portrait.artwork}` : ''}`} />
+      </pattern>
+    })}
+    {[...new Set(skins.map(skin => skin.tone))].map(tone =>
+      <pattern key={tone} id={`${artworkId}-stitch-${tone}`} className={styles.art} data-tone={tone}
+        width="14" height="24" patternUnits="userSpaceOnUse">
+        <g transform="translate(7 12) scale(.58)" fill="currentColor">
+          <path d="M0-7 7 0 0 7-7 0Zm0 3L-4 0l4 4 4-4Z" fillRule="evenodd" />
+          <path d="m0-12 2 2-2 2-2-2Zm0 20 2 2-2 2-2-2Zm-10-10 2 2-2 2-2-2Zm20 0 2 2-2 2-2-2Z" />
+        </g>
+      </pattern>)}
+  </>
+})
+
+export const PortraitPersonCard = memo(function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artworkId, measureName, measureYears, scale = 1, photoPath }: {
   x: number; y: number; name: string; years: string; skin: PersonCardSkin; metrics: PortraitCardMetrics
   artworkId: string; measureName: (text: string) => number; measureYears: (text: string) => number
   scale?: number; photoPath?: string
@@ -25,33 +51,22 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
   const { nameTop, yearsTop, roleTop, nameSize, yearSize, roleSize } = m.typography
   const names = portraitTextLines(name, m.textWidth, text => measureName(text) * nameSize / 24, true)
   const dates = portraitTextLines(years, m.textWidth, text => measureYears(text) * yearSize / 15)
-  const radius = skin.portrait?.radius ?? 100
   return <>
     <rect className={styles.frame} data-tone={skin.tone} x={left} y={top} width={m.width * scale} height={m.height * scale} rx={12 * scale} />
     <g className={styles.art} data-tone={skin.tone} transform={`translate(${left} ${top}) scale(${scale})`} pointerEvents="none" aria-hidden="true">
       <defs>
         {photoPath && m.portraitSize > 0 && <clipPath id={`${id}-photo`}><circle cx={m.width / 2}
           cy={m.portraitTop + m.portraitSize / 2} r={m.portraitSize / 2} /></clipPath>}
-        {m.portraitSize > 0 && skin.portrait && <pattern id={`${id}-portrait`} x={(m.width - m.portraitSize) / 2} y={m.portraitTop}
-          width={m.portraitSize} height={m.portraitSize} patternUnits="userSpaceOnUse"
-          viewBox={`${skin.portrait.x - radius} ${skin.portrait.y - radius} ${radius * 2} ${radius * 2}`}>
-          <use href={`#${artworkId}${skin.portrait.artwork ? `-${skin.portrait.artwork}` : ''}`} />
-        </pattern>}
-        <g id={`${id}-stitch`} fill="currentColor">
-          <path d="M0-7 7 0 0 7-7 0Zm0 3L-4 0l4 4 4-4Z" fillRule="evenodd" />
-          <path d="m0-12 2 2-2 2-2-2Zm0 20 2 2-2 2-2-2Zm-10-10 2 2-2 2-2-2Zm20 0 2 2-2 2-2-2Z" />
-        </g>
       </defs>
-      {[portraitOrnamentInset, m.width - portraitOrnamentInset].map(edge => <g key={edge} className={styles.ornament}>
-        {Array.from({ length: Math.floor((m.height - 28) / 24) }, (_, row) =>
-          <use key={row} href={`#${id}-stitch`} transform={`translate(${edge} ${24 + row * 24}) scale(.58)`} />)}
-      </g>)}
+      {[portraitOrnamentInset, m.width - portraitOrnamentInset].map(edge => <rect key={edge} className={styles.ornament}
+        transform={`translate(${edge - 7} 12)`} width="14" height={Math.floor((m.height - 28) / 24) * 24}
+        fill={`url(#${artworkId}-stitch-${skin.tone})`} />)}
       {m.portraitSize > 0 && <><circle className={styles.ring} cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2} r={m.portraitSize / 2 + 3} />
       {photoPath ? <image data-card-portrait="true" href={`${import.meta.env.BASE_URL}${photoPath}`}
         x={(m.width - m.portraitSize) / 2} y={m.portraitTop} width={m.portraitSize} height={m.portraitSize}
         preserveAspectRatio="xMidYMid slice" clipPath={`url(#${id}-photo)`} />
         : skin.portrait ? <circle data-card-portrait="true" cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2}
-        r={m.portraitSize / 2} fill={`url(#${id}-portrait)`} />
+        r={m.portraitSize / 2} fill={`url(#${artworkId}-portrait-${skin.id})`} />
         : <g className={styles.silhouette} transform={`translate(${m.width / 2} ${m.portraitTop + m.portraitSize / 2}) scale(${m.portraitSize / 100})`}>
           <circle r="49" className={styles.emptyPortrait} /><circle cy="-10" r="15" /><path d="M-30 35v-6a30 22 0 0 1 60 0v6Z" />
         </g>}</>}
@@ -64,4 +79,4 @@ export function PortraitPersonCard({ x, y, name, years, skin, metrics: m, artwor
         y={yearsTop + yearSize * (.85 + index * 1.1)} fontSize={yearSize} textAnchor="middle">{line}</text>)}
     </g>
   </>
-}
+})

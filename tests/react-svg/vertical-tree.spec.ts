@@ -1,8 +1,11 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import family from '../../generated/family.json' with { type: 'json' }
+import { familyDataSchema } from '../../src/data/schema'
+import { buildFamilyGraph } from '../../src/graph/projection'
+import { projectVerticalFamily } from '../../src/graph/vertical-projection'
 
-for (const diagram of ['vertical', 'horizontal', 'relatives']) {
+for (const diagram of ['vertical', 'horizontal']) {
 test(`скіни всіх карток ${diagram}: стан, заняття та ілюстрації в PNG`, async ({ page }, testInfo) => {
   test.setTimeout(60_000)
   await page.goto(`/${diagram}/I1`)
@@ -68,15 +71,6 @@ test(`скіни всіх карток ${diagram}: стан, заняття та
     await expect(page.locator('[data-card-skin]')).toHaveCount(await nodes.count())
     await page.getByRole('button', { name: 'До центру', exact: true }).click()
     await center.screenshot({ path: testInfo.outputPath(`skin-${id}.png`) })
-  }
-  if (diagram === 'relatives') {
-    await page.getByRole('button', { name: 'Показати всіх родичів', exact: true }).click()
-    await expect(page.getByTestId('relatives-count')).toContainText(`${family.people.length} із ${family.people.length}`)
-    await expect(page.locator('[data-card-skin]')).toHaveCount(family.people.length)
-    await expect(page.locator('[data-card-artwork]')).toHaveCount(4)
-    await expect(page.locator('[data-card-artwork][href*="serfs"]')).toHaveCount(1)
-    await expect(page.locator('[data-card-artwork][href*="recruit"]')).toHaveCount(1)
-    await expect(page.locator('[data-card-artwork][href*="dressmaker"]')).toHaveCount(1)
   }
   await page.goto('/tree/I1')
   await expect(page.locator('[data-person-id="I1"]')).toBeVisible()
@@ -156,10 +150,9 @@ test('вертикальний родовід містить лише кровн
   await page.getByRole('button', { name: 'Зберегти PNG', exact: true }).click()
   await (await pending).saveAs(testInfo.outputPath('vertical-blood-ancestors-export.png'))
   const camera = await vertical.locator('[data-layer="camera"]').getAttribute('transform')
-  await page.getByRole('link', { name: 'Усі родичі', exact: true }).click()
-  const relatives = page.getByRole('group', { name: /^Родовід з усіма родичами:/ })
-  await page.getByRole('button', { name: 'Показати всіх родичів', exact: true }).click()
-  await expect(relatives.locator('[data-person-id]')).toHaveCount(family.people.length)
+  await page.getByRole('link', { name: 'Усі Родичі New', exact: true }).click()
+  const relatives = page.getByRole('group', { name: /^Усі Родичі New:/ })
+  await expect(relatives.locator('[data-person-id]')).toHaveCount(projectVerticalFamily(buildFamilyGraph(familyDataSchema.parse(family)), 'I1', { generations: 12, expandedSiblingPersonIds: family.people.map(person => person.id) }).appearances.length)
   for (const id of ['I10', 'I27', 'I68', 'I69', 'I74']) await expect(relatives.locator('[data-person-id="' + id + '"]')).toHaveCount(1)
   await page.screenshot({ path: testInfo.outputPath('all-relatives-comparison.png'), fullPage: true })
   await page.getByRole('button', { name: 'Назад до попереднього перегляду', exact: true }).click()
@@ -205,9 +198,8 @@ test('обидва відомі батьки над дитиною; брати �
   })).toBe(true)
   await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
   await page.screenshot({ path: testInfo.outputPath('sasha-parents-only.png'), fullPage: true })
-  await page.getByRole('link', { name: 'Усі родичі', exact: true }).click()
-  await page.getByRole('button', { name: 'Показати всіх родичів', exact: true }).click()
-  const relatives = page.getByRole('group', { name: /^Родовід з усіма родичами:/ })
+  await page.getByRole('link', { name: 'Усі Родичі New', exact: true }).click()
+  const relatives = page.getByRole('group', { name: /^Усі Родичі New:/ })
   for (const id of ['I4', 'I71', 'I72', 'I73', 'I74']) await expect(relatives.locator('[data-person-id="' + id + '"]')).toHaveCount(1)
 })
 

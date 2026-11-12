@@ -83,7 +83,7 @@ test('шапка й вкладки не зміщуються між усіма �
       for (const [screen, label] of [
         ['horizontal', 'Горизонтальний родовід'], ['vertical', 'Вертикальний родовід'],
         ['vertical-design', 'Вертикальний · новий дизайн'], ['vertical-minimal', 'Вертикальна мінімальна'],
-        ['relatives', 'Усі родичі'], ['person', 'Історія життя'], ['tree', 'Родинне коло'],
+        ['relatives', 'Усі Родичі New'], ['person', 'Історія життя'], ['tree', 'Родинне коло'],
       ]) {
         await page.getByRole('link', { name: label!, exact: true }).click()
         await expect(page).toHaveURL(new RegExp(`/${screen}/${personId}$`))

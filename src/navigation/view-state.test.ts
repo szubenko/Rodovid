@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { initialView, viewReducer, type ViewAction, type MapScreen } from './view-state'
+import { initialView, portraitMapBaseZoom, viewReducer, type ViewAction, type MapScreen } from './view-state'
 
 const visit = (key: string, screen: MapScreen | 'person', personId: string, navigationType: 'POP' | 'PUSH' | 'REPLACE' = 'PUSH'): ViewAction =>
   ({ type: 'visit', key, route: { screen, personId }, navigationType })
@@ -22,7 +22,7 @@ describe('view history', () => {
   it('starts portrait diagrams at 30% and other atlas diagrams at 60%, and restores saved cameras on tab switches', () => {
     for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'] as const) {
       const initial = initialView('I1', 3, 'direct', { screen, personId: 'I1' }, 0.6)
-      const portrait = screen === 'vertical-design' || screen === 'vertical-minimal'
+      const portrait = screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives'
       const pan = portrait ? .35 : .2
       expect(initial.current.map).toMatchObject({ zoom: portrait ? .3 : .6, pan: { x: pan, y: pan } })
       const changed = viewReducer(initial, { type: 'map', settings: { zoom: 2, pan: { x: -0.1, y: 0.4 } } })
@@ -80,8 +80,8 @@ describe('view history', () => {
     state = viewReducer(state, { type: 'map', settings: { zoom: 1.25 } })
     const original = state.current
     state = viewReducer(state, visit('full', 'relatives', 'I1'))
-    expect(state.current).toMatchObject({ mapScreen: 'relatives', map: { zoom: 1 } })
-    state = viewReducer(state, { type: 'map', settings: { expandedRelativeIds: ['I69'], showAllRelatives: true, zoom: 0.15 } })
+    expect(state.current).toMatchObject({ mapScreen: 'relatives', map: { zoom: portraitMapBaseZoom } })
+    state = viewReducer(state, { type: 'map', settings: { collapsedSiblingIds: ['I69'], collapsedAncestorIds: ['I2'], zoom: 0.15 } })
     const full = state.current
     state = viewReducer(state, visit('room', 'person', 'I1'))
     expect(state.current.mapScreen).toBe('relatives')
@@ -92,10 +92,10 @@ describe('view history', () => {
     state = viewReducer(state, visit('full', 'relatives', 'I1', 'POP'))
     expect(state.current).toEqual(full)
     state = viewReducer(state, visit('relative', 'relatives', 'I3'))
-    expect(state.current.map.expandedRelativeIds).toBeUndefined()
-    expect(state.current.map.showAllRelatives).toBeUndefined()
+    expect(state.current.map.collapsedSiblingIds).toBeUndefined()
+    expect(state.current.map.collapsedAncestorIds).toBeUndefined()
     state = viewReducer(state, visit('another', 'vertical', 'I3'))
-    expect(state.current.map.showAllRelatives).toBeUndefined()
+    expect(state.current.map.collapsedSiblingIds).toBeUndefined()
   })
   it('separates map cameras, retains horizontal mode through rooms and restores snapshots', () => {
     let state = initialView('I1', 3, 'a', { screen: 'tree', personId: 'I1' })

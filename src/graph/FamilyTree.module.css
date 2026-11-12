@@ -12,16 +12,8 @@
 .node:focus-visible { outline: none; }
 .node:focus-visible .card { stroke: #29664f; stroke-width: 4; stroke-dasharray: 6 3; }
 .label { fill: #243c2c; font-family: system-ui, sans-serif; pointer-events: none; }
-.node[data-main-line='true'] .label { font-weight: 600; }
 .date { fill: #596850; font-family: system-ui, sans-serif; pointer-events: none; }
 .marker { fill: #5f7957; font: 11px system-ui, sans-serif; pointer-events: none; }
-.branch { cursor: pointer; }
-.branch .branchHit { fill: transparent; stroke: transparent; stroke-width: 24; vector-effect: non-scaling-stroke; pointer-events: all; }
-.branch rect:not(.branchHit) { fill: #f3f7ee; stroke: #63845a; stroke-width: 1.5; }
-.branch text { fill: #29664f; font: 26px system-ui, sans-serif; pointer-events: none; }
-.branch:hover rect:not(.branchHit), .branch:focus-visible rect:not(.branchHit) { stroke: #29664f; stroke-width: 3; }
-.branch:focus-visible { outline: none; }
-.branch:focus-visible rect:not(.branchHit) { stroke-dasharray: 5 3; }
 .siblingToggle { cursor: pointer; }
 .siblingHit { fill: transparent; stroke: transparent; stroke-width: 4; vector-effect: non-scaling-stroke; }
 .siblingToggle path { fill: none; stroke: #147a93; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
@@ -41,9 +33,7 @@
   .node[data-lane] .card { fill: Canvas; stroke: CanvasText; }
   .node[data-center='true'] .card, .node:focus-visible .card { stroke: Highlight; }
   .label, .date, .marker { fill: CanvasText; }
-  .branch rect:not(.branchHit) { fill: Canvas; stroke: ButtonText; }
-  .branch text, .count { fill: CanvasText; color: CanvasText; }
-  .branch:focus-visible rect:not(.branchHit) { stroke: Highlight; }
+  .count { color: CanvasText; }
   .line { stroke: CanvasText; }
   .connection[data-selected='true'] .line, .connection:focus-visible .line { stroke: Highlight; }
 }

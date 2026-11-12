@@ -7,10 +7,9 @@ export type MapSettings = {
   /** Fractions of the viewport width (x) and height (y), independent of pixel dimensions. */
   pan: { x: number; y: number }
   collapsedAppearanceIds: string[]
-  expandedRelativeIds?: string[]
-  showAllRelatives?: boolean
   compactCards?: boolean
   expandedSiblingIds?: string[]
+  collapsedSiblingIds?: string[]
   collapsedAncestorIds?: string[]
 }
 export type View = ViewRoute & {
@@ -45,7 +44,7 @@ function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
 }
 
 function defaultMapZoom(screen: MapScreen, initialMapZoom: number) {
-  return screen === 'vertical-design' || screen === 'vertical-minimal' ? portraitMapBaseZoom : initialMapZoom
+  return screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives' ? portraitMapBaseZoom : initialMapZoom
 }
 
 function diagramKey(screen: MapScreen, centerPersonId: string) {

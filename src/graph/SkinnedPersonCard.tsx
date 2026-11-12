@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { memo, useId } from 'react'
 import reference from '../appearance/skins/stylepicture.png?no-inline'
 import seamstress from '../appearance/skins/seamstress.png?no-inline'
 import serfs from '../appearance/skins/serfs.png?no-inline'
@@ -26,7 +26,7 @@ export function PersonCardArtwork({ id, skins = [] }: { id: string; skins?: Iter
   </>
 }
 
-export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, name, years, skin, cardClassName, artworkId, measureName, measureYears, measureRole, photoPath }: {
+export const SkinnedPersonCard = memo(function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, name, years, skin, cardClassName, artworkId, measureName, measureYears, measureRole, photoPath }: {
   x: number; y: number; width: number; height: number; name: string; years: string
   skin: PersonCardSkin; cardClassName?: string; photoPath?: string
   artworkId: string; measureName: (text: string) => number; measureYears: (text: string) => number
@@ -96,4 +96,4 @@ export function SkinnedPersonCard({ x, y, width: cardWidth, height: cardHeight, 
         <use href={`#${prefix}-flower`} transform={`translate(${width - 29} ${height - 19}) scale(.9)`} /></>}
     </g>
   </>
-}
+})

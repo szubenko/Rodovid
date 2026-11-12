@@ -104,6 +104,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
   const measureCardName = useMemo(() => createNameMeasure(), [])
   const measure = useMemo(() => createTextMeasure(), [])
   const measureYears = useMemo(() => (text: string) => measure(text, 18) * 15 / 18, [measure])
+  const measureRole = useMemo(() => (text: string) => measure(text, 22) * 13 / 22, [measure])
   const settings = state.current.map
   const expandedSiblingIds = useMemo(() => includeRelatives
     ? [...graph.personIds].filter(id => !settings.collapsedSiblingIds?.includes(id))
@@ -246,8 +247,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
                 : <SkinnedPersonCard x={node.x} y={node.y} width={node.width} height={node.height}
                   name={labels.get(node.personId)!} years={dates.get(node.personId) ?? ''} skin={skin} cardClassName={styles.card}
                   photoPath={portraits.get(node.personId)}
-                  measureRole={text => measure(text, 22) * 13 / 22}
-                  artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={text => measure(text, 18) * 15 / 18} />}
+                  measureRole={measureRole}
+                  artworkId={`${prefix}-skin-artwork`} measureName={measureCardName} measureYears={measureYears} />}
                 {hidden && !portraitCards && <text className={styles.marker} x={node.x + node.width / 2 - 10} y={node.y - node.height / 2 + 16} textAnchor="end">↗</text>}
                 </g>
               </g>

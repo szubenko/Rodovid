@@ -18,6 +18,21 @@ import { downloadSvgAsPng } from './export-png'
 import { birthCountries, countryColor, unknownBirthCountry } from './birth-country'
 import { PersonTooltip } from './PersonTooltip'
 
+function createTextMeasure() {
+  const context = document.createElement('canvas').getContext('2d')
+  if (context) context.font = '20px system-ui, sans-serif'
+  const widths = new Map<string, number>()
+  return (text: string, size: number) => {
+    const key = `${size}/${text}`
+    let width = widths.get(key)
+    if (width === undefined) {
+      width = (size === 20 ? context?.measureText(text).width : undefined) ?? Array.from(text).length * size
+      widths.set(key, width)
+    }
+    return width
+  }
+}
+
 function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
 }
@@ -31,18 +46,7 @@ export function RadialMap({ personId, fitToViewport = false }: { personId: strin
   const { expanded, toggleExpansion } = useMapExpansion(container)
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
-  const measureText = useMemo(() => {
-    // Each context keeps one font; measurement never mutates a memoized object.
-    const contexts = new Map<number, CanvasRenderingContext2D | null>()
-    for (const size of [20]) {
-      const context = document.createElement('canvas').getContext('2d')
-      if (context) context.font = `${size}px system-ui, sans-serif`
-      contexts.set(size, context)
-    }
-    return (text: string, size: number) => {
-      return contexts.get(size)?.measureText(text).width ?? Array.from(text).length * size
-    }
-  }, [])
+  const measureText = useMemo(() => createTextMeasure(), [])
   const graph = useMemo(() => buildFamilyGraph(family), [family])
   const countries = useMemo(() => birthCountries(family), [family])
   const labels = useMemo(() => new Map(family.people.map((person) => [person.id, personName(family, person.id)])), [family])

@@ -480,6 +480,20 @@
         "media-chabany-havali-kopeysk-1958"
       ],
       "portraitId": "media-i55-kopeysk-1958-portrait"
+    },
+    {
+      "id": "person-media-i3",
+      "personId": "I3",
+      "photoIds": [],
+      "portraitId": "media-i3-iryna-avatar"
+    },
+    {
+      "id": "person-media-i108",
+      "personId": "I108",
+      "photoIds": [
+        "media-i108-vasyl-photo"
+      ],
+      "portraitId": "media-i108-vasyl-avatar"
     }
   ],
   "placeEnrichments": [
@@ -7073,6 +7087,75 @@
           "kind": "supplement",
           "file": "E:/RodovidZubenko/!!!Kernicki/Семен Іванович Чабан — аватарка зі спільного фото.png",
           "entryId": "media-i53-chabany-photo-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i3-iryna-avatar",
+      "path": "assets/photos/i3-зубенко-ірина-аватар.png",
+      "sha256": "91f328690368a81f24790868437bd7e5e9a9b95a9cf3bf1f2fc17fd28b8e1161",
+      "dimensions": {
+        "width": 1066,
+        "height": 1056
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i3-зубенко-ірина-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Зубенко Ірина — аватарка",
+      "description": "Зубенко Ірина. Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Зубенко Ірина — аватарка.png",
+          "entryId": "media-i3-iryna-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i108-vasyl-photo",
+      "path": "assets/photos/i108-чабан-василь-фото.png",
+      "sha256": "0444749717dc5cd2fc502af0b46c9b0e58dc03e6a8037badaa9cfcbe0d646530",
+      "dimensions": {
+        "width": 1087,
+        "height": 1447
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i108-чабан-василь-фото.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Василь Антонович — фотографія",
+      "description": "Василь Антонович Чабан. Фотографію надав власник.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Василь Антонович — фотографія.png",
+          "entryId": "media-i108-vasyl-photo"
+        }
+      ]
+    },
+    {
+      "id": "media-i108-vasyl-avatar",
+      "path": "assets/photos/i108-чабан-василь-аватар.png",
+      "sha256": "3da53aa5eabde95d82d71ab77696c776184ceb2a766cbd313564c9c2bfcfcdd4",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i108-чабан-василь-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Василь Антонович — аватарка",
+      "description": "Портрет для аватарки створено за допомогою ШІ з фотографії, наданої власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Василь Антонович — аватарка.png",
+          "entryId": "media-i108-vasyl-avatar"
         }
       ]
     }

@@ -5,6 +5,19 @@ const visit = (key: string, screen: MapScreen | 'person', personId: string, navi
   ({ type: 'visit', key, route: { screen, personId }, navigationType })
 
 describe('view history', () => {
+  it('keeps old and new relatives cameras and folds independent when switching tabs', () => {
+    let state = initialView('I1', 3, 'old', { screen: 'relatives', personId: 'I1' })
+    state = viewReducer(state, { type: 'map', settings: { zoom: .7, collapsedSiblingIds: ['I32'] } })
+    const oldMap = state.current.map
+    state = viewReducer(state, visit('new', 'relatives-2', 'I1'))
+    expect(state.current.map.collapsedSiblingIds).toBeUndefined()
+    state = viewReducer(state, { type: 'map', settings: { zoom: .15, collapsedAncestorIds: ['I2'] } })
+    const newMap = state.current.map
+    state = viewReducer(state, visit('old-again', 'relatives', 'I1'))
+    expect(state.current.map).toEqual(oldMap)
+    state = viewReducer(state, visit('new-again', 'relatives-2', 'I1'))
+    expect(state.current.map).toEqual(newMap)
+  })
   it.each(['vertical-design', 'vertical-minimal'] as const)('restores %s and density independently of the original vertical diagram', screen => {
     let state = initialView('I1', 3, 'original', { screen: 'vertical', personId: 'I1' }, .6)
     const original = state.current
@@ -20,9 +33,9 @@ describe('view history', () => {
     expect(state.current).toEqual(original)
   })
   it('starts portrait diagrams at 30% and other atlas diagrams at 60%, and restores saved cameras on tab switches', () => {
-    for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'] as const) {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives', 'relatives-2'] as const) {
       const initial = initialView('I1', 3, 'direct', { screen, personId: 'I1' }, 0.6)
-      const portrait = screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives'
+      const portrait = screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives' || screen === 'relatives-2'
       const pan = portrait ? .35 : .2
       expect(initial.current.map).toMatchObject({ zoom: portrait ? .3 : .6, pan: { x: pan, y: pan } })
       const changed = viewReducer(initial, { type: 'map', settings: { zoom: 2, pan: { x: -0.1, y: 0.4 } } })

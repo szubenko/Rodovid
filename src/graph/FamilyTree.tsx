@@ -7,6 +7,7 @@ import { EvidenceForTarget } from '../room/Evidence'
 import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFamily } from './projection'
 import { layoutTree, type TreeOrientation } from './tree-layout'
 import { layoutRelatives } from './relatives-layout'
+import { projectAllRelatives } from './all-relatives-projection'
 import { ancestorPersonIds, availableVerticalGenerations, projectVerticalFamily, siblingPersonIds } from './vertical-projection'
 import { lifeYears, relationshipName } from './presentation'
 import { useMapCamera } from './useMapCamera'
@@ -74,13 +75,13 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
   if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); action() }
 }
 
-export function FamilyTree({ personId, orientation, includeRelatives = false, portraitCards = false, portraitVariant = 'design' }: {
-  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; portraitCards?: boolean; portraitVariant?: 'design' | 'minimal'
+export function FamilyTree({ personId, orientation, includeRelatives = false, fullFamily = false, portraitCards = false, portraitVariant = 'design' }: {
+  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; fullFamily?: boolean; portraitCards?: boolean; portraitVariant?: 'design' | 'minimal'
 }) {
   const minimalCards = portraitCards && portraitVariant === 'minimal'
-  const title = includeRelatives ? 'Усі Родичі New' : portraitCards ? portraitVariant === 'minimal' ? 'Вертикальна мінімальна' : 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
+  const title = includeRelatives ? fullFamily ? 'Всі Родичі 2' : 'Стара Всі родичі' : portraitCards ? portraitVariant === 'minimal' ? 'Вертикальна мінімальна' : 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
   const vertical = orientation === 'vertical'
-  const mapScreen = includeRelatives ? 'relatives' : portraitCards ? portraitVariant === 'minimal' ? 'vertical-minimal' : 'vertical-design' : orientation
+  const mapScreen = includeRelatives ? fullFamily ? 'relatives-2' : 'relatives' : portraitCards ? portraitVariant === 'minimal' ? 'vertical-minimal' : 'vertical-design' : orientation
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -118,14 +119,16 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
   const maxGenerations = useMemo(() => includeRelatives ? 1
     : vertical ? availableVerticalGenerations(graph, personId) : availableGenerations(graph, personId), [graph, personId, includeRelatives, vertical])
   const generations = Math.min(settings.generations, maxGenerations)
-  const projection = useMemo(() => vertical ? projectVerticalFamily(graph, personId, {
+  const projection = useMemo(() => includeRelatives && fullFamily ? projectAllRelatives(graph, personId, {
+    collapsedSiblingIds: settings.collapsedSiblingIds, collapsedAncestorIds: settings.collapsedAncestorIds,
+  }) : vertical ? projectVerticalFamily(graph, personId, {
     generations: includeRelatives ? 12 : Math.min(12, generations + 1),
     collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
     expandedSiblingPersonIds: portraitCards ? expandedSiblingIds : undefined,
     collapsedAncestorPersonIds: portraitCards ? settings.collapsedAncestorIds : undefined,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
     collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, includeRelatives, vertical,
-    settings.collapsedAppearanceIds, expandedSiblingIds, settings.collapsedAncestorIds, portraitCards])
+    settings.collapsedAppearanceIds, expandedSiblingIds, settings.collapsedSiblingIds, settings.collapsedAncestorIds, portraitCards, fullFamily])
   const directLine = useMemo(() => vertical
     ? portraitMainLine ?? new Set(projection.appearances.map(node => node.personId)) : homeLine,
   [projection, vertical, homeLine, portraitMainLine])
@@ -150,7 +153,10 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, po
     const nextExpandedSiblings = includeRelatives
       ? [...graph.personIds].filter(person => !(changes.collapsedSiblingIds ?? settings.collapsedSiblingIds)?.includes(person))
       : changes.expandedSiblingIds ?? expandedSiblingIds
-    const nextProjection = projectVerticalFamily(graph, personId, {
+    const nextProjection = includeRelatives && fullFamily ? projectAllRelatives(graph, personId, {
+      collapsedSiblingIds: changes.collapsedSiblingIds ?? settings.collapsedSiblingIds,
+      collapsedAncestorIds: collapsedAncestors,
+    }) : projectVerticalFamily(graph, personId, {
       generations: includeRelatives ? 12 : Math.min(12, generations + 1),
       collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
       expandedSiblingPersonIds: nextExpandedSiblings,

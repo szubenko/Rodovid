@@ -21,7 +21,7 @@ test('мінімальні картки без портретів стають �
   await expect(camera).toHaveAttribute('transform', /scale\(0\.3\)$/)
   await page.getByRole('button', { name: 'Зменшити масштаб', exact: true }).click()
   await expect(zoom).toHaveText('80%')
-  const tab = page.getByRole('link', { name: 'Вертикальна мінімальна', exact: true })
+  const tab = page.getByRole('link', { name: 'Вертикальна мін', exact: true })
   await tab.click()
   await expect(page).toHaveURL(/\/vertical-minimal\/I1$/)
   await expect(tab).toHaveAttribute('aria-current', 'page')

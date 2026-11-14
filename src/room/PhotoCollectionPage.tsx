@@ -22,7 +22,7 @@ export function PhotoCollectionPage() {
     ? <Link key={index} className={styles.titleLink} to={`/person/${part.personId}`}>{part.text}</Link>
     : part.text)
   const returnTo: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
-  const hasReturn = typeof returnTo === 'string' && /^\/(?:person|tree|horizontal|vertical|vertical-design|vertical-minimal|relatives)\/I\d+$/.test(returnTo) && family.people.some(person => person.id === returnTo.split('/').at(-1))
+  const hasReturn = typeof returnTo === 'string' && /^\/(?:person|tree|horizontal|vertical|vertical-design|vertical-minimal|relatives|relatives-2)\/I\d+$/.test(returnTo) && family.people.some(person => person.id === returnTo.split('/').at(-1))
   useEffect(() => {
     document.title = `Фотогалерея — ${family.config.title}`
     heading.current?.focus()

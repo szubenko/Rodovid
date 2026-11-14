@@ -8,7 +8,7 @@ test('окрема копія, компактна геометрія, довгі
   const original = page.locator('[data-layer="layout"]')
   const ids = await page.locator('[data-person-id]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-person-id')))
   const oldBounds = await original.evaluate(node => { const b = (node as SVGGraphicsElement).getBBox(); return { width: b.width, height: b.height } })
-  await page.getByRole('link', { name: 'Вертикальний · новий дизайн', exact: true }).click()
+  await page.getByRole('link', { name: 'Вертикальний 2', exact: true }).click()
   await expect(page).toHaveURL(/\/vertical-design\/I1$/)
   const section = page.locator('[data-card-design="portrait"]')
   await expect(section).toHaveAttribute('data-card-density', 'full')

@@ -17,7 +17,7 @@ afterEach(() => { vi.unstubAllGlobals() })
 
 describe('tab view session', () => {
   it('restores each diagram, camera, branches, density and selected relationship', () => {
-    for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'] as const) {
+    for (const screen of ['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives', 'relatives-2'] as const) {
       const fallback = initialView('I1', 3, 'a', { screen, personId: 'I1' }, .6)
       let state = viewReducer(fallback, { type: 'map', settings: {
         generations: 5, zoom: 1.25, pan: { x: -.3, y: .45 }, collapsedAppearanceIds: ['appearance'],

@@ -24,7 +24,7 @@ test('нота керує справжньою музикою й зберіга�
   await expect(music).toHaveJSProperty('volume', 0.02 * 0.9)
   await expect(music).toHaveAttribute('src', /Rodovid_Bandura_Seamless_Loop\.ogg$/)
   const player = (await music.elementHandle())!
-  await page.getByRole('link', { name: 'Горизонтальний родовід', exact: true }).click()
+  await page.getByRole('link', { name: 'Горизонтальний', exact: true }).click()
   await page.getByRole('link', { name: 'Історія життя', exact: true }).click()
   await home.click()
   await expect(page).toHaveURL('/tree/I1')

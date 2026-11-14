@@ -3,7 +3,7 @@ import { viewReducer, type ViewState } from './view-state'
 
 export const viewSessionKey = 'rodovid:view-session:v1'
 
-const mapScreen = z.enum(['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives'])
+const mapScreen = z.enum(['tree', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives', 'relatives-2'])
 const mapSettings = z.object({
   generations: z.number().int().positive(),
   zoom: z.number().positive(),

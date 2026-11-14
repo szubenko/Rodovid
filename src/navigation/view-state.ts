@@ -1,4 +1,4 @@
-export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'vertical-design' | 'vertical-minimal' | 'relatives'
+export type MapScreen = 'tree' | 'horizontal' | 'vertical' | 'vertical-design' | 'vertical-minimal' | 'relatives' | 'relatives-2'
 export const portraitMapBaseZoom = 0.3
 export type ViewRoute = { screen: MapScreen | 'person' | 'photos' | 'missing'; personId: string | null }
 export type MapSettings = {
@@ -40,11 +40,11 @@ function defaultMap(generations: number, zoom = 1): MapSettings {
 }
 
 function isMapScreen(screen: ViewRoute['screen']): screen is MapScreen {
-  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives'
+  return screen === 'tree' || screen === 'horizontal' || screen === 'vertical' || screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives' || screen === 'relatives-2'
 }
 
 function defaultMapZoom(screen: MapScreen, initialMapZoom: number) {
-  return screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives' ? portraitMapBaseZoom : initialMapZoom
+  return screen === 'vertical-design' || screen === 'vertical-minimal' || screen === 'relatives' || screen === 'relatives-2' ? portraitMapBaseZoom : initialMapZoom
 }
 
 function diagramKey(screen: MapScreen, centerPersonId: string) {

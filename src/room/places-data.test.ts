@@ -2,6 +2,8 @@ import { expect, it } from 'vitest'
 import { familyDataSchema } from '../data/schema'
 import fixture from '../../tests/fixtures/data-contract/full.json'
 import { formatPlaceYear, groupPlaceEntries, personPlaces, placeEventYear } from './places-data'
+import actualFamily from '../../generated/family.json'
+import { biographyTimeline } from '../graph/person-tooltip-data'
 
 it('groups event places by shared IDs without inventing coordinates or dropping alternatives', () => {
   const family = familyDataSchema.parse(fixture)
@@ -34,4 +36,21 @@ it('keeps uncertainty, ranges and missing years instead of inventing an exact ye
   expect(formatPlaceYear()).toBe('рік невідомий')
   const family = familyDataSchema.parse(fixture)
   expect(placeEventYear(family, 'missing-event')).toBe('рік невідомий')
+})
+
+it('includes the places of children’s births shown in every person’s biography', () => {
+  const family = familyDataSchema.parse(actualFamily)
+  const vasyl = personPlaces(family, 'I183')
+  const ropa = vasyl.find(entry => entry.place.displayName?.startsWith('Стара Ропа'))
+  expect(ropa?.place.coordinates).toEqual({ latitude: 49.49168, longitude: 22.98076 })
+  expect(ropa?.events.some(entry => entry.label?.startsWith('Народження доньки:'))).toBe(true)
+  for (const person of family.people) {
+    const places = personPlaces(family, person.id)
+    for (const entry of biographyTimeline(family, person.id)) {
+      if (!entry.event) continue
+      for (const claim of entry.claims.filter(claim => claim.field === 'place')) {
+        expect(places.some(place => place.place.id === claim.value && place.events.some(event => event.event.id === entry.event!.id)), `${person.id}: ${entry.id}`).toBe(true)
+      }
+    }
+  }
 })

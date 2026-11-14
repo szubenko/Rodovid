@@ -42,8 +42,8 @@ export function Places({ personId }: { personId: string }) {
             <span className={styles.dot} aria-hidden="true" />
             <span className={styles.placeContent}>
               <span className={styles.placeName}>{placeName(place)}</span>
-              {events.map(({ event }) => <span key={event.id} className={styles.event}>
-                {event.label ?? eventLabels[event.kind]} · {placeEventYear(family, event.id)}
+              {events.map(({ event, label }) => <span key={event.id} className={styles.event}>
+                {label ?? event.label ?? eventLabels[event.kind]} · {placeEventYear(family, event.id)}
               </span>)}
               {!place.coordinates && <span className={styles.event}>Точне розташування не вказано.</span>}
             </span>

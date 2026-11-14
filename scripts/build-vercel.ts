@@ -7,6 +7,7 @@ import { mediaFiles } from './assets.ts'
 export async function verifyDeployment(output: string) {
   const family = familyDataSchema.parse(JSON.parse(await readFile(resolve(output, 'data/family.json'), 'utf8')))
   if (family.datasetKind !== 'family') throw new Error('Expected validated family data')
+  if (family.people.some(person => person.externalIds.length > 0)) throw new Error('Private external IDs cannot enter deployment output')
   const allowed = new Set(['index.html', 'data/family.json'])
   for (const media of family.media) for (const asset of mediaFiles(media)) allowed.add(asset.path)
   const files = []

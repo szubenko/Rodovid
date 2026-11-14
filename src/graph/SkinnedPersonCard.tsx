@@ -74,7 +74,7 @@ export const SkinnedPersonCard = memo(function SkinnedPersonCard({ x, y, width: 
       <circle className={styles.portraitRing} cx={portraitX} cy={portraitY} r={size / 2 + 3} />
       {photoPath ? <image data-card-portrait="true" href={`${import.meta.env.BASE_URL}${photoPath}`}
         x="19" y={(height - size) / 2} width={size} height={size}
-        preserveAspectRatio="xMidYMid slice" clipPath={`url(#${prefix}-photo)`} />
+        preserveAspectRatio={photoPath.includes('i43-чабан-марія-іванівна-фото') ? 'xMidYMin slice' : 'xMidYMid slice'} clipPath={`url(#${prefix}-photo)`} />
         : skin.portrait && <circle cx={portraitX} cy={portraitY} r={size / 2} fill={`url(#${prefix}-portrait)`} />}
       <rect className={styles.badge} x={textX - 3} y="14" width={badgeWidth} height="24" rx="12" />
       {skin.badgeIcon === 'sewing-machine'

@@ -323,6 +323,46 @@
   ],
   "personMedia": [
     {
+      "id": "person-media-i180",
+      "personId": "I180",
+      "photoIds": [
+        "media-sydir-pykhun-group-photo"
+      ],
+      "portraitId": "media-i180-vasyl-owner-avatar"
+    },
+    {
+      "id": "person-media-i181",
+      "personId": "I181",
+      "photoIds": [
+        "media-sydir-pykhun-group-photo"
+      ],
+      "portraitId": "media-i181-owner-avatar"
+    },
+    {
+      "id": "person-media-i182",
+      "personId": "I182",
+      "photoIds": [
+        "media-sydir-pykhun-group-photo"
+      ],
+      "portraitId": "media-i182-owner-avatar"
+    },
+    {
+      "id": "person-media-i183",
+      "personId": "I183",
+      "photoIds": [
+        "media-sydir-pykhun-group-photo"
+      ],
+      "portraitId": "media-i183-owner-avatar"
+    },
+    {
+      "id": "person-media-i43",
+      "personId": "I43",
+      "photoIds": [
+        "media-i43-mariia-photo"
+      ],
+      "portraitId": "media-i43-mariia-photo"
+    },
+    {
       "id": "person-media-i103",
       "personId": "I103",
       "photoIds": [
@@ -334,8 +374,11 @@
       "id": "person-media-i105",
       "personId": "I105",
       "photoIds": [
-        "media-wedding-zemlianska-kravchyk-1946"
-      ]
+        "media-wedding-zemlianska-kravchyk-1946",
+        "media-i105-kateryna-photo-1",
+        "media-i105-kateryna-photo-2"
+      ],
+      "portraitId": "media-i105-kateryna-photo-1"
     },
     {
       "id": "person-media-i47",
@@ -416,7 +459,8 @@
       "personId": "I58",
       "photoIds": [
         "media-chabany-kopeysk-1961",
-        "media-chabany-kopeysk-1965"
+        "media-chabany-kopeysk-1965",
+        "media-i58-daughter-henia-photo"
       ],
       "portraitId": "media-i58-kopeysk-1961-portrait"
     },
@@ -1347,22 +1391,38 @@
     {
       "id": "review-place-205d772a262c92cb00143330",
       "placeId": "place-205d772a262c92cb00143330",
-      "explanation": "D06: 01.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 01.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-58c8e04d84929eb95b842574",
       "placeId": "place-58c8e04d84929eb95b842574",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-c9e42d7d9f21676a90d1f1a2",
       "placeId": "place-c9e42d7d9f21676a90d1f1a2",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-1e10f4cf637ee0c15a42f5ec",
       "placeId": "place-1e10f4cf637ee0c15a42f5ec",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/690312/bahacheve.html; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 49.01198,
+        "longitude": 31.04659
+      }
     },
     {
       "id": "review-place-98d33015bff07b3074dc9f38",
@@ -1376,34 +1436,58 @@
     {
       "id": "review-place-3356aaf9939b4b5ffa2538fb",
       "placeId": "place-3356aaf9939b4b5ffa2538fb",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-6d7751b3688bf0905ed5631c",
       "placeId": "place-6d7751b3688bf0905ed5631c",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-ad81ee5c61ee72fc0c00a775",
       "placeId": "place-ad81ee5c61ee72fc0c00a775",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані.",
-      "displayName": "Стара Сіль, округ Старий Самбір, Галичина"
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "displayName": "Стара Сіль, округ Старий Самбір, Галичина",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-ec1240f5b5e1043c13de951c",
       "placeId": "place-ec1240f5b5e1043c13de951c",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-dd8cd402d5953b47c209090e",
       "placeId": "place-dd8cd402d5953b47c209090e",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-8b4dd3c4071e4519f28d0a93",
       "placeId": "place-8b4dd3c4071e4519f28d0a93",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані.",
-      "displayName": "Омськ, Омська область, Росія, Радянський Союз"
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/1496153/omsk.html; точну адресу події не встановлено.",
+      "displayName": "Омськ, Омська область, Росія, Радянський Союз",
+      "coordinates": {
+        "latitude": 54.99244,
+        "longitude": 73.36859
+      }
     },
     {
       "id": "review-place-f7fd49dbf07ed3bbd9e7d9cb",
@@ -1424,7 +1508,11 @@
     {
       "id": "review-place-4ae5a1a83bf67ab92f552977",
       "placeId": "place-4ae5a1a83bf67ab92f552977",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-ab1154dfbecd52987debc980",
@@ -1479,12 +1567,20 @@
     {
       "id": "review-place-10a0b6e94e3b2b4b099cc089",
       "placeId": "place-10a0b6e94e3b2b4b099cc089",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-b4d0a2182762732b0a9f0938",
       "placeId": "place-b4d0a2182762732b0a9f0938",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-81e6d53aca269759a7d546be",
@@ -1495,7 +1591,11 @@
     {
       "id": "review-place-2c7ebc071ad2463f5bf8c6b3",
       "placeId": "place-2c7ebc071ad2463f5bf8c6b3",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-0aafe2d54b42c03a71b1196c",
@@ -1512,12 +1612,20 @@
     {
       "id": "review-place-93b5bde8f548727c44fcdd18",
       "placeId": "place-93b5bde8f548727c44fcdd18",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-6bc309364d8b5b9913984f91",
       "placeId": "place-6bc309364d8b5b9913984f91",
-      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані."
+      "explanation": "D06: 04.11.2026 оригінальна назва місця з нового експорту; координати не додані. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-00344e252609b1035c3e54f8",
@@ -1822,22 +1930,38 @@
     {
       "id": "review-place-296c185df7bf988a97fa3a12",
       "placeId": "place-296c185df7bf988a97fa3a12",
-      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-e63b21b5fa83938df11874b3",
       "placeId": "place-e63b21b5fa83938df11874b3",
-      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-55599dc50ca2eb35fbc6bbb9",
       "placeId": "place-55599dc50ca2eb35fbc6bbb9",
-      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-a48d8ed562c886b04896b0a0",
       "placeId": "place-a48d8ed562c886b04896b0a0",
-      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://maps.visicom.ua/c/33.20875%2C51.72001%2C13/f/STL1NVZS1?lang=uk; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 51.71987,
+        "longitude": 33.210036
+      }
     },
     {
       "id": "review-place-df9d965b5dd1ecc2e03c072c",
@@ -1852,12 +1976,20 @@
     {
       "id": "review-place-98eb55f4eb009ff861d28774",
       "placeId": "place-98eb55f4eb009ff861d28774",
-      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 11.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Kyiv%2C+UA&startRow=300; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 49.95303786,
+        "longitude": 30.17876159
+      }
     },
     {
       "id": "review-place-4ac10cf39d1536e9fa8ed14d",
       "placeId": "place-4ac10cf39d1536e9fa8ed14d",
-      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-24afda46b61d141919d3e550",
@@ -1892,12 +2024,20 @@
     {
       "id": "review-place-e24338603ee5f8d4f73a7a23",
       "placeId": "place-e24338603ee5f8d4f73a7a23",
-      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-89177f0ead4f93128902458d",
       "placeId": "place-89177f0ead4f93128902458d",
-      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Kyiv%2C+UA&startRow=300; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 49.95303786,
+        "longitude": 30.17876159
+      }
     },
     {
       "id": "review-place-0be98f1a75d00697107b6ec0",
@@ -1912,7 +2052,11 @@
     {
       "id": "review-place-9f581318bead373efe92e7bd",
       "placeId": "place-9f581318bead373efe92e7bd",
-      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026. 14.11.2026: координати для карти — орієнтир населеного пункту за https://www.geonames.org/search.html?q=Lviv%2C+Ukraine&startRow=50; точну адресу події не встановлено. 14.11.2026: орієнтир узгоджено з іншими записами Старої Солі за https://maps.visicom.ua/c/22.964270513483765%2C49.48819013614974%2C12/f/STL1NT7HN?lang=uk, щоб записи одного селища мали спільну точку.",
+      "coordinates": {
+        "latitude": 49.48819,
+        "longitude": 22.964271
+      }
     },
     {
       "id": "review-place-9e223d124c4d7513857814a9",
@@ -4525,6 +4669,305 @@
     }
   ],
   "media": [
+    {
+      "id": "media-i181-owner-avatar",
+      "path": "assets/photos/i181-owner-avatar.png",
+      "sha256": "6fe645eaaefcde9e357e7ad3e655dc26ffc0a83e8f7d39640eafff3e58b1e1b2",
+      "dimensions": {
+        "width": 186,
+        "height": 197
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i181-owner-avatar.png",
+        "mimeType": "image/png"
+      },
+      "title": "Іван Федорович Сидір — аватарка",
+      "description": "Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Іван Федорович Сидір — аватарка надана власником.png",
+          "entryId": "media-i181-owner-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i182-owner-avatar",
+      "path": "assets/photos/i182-owner-avatar.png",
+      "sha256": "e304dfec77a213c1a2b4ca958c328d511c7fd5af09f87538fc14cdff65e564a3",
+      "dimensions": {
+        "width": 190,
+        "height": 196
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i182-owner-avatar.png",
+        "mimeType": "image/png"
+      },
+      "title": "Миколай Федорович Сидір — аватарка",
+      "description": "Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Миколай Федорович Сидір — аватарка надана власником.png",
+          "entryId": "media-i182-owner-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i183-owner-avatar",
+      "path": "assets/photos/i183-owner-avatar.png",
+      "sha256": "8b17eca16f297ef763a9d64cc7bf9461d0d625887a75e2a7a5ee269eef4e1cdc",
+      "dimensions": {
+        "width": 178,
+        "height": 185
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i183-owner-avatar.png",
+        "mimeType": "image/png"
+      },
+      "title": "Василь Пихунь — аватарка",
+      "description": "Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Василь Пихунь — аватарка надана власником.png",
+          "entryId": "media-i183-owner-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i180-vasyl-owner-avatar",
+      "path": "assets/photos/i180-василь-сидір-аватар.png",
+      "sha256": "8af4b1bf5028dc7b0407deed595790d6ec25ca55260aa0f0b9fa6958b0986003",
+      "dimensions": {
+        "width": 216,
+        "height": 202
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i180-василь-сидір-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Василь Федорович Сидір — аватарка",
+      "description": "Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Василь Федорович Сидір — аватарка надана власником.png",
+          "entryId": "media-i180-vasyl-owner-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i180-avatar-ai",
+      "path": "assets/photos/i180-avatar-ai.png",
+      "sha256": "122e6d02ee67cd25bb0af21be30f84a17c5307bd77bfb3eec8474fb0cdf3fff2",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i180-avatar-ai.png",
+        "mimeType": "image/png"
+      },
+      "title": "Василь Федорович Сидір — аватарка",
+      "description": "Портрет створено за допомогою ШІ зі спільної фотографії.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Василь Федорович Сидір — аватарка ШІ.png",
+          "entryId": "media-i180-avatar-ai"
+        }
+      ]
+    },
+    {
+      "id": "media-i181-avatar-ai",
+      "path": "assets/photos/i181-avatar-ai.png",
+      "sha256": "492ec8f57c5c7355b05ceb15d9644ed8fadf0ff37799f4383b38ed20d73a3082",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i181-avatar-ai.png",
+        "mimeType": "image/png"
+      },
+      "title": "Іван Федорович Сидір — аватарка",
+      "description": "Портрет створено за допомогою ШІ зі спільної фотографії.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Іван Федорович Сидір — аватарка ШІ.png",
+          "entryId": "media-i181-avatar-ai"
+        }
+      ]
+    },
+    {
+      "id": "media-i182-avatar-ai",
+      "path": "assets/photos/i182-avatar-ai.png",
+      "sha256": "dae27c0fca92e18bf179605f3e4ada67e0a1aff503ddc5e1619b7421bfeca242",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i182-avatar-ai.png",
+        "mimeType": "image/png"
+      },
+      "title": "Миколай Федорович Сидір — аватарка",
+      "description": "Портрет створено за допомогою ШІ зі спільної фотографії.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Миколай Федорович Сидір — аватарка ШІ.png",
+          "entryId": "media-i182-avatar-ai"
+        }
+      ]
+    },
+    {
+      "id": "media-i183-avatar-ai",
+      "path": "assets/photos/i183-avatar-ai.png",
+      "sha256": "88b93ff26821b3b8831d39c2492802853cd0486810e69f54931358e6aac28eb9",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i183-avatar-ai.png",
+        "mimeType": "image/png"
+      },
+      "title": "Василь Пихунь — аватарка",
+      "description": "Портрет створено за допомогою ШІ зі спільної фотографії.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Василь Пихунь — аватарка ШІ.png",
+          "entryId": "media-i183-avatar-ai"
+        }
+      ]
+    },
+    {
+      "id": "media-sydir-pykhun-group-photo",
+      "path": "assets/photos/сидори-пихунь-спільне-фото.png",
+      "sha256": "66d5a436e1febf6e42a18c55d4c19527391be0f6db2e3f753efcbb1a91c88c71",
+      "dimensions": {
+        "width": 666,
+        "height": 989
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/сидори-пихунь-спільне-фото.png",
+        "mimeType": "image/png"
+      },
+      "title": "Сидори та Василь Пихунь",
+      "description": "Стоять зліва направо: Василь Федорович Сидір, Іван Федорович Сидір, Миколай Федорович Сидір. Сидить Василь Пихунь.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Сидори та Василь Пихунь — спільна фотографія.png",
+          "entryId": "media-sydir-pykhun-group-photo"
+        }
+      ]
+    },
+    {
+      "id": "media-i58-daughter-henia-photo",
+      "path": "assets/photos/i58-дочка-геня-фото.png",
+      "sha256": "9995faf0eebda54ecd1a68d7a3c434f8c12e0e79b7b844d763fe290d64c13db7",
+      "dimensions": {
+        "width": 1060,
+        "height": 1484
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i58-дочка-геня-фото.png",
+        "mimeType": "image/png"
+      },
+      "title": "Геня — дочка Марії Степанівни Чабан",
+      "description": "Дочка Геня імігрувала до США, дружина Тадеуша Срокоша",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Геня — дочка Марії Степанівни Чабан.png",
+          "entryId": "media-i58-daughter-henia-photo"
+        }
+      ]
+    },
+    {
+      "id": "media-i105-kateryna-photo-1",
+      "path": "assets/photos/i105-чабан-катерина-фото-1.png",
+      "sha256": "8560c1ffecf97cdb5145df356b74dbbf4014265c794d4c425255d2de553be282",
+      "dimensions": {
+        "width": 1031,
+        "height": 1526
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i105-чабан-катерина-фото-1.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Катерина Іллівна — фотографія 1",
+      "description": "Катерина Іллівна Чабан. Фотографію надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Катерина Іллівна — фотографія 1.png",
+          "entryId": "media-i105-kateryna-photo-1"
+        }
+      ]
+    },
+    {
+      "id": "media-i105-kateryna-photo-2",
+      "path": "assets/photos/i105-чабан-катерина-фото-2.png",
+      "sha256": "a712dedb74bfb19ec9948a0ad5bf3cf237f3534c0ed8ea1cfc03823dcd346a0c",
+      "dimensions": {
+        "width": 1091,
+        "height": 1441
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i105-чабан-катерина-фото-2.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Катерина Іллівна — фотографія 2",
+      "description": "Катерина Іллівна Чабан. Фотографію надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Катерина Іллівна — фотографія 2.png",
+          "entryId": "media-i105-kateryna-photo-2"
+        }
+      ]
+    },
+    {
+      "id": "media-i43-mariia-photo",
+      "path": "assets/photos/i43-чабан-марія-іванівна-фото.png",
+      "sha256": "114801143ab5806caab9e890df7d2666b96e44754cb9f34447289ed9872bd8d9",
+      "dimensions": {
+        "width": 1168,
+        "height": 1347
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i43-чабан-марія-іванівна-фото.png",
+        "mimeType": "image/png"
+      },
+      "title": "Чабан Марія Іванівна — фотографія",
+      "description": "Марія Іванівна Чабан. Фотографію надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Марія Іванівна — фотографія.png",
+          "entryId": "media-i43-mariia-photo"
+        }
+      ]
+    },
     {
       "id": "music-bandura-seamless-loop",
       "path": "assets/audio/music/Rodovid_Bandura_Seamless_Loop.ogg",
@@ -7226,7 +7669,7 @@
         "mimeType": "image/png"
       },
       "title": "Чабан Михайло Іванович — портрет",
-      "description": "Михайло Іванович Чабан. Фотографію надав власник.",
+      "description": "Михайло Іванович Чабан.",
       "provenance": [
         {
           "kind": "supplement",
@@ -7341,7 +7784,7 @@
         "mimeType": "image/png"
       },
       "title": "Чабан Василь Антонович — фотографія",
-      "description": "Василь Антонович Чабан. Фотографію надав власник.",
+      "description": "Василь Антонович Чабан.",
       "provenance": [
         {
           "kind": "supplement",

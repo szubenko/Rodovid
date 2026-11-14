@@ -11,13 +11,16 @@ const exec = promisify(execFile)
 const converter = fileURLToPath(new URL('./convert-data.ts', import.meta.url))
 type StaticFile = { bytes: Buffer; mimeType: string }
 
-async function prepare(root: string) {
+async function prepare(root: string, privateRecords: boolean) {
   // Use the validated converter on every run, never a previous generated JSON.
   await exec(process.execPath, [converter, '--project-root', root], { cwd: root, timeout: 120_000 })
   const bytes = await readFile(resolve(root, 'generated/family.json'))
   const family = familyDataSchema.parse(JSON.parse(bytes.toString('utf8')))
   if (family.datasetKind !== 'family') throw new Error('Synthetic datasets cannot enter the site build')
-  const files = new Map<string, StaticFile>([['data/family.json', { bytes, mimeType: 'application/json' }]])
+  const siteBytes = privateRecords ? bytes : Buffer.from(JSON.stringify({
+    ...family, people: family.people.map(person => ({ ...person, externalIds: [] })),
+  }))
+  const files = new Map<string, StaticFile>([['data/family.json', { bytes: siteBytes, mimeType: 'application/json' }]])
   const portablePaths = new Map<string, string>()
   for (const media of family.media) for (const asset of mediaFiles(media)) {
     const previous = portablePaths.get(asset.path.toLowerCase())
@@ -38,12 +41,12 @@ export function staticDataPlugin(): Plugin {
     configResolved(value) { config = value },
     async buildStart() {
       if (config.command !== 'build') return
-      for (const [fileName, file] of await prepare(config.root)) {
+      for (const [fileName, file] of await prepare(config.root, false)) {
         this.emitFile({ type: 'asset', fileName, source: file.bytes })
       }
     },
     async configureServer(server) {
-      let files = await prepare(config.root)
+      let files = await prepare(config.root, true)
       const dataDirectory = resolve(config.root, 'Data')
       let timer: ReturnType<typeof setTimeout> | undefined
       let pending = Promise.resolve()
@@ -57,7 +60,7 @@ export function staticDataPlugin(): Plugin {
           pending = pending.then(async () => {
             if (closed) return
             try {
-              const updated = await prepare(config.root)
+              const updated = await prepare(config.root, true)
               if (closed) return
               // Replace the whole validated snapshot, then reload both room and tooltip consumers.
               files = updated

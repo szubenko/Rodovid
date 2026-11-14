@@ -45,7 +45,7 @@ export function LifeBiography({ personId, showHeader = true }: { personId: strin
         })}
       </section>
       <BiographyEvents personId={personId} />
-      {externalIds.length > 0 && <section className={styles.biographySection} aria-label="Дані вихідного запису">
+      {import.meta.env.DEV && externalIds.length > 0 && <section className={styles.biographySection} aria-label="Дані вихідного запису">
         <h3 className={styles.biographySectionTitle}>Дані вихідного запису</h3>
         <details className={styles.biographyDetails}><summary>Зовнішні записи</summary>
           <dl className={styles.biographyRecordFields}>{externalIds.map(({ system, value }, index) => {

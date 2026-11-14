@@ -1,10 +1,13 @@
 import { expect, test } from '@playwright/test'
 import type { FamilyData } from '../../src/data/schema'
+import { readFileSync } from 'node:fs'
+
+const privatePeople = (JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')) as FamilyData).people
 
 test('the new indexed birth source shares the approved scan and transcript', async ({ page }, info) => {
   await page.setViewportSize({ width: info.project.name.includes('mobile') ? 320 : 1280, height: 900 })
   const family = await (await page.request.get('/data/family.json')).json() as FamilyData
-  const person = family.people.find(p => p.externalIds.some(id => id.value === 'PNKZ-DMH'))!
+  const person = privatePeople.find(p => p.externalIds.some(id => id.value === 'PNKZ-DMH'))!
   const birth = family.events.find(e => e.kind === 'birth' && e.participants.some(p => p.personId === person.id))!
   await page.goto(`/person/${person.id}`)
   const source = page.locator(`[data-source-for="${birth.id}"]`)
@@ -21,7 +24,7 @@ test('the new indexed birth source shares the approved scan and transcript', asy
 
 test('Alexander shows the approved shared death scan and description with both indexed links', async ({ page }, info) => {
   const family = await (await page.request.get('/data/family.json')).json() as FamilyData
-  const person = family.people.find(p => p.externalIds.some(id => id.value === 'PN26-LCG'))!
+  const person = privatePeople.find(p => p.externalIds.some(id => id.value === 'PN26-LCG'))!
   const death = family.events.find(e => e.kind === 'death' && e.participants.some(p => p.personId === person.id))!
   await page.goto(`/person/${person.id}`)
   await expect(page.locator('body')).toContainText('2 березня 1907')
@@ -41,7 +44,7 @@ test('Alexander shows the approved shared death scan and description with both i
 test('Timofey shows the corrected 1880 death date and the approved shared act', async ({ page }, info) => {
   await page.setViewportSize({ width: info.project.name.includes('mobile') ? 320 : 1280, height: 900 })
   const family = await (await page.request.get('/data/family.json')).json() as FamilyData
-  const person = family.people.find(p => p.externalIds.some(id => id.value === 'PFVV-7W1'))!
+  const person = privatePeople.find(p => p.externalIds.some(id => id.value === 'PFVV-7W1'))!
   const death = family.events.find(e => e.kind === 'death' && e.participants.some(p => p.personId === person.id))!
   expect(family.claims.find(c => c.field === 'date' && c.target.id === death.id)).toMatchObject({
     id: 'claim-844bdc5dfb7b9d883e16cd81', value: { raw: '9 OCT 1880' },
@@ -64,7 +67,7 @@ test('Timofey shows the corrected 1880 death date and the approved shared act', 
 test('Petro shows the exact birth date, Ksenia as mother and one local birth act', async ({ page }, info) => {
   await page.setViewportSize({ width: info.project.name.includes('mobile') ? 320 : 1280, height: 900 })
   const family = await (await page.request.get('/data/family.json')).json() as FamilyData
-  const petro = family.people.find(p => p.externalIds.some(id => id.value === 'PFF9-B5D'))!
+  const petro = privatePeople.find(p => p.externalIds.some(id => id.value === 'PFF9-B5D'))!
   const birth = family.events.find(e => e.kind === 'birth' && e.participants.some(p => p.personId === petro.id))!
   await page.goto(`/person/${petro.id}`)
   await expect(page.locator('body')).toContainText('28 червня 1900')

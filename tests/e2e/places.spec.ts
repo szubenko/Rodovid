@@ -2,6 +2,17 @@ import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 
+test('місця народження дітей видно на карті батька', async ({ page }) => {
+  await page.goto('/person/I183')
+  const places = page.locator('#places')
+  await places.scrollIntoViewIfNeeded()
+  const marker = places.locator('[data-place-marker][aria-label^="Стара Ропа:"]')
+  await expect(marker).toBeVisible()
+  await expect(places.getByLabel('Місця та події')).toContainText('Народження доньки')
+  await marker.click()
+  await expect(marker).toHaveAttribute('aria-pressed', 'true')
+})
+
 test('unprepared places show events and years without invented markers or tile requests', async ({ page }) => {
   const family = familyDataSchema.parse(fixture); family.datasetKind = 'family'
   delete family.places[0]!.coordinates

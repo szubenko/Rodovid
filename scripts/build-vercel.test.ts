@@ -32,7 +32,8 @@ it('builds the atlas from source data without generated JSON and still rejects p
     }
     // Node/TypeScript resolve installed dependencies from the ancestor repo.
     // Synthetic inputs are confined to this isolated test; the real archive is not copied.
-    const bytes = await readFile(join(repo, 'tests/fixtures/conversion/complex.ged'))
+    const fixtureGedcom = await readFile(join(repo, 'tests/fixtures/conversion/complex.ged'), 'utf8')
+    const bytes = Buffer.from(fixtureGedcom.replace('0 @I1@ INDI', '0 @I1@ INDI\n1 _FSFTID TEST-123'))
     const config = { schemaVersion: 1, title: 'Isolated site build', dataVersion: 'clean-build-test', homePersonId: 'I1' }
     const supplements = { schemaVersion: 1 }
     const converted = convertGedcom({ bytes, config, supplements })
@@ -56,6 +57,9 @@ it('builds the atlas from source data without generated JSON and still rejects p
     const family = familyDataSchema.parse(JSON.parse(await readFile(join(root, 'generated/family.json'), 'utf8')))
     expect(family.config.dataVersion).toBe(config.dataVersion)
     expect(family.people.length).toBeGreaterThan(1)
+    expect(family.people.some(person => person.externalIds.length > 0)).toBe(true)
+    const deployed = familyDataSchema.parse(JSON.parse(await readFile(join(root, 'dist-vercel/data/family.json'), 'utf8')))
+    expect(deployed.people.every(person => person.externalIds.length === 0)).toBe(true)
 
     await writeFile(join(root, 'src/deployment-type-error.ts'), 'export const value: number = "invalid"\n')
     await expect(run()).rejects.toMatchObject({ stdout: expect.stringContaining('TS2322') })
@@ -90,6 +94,9 @@ it('family output rejects synthetic data, undeclared media and raw files even un
     await writeFile(join(root, 'data/family.json'), JSON.stringify(fixture))
     await expect(verifyDeployment(root)).rejects.toThrow('Expected validated family data')
     await writeFile(join(root, 'data/family.json'), JSON.stringify({ ...fixture, datasetKind: 'family', media: [] }))
+    await expect(verifyDeployment(root)).rejects.toThrow('Private external IDs')
+    await writeFile(join(root, 'data/family.json'), JSON.stringify({ ...fixture, datasetKind: 'family', media: [],
+      people: fixture.people.map(person => ({ ...person, externalIds: [] })) }))
     await writeFile(join(root, 'app-assets/runtime.js'), 'test')
     expect(await verifyDeployment(root)).toHaveLength(3)
     for (const name of ['data/report.json', 'data/probe.json', 'app-assets/raw.ged', 'app-assets/code.js.map', 'original.rmtree', 'source.ts']) {

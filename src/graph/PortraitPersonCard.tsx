@@ -64,7 +64,7 @@ export const PortraitPersonCard = memo(function PortraitPersonCard({ x, y, name,
       {m.portraitSize > 0 && <><circle className={styles.ring} cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2} r={m.portraitSize / 2 + 3} />
       {photoPath ? <image data-card-portrait="true" href={`${import.meta.env.BASE_URL}${photoPath}`}
         x={(m.width - m.portraitSize) / 2} y={m.portraitTop} width={m.portraitSize} height={m.portraitSize}
-        preserveAspectRatio="xMidYMid slice" clipPath={`url(#${id}-photo)`} />
+        preserveAspectRatio={photoPath.includes('i43-чабан-марія-іванівна-фото') ? 'xMidYMin slice' : 'xMidYMid slice'} clipPath={`url(#${id}-photo)`} />
         : skin.portrait ? <circle data-card-portrait="true" cx={m.width / 2} cy={m.portraitTop + m.portraitSize / 2}
         r={m.portraitSize / 2} fill={`url(#${artworkId}-portrait-${skin.id})`} />
         : <g className={styles.silhouette} transform={`translate(${m.width / 2} ${m.portraitTop + m.portraitSize / 2}) scale(${m.portraitSize / 100})`}>

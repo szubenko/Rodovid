@@ -1,9 +1,12 @@
 import { expect, test } from '@playwright/test'
 import type { FamilyData } from '../../src/data/schema'
+import { readFileSync } from 'node:fs'
 
 test('merged Ustina has one room with all three children and her father',async({page})=>{
   const family=await(await page.request.get('/data/family.json')).json() as FamilyData
-  expect(family.people.filter(p=>p.externalIds.some(id=>id.value==='PNPT-HVQ')).map(p=>p.id)).toEqual(['I93'])
+  const privateFamily = JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')) as FamilyData
+  expect(privateFamily.people.filter(p=>p.externalIds.some(id=>id.value==='PNPT-HVQ')).map(p=>p.id)).toEqual(['I93'])
+  expect(family.people.every(p=>p.externalIds.length===0)).toBe(true)
   await page.goto('/person/I93')
   await expect(page.getByRole('heading',{name:'Устина Андріївна',exact:true})).toBeVisible()
   const relatives=page.getByRole('region',{name:'Переходи до рідних',exact:true})

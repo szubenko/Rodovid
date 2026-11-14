@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test'
 import type { FamilyData } from '../../src/data/schema'
+import { readFileSync } from 'node:fs'
 
 test('Natalia’s sources appear under the four relevant events and not her death', async ({ page }, info) => {
-  const response = await page.request.get('/data/family.json')
-  const family = await response.json() as FamilyData
+  const family = JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')) as FamilyData
   const personId = family.people.find(person => person.externalIds.some(id => id.value === 'PFFS-2YZ'))!.id
   await page.goto(`/person/${personId}`)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Наталія Семенівна Заприса')

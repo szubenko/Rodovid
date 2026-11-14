@@ -166,6 +166,7 @@ export function PersonTooltip({ container }: { container: RefObject<HTMLDivEleme
     onFocus={() => keepOpen.current()} onBlur={() => leave.current()}>
     <header className={styles.header}>
       {portrait && <img className={styles.portrait} src={`${import.meta.env.BASE_URL}${portrait.thumbnail?.path ?? portrait.path}`} alt=""
+        style={portrait.id === 'media-i43-mariia-photo' ? { objectPosition: 'center top' } : undefined}
         onError={event => { event.currentTarget.hidden = true }} />}
       <div><p className={styles.eyebrow}>Сторінки родоводу</p>
         <h2><ViewLink className={styles.personLink} to={`/person/${personId}`}>{title}</ViewLink></h2>

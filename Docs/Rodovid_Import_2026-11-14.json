@@ -1,0 +1,1526 @@
+{
+  "mergedRecords": [],
+  "reusedScans": [],
+  "date": "2026-11-14",
+  "source": "E:/RodovidZubenko/Magic/ZubenkoNewFormat.reviewed.11.14.26.ged",
+  "sourceSha256": "ca6756ba7ce978451ff2e39b6990aa29255330b09b39223dd7fa6f2ec968a1ff",
+  "previousOriginalSha256": "2a7b0895f87f7dc27890116d8721b6e973f888774bf192c9d08cef2b72d07dda",
+  "previousSha256": "cc9815d740abd8b5de881af9d7e9aa1e2c9a0c52296ddc4c1cbb090ce4e56084",
+  "sha256": "2d1f6acd17b2ecaebb28045d667a467ff4120fcfca31f638f27f8cb058d01ed1",
+  "backup": "E:\\PETprojects\\Rodovid\\tmp\\import-2026-11-14\\before",
+  "incomingCounts": {
+    "people": 192,
+    "families": 77,
+    "events": 347,
+    "births": 154,
+    "deaths": 170,
+    "marriages": 23,
+    "familySearchIds": 188,
+    "childLinks": 162,
+    "eventDefinitions": 0,
+    "sourceRecords": 121,
+    "sourceCitations": 271,
+    "mediaRecords": 0
+  },
+  "beforeCounts": {
+    "people": 174,
+    "families": 64,
+    "childLinks": 129,
+    "relationships": 278,
+    "events": 377,
+    "claims": 889,
+    "places": 149,
+    "sources": 123,
+    "media": 152,
+    "evidenceLinks": 365,
+    "memories": 1
+  },
+  "counts": {
+    "people": 190,
+    "families": 68,
+    "childLinks": 141,
+    "relationships": 306,
+    "events": 404,
+    "claims": 970,
+    "places": 172,
+    "sources": 123,
+    "media": 152,
+    "evidenceLinks": 365,
+    "memories": 1
+  },
+  "personMap": {
+    "@I1@": "@I1@",
+    "@I2@": "@I2@",
+    "@I3@": "@I3@",
+    "@I4@": "@I4@",
+    "@I5@": "@I5@",
+    "@I6@": "@I6@",
+    "@I7@": "@I7@",
+    "@I8@": "@I8@",
+    "@I9@": "@I9@",
+    "@I10@": "@I10@",
+    "@I11@": "@I11@",
+    "@I12@": "@I12@",
+    "@I13@": "@I13@",
+    "@I14@": "@I14@",
+    "@I15@": "@I15@",
+    "@I16@": "@I16@",
+    "@I17@": "@I17@",
+    "@I18@": "@I18@",
+    "@I19@": "@I19@",
+    "@I20@": "@I20@",
+    "@I21@": "@I21@",
+    "@I22@": "@I22@",
+    "@I23@": "@I23@",
+    "@I24@": "@I24@",
+    "@I25@": "@I25@",
+    "@I26@": "@I26@",
+    "@I27@": "@I50@",
+    "@I28@": "@I51@",
+    "@I29@": "@I52@",
+    "@I30@": "@I60@",
+    "@I31@": "@I61@",
+    "@I32@": "@I75@",
+    "@I33@": "@I76@",
+    "@I34@": "@I62@",
+    "@I35@": "@I63@",
+    "@I36@": "@I64@",
+    "@I37@": "@I67@",
+    "@I38@": "@I68@",
+    "@I39@": "@I39@",
+    "@I40@": "@I69@",
+    "@I41@": "@I77@",
+    "@I42@": "@I78@",
+    "@I43@": "@I79@",
+    "@I44@": "@I80@",
+    "@I45@": "@I81@",
+    "@I46@": "@I82@",
+    "@I47@": "@I83@",
+    "@I48@": "@I44@",
+    "@I49@": "@I70@",
+    "@I50@": "@I45@",
+    "@I51@": "@I71@",
+    "@I52@": "@I38@",
+    "@I53@": "@I53@",
+    "@I54@": "@I54@",
+    "@I55@": "@I55@",
+    "@I56@": "@I56@",
+    "@I57@": "@I57@",
+    "@I58@": "@I58@",
+    "@I59@": "@I59@",
+    "@I60@": "@I66@",
+    "@I61@": "@I48@",
+    "@I62@": "@I47@",
+    "@I63@": "@I46@",
+    "@I64@": "@I49@",
+    "@I65@": "@I72@",
+    "@I66@": "@I40@",
+    "@I67@": "@I41@",
+    "@I68@": "@I42@",
+    "@I69@": "@I27@",
+    "@I70@": "@I28@",
+    "@I71@": "@I29@",
+    "@I72@": "@I30@",
+    "@I73@": "@I31@",
+    "@I74@": "@I32@",
+    "@I75@": "@I33@",
+    "@I76@": "@I34@",
+    "@I77@": "@I35@",
+    "@I78@": "@I36@",
+    "@I79@": "@I37@",
+    "@I80@": "@I84@",
+    "@I81@": "@I85@",
+    "@I82@": "@I43@",
+    "@I83@": "@I88@",
+    "@I84@": "@I89@",
+    "@I85@": "@I90@",
+    "@I86@": "@I91@",
+    "@I87@": "@I92@",
+    "@I88@": "@I93@",
+    "@I89@": "@I94@",
+    "@I90@": "@I95@",
+    "@I91@": "@I96@",
+    "@I92@": "@I93@",
+    "@I93@": "@I97@",
+    "@I94@": "@I98@",
+    "@I95@": "@I99@",
+    "@I96@": "@I100@",
+    "@I97@": "@I101@",
+    "@I98@": "@I102@",
+    "@I99@": "@I103@",
+    "@I100@": "@I104@",
+    "@I101@": "@I105@",
+    "@I102@": "@I106@",
+    "@I103@": "@I107@",
+    "@I104@": "@I108@",
+    "@I105@": "@I109@",
+    "@I106@": "@I110@",
+    "@I107@": "@I111@",
+    "@I108@": "@I112@",
+    "@I109@": "@I113@",
+    "@I110@": "@I114@",
+    "@I111@": "@I115@",
+    "@I112@": "@I116@",
+    "@I113@": "@I117@",
+    "@I114@": "@I118@",
+    "@I115@": "@I119@",
+    "@I116@": "@I120@",
+    "@I117@": "@I121@",
+    "@I118@": "@I122@",
+    "@I119@": "@I123@",
+    "@I120@": "@I124@",
+    "@I121@": "@I125@",
+    "@I122@": "@I126@",
+    "@I123@": "@I127@",
+    "@I124@": "@I128@",
+    "@I125@": "@I129@",
+    "@I126@": "@I130@",
+    "@I127@": "@I131@",
+    "@I128@": "@I132@",
+    "@I129@": "@I133@",
+    "@I130@": "@I134@",
+    "@I131@": "@I135@",
+    "@I132@": "@I136@",
+    "@I133@": "@I137@",
+    "@I134@": "@I138@",
+    "@I135@": "@I139@",
+    "@I136@": "@I140@",
+    "@I137@": "@I141@",
+    "@I138@": "@I142@",
+    "@I139@": "@I143@",
+    "@I140@": "@I144@",
+    "@I141@": "@I145@",
+    "@I142@": "@I119@",
+    "@I143@": "@I146@",
+    "@I144@": "@I147@",
+    "@I145@": "@I148@",
+    "@I146@": "@I149@",
+    "@I147@": "@I150@",
+    "@I148@": "@I151@",
+    "@I149@": "@I152@",
+    "@I151@": "@I153@",
+    "@I152@": "@I154@",
+    "@I153@": "@I155@",
+    "@I150@": "@I146@",
+    "@I154@": "@I156@",
+    "@I155@": "@I157@",
+    "@I156@": "@I158@",
+    "@I157@": "@I159@",
+    "@I159@": "@I160@",
+    "@I158@": "@I159@",
+    "@I160@": "@I161@",
+    "@I161@": "@I162@",
+    "@I162@": "@I163@",
+    "@I163@": "@I164@",
+    "@I164@": "@I165@",
+    "@I165@": "@I166@",
+    "@I166@": "@I167@",
+    "@I167@": "@I167@",
+    "@I168@": "@I168@",
+    "@I169@": "@I169@",
+    "@I170@": "@I170@",
+    "@I171@": "@I171@",
+    "@I172@": "@I172@",
+    "@I173@": "@I173@",
+    "@I174@": "@I174@",
+    "@I175@": "@I175@",
+    "@I176@": "@I176@",
+    "@I177@": "@I177@",
+    "@I178@": "@I178@",
+    "@I179@": "@I179@",
+    "@I180@": "@I180@",
+    "@I181@": "@I181@",
+    "@I182@": "@I182@",
+    "@I183@": "@I183@",
+    "@I184@": "@I184@",
+    "@I185@": "@I185@",
+    "@I186@": "@I186@",
+    "@I187@": "@I187@",
+    "@I188@": "@I188@",
+    "@I189@": "@I189@",
+    "@I190@": "@I190@",
+    "@I191@": "@I191@",
+    "@I192@": "@I192@"
+  },
+  "familyMap": {
+    "@F1@": "@F1@",
+    "@F2@": "@F2@",
+    "@F3@": "@F3@",
+    "@F4@": "@F4@",
+    "@F5@": "@F5@",
+    "@F6@": "@F6@",
+    "@F7@": "@F7@",
+    "@F8@": "@F8@",
+    "@F9@": "@F18@",
+    "@F10@": "@F21@",
+    "@F11@": "@F23@",
+    "@F12@": "@F24@",
+    "@F13@": "@F25@",
+    "@F14@": "@F29@",
+    "@F15@": "@F30@",
+    "@F16@": "@F26@",
+    "@F17@": "@F27@",
+    "@F18@": "@F19@",
+    "@F19@": "@F20@",
+    "@F20@": "@F22@",
+    "@F21@": "@F17@",
+    "@F22@": "@F28@",
+    "@F23@": "@F15@",
+    "@F24@": "@F9@",
+    "@F25@": "@F10@",
+    "@F26@": "@F11@",
+    "@F27@": "@F12@",
+    "@F28@": "@F13@",
+    "@F29@": "@F14@",
+    "@F30@": "@F31@",
+    "@F31@": "@F33@",
+    "@F32@": "@F34@",
+    "@F33@": "@F35@",
+    "@F34@": "@F23@",
+    "@F35@": "@F36@",
+    "@F36@": "@F37@",
+    "@F37@": "@F38@",
+    "@F38@": "@F39@",
+    "@F39@": "@F40@",
+    "@F40@": "@F41@",
+    "@F41@": "@F16@",
+    "@F42@": "@F42@",
+    "@F43@": "@F43@",
+    "@F44@": "@F44@",
+    "@F45@": "@F45@",
+    "@F47@": "@F47@",
+    "@F48@": "@F48@",
+    "@F49@": "@F49@",
+    "@F50@": "@F50@",
+    "@F51@": "@F51@",
+    "@F52@": "@F52@",
+    "@F53@": "@F53@",
+    "@F54@": "@F54@",
+    "@F46@": "@F30@",
+    "@F55@": "@F54@",
+    "@F57@": "@F57@",
+    "@F58@": "@F58@",
+    "@F59@": "@F59@",
+    "@F61@": "@F61@",
+    "@F56@": "@F34@",
+    "@F60@": "@F59@",
+    "@F62@": "@F62@",
+    "@F64@": "@F64@",
+    "@F63@": "@F29@",
+    "@F65@": "@F65@",
+    "@F66@": "@F66@",
+    "@F67@": "@F62@",
+    "@F68@": "@F68@",
+    "@F69@": "@F69@",
+    "@F70@": "@F44@",
+    "@F71@": "@F47@",
+    "@F72@": "@F48@",
+    "@F73@": "@F73@",
+    "@F74@": "@F74@",
+    "@F75@": "@F75@",
+    "@F76@": "@F76@",
+    "@F77@": "@F77@"
+  },
+  "newPeople": [
+    {
+      "incoming": "@I177@",
+      "recordId": "@I177@",
+      "name": "Стефанія Іванівна /Кудли/",
+      "familySearchIds": [
+        "PJH7-Y9B"
+      ],
+      "uids": [
+        "D7D6489662AD264FB0A747857407CFC13D6A"
+      ]
+    },
+    {
+      "incoming": "@I178@",
+      "recordId": "@I178@",
+      "name": "Михайло Іванович /Пацикевич/",
+      "familySearchIds": [
+        "PJH7-YSG"
+      ],
+      "uids": [
+        "AB5A89FBB00D9740B7E6C436D6ADA04118B0"
+      ]
+    },
+    {
+      "incoming": "@I179@",
+      "recordId": "@I179@",
+      "name": "Іван /Землянський/",
+      "familySearchIds": [
+        "PJHW-DFV"
+      ],
+      "uids": [
+        "944EB3DCCF3AFE43B15A3EDCA54D1C8F7D41"
+      ]
+    },
+    {
+      "incoming": "@I180@",
+      "recordId": "@I180@",
+      "name": "Василь /Сидір/",
+      "familySearchIds": [
+        "PJCK-5SB"
+      ],
+      "uids": [
+        "4DCBE1565869F546833EAFFDAC442477431C"
+      ]
+    },
+    {
+      "incoming": "@I181@",
+      "recordId": "@I181@",
+      "name": "Іван /Сидір/",
+      "familySearchIds": [
+        "PJCK-TGW"
+      ],
+      "uids": [
+        "31225CE0C1A44C48A3DD86D6FF360CD87D11"
+      ]
+    },
+    {
+      "incoming": "@I182@",
+      "recordId": "@I182@",
+      "name": "Миколай /Сидір/",
+      "familySearchIds": [
+        "PJCK-V4X"
+      ],
+      "uids": [
+        "8A98514C7707A147A81610A0FC0DE5DD5E94"
+      ]
+    },
+    {
+      "incoming": "@I183@",
+      "recordId": "@I183@",
+      "name": "Василь /Пихунь/",
+      "familySearchIds": [
+        "PJC2-3TY"
+      ],
+      "uids": [
+        "92409F6B5771384984841BD0C3D6517D7FCC"
+      ]
+    },
+    {
+      "incoming": "@I184@",
+      "recordId": "@I184@",
+      "name": "Іван /Пихуль/",
+      "familySearchIds": [
+        "PJC2-TSJ"
+      ],
+      "uids": [
+        "802DDE0B87A17D43A491D71F289CA1FC0A40"
+      ]
+    },
+    {
+      "incoming": "@I185@",
+      "recordId": "@I185@",
+      "name": "Марія /Пихуль/",
+      "familySearchIds": [
+        "PJC2-9TV"
+      ],
+      "uids": [
+        "EE12DBD2D54DF14589DB256D1B84C28BE7FF"
+      ]
+    },
+    {
+      "incoming": "@I186@",
+      "recordId": "@I186@",
+      "name": "Степан /Пихуль/",
+      "familySearchIds": [
+        "PJC2-3MB"
+      ],
+      "uids": [
+        "379BCE5F47CE6143B6B2065424454CED1C29"
+      ]
+    },
+    {
+      "incoming": "@I187@",
+      "recordId": "@I187@",
+      "name": "Анна /Пихуль/",
+      "familySearchIds": [
+        "PJC2-457"
+      ],
+      "uids": [
+        "8F8DA3289A964F4D8B4D7CCD06EA8B1261F4"
+      ]
+    },
+    {
+      "incoming": "@I188@",
+      "recordId": "@I188@",
+      "name": "Антіп /Пихунь/",
+      "familySearchIds": [
+        "PJC2-MX7"
+      ],
+      "uids": [
+        "8366A69685585340BD0D199D227A94B2F718"
+      ]
+    },
+    {
+      "incoming": "@I189@",
+      "recordId": "@I189@",
+      "name": "Стефанія /Пихунь/",
+      "familySearchIds": [
+        "PJC2-ZVS"
+      ],
+      "uids": [
+        "F4D45BFA47E49C4CBE5035C6EC6F0987240E"
+      ]
+    },
+    {
+      "incoming": "@I190@",
+      "recordId": "@I190@",
+      "name": "Дарія /Пихунь/",
+      "familySearchIds": [
+        "PJC2-H61"
+      ],
+      "uids": [
+        "161198FF3F158946B91682FA8497C4C1CCBB"
+      ]
+    },
+    {
+      "incoming": "@I191@",
+      "recordId": "@I191@",
+      "name": "Стефанія /Пихуль/",
+      "familySearchIds": [
+        "PJC2-1HT"
+      ],
+      "uids": [
+        "F1791CCFFEEC2D498099A5210A949C2DFB8C"
+      ]
+    },
+    {
+      "incoming": "@I192@",
+      "recordId": "@I192@",
+      "name": "Марія /Пихуль/",
+      "familySearchIds": [
+        "PJCL-ZK6"
+      ],
+      "uids": [
+        "0FB4C28ABC74C149AC7858706FD71507975B"
+      ]
+    }
+  ],
+  "additions": [
+    {
+      "record": "@I23@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F74@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I101@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F76@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I102@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F75@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I105@",
+      "path": "BIRT",
+      "node": {
+        "tag": "BIRT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "1906",
+            "children": []
+          },
+          {
+            "tag": "PLAC",
+            "pointer": null,
+            "value": "Stara Sól, Bezirk Stary Sambor, Галичина",
+            "children": []
+          }
+        ]
+      }
+    },
+    {
+      "record": "@I105@",
+      "path": "FAMS",
+      "node": {
+        "tag": "FAMS",
+        "pointer": null,
+        "value": "@F77@",
+        "children": []
+      }
+    },
+    {
+      "record": "@I108@",
+      "path": "BIRT.PLAC",
+      "node": {
+        "tag": "PLAC",
+        "pointer": null,
+        "value": "Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія",
+        "children": []
+      }
+    },
+    {
+      "record": "@F6@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I180@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F6@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I181@",
+        "children": []
+      }
+    },
+    {
+      "record": "@F6@",
+      "path": "CHIL",
+      "node": {
+        "tag": "CHIL",
+        "pointer": null,
+        "value": "@I182@",
+        "children": []
+      }
+    }
+  ],
+  "normalizations": [
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "OBJE",
+      "url": "https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B",
+      "handling": "citation-note"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    },
+    {
+      "tag": "DATE",
+      "original": "DECEASED",
+      "handling": "undated-death"
+    }
+  ],
+  "reused": [],
+  "changes": [
+    {
+      "incoming": "@I71@",
+      "record": "@I29@",
+      "path": "NAME",
+      "previous": "Марія Степанівна /ЧАБАН/",
+      "incomingValue": "Марія Степанівна /Чабан/",
+      "chosen": "Марія Степанівна /Чабан/",
+      "reason": "Owner-reviewed 14 November export update."
+    },
+    {
+      "incoming": "@I102@",
+      "record": "@I106@",
+      "path": "DEAT.DATE",
+      "previous": "1934",
+      "incomingValue": "1984",
+      "chosen": "1984",
+      "reason": "Owner-reviewed 14 November export update."
+    },
+    {
+      "incoming": "@I105@",
+      "path": "DEAT",
+      "previous": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "DECEASED",
+            "children": []
+          }
+        ]
+      },
+      "incomingValue": {
+        "tag": "DEAT",
+        "pointer": null,
+        "value": null,
+        "children": [
+          {
+            "tag": "DATE",
+            "pointer": null,
+            "value": "1992",
+            "children": []
+          },
+          {
+            "tag": "PLAC",
+            "pointer": null,
+            "value": "Стара Сіль, Старосамбірський район, Львівська область, Україна",
+            "children": []
+          }
+        ]
+      },
+      "reason": "Dated death in the 14 November export"
+    }
+  ],
+  "permittedChanges": [
+    {
+      "collection": "claims",
+      "id": "claim-1a9c782ccc82afa57c712ca8",
+      "before": {
+        "id": "claim-1a9c782ccc82afa57c712ca8",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I58"
+        },
+        "value": {
+          "raw": "Марія Степанівна /ЧАБАН/",
+          "display": "Марія Степанівна ЧАБАН",
+          "given": "Марія Степанівна",
+          "surname": "ЧАБАН"
+        }
+      },
+      "after": {
+        "id": "claim-1a9c782ccc82afa57c712ca8",
+        "isPrimary": true,
+        "confidence": "unassessed",
+        "field": "name",
+        "target": {
+          "kind": "person",
+          "id": "I58"
+        },
+        "value": {
+          "raw": "Марія Степанівна /Чабан/",
+          "display": "Марія Степанівна Чабан",
+          "given": "Марія Степанівна",
+          "surname": "Чабан"
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-10f3f0e67aa764781d72a2fd",
+      "before": {
+        "id": "claim-10f3f0e67aa764781d72a2fd",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-b83a3017485d876ef15e94ff"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1934",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1934
+          }
+        }
+      },
+      "after": {
+        "id": "claim-10f3f0e67aa764781d72a2fd",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "date",
+        "target": {
+          "kind": "event",
+          "id": "event-b83a3017485d876ef15e94ff"
+        },
+        "value": {
+          "kind": "point",
+          "raw": "1984",
+          "calendar": "unspecified",
+          "qualifier": "exact",
+          "value": {
+            "precision": "year",
+            "year": 1984
+          }
+        }
+      }
+    },
+    {
+      "collection": "claims",
+      "id": "claim-e99d79a4833f0fc155b300b2",
+      "before": {
+        "id": "claim-e99d79a4833f0fc155b300b2",
+        "isPrimary": false,
+        "confidence": "unassessed",
+        "field": "description",
+        "target": {
+          "kind": "event",
+          "id": "event-ad7f60f330e72ec62b7195f0"
+        },
+        "value": "В оригінальному експорті: DATE DECEASED; точна дата смерті невідома."
+      },
+      "after": null
+    }
+  ],
+  "addedIdentities": [
+    {
+      "kind": "person",
+      "id": "I177"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-2b4f73b39845c7e0d48593cf"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e93b660f120e1bb1e821a647"
+    },
+    {
+      "kind": "person",
+      "id": "I178"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-6e6b095d159a9161135f1d82"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0fc4e1ee48841da22e5ca3e2"
+    },
+    {
+      "kind": "person",
+      "id": "I179"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-34ec84ced6f4f12537656d98"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-5f77f8cb138b57336b283d7c"
+    },
+    {
+      "kind": "person",
+      "id": "I180"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-915735194ef4b08d870d97ae"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-98b98c7a1c21486b21ee5972"
+    },
+    {
+      "kind": "person",
+      "id": "I181"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-25d6198259db1b5699cbed7b"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e84ce791a0a3db0addd7954f"
+    },
+    {
+      "kind": "person",
+      "id": "I182"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ab60168a925c61d3e96d7ccd"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-2ea4ed55fbd3d236f3adaf4c"
+    },
+    {
+      "kind": "person",
+      "id": "I183"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d1d2124e37b189ac9ae89111"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-303315ac614bb9637a42b462"
+    },
+    {
+      "kind": "person",
+      "id": "I184"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f2cdaed3b8419f1c5fe68815"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-990fb2cb8f247ed8cc9d0a84"
+    },
+    {
+      "kind": "person",
+      "id": "I185"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-95391ec90d670b4cee12b6eb"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-03680ed48f168496f34694b8"
+    },
+    {
+      "kind": "person",
+      "id": "I186"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-96dc8cb43be115552967b5a0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-6bdfd52f9b8ff81d4d84fe92"
+    },
+    {
+      "kind": "person",
+      "id": "I187"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-910ab59ec329e17c3c54e2f9"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-702b99e519f90dcdf50c60a8"
+    },
+    {
+      "kind": "person",
+      "id": "I188"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-366a5225d4263419d3dc457e"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-77c761eccf48b9ec12b33650"
+    },
+    {
+      "kind": "person",
+      "id": "I189"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-09f0734800c81580ccd6d166"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ec5c5a66a6571c41642b3f92"
+    },
+    {
+      "kind": "person",
+      "id": "I190"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d234936e7ac26835c430749f"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-a31690704b471a2dd77f1105"
+    },
+    {
+      "kind": "person",
+      "id": "I191"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-6a49864bc32090c8638bbed7"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f3d90776725625f81b42ec29"
+    },
+    {
+      "kind": "person",
+      "id": "I192"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-fe8adba612243f2111af5ad5"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f8ae38810660b6bb1b5ec474"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-6a0227ec85f9ec1bead0ecc0"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-b13b4b214ea84c8aaa890cea"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-d0fd16941a28528c922cbd69"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-b08139dd619cfb32e1ec885e"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-e54c6cc502d0228d1577aa10"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-830b3aabf0ab00d04e8a0f53"
+    },
+    {
+      "kind": "family",
+      "id": "family-2e3fe3ea031aa5414525663f"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-efe0ceb82242f67c7861c0a4"
+    },
+    {
+      "kind": "family",
+      "id": "family-f0cc9e1084acc0db0eee9901"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-a3ed06ba2122d9ff7466ce84"
+    },
+    {
+      "kind": "family",
+      "id": "family-d7e77a1865ba106687243d5b"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-5a8b467d34beacc4c862281c"
+    },
+    {
+      "kind": "family",
+      "id": "family-1737e1b70a6536053b0eb91b"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-8cf9cf25dc72635fa0482bba"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-dcbd361bc818fbeebd23cadd"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-434fa716eba5639b8aefd6f2"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-5fcc8a5c93d5bc340a5cb655"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-b0d326e2ce5ab7831bd05557"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-24430fdece0da0716c59dc1f"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-7c28ba0224b6b7c19b9be5a2"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-94c80cbeacc4eb32ce870598"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-f70d627ee562315332585667"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-2d9ed77bc79574f732f84e61"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-a595b660b4418d362388424c"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-063cdd9cad9bd36e4ab5603f"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-503142b6acb9aca6385658a5"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-3ac24e4a694551a2afe14fce"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-5002313673ffafdd4f111b53"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-b83e0c9d8ce1384d156be196"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-bd93384a4ae483e14091d318"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-83598896cc0030c350dba796"
+    },
+    {
+      "kind": "relationship",
+      "id": "relationship-d5084358f9f9bd6fc8cc5135"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-35723b0de03338bf2320340a"
+    },
+    {
+      "kind": "place",
+      "id": "place-4ac10cf39d1536e9fa8ed14d"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0a2f366c321f2ead674a0ecd"
+    },
+    {
+      "kind": "event",
+      "id": "event-3056677aad612d58d3961c1a"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0d5980a0320059d75bca8b0c"
+    },
+    {
+      "kind": "place",
+      "id": "place-24afda46b61d141919d3e550"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-9724880aeb9f06989e1fe39f"
+    },
+    {
+      "kind": "place",
+      "id": "place-15d69848e66ba4268ba488f0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-a7360c509d1635f549d02a11"
+    },
+    {
+      "kind": "event",
+      "id": "event-7fcc0a0f5f2cc7107d96ac33"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-7aa788220886b84014f31944"
+    },
+    {
+      "kind": "place",
+      "id": "place-5dacd52141663dec7b0e753b"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8057cbbed91d73c898755a5f"
+    },
+    {
+      "kind": "event",
+      "id": "event-f64eadcfb8136a69d7938da2"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-1a59c3751f88b54e42847746"
+    },
+    {
+      "kind": "place",
+      "id": "place-e24338603ee5f8d4f73a7a23"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-bf368c2088ba8c0d6dcb295c"
+    },
+    {
+      "kind": "event",
+      "id": "event-563aee7ccac225ddaf57fb04"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-5a1d4a4acb6f789f4939b782"
+    },
+    {
+      "kind": "event",
+      "id": "event-b7b98971e8dd7795bea6c722"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-dbaebc247175466a18e79ecf"
+    },
+    {
+      "kind": "place",
+      "id": "place-89177f0ead4f93128902458d"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-ab4d91a6a7325d9d06a56fcc"
+    },
+    {
+      "kind": "event",
+      "id": "event-5780f6d4f22efcb5cba1b610"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-fc70fe3d032dcc58eebcec98"
+    },
+    {
+      "kind": "place",
+      "id": "place-0be98f1a75d00697107b6ec0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4ebdd755b14f0fdf88a9c511"
+    },
+    {
+      "kind": "event",
+      "id": "event-ddd05dd9a738ac5fdd40cd7d"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-300e636ed8879b5fe11aa801"
+    },
+    {
+      "kind": "place",
+      "id": "place-9f581318bead373efe92e7bd"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-c5bd35ba7c2e5a22721953f7"
+    },
+    {
+      "kind": "event",
+      "id": "event-d9dea7b0f12e299de3b7f845"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-89f508ad309b6c3a478e9e77"
+    },
+    {
+      "kind": "place",
+      "id": "place-9e223d124c4d7513857814a9"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-deebd4cefa7b8ba4c17b7840"
+    },
+    {
+      "kind": "event",
+      "id": "event-4f783874624e2b53d7b40bee"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-7cbb8b84c98a8fbe2c915817"
+    },
+    {
+      "kind": "event",
+      "id": "event-a62c07bde8cc33123271b511"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0c1aac748af82c36d2683531"
+    },
+    {
+      "kind": "place",
+      "id": "place-fb60b646a4bb2066a2cef646"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-59ca371ad194a70ccb24d5a1"
+    },
+    {
+      "kind": "event",
+      "id": "event-b5d6d023cbf21a2069f60817"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-aeb9c720ed047bb5300c9e10"
+    },
+    {
+      "kind": "event",
+      "id": "event-a06a8eeaff95cd5aa0d7fe0d"
+    },
+    {
+      "kind": "place",
+      "id": "place-42f39fafaa401734305e0485"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4c4000912812f2e749ce2663"
+    },
+    {
+      "kind": "event",
+      "id": "event-2f782f155b165147deeba3c9"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b541ffe8ad8f979a0430202f"
+    },
+    {
+      "kind": "event",
+      "id": "event-7947bf00258a07904c322e7a"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-d4a4db4d546aa986cb8892bc"
+    },
+    {
+      "kind": "event",
+      "id": "event-b252f220f8065b9b3cbe0962"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4bb00fa222e45162f34f9e37"
+    },
+    {
+      "kind": "event",
+      "id": "event-49ce7746611d8e3fa5b27892"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-91fc276a717a75bf21ddeeef"
+    },
+    {
+      "kind": "place",
+      "id": "place-20daca0e118fde358d3acf39"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-94d705e43afc381ecba7bbe6"
+    },
+    {
+      "kind": "event",
+      "id": "event-fb1b6f24df9a13497686d1c6"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4b72083192e6d4768b5e25c3"
+    },
+    {
+      "kind": "place",
+      "id": "place-36a9ddbefdc9d212cdaee77f"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b8bb9b0f1689b16227495155"
+    },
+    {
+      "kind": "event",
+      "id": "event-392af2e852282f30a5d41402"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-33515f3cb840935c76a764f2"
+    },
+    {
+      "kind": "place",
+      "id": "place-c0eeef4ca97a921aca8559e0"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4aeb2e2e74f465153bcf9acf"
+    },
+    {
+      "kind": "event",
+      "id": "event-2318a7cd2b70c702a029cac3"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-8a197df670fd3af6bc2b3c7c"
+    },
+    {
+      "kind": "place",
+      "id": "place-ca46c2ef72dc46a9e1b5f158"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-98686687c713d7d930ae5b6f"
+    },
+    {
+      "kind": "event",
+      "id": "event-cfea7fa3b20cc7522a9f7a40"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-b1e87c9c36ab2ff9894f622f"
+    },
+    {
+      "kind": "place",
+      "id": "place-90285ce7baee77973174015c"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-9e8a47dc2b68b6a2e9365484"
+    },
+    {
+      "kind": "event",
+      "id": "event-034517e7543af992f0172b01"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f80c944647f20917c4db1d65"
+    },
+    {
+      "kind": "place",
+      "id": "place-a11314907240251265a7d370"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-0fea6213723c8c47ad53bdcb"
+    },
+    {
+      "kind": "event",
+      "id": "event-c07d5924a127cee51842ac89"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-577b994a5ac20018c2b89ca5"
+    },
+    {
+      "kind": "place",
+      "id": "place-185b0543235b33d0be498d60"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-851d06dc05746ee0dabfe24d"
+    },
+    {
+      "kind": "event",
+      "id": "event-769618eaf987584e5f7866cb"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-dafe88550b94dac706c94329"
+    },
+    {
+      "kind": "place",
+      "id": "place-f4e01ceb45e26de518101b55"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-77fc1cf45601629b80b417f3"
+    },
+    {
+      "kind": "event",
+      "id": "event-59b8d5c26c0b95d7482c7799"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-7411f64f2a773f2ff02bf432"
+    },
+    {
+      "kind": "place",
+      "id": "place-66fe5951b8bcca51a5844b25"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-f966967e187d92d62c679713"
+    },
+    {
+      "kind": "event",
+      "id": "event-899ea7ea92c8122c88214584"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-c5861db7da0a21c5e7443b61"
+    },
+    {
+      "kind": "place",
+      "id": "place-494fa061f03e7cac7fe33456"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-e495413db33875614a1a7a73"
+    },
+    {
+      "kind": "event",
+      "id": "event-9bd9d8a771c89ad45c2ba60f"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-7cce5b83f1585bf1f1eb4373"
+    },
+    {
+      "kind": "place",
+      "id": "place-7ec7bb2f9a740bed7e611093"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-4a78175081c98d1797bff1ec"
+    },
+    {
+      "kind": "event",
+      "id": "event-8f4698ff7a40dcadb18f829e"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-37962c70aae22ba0e82ea1d0"
+    },
+    {
+      "kind": "place",
+      "id": "place-4bde6ad0858aa4ef355dafdf"
+    },
+    {
+      "kind": "claim",
+      "id": "claim-140c41c5d39a53c20729b8eb"
+    }
+  ],
+  "validation": {
+    "errors": 0,
+    "warnings": 20,
+    "info": 2,
+    "status": "passed"
+  },
+  "unhandledNodes": [],
+  "preservedSourceRecords": 123,
+  "unchangedRootsMagicSha256": "2e66a9184acfd5c634448c02a58fefbe19a6a40d979b45914cc3dab42ec6722e"
+}

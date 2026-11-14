@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "dataVersion": "2026-11-11-2-reviewed-merged",
+  "dataVersion": "2026-11-14-reviewed-merged",
   "title": "Родовід Зубенків і Дейкалів",
   "homePersonId": "I1",
   "personHeadingNames": {
@@ -8,6 +8,9 @@
     "I88": "Ксения Никифорова Сальникова"
   },
   "photoCaptionNames": {
+    "I48": [
+      "Керницька Марія Миколайолаївна"
+    ],
     "I29": [
       "Наталія Іванівна Чабан",
       "Наталі Іванівни Чабан"

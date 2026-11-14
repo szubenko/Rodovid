@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 11 NOV 2026
-2 TIME 22:20:19
-1 FILE ZubenkoNewFormat.reviewed.11.11.26 2.ged
+1 DATE 14 NOV 2026
+2 TIME 21:21:04
+1 FILE ZubenkoNewFormat.reviewed.11.14.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -301,6 +301,7 @@
 1 _FSFTID PNST-KQB
 1 _UID 1A186B289188D3449863B6931126C3255829
 1 FAMC @F7@
+1 FAMS @F74@
 0 @I24@ INDI
 1 NAME Стефанія Іллівна /Чабан/
 2 ROMN Stefaniia Illivna /Chaban/
@@ -384,7 +385,7 @@
 1 SOUR @S83@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:33S7-9R9B-QZW
 0 @I29@ INDI
-1 NAME Марія Степанівна /ЧАБАН/
+1 NAME Марія Степанівна /Чабан/
 2 ROMN Mariia Stepanivna /Chaban/
 1 SEX F
 1 BIRT
@@ -1428,6 +1429,9 @@
 1 _UID 1AEC9116ED3CFE48A6C1520C0C3F1ED62042
 1 CHIL @I7@
 1 CHIL @I109@
+1 CHIL @I180@
+1 CHIL @I181@
+1 CHIL @I182@
 0 @F7@ FAM
 1 HUSB @I21@
 1 WIFE @I22@
@@ -2952,6 +2956,7 @@
 1 _FSFTID PJ99-PN6
 1 _UID B4A96C6DA4E65C49862FDD855858B71BFE84
 1 FAMC @F7@
+1 FAMS @F76@
 0 @I106@ INDI
 1 NAME Ганна Іллівна /Чабан/
 2 ROMN Hanna Illivna /Chaban/
@@ -2959,10 +2964,11 @@
 1 BIRT
 2 DATE 1904
 1 DEAT
-2 DATE 1934
+2 DATE 1984
 1 _FSFTID PJ3Z-VDR
 1 _UID 37F230FB020545498E35E96E308A3807FCE3
 1 FAMC @F7@
+1 FAMS @F75@
 0 @I107@ INDI
 1 NAME Степан Антонович /Чабан/
 2 ROMN Stepan Antonovych /Chaban/
@@ -2993,11 +2999,16 @@
 1 NAME Христина /Сидір/
 2 ROMN Khrystyna /Sydir/
 1 SEX F
-1 DEAT Y
-2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 DEAT
+2 DATE 1992
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна
 1 _FSFTID PJQ8-C6M
 1 _UID BAC0D4467FBA634F98DD796E4FAF518DB7DC
 1 FAMC @F6@
+1 BIRT
+2 DATE 1906
+2 PLAC Stara Sól, Bezirk Stary Sambor, Галичина
+1 FAMS @F77@
 0 @I110@ INDI
 1 NAME Васса Онисимова /Грибанева/
 2 ROMN Vassa Onysymova /Hrybaneva/
@@ -3051,6 +3062,7 @@
 2 SOUR @S92@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
 4 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
+2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
 1 DEAT Y
 2 SOUR @S92@
 3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-Z343-B
@@ -4458,4 +4470,213 @@
 1 HUSB @I176@
 1 WIFE @I24@
 1 _UID B74721BBB6DC4D4FB804E6E26616EFC3BAD0
+0 @I177@ INDI
+1 NAME Стефанія Іванівна /Кудли/
+2 ROMN Stefaniia Ivanivna /Kudly/
+1 SEX F
+1 BIRT
+2 DATE 28 OCT 1927
+2 PLAC Stara Sól, Bezirk Stary Sambor, Галичина
+1 DEAT
+2 DATE 24 MAY 2015
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна
+1 _FSFTID PJH7-Y9B
+1 _UID D7D6489662AD264FB0A747857407CFC13D6A
+1 FAMS @F74@
+0 @I178@ INDI
+1 NAME Михайло Іванович /Пацикевич/
+2 ROMN Mykhailo Ivanovych /Patsykevych/
+1 SEX M
+1 BIRT
+2 DATE 1904
+1 DEAT
+2 DATE 1982
+2 PLAC Гребінки, Васильківський район, Київська область, Україна, Радянський Союз
+1 _FSFTID PJH7-YSG
+1 _UID AB5A89FBB00D9740B7E6C436D6ADA04118B0
+1 FAMS @F75@
+0 @I179@ INDI
+1 NAME Іван /Землянський/
+2 ROMN Ivan /Zemlianskyi/
+1 SEX M
+1 BIRT
+2 DATE 1898
+2 PLAC Stara Sól, Bezirk Stary Sambor, Галичина
+1 DEAT
+2 DATE 1994
+2 PLAC Стара Сіль, Старосамбірський район, Львівська область, Україна
+1 _FSFTID PJHW-DFV
+1 _UID 944EB3DCCF3AFE43B15A3EDCA54D1C8F7D41
+1 FAMS @F76@
+0 @I180@ INDI
+1 NAME Василь /Сидір/
+2 ROMN Vasil /Sidir/
+1 SEX M
+1 BIRT
+2 DATE 1902
+2 PLAC Stara Sól, Bezirk Stary Sambor, Galicia
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJCK-5SB
+1 _UID 4DCBE1565869F546833EAFFDAC442477431C
+1 FAMC @F6@
+0 @I181@ INDI
+1 NAME Іван /Сидір/
+2 ROMN Ivan /Sidir/
+1 SEX M
+1 BIRT
+2 DATE 1908
+2 PLAC Stara Sól, Bezirk Stary Sambor, Galicia
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJCK-TGW
+1 _UID 31225CE0C1A44C48A3DD86D6FF360CD87D11
+1 FAMC @F6@
+0 @I182@ INDI
+1 NAME Миколай /Сидір/
+2 ROMN Naimolodshii ^Mikolai /Sidir/
+2 NPFX Наймолодший
+1 SEX M
+1 BIRT
+2 PLAC Stara Sól, Bezirk Stary Sambor, Galicia
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJCK-V4X
+1 _UID 8A98514C7707A147A81610A0FC0DE5DD5E94
+1 FAMC @F6@
+0 @I183@ INDI
+1 NAME Василь /Пихунь/
+2 ROMN Vasil /Pikhun/
+1 SEX M
+1 DEAT Y
+2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
+1 _FSFTID PJC2-3TY
+1 _UID 92409F6B5771384984841BD0C3D6517D7FCC
+1 FAMS @F77@
+0 @I184@ INDI
+1 NAME Іван /Пихуль/
+2 ROMN Ivan /Pikhul/
+1 SEX M
+1 BIRT
+2 DATE 1939
+1 _FSFTID PJC2-TSJ
+1 _UID 802DDE0B87A17D43A491D71F289CA1FC0A40
+1 FAMC @F77@
+0 @I185@ INDI
+1 NAME Марія /Пихуль/
+2 ROMN Mariya /Pikhul/
+1 SEX F
+1 BIRT
+2 DATE 1927
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 DEAT
+2 DATE 5 AUG 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 _FSFTID PJC2-9TV
+1 _UID EE12DBD2D54DF14589DB256D1B84C28BE7FF
+1 FAMC @F77@
+0 @I186@ INDI
+1 NAME Степан /Пихуль/
+2 ROMN Stepan /Pikhul/
+1 SEX F
+1 BIRT
+2 DATE 1931
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 DEAT
+2 DATE 5 AUG 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 _FSFTID PJC2-3MB
+1 _UID 379BCE5F47CE6143B6B2065424454CED1C29
+1 FAMC @F77@
+0 @I187@ INDI
+1 NAME Анна /Пихуль/
+2 ROMN Anna /Pikhul/
+1 SEX M
+1 BIRT
+2 DATE 1934
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 DEAT
+2 DATE 5 AUG 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 _FSFTID PJC2-457
+1 _UID 8F8DA3289A964F4D8B4D7CCD06EA8B1261F4
+1 FAMC @F77@
+0 @I188@ INDI
+1 NAME Антіп /Пихунь/
+2 ROMN Antip /Pikhun/
+1 SEX M
+1 BIRT
+2 DATE 1937
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 DEAT
+2 DATE 5 AUG 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 _FSFTID PJC2-MX7
+1 _UID 8366A69685585340BD0D199D227A94B2F718
+1 FAMC @F77@
+0 @I189@ INDI
+1 NAME Стефанія /Пихунь/
+2 ROMN Stefaniya /Pikhun/
+1 SEX F
+1 BIRT
+2 DATE 1941
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 DEAT
+2 DATE 5 AUG 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 _FSFTID PJC2-ZVS
+1 _UID F4D45BFA47E49C4CBE5035C6EC6F0987240E
+1 FAMC @F77@
+0 @I190@ INDI
+1 NAME Дарія /Пихунь/
+2 ROMN Dariya /Pikhun/
+1 SEX F
+1 BIRT
+2 DATE 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 DEAT
+2 DATE 5 AUG 1944
+2 PLAC Stara Ropa, Sambir, Lwów, Poland
+1 _FSFTID PJC2-H61
+1 _UID 161198FF3F158946B91682FA8497C4C1CCBB
+1 FAMC @F77@
+0 @I191@ INDI
+1 NAME Стефанія /Пихуль/
+2 ROMN Stefaniya /Pikhul/
+1 SEX F
+1 _FSFTID PJC2-1HT
+1 _UID F1791CCFFEEC2D498099A5210A949C2DFB8C
+1 FAMC @F77@
+0 @I192@ INDI
+1 NAME Марія /Пихуль/
+2 ROMN Mariya /Pikhul/
+1 SEX F
+1 _FSFTID PJCL-ZK6
+1 _UID 0FB4C28ABC74C149AC7858706FD71507975B
+1 FAMC @F77@
+0 @F74@ FAM
+1 HUSB @I23@
+1 WIFE @I177@
+1 _UID DC42BF2EAC629346B062E87F8D9C237E35C5
+0 @F75@ FAM
+1 HUSB @I178@
+1 WIFE @I106@
+1 _UID B34C9D9992F027479545C7CF2FE5CAE75A52
+0 @F76@ FAM
+1 HUSB @I179@
+1 WIFE @I105@
+1 _UID FE164E91D00A644E8925103607F81350D5D2
+0 @F77@ FAM
+1 HUSB @I183@
+1 WIFE @I109@
+1 _UID 8CB1DCBBD8B30B4FAFC2C8A088853A4B24B0
+1 CHIL @I184@
+1 CHIL @I185@
+1 CHIL @I186@
+1 CHIL @I187@
+1 CHIL @I188@
+1 CHIL @I189@
+1 CHIL @I190@
+1 CHIL @I191@
+1 CHIL @I192@
 0 TRLR

@@ -2,6 +2,8 @@ import { expect, it } from 'vitest'
 import fixture from '../../tests/fixtures/data-contract/full.json'
 import { familyDataSchema } from '../data/schema'
 import { collectFamilyPhotos } from './photo-collection'
+import { photoPersonMentionMatcher } from './photo-person-mentions'
+import familyData from '../../generated/family.json'
 
 it('collects gallery photos across people, combines shared images and retains distinct descriptions', () => {
   const family = familyDataSchema.parse(fixture)
@@ -28,4 +30,14 @@ it('handles empty collections', () => {
   const family = familyDataSchema.parse(fixture)
   family.people.forEach(person => { person.photoIds = [] })
   expect(collectFamilyPhotos(family)).toEqual([])
+})
+
+it('links the confirmed name in both Kernytska photo captions to her profile', () => {
+  const family = familyDataSchema.parse(familyData)
+  const match = photoPersonMentionMatcher(family)
+  for (const id of ['media-kernytskyi-endzevych-stara-ropa-1957', 'media-kernytskyi-visit-after-katorha-stara-ropa-1957']) {
+    const description = family.media.find(media => media.id === id)?.description
+    expect(description).toBeDefined()
+    expect(match(description!).some(part => part.text === 'Керницька Марія Миколайолаївна' && part.personId === 'I48')).toBe(true)
+  }
 })

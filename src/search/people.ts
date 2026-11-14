@@ -7,20 +7,23 @@ export function normalizeSearch(value: string): string {
   return value.normalize('NFC').toLocaleLowerCase('uk').trim().replace(/\s+/gu, ' ')
 }
 
-export function buildPeopleIndex(family: FamilyData) {
+export function buildPeopleIndex(family: FamilyData, displayName?: typeof personName) {
   return family.people.map((person) => {
-    const name = personName(family, person.id)
+    const recordedName = personName(family, person.id)
+    const name = displayName?.(family, person.id) ?? recordedName
     const names = family.claims.flatMap((claim) => claim.field === 'name' && claim.target.id === person.id
       ? [claim.value] : [])
+    // Keep variants separate: a query must match one name, not a mixture of aliases.
+    const variants = names.map((value) => normalizeSearch([
+      value.display, value.given, value.surname, value.patronymic, value.prefix, value.suffix,
+    ].filter(Boolean).join(' ')))
+    if (name !== recordedName) variants.push(normalizeSearch(name))
     return {
       personId: person.id,
       name,
       years: lifeYears(family, person.id),
       alternatives: [...new Set(names.map((value) => value.display).filter((display) => display !== name))],
-      // Keep variants separate: a query must match one actual name, not a mixture of aliases.
-      variants: names.map((value) => normalizeSearch([
-        value.display, value.given, value.surname, value.patronymic, value.prefix, value.suffix,
-      ].filter(Boolean).join(' '))),
+      variants,
     }
   })
 }

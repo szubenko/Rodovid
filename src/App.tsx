@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link as RouteLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router'
 import { ViewLink as Link } from './navigation/ViewLink'
-import { personName } from './data/load-family'
 import { personFullName } from './data/person-name'
 import { FamilyProvider, ViewProvider } from './navigation/Providers'
 import { useFamily, useView } from './navigation/context'
@@ -52,7 +51,7 @@ function PersonScreen({ screen }: { screen: 'tree' | 'person' }) {
       <ul className={styles.people}>
         {family.people.map((person) => <li key={person.id}>
           <Link to={`/${screen === 'tree' ? 'tree' : 'person'}/${person.id}`} aria-current={person.id === personId ? 'page' : undefined}>
-            {personName(family, person.id)}
+            {personFullName(family, person.id)}
           </Link>
         </li>)}
       </ul>

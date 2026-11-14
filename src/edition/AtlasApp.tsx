@@ -41,13 +41,13 @@ function PeopleDirectory() {
   const titleId = useId()
   const { state } = useView()
   const [query, setQuery] = useState('')
-  const index = useMemo(() => buildPeopleIndex(family).sort((a, b) => a.name.localeCompare(b.name, 'uk')), [family])
+  const index = useMemo(() => buildPeopleIndex(family, personFullName).sort((a, b) => a.name.localeCompare(b.name, 'uk')), [family])
   const people = query.trim() ? searchPeople(index, query) : index
   return <section className={styles.directory} aria-labelledby={titleId}>
     <div className={styles.directoryHeading}><h2 id={titleId}>Люди родоводу</h2></div>
     <label className={styles.search}>
       <Icon kind="search" /><span className={styles.srOnly}>Пошук людей</span>
-      <input type="search" placeholder="Ім’я або прізвище…" value={query} onChange={event => setQuery(event.target.value)} />
+      <input type="search" placeholder="Пошук за ПІБ…" value={query} onChange={event => setQuery(event.target.value)} />
     </label>
     <p className={styles.resultCount} role="status">{query.trim() ? `Знайдено: ${people.length}` : 'Кожне ім’я — початок історії'}</p>
     <ul className={styles.personList}>

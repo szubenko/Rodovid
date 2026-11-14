@@ -6,7 +6,9 @@ type Basis = { coefficients: Float64Array; direction: Float64Array; target: numb
  * Couple members prefer moving together, but can spread to accommodate ancestry.
  * Contradictory inputs keep their original inspectable layout. */
 export function centerFamilyParents(cards: Card[], families: CenteredFamily[], couples: string[][],
-  familyGap: number, spouseGap: number, { compactLeafSiblings = false, reflowCouples = false } = {}) {
+  familyGap: number, spouseGap: number, { compactLeafSiblings = false, reflowCouples = false, branchSeparation }: {
+    compactLeafSiblings?: boolean; reflowCouples?: boolean; branchSeparation?: ((left: string, right: string) => number | undefined) | undefined
+  } = {}) {
   const count = cards.length
   const index = new Map(cards.map((card, i) => [card.personId, i]))
   const groups = couples.map(ids => ids.map(id => index.get(id)!))
@@ -123,7 +125,8 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
       }
       const leftGroup = groupByIndex.get(left)!, rightGroup = groupByIndex.get(right)!
       const sharedChildCouple = [...childCouples.get(leftGroup) ?? []].some(group => childCouples.get(rightGroup)?.has(group))
-      const gap = leftGroup === rightGroup || sharedChildCouple ? spouseGap : familyGap
+      const gap = leftGroup === rightGroup ? spouseGap : branchSeparation?.(cards[left]!.personId, cards[right]!.personId)
+        ?? (sharedChildCouple ? spouseGap : familyGap)
       separations.push({ left, right, direction, norm: direction[right]! - direction[left]!,
         distance: (cards[left]!.width + cards[right]!.width) / 2 + gap })
     }

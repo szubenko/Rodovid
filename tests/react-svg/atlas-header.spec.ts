@@ -29,12 +29,16 @@ test('шапка доповнює коротке ім’я по батькові
   }
 })
 
-test('повне ім’я Наталії показане лише у верхньому заголовку', async ({ page }) => {
+test('покажчик відображає те саме повне ім’я Наталії, що й шапка', async ({ page, isMobile }) => {
   for (const screen of ['tree', 'person']) {
     await page.goto(`/${screen}/I6`)
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Наталія Семенівна Заприса')
-    await expect(page.locator('aside')).toContainText('Наталия Заприса')
-    await expect(page.locator('aside')).not.toContainText('Семенівна')
+    if (isMobile) await page.getByText('Знайти людину · покажчик родоводу', { exact: true }).click()
+    const directory = page.getByRole('region', { name: 'Люди родоводу' })
+    const entry = directory.getByRole('link', { name: /^Наталія Семенівна Заприса/ })
+    await expect(entry).toBeVisible()
+    await directory.getByRole('searchbox').fill('Наталія Семенівна Заприса')
+    await expect(entry).toBeVisible()
     if (screen === 'tree') {
       const person = page.locator('svg [data-person-id="I6"]').first()
       await expect(person).toHaveAttribute('aria-label', /Наталия Заприса/)
@@ -134,7 +138,7 @@ test('брендинг і всі дії бічної панелі доступн
   await expect(page.getByRole('button', { name: 'Увімкнути звук', exact: true })).toBeVisible()
   const search = sidebar.getByRole('searchbox', { name: 'Пошук людей' })
   await search.fill('Наталия Заприса')
-  await sidebar.getByRole('link', { name: /Наталия Заприса/ }).click()
+  await sidebar.getByRole('link', { name: /Наталія Семенівна Заприса/ }).click()
   await expect(page).toHaveURL('/vertical-minimal/I6')
   if (isMobile) {
     await expect(menu).not.toHaveAttribute('open')

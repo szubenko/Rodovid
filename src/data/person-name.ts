@@ -27,7 +27,7 @@ function fatherPatronymic(family: FamilyData, personId: string) {
   return given ? patronymicFromFather(given, sex) : undefined
 }
 
-/** Heading presentation only; derived patronymics never alter claims, maps or lists. */
+/** Full name for headings and the people directory. */
 export function personFullName(family: FamilyData, personId: string) {
   const headingName = family.config.personHeadingNames?.[personId]
   if (headingName) return headingName

@@ -26,6 +26,14 @@ describe('explicit sibling branches', () => {
       const yakov = byId.get('I5')!, tanya = byId.get('I69')!
       const gap = yakov.x - yakov.width / 2 - tanya.x - tanya.width / 2
       expect(gap, `${showPortrait}/${compact}: Tanya beside Yakov`).toBeCloseTo(options.familyGap, 2)
+      const base = projectVerticalFamily(graph, 'I1', { generations: 4 })
+      const baseLayout = layoutRelatives(base, graph, labels, dates, measure, ancestorPersonIds(graph, 'I1'), options)
+      const ancestors = new Map(baseLayout.nodes.map(node => [node.personId, node]))
+      const left = ['I30', 'I31'].map(id => ancestors.get(id)!)
+      const right = ['I34', 'I32'].map(id => ancestors.get(id)!)
+      const branchGap = Math.min(...right.map(node => node.x - node.width / 2))
+        - Math.max(...left.map(node => node.x + node.width / 2))
+      expect(branchGap, `${showPortrait}/${compact}: separate ancestor branches`).toBeCloseTo(gap * 3, 2)
       for (let i = 0; i < layout.nodes.length; i++) for (const other of layout.nodes.slice(i + 1)) {
         const node = layout.nodes[i]!
         if (node.generation === other.generation) {

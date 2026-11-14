@@ -14,6 +14,7 @@ type FamilyJoin = { parents: RelativeAppearance[]; children: RelativeAppearance[
 const familyOrderCache = new WeakMap<FamilyGraph, Map<string, string[][][]>>()
 export type RelativeLayoutOptions = {
   cardWidth: number; cardHeight: number; familyGap: number; spouseGap: number
+  branchGap?: number
   minimumRowGap: number; trackSpacing: number; joinOffset: number; channelOffset: number
   maleBranchLeft?: boolean
   lateralScale?: number
@@ -114,6 +115,21 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     groups.push(group)
   }
   const couples = groups.map(group => [...group.ids])
+  const branchGap = options?.branchGap
+  const branchSeparation = branchGap === undefined ? undefined : (() => {
+    const parents = new Map(projection.appearances.map(({ personId }) => [personId, graph.neighbors.get(personId)!
+      .filter(neighbor => neighbor.direction === 'parents').map(neighbor => neighbor.personId)]))
+    const partners = new Map(couples.flatMap(couple => couple.map(id => [id, couple] as const)))
+    const coParents = new Map<string, Set<string>>()
+    for (const { parents } of families.values()) for (const { personId } of parents) {
+      const others = coParents.get(personId) ?? new Set<string>()
+      for (const parent of parents) others.add(parent.personId)
+      coParents.set(personId, others)
+    }
+    return (left: string, right: string) => partners.get(left) === partners.get(right)
+      || coParents.get(left)?.has(right) || parents.get(left)!.some(parent => parents.get(right)!.includes(parent))
+      ? undefined : branchGap
+  })()
   const partnerChains: string[][] = []
   if (options?.maleBranchLeft) {
     // A maternal half sibling can lie between a man and his wife. Keeping
@@ -172,11 +188,13 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     const before = group.ids.slice(0, index).reduce((sum, member) => sum + sizes.get(member)!.width + spouseGap, 0)
     return group.x - group.width / 2 + before + sizes.get(id)!.width / 2
   }
-  const pack = (row: Group[], targets: Map<Group, number>, sort = true) => {
+  const pack = (row: Group[], targets: Map<Group, number>, sort = true, separateBranches = false) => {
     if (sort) row.sort((a, b) => targets.get(a)! - targets.get(b)!)
     let right = -Infinity
-    for (const group of row) {
-      group.x = Math.max(targets.get(group)!, right + familyGap + group.width / 2)
+    for (const [i, group] of row.entries()) {
+      const gap = separateBranches && i > 0
+        ? branchSeparation?.(row[i - 1]!.ids.at(-1)!, group.ids[0]!) ?? familyGap : familyGap
+      group.x = Math.max(targets.get(group)!, right + gap + group.width / 2)
       right = group.x + group.width / 2
     }
     const shift = row.reduce((sum, group) => sum + group.x - targets.get(group)!, 0) / row.length
@@ -417,7 +435,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       const siblings = slots.map(slot => row[slot]!).sort((a, b) => stableOrder.get(a.ids[0]!)! - stableOrder.get(b.ids[0]!)!)
       slots.forEach((slot, index) => { row[slot] = siblings[index]! })
     }
-    for (const row of rows.values()) pack(row, new Map(row.map(group => [group, group.x])), false)
+    for (const row of rows.values()) pack(row, new Map(row.map(group => [group, group.x])), false, true)
   }
   const minX = Math.min(...projection.appearances.map(node => memberX(node.personId) - sizes.get(node.personId)!.width / 2))
   const minGeneration = generations[0]!
@@ -440,7 +458,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
   // use the existing centered layout without forcing a different row order.
   const centeredCouples = directLine && !options?.maleBranchLeft ? groups.map(group => group.ids) : couples
   const centerParents = () => centerFamilyParents(nodes, centeringFamilies, centeredCouples, familyGap, spouseGap,
-    { compactLeafSiblings: true, reflowCouples: !directLine })
+    { compactLeafSiblings: true, reflowCouples: !directLine, branchSeparation })
     || (!directLine && centerFamilyParents(nodes, centeringFamilies, centeredCouples, familyGap, spouseGap, { reflowCouples: true }))
   let centered = centerParents()
   if (!centered && options?.maleBranchLeft && directLine && projection.siblingGroups?.length) {
@@ -451,7 +469,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       parents: family.parents.filter(id => directLine.has(id)),
       children: family.children.filter(id => directLine.has(id)),
     })).filter(family => family.parents.length && family.children.length)
-    centered = centerFamilyParents(nodes, mainFamilies, centeredCouples, familyGap, spouseGap)
+    centered = centerFamilyParents(nodes, mainFamilies, centeredCouples, familyGap, spouseGap, { branchSeparation })
   }
   if (!centered && !directLine) {
     // Reordering a shared spouse's children can reverse the next descendant
@@ -487,7 +505,7 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
     }
     const straightFamilies = centeringFamilies.filter(family => family.parents.length === 1
       && family.children.length === 1 && childrenByParent.get(family.parents[0]!)!.size === 1)
-    if (straightFamilies.length) centerFamilyParents(nodes, straightFamilies, groups.map(group => group.ids), familyGap, spouseGap)
+    if (straightFamilies.length) centerFamilyParents(nodes, straightFamilies, groups.map(group => group.ids), familyGap, spouseGap, { branchSeparation })
   }
   if (options?.femaleSiblingsRight || options?.maleSiblingsLeft) {
     // Conflicting half-sibling families can fall back to centering only the
@@ -511,7 +529,8 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
       for (let slot = row.indexOf(owner) + direction; slot >= 0 && slot < row.length; slot += direction) {
         const sibling = row[slot]!
         if (!added.has(sibling.personId) || anchored.has(sibling.personId)) break
-        const target = neighbor.x + direction * ((neighbor.width + sibling.width) / 2 + familyGap)
+        const gap = branchSeparation?.(neighbor.personId, sibling.personId) ?? familyGap
+        const target = neighbor.x + direction * ((neighbor.width + sibling.width) / 2 + gap)
         sibling.x = direction < 0 ? Math.max(sibling.x, target) : Math.min(sibling.x, target)
         neighbor = sibling
       }

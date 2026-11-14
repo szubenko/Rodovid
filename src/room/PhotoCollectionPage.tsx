@@ -30,7 +30,7 @@ export function PhotoCollectionPage() {
   }, [family.config.title])
   return <section className={styles.page} aria-labelledby="photo-collection-title">
     <header className={styles.header}>
-      <div><p className={styles.kicker}>Сімейний архів</p><h1 id="photo-collection-title" ref={heading} tabIndex={-1}><AlbumIcon kind="camera" />Фотогалерея</h1><p>Усі фотографії родоводу з оригінальними описами · {photos.length}</p></div>
+      <div><p className={styles.kicker}>Сімейний архів</p><h1 id="photo-collection-title" ref={heading} tabIndex={-1}><AlbumIcon kind="camera" />Фотогалерея</h1></div>
       <Link className={styles.back} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`}>{hasReturn ? returnTo.startsWith('/person/') ? '← Повернутися до людини' : '← Повернутися до родоводу' : '← До родоводу'}</Link>
     </header>
     {photos.length === 0 ? <p className={styles.empty}>Фотографій поки немає.</p> : <div className={styles.grid}>

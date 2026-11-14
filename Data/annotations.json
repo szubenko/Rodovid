@@ -409,6 +409,14 @@
       "portraitId": "media-i48-avatar"
     },
     {
+      "id": "person-media-i185",
+      "personId": "I185",
+      "photoIds": [
+        "media-kernytskyi-endzevych-stara-ropa-1957",
+        "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
+      ]
+    },
+    {
       "id": "person-media-i29",
       "personId": "I29",
       "photoIds": [

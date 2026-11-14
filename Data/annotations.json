@@ -4920,8 +4920,7 @@
         "path": "assets/photos/i105-чабан-катерина-фото-1.png",
         "mimeType": "image/png"
       },
-      "title": "Чабан Катерина Іллівна — фотографія 1",
-      "description": "Катерина Іллівна Чабан. Фотографію надано власником.",
+      "title": "Чабан Катерина Іллівна",
       "provenance": [
         {
           "kind": "supplement",
@@ -4943,8 +4942,7 @@
         "path": "assets/photos/i105-чабан-катерина-фото-2.png",
         "mimeType": "image/png"
       },
-      "title": "Чабан Катерина Іллівна — фотографія 2",
-      "description": "Катерина Іллівна Чабан. Фотографію надано власником.",
+      "title": "Чабан Катерина Іллівна",
       "provenance": [
         {
           "kind": "supplement",
@@ -7791,8 +7789,7 @@
         "path": "assets/photos/i108-чабан-василь-фото.png",
         "mimeType": "image/png"
       },
-      "title": "Чабан Василь Антонович — фотографія",
-      "description": "Василь Антонович Чабан.",
+      "title": "Чабан Василь Антонович",
       "provenance": [
         {
           "kind": "supplement",

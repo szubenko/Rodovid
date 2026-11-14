@@ -1104,7 +1104,7 @@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XQS-12S5
 3 CONT Метадані експорту: FORM=; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S86@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 1 FAMS @F42@
 1 SOUR @S88@
 2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/1:1:6XST-J64H
@@ -1259,12 +1259,12 @@
 2 DATE BET 1802 AND 1803
 2 PLAC Чапліївка, Кролевецький повіт, Чернігівська губернія, Російська імперія
 2 SOUR @S86@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 1 FAMC @F35@
 1 SOUR @S87@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en
 1 SOUR @S86@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 0 @I68@ INDI
 1 NAME Герасим /Пальчик/
 2 ROMN Gerasim /Paltschik/
@@ -2616,9 +2616,9 @@
 1 BIRT
 2 DATE BET 1776 AND 1777
 2 SOUR @S86@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 2 SOUR @S87@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en
 2 PLAC Чапліївка, Російська Імперія
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -2629,9 +2629,9 @@
 1 EVEN Козак
 2 TYPE Caste Name 
 1 SOUR @S87@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en
 1 SOUR @S86@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 0 @I92@ INDI
 1 NAME Василий Никифиров /Зубенко/
 2 ROMN Vasylyi Nykyfyrov /Zubenko/
@@ -2662,7 +2662,7 @@
 1 FAMS @F23@
 1 FAMC @F37@
 1 SOUR @S86@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 0 @I94@ INDI
 1 NAME Петр Петров /Зубенко/
 2 ROMN Petr Petrov /Zubenko/
@@ -2670,7 +2670,7 @@
 1 BIRT
 2 DATE BET 1827 AND 1828
 2 SOUR @S86@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 4 CONT Метадані експорту: FORM=com&i=470&groupId=3511744&lang=en; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -2682,7 +2682,7 @@
 1 EVEN Козак
 2 TYPE Caste Name 
 1 SOUR @S86@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 3 CONT Метадані експорту: FORM=com&i=470&groupId=3511744&lang=en; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I95@ INDI
 1 NAME Яковь Петров /Зубенко/
@@ -2691,7 +2691,7 @@
 1 BIRT
 2 DATE BET 1829 AND 1830
 2 SOUR @S86@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 4 CONT Метадані експорту: FORM=com&i=470&groupId=3511744&lang=en; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -2702,10 +2702,10 @@
 1 EVEN Козак
 2 TYPE Caste Name 
 2 SOUR @S86@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 4 CONT Метадані експорту: FORM=com&i=470&groupId=3511744&lang=en; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 1 SOUR @S86@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en
 3 CONT Метадані експорту: FORM=com&i=470&groupId=3511744&lang=en; _SCBK=N; _PRIM=N; _TYPE=OTHER; _SSHOW=N
 0 @I96@ INDI
 1 NAME Варвара Леонтіївна //
@@ -2732,7 +2732,7 @@
 1 BIRT
 2 DATE BET 1741 AND 1742
 2 SOUR @S87@
-3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+3 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en
 2 PLAC Чапліївка, Гетьманщина
 1 DEAT Y
 2 NOTE В оригінальному експорті: DATE DECEASED; точна дата смерті невідома.
@@ -2741,7 +2741,7 @@
 1 FAMS @F38@
 1 FAMC @F39@
 1 SOUR @S87@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en
 1 EVEN Козак
 2 TYPE Caste Name 
 0 @I99@ INDI
@@ -2754,7 +2754,7 @@
 1 _UID 74CA648D5A62DD4CA1BEBA02754846FA2C45
 1 FAMS @F39@
 1 SOUR @S87@
-2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en
+2 NOTE Посилання з GEDCOM OBJE.FILE: https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en
 1 EVEN Козак
 2 TYPE Caste Name 
 0 @F33@ FAM

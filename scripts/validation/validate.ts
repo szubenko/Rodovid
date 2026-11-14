@@ -99,8 +99,8 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 }
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
-  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256].includes(report.sha256)) {
-    const november14 = report.sha256 === november14MergeSha256
+  if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256, 'b9e65f7db0010b8643b4285d0f23818552249e63bc5a6e090012a2d8cb4f27ac'].includes(report.sha256)) {
+    const november14 = (report.sha256 === november14MergeSha256 || report.sha256 === 'b9e65f7db0010b8643b4285d0f23818552249e63bc5a6e090012a2d8cb4f27ac')
     const november11Second = report.sha256 === november11SecondMergeSha256 || november14
     const november11 = report.sha256 === november11MergeSha256 || november11Second
     const november10 = report.sha256 === november10MergeSha256 || november11

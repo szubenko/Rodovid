@@ -1,7 +1,7 @@
 # Сказка двору Григорія Елисеева Зубенка — запис №134
 
 29.10.2026 власник надав скан і погодив запропонований витяг відповіддю «так».
-[Джерело FamilySearch](https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?utm_source=chatgpt.com&i=92&groupId=3511744&lang=en); ID сайту — `source-0f23409aee0d4d4b0e1fd4d9`.
+[Джерело FamilySearch](https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-ZQHK?i=92&groupId=3511744&lang=en); ID сайту — `source-0f23409aee0d4d4b0e1fd4d9`.
 
 ## Погоджений опис
 

@@ -4,7 +4,7 @@
 два читання запропонованого витягу: рік смерті Василія — **1858**,
 по батькові Варвары — **Леонтьева**. Уточнення враховані в збереженому описі.
 
-[Джерело FamilySearch](https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?utm_source=chatgpt.com&i=470&groupId=3511744&lang=en); ID джерела сайту: `source-dedc12fa73dae14cd89e10c6`.
+[Джерело FamilySearch](https://familysearch.org/ark:/61903/3:1:3Q9M-CSSV-J94C-W?i=470&groupId=3511744&lang=en); ID джерела сайту: `source-dedc12fa73dae14cd89e10c6`.
 
 ## Погоджений витяг
 

@@ -45,6 +45,9 @@ it('applies the supplied date precision and literal note without changing Yarosl
     const claim = family.claims.find(c => c.field === 'place' && c.target.id === event(id!, 'birth').id)
     expect(claim?.field === 'place' && family.places.find(p => p.id === claim.value)?.originalName).toBe(name)
   }
+  const birthPlace = family.claims.find(c => c.field === 'place' && c.target.id === event('I91', 'birth').id)
+  expect(birthPlace?.field === 'place' && family.places.find(p => p.id === birthPlace.value)?.coordinates)
+    .toEqual({ latitude: 51.71987, longitude: 33.210036 })
 })
 
 it('reuses S45 and its existing scan with one citation per target and no pending sync', () => {

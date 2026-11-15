@@ -16,7 +16,7 @@ export const supplementsSchema = z.strictObject({
       z.strictObject({ kind: z.literal('claim'), id }),
       z.strictObject({ kind: z.literal('relationship'), id }),
     ]),
-    confidence: confidenceSchema.default('unassessed'), explanation: text.optional(),
+    confidence: confidenceSchema.default('unassessed'), explanation: text.optional(), publishExplanation: z.boolean().default(true),
     reviewStatus: z.enum(['unreviewed', 'accepted', 'disputed']).optional(),
     relativeOrder: z.record(personIdSchema, z.number().int().positive()).optional(),
   }).refine((entry) => entry.reviewStatus === undefined || entry.target.kind === 'relationship', {

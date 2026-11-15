@@ -8,7 +8,6 @@ import regionsUrl from './maps/ukraine-regions.json?url'
 import easternContext from './maps/eastern-context.json'
 import contextUrl from './maps/eastern-context.json?url'
 import { placeName, type PlaceEvents } from './places-data'
-import { eventLabels } from './biography'
 import styles from './Places.module.css'
 
 export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
@@ -60,7 +59,7 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       const marker = L.marker(latLng, { title: name, alt: name, icon: L.divIcon({ className: 'rodovid-place-marker', html: '<span class="rodovid-place-dot" aria-hidden="true"></span>', iconSize: [44, 44], iconAnchor: [22, 22] }) }).addTo(map)
       const markerElement = marker.getElement()!
       markerElement.setAttribute('data-place-marker', place.id)
-      markerElement.setAttribute('aria-label', `${name}: ${events.map(({ event, label }) => label ?? event.label ?? eventLabels[event.kind]).join(', ')}`)
+      markerElement.setAttribute('aria-label', name)
       markerElement.setAttribute('aria-controls', `place-${place.id}`)
       markerElement.addEventListener('keydown', event => {
         if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); onSelect(place.id) }

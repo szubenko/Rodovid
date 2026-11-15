@@ -19,11 +19,11 @@ test('кожна людина має видиму карту, а точки ві
     await expect(places.getByLabel('Географічна карта місць'), person.id).toBeVisible()
     await expect(places.locator('.rodovid-place-region'), person.id).toHaveCount(27)
     await expect(places.locator('[data-place-marker]'), person.id).toHaveCount(entries.filter(entry => entry.place.coordinates).length)
-    await expect(places.getByLabel('Місця та події').getByRole('button'), person.id).toHaveCount(entries.length)
+    await expect(places.getByLabel('Список місць').getByRole('button'), person.id).toHaveCount(entries.length)
     if (!entries.length) await expect(places).toContainText('Показано оглядову карту')
     if (person.id === 'I1') {
-      await expect(places.locator('[data-place-marker]')).toHaveAttribute('aria-label', /^Байконур:/)
-      await expect(places).toContainText('Народження · 1987')
+      await expect(places.locator('[data-place-marker]')).toHaveAttribute('aria-label', /^Байконур/)
+      await expect(places).not.toContainText('Народження · 1987')
       await expect(places.locator('.rodovid-place-country')).toHaveCount(2)
     }
     if (['I1', 'I3', 'I50', 'I82'].includes(person.id)) await places.screenshot({ path: info.outputPath(`${person.id}-places.png`) })

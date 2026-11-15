@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useFamily } from '../navigation/context'
-import { groupPlaceEntries, personPlaces, placeEventYear, placeName } from './places-data'
-import { eventLabels } from './biography'
+import { groupPlaceEntries, personPlaces, placeName } from './places-data'
 import room from './Room.module.css'
 import styles from './Places.module.css'
 
@@ -35,16 +34,13 @@ export function Places({ personId }: { personId: string }) {
         </div>}
         {unlocated > 0 && <p className={styles.locationNote}>Місця без точних координат наведено у списку.</p>}
       </div>
-      <div className={styles.list} aria-label="Місця та події">
+      <div className={styles.list} aria-label="Список місць">
         {entries.length === 0 && <p className={room.empty}>Місць подій у записах немає. Показано оглядову карту.</p>}
-        {entries.map(({ place, events }) => <article key={place.id} id={`place-${place.id}`} className={styles.entry}>
+        {entries.map(({ place }) => <article key={place.id} id={`place-${place.id}`} className={styles.entry}>
           <button type="button" className={styles.placeChoice} onClick={() => selectPlace(place.id)} aria-pressed={selected === place.id}>
             <span className={styles.dot} aria-hidden="true" />
             <span className={styles.placeContent}>
               <span className={styles.placeName}>{placeName(place)}</span>
-              {events.map(({ event, label }) => <span key={event.id} className={styles.event}>
-                {label ?? event.label ?? eventLabels[event.kind]} · {placeEventYear(family, event.id)}
-              </span>)}
               {!place.coordinates && <span className={styles.event}>Точне розташування не вказано.</span>}
             </span>
           </button>

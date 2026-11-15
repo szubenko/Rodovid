@@ -7,11 +7,11 @@
 .locationNote { margin-top: 0.6rem; color: #66776b; font-size: 0.8rem; }
 .list { display: grid; gap: 0.55rem; }
 .entry { min-width: 0; }
-.places .placeChoice { display: flex; align-items: flex-start; gap: 12px; width: 100%; min-height: 60px; padding: 14px 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #344b3e; text-align: left; }
+.places .placeChoice { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 60px; padding: 14px 12px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #344b3e; text-align: left; }
 .places .placeChoice:hover { background: #f4f6ef; }
 .places .placeChoice[aria-pressed='true'] { background: #eef3e7; border-color: #d5ded1; }
 .places .placeChoice:focus-visible { outline: 2px solid #58714f; outline-offset: 3px; }
-.dot { flex: 0 0 16px; width: 16px; height: 16px; border-radius: 50%; background: var(--place-red); margin-top: 4px; }
+.dot { flex: 0 0 16px; width: 16px; height: 16px; border-radius: 50%; background: var(--place-red); }
 .placeContent { display: grid; min-width: 0; gap: 5px; }
 .placeName { font-weight: 600; }
 .event { font-size: 13px; line-height: 1.5; color: #66776b; }

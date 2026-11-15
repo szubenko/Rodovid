@@ -157,6 +157,18 @@ describe('family JSON conversion', () => {
     expect(family.memories[0]).toMatchObject({ personIds: ['I1', 'I2'], markdown: 'Умовний **спогад**.' })
   })
 
+  it('keeps private assessment notes out of published claims without losing the assessment', () => {
+    const first = convert()
+    const supplements = additions(first.family)
+    supplements.assessments[0]!.publishExplanation = false
+    const { family } = convert({ supplements, identities: first.identities })
+    const claim = family.claims.find(item => item.id === supplements.assessments[0]!.target.id)!
+    expect(claim.confidence).toBe('probable')
+    expect(claim.explanation ?? '').not.toContain('Із примітки')
+    expect(claim.provenance).toEqual(expect.arrayContaining([expect.objectContaining({ entryId: 'assessment-test' })]))
+    expect(supplements.assessments[0]!.explanation).toBe('Із примітки')
+  })
+
   it('preserves canonical IDs, settings and materials only with explicit mappings for a re-export', () => {
     const first = convert()
     const supplements = additions(first.family)

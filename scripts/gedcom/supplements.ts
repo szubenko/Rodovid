@@ -171,7 +171,7 @@ export function mergeSupplements(input: FamilyData, additions: unknown, file = '
       .find((item) => item.id === entry.target.id)
     if (!entity) throw new Error(`Unresolved assessment: ${key}`)
     entity.confidence = entry.confidence
-    if (entry.explanation !== undefined) entity.explanation = [entity.explanation, entry.explanation].filter(Boolean).join('\n')
+    if (entry.publishExplanation && entry.explanation !== undefined) entity.explanation = [entity.explanation, entry.explanation].filter(Boolean).join('\n')
     if (entry.reviewStatus && 'reviewStatus' in entity) entity.reviewStatus = entry.reviewStatus
     if (entry.relativeOrder && 'fromPersonId' in entity) {
       if (Object.keys(entry.relativeOrder).some(id => id !== entity.fromPersonId && id !== entity.toPersonId)) {

@@ -26,6 +26,21 @@ test('місця народження дітей видно на карті ба
   await expect(marker).toHaveAttribute('aria-pressed', 'true')
 })
 
+test('підписи близьких місць не накладаються після зміни розміру карти', async ({ page }) => {
+  await page.goto('/person/I183')
+  const places = page.locator('#places')
+  await places.scrollIntoViewIfNeeded()
+  const labels = places.locator('.rodovid-place-label')
+  await expect(labels).toHaveCount(2)
+  for (const width of [1000, 700]) {
+    await page.setViewportSize({ width, height: 800 })
+    await expect.poll(async () => {
+      const [a, b] = await Promise.all([labels.nth(0).boundingBox(), labels.nth(1).boundingBox()])
+      return !!a && !!b && (a.x + a.width <= b.x || b.x + b.width <= a.x || a.y + a.height <= b.y || b.y + b.height <= a.y)
+    }).toBe(true)
+  }
+})
+
 test('unprepared places show location information without invented markers or tile requests', async ({ page }) => {
   const family = familyDataSchema.parse(fixture); family.datasetKind = 'family'
   delete family.places[0]!.coordinates

@@ -47,6 +47,27 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       const horizontal = Math.max(24, ...labels.map(label => (label?.offsetWidth ?? 0) / 2 + 8))
       const vertical = Math.max(32, ...labels.map(label => (label?.offsetHeight ?? 0) + 16))
       map.fitBounds(bounds, { padding: [horizontal, vertical], animate: false })
+      const placed: DOMRect[] = []
+      for (const marker of markers.current.values()) {
+        const tooltip = marker.getTooltip()
+        const label = tooltip?.getElement()
+        if (!tooltip || !label) continue
+        const baseOffset = tooltip.options.direction === 'bottom' ? 10 : -10
+        tooltip.options.offset = L.point(0, baseOffset)
+        tooltip.update()
+        let box = label.getBoundingClientRect()
+        // Move overlapping labels away from one another while keeping their
+        // horizontal position tied to the corresponding geographic point.
+        for (let attempt = 0; attempt < placed.length; attempt++) {
+          const overlaps = placed.filter(other => box.left < other.right + 4 && box.right + 4 > other.left && box.top < other.bottom + 4 && box.bottom + 4 > other.top)
+          if (!overlaps.length) break
+          const shift = Math.max(...overlaps.map(other => box.bottom - other.top + 4))
+          tooltip.options.offset = L.point(0, L.point(tooltip.options.offset).y - shift)
+          tooltip.update()
+          box = label.getBoundingClientRect()
+        }
+        placed.push(box)
+      }
     }
     fit()
     map.attributionControl.setPrefix(false)

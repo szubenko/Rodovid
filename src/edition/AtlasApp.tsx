@@ -5,7 +5,7 @@ import { useFamily, useView } from '../navigation/context'
 import { ViewLink as Link } from '../navigation/ViewLink'
 import { personFullName, personName } from '../data/person-name'
 import { buildPeopleIndex, searchPeople } from '../search/people'
-import { tooltipLifeYears } from '../graph/person-tooltip-data'
+import { isSocialStatus, tooltipLifeYears } from '../graph/person-tooltip-data'
 import { RadialMap } from '../graph/RadialMap'
 import { HorizontalTree } from '../graph/HorizontalTree'
 import { VerticalTree } from '../graph/VerticalTree'
@@ -88,7 +88,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const person = family.people.find(entry => entry.id === personId)
   if (!person || !personId) return <Missing />
   const years = tooltipLifeYears(family, personId).replaceAll(' - ', '–')
-  const eventCount = family.events.filter(event => event.participants.some(participant => participant.personId === personId)).length
+  const eventCount = family.events.filter(event => !isSocialStatus(event) && event.participants.some(participant => participant.personId === personId)).length
   const relationCount = new Set(family.relationships.flatMap(relation => relation.fromPersonId === personId ? [relation.toPersonId]
     : relation.toPersonId === personId ? [relation.fromPersonId] : [])).size
   return <>
@@ -176,7 +176,7 @@ function Sidebar() {
             <img className={styles.brandArms} src={staraSilArms} alt="Герб Старої Солі" />
           </Link>
         </div>
-        <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
+        <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.filter(event => !isSocialStatus(event)).length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
         <PeopleDirectory />
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>
       </div>

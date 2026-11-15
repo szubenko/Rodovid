@@ -17,7 +17,7 @@ export function tooltipClaimText(family: FamilyData, claim: Claim): string {
   return tooltipText(claimText(family, claim))
 }
 
-function isSocialStatus(event: FamilyEvent): boolean {
+export function isSocialStatus(event: FamilyEvent): boolean {
   return event.kind === 'other' && ['caste name', 'стан'].includes(event.label?.trim().toLocaleLowerCase('uk') ?? '')
 }
 

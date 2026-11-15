@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useFamily } from '../navigation/context'
-import { groupPlaceEntries, hasAreaBoundary, personPlaces, placeName } from './places-data'
+import { areaBoundary, groupPlaceEntries, hasAreaBoundary, personPlaces, placeName } from './places-data'
 import room from './Room.module.css'
 import styles from './Places.module.css'
 
@@ -41,6 +41,7 @@ export function Places({ personId }: { personId: string }) {
             <span className={styles.dot} aria-hidden="true" />
             <span className={styles.placeContent}>
               <span className={styles.placeName}>{placeName(place)}</span>
+              {areaBoundary(place) === 'kharkiv-governorate' && <span className={styles.event}>Приблизний контур за історичною картою · точне місце невідоме.</span>}
               {!place.coordinates && !hasAreaBoundary(place) && <span className={styles.event}>Точне розташування не вказано.</span>}
             </span>
           </button>

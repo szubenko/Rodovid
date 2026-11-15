@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import { familyDataSchema } from '../data/schema'
 import fixture from '../../tests/fixtures/data-contract/full.json'
-import { formatPlaceYear, groupPlaceEntries, personPlaces, placeEventYear } from './places-data'
+import { areaBoundary, formatPlaceYear, groupPlaceEntries, personPlaces, placeEventYear } from './places-data'
 import actualFamily from '../../generated/family.json'
 import { biographyTimeline } from '../graph/person-tooltip-data'
 
@@ -38,6 +38,17 @@ it('groups identical full names without coordinates while retaining all events',
   expect(grouped).toHaveLength(1)
   expect(grouped[0]!.events).toHaveLength(entry.events.length)
   expect(groupPlaceEntries([first, { ...second, place: { ...second.place, displayName: 'Харківська губернія, інша країна' } }])).toHaveLength(2)
+})
+
+it('shows the governorate as an area for I78 without turning corrected places into governorates', () => {
+  const family = familyDataSchema.parse(actualFamily)
+  const places = personPlaces(family, 'I78')
+  const governorate = places.find(entry => entry.place.displayName === 'Харківська губернія, Російська імперія')
+  expect(governorate?.place.coordinates).toBeUndefined()
+  expect(governorate && areaBoundary(governorate.place)).toBe('kharkiv-governorate')
+  const corrected = family.places.find(place => place.originalName === 'Kharkiv Guberniya, Russian Empire' && place.displayName?.startsWith('Чапліївка'))
+  expect(corrected).toBeDefined()
+  expect(areaBoundary(corrected!)).toBeUndefined()
 })
 
 it('keeps uncertainty, ranges and missing years instead of inventing an exact year', () => {

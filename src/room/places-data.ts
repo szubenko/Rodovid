@@ -5,9 +5,11 @@ import { biographyTimeline } from '../graph/person-tooltip-data'
 import { personName } from '../data/person-name'
 
 export type PlaceEvents = { place: Place; events: { event: FamilyEvent; primary: boolean; label?: string }[] }
-export function hasAreaBoundary(place: Place): boolean {
-  return place.originalName === 'Челябинская область, Росія, Радянський Союз'
+export function areaBoundary(place: Place): 'chelyabinsk' | 'kharkiv-governorate' | undefined {
+  if (place.originalName === 'Челябинская область, Росія, Радянський Союз') return 'chelyabinsk'
+  if (!place.coordinates && place.displayName === 'Харківська губернія, Російська імперія') return 'kharkiv-governorate'
 }
+export function hasAreaBoundary(place: Place): boolean { return areaBoundary(place) !== undefined }
 export function personPlaces(family: FamilyData, personId: string): PlaceEvents[] {
   const result = new Map<string, PlaceEvents>()
   const timeline = biographyTimeline(family, personId)
@@ -38,7 +40,7 @@ export function groupPlaceEntries(entries: PlaceEvents[]): PlaceEvents[] {
   const groups = new Map<string, PlaceEvents>()
   for (const { place, events } of entries) {
     const key = place.coordinates ? `coordinates:${place.coordinates.latitude},${place.coordinates.longitude}`
-      : hasAreaBoundary(place) ? `boundary:${place.id}` : `name:${(place.displayName ?? place.originalName).trim()}`
+      : areaBoundary(place) ? `boundary:${areaBoundary(place)}` : `name:${(place.displayName ?? place.originalName).trim()}`
     const group = groups.get(key)
     if (!group) { groups.set(key, { place, events: events.map(entry => ({ ...entry })) }); continue }
     for (const entry of events) {

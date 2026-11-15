@@ -8,7 +8,9 @@ import regionsUrl from './maps/ukraine-regions.json?url'
 import easternContext from './maps/eastern-context.json'
 import contextUrl from './maps/eastern-context.json?url'
 import chelyabinsk from './maps/chelyabinsk-oblast.json'
-import { hasAreaBoundary, placeName, type PlaceEvents } from './places-data'
+import kharkivGovernorate from './maps/kharkiv-governorate.json'
+import kharkivUrl from './maps/kharkiv-governorate.json?url'
+import { areaBoundary, hasAreaBoundary, placeName, type PlaceEvents } from './places-data'
 import styles from './Places.module.css'
 
 export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
@@ -33,7 +35,7 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
     outline.addTo(map)
     for (const { place } of entries) if (place.coordinates) bounds.extend([place.coordinates.latitude, place.coordinates.longitude])
     for (const { place } of entries) if (hasAreaBoundary(place)) {
-      const area = L.geoJSON(chelyabinsk as GeoJsonObject, {
+      const area = L.geoJSON((areaBoundary(place) === 'kharkiv-governorate' ? kharkivGovernorate : chelyabinsk) as GeoJsonObject, {
         style: { className: 'rodovid-place-area', color: '#b4443c', weight: 2, fillColor: '#b4443c', fillOpacity: 0.2 },
       }).addTo(map)
       area.on('click', () => onSelect(place.id))
@@ -76,6 +78,7 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       ['geoBoundaries', 'https://www.geoboundaries.org/'],
       ['© OSM', 'https://www.openstreetmap.org/copyright'],
       ['Дані карти', regionsUrl],
+      ...(entries.some(({ place }) => areaBoundary(place) === 'kharkiv-governorate') ? [['Історична карта Росії · дані', kharkivUrl], ['Джерело історичного контуру', 'https://rusmap.org/data/']] : []),
       ...(outsideUkraine ? [['Natural Earth', 'https://www.naturalearthdata.com/'], ['Контекст карти', contextUrl]] : []),
     ]) {
       if (attribution.childNodes.length) attribution.append(' · ')

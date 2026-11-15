@@ -323,6 +323,22 @@
   ],
   "personMedia": [
     {
+      "id": "person-media-i106",
+      "personId": "I106",
+      "photoIds": [
+        "media-i106-i178-chaban-patsykevych-photo"
+      ],
+      "portraitId": "media-i106-hanna-avatar"
+    },
+    {
+      "id": "person-media-i178",
+      "personId": "I178",
+      "photoIds": [
+        "media-i106-i178-chaban-patsykevych-photo"
+      ],
+      "portraitId": "media-i178-mykhailo-avatar"
+    },
+    {
       "id": "person-media-i180",
       "personId": "I180",
       "photoIds": [
@@ -4677,6 +4693,75 @@
     }
   ],
   "media": [
+    {
+      "id": "media-i178-mykhailo-avatar",
+      "path": "assets/photos/i178-михайло-пацикевич-аватар.png",
+      "sha256": "437ce122badce6da9fc2d8d7730e5c5ae6de154aa86283260ef1f983a5b16c33",
+      "dimensions": {
+        "width": 510,
+        "height": 503
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i178-михайло-пацикевич-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Михайло Іванович Пацикевич — аватарка",
+      "description": "Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Михайло Іванович Пацикевич — аватарка.png",
+          "entryId": "media-i178-mykhailo-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i106-hanna-avatar",
+      "path": "assets/photos/i106-ганна-чабан-аватар.png",
+      "sha256": "82caf0559fb2157d6a534b3e04c29190f16545a6f630b8b9985604a627a52713",
+      "dimensions": {
+        "width": 540,
+        "height": 490
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i106-ганна-чабан-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ганна Іллівна Чабан — аватарка",
+      "description": "Портрет для аватарки надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Ганна Іллівна Чабан — аватарка.png",
+          "entryId": "media-i106-hanna-avatar"
+        }
+      ]
+    },
+    {
+      "id": "media-i106-i178-chaban-patsykevych-photo",
+      "path": "assets/photos/ганна-чабан-михайло-пацикевич.png",
+      "sha256": "1acd9fc61c089adaad471aff4549b2fef02cacdb6da2030e0857627c234caef3",
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/ганна-чабан-михайло-пацикевич.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ганна Іллівна Чабан та Михайло Іванович Пацикевич",
+      "description": "Ганна Іллівна Чабан та Михайло Іванович Пацикевич.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Ганна Іллівна Чабан та Михайло Іванович Пацикевич.png",
+          "entryId": "media-i106-i178-chaban-patsykevych-photo"
+        }
+      ]
+    },
     {
       "id": "media-i181-owner-avatar",
       "path": "assets/photos/i181-owner-avatar.png",

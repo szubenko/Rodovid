@@ -18,13 +18,18 @@ const colors: Record<string, string> = {
 
 export function recordedCountry(place?: Pick<Place, 'country' | 'originalName'>): string {
   if (!place) return unknownBirthCountry
-  if (place.country?.trim()) return place.country.trim()
+  const normalize = (value: string) => {
+    const trimmed = value.trim()
+    const category = aliases[trimmed.toLowerCase()]
+    return category === 'Галичина' || category === 'Російська імперія' ? category : trimmed
+  }
+  if (place.country?.trim()) return normalize(place.country)
   // Keep the complete country suffix verbatim, including republic and state.
   // Galicia is a separate category at the owner's request.
   const parts = place.originalName.split(',')
   let start = parts.length
   while (start > 0 && aliases[parts[start - 1]!.trim().toLowerCase()]) start--
-  return start < parts.length ? parts.slice(start).join(',').trim() : unknownBirthCountry
+  return start < parts.length ? normalize(parts.slice(start).join(',')) : unknownBirthCountry
 }
 
 export function countryColor(country: string): string {

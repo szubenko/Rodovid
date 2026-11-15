@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { useFamily } from '../navigation/context'
-import { groupPlaceEntries, personPlaces, placeName } from './places-data'
+import { groupPlaceEntries, hasAreaBoundary, personPlaces, placeName } from './places-data'
 import room from './Room.module.css'
 import styles from './Places.module.css'
 
@@ -12,7 +12,7 @@ export function Places({ personId }: { personId: string }) {
   const [showMap, setShowMap] = useState(false)
   const [selectedPlaceId, selectPlace] = useState<string>()
   const selected = entries.some(entry => entry.place.id === selectedPlaceId) ? selectedPlaceId : entries[0]?.place.id
-  const unlocated = entries.filter(entry => !entry.place.coordinates).length
+  const unlocated = entries.filter(entry => !entry.place.coordinates && !hasAreaBoundary(entry.place)).length
 
   useEffect(() => {
     if (showMap) return
@@ -41,7 +41,7 @@ export function Places({ personId }: { personId: string }) {
             <span className={styles.dot} aria-hidden="true" />
             <span className={styles.placeContent}>
               <span className={styles.placeName}>{placeName(place)}</span>
-              {!place.coordinates && <span className={styles.event}>Точне розташування не вказано.</span>}
+              {!place.coordinates && !hasAreaBoundary(place) && <span className={styles.event}>Точне розташування не вказано.</span>}
             </span>
           </button>
         </article>)}

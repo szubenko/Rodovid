@@ -7,7 +7,8 @@ import ukraineRegions from './maps/ukraine-regions.json'
 import regionsUrl from './maps/ukraine-regions.json?url'
 import easternContext from './maps/eastern-context.json'
 import contextUrl from './maps/eastern-context.json?url'
-import { placeName, type PlaceEvents } from './places-data'
+import chelyabinsk from './maps/chelyabinsk-oblast.json'
+import { hasAreaBoundary, placeName, type PlaceEvents } from './places-data'
 import styles from './Places.module.css'
 
 export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
@@ -15,6 +16,7 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
 }) {
   const root = useRef<HTMLDivElement>(null)
   const markers = useRef(new Map<string, L.Marker>())
+  const areas = useRef(new Map<string, L.GeoJSON>())
   useEffect(() => {
     const element = root.current!
     const map = L.map(element, { zoomControl: false, zoomSnap: 0, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false, boxZoom: false, keyboard: false, zoomAnimation: false, fadeAnimation: false, markerZoomAnimation: false, inertia: false })
@@ -23,13 +25,21 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       style: { className: 'rodovid-place-region', color: '#cbcdbb', weight: 0.8, fillColor: '#f6f4e9', fillOpacity: 1, opacity: 1 },
     })
     const bounds = outline.getBounds()
-    const outsideUkraine = entries.some(({ place }) => place.coordinates && !bounds.contains([place.coordinates.latitude, place.coordinates.longitude]))
+    const outsideUkraine = entries.some(({ place }) => hasAreaBoundary(place) || (place.coordinates && !bounds.contains([place.coordinates.latitude, place.coordinates.longitude])))
     if (outsideUkraine) L.geoJSON(easternContext as GeoJsonObject, {
       interactive: false,
       style: { className: 'rodovid-place-country', color: '#cbcdbb', weight: 0.8, fillColor: '#f6f4e9', fillOpacity: 1, opacity: 1 },
     }).addTo(map)
     outline.addTo(map)
     for (const { place } of entries) if (place.coordinates) bounds.extend([place.coordinates.latitude, place.coordinates.longitude])
+    for (const { place } of entries) if (hasAreaBoundary(place)) {
+      const area = L.geoJSON(chelyabinsk as GeoJsonObject, {
+        style: { className: 'rodovid-place-area', color: '#b4443c', weight: 2, fillColor: '#b4443c', fillOpacity: 0.2 },
+      }).addTo(map)
+      area.on('click', () => onSelect(place.id))
+      areas.current.set(place.id, area)
+      bounds.extend(area.getBounds())
+    }
     const fit = () => {
       map.invalidateSize({ animate: false, pan: false })
       // Outlying points can sit at the edge of the bounds; fit their labels too.
@@ -74,7 +84,8 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
     const resize = new ResizeObserver(fit)
     resize.observe(element)
     const activeMarkers = markers.current
-    return () => { resize.disconnect(); activeMarkers.clear(); map.remove() }
+    const activeAreas = areas.current
+    return () => { resize.disconnect(); activeMarkers.clear(); activeAreas.clear(); map.remove() }
   }, [entries, onSelect])
 
   useEffect(() => {
@@ -83,6 +94,9 @@ export default function PlacesMap({ entries, selectedPlaceId, onSelect }: {
       marker.getElement()?.setAttribute('aria-pressed', String(selected))
       marker.getElement()?.classList.toggle('rodovid-place-selected', selected)
       marker.setZIndexOffset(selected ? 1000 : 0)
+    }
+    for (const [id, area] of areas.current) {
+      area.setStyle({ fillOpacity: id === selectedPlaceId ? 0.32 : 0.12, weight: id === selectedPlaceId ? 2 : 1 })
     }
   }, [selectedPlaceId, entries, onSelect])
   return <div>

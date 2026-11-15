@@ -2,6 +2,19 @@ import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 
+test('область без точної точки показується на карті як територія', async ({ page }) => {
+  await page.goto('/person/I41')
+  const places = page.locator('#places')
+  await places.scrollIntoViewIfNeeded()
+  const area = places.locator('.rodovid-place-area')
+  const choice = places.getByLabel('Список місць').getByRole('button', { name: 'Челябінська область' })
+  await expect(area).toBeVisible()
+  await choice.click()
+  await expect(choice).toHaveAttribute('aria-pressed', 'true')
+  await expect(area).toHaveAttribute('fill-opacity', '0.32')
+  await expect(choice).not.toContainText('Точне розташування не вказано')
+})
+
 test('місця народження дітей видно на карті батька', async ({ page }) => {
   await page.goto('/person/I183')
   const places = page.locator('#places')

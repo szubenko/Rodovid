@@ -5,6 +5,9 @@ import { biographyTimeline } from '../graph/person-tooltip-data'
 import { personName } from '../data/person-name'
 
 export type PlaceEvents = { place: Place; events: { event: FamilyEvent; primary: boolean; label?: string }[] }
+export function hasAreaBoundary(place: Place): boolean {
+  return place.originalName === 'Челябинская область, Росія, Радянський Союз'
+}
 export function personPlaces(family: FamilyData, personId: string): PlaceEvents[] {
   const result = new Map<string, PlaceEvents>()
   const timeline = biographyTimeline(family, personId)

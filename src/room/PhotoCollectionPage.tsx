@@ -42,7 +42,6 @@ export function PhotoCollectionPage() {
             {dates.map(date => <p className={styles.date} data-photo-date key={date}><AlbumIcon kind="calendar" />{date}</p>)}
             <h2>{captionText(title)}</h2>
             {descriptions.map(description => <p className={styles.description} key={description}>{captionText(description)}</p>)}
-            {!photo.descriptions.length && <p className={styles.muted}>Опису поки немає.</p>}
           </figcaption>
         </figure>
       })}

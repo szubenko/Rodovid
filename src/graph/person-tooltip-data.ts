@@ -8,7 +8,8 @@ const missingText = /^(?:невідом(?:о|а|е|і|ий)|дата невід�
 const unknownDeathNote = /^В оригінальному експорті:\s*DATE DECEASED;\s*точна дата смерті невідома\.?$/iu
 
 export function tooltipText(value: string): string {
-  return value.split(/\r?\n/).filter(line => !missingText.test(line.trim()) && !unknownDeathNote.test(line.trim())).join('\n').trim()
+  return value.split(/\r?\n/).filter(line => !missingText.test(line.trim()) && !unknownDeathNote.test(line.trim()))
+    .map(line => line.replace(/^(\s*)В оригінальному експорті:\s*DATE\s+(?=\d)/iu, '$1')).join('\n').trim()
 }
 
 export function tooltipClaimText(family: FamilyData, claim: Claim): string {

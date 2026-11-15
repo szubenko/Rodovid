@@ -29,6 +29,17 @@ it('groups prepared shared locations without mutating or merging the original re
   expect(groupPlaceEntries([entry, duplicate])).toHaveLength(2)
 })
 
+it('groups identical full names without coordinates while retaining all events', () => {
+  const family = familyDataSchema.parse(fixture)
+  const entry = personPlaces(family, 'I1')[0]!
+  const first = { ...entry, place: { ...entry.place, displayName: 'Харківська губернія, Російська імперія', coordinates: undefined }, events: entry.events.slice(0, 1) }
+  const second = { ...first, place: { ...first.place, id: 'another-place' }, events: entry.events.slice(1) }
+  const grouped = groupPlaceEntries([first, second])
+  expect(grouped).toHaveLength(1)
+  expect(grouped[0]!.events).toHaveLength(entry.events.length)
+  expect(groupPlaceEntries([first, { ...second, place: { ...second.place, displayName: 'Харківська губернія, інша країна' } }])).toHaveLength(2)
+})
+
 it('keeps uncertainty, ranges and missing years instead of inventing an exact year', () => {
   const date = { kind: 'point' as const, raw: 'ABT 1918', calendar: 'gregorian', qualifier: 'about' as const, value: { precision: 'day' as const, year: 1918, month: 10, day: 7 } }
   expect(formatPlaceYear(date)).toBe('близько 1918')

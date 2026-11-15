@@ -1,5 +1,7 @@
 import styles from './Room.module.css'
-import { photoDescriptionParts } from './photo-description'
+import { Link } from 'react-router'
+import type { photoCollectionCaption } from './photo-collection'
+import type { photoPersonMentionMatcher } from './photo-person-mentions'
 
 export function AlbumIcon({ kind }: { kind: 'camera' | 'people' | 'calendar' }) {
   return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -9,10 +11,10 @@ export function AlbumIcon({ kind }: { kind: 'camera' | 'people' | 'calendar' }) 
   </svg>
 }
 
-export function PhotoDescription({ text, place }: { text: string; place?: string }) {
-  const { body, date } = photoDescriptionParts(text, place)
+export function PhotoDescription({ caption, matchNames }: { caption: ReturnType<typeof photoCollectionCaption>; matchNames: ReturnType<typeof photoPersonMentionMatcher> }) {
+  const linked = (text: string) => matchNames(text).map((part, index) => part.personId ? <Link key={index} to={`/person/${part.personId}`}>{part.text}</Link> : part.text)
   return <figcaption className={styles.photoCaption}>
-    {date && <><div className={styles.photoDescriptionGroup} data-photo-date><AlbumIcon kind="calendar" /><p>{date}</p></div>{'\n'}</>}
-    {body && <div className={styles.photoDescriptionGroup}><AlbumIcon kind="people" /><p className={styles.photoDescriptionBody}>{body}</p></div>}
+    {caption.dates.map(date => <div key={date} className={styles.photoDescriptionGroup} data-photo-date><AlbumIcon kind="calendar" /><p>{date}</p></div>)}
+    <div className={styles.photoDescriptionGroup}><AlbumIcon kind="people" /><div><p className={styles.photoDescriptionTitle}>{linked(caption.title)}</p>{caption.descriptions.map(description => <p className={styles.photoDescriptionBody} key={description}>{linked(description)}</p>)}</div></div>
   </figcaption>
 }

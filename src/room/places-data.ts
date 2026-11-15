@@ -33,11 +33,12 @@ export function placeName(place: Place): string {
   return (place.displayName ?? place.originalName).split(',')[0]!.trim()
 }
 
-// Group only prepared identical coordinates; original place records stay distinct.
+// Group identical coordinates or identical full names without coordinates; records stay distinct.
 export function groupPlaceEntries(entries: PlaceEvents[]): PlaceEvents[] {
   const groups = new Map<string, PlaceEvents>()
   for (const { place, events } of entries) {
-    const key = place.coordinates ? `${place.coordinates.latitude},${place.coordinates.longitude}` : place.id
+    const key = place.coordinates ? `coordinates:${place.coordinates.latitude},${place.coordinates.longitude}`
+      : hasAreaBoundary(place) ? `boundary:${place.id}` : `name:${(place.displayName ?? place.originalName).trim()}`
     const group = groups.get(key)
     if (!group) { groups.set(key, { place, events: events.map(entry => ({ ...entry })) }); continue }
     for (const entry of events) {

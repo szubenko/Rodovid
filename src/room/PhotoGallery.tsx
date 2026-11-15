@@ -4,6 +4,8 @@ import { useFamily } from '../navigation/context'
 import { PhotoViewer } from './PhotoViewer'
 import { AlbumIcon, PhotoDescription } from './PhotoDecoration'
 import { sortPhotosChronologically } from './photo-chronology'
+import { collectFamilyPhotos, photoCollectionCaption } from './photo-collection'
+import { photoPersonMentionMatcher } from './photo-person-mentions'
 import styles from './Room.module.css'
 
 function Thumbnail({ item }: { item: Media }) {
@@ -12,6 +14,9 @@ function Thumbnail({ item }: { item: Media }) {
 }
 
 export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Media[]; primaryId?: string; layout?: 'grid' | 'details' }) {
+  const family = useFamily()
+  const collected = useMemo(() => collectFamilyPhotos(family), [family])
+  const matchNames = useMemo(() => photoPersonMentionMatcher(family), [family])
   const [opened, setOpened] = useState<number | null>(null)
   const [selectedId, setSelectedId] = useState(items[0]?.id)
   const viewable = useMemo(() => items.filter(item => item.dimensions), [items])
@@ -40,7 +45,7 @@ export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Med
           {canNavigate && <div className={styles.photoCounter} role="status" aria-live="polite" aria-atomic="true" aria-label={`Фото ${selectedIndex + 1} з ${items.length}`}>{selectedIndex + 1} / {items.length}</div>}
         </div>
         : item.dimensions ? <button aria-label={`Відкрити: ${item.title}`} onClick={() => setOpened(viewable.findIndex(m => m.id === item.id))}><Thumbnail item={item} /></button> : <Thumbnail item={item} />}
-      {layout === 'details' && <PhotoDescription text={item.description || item.title} place={item.photoPlace} />}
+      {layout === 'details' && <PhotoDescription caption={photoCollectionCaption(collected.find(photo => (photo.media.sha256 ?? photo.media.path) === (item.sha256 ?? item.path)) ?? { media: item, descriptions: item.description ? [item.description] : [], personIds: [] })} matchNames={matchNames} />}
       {showCaptions && <>
         <figcaption>{item.id === primaryId && <strong>Основне фото · </strong>}{item.title}{item.description && <p>{item.description}</p>}</figcaption>
         <a href={`/${item.path}`} target="_blank" rel="noopener noreferrer">Відкрити файл: {item.title}</a>

@@ -4,6 +4,12 @@ import { photoDescriptionParts, photoDisplayDescription, photoYear } from './pho
 
 export type CollectedPhoto = { media: Media; descriptions: string[]; personIds: string[] }
 
+function removeRepeatedTitle(body: string, title: string): string {
+  const [firstLine = '', ...rest] = body.split('\n')
+  const comparable = (text: string) => text.trim().replace(/[.!?…]+$/u, '').trim()
+  return comparable(firstLine) === comparable(title) ? rest.join('\n').trim() : body.trim()
+}
+
 export function photoCollectionCaption(photo: CollectedPhoto) {
   const originalTitle = photo.media.title
   const place = photo.media.photoPlace
@@ -11,7 +17,7 @@ export function photoCollectionCaption(photo: CollectedPhoto) {
   if (year === null) return {
     title: originalTitle,
     dates: place ? [place] : [],
-    descriptions: photo.descriptions.filter(description => description !== originalTitle),
+    descriptions: [...new Set(photo.descriptions.map(description => removeRepeatedTitle(description, originalTitle)).filter(Boolean))],
   }
 
   const parts = photo.descriptions.map(description => photoDescriptionParts(description, place))
@@ -24,10 +30,7 @@ export function photoCollectionCaption(photo: CollectedPhoto) {
   const title = titlePlaceAndDate && dates.some(date => normalizeDate(date) === normalizeDate(titlePlaceAndDate[1]!))
     ? originalTitle.slice(0, titlePlaceAndDate.index)
     : originalTitle.replace(/[,\s]+\d{4}(?:\s+(?:рік|року)|\s*р\.)?\.?$/u, '') || originalTitle
-  const descriptions = parts.map(({ body }) => {
-    const [firstLine, ...rest] = body.split('\n')
-    return firstLine?.trim() === title ? rest.join('\n').trimStart() : body.trimEnd()
-  }).filter(Boolean)
+  const descriptions = parts.map(({ body }) => removeRepeatedTitle(body, title)).filter(Boolean)
   return { title, dates, descriptions: [...new Set(descriptions)] }
 }
 

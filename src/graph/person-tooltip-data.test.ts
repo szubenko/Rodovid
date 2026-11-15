@@ -23,6 +23,15 @@ it('shows Yakov’s first marriage and Olenka before the second marriage, Nikola
 })
 
 describe('person tooltip details', () => {
+  it('shows original exported date values without the GEDCOM label', () => {
+    const family = familyDataSchema.parse(currentData)
+    const notes = family.claims.filter(claim => claim.field === 'description' && /^В оригінальному експорті: DATE \d/u.test(claim.value))
+    expect(notes.length).toBeGreaterThan(0)
+    for (const claim of notes) expect(tooltipClaimText(family, claim)).toBe(claim.value.replace(/^В оригінальному експорті: DATE /u, ''))
+    expect(tooltipText('В оригінальному експорті: DATE 5 червня 1942 р')).toBe('5 червня 1942 р')
+    expect(tooltipText(`${deathNote}\nІнша примітка.`)).toBe('Інша примітка.')
+  })
+
   it('omits an event with only an unknown date and the imported DECEASED note', () => {
     const family = familyDataSchema.parse(fixture)
     family.events = [{ ...family.events[0]!, id: 'death', kind: 'death' }]

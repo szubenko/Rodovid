@@ -52,7 +52,7 @@ function PeopleDirectory() {
     <p className={styles.resultCount} role="status">{query.trim() ? `Знайдено: ${people.length}` : 'Кожне ім’я — початок історії'}</p>
     <ul className={styles.personList}>
       {people.map(person => <li key={person.personId}>
-        <Link to={`/${state.current.mapScreen}/${person.personId}`} aria-current={state.current.personId === person.personId ? 'page' : undefined}>
+        <Link to={`/person/${person.personId}`} aria-current={state.current.personId === person.personId ? 'page' : undefined}>
           <span className={styles.personMark} aria-hidden="true">{person.name.charAt(0)}</span>
           <span><strong>{person.name}</strong>{person.years !== 'Роки життя невідомі' && <small>{person.years}</small>}</span><span className={styles.personArrow} aria-hidden="true">↗</span>
         </Link>

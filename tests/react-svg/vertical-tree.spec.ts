@@ -219,9 +219,9 @@ test('пряма адреса, покоління й покажчик збері
     await page.getByText('Знайти людину · покажчик родоводу', { exact: true }).click()
   }
   const directory = page.getByRole('complementary').getByRole('region', { name: 'Люди родоводу' }).filter({ visible: true })
-  await expect(directory.locator('li a').first()).toHaveAttribute('href', /^\/vertical\//)
+  await expect(directory.locator('li a').first()).toHaveAttribute('href', /^\/person\//)
   await directory.locator('li a').first().click()
-  await expect(page).toHaveURL(/\/vertical\/I\d+$/)
+  await expect(page).toHaveURL(/\/person\/I\d+$/)
   await page.goto('/vertical/unknown')
   await expect(page.getByRole('heading', { name: 'Сторінку не знайдено' })).toBeVisible()
 })

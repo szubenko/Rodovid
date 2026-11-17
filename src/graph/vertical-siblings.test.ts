@@ -12,6 +12,29 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
+  it('centers children of another family below the parent who opened them', () => {
+    for (const [parent, children] of [['I6', ['I68', 'I69']], ['I5', ['I10']]] as const) {
+      const projection = projectVerticalFamily(graph, 'I1', { generations: 9,
+        expandedSiblingPersonIds: ['I9'], expandedHalfSiblingParentIds: [parent] })
+      for (const compact of [false, true]) {
+        const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+        const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+          ancestorPersonIds(graph, 'I1'), portraitLayoutOptions(metrics, compact))
+        const cards = new Map(layout.nodes.map(node => [node.personId, node]))
+        const anchor = cards.get(parent)!
+        const row = children.map(id => cards.get(id)!)
+        expect((row[0]!.x + row.at(-1)!.x) / 2).toBeCloseTo(anchor.x)
+        for (const card of row) {
+          expect(card.y - card.height / 2).toBeGreaterThan(anchor.y + anchor.height / 2)
+          for (const other of layout.nodes.filter(n => n !== card && n.generation === card.generation)) {
+            expect(Math.abs(card.x - other.x)).toBeGreaterThanOrEqual((card.width + other.width) / 2)
+          }
+        }
+        if (parent === 'I5') expect(cards.has('I27')).toBe(false)
+      }
+    }
+  })
+
   it('keeps the Plastun cards beside Yakov when Makariy’s siblings are expanded', () => {
     const labels = new Map(family.people.map(person => [person.id, personName(family, person.id)]))
     const dates = new Map(family.people.map(person => [person.id, lifeYears(family, person.id)]))

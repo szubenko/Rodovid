@@ -26,7 +26,7 @@ export type RelativeLayoutOptions = {
 /** Pack spouses together, then order and align family groups between rows.
  * Every row has its own nonoverlap constraint; lateral branches never create
  * duplicate cards. Long/conflicting edges use a gutter outside all cards. */
-export function layoutRelatives(projection: Pick<RelativeProjection, 'appearances' | 'edges'> & { siblingGroups?: SiblingGroup[] }, graph: FamilyGraph,
+export function layoutRelatives(projection: Pick<RelativeProjection, 'appearances' | 'edges'> & { siblingGroups?: SiblingGroup[]; childGroups?: SiblingGroup[] }, graph: FamilyGraph,
   labels: ReadonlyMap<string, string>, dates: ReadonlyMap<string, string>, measure: TextMeasure,
   directLine?: ReadonlySet<string>, options?: RelativeLayoutOptions): Omit<TreeLayout, 'nodes'> & { nodes: RelativeNode[] } {
   const padding = 28, familyGap = options?.familyGap ?? (directLine ? 80 : 120), spouseGap = options?.spouseGap ?? 24
@@ -533,6 +533,32 @@ export function layoutRelatives(projection: Pick<RelativeProjection, 'appearance
         const target = neighbor.x + direction * ((neighbor.width + sibling.width) / 2 + gap)
         sibling.x = direction < 0 ? Math.max(sibling.x, target) : Math.min(sibling.x, target)
         neighbor = sibling
+      }
+    }
+  }
+  // Place each lower branch as a row centered on its parent. Make room in
+  // the child generation before computing connector ports and export bounds.
+  const byPersonId = new Map(nodes.map(node => [node.personId, node]))
+  const childGroups = [...projection.childGroups ?? []].sort((a, b) =>
+    byPersonId.get(a.personId)!.generation - byPersonId.get(b.personId)!.generation)
+  for (const group of childGroups) {
+    const parent = byPersonId.get(group.personId)!
+    const children = group.addedPersonIds.map(id => byPersonId.get(id)!)
+    const span = children.reduce((width, child) => width + child.width, (children.length - 1) * familyGap)
+    let left = parent.x - span / 2
+    for (const child of children) {
+      child.x = left + child.width / 2
+      left += child.width + familyGap
+    }
+    const row = nodes.filter(node => node.generation === children[0]!.generation && !children.includes(node))
+      .sort((a, b) => a.x - b.x)
+    for (const direction of [-1, 1]) {
+      const neighbors = direction < 0 ? row.filter(node => node.x < parent.x).reverse() : row.filter(node => node.x >= parent.x)
+      let edge = parent.x + direction * span / 2
+      for (const node of neighbors) {
+        const nearest = edge + direction * (familyGap + node.width / 2)
+        node.x = direction < 0 ? Math.min(node.x, nearest) : Math.max(node.x, nearest)
+        edge = node.x + direction * node.width / 2
       }
     }
   }

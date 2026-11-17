@@ -10,6 +10,7 @@ const mapSettings = z.object({
   pan: z.object({ x: z.number(), y: z.number() }),
   collapsedAppearanceIds: z.array(z.string()),
   compactCards: z.boolean().optional(),
+  expandedHalfSiblingParentIds: z.array(z.string()).optional(),
   expandedSiblingIds: z.array(z.string()).optional(),
   collapsedSiblingIds: z.array(z.string()).optional(),
   collapsedAncestorIds: z.array(z.string()).optional(),

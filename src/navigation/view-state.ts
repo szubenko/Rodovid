@@ -8,6 +8,7 @@ export type MapSettings = {
   pan: { x: number; y: number }
   collapsedAppearanceIds: string[]
   compactCards?: boolean
+  expandedHalfSiblingParentIds?: string[]
   expandedSiblingIds?: string[]
   collapsedSiblingIds?: string[]
   collapsedAncestorIds?: string[]

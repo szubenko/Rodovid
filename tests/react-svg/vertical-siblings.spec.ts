@@ -4,7 +4,9 @@ test('неповнорідні брати й сестри мають корот�
   await page.goto('/vertical-design/I1')
   await expect(page.locator('[data-person-id="I1"]')).toBeVisible()
   await page.getByLabel('Покоління', { exact: true }).selectOption('9')
-  await page.locator('[data-sibling-person-id="I5"]').press('Enter')
+  await expect(page.locator('[data-sibling-person-id="I5"]')).toHaveCount(0)
+  const parentArrow = page.locator('[data-half-sibling-parent-id="I6"]')
+  await parentArrow.press('Enter')
   for (const compact of [false, true]) {
     if (compact) await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
     expect(await page.locator('[data-layer="connections"]').evaluate(node => {
@@ -26,7 +28,8 @@ test('неповнорідні брати й сестри мають корот�
   await page.goto('/vertical-design/I5')
   await expect(page.locator('[data-person-id="I5"]')).toBeVisible()
   await page.getByLabel('Покоління', { exact: true }).selectOption('1')
-  await page.locator('[data-sibling-person-id="I5"]').press('Enter')
+  await expect(page.locator('[data-sibling-person-id="I5"]')).toHaveCount(0)
+  await parentArrow.press('Enter')
   await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()
   await page.screenshot({ path: testInfo.outputPath('half-siblings-short-lines.png'), fullPage: true })
   const download = page.waitForEvent('download')
@@ -71,7 +74,8 @@ test('жіноча стрілка справа розгортає братів �
 test('чоловіча гілка ліворуч, жіноча праворуч після розкриття родин і в компактному режимі', async ({ page }, testInfo) => {
   await page.goto('/vertical-design/I1')
   await expect(page.locator('[data-person-id="I1"]')).toBeVisible()
-  for (const id of ['I2', 'I5', 'I6', 'I9']) {
+  await page.locator('[data-half-sibling-parent-id="I6"]').press('Enter')
+  for (const id of ['I2', 'I6', 'I9']) {
     await page.locator(`[data-sibling-person-id="${id}"]`).press('Enter')
   }
   for (const compact of [false, true]) {
@@ -185,6 +189,9 @@ test('незалежні гілки, відновлення через кімн�
   const makar = page.locator('[data-sibling-person-id="I9"]')
   await petro.focus()
   await page.keyboard.press('Enter')
+  await expect(page.locator('[data-person-id="I10"]')).toHaveCount(0)
+  const fatherArrow = page.locator('[data-half-sibling-parent-id="I5"]')
+  await fatherArrow.press('Enter')
   for (const id of ['I27', 'I10']) await expect(page.locator(`[data-person-id="${id}"]`)).toHaveCount(1)
   await makar.focus()
   await page.keyboard.press('Enter')
@@ -192,6 +199,9 @@ test('незалежні гілки, відновлення через кімн�
   await expect(page.locator('[data-person-id]')).toHaveCount(base + 8)
   await petro.focus()
   await page.keyboard.press('Enter')
+  await expect(page.locator('[data-person-id="I10"]')).toHaveCount(1)
+  await fatherArrow.press('Space')
+  await expect(page.locator('[data-person-id="I10"]')).toHaveCount(0)
   await expect(page.locator('[data-person-id="I27"]')).toHaveCount(0)
   await expect(page.locator('[data-person-id="I13"]')).toHaveCount(1)
   await page.getByRole('button', { name: 'Вмістити карту', exact: true }).click()

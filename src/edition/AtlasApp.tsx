@@ -11,7 +11,6 @@ import { HorizontalTree } from '../graph/HorizontalTree'
 import { FamilyTree } from '../graph/FamilyTree'
 import { VerticalTree } from '../graph/VerticalTree'
 import { VerticalMinimalTree } from '../graph/VerticalMinimalTree'
-import { RelativesTree } from '../graph/RelativesTree'
 import type { MapScreen } from '../navigation/view-state'
 import { PersonRoom } from '../room/PersonRoom'
 import { PhotoCollectionPage } from '../room/PhotoCollectionPage'
@@ -114,8 +113,6 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <Link to={`/vertical-design/${personId}`} aria-current={screen === 'vertical-design' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний 2</Link>
       <Link to={`/isi-relatives/${personId}`} aria-current={screen === 'isi-relatives' ? 'page' : undefined}><Icon kind="vertical" />Ісі Родичі</Link>
       <Link to={`/vertical-minimal/${personId}`} aria-current={screen === 'vertical-minimal' ? 'page' : undefined}><Icon kind="vertical" />Вертикальна мін</Link>
-      <Link to={`/relatives/${personId}`} aria-current={screen === 'relatives' ? 'page' : undefined}><Icon kind="relatives" />Всі родичі</Link>
-      {import.meta.env.DEV && <Link to={`/relatives-2/${personId}`} aria-current={screen === 'relatives-2' ? 'page' : undefined}><Icon kind="relatives" />Всі Родичі 2</Link>}
       <span>{relationCount} рідних · {eventCount} подій</span>
     </div>
     <div className={isMap ? styles.mapSurface : styles.roomSurface}>
@@ -123,7 +120,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
         <div className={styles.mapIntro}><p className={styles.eyebrow}>Кожна людина — центр свого світу</p>
           {screen !== 'tree' && <span><i />Предки <i />Родина <i />Нащадки</span>}</div>
         {screen === 'isi-relatives' ? <FamilyTree key={personId} personId={personId} orientation="vertical" portraitCards portraitVariant="isi-relatives" />
-          : screen === 'relatives' || screen === 'relatives-2' ? <RelativesTree key={`${screen}/${personId}`} personId={personId} fullFamily={screen === 'relatives-2'} /> : screen === 'vertical-minimal' ? <VerticalMinimalTree key={personId} personId={personId} /> : screen === 'vertical' || screen === 'vertical-design' ? <VerticalTree key={`${screen}/${personId}`} personId={personId} portraitCards={screen === 'vertical-design'} />
+          : screen === 'vertical-minimal' ? <VerticalMinimalTree key={personId} personId={personId} /> : screen === 'vertical' || screen === 'vertical-design' ? <VerticalTree key={`${screen}/${personId}`} personId={personId} portraitCards={screen === 'vertical-design'} />
           : screen === 'horizontal' ? <HorizontalTree key={personId} personId={personId} /> : <RadialMap personId={personId} />}
       </> : <PersonRoom key={personId} personId={personId} showBiographyHeader={false} />}
     </div>
@@ -145,8 +142,6 @@ function Workspace() {
           <Route path="/vertical-design/:personId" element={<PersonView screen="vertical-design" />} />
           <Route path="/isi-relatives/:personId" element={<PersonView screen="isi-relatives" />} />
           <Route path="/vertical-minimal/:personId" element={<PersonView screen="vertical-minimal" />} />
-          {import.meta.env.DEV && <Route path="/relatives-2/:personId" element={<PersonView screen="relatives-2" />} />}
-          <Route path="/relatives/:personId" element={<PersonView screen="relatives" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
           <Route path="/photos" element={<PhotoCollectionPage />} />
           <Route path="*" element={<Missing />} />

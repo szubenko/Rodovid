@@ -7,6 +7,7 @@ import { ancestorPersonIds, projectVerticalFamily } from './vertical-projection'
 import { layoutRelatives } from './relatives-layout'
 import { lifeYears } from './presentation'
 import { portraitCardMetrics, portraitLayoutOptions } from './portrait-card-layout'
+import { projectAllRelatives } from './all-relatives-projection'
 
 type Segment = { x1: number; y1: number; x2: number; y2: number }
 function segments(path: string): Segment[] {
@@ -22,6 +23,54 @@ function segments(path: string): Segment[] {
   }
   return result
 }
+it.each([['I1', false], ['I1', true], ['I204', false], ['I204', true]] as const)(
+  'centers children below their families and separates parallel lines in the full tree (%s, compact=%s)', (center, compact) => {
+  const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
+  const labels = new Map(family.people.map(person => [person.id, personName(family, person.id)]))
+  const dates = new Map(family.people.map(person => [person.id, lifeYears(family, person.id)]))
+  const metrics = portraitCardMetrics(labels.values(), dates.values(), compact, text => text.length * 15, text => text.length * 10)
+  const layout = layoutRelatives(projectAllRelatives(graph, center), graph, labels, dates, (text, size) => text.length * size * .65,
+    ancestorPersonIds(graph, center), portraitLayoutOptions(metrics, compact, true))
+  const cards = new Map(layout.nodes.map(node => [node.personId, node]))
+  const childrenByParents = new Map<string, string[]>()
+  for (const child of layout.nodes) {
+    const parents = graph.neighbors.get(child.personId)!.filter(n => n.direction === 'parents'
+      && cards.get(n.personId)?.generation === child.generation - 1)
+    if (!parents.length) continue
+    const key = [...new Set(parents.map(n => n.personId))].sort().join(',')
+    childrenByParents.set(key, [...childrenByParents.get(key) ?? [], child.personId])
+  }
+  for (const [key, ids] of childrenByParents) {
+    const parents = key.split(',').map(id => cards.get(id)!).sort((a, b) => a.x - b.x)
+    const [left, right] = [parents[0]!, parents.at(-1)!]
+    const midpoint = (left.x + right.x) / 2 + (left.width - right.width) / 4
+    const xs = ids.map(id => cards.get(id)!.x)
+    expect((Math.min(...xs) + Math.max(...xs)) / 2, key).toBeCloseTo(midpoint, 2)
+  }
+  const leftFamily = ['I204', 'I207', 'I208', 'I209'].map(id => cards.get(id)!.x)
+  const rightFamily = ['I196', 'I197', 'I198', 'I199'].map(id => cards.get(id)!.x)
+  expect(Math.max(...leftFamily) < Math.min(...rightFamily) || Math.max(...rightFamily) < Math.min(...leftFamily)).toBe(true)
+  for (const [father, mother] of [['I204', 'I207'], ['I196', 'I197']] as const) {
+    const left = cards.get(father)!, right = cards.get(mother)!
+    expect(right.x - right.width / 2 - left.x - left.width / 2).toBeCloseTo(28, 2)
+  }
+  const lines = layout.edges.flatMap(edge => {
+    const relation = graph.relationships.get(edge.relationshipId)!
+    const parents = relation.kind === 'spouse' ? [relation.fromPersonId, relation.toPersonId]
+      : graph.neighbors.get(relation.toPersonId)!.filter(n => n.direction === 'parents').map(n => n.personId)
+    const key = [...new Set(parents)].sort().join(',')
+    return segments(edge.path).filter(s => s.y1 === s.y2).map(s => ({
+      key, left: Math.min(s.x1, s.x2), right: Math.max(s.x1, s.x2), y: s.y1,
+    }))
+  })
+  let minGap = Infinity
+  for (const [index, a] of lines.entries()) for (const b of lines.slice(index + 1)) {
+    if (a.key !== b.key && a.left < b.right && b.left < a.right) minGap = Math.min(minGap, Math.abs(a.y - b.y))
+  }
+  expect(Number.isFinite(minGap)).toBe(true)
+  expect(minGap).toBeGreaterThanOrEqual((compact ? 40 : 52) - .01)
+}, 90_000)
+
 function crosses(a: Segment, b: Segment): boolean {
   const epsilon = .01
   if (a.y1 === a.y2 && b.x1 === b.x2) return b.x1 >= Math.min(a.x1, a.x2) - epsilon

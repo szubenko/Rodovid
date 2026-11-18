@@ -74,7 +74,7 @@ it('restricts SPA rewrites to current screens and numeric person IDs, leaving mi
   const rewrites = (path: string) => patterns.some(pattern => pattern.test(path))
   expect(rewrites('/photos')).toBe(true)
   expect(rewrites('/photos/missing.png')).toBe(false)
-  for (const screen of ['tree', 'person', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal', 'relatives']) {
+  for (const screen of ['tree', 'person', 'horizontal', 'vertical', 'vertical-design', 'isi-relatives', 'vertical-minimal', 'relatives']) {
     expect(rewrites(`/${screen}/I1`)).toBe(true)
     expect(rewrites(`/${screen}/I103`)).toBe(true)
   }

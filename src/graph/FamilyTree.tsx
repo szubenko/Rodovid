@@ -8,7 +8,7 @@ import { availableGenerations, buildFamilyGraph, directLinePersonIds, projectFam
 import { layoutTree, type TreeOrientation } from './tree-layout'
 import { layoutRelatives } from './relatives-layout'
 import { projectAllRelatives } from './all-relatives-projection'
-import { ancestorPersonIds, availableVerticalGenerations, projectVerticalFamily, siblingBranches, siblingPersonIds } from './vertical-projection'
+import { ancestorPersonIds, availableVerticalGenerations, hiddenChildrenOutsideSiblingBranches, projectVerticalFamily, siblingBranches, siblingPersonIds } from './vertical-projection'
 import { lifeYears, relationshipName } from './presentation'
 import { useMapCamera } from './useMapCamera'
 import { useMapViewport } from './useMapViewport'
@@ -76,12 +76,13 @@ function activate(event: KeyboardEvent<SVGGElement>, action: () => void) {
 }
 
 export function FamilyTree({ personId, orientation, includeRelatives = false, fullFamily = false, portraitCards = false, portraitVariant = 'design' }: {
-  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; fullFamily?: boolean; portraitCards?: boolean; portraitVariant?: 'design' | 'minimal'
+  personId: string; orientation: TreeOrientation; includeRelatives?: boolean; fullFamily?: boolean; portraitCards?: boolean; portraitVariant?: 'design' | 'minimal' | 'isi-relatives'
 }) {
   const minimalCards = portraitCards && portraitVariant === 'minimal'
-  const title = includeRelatives ? fullFamily ? 'Всі Родичі 2' : 'Стара Всі родичі' : portraitCards ? portraitVariant === 'minimal' ? 'Вертикальна мінімальна' : 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
+  const isiRelatives = portraitVariant === 'isi-relatives'
+  const title = isiRelatives ? 'Ісі Родичі' : includeRelatives ? fullFamily ? 'Всі Родичі 2' : 'Стара Всі родичі' : portraitCards ? portraitVariant === 'minimal' ? 'Вертикальна мінімальна' : 'Вертикальний родовід · новий дизайн' : orientation === 'vertical' ? 'Вертикальний родовід' : 'Горизонтальний родовід'
   const vertical = orientation === 'vertical'
-  const mapScreen = includeRelatives ? fullFamily ? 'relatives-2' : 'relatives' : portraitCards ? portraitVariant === 'minimal' ? 'vertical-minimal' : 'vertical-design' : orientation
+  const mapScreen = isiRelatives ? 'isi-relatives' : includeRelatives ? fullFamily ? 'relatives-2' : 'relatives' : portraitCards ? portraitVariant === 'minimal' ? 'vertical-minimal' : 'vertical-design' : orientation
   const family = useFamily()
   const { state, dispatch, goTo, goBack } = useView()
   const container = useRef<HTMLDivElement>(null)
@@ -92,6 +93,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   const prefix = useId()
   const graph = useMemo(() => buildFamilyGraph(family), [family])
   const separateHalfSiblings = vertical && !includeRelatives
+  const expandChildren = separateHalfSiblings && mapScreen !== 'vertical-design'
   const branches = useMemo(() => new Map(separateHalfSiblings
     ? family.people.map(person => [person.id, siblingBranches(graph, person.id)] as const) : []), [family, graph, separateHalfSiblings])
   const siblings = useMemo(() => new Map(family.people.map(person => [person.id, siblingPersonIds(graph, person.id)])), [family, graph])
@@ -117,8 +119,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   const portraitMetrics = useMemo(() => portraitCardMetrics(labels.values(), dates.values(), compact,
     measureCardName, text => measure(text, 18) * 15 / 18, !minimalCards, Array.from(skins.values(), skin => skin.label)),
   [labels, dates, compact, measureCardName, measure, minimalCards, skins])
-  const portraitLayout = useMemo(() => portraitCards ? portraitLayoutOptions(portraitMetrics, compact)
-    : undefined, [portraitCards, portraitMetrics, compact])
+  const portraitLayout = useMemo(() => portraitCards ? portraitLayoutOptions(portraitMetrics, compact, fullFamily)
+    : undefined, [portraitCards, portraitMetrics, compact, fullFamily])
   const maxGenerations = useMemo(() => includeRelatives ? 1
     : vertical ? availableVerticalGenerations(graph, personId) : availableGenerations(graph, personId), [graph, personId, includeRelatives, vertical])
   const generations = Math.min(settings.generations, maxGenerations)
@@ -127,12 +129,13 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   }) : vertical ? projectVerticalFamily(graph, personId, {
     generations: includeRelatives ? 12 : Math.min(12, generations + 1),
     collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
+    expandedChildPersonIds: expandChildren ? settings.expandedChildPersonIds : undefined,
     expandedHalfSiblingParentIds: separateHalfSiblings ? settings.expandedHalfSiblingParentIds ?? [] : undefined,
     expandedSiblingPersonIds: separateHalfSiblings || portraitCards ? expandedSiblingIds : undefined,
     collapsedAncestorPersonIds: portraitCards ? settings.collapsedAncestorIds : undefined,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
     collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, includeRelatives, vertical,
-    settings.collapsedAppearanceIds, expandedSiblingIds, separateHalfSiblings, settings.expandedHalfSiblingParentIds, settings.collapsedSiblingIds, settings.collapsedAncestorIds, portraitCards, fullFamily])
+    settings.collapsedAppearanceIds, expandedSiblingIds, separateHalfSiblings, expandChildren, settings.expandedChildPersonIds, settings.expandedHalfSiblingParentIds, settings.collapsedSiblingIds, settings.collapsedAncestorIds, portraitCards, fullFamily])
   const directLine = useMemo(() => vertical
     ? portraitMainLine ?? new Set(projection.appearances.map(node => node.personId)) : homeLine,
   [projection, vertical, homeLine, portraitMainLine])
@@ -161,7 +164,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   const relations = [...new Set(projection.edges.map(edge => edge.relationshipId))].map(id => graph.relationships.get(id)!)
   const selected = relations.find(relation => relation.id === state.current.selectedRelationshipId)
   const changeScale = (factor: number) => dispatch({ type: 'map', settings: scaleCamera(settings, factor) })
-  const changeBranches = (id: string, changes: { expandedHalfSiblingParentIds?: string[]; expandedSiblingIds?: string[]; collapsedSiblingIds?: string[]; collapsedAncestorIds?: string[] }) => {
+  const changeBranches = (id: string, changes: { expandedChildPersonIds?: string[]; expandedHalfSiblingParentIds?: string[]; expandedSiblingIds?: string[]; collapsedSiblingIds?: string[]; collapsedAncestorIds?: string[] }) => {
     const collapsedAncestors = changes.collapsedAncestorIds ?? settings.collapsedAncestorIds
     const nextExpandedSiblings = includeRelatives
       ? [...graph.personIds].filter(person => !(changes.collapsedSiblingIds ?? settings.collapsedSiblingIds)?.includes(person))
@@ -173,6 +176,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
       generations: includeRelatives ? 12 : Math.min(12, generations + 1),
       collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
       expandedSiblingPersonIds: nextExpandedSiblings,
+      expandedChildPersonIds: expandChildren ? changes.expandedChildPersonIds ?? settings.expandedChildPersonIds : undefined,
       expandedHalfSiblingParentIds: separateHalfSiblings
         ? changes.expandedHalfSiblingParentIds ?? settings.expandedHalfSiblingParentIds ?? [] : undefined,
       collapsedAncestorPersonIds: collapsedAncestors,
@@ -292,6 +296,27 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
                 <title>{siblingsExpanded ? 'Сховати братів і сестер' : `Показати братів і сестер: ${siblingIds.length}`}</title>
                 <rect data-hit="true" className={styles.siblingHit} x="-22" y="-22" width="44" height="44" />
                 <path d={right !== siblingsExpanded ? 'M-4-8 4 0-4 8' : 'M4-8-4 0 4 8'} />
+              </g>
+            })}</g>}
+            {expandChildren && <g data-layer="children-controls">{layout.nodes.map(node => {
+              const open = settings.expandedChildPersonIds?.includes(node.personId) === true
+              if (!open && !hiddenChildrenOutsideSiblingBranches(graph, node.personId, shownIds).length) return null
+              const action = () => {
+                const ids = settings.expandedChildPersonIds ?? []
+                changeBranches(node.personId, { expandedChildPersonIds: open
+                  ? ids.filter(id => id !== node.personId) : [...ids, node.personId] })
+              }
+              const label = `${open ? 'Сховати' : 'Показати'} дітей: ${labels.get(node.personId)}`
+              const scale = Math.min(3, 1 / settings.zoom)
+              const x = halfSiblingParents.has(node.personId) ? node.x - node.width * .15 : node.x
+              return <g key={node.personId} className={styles.siblingToggle}
+                transform={`translate(${x} ${node.y + node.height / 2 + 5 * scale}) scale(${scale})`}
+                data-camera-control data-children-person-id={node.personId} role="button" tabIndex={0}
+                aria-expanded={open} aria-label={label}
+                onClick={event => { event.stopPropagation(); action() }} onKeyDown={event => activate(event, action)}>
+                <title>{label}</title>
+                <rect data-hit="true" className={styles.siblingHit} x="-22" y="-22" width="44" height="44" />
+                <path d={open ? 'M-8 4 0-4 8 4' : 'M-8-4 0 4 8-4'} />
               </g>
             })}</g>}
             {separateHalfSiblings && <g data-layer="half-sibling-controls">{layout.nodes.map(node => {

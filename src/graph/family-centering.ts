@@ -6,8 +6,11 @@ type Basis = { coefficients: Float64Array; direction: Float64Array; target: numb
  * Couple members prefer moving together, but can spread to accommodate ancestry.
  * Contradictory inputs keep their original inspectable layout. */
 export function centerFamilyParents(cards: Card[], families: CenteredFamily[], couples: string[][],
-  familyGap: number, spouseGap: number, { compactLeafSiblings = false, reflowCouples = false, branchSeparation }: {
+  familyGap: number, spouseGap: number, { compactLeafSiblings = false, reflowCouples = false, branchSeparation, orderWithinFamilies, compactPairs = [], relaxation = 1 }: {
     compactLeafSiblings?: boolean; reflowCouples?: boolean; branchSeparation?: ((left: string, right: string) => number | undefined) | undefined
+    orderWithinFamilies?: readonly string[][]
+    compactPairs?: readonly string[][]
+    relaxation?: number
   } = {}) {
   const count = cards.length
   const index = new Map(cards.map((card, i) => [card.personId, i]))
@@ -42,7 +45,13 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
     const target = parents.length === 2 ? (cards[parents[1]!]!.width - cards[parents[0]!]!.width) / 4 : 0
     return { coefficients, target }
   })
-  for (const group of groups.filter(group => group.length > 2)) {
+  for (const pair of compactPairs) {
+    const [left, right] = pair.map(id => index.get(id)!).sort((a, b) => cards[a]!.x - cards[b]!.x) as [number, number]
+    const coefficients = new Float64Array(count)
+    coefficients[left] = -1; coefficients[right] = 1
+    equations.push({ coefficients, target: (cards[left]!.width + cards[right]!.width) / 2 + spouseGap })
+  }
+  for (const group of groups.filter(group => group.length > 2 && !orderWithinFamilies)) {
     const main = group.filter(member => cards[member]!.lane !== undefined && cards[member]!.lane !== 'relatives')
       .sort((a, b) => cards[a]!.x - cards[b]!.x)
     if (main.length !== 2 || Math.abs(group.indexOf(main[0]!) - group.indexOf(main[1]!)) !== 1) continue
@@ -112,7 +121,12 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
     childCouples.set(parentGroup, children)
   }
   const separations: { left: number; right: number; distance: number; direction: Float64Array; norm: number }[] = []
-  for (const row of rows.values()) {
+  // Find an order compatible with exact centering before reserving space
+  // between unrelated cards. Preserve the existing order within each family.
+  const orderedRuns = orderWithinFamilies ? [...groups.map(group => [...group]),
+    ...[...families.map(family => family.children), ...orderWithinFamilies].map(ids => ids.map(id => index.get(id)!))]
+    : rows.values()
+  for (const row of orderedRuns) {
     row.sort((a, b) => cards[a]!.x - cards[b]!.x)
     for (let slot = 1; slot < row.length; slot++) {
       const left = row[slot - 1]!, right = row[slot]!
@@ -138,7 +152,7 @@ export function centerFamilyParents(cards: Card[], families: CenteredFamily[], c
       largest = Math.max(largest, missing)
       if (missing <= 1e-3) continue
       if (separation.norm < 1e-12) return false
-      const correction = missing / separation.norm
+      const correction = relaxation * missing / separation.norm
       for (let i = 0; i < count; i++) positions[i] = positions[i]! + correction * separation.direction[i]!
     }
     if (largest <= 1e-3) {

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import data from '../../generated/family.json'
 import { familyDataSchema, relationshipSchema } from '../data/schema'
 import { buildFamilyGraph } from './projection'
-import { ancestorPersonIds, projectVerticalFamily, siblingPersonIds } from './vertical-projection'
+import { ancestorPersonIds, hiddenChildrenOutsideSiblingBranches, projectVerticalFamily, siblingPersonIds } from './vertical-projection'
 import { layoutRelatives } from './relatives-layout'
 import { portraitCardMetrics, portraitLayoutOptions } from './portrait-card-layout'
 import { personName } from '../data/person-name'
@@ -12,6 +12,40 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
+  it('inserts a row for Stefania’s children and keeps Ivan and Natalia together below', () => {
+    const base = projectVerticalFamily(graph, 'I3', { generations: 6, expandedSiblingPersonIds: ['I34'] })
+    const opened = projectVerticalFamily(graph, 'I3', { generations: 6, expandedSiblingPersonIds: ['I34'], expandedChildPersonIds: ['I55'] })
+    for (const portrait of [true, false]) for (const compact of [true, false]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8, portrait)
+      const options = portraitLayoutOptions(metrics, compact)
+      const layout = (projection: typeof base) => new Map(layoutRelatives(projection, graph, new Map(), new Map(),
+        text => text.length * 12, ancestorPersonIds(graph, 'I3'), options).nodes.map(node => [node.personId, node]))
+      const before = layout(base), after = layout(opened)
+      const ivan = after.get('I28')!, natalia = after.get('I29')!, children = ['I210', 'I212'].map(id => after.get(id)!)
+      expect(ivan.y).toBeGreaterThan(before.get('I28')!.y)
+      expect(natalia.y).toBeGreaterThan(before.get('I29')!.y)
+      expect(ivan.y).toBeCloseTo(natalia.y)
+      expect(Math.abs(ivan.x - natalia.x)).toBeCloseTo(Math.abs(before.get('I28')!.x - before.get('I29')!.x))
+      for (const child of children) expect(child.y + child.height / 2).toBeLessThan(ivan.y - ivan.height / 2)
+      expect(after.get('I3')!.y).toBeGreaterThan(before.get('I3')!.y)
+    }
+  }, 30_000)
+  it('avoids parent controls for children reachable from Natalia’s sibling control', () => {
+    const visible = new Set(projectVerticalFamily(graph, 'I29', { generations: 3 }).appearances.map(node => node.personId))
+    for (const parent of ['I34', 'I32']) {
+      expect(hiddenChildrenOutsideSiblingBranches(graph, parent, visible)).toEqual([])
+    }
+    expect(hiddenChildrenOutsideSiblingBranches(graph, 'I108', new Set(['I108']))).toEqual(expect.arrayContaining(['I202', 'I203']))
+  })
+  it('opens and closes Vasyl Chaban’s children below him', () => {
+    const base = projectVerticalFamily(graph, 'I108', { generations: 3 })
+    const opened = projectVerticalFamily(graph, 'I108', { generations: 3, expandedChildPersonIds: ['I108'] })
+    expect(ids(base)).not.toContain('I202')
+    expect(ids(opened)).toEqual(expect.arrayContaining(['I202', 'I203']))
+    expect(opened.childGroups).toContainEqual({ personId: 'I108', addedPersonIds: expect.arrayContaining(['I202', 'I203']), insertRow: true })
+    expect(opened.appearances.filter(node => ['I202', 'I203'].includes(node.personId)).every(node => node.generation === 1)).toBe(true)
+    expect(ids(projectVerticalFamily(graph, 'I108', { generations: 3, expandedChildPersonIds: [] }))).toEqual(ids(base))
+  })
   it('centers children of another family below the parent who opened them', () => {
     for (const [parent, children] of [['I6', ['I68', 'I69']], ['I5', ['I10']]] as const) {
       const projection = projectVerticalFamily(graph, 'I1', { generations: 9,

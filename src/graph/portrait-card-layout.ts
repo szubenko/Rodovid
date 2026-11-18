@@ -86,14 +86,16 @@ function fitPortraitCaptionSize(captions: string[], width: number, height: numbe
   return low / 10
 }
 
-export function portraitLayoutOptions(metrics: PortraitCardMetrics, compact: boolean): RelativeLayoutOptions {
+export function portraitLayoutOptions(metrics: PortraitCardMetrics, compact: boolean, fullFamily = false): RelativeLayoutOptions {
   const branchSpacing = 1.15
   const familyGap = (compact ? 28 : 44) * branchSpacing
+  const joinOffset = fullFamily ? (compact ? 40 : 52) : (compact ? 24 : 32) * branchSpacing
   return {
     cardWidth: metrics.width, cardHeight: metrics.height,
     familyGap, branchGap: familyGap * 3, spouseGap: 28,
-    minimumRowGap: (compact ? 88 : 112) * branchSpacing, trackSpacing: (compact ? 8 : 12) * branchSpacing,
-    joinOffset: (compact ? 24 : 32) * branchSpacing, channelOffset: (compact ? 48 : 64) * branchSpacing,
+    minimumRowGap: (compact ? 88 : 112) * branchSpacing,
+    trackSpacing: fullFamily ? 2 * joinOffset : (compact ? 8 : 12) * branchSpacing,
+    joinOffset, channelOffset: 2 * joinOffset, separateFamilyBands: fullFamily,
     maleBranchLeft: true,
     lateralScale: .85,
     femaleSiblingsRight: true,

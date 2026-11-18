@@ -51,6 +51,7 @@ export function ViewProvider({ children, initialMapZoom = 1 }: { children: React
   const tree = useMatch('/tree/:personId')
   const horizontal = useMatch('/horizontal/:personId')
   const vertical = useMatch('/vertical/:personId')
+  const isiRelatives = useMatch('/isi-relatives/:personId')
   const verticalDesign = useMatch('/vertical-design/:personId')
   const verticalMinimal = useMatch('/vertical-minimal/:personId')
   const relatives2 = useMatch('/relatives-2/:personId')
@@ -59,8 +60,8 @@ export function ViewProvider({ children, initialMapZoom = 1 }: { children: React
   const photos = useMatch('/photos')
   const navigationType = useNavigationType()
   const route: ViewRoute = {
-    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : verticalDesign ? 'vertical-design' : verticalMinimal ? 'vertical-minimal' : relatives2 ? 'relatives-2' : relatives ? 'relatives' : person ? 'person' : photos ? 'photos' : 'missing',
-    personId: tree?.params.personId ?? horizontal?.params.personId ?? vertical?.params.personId ?? verticalDesign?.params.personId ?? verticalMinimal?.params.personId ?? relatives?.params.personId ?? relatives2?.params.personId ?? person?.params.personId ?? null,
+    screen: tree ? 'tree' : horizontal ? 'horizontal' : vertical ? 'vertical' : isiRelatives ? 'isi-relatives' : verticalDesign ? 'vertical-design' : verticalMinimal ? 'vertical-minimal' : relatives2 ? 'relatives-2' : relatives ? 'relatives' : person ? 'person' : photos ? 'photos' : 'missing',
+    personId: tree?.params.personId ?? horizontal?.params.personId ?? vertical?.params.personId ?? isiRelatives?.params.personId ?? verticalDesign?.params.personId ?? verticalMinimal?.params.personId ?? relatives?.params.personId ?? relatives2?.params.personId ?? person?.params.personId ?? null,
   }
   if (route.personId && !family.people.some((entry) => entry.id === route.personId)) {
     route.screen = 'missing'

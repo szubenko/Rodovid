@@ -1,11 +1,12 @@
 import type { FamilyGraph, Projection, ProjectionOptions } from './projection'
 import type { RelativeAppearance } from './relatives-projection'
 
-export type SiblingGroup = { personId: string; addedPersonIds: string[] }
+export type SiblingGroup = { personId: string; addedPersonIds: string[]; insertRow?: boolean }
 type VerticalProjection = Omit<Projection, 'appearances'> & {
   familyMode: 'vertical'; appearances: RelativeAppearance[]; siblingGroups: SiblingGroup[]; childGroups: SiblingGroup[]
 }
 export type VerticalProjectionOptions = ProjectionOptions & {
+  expandedChildPersonIds?: readonly string[]
   expandedHalfSiblingParentIds?: readonly string[]
   expandedSiblingPersonIds?: readonly string[]; collapsedAncestorPersonIds?: readonly string[]
 }
@@ -52,6 +53,16 @@ export function siblingBranches(graph: FamilyGraph, personId: string) {
   return { lateral, byParent }
 }
 
+/** Children already reachable from a visible sibling's side control need no
+ * second control on their parent. Half-sibling branches have their own control. */
+export function hiddenChildrenOutsideSiblingBranches(graph: FamilyGraph, parentId: string, visible: ReadonlySet<string>): string[] {
+  const children = (graph.neighbors.get(parentId) ?? [])
+    .filter(link => link.direction === 'children').map(link => link.personId)
+  const covered = new Set(children.filter(id => visible.has(id))
+    .flatMap(id => siblingBranches(graph, id).lateral))
+  return children.filter(id => !visible.has(id) && !covered.has(id))
+}
+
 /** Start with blood ancestors. Explicit sibling arrows add just those siblings
  * and their shared parents, without automatically revealing partners or descendants. */
 export function projectVerticalFamily(graph: FamilyGraph, center: string, options: VerticalProjectionOptions = {}): VerticalProjection {
@@ -93,6 +104,7 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
   // nested expansions that no other visible branch still needs.
   const expandedSiblings = new Set(options.expandedSiblingPersonIds)
   const halfParents = new Set(options.expandedHalfSiblingParentIds)
+  const expandedChildren = new Set(options.expandedChildPersonIds)
   const siblingGroups: SiblingGroup[] = []
   const childGroups: SiblingGroup[] = []
   for (let cursor = 0; cursor < queue.length; cursor++) {
@@ -101,7 +113,7 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
     // Folded parents remain blocked even when this person's siblings open.
     if (collapsed.has(owner.appearanceId)) continue
     const lateralOpen = expandedSiblings.has(owner.personId)
-    if (!lateralOpen && !halfParents.size) continue
+    if (!lateralOpen && !halfParents.size && !expandedChildren.has(owner.personId)) continue
     const branches = options.expandedHalfSiblingParentIds ? siblingBranches(graph, owner.personId) : undefined
     const lateral = lateralOpen ? branches?.lateral ?? siblingPersonIds(graph, owner.personId) : []
     const groups = [{ ownerId: owner.personId, children: lateral, destination: siblingGroups }]
@@ -112,7 +124,9 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
         groups.push({ ownerId: parent, children, destination: childGroups })
       }
     }
-    if (groups.every(group => !group.children.length)) continue
+    const directChildren = expandedChildren.has(owner.personId)
+      ? (graph.neighbors.get(owner.personId) ?? []).filter(link => link.direction === 'children').map(link => link.personId) : []
+    if (groups.every(group => !group.children.length) && !directChildren.length) continue
     const add = (id: string, generation: number, lane: RelativeAppearance['lane']) => {
       if (people.has(id)) return
       if (people.size >= budget) { truncated = true; return }
@@ -128,6 +142,13 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
     for (const parent of graph.neighbors.get(owner.personId)!) if (parent.direction === 'parents') {
       if (lateral.length && !blockedParents.has(parent.personId)) add(parent.personId, owner.generation - 1, 'parents')
     }
+    const addedChildren: string[] = []
+    for (const id of directChildren) {
+      if (people.has(id)) continue
+      add(id, owner.generation + 1, 'relatives')
+      if (people.has(id)) addedChildren.push(id)
+    }
+    if (addedChildren.length) childGroups.push({ personId: owner.personId, addedPersonIds: addedChildren, insertRow: true })
     for (const group of groups) {
       const addedPersonIds: string[] = []
       for (const id of group.children) {

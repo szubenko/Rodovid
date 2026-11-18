@@ -35,7 +35,7 @@ export function placeName(place: Place): string {
   return (place.displayName ?? place.originalName).split(',')[0]!.trim()
 }
 
-// Group identical coordinates or identical full names without coordinates; records stay distinct.
+// Group shared locations for display; the original records stay distinct.
 export function groupPlaceEntries(entries: PlaceEvents[]): PlaceEvents[] {
   const groups = new Map<string, PlaceEvents>()
   for (const { place, events } of entries) {
@@ -49,7 +49,20 @@ export function groupPlaceEntries(entries: PlaceEvents[]): PlaceEvents[] {
       else group.events.push({ ...entry })
     }
   }
-  return [...groups.values()]
+  const grouped = [...groups.values()]
+  return grouped.filter(group => {
+    if (group.place.coordinates || hasAreaBoundary(group.place)) return true
+    const fullName = (group.place.displayName ?? group.place.originalName).trim()
+    if (fullName !== placeName(group.place)) return true
+    const matches = grouped.filter(candidate => candidate.place.coordinates && placeName(candidate.place) === fullName)
+    if (matches.length !== 1) return true
+    for (const entry of group.events) {
+      const existing = matches[0]!.events.find(item => item.event.id === entry.event.id)
+      if (existing) existing.primary ||= entry.primary
+      else matches[0]!.events.push({ ...entry })
+    }
+    return false
+  })
 }
 
 export function formatPlaceYear(date?: HistoricalDate): string {

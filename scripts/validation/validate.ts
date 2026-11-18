@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256, november18MergeSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -121,7 +121,8 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = november14
+    const expected = november18
+      ? { people: 210, relationships: 339, events: 416, claims: 1016, places: 182 } : november14
       ? { people: 190, relationships: 306, events: 404, claims: 967, places: 172 } : november11Second
       ? { people: 174, relationships: 278, events: 377, claims: 886, places: 149 } : november11
       ? { people: 173, relationships: 277, events: 375, claims: 881, places: 148 } : november10
@@ -155,7 +156,7 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
         issues.push({ severity: 'error', code: 'REVIEW_POLICY_MISSING', message: `${fs}: технічний пропуск експорту; людину потрібно зберегти за рішенням власника.` })
       }
       const imported = (items: WithOrigin[]) => items.filter(item => item.provenance.some(origin => origin.kind === 'gedcom')).length
-      if (imported(data.sources) !== (november11 ? 121 : november10 ? 119 : november9Second ? 118 : november9 ? 117 : november8Second ? 105 : november8 ? 101 : october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (november11 ? 324 : november10 ? 278 : november9Second ? 268 : november9 ? 259 : november8Second ? 235 : november8 ? 223 : november4 ? 196 : october30 ? 195 : october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
+      if (imported(data.sources) !== (november11 ? 121 : november10 ? 119 : november9Second ? 118 : november9 ? 117 : november8Second ? 105 : november8 ? 101 : october29 ? 87 : october19 ? 79 : export6 ? 60 : 4) || imported(data.evidenceLinks) !== (november18 ? 322 : november11 ? 324 : november10 ? 278 : november9Second ? 268 : november9 ? 259 : november8Second ? 235 : november8 ? 223 : november4 ? 196 : october30 ? 195 : october29 ? 189 : timofeyCorrected ? 162 : october19 ? 160 : export6 ? 126 : correctedSources ? 8 : 12)
         || data.sources.length < (november11 ? 123 : november10 ? 121 : november9Second ? 120 : november9 ? 119 : november8Second ? 107 : november8 ? 103 : october29 ? 89 : petroBirthReviewed ? 81 : october19 ? 80 : deikaloMarriage ? 60 : export6 ? 61 : screenshotFamilies ? 5 : 4)
         || data.evidenceLinks.length < (november9Second ? 309 : november9 ? 279 : november8Second ? 249 : november8 ? 237 : november4 ? 210 : october30 ? 209 : october29 ? 203 : petroBirthReviewed ? 176 : timofeyCorrected ? 168 : october19 ? 166 : deikaloMarriage ? 126 : export6 ? 134 : correctedSources ? 16 : screenshotFamilies ? 20 : 12)) issues.push({ severity: 'error', code: 'REVIEWED_DATA_LOSS', message: 'Втрачено джерела або цитування погодженого набору.' })
     }

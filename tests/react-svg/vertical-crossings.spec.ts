@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test'
 
-for (const view of ['vertical-design', 'vertical-minimal']) {
+for (const view of ['vertical', 'vertical-design', 'vertical-minimal']) {
   test(`${view}: нижня стрілка розгортає Петра й Таню під Наталиєю`, async ({ page }) => {
     await page.goto(`/${view}/I1`)
     await page.getByLabel('Покоління', { exact: true }).selectOption('9')
     const arrow = page.locator('[data-half-sibling-parent-id="I6"]')
     await arrow.press('Enter')
     await page.locator('[data-sibling-person-id="I9"]').press('Enter')
-    for (const compact of [false, true]) {
+    for (const compact of view === 'vertical' ? [false] : [false, true]) {
       if (compact) await page.getByRole('button', { name: 'Компактні картки', exact: true }).click()
       const positions = await arrow.evaluate(button => {
         const card = (id: string) => button.closest('svg')!.querySelector(`[data-person-id="${id}"] > rect`)!.getBoundingClientRect()

@@ -8,7 +8,8 @@
         "id": "claim-9c80842dfb5af2a8be42d49f"
       },
       "confidence": "unassessed",
-      "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене."
+      "explanation": "D04: написання «Сегрій» відтворено з джерела; потребує уточнення власником. Виправлення не погоджене.",
+      "publishExplanation": true
     },
     {
       "id": "screenshot-relationship-97568b90812b58547384edd8",
@@ -17,8 +18,8 @@
         "id": "relationship-97568b90812b58547384edd8"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
-      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся."
+      "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.",
+      "publishExplanation": false
     },
     {
       "id": "screenshot-relationship-8bef8a05b7d9a22dda4afe54",
@@ -27,8 +28,8 @@
         "id": "relationship-8bef8a05b7d9a22dda4afe54"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.\n17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I5": 1
       }
@@ -40,8 +41,8 @@
         "id": "relationship-321a6e63b988bf6c76a388ad"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: за наданим власником знімком FamilySearch Яков PFFS-Y8D і Надя PNQS-T8M — подружжя та батьки Оленки PFJL-V4J. Дат шлюбу й смерті немає; первинний акт не перевірявся.\n17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I5": 1
       }
@@ -53,8 +54,8 @@
         "id": "relationship-4b4d59b1f9e75b701b54ce7d"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I5": 2
       }
@@ -66,8 +67,8 @@
         "id": "relationship-aefe85aa7c3a414ece600694"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I5": 2
       }
@@ -79,8 +80,8 @@
         "id": "relationship-53e7c072a326f78fdcc4f227"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I5": 3
       }
@@ -92,8 +93,8 @@
         "id": "relationship-4775585b390a934cb6413f61"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I4": 1
       }
@@ -105,8 +106,8 @@
         "id": "relationship-1506ad402ddf8d538ec1610f"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
       "explanation": "17.10.2026: власник уточнив послідовність родин Якова: перший шлюб — Надя, дочка Оленка; другий — Ольга, діти Николай і Петро. Порядок не встановлює дат шлюбу або народження.",
+      "publishExplanation": false,
       "relativeOrder": {
         "I4": 2
       }
@@ -118,8 +119,8 @@
         "id": "claim-844bdc5dfb7b9d883e16cd81"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
-      "explanation": "Дата уточнена за погодженим власником метричним записом № 14 за 1880 рік: смерть 9 жовтня, поховання 11 жовтня, вік 5 років. Календар не перераховувався."
+      "explanation": "Дата уточнена за погодженим власником метричним записом № 14 за 1880 рік: смерть 9 жовтня, поховання 11 жовтня, вік 5 років. Календар не перераховувався.",
+      "publishExplanation": false
     },
     {
       "id": "petro-birth-1900-owner-approved",
@@ -128,8 +129,8 @@
         "id": "claim-b34a18ae26b7ae1e40737ea2"
       },
       "confidence": "unassessed",
-      "publishExplanation": false,
-      "explanation": "Дату 1900 уточнено до 28.06.1900 за метричним актом № 36 і читанням, погодженим власником 19.10.2026. Дата хрещення 29.06.1900 лишається в описі; календар не перераховувався."
+      "explanation": "Дату 1900 уточнено до 28.06.1900 за метричним актом № 36 і читанням, погодженим власником 19.10.2026. Дата хрещення 29.06.1900 лишається в описі; календар не перераховувався.",
+      "publishExplanation": false
     }
   ],
   "primaryClaimIds": [
@@ -2241,6 +2242,56 @@
         "latitude": 49.49168,
         "longitude": 22.98076
       }
+    },
+    {
+      "id": "review-place-1efac1a288093689d82b23c4",
+      "placeId": "place-1efac1a288093689d82b23c4",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-da9eabbe1888448831287015",
+      "placeId": "place-da9eabbe1888448831287015",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-1300eef4e230b3efc230abb4",
+      "placeId": "place-1300eef4e230b3efc230abb4",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-2a3f7ce981b44b7b0b27842c",
+      "placeId": "place-2a3f7ce981b44b7b0b27842c",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-0239bec6ba84db87e5a76a45",
+      "placeId": "place-0239bec6ba84db87e5a76a45",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-0440142d75eebd6c87fc4e19",
+      "placeId": "place-0440142d75eebd6c87fc4e19",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-b7c55b5e0ef7c92133e3dbfc",
+      "placeId": "place-b7c55b5e0ef7c92133e3dbfc",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-8ef674ac0007509f867efc8c",
+      "placeId": "place-8ef674ac0007509f867efc8c",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-bee9af556b3c37ad0dbba73e",
+      "placeId": "place-bee9af556b3c37ad0dbba73e",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-45aa3012cd41c5c1688b0554",
+      "placeId": "place-45aa3012cd41c5c1688b0554",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
     }
   ],
   "sources": [
@@ -4616,8 +4667,6 @@
         "evidenceLink-9386c7acfe6ec0b1043d16eb",
         "evidenceLink-1c35180a716a4a9a1c1366fa",
         "evidenceLink-eb865a4f29c5d3d1b544e24e",
-        "evidenceLink-61682ca6fe7b3d852e4ccead",
-        "evidenceLink-f42e6a9312dfcdf5854ceae8",
         "evidenceLink-0a008e0ff40956492a4bc1b7",
         "evidenceLink-af22153da816a610b1245ef2"
       ],

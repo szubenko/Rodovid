@@ -91,7 +91,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'saved' | 'error'>('idle')
   const prefix = useId()
   const graph = useMemo(() => buildFamilyGraph(family), [family])
-  const separateHalfSiblings = portraitCards && !includeRelatives
+  const separateHalfSiblings = vertical && !includeRelatives
   const branches = useMemo(() => new Map(separateHalfSiblings
     ? family.people.map(person => [person.id, siblingBranches(graph, person.id)] as const) : []), [family, graph, separateHalfSiblings])
   const siblings = useMemo(() => new Map(family.people.map(person => [person.id, siblingPersonIds(graph, person.id)])), [family, graph])
@@ -128,7 +128,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
     generations: includeRelatives ? 12 : Math.min(12, generations + 1),
     collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
     expandedHalfSiblingParentIds: separateHalfSiblings ? settings.expandedHalfSiblingParentIds ?? [] : undefined,
-    expandedSiblingPersonIds: portraitCards ? expandedSiblingIds : undefined,
+    expandedSiblingPersonIds: separateHalfSiblings || portraitCards ? expandedSiblingIds : undefined,
     collapsedAncestorPersonIds: portraitCards ? settings.collapsedAncestorIds : undefined,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
     collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, includeRelatives, vertical,
@@ -274,7 +274,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
                 </g>
               </g>
             })}
-            {portraitCards && <g data-layer="sibling-controls">{layout.nodes.map(node => {
+            {(portraitCards || separateHalfSiblings) && <g data-layer="sibling-controls">{layout.nodes.map(node => {
               const siblingIds = branches.get(node.personId)?.lateral ?? siblings.get(node.personId) ?? []
               const siblingsExpanded = expandedSiblingIds?.includes(node.personId) === true
               if (!siblingIds.length || !siblingBranchOwners.has(node.personId) && siblingIds.every(id => shownIds.has(id))) return null

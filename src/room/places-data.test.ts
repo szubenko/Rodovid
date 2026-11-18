@@ -26,7 +26,24 @@ it('groups prepared shared locations without mutating or merging the original re
   expect(groups[0]!.events).toHaveLength(entry.events.length)
   expect(duplicate.place.id).toBe('another-place')
   delete duplicate.place.coordinates
-  expect(groupPlaceEntries([entry, duplicate])).toHaveLength(2)
+  expect(groupPlaceEntries([entry, duplicate])).toHaveLength(1)
+})
+
+it('merges an unlocated short name only with an unambiguous mapped place', () => {
+  const family = familyDataSchema.parse(fixture)
+  const entry = personPlaces(family, 'I1')[0]!
+  const mapped = { ...entry, place: { ...entry.place, displayName: 'Стара Сіль, Львівщина' } }
+  const unlocated = { ...entry, place: { ...entry.place, id: 'short', displayName: 'Стара Сіль', coordinates: undefined } }
+  expect(groupPlaceEntries([unlocated, mapped])).toHaveLength(1)
+  const other = { ...mapped, place: { ...mapped.place, id: 'other', coordinates: { latitude: 1, longitude: 1 } } }
+  expect(groupPlaceEntries([unlocated, mapped, other])).toHaveLength(3)
+  expect(groupPlaceEntries([mapped, { ...unlocated, place: { ...unlocated.place, displayName: 'Стара Сіль, інша область' } }])).toHaveLength(2)
+})
+
+it('shows Stara Sil once for I107', () => {
+  const family = familyDataSchema.parse(actualFamily)
+  const places = groupPlaceEntries(personPlaces(family, 'I107'))
+  expect(places.filter(entry => (entry.place.displayName ?? entry.place.originalName).startsWith('Стара Сіль'))).toHaveLength(1)
 })
 
 it('groups identical full names without coordinates while retaining all events', () => {

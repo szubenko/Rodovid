@@ -1,23 +1,22 @@
 import { expect, test } from '@playwright/test'
 import family from '../../generated/family.json' with { type: 'json' }
 
-test('Вертикальний 2 та Ісі Родичі окремо зберігають розкриті гілки', async ({ page }) => {
+test('Вертикальний 2 та Усі окремо зберігають розкриті гілки', async ({ page }) => {
   await page.goto('/vertical-design/I108')
   await expect(page.locator('[data-children-person-id]')).toHaveCount(0)
   await expect(page.locator('[data-person-id="I202"]')).toHaveCount(0)
-  await page.getByRole('link', { name: 'Ісі Родичі', exact: true }).click()
-  await page.locator('[data-children-person-id="I108"]').press('Enter')
+  await page.getByRole('link', { name: 'Усі', exact: true }).click()
   await expect(page.locator('[data-person-id="I202"]')).toHaveCount(1)
   await page.getByRole('link', { name: 'Вертикальний 2', exact: true }).click()
   await expect(page.locator('[data-children-person-id]')).toHaveCount(0)
   await expect(page.locator('[data-person-id="I202"]')).toHaveCount(0)
   await page.goBack()
   await page.reload()
-  await expect(page.getByRole('link', { name: 'Ісі Родичі', exact: true })).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByRole('link', { name: 'Усі', exact: true })).toHaveAttribute('aria-current', 'page')
   await expect(page.locator('[data-children-person-id="I108"]')).toHaveAttribute('aria-expanded', 'true')
 })
 
-for (const diagram of ['isi-relatives', 'vertical-minimal']) {
+for (const diagram of ['vertical-minimal']) {
   test(`розгортання Христини звільняє місце ліворуч для дітей Катерини у ${diagram}`, async ({ page }) => {
     await page.goto(`/${diagram}/I3`)
     await page.getByLabel('Покоління', { exact: true }).selectOption('4')

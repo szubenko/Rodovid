@@ -81,7 +81,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const previousView = useRef({ key: location.key, screen })
   useEffect(() => {
     const name = personId ? personName(family, personId) : 'Родовід'
-    document.title = `${name} — ${screen === 'isi-relatives' ? 'Ісі Родичі' : screen === 'relatives-2' ? 'Всі Родичі 2' : screen === 'relatives' ? 'Стара Всі родичі' : screen === 'vertical-minimal' ? 'Вертикальна мінімальна' : screen === 'vertical-design' ? 'Вертикальний родовід · новий дизайн' : screen === 'vertical' ? 'Вертикальний родовід' : screen === 'horizontal' ? 'Горизонтальний родовід' : screen === 'tree' ? 'Сімейний атлас' : 'Особиста кімната'}`
+    document.title = `${name} — ${screen === 'isi-relatives' ? 'Усі' : screen === 'relatives-2' ? 'Всі Родичі 2' : screen === 'relatives' ? 'Стара Всі родичі' : screen === 'vertical-minimal' ? 'Вертикальна мінімальна' : screen === 'vertical-design' ? 'Вертикальний родовід · новий дизайн' : screen === 'vertical' ? 'Вертикальний родовід' : screen === 'horizontal' ? 'Горизонтальний родовід' : screen === 'tree' ? 'Сімейний атлас' : 'Особиста кімната'}`
     if (previousView.current.key !== location.key) heading.current?.focus({ preventScroll: isMap && previousView.current.screen !== 'person' })
     previousView.current = { key: location.key, screen }
   }, [family, personId, screen, isMap, location.key])
@@ -111,7 +111,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <Link to={`/horizontal/${personId}`} aria-current={screen === 'horizontal' ? 'page' : undefined}><Icon kind="horizontal" />Горизонтальний</Link>
       <Link to={`/vertical/${personId}`} aria-current={screen === 'vertical' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний</Link>
       <Link to={`/vertical-design/${personId}`} aria-current={screen === 'vertical-design' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний 2</Link>
-      <Link to={`/isi-relatives/${personId}`} aria-current={screen === 'isi-relatives' ? 'page' : undefined}><Icon kind="vertical" />Ісі Родичі</Link>
+      <Link to={`/isi-relatives/${personId}`} aria-current={screen === 'isi-relatives' ? 'page' : undefined}><Icon kind="vertical" />Усі</Link>
       <Link to={`/vertical-minimal/${personId}`} aria-current={screen === 'vertical-minimal' ? 'page' : undefined}><Icon kind="vertical" />Вертикальна мін</Link>
       <span>{relationCount} рідних · {eventCount} подій</span>
     </div>

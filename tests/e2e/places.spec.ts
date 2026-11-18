@@ -2,6 +2,17 @@ import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 
+test('Омськ показується один раз у кімнаті I108', async ({ page }) => {
+  await page.goto('/person/I108')
+  const places = page.locator('#places')
+  await places.scrollIntoViewIfNeeded()
+  const choice = places.getByLabel('Список місць').getByRole('button', { name: /^Омськ/ })
+  await expect(choice).toHaveCount(1)
+  await expect(choice).not.toContainText('Точне розташування не вказано')
+  await choice.click()
+  await expect(places.locator('[data-place-marker][aria-pressed="true"]')).toHaveAttribute('aria-label', /Омськ/)
+})
+
 test('Стара Сіль показується один раз у кімнаті I107', async ({ page }) => {
   await page.goto('/person/I107')
   const places = page.locator('#places')

@@ -46,6 +46,16 @@ it('shows Stara Sil once for I107', () => {
   expect(places.filter(entry => (entry.place.displayName ?? entry.place.originalName).startsWith('Стара Сіль'))).toHaveLength(1)
 })
 
+it('shows Omsk once for I108 while retaining the events', () => {
+  const family = familyDataSchema.parse(actualFamily)
+  const entries = personPlaces(family, 'I108').filter(entry => (entry.place.displayName ?? entry.place.originalName).startsWith('Омськ'))
+  const grouped = groupPlaceEntries(entries)
+  expect(entries.length).toBeGreaterThan(1)
+  expect(grouped).toHaveLength(1)
+  expect(grouped[0]!.place.coordinates).toEqual({ latitude: 54.99244, longitude: 73.36859 })
+  expect(new Set(grouped[0]!.events.map(entry => entry.event.id))).toEqual(new Set(entries.flatMap(entry => entry.events.map(event => event.event.id))))
+})
+
 it('groups identical full names without coordinates while retaining all events', () => {
   const family = familyDataSchema.parse(fixture)
   const entry = personPlaces(family, 'I1')[0]!

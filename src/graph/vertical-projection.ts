@@ -6,6 +6,7 @@ type VerticalProjection = Omit<Projection, 'appearances'> & {
   familyMode: 'vertical'; appearances: RelativeAppearance[]; siblingGroups: SiblingGroup[]; childGroups: SiblingGroup[]
 }
 export type VerticalProjectionOptions = ProjectionOptions & {
+  includeChildOtherParent?: boolean
   expandedChildPersonIds?: readonly string[]
   expandedHalfSiblingParentIds?: readonly string[]
   expandedSiblingPersonIds?: readonly string[]; collapsedAncestorPersonIds?: readonly string[]
@@ -141,6 +142,17 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
     // Even at the depth boundary, the common parent supplies a truthful family line.
     for (const parent of graph.neighbors.get(owner.personId)!) if (parent.direction === 'parents') {
       if (lateral.length && !blockedParents.has(parent.personId)) add(parent.personId, owner.generation - 1, 'parents')
+    }
+    if (options.includeChildOtherParent && directChildren.length) {
+      const partners = new Set((graph.neighbors.get(owner.personId) ?? [])
+        .filter(link => link.direction === 'spouses').map(link => link.personId))
+      for (const child of directChildren) {
+        for (const parent of graph.neighbors.get(child) ?? []) {
+          if (parent.direction === 'parents' && partners.has(parent.personId)) {
+            add(parent.personId, owner.generation, 'relatives')
+          }
+        }
+      }
     }
     const addedChildren: string[] = []
     for (const id of directChildren) {

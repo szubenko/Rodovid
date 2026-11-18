@@ -6,6 +6,7 @@ test('Вертикальний 2 та Усі окремо зберігають �
   await expect(page.locator('[data-children-person-id]')).toHaveCount(0)
   await expect(page.locator('[data-person-id="I202"]')).toHaveCount(0)
   await page.getByRole('link', { name: 'Усі', exact: true }).click()
+  await page.locator('[data-children-person-id="I108"]').press('Enter')
   await expect(page.locator('[data-person-id="I202"]')).toHaveCount(1)
   await page.getByRole('link', { name: 'Вертикальний 2', exact: true }).click()
   await expect(page.locator('[data-children-person-id]')).toHaveCount(0)

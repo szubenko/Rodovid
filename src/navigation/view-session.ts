@@ -26,6 +26,7 @@ const view = z.object({
 })
 const snapshot = z.object({
   version: z.literal(1),
+  allBranchDefaultsVersion: z.literal(1).optional(),
   state: z.object({
     homePersonId: z.string(), initialGenerations: z.number().int().positive(), initialMapZoom: z.number().positive(),
     key: z.string(), current: view, entries: z.record(z.string(), view),
@@ -37,7 +38,7 @@ const snapshot = z.object({
 /** Only IDs and view settings are stored, separately for each browser tab. */
 export function saveViewSession(state: ViewState) {
   try {
-    sessionStorage.setItem(viewSessionKey, JSON.stringify({ version: 1, state }))
+    sessionStorage.setItem(viewSessionKey, JSON.stringify({ version: 1, allBranchDefaultsVersion: 1, state }))
   } catch { /* Denied storage or a full quota must not interrupt the diagram. */ }
 }
 
@@ -46,6 +47,19 @@ export function restoreViewSession(fallback: ViewState, personIds: ReadonlySet<s
     const result = snapshot.safeParse(JSON.parse(sessionStorage.getItem(viewSessionKey) ?? 'null'))
     if (!result.success) return fallback
     const saved = result.data.state
+    if (!result.data.allBranchDefaultsVersion) {
+      const resetBranches = (map: typeof saved.current.map) => {
+        delete map.expandedChildPersonIds
+        delete map.expandedHalfSiblingParentIds
+        delete map.expandedSiblingIds
+      }
+      for (const entry of [saved.current, ...Object.values(saved.entries)]) {
+        if (entry.mapScreen === 'isi-relatives') resetBranches(entry.map)
+      }
+      for (const [key, map] of Object.entries(saved.diagramMaps)) {
+        if (key.startsWith('isi-relatives/')) resetBranches(map)
+      }
+    }
     if (saved.homePersonId !== fallback.homePersonId || saved.initialGenerations !== fallback.initialGenerations
       || saved.initialMapZoom !== fallback.initialMapZoom || saved.trail[saved.position] !== saved.key
       || new Set(saved.trail).size !== saved.trail.length) return fallback

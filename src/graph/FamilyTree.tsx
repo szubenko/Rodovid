@@ -113,10 +113,8 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   const measureRole = useMemo(() => (text: string) => measure(text, 22) * 13 / 22, [measure])
   const settings = state.current.map
   const allIds = useMemo(() => [...graph.personIds], [graph])
-  const expandedChildren = useMemo(() => settings.expandedChildPersonIds ?? (isiRelatives ? allIds : []),
-    [settings.expandedChildPersonIds, isiRelatives, allIds])
-  const expandedHalfParents = useMemo(() => settings.expandedHalfSiblingParentIds ?? (isiRelatives ? allIds : []),
-    [settings.expandedHalfSiblingParentIds, isiRelatives, allIds])
+  const expandedChildren = useMemo(() => settings.expandedChildPersonIds ?? [], [settings.expandedChildPersonIds])
+  const expandedHalfParents = useMemo(() => settings.expandedHalfSiblingParentIds ?? [], [settings.expandedHalfSiblingParentIds])
   const expandedSiblingIds = useMemo(() => includeRelatives
     ? [...graph.personIds].filter(id => !settings.collapsedSiblingIds?.includes(id))
     : settings.expandedSiblingIds ?? (isiRelatives ? allIds : undefined), [includeRelatives, graph, settings.collapsedSiblingIds, settings.expandedSiblingIds, isiRelatives, allIds])
@@ -124,14 +122,15 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
   const portraitMetrics = useMemo(() => portraitCardMetrics(labels.values(), dates.values(), compact,
     measureCardName, text => measure(text, 18) * 15 / 18, !minimalCards, Array.from(skins.values(), skin => skin.label)),
   [labels, dates, compact, measureCardName, measure, minimalCards, skins])
-  const portraitLayout = useMemo(() => portraitCards ? portraitLayoutOptions(portraitMetrics, compact, fullFamily)
-    : undefined, [portraitCards, portraitMetrics, compact, fullFamily])
+  const portraitLayout = useMemo(() => portraitCards ? { ...portraitLayoutOptions(portraitMetrics, compact, fullFamily),
+    separateAncestorColumns: isiRelatives } : undefined, [portraitCards, portraitMetrics, compact, fullFamily, isiRelatives])
   const maxGenerations = useMemo(() => includeRelatives ? 1
     : vertical ? availableVerticalGenerations(graph, personId) : availableGenerations(graph, personId), [graph, personId, includeRelatives, vertical])
   const generations = isiRelatives ? maxGenerations : Math.min(settings.generations, maxGenerations)
   const projection = useMemo(() => includeRelatives && fullFamily ? projectAllRelatives(graph, personId, {
     collapsedSiblingIds: settings.collapsedSiblingIds, collapsedAncestorIds: settings.collapsedAncestorIds,
   }) : vertical ? projectVerticalFamily(graph, personId, {
+    includeChildOtherParent: isiRelatives,
     generations: includeRelatives ? 12 : Math.min(12, generations + 1),
     collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
     expandedChildPersonIds: expandChildren ? expandedChildren : undefined,
@@ -140,7 +139,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
     collapsedAncestorPersonIds: portraitCards ? settings.collapsedAncestorIds : undefined,
   }) : projectFamily(graph, personId, { generations: Math.min(12, generations + 1),
     collapsedAppearanceIds: settings.collapsedAppearanceIds }), [graph, personId, generations, includeRelatives, vertical,
-    settings.collapsedAppearanceIds, expandedSiblingIds, separateHalfSiblings, expandChildren, expandedChildren, expandedHalfParents, settings.collapsedSiblingIds, settings.collapsedAncestorIds, portraitCards, fullFamily])
+    settings.collapsedAppearanceIds, expandedSiblingIds, separateHalfSiblings, expandChildren, expandedChildren, expandedHalfParents, settings.collapsedSiblingIds, settings.collapsedAncestorIds, portraitCards, fullFamily, isiRelatives])
   const directLine = useMemo(() => vertical
     ? portraitMainLine ?? new Set(projection.appearances.map(node => node.personId)) : homeLine,
   [projection, vertical, homeLine, portraitMainLine])
@@ -178,6 +177,7 @@ export function FamilyTree({ personId, orientation, includeRelatives = false, fu
       collapsedSiblingIds: changes.collapsedSiblingIds ?? settings.collapsedSiblingIds,
       collapsedAncestorIds: collapsedAncestors,
     }) : projectVerticalFamily(graph, personId, {
+      includeChildOtherParent: isiRelatives,
       generations: includeRelatives ? 12 : Math.min(12, generations + 1),
       collapsedAppearanceIds: includeRelatives ? undefined : settings.collapsedAppearanceIds,
       expandedSiblingPersonIds: nextExpandedSiblings,

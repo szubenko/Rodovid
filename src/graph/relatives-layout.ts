@@ -22,6 +22,7 @@ export type RelativeLayoutOptions = {
   femaleSiblingsRight?: boolean
   maleSiblingsLeft?: boolean
   alignCardTops?: boolean
+  separateAncestorColumns?: boolean
 }
 
 /** Pack spouses together, then order and align family groups between rows.
@@ -37,6 +38,15 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   for (const group of input.childGroups ?? []) {
     if (!group.insertRow) continue
     const children = new Set(group.addedPersonIds)
+    // A visible spouse accompanies the child when a row is inserted. Without
+    // this, opening a nested branch shifts the spouse into a later generation.
+    for (const id of group.addedPersonIds) {
+      for (const link of graph.neighbors.get(id) ?? []) {
+        if (link.direction === 'spouses' && visualByPerson.get(link.personId)?.generation === visualByPerson.get(id)?.generation) {
+          children.add(link.personId)
+        }
+      }
+    }
     const row = visualByPerson.get(group.personId)!.generation + 1
     if (!appearances.some(node => node.generation === row && !children.has(node.personId))) continue
     for (const node of appearances) if (node.generation >= row && !children.has(node.personId)) node.generation++
@@ -694,6 +704,69 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
         node.x = direction < 0 ? Math.min(node.x, nearest) : Math.max(node.x, nearest)
         edge = node.x + direction * node.width / 2
       }
+    }
+  }
+  if (options?.separateAncestorColumns) {
+    for (const group of childGroups.filter(item => item.insertRow)) {
+      const parent = byPersonId.get(group.personId)!
+      const spouses = (graph.neighbors.get(parent.personId) ?? [])
+        .filter(link => link.direction === 'spouses')
+        .flatMap(link => byPersonId.get(link.personId) ?? [])
+        .filter(spouse => spouse.generation === parent.generation && !directLine?.has(spouse.personId))
+      if (spouses.length !== 1 || directLine?.has(parent.personId)) continue
+      const spouse = spouses[0]!
+      const side = graph.sexByPerson.get(parent.personId) === 'F' ? -1 : 1
+      spouse.x = parent.x + side * ((parent.width + spouse.width) / 2 + spouseGap)
+      const row = nodes.filter(node => node.generation === parent.generation && node !== parent && node !== spouse
+        && side * (node.x - parent.x) > 0).sort((a, b) => side * (a.x - b.x))
+      let edge = side * spouse.x + spouse.width / 2
+      for (const node of row) {
+        const nearest = edge + familyGap + node.width / 2
+        if (side * node.x < nearest) node.x = side * nearest
+        edge = side * node.x + node.width / 2
+      }
+    }
+  }
+  if (options?.separateAncestorColumns && directLine) {
+    const siblingsByOwner = new Map((projection.siblingGroups ?? []).map(group => [group.personId, group.addedPersonIds]))
+    const childrenByOwner = new Map((projection.childGroups ?? []).map(group => [group.personId, group.addedPersonIds]))
+    const branch = (root: string) => {
+      const result = new Set([root]), queue = [root]
+      for (let i = 0; i < queue.length; i++) {
+        const id = queue[i]!
+        const relatives = [
+          ...(graph.neighbors.get(id) ?? []).filter(link => link.direction === 'parents'
+            || link.direction === 'spouses' && !directLine.has(id) && !directLine.has(link.personId)
+              && byPersonId.get(link.personId)?.generation === byPersonId.get(id)?.generation)
+            .map(link => link.personId),
+          ...siblingsByOwner.get(id) ?? [], ...childrenByOwner.get(id) ?? [],
+        ]
+        for (const relative of relatives) {
+          if (byPersonId.has(relative) && !result.has(relative)) { result.add(relative); queue.push(relative) }
+        }
+      }
+      return result
+    }
+    const ancestors = nodes.filter(node => directLine.has(node.personId)).sort((a, b) => a.generation - b.generation)
+    for (const child of ancestors) {
+      const parents = (graph.neighbors.get(child.personId) ?? []).filter(link => link.direction === 'parents'
+        && byPersonId.has(link.personId))
+      const father = parents.find(link => graph.sexByPerson.get(link.personId) === 'M')
+      const mother = parents.find(link => graph.sexByPerson.get(link.personId) === 'F')
+      if (!father || !mother) continue
+      const leftIds = branch(father.personId), rightIds = branch(mother.personId)
+      // A shared ancestor has a single card and stays on the common boundary.
+      const shared = [...leftIds].filter(id => rightIds.has(id))
+      for (const id of shared) { leftIds.delete(id); rightIds.delete(id) }
+      const left = nodes.filter(node => leftIds.has(node.personId))
+      const right = nodes.filter(node => rightIds.has(node.personId))
+      if (!left.length || !right.length) continue
+      const leftEdge = Math.max(...left.map(node => node.x + node.width / 2))
+      const rightEdge = Math.min(...right.map(node => node.x - node.width / 2))
+      const shift = (leftEdge + familyGap - rightEdge) / 2
+      if (shift <= 0) continue
+      for (const node of left) node.x -= shift
+      for (const node of right) node.x += shift
     }
   }
   const centeredLeft = Math.min(...nodes.map(node => node.x - node.width / 2))

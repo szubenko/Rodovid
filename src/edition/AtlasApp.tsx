@@ -111,7 +111,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       <Link to={`/horizontal/${personId}`} aria-current={screen === 'horizontal' ? 'page' : undefined}><Icon kind="horizontal" />Горизонтальний</Link>
       <Link to={`/vertical/${personId}`} aria-current={screen === 'vertical' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний</Link>
       <Link to={`/vertical-design/${personId}`} aria-current={screen === 'vertical-design' ? 'page' : undefined}><Icon kind="vertical" />Вертикальний 2</Link>
-      <Link to={`/isi-relatives/${personId}`} aria-current={screen === 'isi-relatives' ? 'page' : undefined}><Icon kind="vertical" />Усі</Link>
+      {import.meta.env.DEV && <Link to={`/isi-relatives/${personId}`} aria-current={screen === 'isi-relatives' ? 'page' : undefined}><Icon kind="vertical" />Усі</Link>}
       <Link to={`/vertical-minimal/${personId}`} aria-current={screen === 'vertical-minimal' ? 'page' : undefined}><Icon kind="vertical" />Вертикальна мін</Link>
       <span>{relationCount} рідних · {eventCount} подій</span>
     </div>
@@ -140,7 +140,7 @@ function Workspace() {
           <Route path="/horizontal/:personId" element={<PersonView screen="horizontal" />} />
           <Route path="/vertical/:personId" element={<PersonView screen="vertical" />} />
           <Route path="/vertical-design/:personId" element={<PersonView screen="vertical-design" />} />
-          <Route path="/isi-relatives/:personId" element={<PersonView screen="isi-relatives" />} />
+          {import.meta.env.DEV && <Route path="/isi-relatives/:personId" element={<PersonView screen="isi-relatives" />} />}
           <Route path="/vertical-minimal/:personId" element={<PersonView screen="vertical-minimal" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
           <Route path="/photos" element={<PhotoCollectionPage />} />

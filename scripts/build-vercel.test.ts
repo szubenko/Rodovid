@@ -74,12 +74,12 @@ it('restricts SPA rewrites to current screens and numeric person IDs, leaving mi
   const rewrites = (path: string) => patterns.some(pattern => pattern.test(path))
   expect(rewrites('/photos')).toBe(true)
   expect(rewrites('/photos/missing.png')).toBe(false)
-  for (const screen of ['tree', 'person', 'horizontal', 'vertical', 'vertical-design', 'isi-relatives', 'vertical-minimal']) {
+  for (const screen of ['tree', 'person', 'horizontal', 'vertical', 'vertical-design', 'vertical-minimal']) {
     expect(rewrites(`/${screen}/I1`)).toBe(true)
     expect(rewrites(`/${screen}/I103`)).toBe(true)
   }
   for (const path of ['/data/missing.json', '/assets/missing.png', '/assets/missing.pdf', '/app-assets/missing.js',
-    '/tree/I1/missing.json', '/tree/missing.pdf', '/person/I1.pdf', '/relatives/I1', '/relatives-2/I1', '/unknown', '/Data/Zubenko.ged', '/.env']) {
+    '/tree/I1/missing.json', '/tree/missing.pdf', '/person/I1.pdf', '/relatives/I1', '/relatives-2/I1', '/isi-relatives/I1', '/unknown', '/Data/Zubenko.ged', '/.env']) {
     expect(rewrites(path)).toBe(false)
   }
 })

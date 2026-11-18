@@ -763,10 +763,11 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
       if (!left.length || !right.length) continue
       const leftEdge = Math.max(...left.map(node => node.x + node.width / 2))
       const rightEdge = Math.min(...right.map(node => node.x - node.width / 2))
-      const shift = (leftEdge + familyGap - rightEdge) / 2
-      if (shift <= 0) continue
-      for (const node of left) node.x -= shift
-      for (const node of right) node.x += shift
+      const margin = (options.branchGap ?? familyGap * 3) / 2
+      const leftShift = Math.max(0, leftEdge - (child.x - margin))
+      const rightShift = Math.max(0, child.x + margin - rightEdge)
+      for (const node of left) node.x -= leftShift
+      for (const node of right) node.x += rightShift
     }
   }
   const centeredLeft = Math.min(...nodes.map(node => node.x - node.width / 2))

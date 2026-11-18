@@ -31,6 +31,14 @@ test('Усі відкриває гілки домашньої особи', async
   const sydir = await edges(['I31', 'I40', 'I38', 'I109', 'I180', 'I181', 'I182'])
   const chaban = await edges(['I34', 'I41', 'I56', 'I60', 'I54', 'I55'])
   expect(Math.max(...sydir.map(card => card.right))).toBeLessThan(Math.min(...chaban.map(card => card.left)))
+  // Yakiv's parents and their ancestors stay on opposite sides of the
+  // vertical line through his card, including the generations above them.
+  const line = await edges(['I5'])
+  const fatherBranch = await edges(['I9', 'I12', 'I11'])
+  const motherBranch = await edges(['I6', 'I33', 'I78'])
+  const axis = (line[0]!.left + line[0]!.right) / 2
+  expect(Math.max(...fatherBranch.map(card => card.right))).toBeLessThan(axis)
+  expect(Math.min(...motherBranch.map(card => card.left))).toBeGreaterThan(axis)
   await page.locator('[data-children-person-id="I109"]').press('Enter')
   const christina = page.locator('[data-person-id="I109"] rect').first()
   const vasyl = page.locator('[data-person-id="I183"] rect').first()

@@ -2276,12 +2276,20 @@
     {
       "id": "review-place-b7c55b5e0ef7c92133e3dbfc",
       "placeId": "place-b7c55b5e0ef7c92133e3dbfc",
-      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026. 18.11.2026: той самий орієнтир Омська, що й для place-8b4dd3c4071e4519f28d0a93, за https://www.geonames.org/1496153/omsk.html; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 54.99244,
+        "longitude": 73.36859
+      }
     },
     {
       "id": "review-place-8ef674ac0007509f867efc8c",
       "placeId": "place-8ef674ac0007509f867efc8c",
-      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026. 18.11.2026: той самий орієнтир Омська, що й для place-8b4dd3c4071e4519f28d0a93, за https://www.geonames.org/1496153/omsk.html; точну адресу події не встановлено.",
+      "coordinates": {
+        "latitude": 54.99244,
+        "longitude": 73.36859
+      }
     },
     {
       "id": "review-place-bee9af556b3c37ad0dbba73e",

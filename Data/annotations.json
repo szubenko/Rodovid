@@ -475,7 +475,8 @@
       "id": "person-media-i54",
       "personId": "I54",
       "photoIds": [
-        "media-chabany-kopeysk-1961"
+        "media-chabany-kopeysk-1961",
+        "media-i54-mykhailo-photo"
       ],
       "portraitId": "media-i54-kopeysk-1961-portrait"
     },
@@ -5104,6 +5105,29 @@
       ]
     },
     {
+      "id": "media-i54-mykhailo-photo",
+      "path": "assets/photos/i54-чабан-михайло-ілліч-фото.png",
+      "sha256": "267feb6b819e640f765d627315a121c72b3b618174c3bd2f9ca76c35419fc4b6",
+      "dimensions": {
+        "width": 1448,
+        "height": 1086
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/i54-чабан-михайло-ілліч-фото.png",
+        "mimeType": "image/png"
+      },
+      "title": "Михайло Ілліч Чабан — фотографія",
+      "description": "Михайло Ілліч Чабан. Фотографію надано власником.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Чабан Михайло Ілліч — фотографія.png",
+          "entryId": "media-i54-mykhailo-photo"
+        }
+      ]
+    },
+    {
       "id": "media-i43-mariia-photo",
       "path": "assets/photos/i43-чабан-марія-іванівна-фото.png",
       "sha256": "114801143ab5806caab9e890df7d2666b96e44754cb9f34447289ed9872bd8d9",
@@ -8711,6 +8735,458 @@
   ],
   "memories": [],
   "memoryFiles": [
+    {
+      "id": "biography-i50-kernytskyi-mykhailo",
+      "personIds": [
+        "I50"
+      ],
+      "title": "Михайло Керницький",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i50-kernytskyi-mykhailo.md",
+          "entryId": "biography-i50-kernytskyi-mykhailo"
+        }
+      ],
+      "markdownFile": "memories/біографія-i50-kernytskyi-mykhailo.md"
+    },
+    {
+      "id": "biography-i29-chaban-nataliia",
+      "personIds": [
+        "I29"
+      ],
+      "title": "Біографія: Наталія Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i29-chaban-nataliia.md",
+          "entryId": "biography-i29-chaban-nataliia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i29-chaban-nataliia.md"
+    },
+    {
+      "id": "biography-i34-chaban-ivan",
+      "personIds": [
+        "I34"
+      ],
+      "title": "Біографія: Іван Ілліч Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i34-chaban-ivan.md",
+          "entryId": "biography-i34-chaban-ivan"
+        }
+      ],
+      "markdownFile": "memories/біографія-i34-chaban-ivan.md"
+    },
+    {
+      "id": "biography-i32-chaban-mariia",
+      "personIds": [
+        "I32"
+      ],
+      "title": "Біографія: Марія Антонівна Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i32-chaban-mariia.md",
+          "entryId": "biography-i32-chaban-mariia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i32-chaban-mariia.md"
+    },
+    {
+      "id": "biography-i34-i32-chaban-family",
+      "personIds": [
+        "I34",
+        "I32"
+      ],
+      "title": "Біографія: Іван і Марія Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i34-i32-chaban-family.md",
+          "entryId": "biography-i34-i32-chaban-family"
+        }
+      ],
+      "markdownFile": "memories/біографія-i34-i32-chaban-family.md"
+    },
+    {
+      "id": "biography-i105-chaban-kateryna",
+      "personIds": [
+        "I105"
+      ],
+      "title": "Біографія: Катерина Іллівна Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i105-chaban-kateryna.md",
+          "entryId": "biography-i105-chaban-kateryna"
+        }
+      ],
+      "markdownFile": "memories/біографія-i105-chaban-kateryna.md"
+    },
+    {
+      "id": "biography-i106-chaban-hanna",
+      "personIds": [
+        "I106"
+      ],
+      "title": "Біографія: Ганна Іллівна Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i106-chaban-hanna.md",
+          "entryId": "biography-i106-chaban-hanna"
+        }
+      ],
+      "markdownFile": "memories/біографія-i106-chaban-hanna.md"
+    },
+    {
+      "id": "biography-i107-chaban-stepan",
+      "personIds": [
+        "I107"
+      ],
+      "title": "Біографія: Степан Антонович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i107-chaban-stepan.md",
+          "entryId": "biography-i107-chaban-stepan"
+        }
+      ],
+      "markdownFile": "memories/біографія-i107-chaban-stepan.md"
+    },
+    {
+      "id": "biography-i108-chaban-vasyl",
+      "personIds": [
+        "I108"
+      ],
+      "title": "Біографія: Василь Антонович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i108-chaban-vasyl.md",
+          "entryId": "biography-i108-chaban-vasyl"
+        }
+      ],
+      "markdownFile": "memories/біографія-i108-chaban-vasyl.md"
+    },
+    {
+      "id": "biography-i104-chaban-mykhailo",
+      "personIds": [
+        "I104"
+      ],
+      "title": "Біографія: Михайло Іванович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i104-chaban-mykhailo.md",
+          "entryId": "biography-i104-chaban-mykhailo"
+        }
+      ],
+      "markdownFile": "memories/біографія-i104-chaban-mykhailo.md"
+    },
+    {
+      "id": "biography-i52-chaban-bohdan",
+      "personIds": [
+        "I52"
+      ],
+      "title": "Біографія: Богдан Іванович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i52-chaban-bohdan.md",
+          "entryId": "biography-i52-chaban-bohdan"
+        }
+      ],
+      "markdownFile": "memories/біографія-i52-chaban-bohdan.md"
+    },
+    {
+      "id": "biography-i53-chaban-semen",
+      "personIds": [
+        "I53"
+      ],
+      "title": "Біографія: Семен Іванович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i53-chaban-semen.md",
+          "entryId": "biography-i53-chaban-semen"
+        }
+      ],
+      "markdownFile": "memories/біографія-i53-chaban-semen.md"
+    },
+    {
+      "id": "biography-i30-kernytskyi-mykola",
+      "personIds": [
+        "I30"
+      ],
+      "title": "Біографія: Микола Йосипович Керницький",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i30-kernytskyi-mykola.md",
+          "entryId": "biography-i30-kernytskyi-mykola"
+        }
+      ],
+      "markdownFile": "memories/біографія-i30-kernytskyi-mykola.md"
+    },
+    {
+      "id": "biography-i31-kernytska-kateryna",
+      "personIds": [
+        "I31"
+      ],
+      "title": "Біографія: Катерина Федорівна Керницька (Сидір)",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i31-kernytska-kateryna.md",
+          "entryId": "biography-i31-kernytska-kateryna"
+        }
+      ],
+      "markdownFile": "memories/біографія-i31-kernytska-kateryna.md"
+    },
+    {
+      "id": "biography-i28-kernytskyi-ivan",
+      "personIds": [
+        "I28"
+      ],
+      "title": "Біографія: Іван Миколайович Керницький",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i28-kernytskyi-ivan.md",
+          "entryId": "biography-i28-kernytskyi-ivan"
+        }
+      ],
+      "markdownFile": "memories/біографія-i28-kernytskyi-ivan.md"
+    },
+    {
+      "id": "biography-i47-kernytskyi-vasyl",
+      "personIds": [
+        "I47"
+      ],
+      "title": "Біографія: Василь Миколайович Керницький",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i47-kernytskyi-vasyl.md",
+          "entryId": "biography-i47-kernytskyi-vasyl"
+        }
+      ],
+      "markdownFile": "memories/біографія-i47-kernytskyi-vasyl.md"
+    },
+    {
+      "id": "biography-i49-kernytskyi-petro",
+      "personIds": [
+        "I49"
+      ],
+      "title": "Біографія: Петро Миколайович Керницький",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i49-kernytskyi-petro.md",
+          "entryId": "biography-i49-kernytskyi-petro"
+        }
+      ],
+      "markdownFile": "memories/біографія-i49-kernytskyi-petro.md"
+    },
+    {
+      "id": "biography-i48-kernytska-mariia",
+      "personIds": [
+        "I48"
+      ],
+      "title": "Біографія: Марія Миколаївна Керницька",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i48-kernytska-mariia.md",
+          "entryId": "biography-i48-kernytska-mariia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i48-kernytska-mariia.md"
+    },
+    {
+      "id": "biography-i41-chaban-illia",
+      "personIds": [
+        "I41"
+      ],
+      "title": "Біографія: Ілля Степанович Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i41-chaban-illia.md",
+          "entryId": "biography-i41-chaban-illia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i41-chaban-illia.md"
+    },
+    {
+      "id": "biography-i43-chaban-mariia",
+      "personIds": [
+        "I43"
+      ],
+      "title": "Біографія: Марія Іванівна Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i43-chaban-mariia.md",
+          "entryId": "biography-i43-chaban-mariia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i43-chaban-mariia.md"
+    },
+    {
+      "id": "biography-i58-chaban-mariia",
+      "personIds": [
+        "I58"
+      ],
+      "title": "Біографія: Марія Степанівна Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i58-chaban-mariia.md",
+          "entryId": "biography-i58-chaban-mariia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i58-chaban-mariia.md"
+    },
+    {
+      "id": "biography-i42-chaban-anton",
+      "personIds": [
+        "I42",
+        "I39"
+      ],
+      "title": "Біографія: Антон Чабан і Кароліна",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i42-chaban-anton.md",
+          "entryId": "biography-i42-chaban-anton"
+        }
+      ],
+      "markdownFile": "memories/біографія-i42-chaban-anton.md"
+    },
+    {
+      "id": "biography-i54-chaban-mykhailo",
+      "personIds": [
+        "I54"
+      ],
+      "title": "Біографія: Михайло Ілліч Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i54-chaban-mykhailo.md",
+          "entryId": "biography-i54-chaban-mykhailo"
+        }
+      ],
+      "markdownFile": "memories/біографія-i54-chaban-mykhailo.md"
+    },
+    {
+      "id": "biography-i55-chaban-stefaniia",
+      "personIds": [
+        "I55"
+      ],
+      "title": "Біографія: Стефанія Іллівна Чабан",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/біографія-i55-chaban-stefaniia.md",
+          "entryId": "biography-i55-chaban-stefaniia"
+        }
+      ],
+      "markdownFile": "memories/біографія-i55-chaban-stefaniia.md"
+    },
+    {
+      "id": "biography-i20-zubenko-fedor-petrovych",
+      "personIds": [
+        "I20"
+      ],
+      "title": "Біографія Федора Петровича Зубенка",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/зубенко-федор-петрович-біографія.md",
+          "entryId": "biography-i20-zubenko-fedor-petrovych"
+        }
+      ],
+      "markdownFile": "memories/зубенко-федор-петрович-біографія.md"
+    },
+    {
+      "id": "biography-i12-zubenko-iliia-feodorovych",
+      "personIds": [
+        "I12"
+      ],
+      "title": "Біографія Ілії Феодоровича Зубенка",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/зубенко-ілія-феодорович-біографія.md",
+          "entryId": "biography-i12-zubenko-iliia-feodorovych"
+        }
+      ],
+      "markdownFile": "memories/зубенко-ілія-феодорович-біографія.md"
+    },
+    {
+      "id": "biography-i9-zubenko-makarii-ilianov",
+      "personIds": [
+        "I9"
+      ],
+      "title": "Біографія Макарія Ільянова Зубенка",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/зубенко-макарій-ільянов-біографія.md",
+          "entryId": "biography-i9-zubenko-makarii-ilianov"
+        }
+      ],
+      "markdownFile": "memories/зубенко-макарій-ільянов-біографія.md"
+    },
+    {
+      "id": "biography-i6-zaprysar-nataliia-semenova",
+      "personIds": [
+        "I6"
+      ],
+      "title": "Біографія Наталії Семенової Заприсар",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/заприсар-наталия-семенова-біографія.md",
+          "entryId": "biography-i6-zaprysar-nataliia-semenova"
+        }
+      ],
+      "markdownFile": "memories/заприсар-наталия-семенова-біографія.md"
+    },
+    {
+      "id": "biography-i5-zubenko-yakov-makarovych",
+      "personIds": [
+        "I5"
+      ],
+      "title": "Біографія Якова Макаровича Зубенка",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/зубенко-яков-макарович-біографія.md",
+          "entryId": "biography-i5-zubenko-yakov-makarovych"
+        }
+      ],
+      "markdownFile": "memories/зубенко-яков-макарович-біографія.md"
+    },
+    {
+      "id": "biography-i4-deikalo-olha-petrivna",
+      "personIds": [
+        "I4"
+      ],
+      "title": "Біографія Ольги Петрівни Дейкало",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/дейкало-ольга-петрівна-біографія.md",
+          "entryId": "biography-i4-deikalo-olha-petrivna"
+        }
+      ],
+      "markdownFile": "memories/дейкало-ольга-петрівна-біографія.md"
+    },
     {
       "id": "biography-i103-chaban-yaroslav-ivanovych",
       "personIds": [

@@ -14,6 +14,7 @@ import { VerticalMinimalTree } from '../graph/VerticalMinimalTree'
 import type { MapScreen } from '../navigation/view-state'
 import { PersonRoom } from '../room/PersonRoom'
 import { PhotoCollectionPage } from '../room/PhotoCollectionPage'
+import { MemoryCollectionPage } from '../room/MemoryCollectionPage'
 import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
 import { useAudio } from '../audio/context'
@@ -98,6 +99,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
         {years && <p className={styles.years}>{years}</p>}
       </div>
       <nav className={styles.navigation} aria-label="Основна навігація">
+        <RouteLink to={`/memories?person=${encodeURIComponent(personId)}`} state={{ returnTo: `/${screen}/${personId}` }} aria-label="Спогади" title="Спогади"><Icon kind="book" /></RouteLink>
         <RouteLink to="/photos" state={{ returnTo: `/${screen}/${personId}` }} aria-label="Галерея" title="Галерея"><Icon kind="photos" /></RouteLink>
         <Link to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><Icon kind="home" /></Link>
         <button type="button" onClick={toggleMusic} disabled={!musicAvailable} aria-label={soundLabel} title={soundLabel} aria-pressed={musicActive}><Icon kind="music" /></button>
@@ -144,6 +146,7 @@ function Workspace() {
           <Route path="/vertical-minimal/:personId" element={<PersonView screen="vertical-minimal" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
           <Route path="/photos" element={<PhotoCollectionPage />} />
+          <Route path="/memories" element={<MemoryCollectionPage />} />
           <Route path="*" element={<Missing />} />
         </Routes>
       </main>

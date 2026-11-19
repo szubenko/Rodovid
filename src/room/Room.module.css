@@ -4,6 +4,8 @@
 .room .paper, .memorySection { padding: 18px var(--room-inset); color: #243b34; background: #fffefa; border-radius: 12px; box-shadow: none; }
 .room .paper > h2, .paper.memorySection > h2 { margin: -18px calc(-1 * var(--room-inset)) 18px; padding: 14px var(--room-inset) 10px; color: #58714f; border-bottom: 1px solid #e1e7da; border-radius: 12px 12px 0 0; background: linear-gradient(125deg, #edf3e7, #f8f9f1); font: 650 11px/1.4 var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; }
 .memoryHeadingWithPerson { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; }
+.paper.memorySection > .familyStoryHeading { font: 600 16px/1.4 var(--font-body); letter-spacing: normal; text-transform: none; }
+.familyStory img { display: block; max-width: 100%; width: auto; height: auto; max-height: 680px; object-fit: contain; border-radius: 8px; }
 .paper p + p { margin-top: 0.7rem; }
 .paper h3 { color: #2e4b35; font: 600 16px/1.5 var(--font-body); }
 .paper a { color: var(--color-accent); text-underline-offset: 3px; }

@@ -4,14 +4,11 @@ import { RelativeDoors } from './RelativeDoors'
 import { Memories } from './Memories'
 import { PhotoGallery } from './PhotoGallery'
 import { Places } from './Places'
-import { motion } from 'motion/react'
-import { useMotionPreference } from '../appearance/context'
 
 export function PersonRoom({ personId, showBiographyHeader = true }: {
   personId: string; showBiographyHeader?: boolean
 }) {
-  const { reduced } = useMotionPreference()
-  return <motion.article className={styles.room} aria-label="Відомості про людину" initial={reduced ? false : { opacity: 0.88, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : 0.18 }}>
+  return <article className={styles.room} aria-label="Відомості про людину">
     <LifeBiography personId={personId} showHeader={showBiographyHeader} />
     <div className={styles.grid}>
       <Memories personId={personId} />
@@ -19,5 +16,5 @@ export function PersonRoom({ personId, showBiographyHeader = true }: {
       <Places personId={personId} />
       <RelativeDoors personId={personId} />
     </div>
-  </motion.article>
+  </article>
 }

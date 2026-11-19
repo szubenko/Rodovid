@@ -30,7 +30,7 @@ test('перегляд переходить тільки між людьми з�
   await expect(personLinks.nth(1)).toHaveAttribute('href', `/person/${second.id}`)
   await expect(page.getByRole('heading', { name: 'Біографія Якова Макаровича Зубенка' })).toHaveCount(0)
   await expect(page.getByText(/Це синтетичний приклад/)).toBeVisible()
-  const nav = page.getByRole('navigation', { name: 'Перехід між людьми зі спогадами' })
+  const nav = page.getByRole('navigation', { name: 'Перехід між історіями та людьми зі спогадами' })
   const next = nav.getByRole('link', { name: /Вперед/ })
   const previous = nav.getByRole('link', { name: /Назад/ })
   await previous.click()
@@ -70,4 +70,83 @@ test('перегляд переходить тільки між людьми з�
   family.memories = []
   await page.goto('/memories')
   await expect(page.getByText('Для цієї родини підготовлених спогадів поки немає.')).toBeVisible()
+})
+
+test('родинна історія відкривається першою без прив’язки до людини', async ({ page }) => {
+  const family = familyDataSchema.parse(fixture)
+  family.datasetKind = 'family'
+  family.memories.push({ ...family.memories[0]!, id: 'family-story', personIds: [], branch: 'zubenko', title: 'Історія родини', markdown: 'Початок історії.\n\n![Церква](memory:media-photo)\n\nПісля зображення.', mediaIds: ['media-photo'] })
+  await page.route('**/data/family.json', route => route.fulfill({ json: family }))
+  await page.goto('/memories')
+  await page.getByLabel('Родина').selectOption('zubenko')
+  await expect(page.getByRole('region', { name: 'Історія родини' })).toBeVisible()
+  await expect(page.getByRole('img', { name: 'Церква' })).toHaveAttribute('src', '/assets/photos/fixture.jpg')
+  const nav = page.getByRole('navigation', { name: 'Перехід між історіями та людьми зі спогадами' })
+  await expect(nav).toContainText('1 / 3')
+  await nav.getByRole('link', { name: /Вперед/ }).click()
+  await expect(page.getByRole('region', { name: 'Історія родини' })).toHaveCount(0)
+  await nav.getByRole('link', { name: /Назад/ }).click()
+  await expect(page.getByRole('region', { name: 'Історія родини' })).toBeVisible()
+  await page.reload()
+  await expect(page.getByRole('region', { name: 'Історія родини' })).toBeVisible()
+})
+
+test('історія Чапліївки передує спогадам про людей гілки Зубенків', async ({ page }) => {
+  await page.goto('/memories?branch=zubenko')
+  const story = page.getByRole('region', { name: 'Чапліївка рід Зубенків' })
+  await expect(story).toBeVisible()
+  await expect(story.getByRole('img', { name: 'Успенська церква в Чапліївці' })).toBeVisible()
+  await expect(story.getByRole('img', { name: 'Карта Чапліївки з позначеними родинними місцями' })).toBeVisible()
+  await expect(story.getByText('1910 рік Чапліївка, Успенська церква')).toBeVisible()
+  await expect(page.getByRole('navigation', { name: 'Перехід між історіями та людьми зі спогадами' })).toContainText('1 / 7')
+  await page.getByRole('navigation', { name: 'Перехід між історіями та людьми зі спогадами' }).getByRole('link', { name: /Вперед/ }).click()
+  await expect(page.locator('#memories > h2').getByRole('link', { name: /Яков/ })).toBeVisible()
+})
+
+test('розповідь про вивезення першою відкривається в гілці Керницьких', async ({ page }) => {
+  await page.goto('/memories')
+  const story = page.getByRole('region', { name: 'Вивезення на Урал, операції «Захід» 1947 року' })
+  await expect(story).toBeVisible()
+  await expect(story.getByRole('img', { name: 'Залізничні вагони та вантажівки' })).toBeVisible()
+  await expect(story.getByText(/21 жовтня/).first()).toBeVisible()
+  await expect(story.getByText(/Потім сім’я опинилась/)).toBeVisible()
+  const nav = page.getByRole('navigation', { name: 'Перехід між історіями та людьми зі спогадами' })
+  await expect(nav).toContainText('1 / 31')
+  await nav.getByRole('link', { name: /Вперед/ }).click()
+  const secondStory = page.getByRole('region', { name: 'Рід Чабанів і Керницьких' })
+  await expect(secondStory).toBeVisible()
+  await expect(secondStory.getByText('Рід Чабанів походить з села Стара Сіль (Stara Sól).')).toBeVisible()
+  await expect(secondStory.getByText(/Стара Сіль і Стара Ропа — сусідні поселення/)).toBeVisible()
+  await expect(nav).toContainText('2 / 31')
+  await nav.getByRole('link', { name: /Вперед/ }).click()
+  await expect(page.locator('#memories > h2').getByRole('link', { name: /Іван Миколайович/ })).toBeVisible()
+})
+
+test('спільна розповідь Христини та Василя відкрита в обох кімнатах', async ({ page }) => {
+  for (const id of ['I109', 'I183']) {
+    await page.goto(`/person/${id}`)
+    const memory = page.getByRole('article', { name: 'Розповідь про родину Христини (Сидір) і Василя Пихун' })
+    await expect(memory).toBeVisible()
+    await expect(memory.getByText(/5 серпня 1944 року почався обстріл/)).toBeVisible()
+    await page.goto(`/memories?branch=kernytski&person=${id}`)
+    const links = page.locator('#memories > h2').getByRole('link')
+    await expect(links).toHaveCount(2)
+    await expect(links.filter({ hasText: /Христина/ })).toHaveAttribute('href', '/person/I109')
+    await expect(links.filter({ hasText: /Василь/ })).toHaveAttribute('href', '/person/I183')
+  }
+})
+
+test('спільний спогад Сидора Федора і Галини відкривається в обох кімнатах', async ({ page }) => {
+  for (const id of ['I40', 'I38']) {
+    await page.goto(`/person/${id}`)
+    const memory = page.getByRole('article', { name: 'Сидора Федора і Галини' })
+    await expect(memory).toBeVisible()
+    await expect(memory.getByRole('listitem')).toHaveCount(5)
+    await page.goto(`/memories?branch=kernytski&person=${id}`)
+    await expect(page.getByRole('article', { name: 'Сидора Федора і Галини' })).toBeVisible()
+    const links = page.locator('#memories > h2').getByRole('link')
+    await expect(links).toHaveCount(2)
+    await expect(links.filter({ hasText: /Федір/ })).toHaveAttribute('href', '/person/I40')
+    await expect(links.filter({ hasText: /Галина/ })).toHaveAttribute('href', '/person/I38')
+  }
 })

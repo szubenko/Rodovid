@@ -13,6 +13,15 @@ it('reads only explicitly bound Markdown files before conversion and rejects mis
   for (const markdownFile of ['missing.md', '../private.md']) await expect(resolveMemoryFiles({ schemaVersion: 1, memoryFiles: [{ ...entry, markdownFile }] }, root)).rejects.toThrow()
 })
 
+it('loads a branch story without a person and rejects an ambiguous or missing scope', async () => {
+  const root = fileURLToPath(new URL('../tests/fixtures/memories', import.meta.url))
+  const story = { id: 'family-story', personIds: [], branch: 'zubenko', title: 'Історія', markdownFile: 'example.md', provenance: [{ kind: 'supplement', file: 'annotations.json', entryId: 'family-story' }] }
+  const data = await resolveMemoryFiles({ schemaVersion: 1, memoryFiles: [story] }, root)
+  expect(data.memories[0]).toMatchObject({ personIds: [], branch: 'zubenko', markdown: expect.stringContaining('**синтетичний**') })
+  await expect(resolveMemoryFiles({ schemaVersion: 1, memoryFiles: [{ ...story, personIds: ['I1'] }] }, root)).rejects.toThrow()
+  await expect(resolveMemoryFiles({ schemaVersion: 1, memoryFiles: [{ ...story, branch: undefined }] }, root)).rejects.toThrow()
+})
+
 it('rereads a referenced Unicode Markdown file after edits without putting its text into the input', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'rodovid-memory-'))
   const markdownFile = 'біографія.md'

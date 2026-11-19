@@ -9,7 +9,7 @@ export function Memories({ personId, headingExtra }: { personId: string; heading
   const family = useFamily()
   const memories = family.memories.filter(memory => memory.personIds.includes(personId))
   return <section className={`${styles.paper} ${styles.memorySection}`} id="memories" aria-label="Спогади">
-    <h2 className={headingExtra ? styles.memoryHeadingWithPerson : undefined}><span>Спогади</span>{headingExtra}</h2>
+    <h2 className={headingExtra ? styles.memoryHeadingWithPerson : undefined}>{headingExtra ?? 'Спогади'}</h2>
     {memories.length === 0 ? <p className={styles.empty}>Підготовлених спогадів поки немає.</p> : <>
       {memories.map(memory => <article key={memory.id} className={`${styles.memory} ${styles.memoryStory}`} aria-label={memory.title}>
         {!/^біографія(?:\s|:|$)/iu.test(memory.title.trim()) && <h3>{memory.title}</h3>}{memory.author && <p>Автор: {memory.author}</p>}

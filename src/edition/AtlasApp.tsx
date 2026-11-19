@@ -98,7 +98,7 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
       </div>
       <AtlasNavigation personId={personId} />
     </header>
-    <div className={`${styles.viewTabs} ${isMap ? styles.mapViewTabs : ''}`} aria-label="Перегляд людини">
+    <div className={styles.viewTabs} aria-label="Перегляд людини">
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
       <Link to={`/person/${personId}`} aria-current={screen === 'person' ? 'page' : undefined}><Icon kind="book" />Історія життя</Link>
       <Link to={`/horizontal/${personId}`} aria-current={screen === 'horizontal' ? 'page' : undefined}><Icon kind="horizontal" />Горизонтальний</Link>

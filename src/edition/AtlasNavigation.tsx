@@ -24,9 +24,9 @@ export function AtlasNavigation({ personId }: { personId?: string }) {
   const memoryOrigin = location.pathname === '/photos' && typeof origin === 'string' && /^\/memories(?:\?[^#]*)?$/.test(origin) ? origin : null
   const memoryPath = location.pathname === '/memories' ? currentPath : memoryOrigin ?? (personId ? `/memories?person=${encodeURIComponent(personId)}` : '/memories')
   return <nav className={styles.navigation} aria-label="Основна навігація">
-    <RouteLink to={memoryPath} state={location.pathname === '/memories' ? location.state : memoryOrigin ? (location.state as { returnState?: unknown } | null)?.returnState : { returnTo: currentPath }} aria-label="Спогади" title="Спогади"><NavigationIcon kind="book" /></RouteLink>
-    <RouteLink to="/photos" state={{ returnTo: currentPath, returnState: location.state }} aria-label="Галерея" title="Галерея"><NavigationIcon kind="photos" /></RouteLink>
     <ViewLink to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><NavigationIcon kind="home" /></ViewLink>
+    <RouteLink to="/photos" state={{ returnTo: currentPath, returnState: location.state }} aria-label="Галерея" title="Галерея"><NavigationIcon kind="photos" /></RouteLink>
+    <RouteLink to={memoryPath} state={location.pathname === '/memories' ? location.state : memoryOrigin ? (location.state as { returnState?: unknown } | null)?.returnState : { returnTo: currentPath }} aria-label="Спогади" title="Спогади"><NavigationIcon kind="book" /></RouteLink>
     <button type="button" onClick={toggleMusic} disabled={!musicAvailable} aria-label={soundLabel} title={soundLabel} aria-pressed={musicActive}><NavigationIcon kind="music" /></button>
     {status === 'starting' && <span role="status" className={styles.srOnly}>Музика завантажується…</span>}
     {status === 'error' && <p role="status" className={styles.audioStatus}>Музика недоступна або браузер заблокував відтворення. Натисніть ноту, щоб спробувати ще раз.</p>}

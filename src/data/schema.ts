@@ -144,11 +144,14 @@ export const evidenceLinkSchema = z.strictObject({
   provenance,
 })
 
-export const memorySchema = z.strictObject({
-  id, personIds: z.array(personIdSchema).min(1), title: text, markdown: text,
+export const memoryBaseSchema = z.strictObject({
+  id, personIds: z.array(personIdSchema), branch: z.enum(['kernytski', 'zubenko']).optional(), title: text, markdown: text,
   author: text.optional(), recordedAt: historicalDateSchema.optional(),
   mediaIds: ids, provenance,
 })
+export const memoryScopeValid = (memory: { personIds: string[]; branch?: string }) =>
+  (memory.personIds.length > 0) !== Boolean(memory.branch)
+export const memorySchema = memoryBaseSchema.refine(memoryScopeValid, { message: 'A memory must belong to people or one family branch' })
 
 export const siteConfigSchema = z.strictObject({
   schemaVersion: z.literal(1), dataVersion: text, title: text,

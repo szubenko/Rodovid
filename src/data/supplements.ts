@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { entityIdSchema as id, personIdSchema } from './ids.ts'
 import {
   claimSchema, confidenceSchema, evidenceLinkSchema, mediaSchema,
-  memorySchema, personSchema, sourceSchema,
+  memoryBaseSchema, memorySchema, memoryScopeValid, personSchema, sourceSchema,
 } from './schema.ts'
 
 const text = z.string().min(1)
@@ -61,9 +61,9 @@ export const supplementsSchema = z.strictObject({
   media: z.array(mediaSchema).default([]),
   evidenceLinks: z.array(evidenceLinkSchema).default([]),
   memories: z.array(memorySchema).default([]),
-  memoryFiles: z.array(memorySchema.omit({ markdown: true }).extend({
+  memoryFiles: z.array(memoryBaseSchema.omit({ markdown: true }).extend({
     markdownFile: z.string().regex(/^(?:[\p{L}\p{N}_-]+\/)*[\p{L}\p{N}_-]+\.md$/u),
-  })).default([]),
+  }).refine(memoryScopeValid, { message: 'A memory must belong to people or one family branch' })).default([]),
 })
 
 export type Supplements = z.infer<typeof supplementsSchema>

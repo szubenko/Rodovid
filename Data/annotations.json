@@ -4766,6 +4766,49 @@
   ],
   "media": [
     {
+      "id": "kernytski-deportation-image",
+      "path": "assets/photos/kernytski-deportation-image.png",
+      "sha256": "1cd86ec4fe12bdbcfc3f1ec58c80bb35ca1a934c9a7fbaf73063bcf6c7a0b5f8",
+      "mimeType": "image/png",
+      "title": "Залізничні вагони та вантажівки — ілюстрація до родинної розповіді",
+      "description": "Надане власником зображення; на зображенні зазначено Radio Marsho (RFE/RL).",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "kernytski-deportation-image"
+        }
+      ]
+    },
+    {
+      "id": "chapliivka-assumption-church-1910",
+      "path": "assets/photos/chapliivka-assumption-church-1910.png",
+      "sha256": "8c83bb2cb368cc02b0e2847872a7c80081eaf7d4e786f387e2abc7bf0075aa9c",
+      "mimeType": "image/png",
+      "title": "1910 рік Чапліївка, Успенська церква",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "chapliivka-assumption-church-1910"
+        }
+      ]
+    },
+    {
+      "id": "chapliivka-family-map",
+      "path": "assets/photos/chapliivka-family-map.png",
+      "sha256": "dd9ed8ff10f3dc856ba45799567fcde558feb62ee6c7c71bbf1668e00c8d7c83",
+      "mimeType": "image/png",
+      "title": "Чапліївка — родинні місця на карті Google",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "chapliivka-family-map"
+        }
+      ]
+    },
+    {
       "id": "media-i178-mykhailo-avatar",
       "path": "assets/photos/i178-михайло-пацикевич-аватар.png",
       "sha256": "437ce122badce6da9fc2d8d7730e5c5ae6de154aa86283260ef1f983a5b16c33",
@@ -8739,6 +8782,87 @@
   ],
   "memories": [],
   "memoryFiles": [
+    {
+      "id": "family-story-kernytski-deportation-1947",
+      "personIds": [],
+      "branch": "kernytski",
+      "title": "Вивезення на Урал, операції «Захід» 1947 року",
+      "mediaIds": [
+        "kernytski-deportation-image"
+      ],
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/kernytski-deportation-1947.md",
+          "entryId": "family-story-kernytski-deportation-1947"
+        }
+      ],
+      "markdownFile": "memories/kernytski-deportation-1947.md"
+    },
+    {
+      "id": "family-story-chabany-kernytski-stara-sil-ropa",
+      "personIds": [],
+      "branch": "kernytski",
+      "title": "Рід Чабанів і Керницьких",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/kernytski-chabany-stara-sil-stara-ropa.md",
+          "entryId": "family-story-chabany-kernytski-stara-sil-ropa"
+        }
+      ],
+      "markdownFile": "memories/kernytski-chabany-stara-sil-stara-ropa.md"
+    },
+    {
+      "id": "family-story-sidora-fedora-i-halyny",
+      "personIds": [
+        "I40",
+        "I38"
+      ],
+      "title": "Сидора Федора і Галини",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/kernytski-sidora-fedora-i-halyny.md",
+          "entryId": "family-story-sidora-fedora-i-halyny"
+        }
+      ],
+      "markdownFile": "memories/kernytski-sidora-fedora-i-halyny.md"
+    },
+    {
+      "id": "memory-rodyna-khrystyny-sidir-vasylia-pykhun",
+      "personIds": [
+        "I109",
+        "I183"
+      ],
+      "title": "Розповідь про родину Христини (Сидір) і Василя Пихун",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/rodyna-khrystyny-sidir-vasylia-pykhun.md",
+          "entryId": "memory-rodyna-khrystyny-sidir-vasylia-pykhun"
+        }
+      ],
+      "markdownFile": "memories/rodyna-khrystyny-sidir-vasylia-pykhun.md"
+    },
+    {
+      "id": "family-story-chapliivka-zubenko",
+      "personIds": [],
+      "branch": "zubenko",
+      "title": "Чапліївка рід Зубенків",
+      "mediaIds": [
+        "chapliivka-assumption-church-1910",
+        "chapliivka-family-map"
+      ],
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/chapliivka-zubenko-family.md",
+          "entryId": "family-story-chapliivka-zubenko"
+        }
+      ],
+      "markdownFile": "memories/chapliivka-zubenko-family.md"
+    },
     {
       "id": "biography-i50-kernytskyi-mykhailo",
       "personIds": [

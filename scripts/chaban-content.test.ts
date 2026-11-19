@@ -20,7 +20,7 @@ it('publishes the referenced biography Markdown and the two original images for 
   expect(biography.personIds).toEqual(['I103'])
   expect(biography.mediaIds).toEqual(['media-i103-history-photo'])
   const binding = input.supplements.memoryFiles.find((entry: { id: string }) => entry.id === biography.id)
-  expect(binding.markdownFile).toBe('memories/чабан-ярослав-іванович-біографія.md')
+  expect(binding.markdownFile).toBe('memories/stara-sil/chaban-yaroslav-ivanovych-i103-biography.md')
   expect(input.supplements.memories.some((entry: { id: string }) => entry.id === biography.id)).toBe(false)
   expect(biography.markdown).toBe(read(binding.markdownFile).toString('utf8'))
   for (const id of [...person.photoIds, person.portraitId!]) {

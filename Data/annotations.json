@@ -8793,11 +8793,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/kernytski-deportation-1947.md",
+          "file": "Data/memories/stara-sil/kernytski-deportation-1947.md",
           "entryId": "family-story-kernytski-deportation-1947"
         }
       ],
-      "markdownFile": "memories/kernytski-deportation-1947.md"
+      "markdownFile": "memories/stara-sil/kernytski-deportation-1947.md"
     },
     {
       "id": "family-story-chabany-kernytski-stara-sil-ropa",
@@ -8807,11 +8807,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/kernytski-chabany-stara-sil-stara-ropa.md",
+          "file": "Data/memories/stara-sil/kernytski-chabany-stara-sil-stara-ropa.md",
           "entryId": "family-story-chabany-kernytski-stara-sil-ropa"
         }
       ],
-      "markdownFile": "memories/kernytski-chabany-stara-sil-stara-ropa.md"
+      "markdownFile": "memories/stara-sil/kernytski-chabany-stara-sil-stara-ropa.md"
     },
     {
       "id": "family-story-sidora-fedora-i-halyny",
@@ -8823,11 +8823,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/kernytski-sidora-fedora-i-halyny.md",
+          "file": "Data/memories/stara-sil/kernytski-sidora-fedora-i-halyny.md",
           "entryId": "family-story-sidora-fedora-i-halyny"
         }
       ],
-      "markdownFile": "memories/kernytski-sidora-fedora-i-halyny.md"
+      "markdownFile": "memories/stara-sil/kernytski-sidora-fedora-i-halyny.md"
     },
     {
       "id": "memory-rodyna-khrystyny-sidir-vasylia-pykhun",
@@ -8839,11 +8839,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/rodyna-khrystyny-sidir-vasylia-pykhun.md",
+          "file": "Data/memories/stara-sil/rodyna-khrystyny-sidir-vasylia-pykhun.md",
           "entryId": "memory-rodyna-khrystyny-sidir-vasylia-pykhun"
         }
       ],
-      "markdownFile": "memories/rodyna-khrystyny-sidir-vasylia-pykhun.md"
+      "markdownFile": "memories/stara-sil/rodyna-khrystyny-sidir-vasylia-pykhun.md"
     },
     {
       "id": "family-story-chapliivka-zubenko",
@@ -8857,11 +8857,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/chapliivka-zubenko-family.md",
+          "file": "Data/memories/chapliivka/chapliivka-zubenko-family.md",
           "entryId": "family-story-chapliivka-zubenko"
         }
       ],
-      "markdownFile": "memories/chapliivka-zubenko-family.md"
+      "markdownFile": "memories/chapliivka/chapliivka-zubenko-family.md"
     },
     {
       "id": "biography-i50-kernytskyi-mykhailo",
@@ -8872,11 +8872,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i50-kernytskyi-mykhailo.md",
+          "file": "Data/memories/stara-sil/kernytskyi-mykhailo-i50-biography.md",
           "entryId": "biography-i50-kernytskyi-mykhailo"
         }
       ],
-      "markdownFile": "memories/біографія-i50-kernytskyi-mykhailo.md"
+      "markdownFile": "memories/stara-sil/kernytskyi-mykhailo-i50-biography.md"
     },
     {
       "id": "biography-i29-chaban-nataliia",
@@ -8887,11 +8887,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i29-chaban-nataliia.md",
+          "file": "Data/memories/stara-sil/chaban-nataliia-i29-biography.md",
           "entryId": "biography-i29-chaban-nataliia"
         }
       ],
-      "markdownFile": "memories/біографія-i29-chaban-nataliia.md"
+      "markdownFile": "memories/stara-sil/chaban-nataliia-i29-biography.md"
     },
     {
       "id": "biography-i34-chaban-ivan",
@@ -8902,11 +8902,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i34-chaban-ivan.md",
+          "file": "Data/memories/stara-sil/chaban-ivan-illich-i34-biography.md",
           "entryId": "biography-i34-chaban-ivan"
         }
       ],
-      "markdownFile": "memories/біографія-i34-chaban-ivan.md"
+      "markdownFile": "memories/stara-sil/chaban-ivan-illich-i34-biography.md"
     },
     {
       "id": "biography-i32-chaban-mariia",
@@ -8917,11 +8917,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i32-chaban-mariia.md",
+          "file": "Data/memories/stara-sil/chaban-mariia-antonivna-i32-biography.md",
           "entryId": "biography-i32-chaban-mariia"
         }
       ],
-      "markdownFile": "memories/біографія-i32-chaban-mariia.md"
+      "markdownFile": "memories/stara-sil/chaban-mariia-antonivna-i32-biography.md"
     },
     {
       "id": "biography-i34-i32-chaban-family",
@@ -8933,11 +8933,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i34-i32-chaban-family.md",
+          "file": "Data/memories/stara-sil/chaban-ivan-i34-mariia-i32-family.md",
           "entryId": "biography-i34-i32-chaban-family"
         }
       ],
-      "markdownFile": "memories/біографія-i34-i32-chaban-family.md"
+      "markdownFile": "memories/stara-sil/chaban-ivan-i34-mariia-i32-family.md"
     },
     {
       "id": "biography-i105-chaban-kateryna",
@@ -8948,11 +8948,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i105-chaban-kateryna.md",
+          "file": "Data/memories/stara-sil/chaban-kateryna-illivna-i105-biography.md",
           "entryId": "biography-i105-chaban-kateryna"
         }
       ],
-      "markdownFile": "memories/біографія-i105-chaban-kateryna.md"
+      "markdownFile": "memories/stara-sil/chaban-kateryna-illivna-i105-biography.md"
     },
     {
       "id": "biography-i106-chaban-hanna",
@@ -8963,11 +8963,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i106-chaban-hanna.md",
+          "file": "Data/memories/stara-sil/chaban-hanna-illivna-i106-biography.md",
           "entryId": "biography-i106-chaban-hanna"
         }
       ],
-      "markdownFile": "memories/біографія-i106-chaban-hanna.md"
+      "markdownFile": "memories/stara-sil/chaban-hanna-illivna-i106-biography.md"
     },
     {
       "id": "biography-i107-chaban-stepan",
@@ -8978,11 +8978,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i107-chaban-stepan.md",
+          "file": "Data/memories/stara-sil/chaban-stepan-antonovych-i107-biography.md",
           "entryId": "biography-i107-chaban-stepan"
         }
       ],
-      "markdownFile": "memories/біографія-i107-chaban-stepan.md"
+      "markdownFile": "memories/stara-sil/chaban-stepan-antonovych-i107-biography.md"
     },
     {
       "id": "biography-i108-chaban-vasyl",
@@ -8993,11 +8993,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i108-chaban-vasyl.md",
+          "file": "Data/memories/stara-sil/chaban-vasyl-antonovych-i108-biography.md",
           "entryId": "biography-i108-chaban-vasyl"
         }
       ],
-      "markdownFile": "memories/біографія-i108-chaban-vasyl.md"
+      "markdownFile": "memories/stara-sil/chaban-vasyl-antonovych-i108-biography.md"
     },
     {
       "id": "biography-i104-chaban-mykhailo",
@@ -9008,11 +9008,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i104-chaban-mykhailo.md",
+          "file": "Data/memories/stara-sil/chaban-mykhailo-ivanovych-i104-biography.md",
           "entryId": "biography-i104-chaban-mykhailo"
         }
       ],
-      "markdownFile": "memories/біографія-i104-chaban-mykhailo.md"
+      "markdownFile": "memories/stara-sil/chaban-mykhailo-ivanovych-i104-biography.md"
     },
     {
       "id": "biography-i52-chaban-bohdan",
@@ -9023,11 +9023,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i52-chaban-bohdan.md",
+          "file": "Data/memories/stara-sil/chaban-bohdan-ivanovych-i52-biography.md",
           "entryId": "biography-i52-chaban-bohdan"
         }
       ],
-      "markdownFile": "memories/біографія-i52-chaban-bohdan.md"
+      "markdownFile": "memories/stara-sil/chaban-bohdan-ivanovych-i52-biography.md"
     },
     {
       "id": "biography-i53-chaban-semen",
@@ -9038,11 +9038,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i53-chaban-semen.md",
+          "file": "Data/memories/stara-sil/chaban-semen-ivanovych-i53-biography.md",
           "entryId": "biography-i53-chaban-semen"
         }
       ],
-      "markdownFile": "memories/біографія-i53-chaban-semen.md"
+      "markdownFile": "memories/stara-sil/chaban-semen-ivanovych-i53-biography.md"
     },
     {
       "id": "biography-i30-kernytskyi-mykola",
@@ -9053,11 +9053,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i30-kernytskyi-mykola.md",
+          "file": "Data/memories/stara-sil/kernytskyi-mykola-yosypovych-i30-biography.md",
           "entryId": "biography-i30-kernytskyi-mykola"
         }
       ],
-      "markdownFile": "memories/біографія-i30-kernytskyi-mykola.md"
+      "markdownFile": "memories/stara-sil/kernytskyi-mykola-yosypovych-i30-biography.md"
     },
     {
       "id": "biography-i31-kernytska-kateryna",
@@ -9068,11 +9068,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i31-kernytska-kateryna.md",
+          "file": "Data/memories/stara-sil/kernytska-kateryna-fedorivna-i31-biography.md",
           "entryId": "biography-i31-kernytska-kateryna"
         }
       ],
-      "markdownFile": "memories/біографія-i31-kernytska-kateryna.md"
+      "markdownFile": "memories/stara-sil/kernytska-kateryna-fedorivna-i31-biography.md"
     },
     {
       "id": "biography-i28-kernytskyi-ivan",
@@ -9083,11 +9083,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i28-kernytskyi-ivan.md",
+          "file": "Data/memories/stara-sil/kernytskyi-ivan-mykolaiovych-i28-biography.md",
           "entryId": "biography-i28-kernytskyi-ivan"
         }
       ],
-      "markdownFile": "memories/біографія-i28-kernytskyi-ivan.md"
+      "markdownFile": "memories/stara-sil/kernytskyi-ivan-mykolaiovych-i28-biography.md"
     },
     {
       "id": "biography-i47-kernytskyi-vasyl",
@@ -9098,11 +9098,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i47-kernytskyi-vasyl.md",
+          "file": "Data/memories/stara-sil/kernytskyi-vasyl-mykolaiovych-i47-biography.md",
           "entryId": "biography-i47-kernytskyi-vasyl"
         }
       ],
-      "markdownFile": "memories/біографія-i47-kernytskyi-vasyl.md"
+      "markdownFile": "memories/stara-sil/kernytskyi-vasyl-mykolaiovych-i47-biography.md"
     },
     {
       "id": "biography-i49-kernytskyi-petro",
@@ -9113,11 +9113,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i49-kernytskyi-petro.md",
+          "file": "Data/memories/stara-sil/kernytskyi-petro-mykolaiovych-i49-biography.md",
           "entryId": "biography-i49-kernytskyi-petro"
         }
       ],
-      "markdownFile": "memories/біографія-i49-kernytskyi-petro.md"
+      "markdownFile": "memories/stara-sil/kernytskyi-petro-mykolaiovych-i49-biography.md"
     },
     {
       "id": "biography-i48-kernytska-mariia",
@@ -9128,11 +9128,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i48-kernytska-mariia.md",
+          "file": "Data/memories/stara-sil/kernytska-mariia-mykolaivna-i48-biography.md",
           "entryId": "biography-i48-kernytska-mariia"
         }
       ],
-      "markdownFile": "memories/біографія-i48-kernytska-mariia.md"
+      "markdownFile": "memories/stara-sil/kernytska-mariia-mykolaivna-i48-biography.md"
     },
     {
       "id": "biography-i41-chaban-illia",
@@ -9143,11 +9143,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i41-chaban-illia.md",
+          "file": "Data/memories/stara-sil/chaban-illia-stepanovych-i41-biography.md",
           "entryId": "biography-i41-chaban-illia"
         }
       ],
-      "markdownFile": "memories/біографія-i41-chaban-illia.md"
+      "markdownFile": "memories/stara-sil/chaban-illia-stepanovych-i41-biography.md"
     },
     {
       "id": "biography-i43-chaban-mariia",
@@ -9158,11 +9158,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i43-chaban-mariia.md",
+          "file": "Data/memories/stara-sil/chaban-mariia-ivanivna-i43-biography.md",
           "entryId": "biography-i43-chaban-mariia"
         }
       ],
-      "markdownFile": "memories/біографія-i43-chaban-mariia.md"
+      "markdownFile": "memories/stara-sil/chaban-mariia-ivanivna-i43-biography.md"
     },
     {
       "id": "biography-i58-chaban-mariia",
@@ -9173,11 +9173,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i58-chaban-mariia.md",
+          "file": "Data/memories/stara-sil/chaban-mariia-stepanivna-i58-biography.md",
           "entryId": "biography-i58-chaban-mariia"
         }
       ],
-      "markdownFile": "memories/біографія-i58-chaban-mariia.md"
+      "markdownFile": "memories/stara-sil/chaban-mariia-stepanivna-i58-biography.md"
     },
     {
       "id": "biography-i42-chaban-anton",
@@ -9189,11 +9189,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i42-chaban-anton.md",
+          "file": "Data/memories/stara-sil/chaban-anton-i42-karolina-biography.md",
           "entryId": "biography-i42-chaban-anton"
         }
       ],
-      "markdownFile": "memories/біографія-i42-chaban-anton.md"
+      "markdownFile": "memories/stara-sil/chaban-anton-i42-karolina-biography.md"
     },
     {
       "id": "biography-i54-chaban-mykhailo",
@@ -9204,11 +9204,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i54-chaban-mykhailo.md",
+          "file": "Data/memories/stara-sil/chaban-mykhailo-illich-i54-biography.md",
           "entryId": "biography-i54-chaban-mykhailo"
         }
       ],
-      "markdownFile": "memories/біографія-i54-chaban-mykhailo.md"
+      "markdownFile": "memories/stara-sil/chaban-mykhailo-illich-i54-biography.md"
     },
     {
       "id": "biography-i55-chaban-stefaniia",
@@ -9219,11 +9219,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/біографія-i55-chaban-stefaniia.md",
+          "file": "Data/memories/stara-sil/chaban-stefaniia-illivna-i55-biography.md",
           "entryId": "biography-i55-chaban-stefaniia"
         }
       ],
-      "markdownFile": "memories/біографія-i55-chaban-stefaniia.md"
+      "markdownFile": "memories/stara-sil/chaban-stefaniia-illivna-i55-biography.md"
     },
     {
       "id": "biography-i20-zubenko-fedor-petrovych",
@@ -9234,11 +9234,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/зубенко-федор-петрович-біографія.md",
+          "file": "Data/memories/chapliivka/zubenko-fedor-petrovych-i20-biography.md",
           "entryId": "biography-i20-zubenko-fedor-petrovych"
         }
       ],
-      "markdownFile": "memories/зубенко-федор-петрович-біографія.md"
+      "markdownFile": "memories/chapliivka/zubenko-fedor-petrovych-i20-biography.md"
     },
     {
       "id": "biography-i12-zubenko-iliia-feodorovych",
@@ -9249,11 +9249,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/зубенко-ілія-феодорович-біографія.md",
+          "file": "Data/memories/chapliivka/zubenko-iliia-feodorovych-i12-biography.md",
           "entryId": "biography-i12-zubenko-iliia-feodorovych"
         }
       ],
-      "markdownFile": "memories/зубенко-ілія-феодорович-біографія.md"
+      "markdownFile": "memories/chapliivka/zubenko-iliia-feodorovych-i12-biography.md"
     },
     {
       "id": "biography-i9-zubenko-makarii-ilianov",
@@ -9264,11 +9264,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/зубенко-макарій-ільянов-біографія.md",
+          "file": "Data/memories/chapliivka/zubenko-makarii-ilianov-i9-biography.md",
           "entryId": "biography-i9-zubenko-makarii-ilianov"
         }
       ],
-      "markdownFile": "memories/зубенко-макарій-ільянов-біографія.md"
+      "markdownFile": "memories/chapliivka/zubenko-makarii-ilianov-i9-biography.md"
     },
     {
       "id": "biography-i6-zaprysar-nataliia-semenova",
@@ -9279,11 +9279,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/заприсар-наталия-семенова-біографія.md",
+          "file": "Data/memories/chapliivka/zaprysar-nataliya-semenova-i6-biography.md",
           "entryId": "biography-i6-zaprysar-nataliia-semenova"
         }
       ],
-      "markdownFile": "memories/заприсар-наталия-семенова-біографія.md"
+      "markdownFile": "memories/chapliivka/zaprysar-nataliya-semenova-i6-biography.md"
     },
     {
       "id": "biography-i5-zubenko-yakov-makarovych",
@@ -9294,11 +9294,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/зубенко-яков-макарович-біографія.md",
+          "file": "Data/memories/chapliivka/zubenko-yakov-makarovych-i5-biography.md",
           "entryId": "biography-i5-zubenko-yakov-makarovych"
         }
       ],
-      "markdownFile": "memories/зубенко-яков-макарович-біографія.md"
+      "markdownFile": "memories/chapliivka/zubenko-yakov-makarovych-i5-biography.md"
     },
     {
       "id": "biography-i4-deikalo-olha-petrivna",
@@ -9309,11 +9309,11 @@
       "provenance": [
         {
           "kind": "supplement",
-          "file": "Data/memories/дейкало-ольга-петрівна-біографія.md",
+          "file": "Data/memories/chapliivka/deikalo-olha-petrivna-i4-biography.md",
           "entryId": "biography-i4-deikalo-olha-petrivna"
         }
       ],
-      "markdownFile": "memories/дейкало-ольга-петрівна-біографія.md"
+      "markdownFile": "memories/chapliivka/deikalo-olha-petrivna-i4-biography.md"
     },
     {
       "id": "biography-i103-chaban-yaroslav-ivanovych",
@@ -9331,7 +9331,7 @@
           "entryId": "biography-i103-chaban-yaroslav-ivanovych"
         }
       ],
-      "markdownFile": "memories/чабан-ярослав-іванович-біографія.md"
+      "markdownFile": "memories/stara-sil/chaban-yaroslav-ivanovych-i103-biography.md"
     }
   ]
 }

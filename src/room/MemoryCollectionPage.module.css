@@ -3,7 +3,7 @@
 .header > nav[aria-label='Основна навігація'] { position: absolute; top: 8px; right: 16px; }
 .headingGroup { display: flex; flex-wrap: wrap; align-items: end; gap: 16px 28px; }
 .branch { display: flex; align-items: center; gap: 8px; color: #58714f; }
-.branch select { min-height: 44px; padding: 8px 32px 8px 12px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; font: inherit; }
+.branch select { min-width: 168px; min-height: 44px; padding: 8px 32px 8px 12px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; font: inherit; }
 .header h1 { display: flex; align-items: center; gap: 12px; margin: 0; color: #35512b; font: 400 clamp(26px, 3vw, 36px)/1.2 var(--font-heading); }
 .header h1 svg { width: 30px; height: 30px; flex-shrink: 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 14px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; font: inherit; text-decoration: none; }
@@ -13,6 +13,7 @@
 .navigation span { flex: 0 0 7ch; color: #64765d; font-variant-numeric: tabular-nums; text-align: center; white-space: nowrap; }
 .people { display: inline-flex; flex-wrap: wrap; gap: 4px 20px; }
 .person { color: #35512b; font: 600 16px/1.4 var(--font-body); letter-spacing: normal; text-decoration: none; text-transform: none; overflow-wrap: anywhere; }
+.years { color: #58714f; font: 400 14px/1.4 var(--font-body); letter-spacing: normal; text-transform: none; }
 @media (max-width: 760px) {
   .header { padding: 68px 4px 8px; }
   .header > nav[aria-label='Основна навігація'] { right: 4px; }

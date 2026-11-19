@@ -3,6 +3,31 @@ import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 import { personFullName } from '../../src/data/person-name'
 
+test('зберігає позицію окремо для кожної родини', async ({ page }) => {
+  const family = familyDataSchema.parse(fixture)
+  family.datasetKind = 'family'
+  for (const branch of ['kernytski', 'zubenko']) {
+    for (const number of [1, 2, 3]) family.memories.push({ ...family.memories[0]!, id: `${branch}-${number}`,
+      personIds: [], branch, title: `${branch} ${number}` })
+  }
+  await page.route('**/data/family.json', route => route.fulfill({ json: family }))
+  await page.goto('/memories?branch=kernytski')
+  const nav = page.getByRole('navigation', { name: 'Перехід між історіями та людьми зі спогадами' })
+  const branch = page.getByLabel('Родина')
+  await nav.getByRole('link', { name: /Вперед/ }).click()
+  await expect(page.getByRole('region', { name: 'kernytski 2' })).toBeVisible()
+  await branch.selectOption('zubenko')
+  await expect(page.getByRole('region', { name: 'zubenko 1' })).toBeVisible()
+  await nav.getByRole('link', { name: /Вперед/ }).click()
+  await nav.getByRole('link', { name: /Вперед/ }).click()
+  await expect(page.getByRole('region', { name: 'zubenko 3' })).toBeVisible()
+  await branch.selectOption('kernytski')
+  await expect(page.getByRole('region', { name: 'kernytski 2' })).toBeVisible()
+  await page.reload()
+  await branch.selectOption('zubenko')
+  await expect(page.getByRole('region', { name: 'zubenko 3' })).toBeVisible()
+})
+
 test('перегляд переходить тільки між людьми зі спогадами', async ({ page }) => {
   const family = familyDataSchema.parse(fixture)
   family.datasetKind = 'family'
@@ -67,6 +92,8 @@ test('перегляд переходить тільки між людьми з�
   await expect(page).toHaveURL(memoriesUrl)
   await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'До мене' }).click()
   await expect(page).toHaveURL(new RegExp(`/tree/${family.config.homePersonId}$`))
+  await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'Спогади' }).click()
+  await expect(page).toHaveURL(memoriesUrl)
   family.memories = []
   await page.goto('/memories')
   await expect(page.getByText('Для цієї родини підготовлених спогадів поки немає.')).toBeVisible()

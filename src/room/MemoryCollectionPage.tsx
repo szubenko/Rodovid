@@ -1,12 +1,27 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { Link, useLocation, useSearchParams } from 'react-router'
 import { personFullName } from '../data/person-name'
+import { tooltipClaimText } from '../graph/person-tooltip-data'
+import type { FamilyData } from '../data/schema'
 import { useFamily } from '../navigation/context'
+import { lastBranchMemoryPath, rememberMemoryPath } from '../navigation/memory-location'
 import { Memories } from './Memories'
 import { FamilyStory } from './FamilyStory'
 import { sortedMemoryPeople, type MemoryBranch } from './memory-branches'
 import { AtlasNavigation, NavigationIcon } from '../edition/AtlasNavigation'
 import styles from './MemoryCollectionPage.module.css'
+
+function lifeDates(family: FamilyData, personId: string): string {
+  const dates = (['birth', 'death'] as const).map(kind => {
+    const eventIds = new Set(family.events.filter(event => event.kind === kind
+      && event.participants.some(participant => participant.personId === personId && participant.role === 'subject')).map(event => event.id))
+    const claims = family.claims.filter(claim => claim.field === 'date' && claim.target.kind === 'event'
+      && eventIds.has(claim.target.id) && tooltipClaimText(family, claim))
+    const claim = claims.find(item => item.isPrimary) ?? claims[0]
+    return claim ? tooltipClaimText(family, claim) : ''
+  })
+  return dates[0] && dates[1] ? `${dates[0]} — ${dates[1]}` : dates[0] ? `нар. ${dates[0]}` : dates[1] ? `пом. ${dates[1]}` : ''
+}
 
 export function MemoryCollectionPage() {
   const family = useFamily()
@@ -27,6 +42,9 @@ export function MemoryCollectionPage() {
     .filter(memory => memory.personIds.includes(person.id))
     .flatMap(memory => memory.personIds)])].filter(id => family.people.some(entry => entry.id === id)) : []
   useEffect(() => {
+    rememberMemoryPath(location.pathname + location.search)
+  }, [location.pathname, location.search])
+  useEffect(() => {
     document.title = `Спогади — ${family.config.title}`
     heading.current?.focus()
     window.scrollTo(0, 0)
@@ -41,14 +59,18 @@ export function MemoryCollectionPage() {
           <span aria-live="polite">{index + 1} / {entries.length}</span>
           <Link className={styles.button} to={linkTo(entries[(index + 1) % entries.length]!)} state={location.state}>Вперед →</Link>
         </nav>}
-        <label className={styles.branch}><span>Родина</span><select value={branch} onChange={event => setParams({ branch: event.target.value }, { state: location.state })}>
-          <option value="kernytski">Керницькі</option><option value="zubenko">Зубенко</option>
+        <label className={styles.branch}><span>Родина</span><select value={branch} onChange={event => {
+          const nextBranch: MemoryBranch = event.target.value === 'zubenko' ? 'zubenko' : 'kernytski'
+          const savedPath = lastBranchMemoryPath(nextBranch)
+          setParams(savedPath ? new URLSearchParams(savedPath.split('?')[1]) : { branch: nextBranch }, { state: location.state })
+        }}>
+          <option value="kernytski">Стара Сіль</option><option value="zubenko">Чапліївка</option>
         </select></label>
       </div>
       <AtlasNavigation personId={person?.id} />
     </header>
     {entry?.kind === 'story' ? <FamilyStory story={entry.story} /> : person ? <Memories personId={person.id} headingExtra={<span className={styles.people}>{memoryPersonIds.map(id =>
-      <Link key={id} className={styles.person} to={`/person/${id}`}>{personFullName(family, id)}</Link>)}</span>} />
+      <span key={id}><Link className={styles.person} to={`/person/${id}`}>{personFullName(family, id)}</Link> <span className={styles.years}>{lifeDates(family, id)}</span></span>)}</span>} />
       : <p>Для цієї родини підготовлених спогадів поки немає.</p>}
   </section>
 }

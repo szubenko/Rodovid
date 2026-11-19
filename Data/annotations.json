@@ -8783,6 +8783,21 @@
   "memories": [],
   "memoryFiles": [
     {
+      "id": "memory-i71-deikalo-war",
+      "personIds": [
+        "I71"
+      ],
+      "title": "Спогад про Николая Дейкала",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/chapliivka/deikalo-nikolay-i71-war.md",
+          "entryId": "memory-i71-deikalo-war"
+        }
+      ],
+      "markdownFile": "memories/chapliivka/deikalo-nikolay-i71-war.md"
+    },
+    {
       "id": "family-story-kernytski-deportation-1947",
       "personIds": [],
       "branch": "kernytski",

@@ -11,16 +11,26 @@ export function Memories({ personId, headingExtra }: { personId: string; heading
   return <section className={`${styles.paper} ${styles.memorySection}`} id="memories" aria-label="Спогади">
     <h2 className={headingExtra ? styles.memoryHeadingWithPerson : undefined}>{headingExtra ?? 'Спогади'}</h2>
     {memories.length === 0 ? <p className={styles.empty}>Підготовлених спогадів поки немає.</p> : <>
-      {memories.map(memory => <article key={memory.id} className={`${styles.memory} ${styles.memoryStory}`} aria-label={memory.title}>
-        {!/^біографія(?:\s|:|$)/iu.test(memory.title.trim()) && <h3>{memory.title}</h3>}{memory.author && <p>Автор: {memory.author}</p>}
-        {memory.mediaIds.flatMap(id => {
+      {memories.map(memory => {
+        const portraitPersonIds = memory.id === 'biography-i103-chaban-yaroslav-ivanovych' ? [] : memory.personIds
+        const imageIds = [...portraitPersonIds.flatMap(id => {
+          const portraitId = family.people.find(person => person.id === id)?.portraitId
+          return portraitId ? [portraitId] : []
+        }), ...memory.mediaIds]
+        const paths = new Set<string>()
+        const images = imageIds.flatMap(id => {
           const image = family.media.find(media => media.id === id && media.mimeType.startsWith('image/'))
-          return image ? [<a key={id} className={styles.memoryPortrait} href={`${import.meta.env.BASE_URL}${image.path}`} target="_blank" rel="noopener noreferrer">
+          if (!image || paths.has(image.path)) return []
+          paths.add(image.path)
+          return [image]
+        })
+        return <article key={memory.id} className={`${styles.memory} ${styles.memoryStory}`} aria-label={memory.title}>
+        {!/^біографія(?:\s|:|$)/iu.test(memory.title.trim()) && <h3>{memory.title}</h3>}{memory.author && <p>Автор: {memory.author}</p>}
+        {images.map(image => <a key={image.id} className={styles.memoryPortrait} href={`${import.meta.env.BASE_URL}${image.path}`} target="_blank" rel="noopener noreferrer">
             <img src={`${import.meta.env.BASE_URL}${image.path}`} alt={image.title} width={image.dimensions?.width} height={image.dimensions?.height} />
-          </a>] : []
-        })}
+          </a>)}
         <Suspense fallback={<p>Відкриваємо спогад…</p>}><MemoryText markdown={withoutRepeatedMemoryName(memory.markdown, [personFullName(family, personId), personName(family, personId), ...(memory.personIds.length === 1 && /^біографія:\s*/iu.test(memory.title) ? [memory.title.replace(/^біографія:\s*/iu, '')] : [])], memory.personIds.length === 1)} /></Suspense>
-      </article>)}
+      </article>})}
     </>}
   </section>
 }

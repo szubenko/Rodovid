@@ -2,6 +2,7 @@ import { Link as RouteLink, useLocation } from 'react-router'
 import { useAudio } from '../audio/context'
 import { useFamily } from '../navigation/context'
 import { ViewLink } from '../navigation/ViewLink'
+import { lastMemoryPath } from '../navigation/memory-location'
 import styles from './AtlasApp.module.css'
 
 export function NavigationIcon({ kind }: { kind: 'book' | 'photos' | 'home' | 'music' }) {
@@ -22,7 +23,7 @@ export function AtlasNavigation({ personId }: { personId?: string }) {
   const currentPath = location.pathname + location.search
   const origin: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
   const memoryOrigin = location.pathname === '/photos' && typeof origin === 'string' && /^\/memories(?:\?[^#]*)?$/.test(origin) ? origin : null
-  const memoryPath = location.pathname === '/memories' ? currentPath : memoryOrigin ?? (personId ? `/memories?person=${encodeURIComponent(personId)}` : '/memories')
+  const memoryPath = location.pathname === '/memories' ? currentPath : memoryOrigin ?? lastMemoryPath() ?? (personId ? `/memories?person=${encodeURIComponent(personId)}` : '/memories')
   return <nav className={styles.navigation} aria-label="Основна навігація">
     <ViewLink to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><NavigationIcon kind="home" /></ViewLink>
     <RouteLink to="/photos" state={{ returnTo: currentPath, returnState: location.state }} aria-label="Галерея" title="Галерея"><NavigationIcon kind="photos" /></RouteLink>

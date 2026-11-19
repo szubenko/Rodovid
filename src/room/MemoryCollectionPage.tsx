@@ -18,6 +18,9 @@ export function MemoryCollectionPage() {
   const requestedIndex = people.findIndex(person => person.id === params.get('person'))
   const index = requestedIndex < 0 ? 0 : requestedIndex
   const person = people[index]
+  const memoryPersonIds = person ? [...new Set([person.id, ...family.memories
+    .filter(memory => memory.personIds.includes(person.id))
+    .flatMap(memory => memory.personIds)])].filter(id => family.people.some(entry => entry.id === id)) : []
   const returnTo: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
   const hasReturn = typeof returnTo === 'string' && /^\/(?:person|tree|horizontal|vertical|vertical-design|isi-relatives|vertical-minimal|relatives|relatives-2)\/I\d+$/.test(returnTo) && family.people.some(entry => entry.id === returnTo.split('/').at(-1))
   useEffect(() => {
@@ -38,7 +41,8 @@ export function MemoryCollectionPage() {
       </div>
       <Link className={styles.button} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`}>← Повернутися до родоводу</Link>
     </header>
-    {person ? <Memories personId={person.id} headingExtra={<Link className={styles.person} to={`/person/${person.id}`}>{personFullName(family, person.id)}</Link>} />
+    {person ? <Memories personId={person.id} headingExtra={<span className={styles.people}>{memoryPersonIds.map(id =>
+      <Link key={id} className={styles.person} to={`/person/${id}`}>{personFullName(family, id)}</Link>)}</span>} />
       : <p>Підготовлених спогадів поки немає.</p>}
   </section>
 }

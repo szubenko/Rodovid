@@ -8,4 +8,5 @@
 .button:disabled { opacity: 0.45; }
 .navigation { display: flex; align-items: center; gap: 12px; }
 .navigation span { color: #64765d; }
+.people { display: inline-flex; flex-wrap: wrap; gap: 4px 20px; }
 .person { color: #35512b; font: 600 16px/1.4 var(--font-body); letter-spacing: normal; text-decoration: none; text-transform: none; overflow-wrap: anywhere; }

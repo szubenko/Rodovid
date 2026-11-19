@@ -15,14 +15,15 @@ export function Places({ personId }: { personId: string }) {
   const unlocated = entries.filter(entry => !entry.place.coordinates && !hasAreaBoundary(entry.place)).length
 
   useEffect(() => {
-    if (showMap) return
+    if (showMap || !section.current) return
     const observer = new IntersectionObserver(items => {
       if (items.some(item => item.isIntersecting)) { setShowMap(true); observer.disconnect() }
     }, { rootMargin: '150px' })
     observer.observe(section.current!)
     return () => observer.disconnect()
-  }, [showMap])
+  }, [showMap, entries.length])
 
+  if (!entries.length) return null
   return <section ref={section} className={`${room.paper} ${styles.places}`} id="places" aria-label="Місця життя">
     <h2>Місця життя</h2>
     <div className={styles.layout}>
@@ -35,7 +36,6 @@ export function Places({ personId }: { personId: string }) {
         {unlocated > 0 && <p className={styles.locationNote}>Місця без точних координат наведено у списку.</p>}
       </div>
       <div className={styles.list} aria-label="Список місць">
-        {entries.length === 0 && <p className={room.empty}>Місць подій у записах немає. Показано оглядову карту.</p>}
         {entries.map(({ place }) => <article key={place.id} id={`place-${place.id}`} className={styles.entry}>
           <button type="button" className={styles.placeChoice} onClick={() => selectPlace(place.id)} aria-pressed={selected === place.id}>
             <span className={styles.dot} aria-hidden="true" />

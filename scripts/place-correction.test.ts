@@ -45,6 +45,12 @@ it('preserves the brothers’ event links and prepares both map points for Yaros
   expect(plan.summary.conflicts).toEqual([])
 })
 
+it('maps the Kopeysk record used in Ivan’s family timeline', () => {
+  const entry = personPlaces(family, 'I34').find(({ place }) => place.originalName === 'Копейск, Челябинская область, Росія, Радянський Союз')!
+  expect(entry.place.coordinates).toEqual({ latitude: 55.117264, longitude: 61.614417 })
+  expect(entry.place.description).toContain('±4400 м')
+})
+
 it('maps Artemivsk for Maria, Mykhailo and the owner-confirmed city for Ivan while preserving the original place wording', () => {
   for (const personId of ['I32', 'I34', 'I104']) {
     const death = personPlaces(family, personId).find(entry => entry.events.some(({ event }) => event.kind === 'death'))!

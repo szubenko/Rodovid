@@ -5,7 +5,7 @@ import { groupPlaceEntries, personPlaces } from '../../src/room/places-data'
 
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 
-test('кожна людина має видиму карту, а точки відповідають лише підготовленим місцям', async ({ page }, info) => {
+test('карта показана за наявності місць, а точки відповідають підготовленим координатам', async ({ page }, info) => {
   test.setTimeout(300_000)
   const externalRequests: string[] = []
   page.on('request', request => {
@@ -14,13 +14,16 @@ test('кожна людина має видиму карту, а точки ві
   for (const person of family.people) {
     await page.goto(`/person/${person.id}`)
     const places = page.locator('#places')
-    await places.scrollIntoViewIfNeeded()
     const entries = groupPlaceEntries(personPlaces(family, person.id))
+    if (!entries.length) {
+      await expect(places, person.id).toHaveCount(0)
+      continue
+    }
+    await places.scrollIntoViewIfNeeded()
     await expect(places.getByLabel('Географічна карта місць'), person.id).toBeVisible()
     await expect(places.locator('.rodovid-place-region'), person.id).toHaveCount(27)
     await expect(places.locator('[data-place-marker]'), person.id).toHaveCount(entries.filter(entry => entry.place.coordinates).length)
     await expect(places.getByLabel('Список місць').getByRole('button'), person.id).toHaveCount(entries.length)
-    if (!entries.length) await expect(places).toContainText('Показано оглядову карту')
     if (person.id === 'I1') {
       await expect(places.locator('[data-place-marker]')).toHaveAttribute('aria-label', /^Байконур/)
       await expect(places).not.toContainText('Народження · 1987')

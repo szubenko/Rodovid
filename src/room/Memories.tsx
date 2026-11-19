@@ -1,5 +1,7 @@
 import { lazy, Suspense, type ReactNode } from 'react'
 import { useFamily } from '../navigation/context'
+import { personFullName, personName } from '../data/person-name'
+import { withoutRepeatedMemoryName } from './memory-heading'
 import styles from './Room.module.css'
 const MemoryText = lazy(() => import('./MemoryText'))
 
@@ -17,7 +19,7 @@ export function Memories({ personId, headingExtra }: { personId: string; heading
             <img src={`${import.meta.env.BASE_URL}${image.path}`} alt={image.title} width={image.dimensions?.width} height={image.dimensions?.height} />
           </a>] : []
         })}
-        <Suspense fallback={<p>Відкриваємо спогад…</p>}><MemoryText markdown={memory.markdown} /></Suspense>
+        <Suspense fallback={<p>Відкриваємо спогад…</p>}><MemoryText markdown={withoutRepeatedMemoryName(memory.markdown, [personFullName(family, personId), personName(family, personId), ...(memory.personIds.length === 1 && /^біографія:\s*/iu.test(memory.title) ? [memory.title.replace(/^біографія:\s*/iu, '')] : [])], memory.personIds.length === 1)} /></Suspense>
       </article>)}
     </>}
   </section>

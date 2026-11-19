@@ -60,10 +60,11 @@ export function PhotoGallery({ personId }: { personId: string }) {
   const person = family.people.find(p => p.id === personId)!
   const ids = [...new Set(person.photoIds)]
   const items = sortPhotosChronologically(ids.flatMap(id => { const media = family.media.find(m => m.id === id && m.mimeType.startsWith('image/')); return media ? [media] : [] }))
+  if (!items.length) return null
   return <section className={`${styles.paper} ${styles.photoAlbum}`} id="photos" aria-label="Фотографії">
     <div className={styles.photoAlbumHeading}>
       <h2><AlbumIcon kind="camera" />Фотографії</h2>
     </div>
-    {items.length ? <ImageGallery key={personId} items={items} primaryId={person.portraitId} layout="details" /> : <p className={styles.empty}>Фотографій поки немає.</p>}
+    <ImageGallery key={personId} items={items} primaryId={person.portraitId} layout="details" />
   </section>
 }

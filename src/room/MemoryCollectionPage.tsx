@@ -4,6 +4,7 @@ import { personFullName } from '../data/person-name'
 import { useFamily } from '../navigation/context'
 import { Memories } from './Memories'
 import { memoryBranchPeople, type MemoryBranch } from './memory-branches'
+import { AtlasNavigation, NavigationIcon } from '../edition/AtlasNavigation'
 import styles from './MemoryCollectionPage.module.css'
 
 export function MemoryCollectionPage() {
@@ -24,8 +25,6 @@ export function MemoryCollectionPage() {
   const memoryPersonIds = person ? [...new Set([person.id, ...family.memories
     .filter(memory => memory.personIds.includes(person.id))
     .flatMap(memory => memory.personIds)])].filter(id => family.people.some(entry => entry.id === id)) : []
-  const returnTo: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
-  const hasReturn = typeof returnTo === 'string' && /^\/(?:person|tree|horizontal|vertical|vertical-design|isi-relatives|vertical-minimal|relatives|relatives-2)\/I\d+$/.test(returnTo) && family.people.some(entry => entry.id === returnTo.split('/').at(-1))
   useEffect(() => {
     document.title = `Спогади — ${family.config.title}`
     heading.current?.focus()
@@ -35,17 +34,17 @@ export function MemoryCollectionPage() {
   return <section className={styles.page} aria-labelledby="memories-title">
     <header className={styles.header}>
       <div className={styles.headingGroup}>
-        <div><p className={styles.kicker}>Сімейний архів</p><h1 id="memories-title" ref={heading} tabIndex={-1}>Спогади</h1></div>
+        <h1 id="memories-title" ref={heading} tabIndex={-1}><NavigationIcon kind="book" />Спогади</h1>
         {person && <nav className={styles.navigation} aria-label="Перехід між людьми зі спогадами">
           <Link className={styles.button} to={linkTo(people[(index - 1 + people.length) % people.length]!.id)} state={location.state}>← Назад</Link>
           <span aria-live="polite">{index + 1} / {people.length}</span>
           <Link className={styles.button} to={linkTo(people[(index + 1) % people.length]!.id)} state={location.state}>Вперед →</Link>
         </nav>}
+        <label className={styles.branch}><span>Родина</span><select value={branch} onChange={event => setParams({ branch: event.target.value }, { state: location.state })}>
+          <option value="kernytski">Керницькі</option><option value="zubenko">Зубенко</option>
+        </select></label>
       </div>
-      <label className={styles.branch}><span>Родина</span><select value={branch} onChange={event => setParams({ branch: event.target.value }, { state: location.state })}>
-        <option value="kernytski">Керницькі</option><option value="zubenko">Зубенко</option>
-      </select></label>
-      <Link className={styles.button} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`}>← Повернутися до родоводу</Link>
+      <AtlasNavigation personId={person?.id} />
     </header>
     {person ? <Memories personId={person.id} headingExtra={<span className={styles.people}>{memoryPersonIds.map(id =>
       <Link key={id} className={styles.person} to={`/person/${id}`}>{personFullName(family, id)}</Link>)}</span>} />

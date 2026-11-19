@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
-import { Link as RouteLink, Navigate, Route, Routes, useLocation, useParams } from 'react-router'
+import { Navigate, Route, Routes, useLocation, useParams } from 'react-router'
 import { FamilyProvider, ViewProvider } from '../navigation/Providers'
 import { useFamily, useView } from '../navigation/context'
 import { ViewLink as Link } from '../navigation/ViewLink'
@@ -17,7 +17,7 @@ import { PhotoCollectionPage } from '../room/PhotoCollectionPage'
 import { MemoryCollectionPage } from '../room/MemoryCollectionPage'
 import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
-import { useAudio } from '../audio/context'
+import { AtlasNavigation } from './AtlasNavigation'
 import chapliivkaArms from '../appearance/loading/chapliivka.png'
 import staraSilArms from '../appearance/loading/stara-sil.svg'
 import styles from './AtlasApp.module.css'
@@ -73,8 +73,6 @@ function Missing() {
 
 function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   const family = useFamily()
-  const { musicAvailable, musicActive, status: audioStatus, toggleMusic } = useAudio()
-  const soundLabel = !musicAvailable ? 'Музика ще не підготовлена' : musicActive ? 'Вимкнути звук' : 'Увімкнути звук'
   const isMap = screen !== 'person'
   const { personId } = useParams()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -95,19 +93,12 @@ function PersonView({ screen }: { screen: MapScreen | 'person' }) {
   return <>
     <header className={styles.personHeader}>
       <div className={styles.personHeading}>
-        <h1 ref={heading} tabIndex={-1}>{personFullName(family, personId)}</h1>
+        <h1 ref={heading} tabIndex={-1}><Icon kind="tree" />{personFullName(family, personId)}</h1>
         {years && <p className={styles.years}>{years}</p>}
       </div>
-      <nav className={styles.navigation} aria-label="Основна навігація">
-        <RouteLink to={`/memories?person=${encodeURIComponent(personId)}`} state={{ returnTo: `/${screen}/${personId}` }} aria-label="Спогади" title="Спогади"><Icon kind="book" /></RouteLink>
-        <RouteLink to="/photos" state={{ returnTo: `/${screen}/${personId}` }} aria-label="Галерея" title="Галерея"><Icon kind="photos" /></RouteLink>
-        <Link to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><Icon kind="home" /></Link>
-        <button type="button" onClick={toggleMusic} disabled={!musicAvailable} aria-label={soundLabel} title={soundLabel} aria-pressed={musicActive}><Icon kind="music" /></button>
-        {audioStatus === 'starting' && <span role="status" className={styles.srOnly}>Музика завантажується…</span>}
-        {audioStatus === 'error' && <p role="status" className={styles.audioStatus}>Музика недоступна або браузер заблокував відтворення. Натисніть ноту, щоб спробувати ще раз.</p>}
-      </nav>
+      <AtlasNavigation personId={personId} />
     </header>
-    <div className={styles.viewTabs} aria-label="Перегляд людини">
+    <div className={`${styles.viewTabs} ${isMap ? styles.mapViewTabs : ''}`} aria-label="Перегляд людини">
       <Link to={`/tree/${personId}`} aria-current={screen === 'tree' ? 'page' : undefined}><Icon kind="tree" />Родинне коло</Link>
       <Link to={`/person/${personId}`} aria-current={screen === 'person' ? 'page' : undefined}><Icon kind="book" />Історія життя</Link>
       <Link to={`/horizontal/${personId}`} aria-current={screen === 'horizontal' ? 'page' : undefined}><Icon kind="horizontal" />Горизонтальний</Link>
@@ -145,7 +136,7 @@ function Workspace() {
           {import.meta.env.DEV && <Route path="/isi-relatives/:personId" element={<PersonView screen="isi-relatives" />} />}
           <Route path="/vertical-minimal/:personId" element={<PersonView screen="vertical-minimal" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
-          <Route path="/photos" element={<PhotoCollectionPage />} />
+          <Route path="/photos" element={<PhotoCollectionPage showAtlasNavigation />} />
           <Route path="/memories" element={<MemoryCollectionPage />} />
           <Route path="*" element={<Missing />} />
         </Routes>

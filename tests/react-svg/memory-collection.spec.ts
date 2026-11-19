@@ -15,7 +15,12 @@ test('перегляд переходить тільки між людьми з�
   family.memories[0]!.title = 'Біографія Якова Макаровича Зубенка'
   await page.route('**/data/family.json', route => route.fulfill({ json: family }))
   await page.goto(`/tree/${first.id}`)
+  const initialPanel = (await page.getByRole('navigation', { name: 'Основна навігація' }).boundingBox())!
+  const mapSurface = (await page.getByRole('region', { name: 'Радіальна карта родини' }).locator('..').boundingBox())!
   await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'Спогади' }).click()
+  const memoryPanel = (await page.getByRole('navigation', { name: 'Основна навігація' }).boundingBox())!
+  expect(memoryPanel.x).toBeCloseTo(initialPanel.x, 0)
+  expect(memoryPanel.y).toBeCloseTo(initialPanel.y, 0)
   await expect(page.getByLabel('Родина')).toHaveValue('kernytski')
   const personLinks = page.locator('#memories > h2').getByRole('link')
   const personLink = personLinks.first()
@@ -44,8 +49,24 @@ test('перегляд переходить тільки між людьми з�
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   await expect(page.locator('#memories')).toHaveCSS('border-radius', '12px')
   await expect(page.locator('#memories > h2')).toHaveCSS('text-transform', 'uppercase')
-  await page.getByRole('link', { name: /Повернутися до родоводу/ }).click()
-  await expect(page).toHaveURL(new RegExp(`/tree/${first.id}$`))
+  await expect(page.locator('#memories-title svg')).toBeVisible()
+  const memorySection = (await page.locator('#memories').boundingBox())!
+  const mainNavigation = page.getByRole('navigation', { name: 'Основна навігація' })
+  await expect(mainNavigation.getByRole('link', { name: 'Спогади' })).toBeVisible()
+  await expect(mainNavigation.getByRole('button')).toHaveCount(1)
+  const memoriesUrl = page.url()
+  await mainNavigation.getByRole('link', { name: 'Галерея' }).click()
+  await expect(page).toHaveURL(/\/photos$/)
+  const photoCard = (await page.locator('figure[data-photo-id]').first().boundingBox())!
+  expect(photoCard.x).toBeCloseTo(memorySection.x, 0)
+  expect(photoCard.x).toBeCloseTo(mapSurface.x, 0)
+  const photoPanel = (await page.getByRole('navigation', { name: 'Основна навігація' }).boundingBox())!
+  expect(photoPanel.x).toBeCloseTo(initialPanel.x, 0)
+  expect(photoPanel.y).toBeCloseTo(initialPanel.y, 0)
+  await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'Спогади' }).click()
+  await expect(page).toHaveURL(memoriesUrl)
+  await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'До мене' }).click()
+  await expect(page).toHaveURL(new RegExp(`/tree/${family.config.homePersonId}$`))
   family.memories = []
   await page.goto('/memories')
   await expect(page.getByText('Для цієї родини підготовлених спогадів поки немає.')).toBeVisible()

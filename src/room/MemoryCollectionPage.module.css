@@ -1,14 +1,19 @@
-.page { min-width: 0; padding: clamp(12px, 2vw, 28px) 0; color: #243b34; }
-.header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.page { min-width: 0; color: #243b34; }
+.header { position: relative; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; min-height: 60px; margin-bottom: 8px; padding: 8px 244px 8px 16px; }
+.header > nav[aria-label='Основна навігація'] { position: absolute; top: 8px; right: 16px; }
 .headingGroup { display: flex; flex-wrap: wrap; align-items: end; gap: 16px 28px; }
-.branch { display: flex; align-items: center; gap: 8px; margin-left: auto; color: #58714f; }
+.branch { display: flex; align-items: center; gap: 8px; color: #58714f; }
 .branch select { min-height: 44px; padding: 8px 32px 8px 12px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; font: inherit; }
-.kicker { margin: 0 0 8px; color: #58714f; font: 650 11px/1.4 var(--font-body); text-transform: uppercase; letter-spacing: 0.1em; }
-.header h1 { margin: 0; color: #35512b; font: 400 clamp(26px, 3vw, 36px)/1.2 var(--font-heading); }
+.header h1 { display: flex; align-items: center; gap: 12px; margin: 0; color: #35512b; font: 400 clamp(26px, 3vw, 36px)/1.2 var(--font-heading); }
+.header h1 svg { width: 30px; height: 30px; flex-shrink: 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 14px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; font: inherit; text-decoration: none; }
 .button:hover { background: #e7efdf; }
 .button:disabled { opacity: 0.45; }
 .navigation { display: flex; align-items: center; gap: 12px; }
-.navigation span { color: #64765d; }
+.navigation span { flex: 0 0 7ch; color: #64765d; font-variant-numeric: tabular-nums; text-align: center; white-space: nowrap; }
 .people { display: inline-flex; flex-wrap: wrap; gap: 4px 20px; }
 .person { color: #35512b; font: 600 16px/1.4 var(--font-body); letter-spacing: normal; text-decoration: none; text-transform: none; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .header { padding: 68px 4px 8px; }
+  .header > nav[aria-label='Основна навігація'] { right: 4px; }
+}

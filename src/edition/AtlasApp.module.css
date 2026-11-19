@@ -9,7 +9,7 @@
 .brandOrnament svg { width: 15px; height: 15px; flex-shrink: 0; }
 .brand small { display: block; color: #668174; font: 7px/1.5 var(--font-body); letter-spacing: 0.14em; white-space: nowrap; }
 .sidebarBrand { padding-block: 0.75rem 1.4rem; border-bottom: 1px solid #bccabb; }
-.navigation { position: relative; display: flex; flex-shrink: 0; align-items: center; gap: 12px; }
+.navigation { position: relative; display: flex; flex-shrink: 0; align-self: flex-start; align-items: center; gap: 12px; }
 .navigation a, .navigation button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 1px solid #d9e1d5; border-radius: 8px; background: #fff; color: var(--color-text); font: inherit; text-decoration: none; cursor: pointer; }
 .navigation a:hover, .navigation button:enabled:hover { background: #edf3e9; }
 .navigation button[aria-pressed='true'] { background: #e1ecd9; border-color: var(--color-accent); color: var(--color-accent); }
@@ -45,12 +45,14 @@
 .main { min-width: 0; padding: 0 0.75rem 0.5rem; }
 .personHeader { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 4px; padding: 8px 16px; }
 .personHeading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.25rem 1rem; min-width: 0; }
-.personHeader h1 { margin: 0; color: #213f31; font: 400 clamp(25px, 2.6vw, 32px)/1.2 var(--font-heading); overflow-wrap: anywhere; }
+.personHeader h1 { display: flex; align-items: center; gap: 12px; min-width: 0; margin: 0; color: #213f31; font: 400 clamp(25px, 2.6vw, 32px)/1.2 var(--font-heading); overflow-wrap: anywhere; }
+.personHeader h1 svg { width: 30px; height: 30px; flex-shrink: 0; }
 .years { margin: 0; color: var(--color-muted); font-size: 14px; line-height: 1.35; }
 .primary { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 0.65rem; min-height: 46px; padding: 0.7rem 1rem; border: 1px solid #29664f; border-radius: 6px; background: #29664f; color: #fff; font-size: 0.75rem; text-decoration: none; }
 .primary:hover { background: #204f3e; }
 .primary svg:last-child { width: 16px; }
 .viewTabs { display: flex; align-items: center; flex-wrap: nowrap; column-gap: 1.5rem; overflow-x: auto; scrollbar-width: thin; border-bottom: 1px solid #dce4d5; margin-bottom: 0.4rem; }
+.mapViewTabs { margin-top: -0.5rem; }
 .viewTabs a { display: inline-flex; flex-shrink: 0; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0.5rem 0.1rem; border-bottom: 2px solid transparent; color: var(--color-muted); font-size: 0.78rem; text-decoration: none; white-space: nowrap; }
 .viewTabs a[aria-current] { border-bottom-color: #29664f; color: #29664f; }
 .viewTabs a svg { flex-shrink: 0; }

@@ -5,6 +5,7 @@ import type { Media } from '../data/schema'
 import { collectFamilyPhotos, photoCollectionCaption } from './photo-collection'
 import { photoPersonMentionMatcher } from './photo-person-mentions'
 import { AlbumIcon } from './PhotoDecoration'
+import { AtlasNavigation } from '../edition/AtlasNavigation'
 import styles from './PhotoCollectionPage.module.css'
 
 function CollectionImage({ media }: { media: Media }) {
@@ -12,7 +13,7 @@ function CollectionImage({ media }: { media: Media }) {
   return <div className={styles.image}>{failed ? <p>Фотографія недоступна</p> : <img src={`/${media.path}`} alt={media.title} width={media.dimensions?.width} height={media.dimensions?.height} loading="lazy" onError={() => setFailed(true)} />}</div>
 }
 
-export function PhotoCollectionPage() {
+export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlasNavigation?: boolean }) {
   const family = useFamily()
   const location = useLocation()
   const heading = useRef<HTMLHeadingElement>(null)
@@ -22,16 +23,17 @@ export function PhotoCollectionPage() {
     ? <Link key={index} className={styles.titleLink} to={`/person/${part.personId}`}>{part.text}</Link>
     : part.text)
   const returnTo: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
-  const hasReturn = typeof returnTo === 'string' && /^\/(?:person|tree|horizontal|vertical|vertical-design|isi-relatives|vertical-minimal|relatives|relatives-2)\/I\d+$/.test(returnTo) && family.people.some(person => person.id === returnTo.split('/').at(-1))
+  const fromMemories = typeof returnTo === 'string' && /^\/memories(?:\?[^#]*)?$/.test(returnTo)
+  const hasReturn = typeof returnTo === 'string' && (fromMemories || (/^\/(?:person|tree|horizontal|vertical|vertical-design|isi-relatives|vertical-minimal|relatives|relatives-2)\/I\d+$/.test(returnTo) && family.people.some(person => person.id === returnTo.split('/').at(-1))))
   useEffect(() => {
     document.title = `Фотогалерея — ${family.config.title}`
     heading.current?.focus()
     window.scrollTo(0, 0)
   }, [family.config.title])
-  return <section className={styles.page} aria-labelledby="photo-collection-title">
+  return <section className={`${styles.page} ${showAtlasNavigation ? styles.atlasPage : ''}`} aria-labelledby="photo-collection-title">
     <header className={styles.header}>
-      <div><p className={styles.kicker}>Сімейний архів</p><h1 id="photo-collection-title" ref={heading} tabIndex={-1}><AlbumIcon kind="camera" />Фотогалерея</h1></div>
-      <Link className={styles.back} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`}>{hasReturn ? returnTo.startsWith('/person/') ? '← Повернутися до людини' : '← Повернутися до родоводу' : '← До родоводу'}</Link>
+      <h1 id="photo-collection-title" ref={heading} tabIndex={-1}><AlbumIcon kind="camera" />Фотогалерея</h1>
+      {showAtlasNavigation ? <AtlasNavigation /> : <Link className={styles.back} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`} state={fromMemories ? (location.state as { returnState?: unknown } | null)?.returnState : undefined}>{hasReturn ? fromMemories ? '← Повернутися до спогадів' : returnTo.startsWith('/person/') ? '← Повернутися до людини' : '← Повернутися до родоводу' : '← До родоводу'}</Link>}
     </header>
     {photos.length === 0 ? <p className={styles.empty}>Фотографій поки немає.</p> : <div className={styles.grid}>
       {photos.map(photo => {

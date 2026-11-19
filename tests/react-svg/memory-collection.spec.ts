@@ -8,11 +8,15 @@ test('перегляд переходить тільки між людьми з�
   family.datasetKind = 'family'
   const first = family.people[0]!
   const second = family.people[1]!
+  family.people.push({ ...first, id: 'I3' })
+  family.relationships.push({ ...family.relationships[0]!, id: 'rel-parent-1', kind: 'parent-child', fromPersonId: 'I3', toPersonId: first.id })
+  family.relationships.push({ ...family.relationships[0]!, id: 'rel-parent-2', kind: 'parent-child', fromPersonId: 'I3', toPersonId: second.id })
   family.memories[0]!.personIds = [first.id, second.id]
   family.memories[0]!.title = 'Біографія Якова Макаровича Зубенка'
   await page.route('**/data/family.json', route => route.fulfill({ json: family }))
   await page.goto(`/tree/${first.id}`)
   await page.getByRole('navigation', { name: 'Основна навігація' }).getByRole('link', { name: 'Спогади' }).click()
+  await expect(page.getByLabel('Родина')).toHaveValue('kernytski')
   const personLinks = page.locator('#memories > h2').getByRole('link')
   const personLink = personLinks.first()
   await expect(personLink).toHaveText(personFullName(family, first.id))
@@ -44,5 +48,5 @@ test('перегляд переходить тільки між людьми з�
   await expect(page).toHaveURL(new RegExp(`/tree/${first.id}$`))
   family.memories = []
   await page.goto('/memories')
-  await expect(page.getByText('Підготовлених спогадів поки немає.')).toBeVisible()
+  await expect(page.getByText('Для цієї родини підготовлених спогадів поки немає.')).toBeVisible()
 })

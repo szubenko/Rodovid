@@ -8813,6 +8813,20 @@
       "markdownFile": "memories/chapliivka/deikalo-nikolay-i71-war.md"
     },
     {
+      "id": "family-story-chabany-kernytski-stara-sil-ropa",
+      "personIds": [],
+      "branch": "kernytski",
+      "title": "Рід Чабанів і Керницьких",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/stara-sil/kernytski-chabany-stara-sil-stara-ropa.md",
+          "entryId": "family-story-chabany-kernytski-stara-sil-ropa"
+        }
+      ],
+      "markdownFile": "memories/stara-sil/kernytski-chabany-stara-sil-stara-ropa.md"
+    },
+    {
       "id": "family-story-kernytski-deportation-1947",
       "personIds": [],
       "branch": "kernytski",
@@ -8828,20 +8842,6 @@
         }
       ],
       "markdownFile": "memories/stara-sil/kernytski-deportation-1947.md"
-    },
-    {
-      "id": "family-story-chabany-kernytski-stara-sil-ropa",
-      "personIds": [],
-      "branch": "kernytski",
-      "title": "Рід Чабанів і Керницьких",
-      "provenance": [
-        {
-          "kind": "supplement",
-          "file": "Data/memories/stara-sil/kernytski-chabany-stara-sil-stara-ropa.md",
-          "entryId": "family-story-chabany-kernytski-stara-sil-ropa"
-        }
-      ],
-      "markdownFile": "memories/stara-sil/kernytski-chabany-stara-sil-stara-ropa.md"
     },
     {
       "id": "family-story-sidora-fedora-i-halyny",

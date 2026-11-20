@@ -8,6 +8,7 @@ const MemoryText = lazy(() => import('./MemoryText'))
 export function Memories({ personId, headingExtra }: { personId: string; headingExtra?: ReactNode }) {
   const family = useFamily()
   const memories = family.memories.filter(memory => memory.personIds.includes(personId))
+  const displayedPortraitPaths = new Set<string>()
   return <section className={`${styles.paper} ${styles.memorySection}`} id="memories" aria-label="Спогади">
     <h2 className={headingExtra ? styles.memoryHeadingWithPerson : undefined}>{headingExtra ?? 'Спогади'}</h2>
     {memories.length === 0 ? <p className={styles.empty}>Підготовлених спогадів поки немає.</p> : <>
@@ -15,13 +16,14 @@ export function Memories({ personId, headingExtra }: { personId: string; heading
         const portraitPersonIds = memory.id === 'biography-i103-chaban-yaroslav-ivanovych' ? [] : memory.personIds
         const imageIds = [...portraitPersonIds.flatMap(id => {
           const portraitId = family.people.find(person => person.id === id)?.portraitId
-          return portraitId ? [portraitId] : []
-        }), ...memory.mediaIds]
+          return portraitId ? [{ id: portraitId, portrait: true }] : []
+        }), ...memory.mediaIds.map(id => ({ id, portrait: false }))]
         const paths = new Set<string>()
-        const images = imageIds.flatMap(id => {
+        const images = imageIds.flatMap(({ id, portrait }) => {
           const image = family.media.find(media => media.id === id && media.mimeType.startsWith('image/'))
-          if (!image || paths.has(image.path)) return []
+          if (!image || paths.has(image.path) || (portrait && displayedPortraitPaths.has(image.path))) return []
           paths.add(image.path)
+          if (portrait) displayedPortraitPaths.add(image.path)
           return [image]
         })
         return <article key={memory.id} className={`${styles.memory} ${styles.memoryStory}`} aria-label={memory.title}>

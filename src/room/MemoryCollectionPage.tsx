@@ -7,7 +7,7 @@ import { useFamily } from '../navigation/context'
 import { lastBranchMemoryPath, rememberMemoryPath } from '../navigation/memory-location'
 import { Memories } from './Memories'
 import { FamilyStory } from './FamilyStory'
-import { sortedMemoryPeople, type MemoryBranch } from './memory-branches'
+import { memoryPagePersonId, sortedMemoryPeople, type MemoryBranch } from './memory-branches'
 import { AtlasNavigation, NavigationIcon } from '../edition/AtlasNavigation'
 import styles from './MemoryCollectionPage.module.css'
 
@@ -34,7 +34,8 @@ export function MemoryCollectionPage() {
     ...family.memories.filter(memory => memory.branch === branch).map(story => ({ kind: 'story' as const, id: story.id, story })),
     ...people.map(person => ({ kind: 'person' as const, id: person.id, person })),
   ], [family, branch, people])
-  const requestedIndex = entries.findIndex(entry => entry.kind === 'story' ? entry.id === params.get('story') : entry.id === params.get('person'))
+  const requestedPersonId = memoryPagePersonId(family, people, params.get('person'))
+  const requestedIndex = entries.findIndex(entry => entry.kind === 'story' ? entry.id === params.get('story') : entry.id === requestedPersonId)
   const index = requestedIndex < 0 ? 0 : requestedIndex
   const entry = entries[index]
   const person = entry?.kind === 'person' ? entry.person : undefined

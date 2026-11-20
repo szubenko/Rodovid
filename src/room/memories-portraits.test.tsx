@@ -32,4 +32,15 @@ describe('портрети у спогадах', () => {
     const html = renderToStaticMarkup(<FamilyContext value={family}><Memories personId="I1" /></FamilyContext>)
     expect(html).not.toContain('<img ')
   })
+  it('не повторює портрет людини в окремому та спільному спогадах', () => {
+    const family = familyDataSchema.parse(fixture)
+    family.people[1]!.portraitId = 'media-scan'
+    const shared = family.memories[0]!
+    family.memories = [{ ...shared, id: 'individual', personIds: ['I1'] }, { ...shared, id: 'shared', personIds: ['I1', 'I2'] }]
+    const html = renderToStaticMarkup(<FamilyContext value={family}><Memories personId="I1" /></FamilyContext>)
+    expect(html.match(/<img /g)).toHaveLength(2)
+    expect(html.match(/src="\/assets\/photos\/fixture.jpg"/g)).toHaveLength(1)
+    expect(html.match(/src="\/assets\/documents\/fixture.png"/g)).toHaveLength(1)
+    expect(html.match(/<article/g)).toHaveLength(2)
+  })
 })

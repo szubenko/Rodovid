@@ -12,6 +12,23 @@ describe('ілюстрації родинної історії', () => {
     expect(markup).not.toContain('<script')
     expect(markup).not.toContain('color:blue')
   })
+  it('показує червоним текст із атрибутом color', () => {
+    const markup = renderToStaticMarkup(<MemoryText markdown={'<span color="red">Треба перевірити</span>'} />)
+    expect(markup).toContain('<span style="color:red">Треба перевірити</span>')
+  })
+  it('центрує дозволений абзац, зберігаючи Markdown та блокуючи інший HTML', () => {
+    const markup = renderToStaticMarkup(<MemoryText markdown={'<p align="center">Текст **по центру** <span color="red">червоний</span> <img src=x onerror=alert(1)></p>\n\nЗвичайний текст.'} />)
+    expect(markup).toContain('<div style="text-align:center">\n<p>Текст <strong>по центру</strong> <span style="color:red">червоний</span> ')
+    expect(markup).toContain('<p>Звичайний текст.</p>')
+    expect(markup).not.toContain('onerror')
+    expect(markup).not.toContain('<img')
+  })
+  it('показує наступний текст без порожнього рядка після центрованого абзацу', () => {
+    const markup = renderToStaticMarkup(<MemoryText markdown={'<p align="center">Заголовок</p>\nТаймир – **півострів**.\nЩе рядок.\n\nНаступний абзац.'} />)
+    expect(markup).toContain('<div style="text-align:center">\n<p>Заголовок</p>')
+    expect(markup).toContain('<p>Таймир – <strong>півострів</strong>.\nЩе рядок.</p>')
+    expect(markup).toContain('<p>Наступний абзац.</p>')
+  })
   it('показує тільки явно прив’язані зображення у вказаному порядку', () => {
     const family = familyDataSchema.parse(fixture)
     const photo = family.media.find(item => item.id === 'media-photo')!

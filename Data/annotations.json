@@ -8783,11 +8783,26 @@
   "memories": [],
   "memoryFiles": [
     {
+      "id": "memory-i51-kernytskyi-roman",
+      "personIds": [
+        "I51"
+      ],
+      "title": "Біографія: Роман Керницький",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/memories/stara-sil/kernytskyi-roman-i51.md",
+          "entryId": "memory-i51-kernytskyi-roman"
+        }
+      ],
+      "markdownFile": "memories/stara-sil/kernytskyi-roman-i51.md"
+    },
+    {
       "id": "memory-i71-deikalo-war",
       "personIds": [
         "I71"
       ],
-      "title": "Спогад про Николая Дейкала",
+      "title": "Біографія: Іван Петров Дейкало",
       "provenance": [
         {
           "kind": "supplement",
@@ -8883,7 +8898,7 @@
       "personIds": [
         "I50"
       ],
-      "title": "Михайло Керницький",
+      "title": "Біографія: Михайло Керницький",
       "provenance": [
         {
           "kind": "supplement",

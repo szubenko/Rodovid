@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import fixture from '../../tests/fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema, type Relationship } from '../data/schema'
-import { memoryBranchPeople, sortedMemoryPeople } from './memory-branches'
+import { memoryBranchPeople, memoryPagePersonId, sortedMemoryPeople } from './memory-branches'
 
 describe('родинні гілки спогадів', () => {
   it('включає предків, їхніх нащадків та подружжя без переходу до другої гілки', () => {
@@ -42,5 +42,23 @@ describe('родинні гілки спогадів', () => {
       family.claims.push({ ...date, id: `date-${id}`, target: { kind: 'event', id: `birth-${id}` } })
     }
     expect(sortedMemoryPeople(family, 'kernytski').map(person => person.id)).toEqual(['I28', 'I29', 'I30', 'I31', 'I32'])
+  })
+
+  it('об’єднує однакові набори спогадів, зберігаючи пряме посилання другої людини', () => {
+    const family = familyDataSchema.parse(fixture)
+    for (const id of ['I3', 'I28', 'I29']) family.people.push({ ...family.people[0]!, id })
+    const relation = family.relationships[0]!
+    family.relationships = [
+      { ...relation, id: 'a', kind: 'parent-child', fromPersonId: 'I28', toPersonId: 'I3' },
+      { ...relation, id: 'b', kind: 'parent-child', fromPersonId: 'I29', toPersonId: 'I3' },
+    ]
+    family.memories = [{ ...family.memories[0]!, personIds: ['I28', 'I29'] }]
+    let people = sortedMemoryPeople(family, 'kernytski')
+    expect(people.map(person => person.id)).toEqual(['I28'])
+    expect(memoryPagePersonId(family, people, 'I29')).toBe('I28')
+    family.memories.push({ ...family.memories[0]!, id: 'individual', personIds: ['I29'] })
+    people = sortedMemoryPeople(family, 'kernytski')
+    expect(people.map(person => person.id)).toEqual(['I28', 'I29'])
+    expect(memoryPagePersonId(family, people, 'I29')).toBe('I29')
   })
 })

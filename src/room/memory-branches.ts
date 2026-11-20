@@ -4,6 +4,16 @@ import { birthDateKey } from '../graph/person-tooltip-data'
 
 export type MemoryBranch = 'kernytski' | 'zubenko'
 
+function memorySignature(family: FamilyData, personId: string) {
+  return JSON.stringify(family.memories.filter(memory => memory.personIds.includes(personId)).map(memory => memory.id).sort())
+}
+
+export function memoryPagePersonId(family: FamilyData, people: { id: string }[], requestedId: string | null) {
+  if (!requestedId || !family.people.some(person => person.id === requestedId)) return requestedId
+  const signature = memorySignature(family, requestedId)
+  return people.find(person => memorySignature(family, person.id) === signature)?.id ?? requestedId
+}
+
 // The two branches are anchored at the home person's parents in this family.
 const roots: Record<MemoryBranch, string> = { kernytski: 'I3', zubenko: 'I2' }
 const grandparents: Record<MemoryBranch, readonly [string, string]> = { kernytski: ['I28', 'I29'], zubenko: ['I5', 'I4'] }
@@ -60,11 +70,18 @@ export function sortedMemoryPeople(family: FamilyData, branch: MemoryBranch) {
   const first = grandparents[branch]
   const rank = (id: string) => id === first[0] ? 0 : id === first[1] ? 1 : 2
   const birthYear = (id: string) => Math.floor(birthDateKey(family, id) / 10000)
-  return family.people.filter(person => branchIds.has(person.id) && counts.has(person.id)).sort((a, b) =>
+  const sorted = family.people.filter(person => branchIds.has(person.id) && counts.has(person.id)).sort((a, b) =>
     rank(a.id) - rank(b.id)
     || (generation.get(b.id) ?? -Infinity) - (generation.get(a.id) ?? -Infinity)
     || birthYear(a.id) - birthYear(b.id)
     || (counts.get(b.id) ?? 0) - (counts.get(a.id) ?? 0)
     || personFullName(family, a.id).localeCompare(personFullName(family, b.id), 'uk')
     || a.id.localeCompare(b.id))
+  const signatures = new Set<string>()
+  return sorted.filter(person => {
+    const signature = memorySignature(family, person.id)
+    if (signatures.has(signature)) return false
+    signatures.add(signature)
+    return true
+  })
 }

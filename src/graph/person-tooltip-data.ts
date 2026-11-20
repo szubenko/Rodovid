@@ -9,7 +9,8 @@ const unknownDeathNote = /^В оригінальному експорті:\s*DAT
 
 export function tooltipText(value: string): string {
   return value.split(/\r?\n/).filter(line => !missingText.test(line.trim()) && !unknownDeathNote.test(line.trim()))
-    .map(line => line.replace(/^(\s*)В оригінальному експорті:\s*DATE\s+(?=\d)/iu, '$1')).join('\n').trim()
+    .map(line => line.replace(/^(\s*)В оригінальному експорті:\s*DATE\s+(?=\d)/iu, '$1')
+      .replace(/^(\s*Ім’я в експорті) GEDCOM \(TITL\):/u, '$1:')).join('\n').trim()
 }
 
 export function tooltipClaimText(family: FamilyData, claim: Claim): string {

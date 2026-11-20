@@ -593,6 +593,114 @@
         "media-i108-vasyl-photo"
       ],
       "portraitId": "media-i108-vasyl-avatar"
+    },
+    {
+      "id": "person-media-i23",
+      "personId": "I23",
+      "photoIds": [],
+      "portraitId": "media-child-boy-illustration"
+    },
+    {
+      "id": "person-media-i76",
+      "personId": "I76",
+      "photoIds": [],
+      "portraitId": "media-child-boy-illustration"
+    },
+    {
+      "id": "person-media-i120",
+      "personId": "I120",
+      "photoIds": [],
+      "portraitId": "media-child-boy-illustration"
+    },
+    {
+      "id": "person-media-i188",
+      "personId": "I188",
+      "photoIds": [],
+      "portraitId": "media-child-boy-illustration"
+    },
+    {
+      "id": "person-media-i50",
+      "personId": "I50",
+      "photoIds": [],
+      "portraitId": "media-child-boy-illustration"
+    },
+    {
+      "id": "person-media-i51",
+      "personId": "I51",
+      "photoIds": [],
+      "portraitId": "media-child-boy-illustration"
+    },
+    {
+      "id": "person-media-i123",
+      "personId": "I123",
+      "photoIds": [],
+      "portraitId": "media-child-girl-illustration"
+    },
+    {
+      "id": "person-media-i189",
+      "personId": "I189",
+      "photoIds": [],
+      "portraitId": "media-child-girl-illustration"
+    },
+    {
+      "id": "person-media-i77",
+      "personId": "I77",
+      "photoIds": [],
+      "portraitId": "media-child-infant-illustration"
+    },
+    {
+      "id": "person-media-i124",
+      "personId": "I124",
+      "photoIds": [],
+      "portraitId": "media-child-infant-illustration"
+    },
+    {
+      "id": "person-media-i190",
+      "personId": "I190",
+      "photoIds": [],
+      "portraitId": "media-child-infant-illustration"
+    },
+    {
+      "id": "person-media-i192",
+      "personId": "I192",
+      "photoIds": [],
+      "portraitId": "media-child-infant-illustration"
+    },
+    {
+      "id": "person-media-i71",
+      "personId": "I71",
+      "photoIds": [],
+      "portraitId": "media-young-boy-illustration"
+    },
+    {
+      "id": "person-media-i82",
+      "personId": "I82",
+      "photoIds": [],
+      "portraitId": "media-young-boy-illustration"
+    },
+    {
+      "id": "person-media-i186",
+      "personId": "I186",
+      "photoIds": [],
+      "portraitId": "media-young-boy-illustration"
+    },
+    {
+      "id": "person-media-i185",
+      "personId": "I185",
+      "photoIds": [],
+      "portraitId": "media-young-girl-illustration"
+    },
+    {
+      "id": "person-media-i187",
+      "personId": "I187",
+      "photoIds": [],
+      "portraitId": "media-young-girl-illustration"
+    },
+    {
+      "id": "person-media-i10",
+      "personId": "I10",
+      "photoIds": [],
+      "portraitId": "media-young-girl-illustration"
     }
   ],
   "placeEnrichments": [
@@ -8198,6 +8306,121 @@
           "kind": "supplement",
           "file": "Data/annotations.json",
           "entryId": "media-record-31a52998c1fd4a4fcdd0"
+        }
+      ]
+    },
+    {
+      "id": "media-child-boy-illustration",
+      "path": "assets/photos/child-boy-illustration.png",
+      "sha256": "41b4d7e2694f9c2699e72616c096f0c349ad253ddf1bc7e5be1beb0d5c75d7e7",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/child-boy-illustration.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ілюстративний аватар хлопчика",
+      "description": "Ілюстрацію створено за наданим власником зразком; вона не є фотографією людини.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "assets/photos/child-boy-illustration.png",
+          "entryId": "media-child-boy-illustration"
+        }
+      ]
+    },
+    {
+      "id": "media-child-girl-illustration",
+      "path": "assets/photos/child-girl-illustration.png",
+      "sha256": "b7a958ae153e19d712f1e0ced1fc0963e56cf065ef01d558bd985f225b56b25f",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/child-girl-illustration.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ілюстративний аватар дівчинки",
+      "description": "Ілюстрацію надано власником; вона не є фотографією людини.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "assets/photos/child-girl-illustration.png",
+          "entryId": "media-child-girl-illustration"
+        }
+      ]
+    },
+    {
+      "id": "media-child-infant-illustration",
+      "path": "assets/photos/child-infant-illustration.png",
+      "sha256": "82c647c8db6afd7ec20ef882acb7091fb1bbddcbb837704bfdcea069075077f3",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/child-infant-illustration.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ілюстративний аватар немовляти",
+      "description": "Ілюстрацію надано власником; вона не є фотографією людини.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "assets/photos/child-infant-illustration.png",
+          "entryId": "media-child-infant-illustration"
+        }
+      ]
+    },
+    {
+      "id": "media-young-boy-illustration",
+      "path": "assets/photos/young-boy-illustration.png",
+      "sha256": "618105c6ebac19bd803e7a2975fa7bd0deb0104cada2f04329c640c0f86cc43b",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/young-boy-illustration.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ілюстративний аватар юнака",
+      "description": "Ілюстрацію створено за наданим власником зразком; вона не є фотографією людини.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "assets/photos/young-boy-illustration.png",
+          "entryId": "media-young-boy-illustration"
+        }
+      ]
+    },
+    {
+      "id": "media-young-girl-illustration",
+      "path": "assets/photos/young-girl-illustration.png",
+      "sha256": "c39e248c25163dccd8b5696f044b1ed127b7c96594d49974cc92a855ae6d3592",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/young-girl-illustration.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ілюстративний аватар дівчини",
+      "description": "Ілюстрацію створено за наданим власником зразком; вона не є фотографією людини.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "assets/photos/young-girl-illustration.png",
+          "entryId": "media-young-girl-illustration"
         }
       ]
     }

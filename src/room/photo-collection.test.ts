@@ -32,6 +32,18 @@ it('handles empty collections', () => {
   expect(collectFamilyPhotos(family)).toEqual([])
 })
 
+it('links each identified person in the Vanivski and Patsykevychi photo caption', () => {
+  const family = familyDataSchema.parse(familyData)
+  const description = family.media.find(media => media.id === 'media-vanivski-patsykevychi-group-photo')!.description!
+  const links = photoPersonMentionMatcher(family)(description).filter(part => part.personId)
+  expect(links).toEqual([
+    { text: 'Ванівський Михайло', personId: 'I206' },
+    { text: 'Ванівкська (Пацикевич) Марія Михайлівна', personId: 'I205' },
+    { text: 'Пацикевич Михайло Пацикевич', personId: 'I178' },
+    { text: '(Чабан) Ганна Іллівна', personId: 'I106' },
+  ])
+})
+
 it('omits repeated titles while preserving additional description, with or without a year', () => {
   const media = familyDataSchema.parse(fixture).media.find(item => item.id === 'media-photo')!
   const photo = { media: { ...media, title: 'Ганна та Михайло' }, descriptions: ['Ганна та Михайло.'], personIds: [] }
@@ -70,8 +82,8 @@ it('links confirmed caption variants to the right people without partial names',
     ['Чабан Марія Іванівна', 'I43'], ['Марія Іванівна Чабан', 'I43'],
     ['Чабан Наталія Іванівна', 'I29'], ['Марія Антонівна', 'I32'],
     ['Катерина Федірівна', 'I31'], ['Микола Йосопович', 'I30'],
-    ['Стефанія-Марія Ендзевич', 'I185'],
-    ['Марія (Стефанія друге імя) Василівна Пихуль (Ендзевич)', 'I185'],
+    ['Стефанія-Марія Ендзевич', 'I191'],
+    ['Марія (Стефанія друге імя) Василівна Пихуль (Ендзевич)', 'I191'],
     ['Марії Степанівни Чабан', 'I58'],
   ] as const
   for (const [text, personId] of expected) expect(match(text)).toEqual([{ text, personId }])

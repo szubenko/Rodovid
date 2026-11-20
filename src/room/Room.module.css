@@ -130,6 +130,7 @@
 .memoryStory > :first-child + h4, .memoryPortrait + h4 { margin-top: 0; }
 .memoryPortrait { float: left; width: min(38%, 322px); margin: 0 24px 16px 0; }
 .memoryPortrait img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.familyPortraits .memoryPortrait img { aspect-ratio: 1; height: auto; object-fit: cover; }
 @media (max-width: 650px) {
   .memoryPortrait { float: none; display: block; width: min(100%, 322px); margin: 0 auto 20px; }
 }

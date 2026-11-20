@@ -26,7 +26,7 @@ export function Memories({ personId, headingExtra }: { personId: string; heading
           if (portrait) displayedPortraitPaths.add(image.path)
           return [image]
         })
-        return <article key={memory.id} className={`${styles.memory} ${styles.memoryStory}`} aria-label={memory.title}>
+        return <article key={memory.id} className={`${styles.memory} ${styles.memoryStory} ${memory.id === 'memory-rodyna-khrystyny-sidir-vasylia-pykhun' ? styles.familyPortraits : ''}`} aria-label={memory.title}>
         {!/^біографія(?:\s|:|$)/iu.test(memory.title.trim()) && <h3>{memory.title}</h3>}{memory.author && <p>Автор: {memory.author}</p>}
         {images.map(image => <a key={image.id} className={styles.memoryPortrait} href={`${import.meta.env.BASE_URL}${image.path}`} target="_blank" rel="noopener noreferrer">
             <img src={`${import.meta.env.BASE_URL}${image.path}`} alt={image.title} width={image.dimensions?.width} height={image.dimensions?.height} />

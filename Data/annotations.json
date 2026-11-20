@@ -334,10 +334,27 @@
   ],
   "personMedia": [
     {
+      "id": "person-media-i205",
+      "personId": "I205",
+      "photoIds": [
+        "media-vanivski-patsykevychi-group-photo"
+      ],
+      "portraitId": "media-i205-marii-avatar"
+    },
+    {
+      "id": "person-media-i206",
+      "personId": "I206",
+      "photoIds": [
+        "media-vanivski-patsykevychi-group-photo"
+      ],
+      "portraitId": "media-i206-mykhailo-avatar"
+    },
+    {
       "id": "person-media-i106",
       "personId": "I106",
       "photoIds": [
-        "media-i106-i178-chaban-patsykevych-photo"
+        "media-i106-i178-chaban-patsykevych-photo",
+        "media-vanivski-patsykevychi-group-photo"
       ],
       "portraitId": "media-i106-hanna-avatar"
     },
@@ -345,7 +362,8 @@
       "id": "person-media-i178",
       "personId": "I178",
       "photoIds": [
-        "media-i106-i178-chaban-patsykevych-photo"
+        "media-i106-i178-chaban-patsykevych-photo",
+        "media-vanivski-patsykevychi-group-photo"
       ],
       "portraitId": "media-i178-mykhailo-avatar"
     },
@@ -436,12 +454,13 @@
       "portraitId": "media-i48-avatar"
     },
     {
-      "id": "person-media-i185",
-      "personId": "I185",
+      "id": "person-media-i191",
+      "personId": "I191",
       "photoIds": [
         "media-kernytskyi-endzevych-stara-ropa-1957",
         "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
-      ]
+      ],
+      "portraitId": "media-i191-stefaniia-avatar"
     },
     {
       "id": "person-media-i29",
@@ -2305,6 +2324,18 @@
       "id": "review-place-45aa3012cd41c5c1688b0554",
       "placeId": "place-45aa3012cd41c5c1688b0554",
       "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026."
+    },
+    {
+      "id": "review-place-295d7d4d4f8d41af50b1eed1",
+      "placeId": "place-295d7d4d4f8d41af50b1eed1",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026.",
+      "displayName": "Стара Сіль, Україна"
+    },
+    {
+      "id": "review-place-50f4ef4eb6986f72cc93a97f",
+      "placeId": "place-50f4ef4eb6986f72cc93a97f",
+      "explanation": "D06: оригінальну назву збережено з експорту 14.11.2026.",
+      "displayName": "Стара Сіль, Україна"
     }
   ],
   "sources": [
@@ -2959,6 +2990,13 @@
       "sourceId": "source-06fe49a21ce68fdf4c5fe7de",
       "mediaIds": [
         "media-record-053390de306c7b2d377b"
+      ]
+    },
+    {
+      "id": "source-details-31a52998c1fd4a4fcdd0",
+      "sourceId": "source-82b161218b0de8b5ccf8c971",
+      "mediaIds": [
+        "media-record-31a52998c1fd4a4fcdd0"
       ]
     }
   ],
@@ -4738,6 +4776,16 @@
       "jsonFile": "assets/documents/source-records/довгуля-василь-інша-подія-PJ7W-CCC-3Q9M-CSSV-ZQPT.json"
     },
     {
+      "id": "file-source-82b161218b0de8b5ccf8c971",
+      "sourceId": "source-82b161218b0de8b5ccf8c971",
+      "evidenceLinkIds": [
+        "evidenceLink-26b0b0dccd3834dede6f63c5",
+        "evidence-record-31a52998c1fd4a4fcdd0"
+      ],
+      "mediaId": "media-record-31a52998c1fd4a4fcdd0",
+      "jsonFile": "assets/documents/source-records/дейкало-іван-інша-подія-PNQW-HRJ-6X3L-MPJW.json"
+    },
+    {
       "id": "file-source-oleksandra-PN3F-KPN-birth-1935-act-17",
       "sourceId": "source-oleksandra-PN3F-KPN-birth-1935-act-17",
       "evidenceLinkIds": [
@@ -4765,6 +4813,29 @@
     }
   ],
   "media": [
+    {
+      "id": "media-vanivski-patsykevychi-group-photo",
+      "path": "assets/photos/ванівські-пацикевичі-спільне-фото.png",
+      "sha256": "e220c225a84d18f231ee4a37374444f65cde8c331b5f1c0e45763692765c510a",
+      "dimensions": {
+        "width": 1323,
+        "height": 992
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/ванівські-пацикевичі-спільне-фото.png",
+        "mimeType": "image/png"
+      },
+      "title": "Ванівські та Пацикевичі — спільна фотографія",
+      "description": "Зверху: Ванівський Михайло Ванівкська (Пацикевич) Марія Михайлівна\nПацикевич Михайло Пацикевич і (Чабан) Ганна Іллівна\n? дід Іван (помер в Томській області)",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Ванівські та Пацикевичі — спільна фотографія.png",
+          "entryId": "media-vanivski-patsykevychi-group-photo"
+        }
+      ]
+    },
     {
       "id": "kernytski-deportation-image",
       "path": "assets/photos/kernytski-deportation-image.png",
@@ -6625,6 +6696,75 @@
       ]
     },
     {
+      "id": "media-i205-marii-avatar",
+      "path": "assets/photos/пацикевич-марій-i205-аватар.png",
+      "sha256": "143d25f031bf5356f8827ad16f3e2df5d63d792b8dbf9e9b0f2392109f1943b9",
+      "dimensions": {
+        "width": 245,
+        "height": 267
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/пацикевич-марій-i205-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Марій Михайлова Пацикевич — аватар",
+      "description": "Фотографію надано власником 20.11.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/пацикевич-марій-михайлова-i205/пацикевич-марій-аватар-наданий-власником.png",
+          "entryId": "owner-i205-avatar-2026-11-20"
+        }
+      ]
+    },
+    {
+      "id": "media-i206-mykhailo-avatar",
+      "path": "assets/photos/ванівський-михайло-i206-аватар.png",
+      "sha256": "42f40b501c7c920ef3f6f814733adcd09311bf647f1cd039ed974de9bfe55165",
+      "dimensions": {
+        "width": 243,
+        "height": 247
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/ванівський-михайло-i206-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Михайло Ванівський — аватар",
+      "description": "Фотографію надано власником 20.11.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/ванівський-михайло-i206/ванівський-михайло-аватар-наданий-власником.png",
+          "entryId": "owner-i206-avatar-2026-11-20"
+        }
+      ]
+    },
+    {
+      "id": "media-i191-stefaniia-avatar",
+      "path": "assets/photos/пихуль-стефанія-i191-аватар.png",
+      "sha256": "649381cc0f852f50fe66d5d0835cd1d3691f7da80c08237a700a6256d9ed2d1d",
+      "dimensions": {
+        "width": 230,
+        "height": 250
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/пихуль-стефанія-i191-аватар.png",
+        "mimeType": "image/png"
+      },
+      "title": "Стефанія Пихуль — аватар",
+      "description": "Фотографію надано власником 20.11.2026.",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/People/пихуль-стефанія-i191/пихуль-стефанія-аватар-наданий-власником.png",
+          "entryId": "owner-i191-avatar-2026-11-20"
+        }
+      ]
+    },
+    {
       "id": "media-kernytskyi-endzevych-stara-ropa-1957",
       "path": "assets/photos/керницькі-ендзевич-стара-ропа-1957.png",
       "sha256": "84c7087c1bc2c71a3dfb4af3d1a2f2b7f93becee7923703399c200ccb4016838",
@@ -8043,6 +8183,23 @@
           "entryId": "media-i108-vasyl-avatar"
         }
       ]
+    },
+    {
+      "id": "media-record-31a52998c1fd4a4fcdd0",
+      "path": "assets/documents/source-records/дейкало-іван-інша-подія-PNQW-HRJ-6X3L-MPJW.png",
+      "dimensions": {
+        "width": 1587,
+        "height": 503
+      },
+      "mimeType": "image/png",
+      "title": "Скан запису: дейкало-іван-інша-подія-PNQW-HRJ-6X3L-MPJW",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "media-record-31a52998c1fd4a4fcdd0"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
@@ -8778,6 +8935,24 @@
           "entryId": "evidence-record-ace58d40aeb9f79085e1"
         }
       ]
+    },
+    {
+      "id": "evidence-record-31a52998c1fd4a4fcdd0",
+      "sourceId": "source-82b161218b0de8b5ccf8c971",
+      "target": {
+        "kind": "event",
+        "id": "event-653bce246be7e43da57674e3"
+      },
+      "fragment": {
+        "mediaId": "media-record-31a52998c1fd4a4fcdd0"
+      },
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/annotations.json",
+          "entryId": "evidence-record-31a52998c1fd4a4fcdd0"
+        }
+      ]
     }
   ],
   "memories": [],
@@ -8788,6 +8963,7 @@
         "I51"
       ],
       "title": "Біографія: Роман Керницький",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8803,6 +8979,7 @@
         "I71"
       ],
       "title": "Біографія: Іван Петров Дейкало",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8817,6 +8994,7 @@
       "personIds": [],
       "branch": "kernytski",
       "title": "Рід Чабанів і Керницьких",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8850,6 +9028,7 @@
         "I38"
       ],
       "title": "Сидора Федора і Галини",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8866,6 +9045,9 @@
         "I183"
       ],
       "title": "Розповідь про родину Христини (Сидір) і Василя Пихун",
+      "mediaIds": [
+        "media-i191-stefaniia-avatar"
+      ],
       "provenance": [
         {
           "kind": "supplement",
@@ -8899,6 +9081,7 @@
         "I50"
       ],
       "title": "Біографія: Михайло Керницький",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8914,6 +9097,7 @@
         "I29"
       ],
       "title": "Біографія: Наталія Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8929,6 +9113,7 @@
         "I34"
       ],
       "title": "Біографія: Іван Ілліч Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8944,6 +9129,7 @@
         "I32"
       ],
       "title": "Біографія: Марія Антонівна Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8960,6 +9146,7 @@
         "I32"
       ],
       "title": "Біографія: Іван і Марія Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8975,6 +9162,7 @@
         "I105"
       ],
       "title": "Біографія: Катерина Іллівна Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -8990,6 +9178,7 @@
         "I106"
       ],
       "title": "Біографія: Ганна Іллівна Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9005,6 +9194,7 @@
         "I107"
       ],
       "title": "Біографія: Степан Антонович Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9020,6 +9210,7 @@
         "I108"
       ],
       "title": "Біографія: Василь Антонович Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9035,6 +9226,7 @@
         "I104"
       ],
       "title": "Біографія: Михайло Іванович Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9050,6 +9242,7 @@
         "I52"
       ],
       "title": "Біографія: Богдан Іванович Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9065,6 +9258,7 @@
         "I53"
       ],
       "title": "Біографія: Семен Іванович Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9080,6 +9274,7 @@
         "I30"
       ],
       "title": "Біографія: Микола Йосипович Керницький",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9095,6 +9290,7 @@
         "I31"
       ],
       "title": "Біографія: Катерина Федорівна Керницька (Сидір)",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9110,6 +9306,7 @@
         "I28"
       ],
       "title": "Біографія: Іван Миколайович Керницький",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9125,6 +9322,7 @@
         "I47"
       ],
       "title": "Біографія: Василь Миколайович Керницький",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9140,6 +9338,7 @@
         "I49"
       ],
       "title": "Біографія: Петро Миколайович Керницький",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9155,6 +9354,7 @@
         "I48"
       ],
       "title": "Біографія: Марія Миколаївна Керницька",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9170,6 +9370,7 @@
         "I41"
       ],
       "title": "Біографія: Ілля Степанович Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9185,6 +9386,7 @@
         "I43"
       ],
       "title": "Біографія: Марія Іванівна Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9200,6 +9402,7 @@
         "I58"
       ],
       "title": "Біографія: Марія Степанівна Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9216,6 +9419,7 @@
         "I39"
       ],
       "title": "Біографія: Антон Чабан і Кароліна",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9231,6 +9435,7 @@
         "I54"
       ],
       "title": "Біографія: Михайло Ілліч Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9246,6 +9451,7 @@
         "I55"
       ],
       "title": "Біографія: Стефанія Іллівна Чабан",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9261,6 +9467,7 @@
         "I20"
       ],
       "title": "Біографія Федора Петровича Зубенка",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9276,6 +9483,7 @@
         "I12"
       ],
       "title": "Біографія Ілії Феодоровича Зубенка",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9291,6 +9499,7 @@
         "I9"
       ],
       "title": "Біографія Макарія Ільянова Зубенка",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9306,6 +9515,7 @@
         "I6"
       ],
       "title": "Біографія Наталії Семенової Заприсар",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9321,6 +9531,7 @@
         "I5"
       ],
       "title": "Біографія Якова Макаровича Зубенка",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",
@@ -9336,6 +9547,7 @@
         "I4"
       ],
       "title": "Біографія Ольги Петрівни Дейкало",
+      "mediaIds": [],
       "provenance": [
         {
           "kind": "supplement",

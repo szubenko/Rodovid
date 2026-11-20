@@ -54,6 +54,16 @@ describe('explicit sibling branches', () => {
     }
     expect(hiddenChildrenOutsideSiblingBranches(graph, 'I108', new Set(['I108']))).toEqual(expect.arrayContaining(['I202', 'I203']))
   })
+  it('does not offer Olenka through both children controls', () => {
+    const base = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds], expandedHalfSiblingParentIds: [], includeChildOtherParent: true })
+    expect(hiddenChildrenOutsideSiblingBranches(graph, 'I5', new Set(ids(base)))).not.toContain('I10')
+    const opened = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds],
+      expandedChildPersonIds: ['I5'], expandedHalfSiblingParentIds: [], includeChildOtherParent: true })
+    expect(ids(opened)).not.toContain('I10')
+    const half = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds],
+      expandedHalfSiblingParentIds: ['I5'], includeChildOtherParent: true })
+    expect(ids(half)).toContain('I10')
+  }, 30_000)
   it('opens and closes Vasyl Chaban’s children below him', () => {
     const base = projectVerticalFamily(graph, 'I108', { generations: 3 })
     const opened = projectVerticalFamily(graph, 'I108', { generations: 3, expandedChildPersonIds: ['I108'] })

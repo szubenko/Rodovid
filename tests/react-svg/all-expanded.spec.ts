@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test'
 test('мати Оленки залишається поруч із Яковом після розгортання', async ({ page }) => {
   test.setTimeout(120_000)
   await page.goto('/isi-relatives/I1')
+  await expect(page.locator('[data-children-person-id="I5"]')).toHaveCount(0)
   await page.locator('[data-half-sibling-parent-id="I5"]').press('Enter')
   const card = (id: string) => page.locator(`[data-person-id="${id}"] rect`).first().boundingBox()
   await expect(page.locator('[data-person-id="I10"]')).toHaveCount(1)

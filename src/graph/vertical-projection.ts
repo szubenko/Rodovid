@@ -54,13 +54,21 @@ export function siblingBranches(graph: FamilyGraph, personId: string) {
   return { lateral, byParent }
 }
 
-/** Children already reachable from a visible sibling's side control need no
- * second control on their parent. Half-sibling branches have their own control. */
+function childrenCoveredBySiblingBranches(graph: FamilyGraph, parentId: string, visible: ReadonlySet<string>): Set<string> {
+  const children = (graph.neighbors.get(parentId) ?? [])
+    .filter(link => link.direction === 'children').map(link => link.personId)
+  return new Set(children.filter(id => visible.has(id)).flatMap(id => {
+    const branches = siblingBranches(graph, id)
+    return [...branches.lateral, ...branches.byParent.get(parentId) ?? []]
+  }))
+}
+
+/** Children reachable through sibling or half-sibling controls do not need
+ * a second control on their parent. */
 export function hiddenChildrenOutsideSiblingBranches(graph: FamilyGraph, parentId: string, visible: ReadonlySet<string>): string[] {
   const children = (graph.neighbors.get(parentId) ?? [])
     .filter(link => link.direction === 'children').map(link => link.personId)
-  const covered = new Set(children.filter(id => visible.has(id))
-    .flatMap(id => siblingBranches(graph, id).lateral))
+  const covered = childrenCoveredBySiblingBranches(graph, parentId, visible)
   return children.filter(id => !visible.has(id) && !covered.has(id))
 }
 
@@ -125,8 +133,9 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
         groups.push({ ownerId: parent, children, destination: childGroups })
       }
     }
+    const coveredChildren = childrenCoveredBySiblingBranches(graph, owner.personId, new Set(people.keys()))
     const directChildren = expandedChildren.has(owner.personId)
-      ? (graph.neighbors.get(owner.personId) ?? []).filter(link => link.direction === 'children').map(link => link.personId) : []
+      ? (graph.neighbors.get(owner.personId) ?? []).filter(link => link.direction === 'children' && !coveredChildren.has(link.personId)).map(link => link.personId) : []
     if (groups.every(group => !group.children.length) && !directChildren.length) continue
     const add = (id: string, generation: number, lane: RelativeAppearance['lane']) => {
       if (people.has(id)) return

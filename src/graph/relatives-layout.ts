@@ -820,7 +820,16 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
     }
     if (parents.length === 2) {
       const [left, right] = parents as [RelativeNode, RelativeNode]
-      return (left.x + left.width / 2 + right.x - right.width / 2) / 2
+      const middle = (left.x + left.width / 2 + right.x - right.width / 2) / 2
+      if (directLine && family.children.length > 1) {
+        // Keep the descent over the children when their span intersects the
+        // parents' bar, avoiding a horizontal trip away and back again.
+        const children = family.children.map(nodeX)
+        const min = Math.max(left.x, Math.min(...children))
+        const max = Math.min(right.x, Math.max(...children))
+        if (min <= max) return Math.max(min, Math.min(max, middle))
+      }
+      return middle
     }
     return parents.reduce((sum, parent) => sum + familyPort(parent, family), 0) / parents.length
   }

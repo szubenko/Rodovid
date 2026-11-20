@@ -168,6 +168,14 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
         add(id, owner.generation, 'relatives')
         if (people.has(id)) addedPersonIds.push(id)
       }
+      if (options.includeChildOtherParent && group.destination === childGroups && addedPersonIds.length) {
+        const parent = people.get(group.ownerId)!
+        for (const id of addedPersonIds) for (const link of graph.neighbors.get(id) ?? []) {
+          if (link.direction === 'parents' && link.personId !== group.ownerId && !blockedParents.has(link.personId)) {
+            add(link.personId, parent.generation, 'relatives')
+          }
+        }
+      }
       if (addedPersonIds.length) group.destination.push({ personId: group.ownerId, addedPersonIds })
     }
   }

@@ -707,13 +707,15 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
     }
   }
   if (options?.separateAncestorColumns) {
-    for (const group of childGroups.filter(item => item.insertRow)) {
+    for (const group of childGroups) {
       const parent = byPersonId.get(group.personId)!
       const spouses = (graph.neighbors.get(parent.personId) ?? [])
         .filter(link => link.direction === 'spouses')
         .flatMap(link => byPersonId.get(link.personId) ?? [])
-        .filter(spouse => spouse.generation === parent.generation && !directLine?.has(spouse.personId))
-      if (spouses.length !== 1 || directLine?.has(parent.personId)) continue
+        .filter(spouse => spouse.generation === parent.generation && !directLine?.has(spouse.personId)
+          && group.addedPersonIds.some(id => (graph.neighbors.get(id) ?? [])
+            .some(link => link.direction === 'parents' && link.personId === spouse.personId)))
+      if (spouses.length !== 1) continue
       const spouse = spouses[0]!
       const side = graph.sexByPerson.get(parent.personId) === 'F' ? -1 : 1
       spouse.x = parent.x + side * ((parent.width + spouse.width) / 2 + spouseGap)

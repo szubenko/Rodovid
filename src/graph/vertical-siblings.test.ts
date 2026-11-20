@@ -12,6 +12,23 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
+  it('keeps Olenka’s mother beside Yakov when his children are opened', () => {
+    const projection = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds],
+      expandedHalfSiblingParentIds: ['I5'], includeChildOtherParent: true })
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+        ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const cards = new Map(layout.nodes.map(node => [node.personId, node]))
+      const yakiv = cards.get('I5')!, nadia = cards.get('I87')!
+      expect(cards.has('I10')).toBe(true)
+      expect(Math.abs(yakiv.x - nadia.x)).toBeLessThan(yakiv.width * 3)
+      for (let i = 0; i < layout.nodes.length; i++) for (const other of layout.nodes.slice(i + 1)) {
+        const node = layout.nodes[i]!
+        if (node.generation === other.generation) expect(Math.abs(node.x - other.x)).toBeGreaterThanOrEqual((node.width + other.width) / 2 - .01)
+      }
+    }
+  }, 30_000)
   it('inserts a row for Stefania’s children and keeps Ivan and Natalia together below', () => {
     const base = projectVerticalFamily(graph, 'I3', { generations: 6, expandedSiblingPersonIds: ['I34'] })
     const opened = projectVerticalFamily(graph, 'I3', { generations: 6, expandedSiblingPersonIds: ['I34'], expandedChildPersonIds: ['I55'] })

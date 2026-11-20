@@ -27,6 +27,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       cancelAnimationFrame(frame)
       frame = 0
       pending = undefined
+      svg.removeAttribute('data-camera-active')
     }
     cancelFrame.current = cancel
     const draw = () => {
@@ -48,6 +49,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
       draw()
       const transform = pending
       pending = undefined
+      svg.removeAttribute('data-camera-active')
       dispatch({ type: 'map', settings: { zoom: transform.k,
         pan: { x: transform.x / width, y: transform.y / height } } })
     }
@@ -75,6 +77,7 @@ export function useMapCamera(container: RefObject<HTMLDivElement | null>, width:
         if (!active || synchronizing.current || !event.sourceEvent) return // React/history owns programmatic changes.
         // Only the camera layer moves during input; React saves the final view once.
         // Coalesce high-frequency mouse/touch/wheel events into one write per frame.
+        if (!pending) svg.setAttribute('data-camera-active', '')
         pending = event.transform
         if (!frame) frame = requestAnimationFrame(draw)
       })

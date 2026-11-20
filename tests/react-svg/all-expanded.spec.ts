@@ -1,5 +1,22 @@
 import { expect, test } from '@playwright/test'
 
+test('мати Оленки залишається поруч із Яковом після розгортання', async ({ page }) => {
+  test.setTimeout(120_000)
+  await page.goto('/isi-relatives/I1')
+  await page.locator('[data-half-sibling-parent-id="I5"]').press('Enter')
+  const card = (id: string) => page.locator(`[data-person-id="${id}"] rect`).first().boundingBox()
+  await expect(page.locator('[data-person-id="I10"]')).toHaveCount(1)
+  const yakiv = (await card('I5'))!, nadia = (await card('I87'))!
+  expect(Math.abs(nadia.x - yakiv.x)).toBeLessThan(yakiv.width * 3)
+  const overlap = await page.locator('[data-person-id]').evaluateAll(nodes => {
+    const cards = nodes.map(node => ({ id: node.getAttribute('data-person-id'), rect: node.querySelector('rect')!.getBoundingClientRect() }))
+    return cards.flatMap((a, i) => cards.slice(i + 1).filter(b =>
+      Math.min(a.rect.right, b.rect.right) - Math.max(a.rect.left, b.rect.left) > .5
+      && Math.min(a.rect.bottom, b.rect.bottom) - Math.max(a.rect.top, b.rect.top) > .5).map(b => [a.id, b.id]))
+  })
+  expect(overlap).toEqual([])
+})
+
 test('Усі відкривається зі згорнутими дітьми та зберігає розгортання', async ({ page }) => {
   test.setTimeout(120_000)
   await page.goto('/isi-relatives/I108')

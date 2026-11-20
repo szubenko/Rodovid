@@ -96,6 +96,23 @@ test('жива камера колеса зберігається перед к�
   await expect.poll(cameraMatrix).toEqual(beforeNavigation)
 })
 
+test('під час руху кругової карти сектори не витрачають час на наведення', async ({ page }) => {
+  await page.goto('/tree/I1')
+  const svg = page.locator('[data-map-viewport] > svg')
+  const coordinates = svg.locator('[data-layer="coordinates"]')
+  const box = (await svg.boundingBox())!
+  await page.mouse.move(box.x + 30, box.y + 30)
+  await page.mouse.down()
+  await page.mouse.move(box.x + 80, box.y + 60, { steps: 5 })
+  await expect(svg).toHaveAttribute('data-camera-active', '')
+  await expect(coordinates).toHaveCSS('pointer-events', 'none')
+  await page.mouse.up()
+  await expect(svg).not.toHaveAttribute('data-camera-active', '')
+  await expect(coordinates).not.toHaveCSS('pointer-events', 'none')
+  await svg.locator('[data-person-id="I2"]').first().dispatchEvent('click')
+  await expect(page).toHaveURL(/\/tree\/I2$/)
+})
+
 test('перетягування відразу завершує анімацію зміни центру кругової карти', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' })
   await page.clock.install({ time: new Date('2026-10-31T12:00:00Z') })

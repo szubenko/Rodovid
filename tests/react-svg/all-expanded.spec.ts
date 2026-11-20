@@ -1,14 +1,23 @@
 import { expect, test } from '@playwright/test'
 
-test('мати Оленки залишається поруч із Яковом після розгортання', async ({ page }) => {
+test('гілка Наді відкривається поруч із Яковом без розтягування дерева', async ({ page }) => {
   test.setTimeout(120_000)
   await page.goto('/isi-relatives/I1')
   await expect(page.locator('[data-children-person-id="I5"]')).toHaveCount(0)
-  await page.locator('[data-half-sibling-parent-id="I5"]').press('Enter')
   const card = (id: string) => page.locator(`[data-person-id="${id}"] rect`).first().boundingBox()
+  const relatives = ['I9', 'I6', 'I4', 'I2', 'I1']
+  const positions = async () => {
+    const anchor = (await card('I5'))!
+    return Promise.all(relatives.map(async id => (await card(id))!.x - anchor.x))
+  }
+  const before = await positions()
+  const toggle = page.locator('[data-half-sibling-parent-id="I5"]')
+  await toggle.press('Enter')
   await expect(page.locator('[data-person-id="I10"]')).toHaveCount(1)
   const yakiv = (await card('I5'))!, nadia = (await card('I87'))!
   expect(Math.abs(nadia.x - yakiv.x)).toBeLessThan(yakiv.width * 3)
+  const after = await positions()
+  after.forEach((x, index) => expect(x, relatives[index]).toBeCloseTo(before[index]!, 1))
   const overlap = await page.locator('[data-person-id]').evaluateAll(nodes => {
     const cards = nodes.map(node => ({ id: node.getAttribute('data-person-id'), rect: node.querySelector('rect')!.getBoundingClientRect() }))
     return cards.flatMap((a, i) => cards.slice(i + 1).filter(b =>
@@ -16,6 +25,10 @@ test('мати Оленки залишається поруч із Яковом 
       && Math.min(a.rect.bottom, b.rect.bottom) - Math.max(a.rect.top, b.rect.top) > .5).map(b => [a.id, b.id]))
   })
   expect(overlap).toEqual([])
+  await toggle.press('Enter')
+  await expect(page.locator('[data-person-id="I87"], [data-person-id="I10"]')).toHaveCount(0)
+  const restored = await positions()
+  restored.forEach((x, index) => expect(x, relatives[index]).toBeCloseTo(before[index]!, 1))
 })
 
 test('Усі відкривається зі згорнутими дітьми та зберігає розгортання', async ({ page }) => {

@@ -591,16 +591,27 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   // Place each lower branch as a row centered on its parent. Make room in
   // the child generation before computing connector ports and export bounds.
   const byPersonId = new Map(nodes.map(node => [node.personId, node]))
-  const insertedIds = new Set((input.childGroups ?? []).filter(group => group.insertRow).flatMap(group => group.addedPersonIds))
+  // In the all-relatives view, an opened half-family should fit beside
+  // its visible parent without influencing the rest of the pedigree.
+  const halfBranches = new Set(options?.separateAncestorColumns
+    ? (input.childGroups ?? []).filter(group => !group.insertRow) : [])
+  const halfBranchIds = new Set([...halfBranches].flatMap(group =>
+    [...group.addedPersonIds, ...group.addedOtherParentIds ?? []]))
+  const pendingHalfCards = new Set(halfBranchIds)
+  const insertedIds = new Set([
+    ...(input.childGroups ?? []).filter(group => group.insertRow).flatMap(group => group.addedPersonIds),
+    ...halfBranchIds,
+  ])
   if (insertedIds.size) {
-    // Calculate the established pedigree without the new rows, so opening a
-    // descendant branch does not change the horizontal positions of couples.
+    // Lay out the established pedigree before making space for new cards.
     let changed = true
     while (changed) {
       changed = false
       for (const group of [...input.siblingGroups ?? [], ...input.childGroups ?? []]) {
         if (!insertedIds.has(group.personId)) continue
-        for (const id of group.addedPersonIds) if (!insertedIds.has(id)) { insertedIds.add(id); changed = true }
+        for (const id of [...group.addedPersonIds, ...group.addedOtherParentIds ?? []]) {
+          if (!insertedIds.has(id)) { insertedIds.add(id); changed = true }
+        }
       }
     }
     const baseAppearances = input.appearances.filter(node => !insertedIds.has(node.personId))
@@ -608,7 +619,7 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
     const base = layoutRelatives({ appearances: baseAppearances,
       edges: input.edges.filter(edge => baseIds.has(edge.fromAppearanceId) && baseIds.has(edge.toAppearanceId)),
       siblingGroups: input.siblingGroups?.filter(group => !insertedIds.has(group.personId)),
-      childGroups: input.childGroups?.filter(group => !group.insertRow && !insertedIds.has(group.personId)),
+      childGroups: input.childGroups?.filter(group => !group.insertRow && !halfBranches.has(group) && !insertedIds.has(group.personId)),
     }, graph, labels, dates, measure, directLine, options)
     for (const node of base.nodes) byPersonId.get(node.personId)!.x = node.x
   }
@@ -685,20 +696,54 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
       }
     }
   }
+  // Move only neighbors whose spacing is consumed by the inserted cards.
+  const makeRoom = (row: RelativeNode[], direction: number, edge: number) => {
+    let originalEdge = -Infinity
+    for (const node of row) {
+      const start = direction * node.x - node.width / 2
+      const gap = Math.min(familyGap, Math.max(0, start - originalEdge))
+      const nearest = edge + gap
+      if (start >= nearest) break
+      originalEdge = start + node.width
+      node.x += direction * (nearest - start)
+      edge = nearest + node.width
+    }
+  }
   for (const group of childGroups) {
     const parent = byPersonId.get(group.personId)!
+    const localHalfBranch = halfBranches.has(group)
+    const otherParents = group.addedOtherParentIds ?? []
+    if (localHalfBranch && otherParents.length) {
+      const side = graph.sexByPerson.get(parent.personId) === 'F' ? -1 : 1
+      const row = nodes.filter(node => node.generation === parent.generation && side * (node.x - parent.x) > 0
+        && !pendingHalfCards.has(node.personId)).sort((a, b) => side * (a.x - b.x))
+      let edge = side * parent.x + parent.width / 2
+      for (const id of otherParents) {
+        const otherParent = byPersonId.get(id)!
+        pendingHalfCards.delete(id)
+        otherParent.x = side * (edge + spouseGap + otherParent.width / 2)
+        edge = side * otherParent.x + otherParent.width / 2
+      }
+      makeRoom(row, side, edge)
+    }
     const children = group.addedPersonIds.map(id => byPersonId.get(id)!)
     const span = children.reduce((width, child) => width + child.width, (children.length - 1) * familyGap)
     let left = parent.x - span / 2
     for (const child of children) {
+      pendingHalfCards.delete(child.personId)
       child.x = left + child.width / 2
       left += child.width + familyGap
     }
-    const row = nodes.filter(node => node.generation === children[0]!.generation && !children.includes(node))
+    const row = nodes.filter(node => node.generation === children[0]!.generation && !children.includes(node)
+      && !pendingHalfCards.has(node.personId))
       .sort((a, b) => a.x - b.x)
     for (const direction of [-1, 1]) {
       const neighbors = direction < 0 ? row.filter(node => node.x < parent.x).reverse() : row.filter(node => node.x >= parent.x)
       let edge = parent.x + direction * span / 2
+      if (localHalfBranch) {
+        makeRoom(neighbors, direction, edge)
+        continue
+      }
       for (const node of neighbors) {
         const nearest = edge + direction * (familyGap + node.width / 2)
         node.x = direction < 0 ? Math.min(node.x, nearest) : Math.max(node.x, nearest)
@@ -708,6 +753,7 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   }
   if (options?.separateAncestorColumns) {
     for (const group of childGroups) {
+      if (halfBranches.has(group)) continue
       const parent = byPersonId.get(group.personId)!
       const spouses = (graph.neighbors.get(parent.personId) ?? [])
         .filter(link => link.direction === 'spouses')
@@ -731,7 +777,10 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   }
   if (options?.separateAncestorColumns && directLine) {
     const siblingsByOwner = new Map((projection.siblingGroups ?? []).map(group => [group.personId, group.addedPersonIds]))
-    const childrenByOwner = new Map((projection.childGroups ?? []).map(group => [group.personId, group.addedPersonIds]))
+    const branchByOwner = new Map<string, string[]>()
+    for (const group of childGroups) branchByOwner.set(group.personId, [
+      ...branchByOwner.get(group.personId) ?? [], ...group.addedPersonIds, ...group.addedOtherParentIds ?? [],
+    ])
     const branch = (root: string) => {
       const result = new Set([root]), queue = [root]
       for (let i = 0; i < queue.length; i++) {
@@ -741,7 +790,7 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
             || link.direction === 'spouses' && !directLine.has(id) && !directLine.has(link.personId)
               && byPersonId.get(link.personId)?.generation === byPersonId.get(id)?.generation)
             .map(link => link.personId),
-          ...siblingsByOwner.get(id) ?? [], ...childrenByOwner.get(id) ?? [],
+          ...siblingsByOwner.get(id) ?? [], ...branchByOwner.get(id) ?? [],
         ]
         for (const relative of relatives) {
           if (byPersonId.has(relative) && !result.has(relative)) { result.add(relative); queue.push(relative) }
@@ -763,8 +812,8 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
       const left = nodes.filter(node => leftIds.has(node.personId))
       const right = nodes.filter(node => rightIds.has(node.personId))
       if (!left.length || !right.length) continue
-      const leftEdge = Math.max(...left.map(node => node.x + node.width / 2))
-      const rightEdge = Math.min(...right.map(node => node.x - node.width / 2))
+      const leftEdge = Math.max(...left.filter(node => !halfBranchIds.has(node.personId)).map(node => node.x + node.width / 2))
+      const rightEdge = Math.min(...right.filter(node => !halfBranchIds.has(node.personId)).map(node => node.x - node.width / 2))
       const margin = (options.branchGap ?? familyGap * 3) / 2
       const leftShift = Math.max(0, leftEdge - (child.x - margin))
       const rightShift = Math.max(0, child.x + margin - rightEdge)

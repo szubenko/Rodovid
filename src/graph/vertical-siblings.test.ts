@@ -12,17 +12,26 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
-  it('keeps Olenka’s mother beside Yakov when his children are opened', () => {
-    const projection = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds],
-      expandedHalfSiblingParentIds: ['I5'], includeChildOtherParent: true })
+  it('opens Nadia and Olenka without widening Yakov’s ancestor branches', () => {
+    const project = (expandedHalfSiblingParentIds: string[]) => projectVerticalFamily(graph, 'I1', {
+      generations: 12, expandedSiblingPersonIds: [...graph.personIds], expandedHalfSiblingParentIds, includeChildOtherParent: true,
+    })
+    const base = project([]), projection = project(['I5'])
     for (const compact of [false, true]) {
       const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
-      const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+      const arrange = (tree: typeof base) => layoutRelatives(tree, graph, new Map(), new Map(), text => text.length * 12,
         ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const before = new Map(arrange(base).nodes.map(node => [node.personId, node]))
+      const layout = arrange(projection)
       const cards = new Map(layout.nodes.map(node => [node.personId, node]))
-      const yakiv = cards.get('I5')!, nadia = cards.get('I87')!
-      expect(cards.has('I10')).toBe(true)
-      expect(Math.abs(yakiv.x - nadia.x)).toBeLessThan(yakiv.width * 3)
+      const yakov = cards.get('I5')!, nadia = cards.get('I87')!, olenka = cards.get('I10')!
+      expect(nadia.generation).toBe(yakov.generation)
+      expect(nadia.x - yakov.x - (yakov.width + nadia.width) / 2).toBeCloseTo(28)
+      expect(olenka.generation).toBe(yakov.generation + 1)
+      expect(olenka.x).toBeCloseTo(yakov.x)
+      for (const id of ['I9', 'I11', 'I12', 'I6', 'I33', 'I78', 'I4', 'I2', 'I27', 'I1']) {
+        expect(cards.get(id)!.x - yakov.x, id).toBeCloseTo(before.get(id)!.x - before.get('I5')!.x)
+      }
       for (let i = 0; i < layout.nodes.length; i++) for (const other of layout.nodes.slice(i + 1)) {
         const node = layout.nodes[i]!
         if (node.generation === other.generation) expect(Math.abs(node.x - other.x)).toBeGreaterThanOrEqual((node.width + other.width) / 2 - .01)

@@ -1,7 +1,7 @@
 import type { FamilyGraph, Projection, ProjectionOptions } from './projection'
 import type { RelativeAppearance } from './relatives-projection'
 
-export type SiblingGroup = { personId: string; addedPersonIds: string[]; insertRow?: boolean }
+export type SiblingGroup = { personId: string; addedPersonIds: string[]; insertRow?: boolean; addedOtherParentIds?: string[] }
 type VerticalProjection = Omit<Projection, 'appearances'> & {
   familyMode: 'vertical'; appearances: RelativeAppearance[]; siblingGroups: SiblingGroup[]; childGroups: SiblingGroup[]
 }
@@ -177,15 +177,20 @@ export function projectVerticalFamily(graph: FamilyGraph, center: string, option
         add(id, owner.generation, 'relatives')
         if (people.has(id)) addedPersonIds.push(id)
       }
+      const addedOtherParentIds: string[] = []
       if (options.includeChildOtherParent && group.destination === childGroups && addedPersonIds.length) {
         const parent = people.get(group.ownerId)!
         for (const id of addedPersonIds) for (const link of graph.neighbors.get(id) ?? []) {
-          if (link.direction === 'parents' && link.personId !== group.ownerId && !blockedParents.has(link.personId)) {
+          if (link.direction === 'parents' && !people.has(link.personId) && !blockedParents.has(link.personId)) {
             add(link.personId, parent.generation, 'relatives')
+            if (people.has(link.personId)) addedOtherParentIds.push(link.personId)
           }
         }
       }
-      if (addedPersonIds.length) group.destination.push({ personId: group.ownerId, addedPersonIds })
+      if (addedPersonIds.length) group.destination.push({
+        personId: group.ownerId, addedPersonIds,
+        ...(addedOtherParentIds.length ? { addedOtherParentIds } : {}),
+      })
     }
   }
   const appearances = [...people.values()].map(node => ({ ...node,

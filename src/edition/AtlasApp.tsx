@@ -169,6 +169,7 @@ function Sidebar() {
             <img className={styles.brandArms} src={staraSilArms} alt="Герб Старої Солі" />
           </Link>
         </div>
+        <p className={styles.contact}>Для доповнення або виправлення інформації пишіть на sz.kievo@gmail.com</p>
         <div className={styles.stats}><div><strong>{family.people.length}</strong><span>людей</span></div><div><strong>{family.events.filter(event => !isSocialStatus(event)).length}</strong><span>подій</span></div><div><strong>{family.places.length}</strong><span>місць</span></div></div>
         <PeopleDirectory />
         <div className={styles.sidebarFooter}><span className={styles.footerOrnament} aria-hidden="true">✳</span><p>Минуле живе,<br />поки ми пам’ятаємо.</p></div>

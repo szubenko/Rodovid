@@ -16,6 +16,7 @@ export type RelativeLayoutOptions = {
   cardWidth: number; cardHeight: number; familyGap: number; spouseGap: number
   branchGap?: number
   minimumRowGap: number; trackSpacing: number; joinOffset: number; channelOffset: number
+  multiChildStemExtra?: number
   separateFamilyBands?: boolean
   maleBranchLeft?: boolean
   lateralScale?: number
@@ -100,6 +101,7 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   const projection = { ...input, appearances }
   const padding = 28, familyGap = options?.familyGap ?? (directLine ? 80 : 120), spouseGap = options?.spouseGap ?? 24
   const trackSpacing = options?.trackSpacing ?? 16, joinOffset = options?.joinOffset ?? 56, channelOffset = options?.channelOffset ?? 100
+  const multiChildStemExtra = options?.multiChildStemExtra ?? 0
   const blocks = new Map(projection.appearances.map(node => [node.appearanceId,
     labelBlock(labels.get(node.personId) ?? 'Ім’я невідоме', dates.get(node.personId) ?? '', directLine || node.lane === 'relatives' ? 20 : 22, 18, measure, 264)]))
   const cardWidth = options?.cardWidth ?? Math.max(272, ...[...blocks.values()].map(block => block.width + 40))
@@ -150,9 +152,11 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
     const generation = family.parents[0]!.generation
     familiesByRow.set(generation, [...familiesByRow.get(generation) ?? [], family])
   }
+  const rowsWithMultipleChildren = new Set([...familiesByRow].filter(([, row]) => row.some(family => family.children.length > 1)).map(([generation]) => generation))
   // Leave room for separate family buses rather than several crossing lines per child.
   const step = mainHeight + Math.max(options?.minimumRowGap ?? 200,
-    ...[...familiesByRow.values()].map(row => row.length * trackSpacing + channelOffset))
+    ...[...familiesByRow.values()].map(row => row.length * trackSpacing + channelOffset
+      + (row.some(family => family.children.length > 1) ? multiChildStemExtra + joinOffset : 0)))
   const groups: Group[] = []
   const groupByPerson = new Map<string, Group>()
   const orderedIds = new Set<string>()
@@ -1035,7 +1039,8 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
     const originalGeneration = children[0]!.generation
     if (originalGeneration <= parent.generation + 1 || children.some(child => child.generation !== originalGeneration)) continue
     const family = familyByChild.get(children[0]!.personId)
-    if (!family || nextTop <= rowBottom(parent) + channelOffset + family.track * trackSpacing + 8) continue
+    if (!family || nextTop <= rowBottom(parent) + channelOffset + family.track * trackSpacing
+      + (rowsWithMultipleChildren.has(parent.generation) ? multiChildStemExtra : 0) + 8) continue
     const targetGeneration = new Map(children.map(child => [child.personId, parent.generation + 1]))
     let supported = true
     for (const [id, generation] of targetGeneration) {
@@ -1096,7 +1101,9 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
       const startY = from.y + from.height / 2, endY = to.y - to.height / 2
       const family = familyByChild.get(to.personId)!
       const startX = familyPort(from, family)
-      const joinX = anchor(family), joinY = rowBottom(from) + joinOffset + (directLine ? family.track * trackSpacing : 0), channel = rowBottom(from) + channelOffset + family.track * trackSpacing
+      const joinX = anchor(family), joinY = rowBottom(from) + joinOffset + (directLine ? family.track * trackSpacing : 0)
+      const channel = rowBottom(from) + channelOffset + family.track * trackSpacing
+        + (rowsWithMultipleChildren.has(from.generation) ? multiChildStemExtra : 0)
       if (to.generation > from.generation + 1 && insertedRows.size) {
         const between = nodes.filter(node => node.generation > from.generation && node.generation < to.generation)
         const blocked = between.map(node => [node.x - node.width / 2 - trackSpacing, node.x + node.width / 2 + trackSpacing] as const)

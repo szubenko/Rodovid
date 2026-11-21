@@ -6,6 +6,32 @@ import { ancestorPersonIds, projectVerticalFamily } from './vertical-projection'
 import { layoutRelatives } from './relatives-layout'
 import { portraitCardMetrics, portraitLayoutOptions } from './portrait-card-layout'
 
+it('gives the shared stem of the Pykhul children room between the two family bars', () => {
+  const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
+  const projection = projectVerticalFamily(graph, 'I1', { generations: 12,
+    expandedSiblingPersonIds: [...graph.personIds], expandedChildPersonIds: ['I109'], includeChildOtherParent: true })
+  for (const compact of [false, true]) {
+    const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+    const options = { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true }
+    const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+      ancestorPersonIds(graph, 'I1'), options)
+    const edge = layout.edges.find(item => {
+      const relation = graph.relationships.get(item.relationshipId)!
+      return relation.fromPersonId === 'I109' && relation.toPersonId === 'I184'
+    })!
+    expect(edge).toBeDefined()
+    const spouse = layout.edges.find(item => {
+      const relation = graph.relationships.get(item.relationshipId)!
+      return relation.kind === 'spouse' && [relation.fromPersonId, relation.toPersonId].includes('I109')
+        && [relation.fromPersonId, relation.toPersonId].includes('I183')
+    })!
+    const parentBarY = Number(spouse.path.match(/M[^, ]+,([^ ]+) H/gu)![0]!.match(/,([^ ]+) H/u)![1])
+    const stems = [...edge.path.matchAll(/M([^, ]+),([^ ]+) V([^ M]+)/gu)]
+      .filter(match => Math.abs(Number(match[2]) - parentBarY) < .01)
+    expect(stems.some(match => Math.abs(Number(match[3]) - Number(match[2])) >= 2.5 * options.joinOffset - .01)).toBe(true)
+  }
+}, 30_000)
+
 it('keeps the Zubenko siblings’ connecting line between their cards', () => {
   const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
   const projection = projectVerticalFamily(graph, 'I2', { generations: 12,

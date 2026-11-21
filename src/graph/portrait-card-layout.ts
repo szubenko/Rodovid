@@ -95,7 +95,7 @@ export function portraitLayoutOptions(metrics: PortraitCardMetrics, compact: boo
     familyGap, branchGap: familyGap * 3, spouseGap: 28,
     minimumRowGap: (compact ? 88 : 112) * branchSpacing,
     trackSpacing: fullFamily ? 2 * joinOffset : (compact ? 8 : 12) * branchSpacing,
-    joinOffset, channelOffset: 2 * joinOffset, separateFamilyBands: fullFamily,
+    joinOffset, channelOffset: 2 * joinOffset, multiChildStemExtra: fullFamily ? 0 : 1.5 * joinOffset, separateFamilyBands: fullFamily,
     maleBranchLeft: true,
     lateralScale: .85,
     femaleSiblingsRight: true,

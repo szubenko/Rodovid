@@ -24,12 +24,37 @@ it('keeps the Zubenko siblings’ connecting line between their cards', () => {
     for (const edge of edges) {
       const horizontal = [...edge.path.matchAll(/M([^, ]+),([^ ]+) H([^ M]+)/gu)]
         .map(match => ({ x1: Number(match[1]), y: Number(match[2]), x2: Number(match[3]) }))
-      const bus = horizontal.filter(segment => segment.y > Math.min(...horizontal.map(item => item.y)) + .01)
+      const bus = horizontal.filter(segment => Math.abs(segment.y - Math.max(...horizontal.map(item => item.y))) < .01)
       expect(bus.every(segment => Math.min(segment.x1, segment.x2) >= left - .01
         && Math.max(segment.x1, segment.x2) <= right + .01)).toBe(true)
       const vertical = [...edge.path.matchAll(/M([^, ]+),([^ ]+) V([^ M]+)/gu)]
         .map(match => Number(match[1]))
       expect(vertical.some(x => Math.abs(x - (left + right) / 2) < .01)).toBe(true)
+    }
+  }
+}, 30_000)
+
+it('connects the Chaban parents near the middle of their joining line', () => {
+  const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
+  const projection = projectVerticalFamily(graph, 'I32', { generations: 12,
+    expandedSiblingPersonIds: [...graph.personIds], includeChildOtherParent: true })
+  for (const compact of [false, true]) {
+    const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+    const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+      ancestorPersonIds(graph, 'I32'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+    const edges = layout.edges.filter(edge => {
+      const relation = graph.relationships.get(edge.relationshipId)!
+      return ['I42', 'I39'].includes(relation.fromPersonId) && relation.toPersonId === 'I32'
+    })
+    expect(edges).toHaveLength(2)
+    const starts = edges.map(edge => Number(edge.path.match(/^M([^,]+),/u)![1]))
+    const midpoint = (starts[0]! + starts[1]!) / 2
+    for (const edge of edges) {
+      const vertical = [...edge.path.matchAll(/M([^, ]+),([^ ]+) V([^ M]+)/gu)].map(match => Number(match[1]))
+      expect(vertical.some(x => Math.abs(x - midpoint) < .01)).toBe(true)
+      const levels = new Set([...edge.path.matchAll(/M([^, ]+),([^ ]+) H([^ M]+)/gu)]
+        .map(match => Number(match[2])))
+      expect(levels.size).toBeLessThanOrEqual(2)
     }
   }
 }, 30_000)

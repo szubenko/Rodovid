@@ -869,14 +869,15 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
     }
     if (parents.length === 2) {
       const [left, right] = parents as [RelativeNode, RelativeNode]
-      const middle = (left.x + left.width / 2 + right.x - right.width / 2) / 2
+      const middle = (familyPort(left, family) + familyPort(right, family)) / 2
       if (directLine && family.children.length > 1) {
-        // Prefer the middle of the children's span, while keeping the descent
-        // on the parents' bar where their horizontal spans overlap.
+        // A single descent serves both bars. Prefer the parents' midpoint if
+        // it falls over the children; otherwise use the children's midpoint.
         const children = family.children.map(nodeX)
         const min = Math.max(left.x, Math.min(...children))
         const max = Math.min(right.x, Math.max(...children))
         const childMiddle = (Math.min(...children) + Math.max(...children)) / 2
+        if (middle >= min && middle <= max) return middle
         if (min <= max) return Math.max(min, Math.min(max, childMiddle))
       }
       return middle

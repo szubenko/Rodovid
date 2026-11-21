@@ -12,6 +12,67 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
+  it('keeps distant child groups high when other families need separate rows', () => {
+    const project = (expandedChildPersonIds: string[]) => projectVerticalFamily(graph, 'I1', { generations: 12,
+      expandedSiblingPersonIds: [...graph.personIds], expandedChildPersonIds, includeChildOtherParent: true })
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const arrange = (expanded: string[]) => new Map(layoutRelatives(project(expanded), graph, new Map(), new Map(), text => text.length * 12,
+        ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true }).nodes.map(node => [node.personId, node]))
+      const cards = arrange(['I55', 'I106', 'I107', 'I108', 'I196'])
+      const left = ['I204', 'I205', 'I210', 'I212'].map(id => cards.get(id)!)
+      const upperRight = [cards.get('I196')!, cards.get('I202')!].sort((a, b) => a.y - b.y)[0]!
+      for (const child of left) expect(child.generation).toBe(upperRight.generation)
+      expect(cards.get('I196')!.generation).not.toBe(cards.get('I202')!.generation)
+      for (const child of left) for (const other of cards.values()) {
+        if (other === child || other.generation !== child.generation) continue
+        expect(Math.abs(child.x - other.x), `${child.personId}/${other.personId}`)
+          .toBeGreaterThanOrEqual((child.width + other.width) / 2 - .01)
+      }
+    }
+  }, 30_000)
+  it('separates overlapping sibling families vertically without moving them far from their parents', () => {
+    const projection = projectVerticalFamily(graph, 'I1', { generations: 12,
+      expandedSiblingPersonIds: [...graph.personIds], expandedChildPersonIds: ['I107', 'I108', 'I196'], includeChildOtherParent: true })
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+        ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const nodes = new Map(layout.nodes.map(node => [node.personId, node]))
+      const stepan = ['I196', 'I200', 'I201'].map(id => nodes.get(id)!)
+      const vasyl = ['I202', 'I203'].map(id => nodes.get(id)!)
+      expect([...stepan, ...vasyl].every(Boolean)).toBe(true)
+      expect(stepan[0]!.generation).not.toBe(vasyl[0]!.generation)
+      for (const [parentId, children] of [['I107', stepan], ['I108', vasyl]] as const) {
+        const parent = nodes.get(parentId)!
+        const center = (Math.min(...children.map(child => child.x)) + Math.max(...children.map(child => child.x))) / 2
+        expect(Math.abs(center - parent.x)).toBeLessThan(parent.width * 2)
+      }
+      expect(nodes.get('I198')!.generation).toBeGreaterThan(nodes.get('I196')!.generation)
+    }
+  }, 30_000)
+  it('places independent opened descendant groups on the same row', () => {
+    const projection = projectVerticalFamily(graph, 'I1', { generations: 12,
+      expandedSiblingPersonIds: [...graph.personIds], expandedChildPersonIds: ['I55', 'I106'], includeChildOtherParent: true })
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+        ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const cards = new Map(layout.nodes.map(node => [node.personId, node]))
+      const children = ['I204', 'I205', 'I210', 'I212'].map(id => cards.get(id)!)
+      expect(children.every(Boolean)).toBe(true)
+      for (const child of children) expect(child.y - child.height / 2).toBeCloseTo(children[0]!.y - children[0]!.height / 2)
+      for (let i = 0; i < children.length; i++) for (const other of children.slice(i + 1)) {
+        const child = children[i]!
+        expect(Math.abs(child.x - other.x)).toBeGreaterThanOrEqual((child.width + other.width) / 2 - .01)
+      }
+      for (const child of children) for (const other of layout.nodes) {
+        if (child === other || child.generation !== other.generation) continue
+        expect(Math.abs(child.x - other.x), `${child.personId}/${other.personId}`)
+          .toBeGreaterThanOrEqual((child.width + other.width) / 2 - .01)
+      }
+    }
+  }, 30_000)
   it('opens Nadia and Olenka without widening Yakov’s ancestor branches', () => {
     const project = (expandedHalfSiblingParentIds: string[]) => projectVerticalFamily(graph, 'I1', {
       generations: 12, expandedSiblingPersonIds: [...graph.personIds], expandedHalfSiblingParentIds, includeChildOtherParent: true,

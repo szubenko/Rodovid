@@ -35,21 +35,58 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   // existing pedigree together below it instead of pushing a couple apart.
   const appearances = input.appearances.map(node => ({ ...node }))
   const visualByPerson = new Map(appearances.map(node => [node.personId, node]))
-  for (const group of input.childGroups ?? []) {
-    if (!group.insertRow) continue
-    const children = new Set(group.addedPersonIds)
+  const insertedGroups = (input.childGroups ?? []).filter(group => group.insertRow)
+  const insertedPeople = new Set(insertedGroups.flatMap(group => group.addedPersonIds))
+  const baseAppearances = input.appearances.filter(node => !insertedPeople.has(node.personId))
+  const baseIds = new Set(baseAppearances.map(node => node.appearanceId))
+  const basePositions = new Map(insertedGroups.length > 1 ? layoutRelatives({
+    appearances: baseAppearances,
+    edges: input.edges.filter(edge => baseIds.has(edge.fromAppearanceId) && baseIds.has(edge.toAppearanceId)),
+    siblingGroups: input.siblingGroups?.filter(group => !insertedPeople.has(group.personId)).map(group => ({
+      ...group, addedPersonIds: group.addedPersonIds.filter(id => !insertedPeople.has(id)),
+    })),
+  }, graph, labels, dates, measure, directLine, options).nodes.map(node => [node.personId, node.x]) : [])
+  const placedGroups = new Set<SiblingGroup>()
+  for (const group of insertedGroups) {
+    if (placedGroups.has(group)) continue
+    const row = visualByPerson.get(group.personId)!.generation + 1
+    // Share a row only when the groups fit beneath their existing parents.
+    const together: SiblingGroup[] = []
+    const gap = options?.familyGap ?? (directLine ? 80 : 120)
+    const width = (options?.cardWidth ?? 272) * (options?.lateralScale ?? .8)
+    const span = (item: SiblingGroup) => item.addedPersonIds.length * width + Math.max(0, item.addedPersonIds.length - 1) * gap
+    const overlaps = (a: SiblingGroup, b: SiblingGroup) => {
+      const x = basePositions.get(a.personId), y = basePositions.get(b.personId)
+      return x === undefined || y === undefined || Math.abs(x - y) < (span(a) + span(b)) / 2 + gap
+    }
+    for (const other of insertedGroups) {
+      if (placedGroups.has(other) || visualByPerson.get(other.personId)!.generation + 1 !== row) continue
+      if (together.some(item => overlaps(item, other))) continue
+      together.push(other)
+    }
+    const independent = [...placedGroups].filter(previous => together.every(current => !overlaps(previous, current)))
+    together.forEach(other => placedGroups.add(other))
+    const children = new Set(together.flatMap(other => other.addedPersonIds))
     // A visible spouse accompanies the child when a row is inserted. Without
     // this, opening a nested branch shifts the spouse into a later generation.
-    for (const id of group.addedPersonIds) {
+    for (const id of [...children]) {
       for (const link of graph.neighbors.get(id) ?? []) {
         if (link.direction === 'spouses' && visualByPerson.get(link.personId)?.generation === visualByPerson.get(id)?.generation) {
           children.add(link.personId)
         }
       }
     }
-    const row = visualByPerson.get(group.personId)!.generation + 1
-    if (!appearances.some(node => node.generation === row && !children.has(node.personId))) continue
-    for (const node of appearances) if (node.generation >= row && !children.has(node.personId)) node.generation++
+    const protectedIds = new Set(independent.flatMap(item => item.addedPersonIds))
+    for (const id of protectedIds) {
+      for (const link of graph.neighbors.get(id) ?? []) {
+        if (link.direction === 'spouses' && visualByPerson.get(link.personId)?.generation === visualByPerson.get(id)?.generation) protectedIds.add(link.personId)
+      }
+      for (const branch of insertedGroups.filter(item => item.personId === id)) {
+        for (const childId of branch.addedPersonIds) protectedIds.add(childId)
+      }
+    }
+    if (!appearances.some(node => node.generation === row && !children.has(node.personId) && !protectedIds.has(node.personId))) continue
+    for (const node of appearances) if (node.generation >= row && !children.has(node.personId) && !protectedIds.has(node.personId)) node.generation++
     for (const id of children) visualByPerson.get(id)!.generation = row
   }
   const projection = { ...input, appearances }

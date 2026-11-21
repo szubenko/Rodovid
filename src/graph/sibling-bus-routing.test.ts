@@ -16,15 +16,20 @@ it('keeps the Zubenko siblings’ connecting line between their cards', () => {
       ancestorPersonIds(graph, 'I2'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
     const children = layout.nodes.filter(node => ['I2', 'I27'].includes(node.personId))
     const left = Math.min(...children.map(node => node.x)), right = Math.max(...children.map(node => node.x))
-    for (const edge of layout.edges.filter(edge => {
+    const edges = layout.edges.filter(edge => {
       const relation = graph.relationships.get(edge.relationshipId)!
       return ['I4', 'I5'].includes(relation.fromPersonId) && ['I2', 'I27'].includes(relation.toPersonId)
-    })) {
+    })
+    expect(edges).toHaveLength(4)
+    for (const edge of edges) {
       const horizontal = [...edge.path.matchAll(/M([^, ]+),([^ ]+) H([^ M]+)/gu)]
         .map(match => ({ x1: Number(match[1]), y: Number(match[2]), x2: Number(match[3]) }))
       const bus = horizontal.filter(segment => segment.y > Math.min(...horizontal.map(item => item.y)) + .01)
       expect(bus.every(segment => Math.min(segment.x1, segment.x2) >= left - .01
         && Math.max(segment.x1, segment.x2) <= right + .01)).toBe(true)
+      const vertical = [...edge.path.matchAll(/M([^, ]+),([^ ]+) V([^ M]+)/gu)]
+        .map(match => Number(match[1]))
+      expect(vertical.some(x => Math.abs(x - (left + right) / 2) < .01)).toBe(true)
     }
   }
 }, 30_000)

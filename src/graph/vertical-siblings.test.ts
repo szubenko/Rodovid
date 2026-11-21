@@ -12,6 +12,95 @@ const family = familyDataSchema.parse(data), graph = buildFamilyGraph(family)
 const ids = (projection: ReturnType<typeof projectVerticalFamily>) => projection.appearances.map(node => node.personId).sort()
 
 describe('explicit sibling branches', () => {
+  it('keeps existing relatives fixed when Natalia’s family and Nina are opened', () => {
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const arrange = (half: string[], children: string[]) => layoutRelatives(projectVerticalFamily(graph, 'I1', {
+        generations: 12, expandedSiblingPersonIds: [...graph.personIds], expandedHalfSiblingParentIds: half,
+        expandedChildPersonIds: children, includeChildOtherParent: true,
+      }), graph, new Map(), new Map(), text => text.length * 12, ancestorPersonIds(graph, 'I1'),
+      { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const before = arrange([], []), opened = arrange(['I6'], []), nested = arrange(['I6'], ['I69'])
+      for (const [first, second] of [[before, opened], [opened, nested]] as const) {
+        const anchorA = first.nodes.find(node => node.personId === 'I6')!
+        const anchorB = second.nodes.find(node => node.personId === 'I6')!
+        const later = new Map(second.nodes.map(node => [node.personId, node]))
+        for (const node of first.nodes) {
+          const after = later.get(node.personId)!
+          expect(after.x - anchorB.x, node.personId).toBeCloseTo(node.x - anchorA.x)
+          expect(after.y - anchorB.y, node.personId).toBeCloseTo(node.y - anchorA.y)
+        }
+      }
+    }
+  }, 60_000)
+  it('keeps Nina below Tania without a connection routed around the whole tree', () => {
+    const projection = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds],
+      expandedHalfSiblingParentIds: ['I6'], expandedChildPersonIds: ['I55', 'I106', 'I107', 'I108', 'I196', 'I69'], includeChildOtherParent: true })
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+        ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const cards = new Map(layout.nodes.map(node => [node.personId, node]))
+      const mother = cards.get('I6')!, tania = cards.get('I69')!, nina = cards.get('I70')!
+      expect(tania.generation).toBe(mother.generation + 1)
+      expect(nina.generation).toBe(tania.generation + 1)
+      expect(nina.y - nina.height / 2).toBeGreaterThan(tania.y + tania.height / 2)
+      const edge = layout.edges.find(item => {
+        const relation = graph.relationships.get(item.relationshipId)!
+        return relation.fromPersonId === 'I69' && relation.toPersonId === 'I70'
+      })!
+      expect(edge).toBeDefined()
+      for (const match of edge.path.matchAll(/M([^, ]+),([^ ]+) H([^ M]+)/gu)) {
+        expect(Math.abs(Number(match[3]) - Number(match[1]))).toBeLessThan(tania.width * 2)
+      }
+      for (const card of [cards.get('I68')!, tania, nina]) for (const other of layout.nodes) {
+        if (card === other) continue
+        const overlapX = Math.abs(card.x - other.x) < (card.width + other.width) / 2 - .01
+        const overlapY = Math.abs(card.y - other.y) < (card.height + other.height) / 2 - .01
+        expect(overlapX && overlapY, `${card.personId}/${other.personId}`).toBe(false)
+      }
+    }
+  }, 30_000)
+  it('brings Natalia’s terminal half-sibling branch up without overlapping other cards', () => {
+    const projection = projectVerticalFamily(graph, 'I1', { generations: 12, expandedSiblingPersonIds: [...graph.personIds],
+      expandedHalfSiblingParentIds: ['I6'], expandedChildPersonIds: ['I55', 'I106', 'I107', 'I108', 'I196'], includeChildOtherParent: true })
+    for (const compact of [false, true]) {
+      const metrics = portraitCardMetrics([], [], compact, text => text.length * 12, text => text.length * 8)
+      const layout = layoutRelatives(projection, graph, new Map(), new Map(), text => text.length * 12,
+        ancestorPersonIds(graph, 'I1'), { ...portraitLayoutOptions(metrics, compact), separateAncestorColumns: true })
+      const cards = new Map(layout.nodes.map(node => [node.personId, node]))
+      const mother = cards.get('I6')!
+      for (const id of ['I68', 'I69']) {
+        const child = cards.get(id)!
+        expect(child.generation, id).toBe(mother.generation + 1)
+        for (const other of layout.nodes) {
+          if (child === other) continue
+          const overlapX = Math.abs(child.x - other.x) < (child.width + other.width) / 2 - .01
+          const overlapY = Math.abs(child.y - other.y) < (child.height + other.height) / 2 - .01
+          expect(overlapX && overlapY, `${id}/${other.personId}`).toBe(false)
+        }
+      }
+      for (const edge of layout.edges) {
+        let x = 0, y = 0
+        const target = graph.relationships.get(edge.relationshipId)!.toPersonId
+        const obstacles = ['I68', 'I69'].includes(target) ? layout.nodes : ['I68', 'I69'].map(id => cards.get(id)!)
+        for (const match of edge.path.matchAll(/([MVH])([^MVH]+)/gu)) {
+          const values = match[2]!.split(',').map(Number)
+          const nextX = match[1] === 'V' ? x : values[0]!, nextY = match[1] === 'H' ? y : values.at(-1)!
+          if (match[1] !== 'M') for (const card of obstacles) {
+            if (edge.fromAppearanceId === card.appearanceId || edge.toAppearanceId === card.appearanceId) continue
+            const crosses = x === nextX
+              ? x > card.x - card.width / 2 && x < card.x + card.width / 2
+                && Math.max(y, nextY) > card.y - card.height / 2 && Math.min(y, nextY) < card.y + card.height / 2
+              : y > card.y - card.height / 2 && y < card.y + card.height / 2
+                && Math.max(x, nextX) > card.x - card.width / 2 && Math.min(x, nextX) < card.x + card.width / 2
+            expect(crosses, `${edge.relationshipId}/${card.personId}`).toBe(false)
+          }
+          x = nextX; y = nextY
+        }
+      }
+    }
+  }, 30_000)
   it('keeps distant child groups high when other families need separate rows', () => {
     const project = (expandedChildPersonIds: string[]) => projectVerticalFamily(graph, 'I1', { generations: 12,
       expandedSiblingPersonIds: [...graph.personIds], expandedChildPersonIds, includeChildOtherParent: true })

@@ -35,8 +35,16 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   // existing pedigree together below it instead of pushing a couple apart.
   const appearances = input.appearances.map(node => ({ ...node }))
   const visualByPerson = new Map(appearances.map(node => [node.personId, node]))
-  const insertedGroups = (input.childGroups ?? []).filter(group => group.insertRow)
-  const insertedPeople = new Set(insertedGroups.flatMap(group => group.addedPersonIds))
+  const allInsertedGroups = (input.childGroups ?? []).filter(group => group.insertRow)
+  const halfDescendants = new Set((input.childGroups ?? []).filter(group => !group.insertRow).flatMap(group => group.addedPersonIds))
+  for (const id of halfDescendants) for (const group of allInsertedGroups.filter(item => item.personId === id)) {
+    for (const childId of group.addedPersonIds) halfDescendants.add(childId)
+  }
+  // Descendants of an opened half-family are positioned locally below that
+  // branch; they must not insert a row through the unrelated pedigree.
+  const localGroups = new Set(allInsertedGroups.filter(group => halfDescendants.has(group.personId)))
+  const insertedGroups = allInsertedGroups.filter(group => !localGroups.has(group))
+  const insertedPeople = new Set(allInsertedGroups.flatMap(group => group.addedPersonIds))
   const baseAppearances = input.appearances.filter(node => !insertedPeople.has(node.personId))
   const baseIds = new Set(baseAppearances.map(node => node.appearanceId))
   const basePositions = new Map(insertedGroups.length > 1 ? layoutRelatives({
@@ -778,7 +786,7 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
       const neighbors = direction < 0 ? row.filter(node => node.x < parent.x).reverse() : row.filter(node => node.x >= parent.x)
       let edge = parent.x + direction * span / 2
       if (localHalfBranch) {
-        makeRoom(neighbors, direction, edge)
+        makeRoom(neighbors, direction, direction * edge)
         continue
       }
       for (const node of neighbors) {
@@ -1005,7 +1013,7 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   // Reserve a channel below each inserted row for the branches continuing
   // into the original pedigree. The children’s cards and their own bus
   // occupy the space above this channel.
-  const insertedRows = new Set((input.childGroups ?? []).filter(group => group.insertRow)
+  const insertedRows = new Set((input.childGroups ?? []).filter(group => group.insertRow && !localGroups.has(group))
     .flatMap(group => group.addedPersonIds.map(id => byPersonId.get(id)!.generation)))
   let extraSpace = 0
   for (const generation of generations) {
@@ -1019,6 +1027,53 @@ export function layoutRelatives(input: Pick<RelativeProjection, 'appearances' | 
   }
   for (const node of nodes) node.y += rowTops.get(node.generation)!
   const rowBottom = (node: RelativeNode) => rowTops.get(node.generation)! + mainHeight
+  if (options?.separateAncestorColumns) for (const group of (input.childGroups ?? []).filter(item => !item.insertRow)) {
+    const parent = byPersonId.get(group.personId)!
+    const children = group.addedPersonIds.map(id => byPersonId.get(id)!)
+    const nextTop = rowTops.get(parent.generation + 1)
+    if (nextTop === undefined || !children.length) continue
+    const originalGeneration = children[0]!.generation
+    if (originalGeneration <= parent.generation + 1 || children.some(child => child.generation !== originalGeneration)) continue
+    const family = familyByChild.get(children[0]!.personId)
+    if (!family || nextTop <= rowBottom(parent) + channelOffset + family.track * trackSpacing + 8) continue
+    const targetGeneration = new Map(children.map(child => [child.personId, parent.generation + 1]))
+    let supported = true
+    for (const [id, generation] of targetGeneration) {
+      const descendants = (input.childGroups ?? []).filter(item => item.personId === id && item.insertRow)
+        .flatMap(item => item.addedPersonIds)
+      for (const link of graph.neighbors.get(id) ?? []) {
+        if (!byPersonId.has(link.personId)) continue
+        if (link.direction === 'spouses' || (link.direction === 'children' && !descendants.includes(link.personId))) supported = false
+      }
+      for (const id of descendants) targetGeneration.set(id, generation + 1)
+    }
+    if (!supported) continue
+    const moving = new Set(targetGeneration.keys())
+    const targets = [...targetGeneration].map(([id, generation]) => {
+      const node = byPersonId.get(id)!, top = rowTops.get(generation)
+      return { node, generation, y: top === undefined ? undefined : top + (directLine && !options.alignCardTops ? mainHeight : node.height) / 2 }
+    })
+    if (targets.some(target => target.y === undefined)) continue
+    const occupied = nodes.filter(node => !moving.has(node.personId))
+    if (targets.some(({ node, y }) => occupied.some(other =>
+      Math.abs(node.x - other.x) < (node.width + other.width) / 2 + 8
+      && Math.abs(y! - other.y) < (node.height + other.height) / 2 + 8))) continue
+    for (const { node, generation, y } of targets) {
+      node.y = y!
+      node.generation = generation
+    }
+    // A child previously drawn above its parent was excluded from the family
+    // joins. Restore that local join after positioning the whole branch.
+    for (const { node } of targets) if (!familyByChild.has(node.personId)) {
+      const parents = (graph.neighbors.get(node.personId) ?? []).filter(link => link.direction === 'parents')
+        .flatMap(link => byPerson.get(link.personId) ?? []).filter(item => moving.has(item.personId))
+      if (!parents.length) continue
+      const local: FamilyJoin = { parents, children: [byPerson.get(node.personId)!], track: 0 }
+      familyByChild.set(node.personId, local)
+      for (const p of parents) branchesByParent.set(p.personId, [...branchesByParent.get(p.personId) ?? [], local])
+      anchors.set(local, preferredAnchor(local))
+    }
+  }
   let width = Math.max(...nodes.map(node => node.x + node.width / 2)) + padding
   let height = Math.max(...nodes.map(node => node.y + node.height / 2)) + padding + 52
   let gutterIndex = 0

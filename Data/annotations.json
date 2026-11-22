@@ -411,7 +411,8 @@
       "id": "person-media-i103",
       "personId": "I103",
       "photoIds": [
-        "media-i103-history-photo"
+        "media-i103-history-photo",
+        "media-chaban-kopeysk-meeting-1954"
       ],
       "portraitId": "media-i103-diagram-portrait"
     },
@@ -467,7 +468,8 @@
       "personId": "I29",
       "photoIds": [
         "media-i29-kustanay-1958",
-        "media-chabany-havali-kopeysk-1958"
+        "media-chabany-havali-kopeysk-1958",
+        "media-chaban-kopeysk-meeting-1954"
       ],
       "portraitId": "media-i29-avatar"
     },
@@ -476,7 +478,8 @@
       "personId": "I52",
       "photoIds": [
         "media-chabany-kopeysk-1961",
-        "media-chabany-havali-kopeysk-1958"
+        "media-chabany-havali-kopeysk-1958",
+        "media-chaban-kopeysk-meeting-1954"
       ],
       "portraitId": "media-i52-kopeysk-1961-portrait"
     },
@@ -525,7 +528,8 @@
       "photoIds": [
         "media-chabany-kopeysk-1961",
         "media-chabany-havali-kopeysk-1958",
-        "media-i104-i53-chabany-photo"
+        "media-i104-i53-chabany-photo",
+        "media-chaban-kopeysk-meeting-1954"
       ],
       "portraitId": "media-i53-chabany-photo-avatar"
     },
@@ -536,7 +540,8 @@
         "media-chabany-kopeysk-1965",
         "media-chabany-havali-kopeysk-1958",
         "media-i104-photo-portrait",
-        "media-i104-i53-chabany-photo"
+        "media-i104-i53-chabany-photo",
+        "media-chaban-kopeysk-meeting-1954"
       ],
       "portraitId": "media-i104-chabany-photo-avatar"
     },
@@ -8421,6 +8426,30 @@
           "kind": "supplement",
           "file": "assets/photos/young-girl-illustration.png",
           "entryId": "media-young-girl-illustration"
+        }
+      ]
+    },
+    {
+      "id": "media-chaban-kopeysk-meeting-1954",
+      "path": "assets/photos/памятна-зустріч-копейськ-1954.png",
+      "sha256": "09db6a395b2748e2dc2ab97cbc9aa1d8ce591b48f377a971716daffb83a37ed8",
+      "dimensions": {
+        "width": 1073,
+        "height": 1465
+      },
+      "mimeType": "image/png",
+      "thumbnail": {
+        "path": "assets/photos/памятна-зустріч-копейськ-1954.png",
+        "mimeType": "image/png"
+      },
+      "title": "Памятна зустріч з братами і сестрою",
+      "description": "Памятна зустріч з братами і сестрою\n\nКазимир Земнянський\nЯрослав Іванович Чабан\nМихайло Іванович Чабан\nНаталія Іванівна Чабан\nСемен Іванович Чабан\nБогдан Іванович Чабан\n\nКопейську  1954 рік",
+      "photoPlace": "Копейськ",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Памятна зустріч з братами і сестрою — Копейськ 1954.png",
+          "entryId": "media-chaban-kopeysk-meeting-1954"
         }
       ]
     }

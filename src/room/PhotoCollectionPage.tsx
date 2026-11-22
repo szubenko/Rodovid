@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router'
+import { Link, useLocation, useSearchParams } from 'react-router'
 import { useFamily } from '../navigation/context'
 import type { Media } from '../data/schema'
 import { collectFamilyPhotos, photoCollectionCaption } from './photo-collection'
@@ -16,8 +16,10 @@ function CollectionImage({ media }: { media: Media }) {
 export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlasNavigation?: boolean }) {
   const family = useFamily()
   const location = useLocation()
+  const [params, setParams] = useSearchParams()
+  const branch = params.get('branch') === 'zubenko' ? 'zubenko' : 'kernytski'
   const heading = useRef<HTMLHeadingElement>(null)
-  const photos = collectFamilyPhotos(family)
+  const photos = branch === 'kernytski' ? collectFamilyPhotos(family) : []
   const matchNames = useMemo(() => photoPersonMentionMatcher(family), [family])
   const captionText = (text: string) => matchNames(text).map((part, index) => part.personId
     ? <Link key={index} className={styles.titleLink} to={`/person/${part.personId}`}>{part.text}</Link>
@@ -32,7 +34,14 @@ export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlas
   }, [family.config.title])
   return <section className={`${styles.page} ${showAtlasNavigation ? styles.atlasPage : ''}`} aria-labelledby="photo-collection-title">
     <header className={styles.header}>
-      <h1 id="photo-collection-title" ref={heading} tabIndex={-1}><AlbumIcon kind="camera" />Фотогалерея</h1>
+      <div className={styles.headingGroup}>
+        <h1 id="photo-collection-title" ref={heading} tabIndex={-1}><AlbumIcon kind="camera" />Фотогалерея</h1>
+        <label className={styles.branch}><span>Родина</span><select value={branch} onChange={event => {
+          setParams({ branch: event.target.value }, { state: location.state })
+        }}>
+          <option value="kernytski">Стара Сіль</option><option value="zubenko">Чапліївка</option>
+        </select></label>
+      </div>
       {showAtlasNavigation ? <AtlasNavigation /> : <Link className={styles.back} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`} state={fromMemories ? (location.state as { returnState?: unknown } | null)?.returnState : undefined}>{hasReturn ? fromMemories ? '← Повернутися до спогадів' : returnTo.startsWith('/person/') ? '← Повернутися до людини' : '← Повернутися до родоводу' : '← До родоводу'}</Link>}
     </header>
     {photos.length === 0 ? <p className={styles.empty}>Фотографій поки немає.</p> : <div className={styles.grid}>

@@ -549,7 +549,8 @@
       "id": "person-media-i28",
       "personId": "I28",
       "photoIds": [
-        "media-chabany-havali-kopeysk-1958"
+        "media-chabany-havali-kopeysk-1958",
+        "media-unidentified-test-photo"
       ],
       "portraitId": "media-i28-kopeysk-1958-portrait"
     },
@@ -4931,8 +4932,11 @@
       "path": "assets/photos/nevidoma-fotohrafiia-test.jpg",
       "sha256": "b32bb3041695169ea04fc6dacc1e361bfc8efbe9c1fda9eda093d7433d48fb13",
       "mimeType": "image/jpeg",
-      "title": "Невідома фотографія",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/nevidoma-fotohrafiia-test.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Іван Керницький",
       "provenance": [
         {
           "kind": "supplement",

@@ -15,7 +15,7 @@ test('global gallery opens from a person, includes other people, preserves comme
   first.description = `${originalComment}\nНадано власником 30.10.2026.`
   first.dimensions = { width: 420, height: 560 }
   const second = { ...first, id: 'other-person-photo', path: 'assets/photos/other.jpg', title: 'Старіше фото — Копейськ, 1956', photoPlace: 'Копейськ', description: '1956 Копейськ\nКоментар іншої людини' }
-  family.media.push(second)
+  family.media.push(second, { ...first, id: 'unknown-photo', path: 'assets/photos/unknown.jpg', title: 'Невідоме фото', description: undefined, unidentifiedPhotoBranch: 'kernytski' })
   family.people[0]!.photoIds = [first.id]
   family.people[1]!.photoIds = [first.id, second.id]
   await page.route('**/data/family.json', route => route.fulfill({ json: family }))
@@ -35,6 +35,20 @@ test('global gallery opens from a person, includes other people, preserves comme
   await expect(page).toHaveURL(/\/photos$/)
   await expect(page.getByRole('heading', { name: 'Фотогалерея', exact: true })).toBeVisible()
   const cards = page.locator('[data-photo-id]')
+  await cards.first().getByRole('button', { name: /^Збільшити:/ }).click()
+  const viewer = page.getByRole('dialog', { name: 'Перегляд фотографій' })
+  await expect(viewer.getByRole('img')).toBeVisible()
+  await expect(viewer.getByRole('complementary', { name: 'Опис фотографії' })).toBeVisible()
+  await expect(viewer.getByLabel('Родина')).toBeVisible()
+  const filter = viewer.getByRole('checkbox', { name: 'Фото без опису' })
+  await filter.check()
+  await expect(viewer.getByRole('img', { name: 'Невідоме фото' })).toBeVisible()
+  await expect(viewer.getByText('Файл: unknown.jpg')).toBeVisible()
+  await expect(viewer.getByText('Фото 1 / 1', { exact: true })).toBeVisible()
+  await filter.uncheck()
+  await expect(viewer.getByRole('img', { name: second.title })).toBeVisible()
+  await viewer.getByRole('button', { name: 'Закрити перегляд' }).click()
+  await expect(viewer).toHaveCount(0)
   await expect(cards).toHaveCount(2)
   const branch = page.getByLabel('Родина')
   await expect(branch).toHaveValue('kernytski')

@@ -4927,6 +4927,21 @@
   ],
   "media": [
     {
+      "id": "media-unidentified-test-photo",
+      "path": "assets/photos/nevidoma-fotohrafiia-test.jpg",
+      "sha256": "b32bb3041695169ea04fc6dacc1e361bfc8efbe9c1fda9eda093d7433d48fb13",
+      "mimeType": "image/jpeg",
+      "title": "Невідома фотографія",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "Data/assets/photos/nevidoma-fotohrafiia-test.jpg",
+          "entryId": "media-unidentified-test-photo"
+        }
+      ]
+    },
+    {
       "id": "media-vanivski-patsykevychi-group-photo",
       "path": "assets/photos/ванівські-пацикевичі-спільне-фото.png",
       "sha256": "e220c225a84d18f231ee4a37374444f65cde8c331b5f1c0e45763692765c510a",

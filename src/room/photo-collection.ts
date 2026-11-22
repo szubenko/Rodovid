@@ -39,7 +39,7 @@ export function collectFamilyPhotos(family: FamilyData): CollectedPhoto[] {
   const photos = new Map<string, CollectedPhoto>()
   for (const person of family.people) for (const id of person.photoIds) {
     const media = mediaById.get(id)
-    if (!media?.mimeType.startsWith('image/')) continue
+    if (!media?.mimeType.startsWith('image/') || media.unidentifiedPhotoBranch) continue
     const key = media.sha256 ?? media.path
     const photo = photos.get(key) ?? { media, descriptions: [], personIds: [] }
     const description = photoDisplayDescription(media.description ?? '')
@@ -49,4 +49,17 @@ export function collectFamilyPhotos(family: FamilyData): CollectedPhoto[] {
   }
   const byMedia = new Map([...photos.values()].map(photo => [photo.media, photo]))
   return sortPhotosChronologically([...byMedia.keys()]).map(media => byMedia.get(media)!)
+}
+
+/** Explicitly marked photos do not require a person and never include incidental portraits or scans. */
+export function collectUnidentifiedPhotos(family: FamilyData, branch: 'kernytski' | 'zubenko', existing: CollectedPhoto[] = []): CollectedPhoto[] {
+  const seen = new Set(existing.map(photo => photo.media.sha256 ?? photo.media.path))
+  const photos: Media[] = []
+  for (const media of family.media) {
+    const key = media.sha256 ?? media.path
+    if (media.unidentifiedPhotoBranch !== branch || !media.mimeType.startsWith('image/') || seen.has(key)) continue
+    seen.add(key)
+    photos.push(media)
+  }
+  return sortPhotosChronologically(photos).map(media => ({ media, descriptions: media.description ? [photoDisplayDescription(media.description)] : [], personIds: [] }))
 }

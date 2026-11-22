@@ -2,9 +2,10 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useSearchParams } from 'react-router'
 import { useFamily } from '../navigation/context'
 import type { Media } from '../data/schema'
-import { collectFamilyPhotos, photoCollectionCaption } from './photo-collection'
+import { collectFamilyPhotos, collectUnidentifiedPhotos, photoCollectionCaption } from './photo-collection'
 import { photoPersonMentionMatcher } from './photo-person-mentions'
 import { AlbumIcon } from './PhotoDecoration'
+import { PhotoLightbox } from './PhotoLightbox'
 import { AtlasNavigation } from '../edition/AtlasNavigation'
 import styles from './PhotoCollectionPage.module.css'
 
@@ -17,6 +18,7 @@ export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlas
   const family = useFamily()
   const location = useLocation()
   const [params, setParams] = useSearchParams()
+  const [opened, setOpened] = useState<number | null>(null)
   const branch = params.get('branch') === 'zubenko' ? 'zubenko' : 'kernytski'
   const heading = useRef<HTMLHeadingElement>(null)
   const photos = branch === 'kernytski' ? collectFamilyPhotos(family) : []
@@ -44,11 +46,11 @@ export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlas
       </div>
       {showAtlasNavigation ? <AtlasNavigation /> : <Link className={styles.back} to={hasReturn ? returnTo : `/tree/${family.config.homePersonId}`} state={fromMemories ? (location.state as { returnState?: unknown } | null)?.returnState : undefined}>{hasReturn ? fromMemories ? '← Повернутися до спогадів' : returnTo.startsWith('/person/') ? '← Повернутися до людини' : '← Повернутися до родоводу' : '← До родоводу'}</Link>}
     </header>
-    {photos.length === 0 ? <p className={styles.empty}>Фотографій поки немає.</p> : <div className={styles.grid}>
-      {photos.map(photo => {
+    {photos.length === 0 ? <div><p className={styles.empty}>Фотографій поки немає.</p>{collectUnidentifiedPhotos(family, branch).length > 0 && <button type="button" className={styles.back} onClick={() => setOpened(0)}>Відкрити перегляд фотографій</button>}</div> : <div className={styles.grid}>
+      {photos.map((photo, index) => {
         const { title, dates, descriptions } = photoCollectionCaption(photo)
         return <figure className={styles.card} key={photo.media.id} data-photo-id={photo.media.id}>
-          <CollectionImage media={photo.media} />
+          <button type="button" className={styles.openPhoto} aria-label={`Збільшити: ${photo.media.title}`} onClick={() => setOpened(index)}><CollectionImage media={photo.media} /></button>
           <figcaption>
             {dates.map(date => <p className={styles.date} data-photo-date key={date}><AlbumIcon kind="calendar" />{date}</p>)}
             <h2>{captionText(title)}</h2>
@@ -57,5 +59,6 @@ export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlas
         </figure>
       })}
     </div>}
+    {opened !== null && <PhotoLightbox photos={photos} index={opened} initialBranch={branch} onClose={() => setOpened(null)} />}
   </section>
 }

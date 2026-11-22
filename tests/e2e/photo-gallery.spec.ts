@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import fixture from '../fixtures/data-contract/full.json' with { type: 'json' }
 import { familyDataSchema } from '../../src/data/schema'
 
-test('photo carousel switches by buttons, image and keyboard without a popup', async ({ page, isMobile }, info) => {
+test('photo carousel opens the viewer by image and switches with arrows', async ({ page, isMobile }, info) => {
   const family = familyDataSchema.parse(fixture)
   family.datasetKind = 'family'
   const photo = family.media.find(m => m.id === 'media-photo')!
@@ -13,7 +13,7 @@ test('photo carousel switches by buttons, image and keyboard without a popup', a
   photo.dimensions = { width: 2400, height: 1600 }
   photo.thumbnail = { path: 'assets/thumbs/first.png', mimeType: 'image/png' }
   const second = { ...photo, id: 'second-photo', path: 'assets/photos/second.png', mimeType: 'image/png' as const, title: 'Старе тестове фото 1956', description: 'Оригінальний опис фотографії.\nМісце та рік з імпорту.', thumbnail: { path: 'assets/thumbs/second.png', mimeType: 'image/png' as const } }
-  family.media.push(second)
+  family.media.push(second, { ...photo, id: 'unknown-kernytski', path: 'assets/photos/unknown-kernytski.png', title: 'Невідоме фото Старої Солі', description: undefined, unidentifiedPhotoBranch: 'kernytski' }, { ...photo, id: 'unknown-photo', path: 'assets/photos/unknown.png', title: 'Невідоме фото', description: undefined, unidentifiedPhotoBranch: 'zubenko' })
   family.people[0]!.photoIds = [photo.id, second.id]
   family.people[0]!.portraitId = photo.id
   const png = Buffer.from((await page.evaluate(() => {
@@ -64,7 +64,7 @@ test('photo carousel switches by buttons, image and keyboard without a popup', a
   await gallery.getByRole('button', { name: 'Попередня фотографія', exact: true }).click()
   await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
   expect(fullRequests).toBe(0)
-  const imageButton = gallery.getByRole('button', { name: /^Наступна фотографія: / })
+  const imageButton = gallery.getByRole('button', { name: /^Збільшити фото: / })
   const caption = gallery.locator('figure').first().locator('figcaption')
   await expect(caption).toHaveText(second.description)
   await expect(caption).toHaveCSS('white-space', 'pre-wrap')
@@ -81,43 +81,62 @@ test('photo carousel switches by buttons, image and keyboard without a popup', a
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   await page.screenshot({ path: info.outputPath('gallery-layout.png') })
-  await imageButton.click()
-  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
-  await expect(caption).toHaveText(photoCaption)
-  await expect(gallery.getByRole('status')).toHaveText('2 / 2')
-  await expect(page.locator('.pswp')).toHaveCount(0)
-  await imageButton.click()
-  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
-  await expect(caption).toHaveText(second.description)
-  await imageButton.focus()
-  await page.keyboard.press('Enter')
-  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
-  await expect(imageButton).toBeFocused()
-  await page.keyboard.press('Space')
-  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
-  await expect(imageButton).toBeFocused()
-  await page.keyboard.press('ArrowLeft')
-  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
-  await expect(caption).toHaveText(photoCaption)
-  await page.keyboard.press('ArrowRight')
-  await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
   await stage.focus()
   await page.keyboard.press('ArrowRight')
   await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', photo.id)
   await page.keyboard.press('ArrowLeft')
   await expect(gallery.locator('figure')).toHaveAttribute('data-media-id', second.id)
   await expect(stage).toBeFocused()
-  await expect(page.locator('.pswp')).toHaveCount(0)
   expect(fullRequests).toBe(0)
+  await imageButton.click()
+  const viewer = page.getByRole('dialog', { name: 'Перегляд фотографій' })
+  await expect(viewer.getByRole('img', { name: second.title })).toBeVisible()
+  await expect(viewer.getByText('Оригінальний опис фотографії.', { exact: false })).toBeVisible()
+  await page.keyboard.press('ArrowRight')
+  await expect(viewer.getByRole('img', { name: photo.title })).toBeVisible()
+  const displayedImage = viewer.getByRole('img', { name: photo.title })
+  const fitSize = await displayedImage.evaluate(element => element.getBoundingClientRect().width)
+  const wheelResult = await displayedImage.evaluate(element => {
+    const event = new WheelEvent('wheel', { bubbles: true, cancelable: true, ctrlKey: true, deltaY: -200 })
+    element.dispatchEvent(event)
+    return event.defaultPrevented
+  })
+  expect(wheelResult).toBe(true)
+  await expect.poll(() => displayedImage.evaluate(element => element.getBoundingClientRect().width)).toBeGreaterThan(fitSize)
+  await displayedImage.evaluate(element => element.dispatchEvent(new WheelEvent('wheel', { bubbles: true, cancelable: true, ctrlKey: true, deltaY: 200 })))
+  await expect(viewer.getByRole('button', { name: 'Збільшити', exact: true })).toBeVisible()
+  await viewer.getByRole('button', { name: 'Збільшити', exact: true }).click()
+  await expect(viewer.getByRole('button', { name: 'За розміром екрана' })).toBeVisible()
+  if (!isMobile) {
+    const image = viewer.getByRole('img', { name: photo.title })
+    const area = image.locator('..')
+    const box = (await area.boundingBox())!
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+    await page.mouse.down()
+    await page.mouse.move(box.x + box.width / 2 - 120, box.y + box.height / 2 - 100, { steps: 5 })
+    await page.mouse.up()
+    const scroll = await area.evaluate(element => ({ left: element.scrollLeft, top: element.scrollTop }))
+    expect(scroll.left).toBeGreaterThan(0)
+    expect(scroll.top).toBeGreaterThan(0)
+  }
+  await expect(viewer.getByLabel('Родина')).toHaveCount(0)
+  await expect(viewer.getByRole('checkbox', { name: 'Фото без опису' })).toHaveCount(0)
+  await viewer.getByRole('button', { name: 'Сховати опис' }).click()
+  await expect(viewer.getByRole('complementary', { name: 'Опис фотографії' })).toHaveCount(0)
+  await viewer.getByRole('button', { name: 'Показати опис' }).click()
+  await page.keyboard.press('Escape')
+  await expect(viewer).toHaveCount(0)
+  await expect(imageButton).toBeFocused()
   family.people[0]!.photoIds = [second.id]
   await page.reload()
   await expect(gallery.locator('figure')).toHaveCount(1)
   await expect(gallery.getByRole('group', { name: 'Перемикання фотографій' })).toHaveCount(0)
-  await expect(gallery.getByRole('button')).toHaveCount(0)
+  await expect(imageButton).toHaveCount(1)
   await expect(gallery.getByRole('status')).toHaveCount(0)
-  await expect(imageButton).toHaveCount(0)
-  await gallery.locator('img').click()
-  await expect(page.locator('.pswp')).toHaveCount(0)
+  await imageButton.click()
+  await expect(viewer.getByRole('img', { name: second.title })).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(viewer).toHaveCount(0)
   await page.route(/\/assets\/.*\.(png|jpe?g)$/, route => route.abort())
   await page.reload()
   await expect(gallery.getByText('Мініатюра недоступна')).toBeVisible()

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { Media } from '../data/schema'
 import { useFamily } from '../navigation/context'
+import { PhotoLightbox } from './PhotoLightbox'
 import { PhotoViewer } from './PhotoViewer'
 import { AlbumIcon, PhotoDescription } from './PhotoDecoration'
 import { sortPhotosChronologically } from './photo-chronology'
@@ -17,6 +18,7 @@ export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Med
   const family = useFamily()
   const collected = useMemo(() => collectFamilyPhotos(family), [family])
   const matchNames = useMemo(() => photoPersonMentionMatcher(family), [family])
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const [opened, setOpened] = useState<number | null>(null)
   const [selectedId, setSelectedId] = useState(items[0]?.id)
   const viewable = useMemo(() => items.filter(item => item.dimensions), [items])
@@ -35,7 +37,7 @@ export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Med
             selectPhoto(event.key === 'ArrowLeft' ? -1 : 1)
           }}>
             <div className={styles.photoFrame}>
-              {canNavigate ? <button className={styles.photoAdvance} type="button" aria-label={`Наступна фотографія: ${item.title}`} onClick={() => selectPhoto(1)}><Thumbnail key={item.id} item={item} /></button> : <Thumbnail key={item.id} item={item} />}
+              <button className={styles.photoAdvance} type="button" aria-label={`Збільшити фото: ${item.title}`} onClick={() => setLightboxIndex(selectedIndex)}><Thumbnail key={item.id} item={item} /></button>
             </div>
             {canNavigate && <>
               <button className={`${styles.photoArrow} ${styles.photoPrevious}`} type="button" aria-label="Попередня фотографія" onClick={() => selectPhoto(-1)}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg></button>
@@ -51,6 +53,7 @@ export function ImageGallery({ items, primaryId, layout = 'grid' }: { items: Med
         <a href={`/${item.path}`} target="_blank" rel="noopener noreferrer">Відкрити файл: {item.title}</a>
       </>}
     </figure>)}</div>
+    {lightboxIndex !== null && <PhotoLightbox showFilters={false} photos={items.map(item => collected.find(photo => (photo.media.sha256 ?? photo.media.path) === (item.sha256 ?? item.path)) ?? { media: item, descriptions: item.description ? [item.description] : [], personIds: [] })} index={lightboxIndex} onClose={() => setLightboxIndex(null)} />}
     {opened !== null && <PhotoViewer items={viewable} index={opened} showCaptions={showCaptions} onClose={() => setOpened(null)} />}
   </>
 }
@@ -59,7 +62,7 @@ export function PhotoGallery({ personId }: { personId: string }) {
   const family = useFamily()
   const person = family.people.find(p => p.id === personId)!
   const ids = [...new Set(person.photoIds)]
-  const items = sortPhotosChronologically(ids.flatMap(id => { const media = family.media.find(m => m.id === id && m.mimeType.startsWith('image/')); return media ? [media] : [] }))
+  const items = sortPhotosChronologically(ids.flatMap(id => { const media = family.media.find(m => m.id === id && m.mimeType.startsWith('image/') && !m.unidentifiedPhotoBranch); return media ? [media] : [] }))
   if (!items.length) return null
   return <section className={`${styles.paper} ${styles.photoAlbum}`} id="photos" aria-label="Фотографії">
     <div className={styles.photoAlbumHeading}>

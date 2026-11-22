@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest'
 import fixture from '../../tests/fixtures/data-contract/full.json'
 import { familyDataSchema } from '../data/schema'
-import { collectFamilyPhotos, photoCollectionCaption } from './photo-collection'
+import { collectFamilyPhotos, collectUnidentifiedPhotos, photoCollectionCaption } from './photo-collection'
 import { photoPersonMentionMatcher } from './photo-person-mentions'
 import familyData from '../../generated/family.json'
 
@@ -87,4 +87,19 @@ it('links confirmed caption variants to the right people without partial names',
     ['Марії Степанівни Чабан', 'I58'],
   ] as const
   for (const [text, personId] of expected) expect(match(text)).toEqual([{ text, personId }])
+})
+
+it('only includes explicitly marked unlinked photos for the selected family, without duplicates', () => {
+  const family = familyDataSchema.parse(fixture)
+  const original = family.media.find(item => item.id === 'media-photo')!
+  family.people[0]!.photoIds = [original.id]
+  const unknown = { ...original, id: 'unknown', path: 'assets/photos/unknown.jpg', unidentifiedPhotoBranch: 'zubenko' as const }
+  const duplicate = { ...unknown, id: 'unknown-copy' }
+  const unmarked = { ...unknown, id: 'portrait-only', path: 'assets/photos/portrait.jpg', unidentifiedPhotoBranch: undefined }
+  family.media.push(unknown, duplicate, unmarked)
+  expect(collectFamilyPhotos(family).map(item => item.media.id)).toEqual([original.id])
+  expect(collectUnidentifiedPhotos(family, 'kernytski')).toEqual([])
+  expect(collectUnidentifiedPhotos(family, 'zubenko').map(item => item.media.id)).toEqual(['unknown'])
+  expect(collectUnidentifiedPhotos(family, 'zubenko', [{ media: unknown, descriptions: [], personIds: [] }])).toEqual([])
+  expect(familyDataSchema.safeParse({ ...family, media: [...family.media, { ...unknown, id: 'bad', mimeType: 'application/pdf' }] }).success).toBe(false)
 })

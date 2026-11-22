@@ -113,7 +113,10 @@ export const mediaSchema = z.strictObject({
   thumbnail: z.strictObject({
     path: assetPath, mimeType: z.enum(['image/jpeg', 'image/png']),
   }).optional(),
-  title: text, description: text.optional(), photoPlace: text.optional(), provenance,
+  title: text, description: text.optional(), photoPlace: text.optional(),
+  unidentifiedPhotoBranch: z.enum(['kernytski', 'zubenko']).optional(), provenance,
+}).refine((media) => !media.unidentifiedPhotoBranch || media.mimeType.startsWith('image/'), {
+  message: 'Unidentified photos must be images', path: ['unidentifiedPhotoBranch'],
 }).refine((media) => !media.thumbnail || !media.mimeType.startsWith('audio/'), {
   message: 'Thumbnails belong to images or PDF documents', path: ['thumbnail'],
 })

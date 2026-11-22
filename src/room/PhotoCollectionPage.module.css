@@ -23,3 +23,6 @@
 .titleLink { color: inherit; text-decoration: none; }
 .titleLink:hover { color: #526f43; }
 @media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } .page { padding-inline: 4px; } .page.atlasPage { padding-inline: 0; } .atlasPage .header { padding: 68px 4px 8px; } .atlasPage .header > nav[aria-label='Основна навігація'] { right: 4px; } .card figcaption { padding: 16px; } .image img { height: auto; max-height: 480px; } }
+
+.openPhoto { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.openPhoto:focus-visible { outline: 3px solid #526f43; outline-offset: -3px; }

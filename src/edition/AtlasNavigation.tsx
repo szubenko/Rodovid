@@ -5,9 +5,10 @@ import { ViewLink } from '../navigation/ViewLink'
 import { lastMemoryPath } from '../navigation/memory-location'
 import styles from './AtlasApp.module.css'
 
-export function NavigationIcon({ kind }: { kind: 'book' | 'photos' | 'home' | 'music' }) {
+export function NavigationIcon({ kind }: { kind: 'book' | 'photos' | 'album' | 'home' | 'music' }) {
   const paths = {
     book: <path d="M12 5v15M12 5C8 2 3 4 3 4v14s5-2 9 2c4-4 9-2 9-2V4s-5-2-9 1Z" />,
+    album: <><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m4 18 5-5 3 3 3-4 5 6" /></>,
     photos: <><path d="M3 7h5l2-3h4l2 3h5v13H3Z" /><circle cx="12" cy="13" r="4" /></>,
     home: <path d="m3 10 9-7 9 7v10H3Zm6 10v-7h6v7" />,
     music: <><path d="M9 18V5l11-2v13M9 9l11-2" /><ellipse cx="6" cy="18" rx="3" ry="2" /><ellipse cx="17" cy="16" rx="3" ry="2" /></>,
@@ -26,6 +27,7 @@ export function AtlasNavigation({ personId }: { personId?: string }) {
   const memoryPath = location.pathname === '/memories' ? currentPath : memoryOrigin ?? lastMemoryPath() ?? (personId ? `/memories?person=${encodeURIComponent(personId)}` : '/memories')
   return <nav className={styles.navigation} aria-label="Основна навігація">
     <ViewLink to={`/tree/${family.config.homePersonId}`} resetMap aria-label="До мене" title="До мене"><NavigationIcon kind="home" /></ViewLink>
+    <RouteLink to="/photo-album" state={{ returnTo: currentPath, returnState: location.state }} aria-label="Фотоальбом" title="Фотоальбом" aria-current={location.pathname === "/photo-album" ? "page" : undefined}><NavigationIcon kind="album" /></RouteLink>
     <RouteLink to="/photos" state={{ returnTo: currentPath, returnState: location.state }} aria-label="Галерея" title="Галерея"><NavigationIcon kind="photos" /></RouteLink>
     <RouteLink to={memoryPath} state={location.pathname === '/memories' ? location.state : memoryOrigin ? (location.state as { returnState?: unknown } | null)?.returnState : { returnTo: currentPath }} aria-label="Спогади" title="Спогади"><NavigationIcon kind="book" /></RouteLink>
     <button type="button" onClick={toggleMusic} disabled={!musicAvailable} aria-label={soundLabel} title={soundLabel} aria-pressed={musicActive}><NavigationIcon kind="music" /></button>

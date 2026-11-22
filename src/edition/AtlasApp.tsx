@@ -14,6 +14,7 @@ import { VerticalMinimalTree } from '../graph/VerticalMinimalTree'
 import type { MapScreen } from '../navigation/view-state'
 import { PersonRoom } from '../room/PersonRoom'
 import { PhotoCollectionPage } from '../room/PhotoCollectionPage'
+import { PhotoAlbumPage } from '../room/PhotoAlbumPage'
 import { MemoryCollectionPage } from '../room/MemoryCollectionPage'
 import { MotionPreferences } from '../appearance/MotionPreferences'
 import { AudioProvider } from '../audio/AudioProvider'
@@ -136,6 +137,7 @@ function Workspace() {
           <Route path="/isi-relatives/:personId" element={<PersonView screen="isi-relatives" />} />
           <Route path="/vertical-minimal/:personId" element={<PersonView screen="vertical-minimal" />} />
           <Route path="/person/:personId" element={<PersonView screen="person" />} />
+          <Route path="/photo-album" element={<PhotoAlbumPage showAtlasNavigation />} />
           <Route path="/photos" element={<PhotoCollectionPage showAtlasNavigation />} />
           <Route path="/memories" element={<MemoryCollectionPage />} />
           <Route path="*" element={<Missing />} />

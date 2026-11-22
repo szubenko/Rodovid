@@ -9,6 +9,7 @@ import { PersonSearch } from './search/PersonSearch'
 import { KinshipExplanation } from './kinship/KinshipExplanation'
 import { PersonRoom } from './room/PersonRoom'
 import { PhotoCollectionPage } from './room/PhotoCollectionPage'
+import { PhotoAlbumPage } from './room/PhotoAlbumPage'
 import { MotionPreferences } from './appearance/MotionPreferences'
 import { AudioProvider } from './audio/AudioProvider'
 import styles from './App.module.css'
@@ -18,6 +19,7 @@ function Navigation() {
   const location = useLocation()
   return <nav className={styles.actions} aria-label="Основна навігація">
     <button disabled={state.position === 0} onClick={goBack}>Назад</button>
+    <RouteLink to="/photo-album" state={{ returnTo: location.pathname }}>Фотоальбом</RouteLink>
     <RouteLink to="/photos" state={{ returnTo: location.pathname }}>Галерея</RouteLink>
     <Link to={`/tree/${state.homePersonId}`} resetMap>До мене</Link>
   </nav>
@@ -81,7 +83,8 @@ function Workspace() {
       <Route path="/" element={<Navigate to={`/tree/${family.config.homePersonId}`} replace />} />
       <Route path="/tree/:personId" element={<PersonScreen screen="tree" />} />
       <Route path="/person/:personId" element={<PersonScreen screen="person" />} />
-      <Route path="/photos" element={<PhotoCollectionPage />} />
+      <Route path="/photo-album" element={<PhotoAlbumPage />} />
+          <Route path="/photos" element={<PhotoCollectionPage />} />
       <Route path="*" element={<Missing />} />
     </Routes>
     </AudioProvider>

@@ -27,3 +27,7 @@
 
 .openPhoto { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
 .openPhoto:focus-visible { outline: 3px solid #526f43; outline-offset: -3px; }
+
+.albumToolbar { min-width: 0; }
+.atlasPage .header:has(.albumToolbar) { padding-right: 300px; }
+@media (max-width: 760px) { .atlasPage .header:has(.albumToolbar) { padding: 68px 4px 8px; } }

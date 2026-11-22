@@ -50,3 +50,35 @@
 .unidentified input { width: 18px; height: 18px; accent-color: #79956d; }
 
 .filename { color: #58714f; font: 15px/1.5 system-ui, sans-serif; overflow-wrap: anywhere; }
+.albumPage { position: relative; inset: auto; width: 100%; height: auto; min-height: 0; border: 1px solid #d5ded1; border-radius: 12px; color: #243b34; background: radial-gradient(ellipse at 35% 35%, #ffffff70, transparent 65%), url('./album-paper.svg'); overflow: hidden; }
+.albumPage[open] { display: flex; }
+.albumHeading { display: flex; align-items: center; gap: 8px; padding: 14px 24px 10px; color: #35512b; background: #edf4e6; border-bottom: 1px solid #dce6d5; font: 650 11px/1.4 var(--font-body); letter-spacing: .1em; text-transform: uppercase; }
+.albumHeading svg { width: 14px; height: 14px; }
+.albumPage .toolbar { background: transparent; color: #35512b; padding: 12px 24px; }
+.albumPage .toolbar button, .albumPage .toolbar select, .albumPage .counter input { color: #243b34; border-color: #cbdac4; background: #f7faf4; }
+.albumPage .toolbar button:hover { background: #e6efdf; }
+.albumPage .content { min-height: 0; padding: 10px 24px 24px; gap: clamp(24px, 4vw, 64px); }
+.albumPage .stage { flex: 0 1 49%; align-self: flex-start; height: max(320px, calc(100dvh - 130px)); min-height: 0; background: linear-gradient(120deg, #e6efdf70, transparent 35%, #d2e0c840), url('./album-paper.svg'); clip-path: polygon(0 6%, 6% 0, 94% 0, 100% 6%, 100% 94%, 94% 100%, 6% 100%, 0 94%); box-shadow: inset 0 0 8px #879e7650, inset 0 0 1px 2px #96ae8870; }
+.albumPage .imageArea { padding: 12px; }
+.albumPage .imageArea img { border: 8px solid white; }
+.albumPage .arrow { color: white; }
+.albumPage .description { position: relative; flex: 1; padding: 30px 0; background: url('./album-cottage.png') no-repeat right 20px bottom 20px / min(55%, 400px) auto; }
+.albumPage .description h2, .albumPage .date { position: relative; padding-left: 48px; color: #35512b; }
+.albumPage .description h2 svg, .albumPage .date svg { position: absolute; left: 0; top: 0; width: 28px; height: 28px; color: #526f43; }
+.albumPage .description h2 { margin-top: 16px; }
+.albumPage .body, .albumPage .filename { margin-left: 48px; white-space: pre-wrap; }
+.albumPage .description a { text-decoration: none; }
+.albumPage .branch select:focus-visible, .albumPage .counter input:focus-visible { outline-color: #35512b; }
+@media (max-width: 760px) { .albumPage { min-height: 0; } .albumPage .toolbar { padding: 10px; } .albumPage .content { min-height: 0; padding: 10px; gap: 12px; } .albumPage .stage { flex: none; align-self: stretch; min-height: 320px; height: 45vh; } .albumPage .description { flex: none; min-height: 0; padding: 16px 8px; } }
+.albumPage .toolbar { justify-content: flex-start; column-gap: clamp(16px, 3vw, 48px); background: #edf4e6; border-bottom: 1px solid #dce6d5; }
+.albumPage .albumHeading { flex: 0 0 auto; padding: 0; border: 0; background: transparent; }
+
+
+
+.toolbar.albumToolbar { justify-content: flex-start; min-height: 44px; padding: 0; gap: 16px 24px; color: #35512b; background: transparent; font: 15px/1.3 var(--font-body); }
+.albumToolbar .counter { min-width: 0; }
+.albumToolbar .counter input { min-height: 44px; color: #35512b; border-color: #d5ded1; border-radius: 8px; background: #f3f7ee; }
+.albumToolbar .counter input:focus-visible { outline-color: #35512b; }
+.albumToolbar .unidentified { white-space: normal; }
+.albumPage .openImage { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.albumPage .openImage:focus-visible { outline: 3px solid #526f43; outline-offset: -3px; }

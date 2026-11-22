@@ -56,11 +56,27 @@ export function PhotoLightbox({ photos, index, onClose, initialBranch = 'kernyts
     return () => { element.close(); if (trigger?.isConnected) trigger.focus({ preventScroll: true }) }
   }, [])
   return <dialog ref={dialog} className={styles.dialog} aria-label="Перегляд фотографій" onCancel={event => { event.preventDefault(); onClose() }} onKeyDown={event => {
-    if (event.target instanceof HTMLSelectElement || event.altKey || event.ctrlKey || event.metaKey || visiblePhotos.length < 2) return
+    if (event.target instanceof HTMLSelectElement || event.target instanceof HTMLInputElement || event.altKey || event.ctrlKey || event.metaKey || visiblePhotos.length < 2) return
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1) }
   }}>
     <div className={styles.toolbar}>
-      <div className={styles.info}><span aria-live="polite">{photo ? `Фото ${current + 1} / ${visiblePhotos.length}` : 'Фото 0 / 0'}</span>
+      <div className={styles.info}><div className={styles.counter}>Фото {photo ? <input
+        key={`${current}-${visiblePhotos.length}-${branch}-${showUnidentified}`}
+        aria-label="Номер фотографії"
+        type="text" inputMode="numeric" pattern="[0-9]*" defaultValue={current + 1}
+        onFocus={event => event.currentTarget.select()}
+        onBlur={event => {
+          const value = event.currentTarget.value.trim()
+          const number = Number(value)
+          const valid = /^[0-9]+$/.test(value) && Number.isSafeInteger(number) && number >= 1 && number <= visiblePhotos.length
+          if (valid) { setCurrent(number - 1); setScale(1) }
+          event.currentTarget.value = String(valid ? number : current + 1)
+        }}
+        onKeyDown={event => {
+          if (event.key === 'Enter') { event.preventDefault(); event.currentTarget.blur() }
+          if (event.key === 'Escape') { event.preventDefault(); event.stopPropagation(); event.currentTarget.value = String(current + 1); event.currentTarget.blur() }
+        }}
+      /> : '0'} / <span>{visiblePhotos.length}</span></div>
         {showFilters && <label className={styles.branch}>Родина <select value={branch} onChange={event => { setBranch(event.target.value as 'kernytski' | 'zubenko'); setBranchChanged(true); setCurrent(0); setScale(1) }}><option value="kernytski">Стара Сіль</option><option value="zubenko">Чапліївка</option></select></label>}
       </div>
       {showFilters && <label className={styles.unidentified}><input type="checkbox" checked={showUnidentified} onChange={event => { setShowUnidentified(event.target.checked); setCurrent(0); setScale(1) }} />Не ідентиковані фотографії</label>}

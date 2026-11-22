@@ -34,7 +34,9 @@
 }
 
 .info { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
-.info > span { min-width: 100px; font-variant-numeric: tabular-nums; }
+.counter { display: flex; align-items: center; gap: 4px; min-width: 100px; font-variant-numeric: tabular-nums; }
+.counter input { width: 3em; min-height: 34px; padding: 3px 4px; border: 1px solid #a2b09b; border-radius: 4px; background: #34483a; color: inherit; font: inherit; text-align: center; }
+.counter input:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .branch { display: flex; align-items: center; gap: 6px; }
 .branch select { width: 138px; min-height: 40px; padding: 6px 8px; border: 1px solid #a2b09b; border-radius: 6px; background: #34483a; color: white; font: inherit; }
 .empty { padding: 24px; text-align: center; }

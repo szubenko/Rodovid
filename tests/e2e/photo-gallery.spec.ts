@@ -120,7 +120,7 @@ test('photo carousel opens the viewer by image and switches with arrows', async 
     expect(scroll.top).toBeGreaterThan(0)
   }
   await expect(viewer.getByLabel('Родина')).toHaveCount(0)
-  await expect(viewer.getByRole('checkbox', { name: 'Фото без опису' })).toHaveCount(0)
+  await expect(viewer.getByRole('checkbox', { name: 'Не ідентиковані фотографії' })).toHaveCount(0)
   await viewer.getByRole('button', { name: 'Сховати опис' }).click()
   await expect(viewer.getByRole('complementary', { name: 'Опис фотографії' })).toHaveCount(0)
   await viewer.getByRole('button', { name: 'Показати опис' }).click()

@@ -63,7 +63,7 @@ export function PhotoLightbox({ photos, index, onClose, initialBranch = 'kernyts
       <div className={styles.info}><span aria-live="polite">{photo ? `Фото ${current + 1} / ${visiblePhotos.length}` : 'Фото 0 / 0'}</span>
         {showFilters && <label className={styles.branch}>Родина <select value={branch} onChange={event => { setBranch(event.target.value as 'kernytski' | 'zubenko'); setBranchChanged(true); setCurrent(0); setScale(1) }}><option value="kernytski">Стара Сіль</option><option value="zubenko">Чапліївка</option></select></label>}
       </div>
-      {showFilters && <label className={styles.unidentified}><input type="checkbox" checked={showUnidentified} onChange={event => { setShowUnidentified(event.target.checked); setCurrent(0); setScale(1) }} />Фото без опису</label>}
+      {showFilters && <label className={styles.unidentified}><input type="checkbox" checked={showUnidentified} onChange={event => { setShowUnidentified(event.target.checked); setCurrent(0); setScale(1) }} />Не ідентиковані фотографії</label>}
       <div className={styles.actions}>
         <button type="button" disabled={!photo} onClick={() => { if (zoomed) setScale(1); else { const width = measureFitWidth(); if (width) { setFitWidth(width); setScale(2) } } }}>{zoomed ? 'За розміром екрана' : 'Збільшити'}</button>
         <button type="button" aria-expanded={showDescription} onClick={() => setShowDescription(value => !value)}>{showDescription ? 'Сховати опис' : 'Показати опис'}</button>

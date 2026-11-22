@@ -40,7 +40,7 @@ test('global gallery opens from a person, includes other people, preserves comme
   await expect(viewer.getByRole('img')).toBeVisible()
   await expect(viewer.getByRole('complementary', { name: 'Опис фотографії' })).toBeVisible()
   await expect(viewer.getByLabel('Родина')).toBeVisible()
-  const filter = viewer.getByRole('checkbox', { name: 'Фото без опису' })
+  const filter = viewer.getByRole('checkbox', { name: 'Не ідентиковані фотографії' })
   await filter.check()
   await expect(viewer.getByRole('img', { name: 'Невідоме фото' })).toBeVisible()
   await expect(viewer.getByText('Файл: unknown.jpg')).toBeVisible()

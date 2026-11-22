@@ -337,7 +337,8 @@
       "id": "person-media-i205",
       "personId": "I205",
       "photoIds": [
-        "media-vanivski-patsykevychi-group-photo"
+        "media-vanivski-patsykevychi-group-photo",
+        "media-unidentified-stara-ropa-teshcha-d1b5c211f9e8"
       ],
       "portraitId": "media-i205-marii-avatar"
     },
@@ -345,7 +346,8 @@
       "id": "person-media-i206",
       "personId": "I206",
       "photoIds": [
-        "media-vanivski-patsykevychi-group-photo"
+        "media-vanivski-patsykevychi-group-photo",
+        "media-unidentified-stara-ropa-teshcha-d1b5c211f9e8"
       ],
       "portraitId": "media-i206-mykhailo-avatar"
     },
@@ -432,6 +434,9 @@
       "photoIds": [
         "media-kernytskyi-endzevych-stara-ropa-1957",
         "media-i47-kopeysk-1956",
+        "media-unidentified-stara-ropa-teshcha-956848b1ad5a",
+        "media-unidentified-stara-ropa-teshcha-4ae0d56b29d4",
+        "media-unidentified-stara-ropa-teshcha-de97fad6b95e",
         "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
       ],
       "portraitId": "media-i47-avatar"
@@ -449,6 +454,7 @@
       "id": "person-media-i48",
       "personId": "I48",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-956848b1ad5a",
         "media-kernytskyi-endzevych-stara-ropa-1957",
         "media-kernytskyi-visit-after-katorha-stara-ropa-1957"
       ],
@@ -468,6 +474,8 @@
       "personId": "I29",
       "photoIds": [
         "media-i29-kustanay-1958",
+        "media-unidentified-stara-ropa-teshcha-4ae0d56b29d4",
+        "media-unidentified-stara-ropa-teshcha-de97fad6b95e",
         "media-chabany-havali-kopeysk-1958",
         "media-chaban-kopeysk-meeting-1954"
       ],
@@ -487,6 +495,7 @@
       "id": "person-media-i34",
       "personId": "I34",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-ce82f909d8de",
         "media-chabany-kopeysk-1961",
         "media-chabany-kopeysk-1965",
         "media-chabany-havali-kopeysk-1958"
@@ -506,6 +515,7 @@
       "id": "person-media-i32",
       "personId": "I32",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-ce82f909d8de",
         "media-chabany-kopeysk-1961",
         "media-chabany-kopeysk-1965",
         "media-chabany-havali-kopeysk-1958"
@@ -558,6 +568,7 @@
       "id": "person-media-i31",
       "personId": "I31",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-ce82f909d8de",
         "media-chabany-havali-kopeysk-1958"
       ],
       "portraitId": "media-i31-kopeysk-1958-portrait"
@@ -566,6 +577,7 @@
       "id": "person-media-i30",
       "personId": "I30",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-ce82f909d8de",
         "media-chabany-havali-kopeysk-1958"
       ],
       "portraitId": "media-i30-kopeysk-1958-portrait"
@@ -4977,8 +4989,12 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-d1b5c211f9e8.jpg",
       "sha256": "d79d15b97bd72294ba67bac4234566c89332b361b59630fc00c5bfa734616a90",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-d1b5c211f9e8.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Весільна фотографія",
+      "description": "1952 рік\nМарій Михайлова Пацикевич і Михайло Ванівський",
       "provenance": [
         {
           "kind": "supplement",
@@ -4992,8 +5008,12 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-956848b1ad5a.jpg",
       "sha256": "b89924d21667882aded1312ddfaf2c619aa6bdd22259b86ed0c0b603e850066b",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-956848b1ad5a.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Сімейна фотографія",
+      "description": "Василь Керницький і Марія Керницька",
       "provenance": [
         {
           "kind": "supplement",
@@ -5022,8 +5042,12 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-4ae0d56b29d4.jpg",
       "sha256": "3819f95ea4c9bdba53df84867aec3c852dc2c710665e26a40924580ef377df8c",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-4ae0d56b29d4.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Сімейна фотографія",
+      "description": "Василь Керницький і Наталія Іванівна",
       "provenance": [
         {
           "kind": "supplement",
@@ -5037,8 +5061,12 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-de97fad6b95e.jpg",
       "sha256": "c932015c499f39b408cbd02d254883782f5cfa24a2d499dca5c4848c4be58f77",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-de97fad6b95e.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Сімейна фотографія",
+      "description": "Василь Керницький і Наталія Іванівна",
       "provenance": [
         {
           "kind": "supplement",
@@ -5067,8 +5095,12 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-ce82f909d8de.jpg",
       "sha256": "748b27d740466cbdb7e8d423bf5574b981a637301a0ca8f624dc89d09e85216b",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-ce82f909d8de.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Сімейна фотографія",
+      "description": "Марія Чабан, Іван Чабан, Микола Керницький і Катерина Сидір",
       "provenance": [
         {
           "kind": "supplement",

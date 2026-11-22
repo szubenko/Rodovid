@@ -7,6 +7,7 @@
 .branch { display: flex; align-items: center; gap: 8px; color: #58714f; }
 .branch select { min-width: 168px; min-height: 44px; padding: 8px 32px 8px 12px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; font: inherit; }
 .header h1 { display: flex; align-items: center; gap: 12px; margin: 0; color: #35512b; font: 400 clamp(26px, 3vw, 36px)/1.2 var(--font-heading); }
+.header h1:focus-visible { outline: none; }
 .header h1 svg { width: 30px; height: 30px; flex-shrink: 0; }
 .back { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border: 1px solid #d5ded1; border-radius: 8px; background: #f3f7ee; color: #35512b; text-decoration: none; }
 .back:hover { background: #e7efdf; }

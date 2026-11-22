@@ -29,6 +29,7 @@ export const november11SecondMergeSha256 = 'cc9815d740abd8b5de881af9d7e9aa1e2c9a
 export const november14MergeSha256 = '2d1f6acd17b2ecaebb28045d667a467ff4120fcfca31f638f27f8cb058d01ed1'
 export const november18MergeSha256 = '5ed4a46d99ba2f79bb5f4f38b05b341211e8bc975098d210de00d498d501f1ef'
 export const november20MergeSha256 = 'ef667b5c48c15b1efbebf2f83e233713b89f5a79d655bdede000fb0537338b47'
+export const november22MergeSha256 = '3e9623ba9fdb9acfffbb26c52c5644c0d8df814a7f3fd7cfcd566de628f93e70'
 export const chronologyReviewId = 'relationship-259066879720fd7dd7184cf9'
 export const reviewedGraphIssues = [
   { code: 'CONFLICTING_ROLES', review: 'D07', recordIds: ['@F10@', '@F6@'],

@@ -7,9 +7,9 @@
 4 CONT South Jordan, UT 84095
 4 CONT USA
 1 DEST PAF
-1 DATE 20 NOV 2026
-2 TIME 17:34:38
-1 FILE ZubenkoNewFormat.reviewed.11.20.26.ged
+1 DATE 22 NOV 2026
+2 TIME 22:45:48
+1 FILE ZubenkoNewFormat.reviewed.11.22.26.ged
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED
@@ -41,7 +41,7 @@
 2 ROMN Iryna Ivanivna /Kyrnytska/
 1 SEX F
 1 BIRT
-2 PLAC Vatutine, Cherkasy, Ukraine
+2 PLAC Копейську, Челябинская область, Радянський Союз
 2 DATE 19 AUG 1963
 1 _FSFTID PFF9-VHP
 1 _UID 2F30A6E0D09982488D8636DDFF8D52E0FCF1
@@ -1403,6 +1403,9 @@
 1 WIFE @I5@
 1 _UID EA7E79691AEE494F86AD0E1C3896DC6C5D99
 1 CHIL @I3@
+1 CHIL @I213@
+1 CHIL @I214@
+1 CHIL @I215@
 0 @F3@ FAM
 1 HUSB @I6@
 1 WIFE @I7@
@@ -4891,4 +4894,19 @@
 1 NOTE "Ukraine, Kharkiv Church Records, 1710-1938", <i>FamilySearch</i> (https:
 2 CONC //www.familysearch.org/ark:/61903/1:1:6X3L-MPJW : Tue Oct 15 04:20:18 UT
 2 CONC C 2024), Иван Дейкало, 1 Jul 1926.
+0 @I213@ INDI
+1 NAME Оля Іванівна /Керницький/
+1 SEX F
+1 _UID 98DEF1377482DD49B6EF23D4D4F2DA897F46
+1 FAMC @F2@
+0 @I214@ INDI
+1 NAME Оксана Іванівна /Керницький/
+1 SEX F
+1 _UID 09D075E6D16AAC45B6373E35228F2C51EEDF
+1 FAMC @F2@
+0 @I215@ INDI
+1 NAME Любов Іванівна /Керницький/
+1 SEX F
+1 _UID 6A901C4B57B2A44A8310389768A7034814D1
+1 FAMC @F2@
 0 TRLR

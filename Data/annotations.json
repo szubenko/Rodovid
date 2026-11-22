@@ -473,6 +473,7 @@
       "id": "person-media-i29",
       "personId": "I29",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-d36eb46ed93b",
         "media-i29-kustanay-1958",
         "media-unidentified-stara-ropa-teshcha-4ae0d56b29d4",
         "media-unidentified-stara-ropa-teshcha-de97fad6b95e",
@@ -559,6 +560,7 @@
       "id": "person-media-i28",
       "personId": "I28",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-d36eb46ed93b",
         "media-chabany-havali-kopeysk-1958",
         "media-unidentified-test-photo"
       ],
@@ -601,8 +603,24 @@
     {
       "id": "person-media-i3",
       "personId": "I3",
-      "photoIds": [],
+      "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
+      ],
       "portraitId": "media-i3-iryna-avatar"
+    },
+    {
+      "id": "person-media-i213",
+      "personId": "I213",
+      "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
+      ]
+    },
+    {
+      "id": "person-media-i214",
+      "personId": "I214",
+      "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
+      ]
     },
     {
       "id": "person-media-i108",
@@ -749,11 +767,11 @@
     {
       "id": "review-place-6b5be36a47e3939cbf234bad",
       "placeId": "place-6b5be36a47e3939cbf234bad",
-      "explanation": "D06: українське відображення назви без зміни історичного запису. Тотожність з іншими місцями та координати не уточнені. Координати для карти 30.10.2026: орієнтир населеного пункту за https://www.geonames.org/690312/bahacheve.html. Точна адреса події не встановлювалася; початкові назви, окремі записи та прив’язки подій збережені.",
-      "displayName": "Ватутіне, Черкаси, Україна",
+      "explanation": "Місце народження уточнено власником у GEDCOM від 22.11.2026. Оригінальне написання збережено. Орієнтир Копейська: https://herbariumle.ru/?id=1634&t=toponyms.",
+      "displayName": "Копейськ, Челябінська область, Радянський Союз",
       "coordinates": {
-        "latitude": 49.01198,
-        "longitude": 31.04659
+        "latitude": 55.117264,
+        "longitude": 61.614417
       }
     },
     {
@@ -5249,8 +5267,12 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-d36eb46ed93b.jpg",
       "sha256": "1a49b9235ac84d83c5f1ecacfc459ac02f6945fa061a4e241e072d2b7d1c4f84",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-d36eb46ed93b.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Сімейна фотографія",
+      "description": "Іван Керницький, Наталія Іванівна, Ірина Іванівна Керницька, Оля Іванівна Керницький, Оксана Іванівна Керницький",
       "provenance": [
         {
           "kind": "supplement",

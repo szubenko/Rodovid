@@ -144,6 +144,12 @@ it('builds fresh data and only declared files, shares bytes, rejects invalid inp
       }, { timeout: 15_000 })
       expect(messages).toHaveBeenCalledWith({ type: 'full-reload' })
 
+      // Touching an unrelated archive file must not reload an unchanged site.
+      messages.mockClear()
+      await put('Data/Zubenko.rmtree', 'updated private archive')
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      expect(messages).not.toHaveBeenCalledWith({ type: 'full-reload' })
+
       messages.mockClear()
       await json('Data/annotations.json', { schemaVersion: 2 })
       await vi.waitFor(() => expect(messages).toHaveBeenCalledWith(expect.objectContaining({ type: 'error' })), { timeout: 15_000 })

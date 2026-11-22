@@ -11,6 +11,15 @@ const exec = promisify(execFile)
 const converter = fileURLToPath(new URL('./convert-data.ts', import.meta.url))
 type StaticFile = { bytes: Buffer; mimeType: string }
 
+function sameFiles(first: Map<string, StaticFile>, second: Map<string, StaticFile>) {
+  if (first.size !== second.size) return false
+  for (const [path, file] of first) {
+    const other = second.get(path)
+    if (!other || file.mimeType !== other.mimeType || !file.bytes.equals(other.bytes)) return false
+  }
+  return true
+}
+
 async function prepare(root: string, privateRecords: boolean) {
   // Use the validated converter on every run, never a previous generated JSON.
   await exec(process.execPath, [converter, '--project-root', root], { cwd: root, timeout: 120_000 })
@@ -62,6 +71,7 @@ export function staticDataPlugin(): Plugin {
             try {
               const updated = await prepare(config.root, true)
               if (closed) return
+              if (sameFiles(files, updated)) return
               // Replace the whole validated snapshot, then reload both room and tooltip consumers.
               files = updated
               server.ws.send({ type: 'full-reload' })

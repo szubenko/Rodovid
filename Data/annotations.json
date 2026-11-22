@@ -4928,6 +4928,1367 @@
   ],
   "media": [
     {
+      "id": "media-unidentified-stara-ropa-teshcha-33af8842c4c6",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-33af8842c4c6.jpg",
+      "sha256": "fe1636c3925ac5bb5ef37d59b8fa627ac8d93c9efb5b152da354b2f1fe8f6610",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща029_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-33af8842c4c6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-38f9a015c748",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-38f9a015c748.jpg",
+      "sha256": "28ec9abc977f364f6fd182731867216a242b9ec4789e7dfac0661e0906706dcb",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща001_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-38f9a015c748"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-e869199d0e1d",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-e869199d0e1d.jpg",
+      "sha256": "76318f9a1f508b61966a67e41ce2d5d5256594950ef13f4bb706b83d9d64b4e4",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща002_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-e869199d0e1d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-d1b5c211f9e8",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-d1b5c211f9e8.jpg",
+      "sha256": "d79d15b97bd72294ba67bac4234566c89332b361b59630fc00c5bfa734616a90",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща003_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-d1b5c211f9e8"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-956848b1ad5a",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-956848b1ad5a.jpg",
+      "sha256": "b89924d21667882aded1312ddfaf2c619aa6bdd22259b86ed0c0b603e850066b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща004_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-956848b1ad5a"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-815915870fda",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-815915870fda.jpg",
+      "sha256": "4819980c5bdbda83e746f6668b718427b5e63e7cf2741efe1a49f405c8d4e713",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща005_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-815915870fda"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-4ae0d56b29d4",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-4ae0d56b29d4.jpg",
+      "sha256": "3819f95ea4c9bdba53df84867aec3c852dc2c710665e26a40924580ef377df8c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща006_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-4ae0d56b29d4"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-de97fad6b95e",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-de97fad6b95e.jpg",
+      "sha256": "c932015c499f39b408cbd02d254883782f5cfa24a2d499dca5c4848c4be58f77",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща007_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-de97fad6b95e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-d424de7df77a",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-d424de7df77a.jpg",
+      "sha256": "800e329a16cbed646056c9ecd57173e67a4336dcbc162b76707829d80e916077",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща008_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-d424de7df77a"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-ce82f909d8de",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-ce82f909d8de.jpg",
+      "sha256": "748b27d740466cbdb7e8d423bf5574b981a637301a0ca8f624dc89d09e85216b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща009_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-ce82f909d8de"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-5f9b0080957c",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-5f9b0080957c.jpg",
+      "sha256": "954b9feb386a1492142b84e612c16c1796f42efd4bd8a4ed7c4dfdea2f5f3e7d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща010_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-5f9b0080957c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-ab1e183aff6d",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-ab1e183aff6d.jpg",
+      "sha256": "0186ce95fd53c1e6a2a57c5b17abac436b705e9c832a91ee27a070b5372b050d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща011_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-ab1e183aff6d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-f638588e5ecb",
+      "path": "assets/photos/nevidoma-fotohrafiia-test.jpg",
+      "sha256": "b32bb3041695169ea04fc6dacc1e361bfc8efbe9c1fda9eda093d7433d48fb13",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща012_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-f638588e5ecb"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-d05e6638ad67",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-d05e6638ad67.jpg",
+      "sha256": "62a17070a9c593b19d8256c6e6cf21826dbc9f65e06792d5188c6720fb6ed532",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща013_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-d05e6638ad67"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-b87f34833678",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-b87f34833678.jpg",
+      "sha256": "21709866eb4ebd91156264d521972c057f6bfc4e1be3052b94d2743e61039646",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща014_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-b87f34833678"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-4a5397b7d079",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-4a5397b7d079.jpg",
+      "sha256": "359ba60a80c818a9889ecd0ac5f6ac101cc24a9ed04b107ac17ec00dea56bd63",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща015_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-4a5397b7d079"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-dfc768e336c6",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-dfc768e336c6.jpg",
+      "sha256": "72ab6daed172e2932431e3322c221f50f84c660cd0ca139a2efa0d69685d9b6a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща016_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-dfc768e336c6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-f739180c5c29",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-f739180c5c29.jpg",
+      "sha256": "b674bc0948587f9f7ac040340159ef48bf872a635231e3ae373360986036cc20",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща019_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-f739180c5c29"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-69f2ad93dd8d",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-69f2ad93dd8d.jpg",
+      "sha256": "18082cc44dcb7cd869b2f54ef807e6434f764a718ccb564011276c0ce5ad2ada",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща019_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-69f2ad93dd8d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-d36eb46ed93b",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-d36eb46ed93b.jpg",
+      "sha256": "1a49b9235ac84d83c5f1ecacfc459ac02f6945fa061a4e241e072d2b7d1c4f84",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща019_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-aa6625d0044c",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-aa6625d0044c.jpg",
+      "sha256": "8cdb900dec70460b53ed0b7a88717ee014307e1725af1366ef577d8f351d23ea",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща020_C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-aa6625d0044c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-ec59996ccc27",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-ec59996ccc27.jpg",
+      "sha256": "f23c5750d24ead0b557354e487192919f9e9984ec3714286afaa1fb3225867c7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща020_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-ec59996ccc27"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-71420e1227dc",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-71420e1227dc.jpg",
+      "sha256": "a9ecd9ef849958b901e70ad5525d7a6d8a59892bdf3eb498e3d50ab102cdc5b7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща021_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-71420e1227dc"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-ad10410e50ef",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-ad10410e50ef.jpg",
+      "sha256": "72514813053d0951ee8cd14e0dd4d942c7a4c6d1a6fc7332f0538798630ab489",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща021_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-ad10410e50ef"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-c5f16708e555",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-c5f16708e555.jpg",
+      "sha256": "c7d0eb7e3e59b458f2e710c24c2b866f89eacc256c38be9b271fe5cf431a5fa9",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща022_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-c5f16708e555"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-28a17b891910",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-28a17b891910.jpg",
+      "sha256": "5faa0b7801e61a26ff2125f2b5bc842571973a49d827903e307ca7294c4fbdb4",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща022_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-28a17b891910"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-28760264a44f",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-28760264a44f.jpg",
+      "sha256": "8f043577dd9ca32489b9d4cc7992b7d21dcc545cbc3db77a2d365582e7ce7a5b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща023_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-28760264a44f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-8559cc4a4841",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-8559cc4a4841.jpg",
+      "sha256": "2f780f48929b5bc6734b677e492927b03a437dbb142ab0656a81ab040f94b6a5",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща023_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-8559cc4a4841"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-6b2d702c04e7",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-6b2d702c04e7.jpg",
+      "sha256": "4ace9a57daec4bbd5676a4eaaaa33732034fa2609b944b74cd700d5534d9b8e7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща023_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-6b2d702c04e7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-4060f59a50ca",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-4060f59a50ca.jpg",
+      "sha256": "fe62506e9a04bdc0d3c5fe30a5b40da63a79817b630ac3015b65f42e902d0dae",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща024_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-4060f59a50ca"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-b46ffdc0d176",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-b46ffdc0d176.jpg",
+      "sha256": "dc7b12386b7c2a73f15078b2b0d9639c5c5881fc2405214a2600e3e660d3e38c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща024_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-b46ffdc0d176"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-96d0dd817e1d",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-96d0dd817e1d.jpg",
+      "sha256": "c235d71377e2294800afa95f668297f21b0f8375fba1275c7f0b35a20a01dbb1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща024_C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-96d0dd817e1d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-a467b6efab3f",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-a467b6efab3f.jpg",
+      "sha256": "51167afbdb68d393e650224742507aeb665ed6eafa7d52c55cfb9f136df06953",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща024_C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-a467b6efab3f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-a02dbfeb3883",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-a02dbfeb3883.jpg",
+      "sha256": "c3a1a755ac0f8c16a59e5aba1e85a6736fb3fb9f7007210648cd14612c4a7f09",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща024_C1 (5) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-a02dbfeb3883"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-81065ad1525f",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-81065ad1525f.jpg",
+      "sha256": "5935c453dd196f8197e791376a5dcf6ff83ab2c604e1db20c90169ce8facd67a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща024_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-81065ad1525f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-b7963d85329f",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-b7963d85329f.jpg",
+      "sha256": "752b13632cf61d4e4adbbfb8c4d61f4679a95db0931de22c56730d3903a2784d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща025_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-b7963d85329f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-e8a5e9ed4b67",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-e8a5e9ed4b67.jpg",
+      "sha256": "4d7b1c887ee9f9bc5900beed363071c7dfe05a64ae1ea2df453f63daea6ed509",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща025_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-e8a5e9ed4b67"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-cfed7d3b64d0",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-cfed7d3b64d0.jpg",
+      "sha256": "2b7a6f60cfa80fb76e5b1bf0012d6586459f692a73b7c2ec5def10a8805f56fa",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща025_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-cfed7d3b64d0"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-d74d5137df3c",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-d74d5137df3c.jpg",
+      "sha256": "1d2f9a18eaf6faf59e412417cf20d4517e6a5b6bf3b91701a015c35b0712ee9a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща026_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-d74d5137df3c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-6a877aca0d06",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-6a877aca0d06.jpg",
+      "sha256": "27d3bbc4bd53373efb2f076d53bfdea5b12fedc861d0e13392249116fb6bfb86",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща026_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-6a877aca0d06"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-15df8fc91d4c",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-15df8fc91d4c.jpg",
+      "sha256": "8f0240f6589a4b14eba51b27b242f802a3916e6f2a44376c975b23225a547e2c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща026_C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-15df8fc91d4c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-14cd26464509",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-14cd26464509.jpg",
+      "sha256": "c21f67b16cfb23bb5bc27844d1fd000490c2c5f368f8f6661320238626f90276",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща026_C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-14cd26464509"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-6658f56a1701",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-6658f56a1701.jpg",
+      "sha256": "82762a2799bc60251f38ddd219a45558017882696cc2e966aaa3b429370002bd",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща026_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-6658f56a1701"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-36fddff10aa2",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-36fddff10aa2.jpg",
+      "sha256": "3219c367f2e20fa21f053b5b0571e4d5d18bcbf426767ef74b7029687e40a6c3",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща027_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-36fddff10aa2"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-33a9dbe8d0ab",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-33a9dbe8d0ab.jpg",
+      "sha256": "18cba6571be36dacd9b6a0ad2acc4dedce8fb07b6f37ae910d75f65217ef57d0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща027_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-33a9dbe8d0ab"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-a3f4f0c73a48",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-a3f4f0c73a48.jpg",
+      "sha256": "d6347d439ca84b25df7da142aad82cc906ab19facc8ecc97a68f982d1177ec4b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща027_C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-a3f4f0c73a48"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-2008fead35b7",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-2008fead35b7.jpg",
+      "sha256": "bec3440036bb2b3b50e71378674c8ceff99674f63ab22f389490abf6c31517a8",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща027_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-2008fead35b7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-1a0852ec11f1",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-1a0852ec11f1.jpg",
+      "sha256": "e3f9260a0efd716e416f9e6e911866929b2e23ab7debc1afb69d3a40dd8faadc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща028_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-1a0852ec11f1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-f2825affd2f8",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-f2825affd2f8.jpg",
+      "sha256": "90b9c73d563fafd7db9da39b178df293c3e025383a860f114a61b60d17e71df3",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща028_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-f2825affd2f8"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-e99d15624199",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-e99d15624199.jpg",
+      "sha256": "0408a8fcb96f9be62efd4bbef442d3737fbff449c02c2681d06ec2c071df3859",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща028_C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-e99d15624199"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-77c2b050b243",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-77c2b050b243.jpg",
+      "sha256": "84ba7646e8b681ea21dbc2ba9c0dfc1a487c5d7562309e95e8a93b86e0afc24e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща028_C1.jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-77c2b050b243"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-208b888d6bc7",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-208b888d6bc7.jpg",
+      "sha256": "462c2ef296a65d74b6871958c67350a38ba4484aadd82d12a54040b3ff7b835f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща029_C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-208b888d6bc7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-400a1488d5b4",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-400a1488d5b4.jpg",
+      "sha256": "ce2a7832010ea9978945091871fef453ee9440e523db482794d75dfc30eca4cd",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща029_C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-400a1488d5b4"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-teshcha-1762b7cdd2ae",
+      "path": "assets/photos/stara-ropa-unidentified-teshcha-1762b7cdd2ae.jpg",
+      "sha256": "94dd082e146beeca8a41fc1ead2307177f9db8823236bba3e83fbed79398e673",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/теща029_C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-ropa-teshcha-1762b7cdd2ae"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-scan-43",
+      "path": "assets/photos/stara-ropa-unidentified-scan-43.jpg",
+      "sha256": "09ba9044f85023d41b106ec71279b804118574b2f75fd416509c17360a9bcbe8",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "1950",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — скан 43_600_200%.jpg",
+          "entryId": "media-unidentified-stara-ropa-scan-43"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-scan-44",
+      "path": "assets/photos/stara-ropa-unidentified-scan-44.jpg",
+      "sha256": "26d0b4470329502cd2fdfa96da85c23213daeccb4a467f90eb60ba0615674256",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "1953 рік",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — скан 44.jpg",
+          "entryId": "media-unidentified-stara-ropa-scan-44"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-scan-38",
+      "path": "assets/photos/stara-ropa-unidentified-scan-38.jpg",
+      "sha256": "d7c4e8ab1b53d3ec75b65f1e201f2ac72b2399da118f17743b6d983f0aeb43ae",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "25,6,1956\nОля",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — скан 38.jpg",
+          "entryId": "media-unidentified-stara-ropa-scan-38"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-scan-42",
+      "path": "assets/photos/stara-ropa-unidentified-scan-42.jpg",
+      "sha256": "024488d947250bcbb59cb9af50cbd9193fe04c2243c9207658e246acdc53a6f3",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "1953 рік",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — скан 42.jpg",
+          "entryId": "media-unidentified-stara-ropa-scan-42"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-2bff66c7",
+      "path": "assets/photos/stara-ropa-unidentified-2bff66c7.jpg",
+      "sha256": "ba003e15117b214a4ede8490da41827e3d75c537d00134aa0ec8cc326612670f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Після закінчення першого класу Дем'янко був у ***",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 2bff66c7.jpg",
+          "entryId": "media-unidentified-stara-ropa-2bff66c7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-9917e3f8",
+      "path": "assets/photos/stara-ropa-unidentified-9917e3f8.jpg",
+      "sha256": "0b880d0a9c13f8570fe48f8dddb3505e2286aef7f1126eadd72c76d7e6659cf7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 9917e3f8.jpg",
+          "entryId": "media-unidentified-stara-ropa-9917e3f8"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-fe3fdd07",
+      "path": "assets/photos/stara-ropa-unidentified-fe3fdd07.jpg",
+      "sha256": "b30e74e8a83c2775ac6f8f6b46e7e5fb7d34dddb2209bf6ab74aa2fdd3c3656f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — fe3fdd07.jpg",
+          "entryId": "media-unidentified-stara-ropa-fe3fdd07"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-d39c4c02",
+      "path": "assets/photos/stara-ropa-unidentified-d39c4c02.jpg",
+      "sha256": "389ce29d9bb7b7b35fa75a7087fd710e13f6c2e2e6b7fe2b42f439d7a3712511",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — d39c4c02.jpg",
+          "entryId": "media-unidentified-stara-ropa-d39c4c02"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-a8de26c5",
+      "path": "assets/photos/stara-ropa-unidentified-a8de26c5.jpg",
+      "sha256": "525615121d2d82178fe6e5bcde4b298a102905aaa776b29d869432a33c5f4aae",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — a8de26c5.jpg",
+          "entryId": "media-unidentified-stara-ropa-a8de26c5"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-60d3b8ce",
+      "path": "assets/photos/stara-ropa-unidentified-60d3b8ce.jpg",
+      "sha256": "1c6cc06d61fd198bcef57c0b2d7b9f81b04a47a2b7d95cdabde24ce99cf29b36",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 60d3b8ce.jpg",
+          "entryId": "media-unidentified-stara-ropa-60d3b8ce"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-6879bb8e",
+      "path": "assets/photos/stara-ropa-unidentified-6879bb8e.jpg",
+      "sha256": "418b9a36b029181f8c3745c3d0507546e3e61bd43200580a2a3076a5333d5eb4",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 6879bb8e.jpg",
+          "entryId": "media-unidentified-stara-ropa-6879bb8e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-072cb18b",
+      "path": "assets/photos/stara-ropa-unidentified-072cb18b.jpg",
+      "sha256": "c4ae43dc1a388f7f874599ae300a380aee99d0295156994f157d4460d82a8625",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 072cb18b.jpg",
+          "entryId": "media-unidentified-stara-ropa-072cb18b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-63eccf8a",
+      "path": "assets/photos/stara-ropa-unidentified-63eccf8a.jpg",
+      "sha256": "0d0b921cffcfc4bdd151868c417eaf650cc761ac86fffdbf085cea8459d26a69",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 63eccf8a.jpg",
+          "entryId": "media-unidentified-stara-ropa-63eccf8a"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-5604c68c",
+      "path": "assets/photos/stara-ropa-unidentified-5604c68c.jpg",
+      "sha256": "b8b1d7d37b4afe3bb7fd7561184e3395cc3d3de308859b7638076eaf96395641",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 5604c68c.jpg",
+          "entryId": "media-unidentified-stara-ropa-5604c68c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-20a42ad7",
+      "path": "assets/photos/stara-ropa-unidentified-20a42ad7.jpg",
+      "sha256": "bfc08fbca0c4d878953eaccf6a20a7173dc1dd43fe8a32fd5117b4b89ba890dc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 20a42ad7.jpg",
+          "entryId": "media-unidentified-stara-ropa-20a42ad7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-ce090131",
+      "path": "assets/photos/stara-ropa-unidentified-ce090131.jpg",
+      "sha256": "520e428fbd942efcc8b60e7abf32ec0d904467c75ec40b62c19715ad02439d94",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — ce090131.jpg",
+          "entryId": "media-unidentified-stara-ropa-ce090131"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-f922851c",
+      "path": "assets/photos/stara-ropa-unidentified-f922851c.jpg",
+      "sha256": "08203c99e9f9b889bd5283b75adb121c6840e25cc3769682561e1532d4281471",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — f922851c.jpg",
+          "entryId": "media-unidentified-stara-ropa-f922851c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-feae680d",
+      "path": "assets/photos/stara-ropa-unidentified-feae680d.jpg",
+      "sha256": "0c85a7a6501107989bf0a7b74e130033ef06b135cebff87442bc8206c1c37da0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — feae680d.jpg",
+          "entryId": "media-unidentified-stara-ropa-feae680d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-4204d8ce",
+      "path": "assets/photos/stara-ropa-unidentified-4204d8ce.jpg",
+      "sha256": "ef2ab5b7f2c53e0373811534d7ededdde2c7c53b8b6d42c62a5f6b825077d0c9",
+      "mimeType": "image/jpeg",
+      "title": "На спомин хрестній мамі",
+      "description": "На спомин хрестній мамі і братчикові дарує Оля!\n27.05.1959 рік",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/На спомин хрестній мамі — 4204d8ce.jpg",
+          "entryId": "media-unidentified-stara-ropa-4204d8ce"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-1954-13",
+      "path": "assets/photos/stara-ropa-unidentified-1954-13.jpg",
+      "sha256": "dee51e9f4e26e13cf4b8843b11c175bdb51abd446d4af955ead0c06e952feb4c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія 1954 року",
+      "description": "1954 рік",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 1954-13.jpg",
+          "entryId": "media-unidentified-stara-ropa-1954-13"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-4179c40c",
+      "path": "assets/photos/stara-ropa-unidentified-4179c40c.jpg",
+      "sha256": "199b08cd3f2ff59ca234fbc0d1585bfcc1aac7bc095ee529e0ab4b36bcf46ea0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 4179c40c.jpg",
+          "entryId": "media-unidentified-stara-ropa-4179c40c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-28c84d74",
+      "path": "assets/photos/stara-ropa-unidentified-28c84d74.jpg",
+      "sha256": "ca65498a5b09849b0f21f6fd198d7bcf88d55562e4465d62552a1055e5f22fcf",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 28c84d74.jpg",
+          "entryId": "media-unidentified-stara-ropa-28c84d74"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-b514d136",
+      "path": "assets/photos/stara-ropa-unidentified-b514d136.jpg",
+      "sha256": "3e73873282ff24324b80416f698532ea3f10462416bb922b9ed9e0ef5fdb8498",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — b514d136.jpg",
+          "entryId": "media-unidentified-stara-ropa-b514d136"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-0c8280e5",
+      "path": "assets/photos/stara-ropa-unidentified-0c8280e5.jpg",
+      "sha256": "264535ad2a67d19534adb5068603f9b92779de60ef66b045117f85b6e1134010",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 0c8280e5.jpg",
+          "entryId": "media-unidentified-stara-ropa-0c8280e5"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-3a0b3e3d",
+      "path": "assets/photos/stara-ropa-unidentified-3a0b3e3d.jpg",
+      "sha256": "5d4248a68c7cf11846b0bc1000f6ef769f8e55f00ab3a7abec7ca3015839882a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 3a0b3e3d.jpg",
+          "entryId": "media-unidentified-stara-ropa-3a0b3e3d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-bb04dbf9",
+      "path": "assets/photos/stara-ropa-unidentified-bb04dbf9.jpg",
+      "sha256": "c49a5c732ef8ec89ad99ce12d055f8e91848bfc2272dc2c4dd21e0e665dddcd7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — bb04dbf9.jpg",
+          "entryId": "media-unidentified-stara-ropa-bb04dbf9"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1950-05-06",
+      "path": "assets/photos/stara-sil-1950-05-06.jpg",
+      "sha256": "003f578bb13f8ce79ed61b344450fa26eed77960efc64e54f710c8c757e86c5f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія 6.05.1950",
+      "description": "6.05.1950\nсело Стара Сіль",
+      "photoPlace": "Стара Сіль",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Стара Сіль — 6.05.1950.jpg",
+          "entryId": "media-unidentified-stara-sil-1950-05-06"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-d3d2a8ea",
+      "path": "assets/photos/stara-ropa-unidentified-d3d2a8ea.jpg",
+      "sha256": "aa8a44991a7ac2e402da893be58614f130d5d3e1292a8f96c6f09e911a1176f6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — d3d2a8ea.jpg",
+          "entryId": "media-unidentified-stara-ropa-d3d2a8ea"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-2e7c3995",
+      "path": "assets/photos/stara-ropa-unidentified-2e7c3995.jpg",
+      "sha256": "aff2b10d7c6bf92a867794d288a5b3bca3fdd14962f84b149938ea5fe86dd7e6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 2e7c3995.jpg",
+          "entryId": "media-unidentified-stara-ropa-2e7c3995"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-ff5cd8e6",
+      "path": "assets/photos/stara-ropa-unidentified-ff5cd8e6.jpg",
+      "sha256": "3cfb97298dda345b3bca059e252597641733284ffa3e5c0d02800616ece12355",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — ff5cd8e6.jpg",
+          "entryId": "media-unidentified-stara-ropa-ff5cd8e6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-68c2cbf1",
+      "path": "assets/photos/stara-ropa-unidentified-68c2cbf1.jpg",
+      "sha256": "2933bee412dd6a7bc284ddbd8d11d3b7f6a57a4cb5f1be8be005dbf4ee7b5528",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 68c2cbf1.jpg",
+          "entryId": "media-unidentified-stara-ropa-68c2cbf1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-36b04e3c",
+      "path": "assets/photos/stara-ropa-unidentified-36b04e3c.jpg",
+      "sha256": "0276ebb34147afbb19e63d694e46790752faf1501708535a8a88a4dfa66e89e6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 36b04e3c.jpg",
+          "entryId": "media-unidentified-stara-ropa-36b04e3c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-7097c944",
+      "path": "assets/photos/stara-ropa-unidentified-7097c944.jpg",
+      "sha256": "a8b5ebfc8f923b74d6c2fe76f468f011409e7e57d48b7db2db54b76ab68a952e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 7097c944.jpg",
+          "entryId": "media-unidentified-stara-ropa-7097c944"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-ropa-9e2107fd",
+      "path": "assets/photos/stara-ropa-unidentified-9e2107fd.jpg",
+      "sha256": "31cf2643e4cefa82e6053ed5d44ea6753f46dc8f714a5229a29c9cddc13af07a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото без опису — 9e2107fd.jpg",
+          "entryId": "media-unidentified-stara-ropa-9e2107fd"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-brata-volodymyra-1954",
+      "path": "assets/photos/nevidomyi-brat-volodymyra-1954.jpg",
+      "sha256": "6e3fa915e8710055f41763a103b68b9338a08f22f96d3c50208fe862616b5ece",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія 1954 року",
+      "description": "1954 рік\n*** і брата Володимира",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Фото — і брата Володимира — 1954.jpg",
+          "entryId": "media-unidentified-brata-volodymyra-1954"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-spomyn-iz-sybira-1954-01-14",
+      "path": "assets/photos/spomyn-iz-sybira-1954-01-14.jpg",
+      "sha256": "bef468d621389ac5ca0ce167b95beb662712dfddbc21d879bff6730cf9a84404",
+      "mimeType": "image/jpeg",
+      "title": "Спомин із Сибіра",
+      "description": "14.01.1954 рік\nСпомин із Сибіра. В дні страждань в неволі.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "E:/RodovidZubenko/!!!Kernicki/Спомин із Сибіра — 14.01.1954.jpg",
+          "entryId": "media-unidentified-spomyn-iz-sybira-1954-01-14"
+        }
+      ]
+    },
+    {
       "id": "media-unidentified-test-photo",
       "path": "assets/photos/nevidoma-fotohrafiia-test.jpg",
       "sha256": "b32bb3041695169ea04fc6dacc1e361bfc8efbe9c1fda9eda093d7433d48fb13",

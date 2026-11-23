@@ -37,7 +37,7 @@ export function PhotoLightbox({ photos, index, onClose, initialBranch = 'kernyts
   const visiblePhotos = showUnidentified ? unidentifiedPhotos : regularPhotos
   const photo = visiblePhotos[current]
   const caption = photo ? photoCollectionCaption(photo) : null
-  const linked = (text: string) => matchNames(text).map((part, i) => part.personId ? <Link key={i} to={`/person/${part.personId}`}>{part.text}</Link> : part.text)
+  const linked = (text: string) => matchNames(text, photo?.personIds).map((part, i) => part.personId ? <Link key={i} to={`/person/${part.personId}`}>{part.text}</Link> : part.text)
   const select = (next: number, list = visiblePhotos, nextBranch = branch, unidentified = showUnidentified) => { setCurrent(next); setScale(1); onSelectionChange?.(list[next], nextBranch, unidentified) }
   const move = (offset: number) => select((current + offset + visiblePhotos.length) % visiblePhotos.length)
   const measureFitWidth = () => {

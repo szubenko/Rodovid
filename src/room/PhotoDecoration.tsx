@@ -11,8 +11,8 @@ export function AlbumIcon({ kind }: { kind: 'camera' | 'people' | 'calendar' }) 
   </svg>
 }
 
-export function PhotoDescription({ caption, matchNames }: { caption: ReturnType<typeof photoCollectionCaption>; matchNames: ReturnType<typeof photoPersonMentionMatcher> }) {
-  const linked = (text: string) => matchNames(text).map((part, index) => part.personId ? <Link key={index} to={`/person/${part.personId}`}>{part.text}</Link> : part.text)
+export function PhotoDescription({ caption, matchNames, personIds }: { caption: ReturnType<typeof photoCollectionCaption>; matchNames: ReturnType<typeof photoPersonMentionMatcher>; personIds: string[] }) {
+  const linked = (text: string) => matchNames(text, personIds).map((part, index) => part.personId ? <Link key={index} to={`/person/${part.personId}`}>{part.text}</Link> : part.text)
   return <figcaption className={styles.photoCaption}>
     {caption.dates.map(date => <div key={date} className={styles.photoDescriptionGroup} data-photo-date><AlbumIcon kind="calendar" /><p>{date}</p></div>)}
     <div className={styles.photoDescriptionGroup}><AlbumIcon kind="people" /><div><p className={styles.photoDescriptionTitle}>{linked(caption.title)}</p>{caption.descriptions.map(description => <p className={styles.photoDescriptionBody} key={description}>{linked(description)}</p>)}</div></div>

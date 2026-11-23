@@ -35,7 +35,7 @@ export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlas
     setParams(next, { state: location.state })
   }
   const matchNames = useMemo(() => photoPersonMentionMatcher(family), [family])
-  const captionText = (text: string) => matchNames(text).map((part, index) => part.personId
+  const captionText = (text: string, personIds: string[]) => matchNames(text, personIds).map((part, index) => part.personId
     ? <Link key={index} className={styles.titleLink} to={`/person/${part.personId}`}>{part.text}</Link>
     : part.text)
   const returnTo: unknown = (location.state as { returnTo?: unknown } | null)?.returnTo
@@ -65,8 +65,8 @@ export function PhotoCollectionPage({ showAtlasNavigation = false }: { showAtlas
           <button type="button" className={styles.openPhoto} aria-label={`Збільшити: ${photo.media.title}`} onClick={() => updateViewer(photos[index]?.media.id, branch, false)}><CollectionImage media={photo.media} /></button>
           <figcaption>
             {dates.map(date => <p className={styles.date} data-photo-date key={date}><AlbumIcon kind="calendar" />{date}</p>)}
-            <h2>{captionText(title)}</h2>
-            {descriptions.map(description => <p className={styles.description} key={description}>{captionText(description)}</p>)}
+            <h2>{captionText(title, photo.personIds)}</h2>
+            {descriptions.map(description => <p className={styles.description} key={description}>{captionText(description, photo.personIds)}</p>)}
           </figcaption>
         </figure>
       })}

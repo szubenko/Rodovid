@@ -6,12 +6,13 @@ const normalizeName = (name: string) => name.trim().replace(/\s+/gu, ' ').toLowe
 const escapePattern = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
 export function photoPersonMentionMatcher(family: FamilyData) {
-  const names = new Map<string, string | null>()
+  const names = new Map<string, Set<string>>()
   const addName = (name: string, personId: string) => {
     const key = normalizeName(name)
     if (!key.includes(' ') || key === 'ім’я невідоме') return
-    const existing = names.get(key)
-    names.set(key, existing === undefined || existing === personId ? personId : null)
+    const existing = names.get(key) ?? new Set<string>()
+    existing.add(personId)
+    names.set(key, existing)
   }
   const namesByPerson = new Map<string, { display: string; surname?: string }[]>()
   for (const claim of family.claims) if (claim.field === 'name') {
@@ -35,12 +36,14 @@ export function photoPersonMentionMatcher(family: FamilyData) {
     .map(name => name.split(' ').map(escapePattern).join('[^\\S\\r\\n]+'))
   const nameCharacter = "[\\p{L}\\p{M}\\p{N}'’ʼ-]"
   const pattern = alternatives.length ? new RegExp(`(?<!${nameCharacter})(?:${alternatives.join('|')})(?!${nameCharacter})`, 'giu') : null
-  return (text: string): CaptionPart[] => {
+  return (text: string, photoPersonIds: string[] = []): CaptionPart[] => {
     if (!pattern) return [{ text }]
     const parts: CaptionPart[] = []
     let offset = 0
     for (const match of text.matchAll(pattern)) {
-      const personId = names.get(normalizeName(match[0]))
+      const candidates = [...(names.get(normalizeName(match[0])) ?? [])]
+      const inPhoto = candidates.filter(id => photoPersonIds.includes(id))
+      const personId = candidates.length === 1 ? candidates[0] : inPhoto.length === 1 ? inPhoto[0] : undefined
       if (!personId) continue
       if (offset < match.index) parts.push({ text: text.slice(offset, match.index) })
       parts.push({ text: match[0], personId })

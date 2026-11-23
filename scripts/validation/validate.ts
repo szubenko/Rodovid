@@ -7,7 +7,7 @@ import type { convertGedcom } from '../gedcom/convert.ts'
 import { baselineCounts, baselineSha256 } from '../gedcom/baseline.ts'
 import { validationReport } from './report.ts'
 import type { Diagnostic } from './report.ts'
-import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256, november18MergeSha256, november20MergeSha256, november22MergeSha256, chronologyReviewId } from './reviewed-export.ts'
+import { reviewedExportSha256, reviewedGraphIssue, reviewedGraphIssues, octoberExportSha256, correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256, november18MergeSha256, november20MergeSha256, november22MergeSha256, november23MergeSha256, chronologyReviewId } from './reviewed-export.ts'
 
 type ConversionReport = ReturnType<typeof convertGedcom>['report']
 type WithOrigin = { id: string; provenance: FamilyData['people'][number]['provenance'] }
@@ -100,7 +100,8 @@ function checkGraph(data: FamilyData, report: ConversionReport | undefined, issu
 
 function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnostic[]) {
   if ([correctedOctoberExportSha256, mergedOctoberExportSha256, olenkaCorrectionSha256, yakovFamiliesSha256, nataliaSourcesSha256, export6SourcesSha256, deikaloMarriageSha256, october19ExportSha256, timofeyCorrectionSha256, petroBirthReviewSha256, october29MergeSha256, october30MergeSha256, november1MergeSha256, november4MergeSha256, november8MergeSha256, november8SecondMergeSha256, november9MergeSha256, november9SecondMergeSha256, november10MergeSha256, november11MergeSha256, november11SecondMergeSha256, november14MergeSha256, november18MergeSha256, 'b9e65f7db0010b8643b4285d0f23818552249e63bc5a6e090012a2d8cb4f27ac'].includes(report.sha256)) {
-    const november22 = report.sha256 === november22MergeSha256
+    const november23 = report.sha256 === november23MergeSha256
+    const november22 = report.sha256 === november22MergeSha256 || november23
     const november20 = report.sha256 === november20MergeSha256 || november22
     const november18 = report.sha256 === november18MergeSha256 || november20
     const november14 = report.sha256 === november14MergeSha256 || november18 || report.sha256 === 'b9e65f7db0010b8643b4285d0f23818552249e63bc5a6e090012a2d8cb4f27ac'
@@ -124,7 +125,8 @@ function checkReview(data: FamilyData, report: ConversionReport, issues: Diagnos
     const screenshotFamilies = report.sha256 === yakovFamiliesSha256 || correctedSources
     const correctedOlenka = report.sha256 === olenkaCorrectionSha256
     const merged = report.sha256 === mergedOctoberExportSha256 || correctedOlenka || screenshotFamilies
-    const expected = november22
+    const expected = november23
+      ? { people: 214, relationships: 347, events: 419, claims: 1029, places: 186 } : november22
       ? { people: 213, relationships: 345, events: 419, claims: 1028, places: 186 } : november20
       ? { people: 210, relationships: 339, events: 419, claims: 1025, places: 186 } : november18
       ? { people: 210, relationships: 339, events: 416, claims: 1016, places: 182 } : november14

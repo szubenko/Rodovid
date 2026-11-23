@@ -32,6 +32,17 @@ it('handles empty collections', () => {
   expect(collectFamilyPhotos(family)).toEqual([])
 })
 
+it('uses the people linked to a photo to distinguish identical names', () => {
+  const family = familyDataSchema.parse(familyData)
+  const photo = collectFamilyPhotos(family).find(item => item.media.id === 'media-unidentified-stara-ropa-teshcha-71420e1227dc')!
+  const match = photoPersonMentionMatcher(family)
+  expect(match('Петр Зубенко', photo.personIds)).toEqual([{ text: 'Петр Зубенко', personId: 'I2' }])
+  expect(match('Петр Зубенко')).toEqual([{ text: 'Петр Зубенко' }])
+  const caption = photoCollectionCaption(photo)
+  expect(caption.dates).toEqual(['Богачево, приблизно 1987 рік'])
+  expect(caption.descriptions[0]).not.toContain('1987')
+})
+
 it('links each identified person in the Vanivski and Patsykevychi photo caption', () => {
   const family = familyDataSchema.parse(familyData)
   const description = family.media.find(media => media.id === 'media-vanivski-patsykevychi-group-photo')!.description!

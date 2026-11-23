@@ -334,6 +334,27 @@
   ],
   "personMedia": [
     {
+      "id": "person-media-i2",
+      "personId": "I2",
+      "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc"
+      ]
+    },
+    {
+      "id": "person-media-i215",
+      "personId": "I215",
+      "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc"
+      ]
+    },
+    {
+      "id": "person-media-i216",
+      "personId": "I216",
+      "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc"
+      ]
+    },
+    {
       "id": "person-media-i205",
       "personId": "I205",
       "photoIds": [
@@ -473,6 +494,7 @@
       "id": "person-media-i29",
       "personId": "I29",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-unidentified-stara-ropa-teshcha-d36eb46ed93b",
         "media-i29-kustanay-1958",
         "media-unidentified-stara-ropa-teshcha-4ae0d56b29d4",
@@ -527,6 +549,7 @@
       "id": "person-media-i58",
       "personId": "I58",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-chabany-kopeysk-1961",
         "media-chabany-kopeysk-1965",
         "media-i58-daughter-henia-photo"
@@ -548,6 +571,7 @@
       "id": "person-media-i104",
       "personId": "I104",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-chabany-kopeysk-1965",
         "media-chabany-havali-kopeysk-1958",
         "media-i104-photo-portrait",
@@ -560,6 +584,7 @@
       "id": "person-media-i28",
       "personId": "I28",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-unidentified-stara-ropa-teshcha-d36eb46ed93b",
         "media-chabany-havali-kopeysk-1958",
         "media-unidentified-test-photo"
@@ -604,6 +629,7 @@
       "id": "person-media-i3",
       "personId": "I3",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
       ],
       "portraitId": "media-i3-iryna-avatar"
@@ -612,6 +638,7 @@
       "id": "person-media-i213",
       "personId": "I213",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
       ]
     },
@@ -619,6 +646,7 @@
       "id": "person-media-i214",
       "personId": "I214",
       "photoIds": [
+        "media-unidentified-stara-ropa-teshcha-71420e1227dc",
         "media-unidentified-stara-ropa-teshcha-d36eb46ed93b"
       ]
     },
@@ -5316,8 +5344,13 @@
       "path": "assets/photos/stara-ropa-unidentified-teshcha-71420e1227dc.jpg",
       "sha256": "a9ecd9ef849958b901e70ad5525d7a6d8a59892bdf3eb498e3d50ab102cdc5b7",
       "mimeType": "image/jpeg",
-      "title": "Фотографія без опису",
-      "unidentifiedPhotoBranch": "kernytski",
+      "thumbnail": {
+        "path": "assets/photos/stara-ropa-unidentified-teshcha-71420e1227dc.jpg",
+        "mimeType": "image/jpeg"
+      },
+      "title": "Сімейна фотографія",
+      "description": "Михайло Чабан, Оля Іванівна Керницька, Ірина Іванівна Керницька, Петр Зубенко, Оксана Іванівна Керницька, Любов Іванівна Керницька, Іван Керницький, Марія Степанівна Чабан, Наталія Іванівна, Наташа Зубенко.\nБогачево, приблизно 1987 рік",
+      "photoPlace": "Богачево",
       "provenance": [
         {
           "kind": "supplement",

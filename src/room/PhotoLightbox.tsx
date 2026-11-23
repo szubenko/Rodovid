@@ -16,6 +16,15 @@ export function PhotoLightbox({ photos, index, onClose, initialBranch = 'kernyts
   const [showDescription, setShowDescription] = useState(true)
   const [scale, setScale] = useState(1)
   const [fitWidth, setFitWidth] = useState(0)
+  const [initialSelection, setInitialSelection] = useState({ index, initialBranch, initialUnidentified })
+  if (index !== initialSelection.index || initialBranch !== initialSelection.initialBranch || initialUnidentified !== initialSelection.initialUnidentified) {
+    setInitialSelection({ index, initialBranch, initialUnidentified })
+    setCurrent(index)
+    setBranch(initialBranch)
+    setBranchChanged(false)
+    setShowUnidentified(initialUnidentified)
+    setScale(1)
+  }
   const zoomed = scale > 1
   const dialog = useRef<HTMLDialogElement>(null)
   const imageArea = useRef<HTMLDivElement>(null)
@@ -27,7 +36,6 @@ export function PhotoLightbox({ photos, index, onClose, initialBranch = 'kernyts
   const unidentifiedPhotos = collectUnidentifiedPhotos(family, branch, regularPhotos)
   const visiblePhotos = showUnidentified ? unidentifiedPhotos : regularPhotos
   const photo = visiblePhotos[current]
-  useEffect(() => { setCurrent(index); setBranch(initialBranch); setBranchChanged(false); setShowUnidentified(initialUnidentified); setScale(1) }, [index, initialBranch, initialUnidentified])
   const caption = photo ? photoCollectionCaption(photo) : null
   const linked = (text: string) => matchNames(text).map((part, i) => part.personId ? <Link key={i} to={`/person/${part.personId}`}>{part.text}</Link> : part.text)
   const select = (next: number, list = visiblePhotos, nextBranch = branch, unidentified = showUnidentified) => { setCurrent(next); setScale(1); onSelectionChange?.(list[next], nextBranch, unidentified) }

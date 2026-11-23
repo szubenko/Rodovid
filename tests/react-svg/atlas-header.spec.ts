@@ -7,6 +7,22 @@ import { tooltipLifeYears } from '../../src/graph/person-tooltip-data'
 const family = familyDataSchema.parse(JSON.parse(readFileSync(new URL('../../generated/family.json', import.meta.url), 'utf8')))
 const anna = family.people.find(person => person.externalIds.some(id => id.system === 'FamilySearch' && id.value === 'PFJ2-SRZ'))!
 
+test('на телефоні повне ім’я має окремий простір під навігацією', async ({ page }) => {
+  for (const width of [320, 375, 412, 760]) {
+    await page.setViewportSize({ width, height: 900 })
+    await page.goto('/tree/I1')
+    const heading = page.getByRole('heading', { level: 1 })
+    const navigation = page.getByRole('navigation', { name: 'Основна навігація' })
+    await expect(heading).toHaveText(personFullName(family, 'I1'))
+    const headingBox = (await heading.boundingBox())!
+    const navigationBox = (await navigation.boundingBox())!
+    expect(headingBox.y).toBeGreaterThanOrEqual(navigationBox.y + navigationBox.height)
+    expect(headingBox.width).toBeGreaterThan(width - 60)
+    expect(headingBox.height).toBeLessThan(100)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width)
+  }
+})
+
 test('шапка доповнює коротке ім’я по батькові, зберігаючи імена на діаграмах', async ({ page }, testInfo) => {
   for (const personId of ['I8', 'I5']) {
     const headingName = personFullName(family, personId)

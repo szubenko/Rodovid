@@ -9856,6 +9856,2585 @@
           "entryId": "media-chaban-kopeysk-meeting-1954"
         }
       ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-28ac06de9075bfaca012",
+      "path": "assets/photos/stara-sil-unidentified-28ac06de9075bfaca012.jpg",
+      "sha256": "28ac06de9075bfaca012561463adb2535acca05cf070b9d96520e45c6a94910e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/45.jpg",
+          "entryId": "media-unidentified-stara-sil-28ac06de9075bfaca012"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1c2e19c05f4a143bda8d",
+      "path": "assets/photos/stara-sil-unidentified-1c2e19c05f4a143bda8d.jpg",
+      "sha256": "1c2e19c05f4a143bda8de1f32ac7d9382519147140969c00027ccfec8e4129f7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/47.jpg",
+          "entryId": "media-unidentified-stara-sil-1c2e19c05f4a143bda8d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-956829a61295b6b2ff8e",
+      "path": "assets/photos/stara-sil-unidentified-956829a61295b6b2ff8e.jpg",
+      "sha256": "956829a61295b6b2ff8e01e514109993302ca8e2f66d967ba435d6e603d805ac",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/48.jpg",
+          "entryId": "media-unidentified-stara-sil-956829a61295b6b2ff8e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b274026ef52c87151d38",
+      "path": "assets/photos/stara-sil-unidentified-b274026ef52c87151d38.jpg",
+      "sha256": "b274026ef52c87151d38922dc8e59f75e5421d5ee66faefd173feed40427b223",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/49.jpg",
+          "entryId": "media-unidentified-stara-sil-b274026ef52c87151d38"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-12b3066b737f28402c78",
+      "path": "assets/photos/stara-sil-unidentified-12b3066b737f28402c78.jpg",
+      "sha256": "12b3066b737f28402c780ea5fc0a8154253b46af1fbd23e6bd10870ba3cef9f1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/51.jpg",
+          "entryId": "media-unidentified-stara-sil-12b3066b737f28402c78"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-6235872e9443877e6de5",
+      "path": "assets/photos/stara-sil-unidentified-6235872e9443877e6de5.jpg",
+      "sha256": "6235872e9443877e6de5e357ad0bc0e510eabefcb19eaf851cd0539c18deccff",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/52.jpg",
+          "entryId": "media-unidentified-stara-sil-6235872e9443877e6de5"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-bb7e7a412dd7c2fae23d",
+      "path": "assets/photos/stara-sil-unidentified-bb7e7a412dd7c2fae23d.jpg",
+      "sha256": "bb7e7a412dd7c2fae23d91779d6dae8f039aa1c4771c56587a8732a5e2531f16",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/53_300_200.jpg",
+          "entryId": "media-unidentified-stara-sil-bb7e7a412dd7c2fae23d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-67034331067cb3973380",
+      "path": "assets/photos/stara-sil-unidentified-67034331067cb3973380.jpg",
+      "sha256": "67034331067cb3973380e429745747a4cbbc4f9648466ee6e149433ed3123fd0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/55_300_200.jpg",
+          "entryId": "media-unidentified-stara-sil-67034331067cb3973380"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-68739c19437cfd1932e1",
+      "path": "assets/photos/stara-sil-unidentified-68739c19437cfd1932e1.jpg",
+      "sha256": "68739c19437cfd1932e1c685eb6ca27bbc30badffe5c27242c3e0bce02acf63a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/56_600.jpg",
+          "entryId": "media-unidentified-stara-sil-68739c19437cfd1932e1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0c9d7290b5c53e245b4d",
+      "path": "assets/photos/stara-sil-unidentified-0c9d7290b5c53e245b4d.jpg",
+      "sha256": "0c9d7290b5c53e245b4d2386cc0389d7ac482faef3bf5b0676d52074f3151eee",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/57_600.jpg",
+          "entryId": "media-unidentified-stara-sil-0c9d7290b5c53e245b4d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-728a9de01404fa878551",
+      "path": "assets/photos/stara-sil-unidentified-728a9de01404fa878551.jpg",
+      "sha256": "728a9de01404fa878551bda418eb3cb59f5d551a77657095bb1314194ff29430",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/59_600.jpg",
+          "entryId": "media-unidentified-stara-sil-728a9de01404fa878551"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-ebfc335f6a69005811a1",
+      "path": "assets/photos/stara-sil-unidentified-ebfc335f6a69005811a1.jpg",
+      "sha256": "ebfc335f6a69005811a147ca13e6043bbaa8cfce57a9534085914010cc501b9e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/60_1200_200.jpg",
+          "entryId": "media-unidentified-stara-sil-ebfc335f6a69005811a1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-96edd9c649d8322b8d4b",
+      "path": "assets/photos/stara-sil-unidentified-96edd9c649d8322b8d4b.jpg",
+      "sha256": "96edd9c649d8322b8d4b64106f713847ea1601a7e2ba6aa9c77d243390aeaa2f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/65_600.jpg",
+          "entryId": "media-unidentified-stara-sil-96edd9c649d8322b8d4b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-022382e05fa605c716e5",
+      "path": "assets/photos/stara-sil-unidentified-022382e05fa605c716e5.jpg",
+      "sha256": "022382e05fa605c716e5dbfe3aec403a5827ea2aac6c123e503dd48dcd112df3",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/68.jpg",
+          "entryId": "media-unidentified-stara-sil-022382e05fa605c716e5"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-2e6a434242bc9f1b061f",
+      "path": "assets/photos/stara-sil-unidentified-2e6a434242bc9f1b061f.jpg",
+      "sha256": "2e6a434242bc9f1b061f244db36aa6f4ebfbbbdf19d86e3e4e402adf03757b8b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/76.jpg",
+          "entryId": "media-unidentified-stara-sil-2e6a434242bc9f1b061f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-637a0194a3eb8c84685c",
+      "path": "assets/photos/stara-sil-unidentified-637a0194a3eb8c84685c.jpg",
+      "sha256": "637a0194a3eb8c84685cce9e365a08d3111f8fd63b749121ef493385c6916d9d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/80_600_200.jpg",
+          "entryId": "media-unidentified-stara-sil-637a0194a3eb8c84685c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b7d8405d49dcbf8aa5ba",
+      "path": "assets/photos/stara-sil-unidentified-b7d8405d49dcbf8aa5ba.jpg",
+      "sha256": "b7d8405d49dcbf8aa5baa0fda590f9c0f99f5414e335adea64d4a60246459f69",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/81_600_200.jpg",
+          "entryId": "media-unidentified-stara-sil-b7d8405d49dcbf8aa5ba"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-67b5cc865b8d001eb206",
+      "path": "assets/photos/stara-sil-unidentified-67b5cc865b8d001eb206.jpg",
+      "sha256": "67b5cc865b8d001eb206b9e99907f8867f081397b638529ecbb90e9175c46b6e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/82_600_200.jpg",
+          "entryId": "media-unidentified-stara-sil-67b5cc865b8d001eb206"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-8531319dd1e3149e9589",
+      "path": "assets/photos/stara-sil-unidentified-8531319dd1e3149e9589.jpg",
+      "sha256": "8531319dd1e3149e9589b192a4b03cd2bfe06c07222d91cf2aa7d5dbdf5fb4fe",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/83_300.jpg",
+          "entryId": "media-unidentified-stara-sil-8531319dd1e3149e9589"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-11c4471d05d1b8437aae",
+      "path": "assets/photos/stara-sil-unidentified-11c4471d05d1b8437aae.jpg",
+      "sha256": "11c4471d05d1b8437aaec03cd813d7882e2508ba07f76af4f9245fd503abb9cb",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/84_300.jpg",
+          "entryId": "media-unidentified-stara-sil-11c4471d05d1b8437aae"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-5cfeeac14d52b23689b4",
+      "path": "assets/photos/stara-sil-unidentified-5cfeeac14d52b23689b4.jpg",
+      "sha256": "5cfeeac14d52b23689b4905d367c16bed2efe19a5777698e03a1ee0d18030088",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 85_300.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/85_300_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-5cfeeac14d52b23689b4"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-608650634d848f5baee1",
+      "path": "assets/photos/stara-sil-unidentified-608650634d848f5baee1.jpg",
+      "sha256": "608650634d848f5baee1cada725fffb4f523e80ddb77f7c7c43032749f2562b2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 85_300_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/85_300.jpg",
+          "entryId": "media-unidentified-stara-sil-608650634d848f5baee1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-2230aa1fe5a690bb78b1",
+      "path": "assets/photos/stara-sil-unidentified-2230aa1fe5a690bb78b1.jpg",
+      "sha256": "2230aa1fe5a690bb78b13c444dbb04031ffcd986a93eb92a3bd246706861209a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/88_300.jpg",
+          "entryId": "media-unidentified-stara-sil-2230aa1fe5a690bb78b1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-9f6f3cc395d155bdd6cc",
+      "path": "assets/photos/stara-sil-unidentified-9f6f3cc395d155bdd6cc.jpg",
+      "sha256": "9f6f3cc395d155bdd6ccde9f76d04c5b2e8f1817c6090fa96cbccccf1e207fb2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/93.jpg",
+          "entryId": "media-unidentified-stara-sil-9f6f3cc395d155bdd6cc"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-ad43d67f0dd4018401dc",
+      "path": "assets/photos/stara-sil-unidentified-ad43d67f0dd4018401dc.jpg",
+      "sha256": "ad43d67f0dd4018401dce2b0722557a1d26b931244d8925f9a4af2867ff14b2e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/94_300.jpg",
+          "entryId": "media-unidentified-stara-sil-ad43d67f0dd4018401dc"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-680dff8130d1d555ac7d",
+      "path": "assets/photos/stara-sil-unidentified-680dff8130d1d555ac7d.jpg",
+      "sha256": "680dff8130d1d555ac7d9de73ebd31b34b5f646ff21f79b5711dbebfd075f4f9",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/95_300.jpg",
+          "entryId": "media-unidentified-stara-sil-680dff8130d1d555ac7d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-f25abefc71a0697226ac",
+      "path": "assets/photos/stara-sil-unidentified-f25abefc71a0697226ac.jpg",
+      "sha256": "f25abefc71a0697226aca5241e8ad54e4a18316a068f3042616fb9af00bdb9bc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/97_300.jpg",
+          "entryId": "media-unidentified-stara-sil-f25abefc71a0697226ac"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-fcf240893b785fd2d374",
+      "path": "assets/photos/stara-sil-unidentified-fcf240893b785fd2d374.jpg",
+      "sha256": "fcf240893b785fd2d374d91df35aa22c4d85e4f0567468b91a61efa7ceb11c5b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/104_300.jpg",
+          "entryId": "media-unidentified-stara-sil-fcf240893b785fd2d374"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-4706ba7aedd21cf2fe1c",
+      "path": "assets/photos/stara-sil-unidentified-4706ba7aedd21cf2fe1c.jpg",
+      "sha256": "4706ba7aedd21cf2fe1c7e9d516f3f6ca605fb8624c1ad846e429d42b7f1ea38",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/107.jpg",
+          "entryId": "media-unidentified-stara-sil-4706ba7aedd21cf2fe1c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-91c50589a6e5da6645df",
+      "path": "assets/photos/stara-sil-unidentified-91c50589a6e5da6645df.jpg",
+      "sha256": "91c50589a6e5da6645dfe3cca7454c44b845503d6c5662891aa2d4959b4621c2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/116_300.jpg",
+          "entryId": "media-unidentified-stara-sil-91c50589a6e5da6645df"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-7b6137f5d55a445965bb",
+      "path": "assets/photos/stara-sil-unidentified-7b6137f5d55a445965bb.jpg",
+      "sha256": "7b6137f5d55a445965bb7946dac258f3a092db4c5cf630e5c5a9bdc96f43ffc9",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 135_300.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/135_300_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-7b6137f5d55a445965bb"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-d6a182b9adb85b4d7185",
+      "path": "assets/photos/stara-sil-unidentified-d6a182b9adb85b4d7185.jpg",
+      "sha256": "d6a182b9adb85b4d71851ff698b6d08df9319a81c465a484514e677e47f326cb",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 135_300_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/135_300.jpg",
+          "entryId": "media-unidentified-stara-sil-d6a182b9adb85b4d7185"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-591d4f8afc5693d469c5",
+      "path": "assets/photos/stara-sil-unidentified-591d4f8afc5693d469c5.jpg",
+      "sha256": "591d4f8afc5693d469c5c1470ffc49ad3f6c49a1472e8b99f9220ac8ada635c4",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 136_(135).jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/136_(135)_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-591d4f8afc5693d469c5"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e3b466ec1fef6ebbeb01",
+      "path": "assets/photos/stara-sil-unidentified-e3b466ec1fef6ebbeb01.jpg",
+      "sha256": "e3b466ec1fef6ebbeb0155701cf49a9cc0443af8c72962c14a03b5ca7ca6c492",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 136_(135)_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/136_(135).jpg",
+          "entryId": "media-unidentified-stara-sil-e3b466ec1fef6ebbeb01"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-ec934f6694652398db9f",
+      "path": "assets/photos/stara-sil-unidentified-ec934f6694652398db9f.jpg",
+      "sha256": "ec934f6694652398db9fe3e43b6c5fccd589e7816070abae54fc9e5dffadd1b3",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 137_(135)_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/137_(135)_C1.jpg",
+          "entryId": "media-unidentified-stara-sil-ec934f6694652398db9f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-d73674a1ed7e82b4653c",
+      "path": "assets/photos/stara-sil-unidentified-d73674a1ed7e82b4653c.jpg",
+      "sha256": "d73674a1ed7e82b4653c012e6558f07f61e5eb3db5701d8da59c58b258cc4955",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 137_(135)_C1.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/137_(135)_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-d73674a1ed7e82b4653c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-7f74bb90aa0089bd8078",
+      "path": "assets/photos/stara-sil-unidentified-7f74bb90aa0089bd8078.jpg",
+      "sha256": "7f74bb90aa0089bd8078f08d75f01a3d059a2956a804b0175b073d9df15d3cfb",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 138_(135).jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/138_(135)_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-7f74bb90aa0089bd8078"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-321b27f7eeae3cc9ceff",
+      "path": "assets/photos/stara-sil-unidentified-321b27f7eeae3cc9ceff.jpg",
+      "sha256": "321b27f7eeae3cc9ceffbdd40c91ac4946bb8e21ad38c4628376418802f3649e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 138_(135)_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/138_(135).jpg",
+          "entryId": "media-unidentified-stara-sil-321b27f7eeae3cc9ceff"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-58d135645268e6f22c76",
+      "path": "assets/photos/stara-sil-unidentified-58d135645268e6f22c76.jpg",
+      "sha256": "58d135645268e6f22c7655b1cc5d1bb90a0a92f3fde446322fb151dc762f426b",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 146.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/146_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-58d135645268e6f22c76"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-628df8d4365b8324da78",
+      "path": "assets/photos/stara-sil-unidentified-628df8d4365b8324da78.jpg",
+      "sha256": "628df8d4365b8324da785ceff95cc4acbe775d29c76c39d55eb10c0d1b89ba07",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 146_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/146.jpg",
+          "entryId": "media-unidentified-stara-sil-628df8d4365b8324da78"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-3df7d61165a99291b7cf",
+      "path": "assets/photos/stara-sil-unidentified-3df7d61165a99291b7cf.jpg",
+      "sha256": "3df7d61165a99291b7cff697b4311c1bd55fe153236c23a480146ad79f08a892",
+      "mimeType": "image/jpeg",
+      "title": "Зворот фотографії без ідентифікації",
+      "description": "Зворот фотографії 147.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/147_zv.jpg",
+          "entryId": "media-unidentified-stara-sil-3df7d61165a99291b7cf"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-501272d96218c1dabdf7",
+      "path": "assets/photos/stara-sil-unidentified-501272d96218c1dabdf7.jpg",
+      "sha256": "501272d96218c1dabdf77d7155315d694872743a92dc73d2da6d8872946dddb7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "description": "Зворот фотографії: 147_zv.jpg.",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/147.jpg",
+          "entryId": "media-unidentified-stara-sil-501272d96218c1dabdf7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-142560b37ec54fc9207d",
+      "path": "assets/photos/stara-sil-unidentified-142560b37ec54fc9207d.jpg",
+      "sha256": "142560b37ec54fc9207da71ba365a5e844d8174793431cfa553859c8555c9b26",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img002C1.jpg",
+          "entryId": "media-unidentified-stara-sil-142560b37ec54fc9207d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-62f876ac549f0fbc1c45",
+      "path": "assets/photos/stara-sil-unidentified-62f876ac549f0fbc1c45.jpg",
+      "sha256": "62f876ac549f0fbc1c4543e91ebd0afe32ae123cdaf1016abab4c9bbf4598c5c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img003C1.jpg",
+          "entryId": "media-unidentified-stara-sil-62f876ac549f0fbc1c45"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-a5471b1230b5ff5b8b03",
+      "path": "assets/photos/stara-sil-unidentified-a5471b1230b5ff5b8b03.jpg",
+      "sha256": "a5471b1230b5ff5b8b03cee6706c8bf6c7218ac924ba08c93eac3837bb89215c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img005C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-a5471b1230b5ff5b8b03"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-a348b4e39653cdff8e83",
+      "path": "assets/photos/stara-sil-unidentified-a348b4e39653cdff8e83.jpg",
+      "sha256": "a348b4e39653cdff8e8325baefffeb6c57ba6f70cd5eb4c4c123fb5d1361e189",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img005C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-a348b4e39653cdff8e83"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-6194fbd4166fd8904e62",
+      "path": "assets/photos/stara-sil-unidentified-6194fbd4166fd8904e62.jpg",
+      "sha256": "6194fbd4166fd8904e62c6da5760127fc3177e1106531615e1af60fa731a9dda",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img006C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-6194fbd4166fd8904e62"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-7ed9b076be11fa5d830a",
+      "path": "assets/photos/stara-sil-unidentified-7ed9b076be11fa5d830a.jpg",
+      "sha256": "7ed9b076be11fa5d830a3304ccb9f31f145e8c6fb60899ae5f18fd2dafb0caf5",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img006C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-7ed9b076be11fa5d830a"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-60b8f40df0a976cc8ec6",
+      "path": "assets/photos/stara-sil-unidentified-60b8f40df0a976cc8ec6.jpg",
+      "sha256": "60b8f40df0a976cc8ec62bfa0e00e0ce2ec8bbe5ec80377a3193228368b4cab1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img006C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-60b8f40df0a976cc8ec6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-cb39a1a89894f55358db",
+      "path": "assets/photos/stara-sil-unidentified-cb39a1a89894f55358db.jpg",
+      "sha256": "cb39a1a89894f55358db5d019ba4557dda3edc9f060163257a7ab8cde50daadf",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img006C1.jpg",
+          "entryId": "media-unidentified-stara-sil-cb39a1a89894f55358db"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-a1c795774026946c5997",
+      "path": "assets/photos/stara-sil-unidentified-a1c795774026946c5997.jpg",
+      "sha256": "a1c795774026946c599788cd4a85254bbc63a603da9ea3d6e1c47d703eae977c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img007C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-a1c795774026946c5997"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-dff57d1d60158bcd3830",
+      "path": "assets/photos/stara-sil-unidentified-dff57d1d60158bcd3830.jpg",
+      "sha256": "dff57d1d60158bcd3830a83afabe24530a10b2669994d30243467d89fdd8934d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img007C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-dff57d1d60158bcd3830"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-fae250eca0290799e27e",
+      "path": "assets/photos/stara-sil-unidentified-fae250eca0290799e27e.jpg",
+      "sha256": "fae250eca0290799e27ed9be8b393ed7c054dc89969556a1607944d942e945d1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img007C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-fae250eca0290799e27e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-679c640837a6c5f84506",
+      "path": "assets/photos/stara-sil-unidentified-679c640837a6c5f84506.jpg",
+      "sha256": "679c640837a6c5f84506ad3164da93a85a63c068decf3cd20e50ccd76c67b36f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img007C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-sil-679c640837a6c5f84506"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-96abc04b126c232f2db9",
+      "path": "assets/photos/stara-sil-unidentified-96abc04b126c232f2db9.jpg",
+      "sha256": "96abc04b126c232f2db950c4b1cd4e9c3e321ce604b81ff7b8a0ecc960bec254",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img007C1 (5) .jpg",
+          "entryId": "media-unidentified-stara-sil-96abc04b126c232f2db9"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-3fd391c11b274d2c4e54",
+      "path": "assets/photos/stara-sil-unidentified-3fd391c11b274d2c4e54.jpg",
+      "sha256": "3fd391c11b274d2c4e54e0a8d8c08898b38f5b6c9258326b17b2c089a37d10be",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img007C1.jpg",
+          "entryId": "media-unidentified-stara-sil-3fd391c11b274d2c4e54"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-a1d6163192e30dd91423",
+      "path": "assets/photos/stara-sil-unidentified-a1d6163192e30dd91423.jpg",
+      "sha256": "a1d6163192e30dd914237ecfb03908daec445611ed42f59b272a8fd240952ea0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img008C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-a1d6163192e30dd91423"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b75682cddf6137306742",
+      "path": "assets/photos/stara-sil-unidentified-b75682cddf6137306742.jpg",
+      "sha256": "b75682cddf613730674294a10a472a8ccbd084a810ef46414ef3ee381188c1cc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img008C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-b75682cddf6137306742"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b409d45b49001281d0b7",
+      "path": "assets/photos/stara-sil-unidentified-b409d45b49001281d0b7.jpg",
+      "sha256": "b409d45b49001281d0b7fcdcf2cb10e6095bf5e47acf84909855fa66ecf4c2bf",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img008C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-b409d45b49001281d0b7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-08bdb45813cef06eb7f0",
+      "path": "assets/photos/stara-sil-unidentified-08bdb45813cef06eb7f0.jpg",
+      "sha256": "08bdb45813cef06eb7f07d1d3a2b5d4eee02f590ff8c7470d39cd73260fd7a25",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img008C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-sil-08bdb45813cef06eb7f0"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-56b0ff271bdcd9949383",
+      "path": "assets/photos/stara-sil-unidentified-56b0ff271bdcd9949383.jpg",
+      "sha256": "56b0ff271bdcd9949383cb244efc9cff0bc50d73d1e1f20be18710a9cc8d4f1f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img008C1.jpg",
+          "entryId": "media-unidentified-stara-sil-56b0ff271bdcd9949383"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-187dc97f328679e8f3a5",
+      "path": "assets/photos/stara-sil-unidentified-187dc97f328679e8f3a5.jpg",
+      "sha256": "187dc97f328679e8f3a53abce1941a0e8c5a1a4998990983b55615384860bea2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img009C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-187dc97f328679e8f3a5"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-aabdabf8100a95a36092",
+      "path": "assets/photos/stara-sil-unidentified-aabdabf8100a95a36092.jpg",
+      "sha256": "aabdabf8100a95a3609231ceca84178cf5e937a425a8bd15554b84f2168af233",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img009C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-aabdabf8100a95a36092"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-5f0806b1167eff75d8b6",
+      "path": "assets/photos/stara-sil-unidentified-5f0806b1167eff75d8b6.jpg",
+      "sha256": "5f0806b1167eff75d8b6bcdb4aa22b01062d59fe6334b6e488efb101e9c1077e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img009C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-sil-5f0806b1167eff75d8b6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-eef643c27585837a8d3e",
+      "path": "assets/photos/stara-sil-unidentified-eef643c27585837a8d3e.jpg",
+      "sha256": "eef643c27585837a8d3e4f01c8979cf2a71a5f052082a157523266f817ca7ad1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img009C1 (5) .jpg",
+          "entryId": "media-unidentified-stara-sil-eef643c27585837a8d3e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-10c8375696a8f74356de",
+      "path": "assets/photos/stara-sil-unidentified-10c8375696a8f74356de.jpg",
+      "sha256": "10c8375696a8f74356dec9b2f4e2fb183a5558fcee532fca1d0ee2cdff954d06",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img009C1.jpg",
+          "entryId": "media-unidentified-stara-sil-10c8375696a8f74356de"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0b286ea4f7a5e257d138",
+      "path": "assets/photos/stara-sil-unidentified-0b286ea4f7a5e257d138.jpg",
+      "sha256": "0b286ea4f7a5e257d13895a2f8bda1d33c78bc9f6499525cf03cbaaa5a5bf106",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img010C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-0b286ea4f7a5e257d138"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-aedc65a7f1317b08031c",
+      "path": "assets/photos/stara-sil-unidentified-aedc65a7f1317b08031c.jpg",
+      "sha256": "aedc65a7f1317b08031ceee63dc6b96681ac35b8c3c94fc640e5bd3be9bb16e2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img010C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-aedc65a7f1317b08031c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-ba25f02690ce3bb08107",
+      "path": "assets/photos/stara-sil-unidentified-ba25f02690ce3bb08107.jpg",
+      "sha256": "ba25f02690ce3bb08107d96acd9223a043530c767f4f629a91c64ce958041daa",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img010C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-ba25f02690ce3bb08107"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-8f67318ee199863f41e3",
+      "path": "assets/photos/stara-sil-unidentified-8f67318ee199863f41e3.jpg",
+      "sha256": "8f67318ee199863f41e373124d85156d6ff73e99294db45f966de900bb289d62",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img010C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-sil-8f67318ee199863f41e3"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-759dd38cb4bf974fab1c",
+      "path": "assets/photos/stara-sil-unidentified-759dd38cb4bf974fab1c.jpg",
+      "sha256": "759dd38cb4bf974fab1ca51918184c99aa98fc72c89349138117a545f254484c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img010C1.jpg",
+          "entryId": "media-unidentified-stara-sil-759dd38cb4bf974fab1c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-254fc09f83431caf81fe",
+      "path": "assets/photos/stara-sil-unidentified-254fc09f83431caf81fe.jpg",
+      "sha256": "254fc09f83431caf81fe72bb27252c2eb73a6dbab6c6f20b24ed28cde19bfb06",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img011C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-254fc09f83431caf81fe"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-059c7007887670275b04",
+      "path": "assets/photos/stara-sil-unidentified-059c7007887670275b04.jpg",
+      "sha256": "059c7007887670275b049a98b25a8352efdc3a057a05d64ee6d7744760c45fe6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img011C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-059c7007887670275b04"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-966dc5a3b87b4e789811",
+      "path": "assets/photos/stara-sil-unidentified-966dc5a3b87b4e789811.jpg",
+      "sha256": "966dc5a3b87b4e7898119e05d5673d616e3d3eb2bbde389af93b66aa3663826b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img011C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-966dc5a3b87b4e789811"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-36ca470835202fedac96",
+      "path": "assets/photos/stara-sil-unidentified-36ca470835202fedac96.jpg",
+      "sha256": "36ca470835202fedac96c227a89be17a7a8da4d6812ba88b163ca776323b20e2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img011C1 (4) .jpg",
+          "entryId": "media-unidentified-stara-sil-36ca470835202fedac96"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-167f16b7916b4df2289e",
+      "path": "assets/photos/stara-sil-unidentified-167f16b7916b4df2289e.jpg",
+      "sha256": "167f16b7916b4df2289e2495cb1471cc88288a5df4a8bfb26ed5095858785cc7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img011C1.jpg",
+          "entryId": "media-unidentified-stara-sil-167f16b7916b4df2289e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-298b8a1c23919bedf280",
+      "path": "assets/photos/stara-sil-unidentified-298b8a1c23919bedf280.jpg",
+      "sha256": "298b8a1c23919bedf28099df83affed2e3ff27f86c292ad8d091deaf3da93011",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img013C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-298b8a1c23919bedf280"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e7d9c76def309be21875",
+      "path": "assets/photos/stara-sil-unidentified-e7d9c76def309be21875.jpg",
+      "sha256": "e7d9c76def309be21875eddce3a111d5b8bb75640c287f3e118d241f21223e75",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img013C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-e7d9c76def309be21875"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-a8d5d955095478b523c2",
+      "path": "assets/photos/stara-sil-unidentified-a8d5d955095478b523c2.jpg",
+      "sha256": "a8d5d955095478b523c2c695e8beeb1bac82e4bb476b7b8d211f7530f1ed7147",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img013C1.jpg",
+          "entryId": "media-unidentified-stara-sil-a8d5d955095478b523c2"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-423604869e25bcbe9ad6",
+      "path": "assets/photos/stara-sil-unidentified-423604869e25bcbe9ad6.jpg",
+      "sha256": "423604869e25bcbe9ad699917e16ea2e1fc4810616470e5090345322b90c11f1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img014C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-423604869e25bcbe9ad6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-8304ac34fdcb17e33296",
+      "path": "assets/photos/stara-sil-unidentified-8304ac34fdcb17e33296.jpg",
+      "sha256": "8304ac34fdcb17e332967680def32b102dd92f6301c3fe95f6593130617ea23a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img014C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-8304ac34fdcb17e33296"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-c73163813ee0272bc601",
+      "path": "assets/photos/stara-sil-unidentified-c73163813ee0272bc601.jpg",
+      "sha256": "c73163813ee0272bc601492ce95727d9e183ac0da332b8998aaeb51568b2b6ab",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img014C1.jpg",
+          "entryId": "media-unidentified-stara-sil-c73163813ee0272bc601"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-d4552b2920be69c3f1ca",
+      "path": "assets/photos/stara-sil-unidentified-d4552b2920be69c3f1ca.jpg",
+      "sha256": "d4552b2920be69c3f1ca5bac7dfcbb8ce99586179d54b3e81f4878cbd3f2f9e0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img015C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-d4552b2920be69c3f1ca"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0a52b3f83c478cfd30f6",
+      "path": "assets/photos/stara-sil-unidentified-0a52b3f83c478cfd30f6.jpg",
+      "sha256": "0a52b3f83c478cfd30f6001027647adbb1a82f558bd98a94a21ac8205b2f07e0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img015C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-0a52b3f83c478cfd30f6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-782abcba4fd3ec22c85e",
+      "path": "assets/photos/stara-sil-unidentified-782abcba4fd3ec22c85e.jpg",
+      "sha256": "782abcba4fd3ec22c85e94c553a7d66f05f4b68209238d432f07aada95c8db3e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img015C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-782abcba4fd3ec22c85e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-44319c65c9277453d83e",
+      "path": "assets/photos/stara-sil-unidentified-44319c65c9277453d83e.jpg",
+      "sha256": "44319c65c9277453d83e038b0900900c758ce1318a4e42f0a08ae2532c163dde",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img015C1.jpg",
+          "entryId": "media-unidentified-stara-sil-44319c65c9277453d83e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-bec56b39fbf6dad18d8c",
+      "path": "assets/photos/stara-sil-unidentified-bec56b39fbf6dad18d8c.jpg",
+      "sha256": "bec56b39fbf6dad18d8c70336541495785bf146dc73dbaa55fb1252fc44c1600",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img016C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-bec56b39fbf6dad18d8c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b106a67ed59e51d8ce3b",
+      "path": "assets/photos/stara-sil-unidentified-b106a67ed59e51d8ce3b.jpg",
+      "sha256": "b106a67ed59e51d8ce3bcca1127dadb4a1d72c74c0229d9734e7529e9019e452",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img016C1.jpg",
+          "entryId": "media-unidentified-stara-sil-b106a67ed59e51d8ce3b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-549b1c2ca3497af88c62",
+      "path": "assets/photos/stara-sil-unidentified-549b1c2ca3497af88c62.jpg",
+      "sha256": "549b1c2ca3497af88c62ccec5a475204dbc273710751ed436d887b97894b4bf7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img017C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-549b1c2ca3497af88c62"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-bc8882ea7a9c153fab53",
+      "path": "assets/photos/stara-sil-unidentified-bc8882ea7a9c153fab53.jpg",
+      "sha256": "bc8882ea7a9c153fab53e2979ca116bf444ef7f6397115f18c8bbb764ebd957b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img017C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-bc8882ea7a9c153fab53"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-bc3b466a8958570ce475",
+      "path": "assets/photos/stara-sil-unidentified-bc3b466a8958570ce475.jpg",
+      "sha256": "bc3b466a8958570ce4757a9da0d7fa014076cad95ae1c31a00cfcb29a8252279",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img017C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-bc3b466a8958570ce475"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-c6b0282bf85b9d9bcbed",
+      "path": "assets/photos/stara-sil-unidentified-c6b0282bf85b9d9bcbed.jpg",
+      "sha256": "c6b0282bf85b9d9bcbed3f04e494856408ef37e00c7e039a8062af8b173a9aed",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img017C1.jpg",
+          "entryId": "media-unidentified-stara-sil-c6b0282bf85b9d9bcbed"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e0e96ebe9381d0395e86",
+      "path": "assets/photos/stara-sil-unidentified-e0e96ebe9381d0395e86.jpg",
+      "sha256": "e0e96ebe9381d0395e86956eca1705263ed4831308e12a3a22317e01795b1e45",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img018C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-e0e96ebe9381d0395e86"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-d6cdf4e4cfa9f799721c",
+      "path": "assets/photos/stara-sil-unidentified-d6cdf4e4cfa9f799721c.jpg",
+      "sha256": "d6cdf4e4cfa9f799721c104a2eab8f25b5b4ed277f45d48d2b770bc08bb16c64",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img018C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-d6cdf4e4cfa9f799721c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-77075fc276c24be839b6",
+      "path": "assets/photos/stara-sil-unidentified-77075fc276c24be839b6.jpg",
+      "sha256": "77075fc276c24be839b6cd0eb5ec5ff6a222d268979c022f3d6d259307941a58",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img018C1.jpg",
+          "entryId": "media-unidentified-stara-sil-77075fc276c24be839b6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-9a4b1555a63d7fd43b72",
+      "path": "assets/photos/stara-sil-unidentified-9a4b1555a63d7fd43b72.jpg",
+      "sha256": "9a4b1555a63d7fd43b7220561014c4e1f74bc30a484a564c25a639c23d18efab",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img019C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-9a4b1555a63d7fd43b72"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1cdd86b82ea5bb208a47",
+      "path": "assets/photos/stara-sil-unidentified-1cdd86b82ea5bb208a47.jpg",
+      "sha256": "1cdd86b82ea5bb208a47c5db936fdf9edab59c904464fcb49126e97957fef660",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img019C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-1cdd86b82ea5bb208a47"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-630977ea4122866d0f72",
+      "path": "assets/photos/stara-sil-unidentified-630977ea4122866d0f72.jpg",
+      "sha256": "630977ea4122866d0f72720af3a3c16970ded9896f0ce34a379189f97c399aa6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img019C1.jpg",
+          "entryId": "media-unidentified-stara-sil-630977ea4122866d0f72"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b0d86a120ba661935dd8",
+      "path": "assets/photos/stara-sil-unidentified-b0d86a120ba661935dd8.jpg",
+      "sha256": "b0d86a120ba661935dd801fc3d84f6b64e25f14fcb897e2286a3e55581473301",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img020C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-b0d86a120ba661935dd8"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0364d12b1c33b2c42593",
+      "path": "assets/photos/stara-sil-unidentified-0364d12b1c33b2c42593.jpg",
+      "sha256": "0364d12b1c33b2c425930cac6c5cc412dc55a684ee065b0842604806cf5f8614",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img020C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-0364d12b1c33b2c42593"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1f1e0cc153c8f88a893b",
+      "path": "assets/photos/stara-sil-unidentified-1f1e0cc153c8f88a893b.jpg",
+      "sha256": "1f1e0cc153c8f88a893b494693dcc49e165db9737e2953abf126083c1d8f0fca",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img020C1.jpg",
+          "entryId": "media-unidentified-stara-sil-1f1e0cc153c8f88a893b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-ba0c6e90e88a9364b794",
+      "path": "assets/photos/stara-sil-unidentified-ba0c6e90e88a9364b794.jpg",
+      "sha256": "ba0c6e90e88a9364b79480f46acc80478b8079fdf35f3415d3cd84ece63e8ace",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img021C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-ba0c6e90e88a9364b794"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-5fc95603fb057d515f37",
+      "path": "assets/photos/stara-sil-unidentified-5fc95603fb057d515f37.jpg",
+      "sha256": "5fc95603fb057d515f372eac28ec79fc3b3e005e4d41893d63c0c7481a79ce1a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img021C1.jpg",
+          "entryId": "media-unidentified-stara-sil-5fc95603fb057d515f37"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e3b9bff5fd0d8012a3d6",
+      "path": "assets/photos/stara-sil-unidentified-e3b9bff5fd0d8012a3d6.jpg",
+      "sha256": "e3b9bff5fd0d8012a3d6fe2dc2659edaedaf33326711a66c30a77c2f7727ae9f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img022C1.jpg",
+          "entryId": "media-unidentified-stara-sil-e3b9bff5fd0d8012a3d6"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-916659877ce78284ad5c",
+      "path": "assets/photos/stara-sil-unidentified-916659877ce78284ad5c.jpg",
+      "sha256": "916659877ce78284ad5c9d52d5107c363df2fd183f6060267daa446e32618ccc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img023C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-916659877ce78284ad5c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-58e77796b3ac8e5274d7",
+      "path": "assets/photos/stara-sil-unidentified-58e77796b3ac8e5274d7.jpg",
+      "sha256": "58e77796b3ac8e5274d7e6cc3ceb479aed541d088046d36a4cfea6f43c27a95d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img023C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-58e77796b3ac8e5274d7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-9f6256c2b901f7686d20",
+      "path": "assets/photos/stara-sil-unidentified-9f6256c2b901f7686d20.jpg",
+      "sha256": "9f6256c2b901f7686d20b4726820c66b4e1fcb94c9a8be8c01df4ff01eec03b4",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img023C1.jpg",
+          "entryId": "media-unidentified-stara-sil-9f6256c2b901f7686d20"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-86677494136a36af3a77",
+      "path": "assets/photos/stara-sil-unidentified-86677494136a36af3a77.jpg",
+      "sha256": "86677494136a36af3a77afcb7fcd5987f1f92e847e70d833f7e3ebf0bac152bc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img024C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-86677494136a36af3a77"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-111c131b5984c80ff325",
+      "path": "assets/photos/stara-sil-unidentified-111c131b5984c80ff325.jpg",
+      "sha256": "111c131b5984c80ff325c050c3e26cb50c362fbda4e53afd885c28974eb44d27",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img024C1.jpg",
+          "entryId": "media-unidentified-stara-sil-111c131b5984c80ff325"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-5215f4004a2bf1b7e9d8",
+      "path": "assets/photos/stara-sil-unidentified-5215f4004a2bf1b7e9d8.jpg",
+      "sha256": "5215f4004a2bf1b7e9d814fec83d74e8e5c13f77228bd6e9368db2762cab222b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img025C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-5215f4004a2bf1b7e9d8"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-5f93e33245228255e374",
+      "path": "assets/photos/stara-sil-unidentified-5f93e33245228255e374.jpg",
+      "sha256": "5f93e33245228255e374570299d865dfa4240acba2c04135a9749e69f5b4935b",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img025C1.jpg",
+          "entryId": "media-unidentified-stara-sil-5f93e33245228255e374"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-3a15bc81af669af3c647",
+      "path": "assets/photos/stara-sil-unidentified-3a15bc81af669af3c647.jpg",
+      "sha256": "3a15bc81af669af3c647454a73793c6e79ac1447505e56e8cd126733cd11dcec",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img026C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-3a15bc81af669af3c647"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0ff92c77b168b9a93226",
+      "path": "assets/photos/stara-sil-unidentified-0ff92c77b168b9a93226.jpg",
+      "sha256": "0ff92c77b168b9a93226a4bb6ee1d570c9ac7dac74918aa1c0497e0bfd3bf987",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img026C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-0ff92c77b168b9a93226"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-fd83db146f5aed6bdcfc",
+      "path": "assets/photos/stara-sil-unidentified-fd83db146f5aed6bdcfc.jpg",
+      "sha256": "fd83db146f5aed6bdcfc6a9158e974c084df0d12f95f6ce27fb358479e577527",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img026C1.jpg",
+          "entryId": "media-unidentified-stara-sil-fd83db146f5aed6bdcfc"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-618340158aa311c24e96",
+      "path": "assets/photos/stara-sil-unidentified-618340158aa311c24e96.jpg",
+      "sha256": "618340158aa311c24e96318b3dc4e333a9b43affd6aaf1f964d21c26fd904d36",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img027C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-618340158aa311c24e96"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-9d588837dfbc7276c53e",
+      "path": "assets/photos/stara-sil-unidentified-9d588837dfbc7276c53e.jpg",
+      "sha256": "9d588837dfbc7276c53e11ec394962f0a21f25560310bae1a7c032256fc535cf",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img027C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-9d588837dfbc7276c53e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-619d4fd12ca17dc641c4",
+      "path": "assets/photos/stara-sil-unidentified-619d4fd12ca17dc641c4.jpg",
+      "sha256": "619d4fd12ca17dc641c4d39c01eca468ce7b42f06d56b7d7f9ed876cce303f3d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img027C1.jpg",
+          "entryId": "media-unidentified-stara-sil-619d4fd12ca17dc641c4"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-bb0f05f96993ddd28fef",
+      "path": "assets/photos/stara-sil-unidentified-bb0f05f96993ddd28fef.jpg",
+      "sha256": "bb0f05f96993ddd28fef5ac8ca71fb1a3f5a7a7e47f5b680f856631aca39e558",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img028C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-bb0f05f96993ddd28fef"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-31215136403667735300",
+      "path": "assets/photos/stara-sil-unidentified-31215136403667735300.jpg",
+      "sha256": "3121513640366773530098ed816a1a75bb30d1ec49effa3eeacccc0a8ed5fbb0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img028C1.jpg",
+          "entryId": "media-unidentified-stara-sil-31215136403667735300"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-af339b1579bbb148d501",
+      "path": "assets/photos/stara-sil-unidentified-af339b1579bbb148d501.jpg",
+      "sha256": "af339b1579bbb148d50199b8bbefa74c2318b78e275faee5b871228939c28b16",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img029C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-af339b1579bbb148d501"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-59033542dcb02c8b55a9",
+      "path": "assets/photos/stara-sil-unidentified-59033542dcb02c8b55a9.jpg",
+      "sha256": "59033542dcb02c8b55a9ce728c454ca72979da3e551bddc033c6da2b66bda505",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img029C1.jpg",
+          "entryId": "media-unidentified-stara-sil-59033542dcb02c8b55a9"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-b71b15d56a0ad0f72765",
+      "path": "assets/photos/stara-sil-unidentified-b71b15d56a0ad0f72765.jpg",
+      "sha256": "b71b15d56a0ad0f727657b400b1f6e2c9c88721ea439bcda8034bd49154a086d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img030C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-b71b15d56a0ad0f72765"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-cbbc0d2aaeefeeb8a48a",
+      "path": "assets/photos/stara-sil-unidentified-cbbc0d2aaeefeeb8a48a.jpg",
+      "sha256": "cbbc0d2aaeefeeb8a48a73a3b10b5bd4cddd02cc0fa8ab6d0b8040a14b4ef0bd",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img030C1.jpg",
+          "entryId": "media-unidentified-stara-sil-cbbc0d2aaeefeeb8a48a"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-903e458d0f54fd03afba",
+      "path": "assets/photos/stara-sil-unidentified-903e458d0f54fd03afba.jpg",
+      "sha256": "903e458d0f54fd03afbae900e8033eb486403a0384ae859758c0c5b6f12c835a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img031C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-903e458d0f54fd03afba"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1654df776aa97d58575d",
+      "path": "assets/photos/stara-sil-unidentified-1654df776aa97d58575d.jpg",
+      "sha256": "1654df776aa97d58575d454b97c8808246ae14c82f4f29812d82df77fae3327d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img031C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-1654df776aa97d58575d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-541f599f543e3405b311",
+      "path": "assets/photos/stara-sil-unidentified-541f599f543e3405b311.jpg",
+      "sha256": "541f599f543e3405b3119ffb0a0748c73c4bd8b2afa9049d24abed53112f87fc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img031C1.jpg",
+          "entryId": "media-unidentified-stara-sil-541f599f543e3405b311"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-55fd14e1846cfad13a82",
+      "path": "assets/photos/stara-sil-unidentified-55fd14e1846cfad13a82.jpg",
+      "sha256": "55fd14e1846cfad13a8274aa6b7f7ef5d540a2c105c36987c37eb0c74f9f6d6f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img032C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-55fd14e1846cfad13a82"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-4165b15a8672beb49e41",
+      "path": "assets/photos/stara-sil-unidentified-4165b15a8672beb49e41.jpg",
+      "sha256": "4165b15a8672beb49e41489f03cf23068c6201361edecfd06bfd2161fc680dfe",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img032C1.jpg",
+          "entryId": "media-unidentified-stara-sil-4165b15a8672beb49e41"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-cf18c96291eb00088d3e",
+      "path": "assets/photos/stara-sil-unidentified-cf18c96291eb00088d3e.jpg",
+      "sha256": "cf18c96291eb00088d3eef9878463ae431c03c4f24b0fa6363e8153b67e16ec0",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img033C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-cf18c96291eb00088d3e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-2dfdb2bb8e35cf82143f",
+      "path": "assets/photos/stara-sil-unidentified-2dfdb2bb8e35cf82143f.jpg",
+      "sha256": "2dfdb2bb8e35cf82143f3e7a5e3215b44a9afe2c06f51ec67f4c9a1b1e1304cb",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img033C1.jpg",
+          "entryId": "media-unidentified-stara-sil-2dfdb2bb8e35cf82143f"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-2741bedb3f3834874b61",
+      "path": "assets/photos/stara-sil-unidentified-2741bedb3f3834874b61.jpg",
+      "sha256": "2741bedb3f3834874b615df59020f8f9d263cfb776e7cfb7f28199816ef8da51",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img034C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-2741bedb3f3834874b61"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-3ce5940f501eb3b01a0d",
+      "path": "assets/photos/stara-sil-unidentified-3ce5940f501eb3b01a0d.jpg",
+      "sha256": "3ce5940f501eb3b01a0d7c6fde99455994d0031ccff71dd9a492d269787a8239",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img034C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-3ce5940f501eb3b01a0d"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-96f428c5b05e5ec1de24",
+      "path": "assets/photos/stara-sil-unidentified-96f428c5b05e5ec1de24.jpg",
+      "sha256": "96f428c5b05e5ec1de242fc7363a490e4ff7fcfd340b820d8e32b43d2e97ffe1",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img034C1.jpg",
+          "entryId": "media-unidentified-stara-sil-96f428c5b05e5ec1de24"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-2c2f274c9c79c60b7b64",
+      "path": "assets/photos/stara-sil-unidentified-2c2f274c9c79c60b7b64.jpg",
+      "sha256": "2c2f274c9c79c60b7b645d50f2fc7ca4680918898f1e06783727de2b8d41bf07",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img035C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-2c2f274c9c79c60b7b64"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-7a17e598e074c0a82eff",
+      "path": "assets/photos/stara-sil-unidentified-7a17e598e074c0a82eff.jpg",
+      "sha256": "7a17e598e074c0a82eff470be897260ad3b78aafbb1c891b1358e4b31684ae58",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img035C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-7a17e598e074c0a82eff"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-eb7e9096ad3d8872e3a3",
+      "path": "assets/photos/stara-sil-unidentified-eb7e9096ad3d8872e3a3.jpg",
+      "sha256": "eb7e9096ad3d8872e3a3ba5f39a4809a47ad5bf70223fd5ddeb8ee09ff58f2fc",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img035C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-eb7e9096ad3d8872e3a3"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-be4b9de8b1f53787caa3",
+      "path": "assets/photos/stara-sil-unidentified-be4b9de8b1f53787caa3.jpg",
+      "sha256": "be4b9de8b1f53787caa3a7233919eb59bd0994b213285c534358e8af1f278a72",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img035C1.jpg",
+          "entryId": "media-unidentified-stara-sil-be4b9de8b1f53787caa3"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-518be42f42735e5657f4",
+      "path": "assets/photos/stara-sil-unidentified-518be42f42735e5657f4.jpg",
+      "sha256": "518be42f42735e5657f403e4f329b543aca0e53ab98f9254e596cb49fa96de16",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img036C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-518be42f42735e5657f4"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e94ac9375e3204ca94a1",
+      "path": "assets/photos/stara-sil-unidentified-e94ac9375e3204ca94a1.jpg",
+      "sha256": "e94ac9375e3204ca94a1f7d909f4cae8fe3211a3c702ec00b231dcaec357a5c2",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img036C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-e94ac9375e3204ca94a1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-56234e93d318614fd0c7",
+      "path": "assets/photos/stara-sil-unidentified-56234e93d318614fd0c7.jpg",
+      "sha256": "56234e93d318614fd0c78e9eacdfa1d14b457282743bb1a3b85259cd20bde134",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img036C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-56234e93d318614fd0c7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-77d8da388ff7a1a64ff1",
+      "path": "assets/photos/stara-sil-unidentified-77d8da388ff7a1a64ff1.jpg",
+      "sha256": "77d8da388ff7a1a64ff17f105189b5980b109405bc1e6a7cddd95862ade1c124",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img036C1.jpg",
+          "entryId": "media-unidentified-stara-sil-77d8da388ff7a1a64ff1"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-553f2e184d9ef9297b10",
+      "path": "assets/photos/stara-sil-unidentified-553f2e184d9ef9297b10.jpg",
+      "sha256": "553f2e184d9ef9297b10d13daf93d4bc7bfc790d1f2195ad5eb950d22cc66346",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img037C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-553f2e184d9ef9297b10"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-cd697ce9cbc13c0e3ff2",
+      "path": "assets/photos/stara-sil-unidentified-cd697ce9cbc13c0e3ff2.jpg",
+      "sha256": "cd697ce9cbc13c0e3ff2985fb746a48a6eabc90b2d4a4f35564d2cf40d6ead9e",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img037C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-cd697ce9cbc13c0e3ff2"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-ffb9631077632a5df327",
+      "path": "assets/photos/stara-sil-unidentified-ffb9631077632a5df327.jpg",
+      "sha256": "ffb9631077632a5df3274ee129fc54f1e2702a0e6516fcb26531ce9fd68ad497",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img037C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-ffb9631077632a5df327"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1070001c260eb844f818",
+      "path": "assets/photos/stara-sil-unidentified-1070001c260eb844f818.jpg",
+      "sha256": "1070001c260eb844f818bee55a899ea347daab3bdafc895992f9c9f08605fda6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img037C1.jpg",
+          "entryId": "media-unidentified-stara-sil-1070001c260eb844f818"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-75638e1a174ac8a5483b",
+      "path": "assets/photos/stara-sil-unidentified-75638e1a174ac8a5483b.jpg",
+      "sha256": "75638e1a174ac8a5483b74709398269400d201680a607fe9311f0d9f4e414ae7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img038C1.jpg",
+          "entryId": "media-unidentified-stara-sil-75638e1a174ac8a5483b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-df57a2757cc24de2cd4b",
+      "path": "assets/photos/stara-sil-unidentified-df57a2757cc24de2cd4b.jpg",
+      "sha256": "df57a2757cc24de2cd4bf20f0c0514ad8dfd38bd62164189e9ca33e35f19e054",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img048C1.jpg",
+          "entryId": "media-unidentified-stara-sil-df57a2757cc24de2cd4b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-daeedf242cef96dcd926",
+      "path": "assets/photos/stara-sil-unidentified-daeedf242cef96dcd926.jpg",
+      "sha256": "daeedf242cef96dcd926a718baafefbc0598d94640d337af166469b503bcebba",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img049C1.jpg",
+          "entryId": "media-unidentified-stara-sil-daeedf242cef96dcd926"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-c4d7fe44632d956b021c",
+      "path": "assets/photos/stara-sil-unidentified-c4d7fe44632d956b021c.jpg",
+      "sha256": "c4d7fe44632d956b021c469dec835bbfde601b3d2b86c6d53ae04201bcf3fc60",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img050C1.jpg",
+          "entryId": "media-unidentified-stara-sil-c4d7fe44632d956b021c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-25df23add94fac5e6aa4",
+      "path": "assets/photos/stara-sil-unidentified-25df23add94fac5e6aa4.jpg",
+      "sha256": "25df23add94fac5e6aa462aecf5d0a865341cbf8d4ac07b6738a5778cdcad828",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img051C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-25df23add94fac5e6aa4"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-f6aca89acaaad51e4e68",
+      "path": "assets/photos/stara-sil-unidentified-f6aca89acaaad51e4e68.jpg",
+      "sha256": "f6aca89acaaad51e4e681a413e17d8d9f3d401b569bb3f043a4a57167d249d09",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img051C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-f6aca89acaaad51e4e68"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-46e993235875fe732e9e",
+      "path": "assets/photos/stara-sil-unidentified-46e993235875fe732e9e.jpg",
+      "sha256": "46e993235875fe732e9eb6eff070a2a4c4d85c0c27e6e803da258afd4277d915",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img051C1.jpg",
+          "entryId": "media-unidentified-stara-sil-46e993235875fe732e9e"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e6711e7e3226ddd31987",
+      "path": "assets/photos/stara-sil-unidentified-e6711e7e3226ddd31987.jpg",
+      "sha256": "e6711e7e3226ddd31987437e550cefc5ee334f16cd414ef89dac01bb2aac7dd6",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img052C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-e6711e7e3226ddd31987"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0b4d83621831f79f308b",
+      "path": "assets/photos/stara-sil-unidentified-0b4d83621831f79f308b.jpg",
+      "sha256": "0b4d83621831f79f308bf57a1eea392eb8357d28a1113e55d29ee869835c662f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img052C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-0b4d83621831f79f308b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-22e8d26cbeee19ea63a9",
+      "path": "assets/photos/stara-sil-unidentified-22e8d26cbeee19ea63a9.jpg",
+      "sha256": "22e8d26cbeee19ea63a99eb97f7ab05df8906a2897ed3cc439e4da5d3b9a67f4",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img052C1 (3) .jpg",
+          "entryId": "media-unidentified-stara-sil-22e8d26cbeee19ea63a9"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0d14f889d69bae76b255",
+      "path": "assets/photos/stara-sil-unidentified-0d14f889d69bae76b255.jpg",
+      "sha256": "0d14f889d69bae76b2550a50b8e602659f76cbe158f608e763e5b9b717d53bb8",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img053C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-0d14f889d69bae76b255"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-57ea3799acbd91326210",
+      "path": "assets/photos/stara-sil-unidentified-57ea3799acbd91326210.jpg",
+      "sha256": "57ea3799acbd913262107e92039795fe3cfb5b5577b62d27f95462410ae515c7",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img053C1.jpg",
+          "entryId": "media-unidentified-stara-sil-57ea3799acbd91326210"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-fe5edfc8bf1e48628e29",
+      "path": "assets/photos/stara-sil-unidentified-fe5edfc8bf1e48628e29.jpg",
+      "sha256": "fe5edfc8bf1e48628e29d4012fb3d58b43a7bf914534ea4ca457862f96d39eff",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img054C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-fe5edfc8bf1e48628e29"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-3110e41fa4fc48ce5847",
+      "path": "assets/photos/stara-sil-unidentified-3110e41fa4fc48ce5847.jpg",
+      "sha256": "3110e41fa4fc48ce58471e0172335b39474cfbf5d1077b939386bcfd9568378f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img054C1.jpg",
+          "entryId": "media-unidentified-stara-sil-3110e41fa4fc48ce5847"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-1ed303e70500f21cf96c",
+      "path": "assets/photos/stara-sil-unidentified-1ed303e70500f21cf96c.jpg",
+      "sha256": "1ed303e70500f21cf96cd350d871343618e2c9bf4227b3d2aaf79578202a895f",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img055C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-1ed303e70500f21cf96c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-87253b5ff8b4603e2c9c",
+      "path": "assets/photos/stara-sil-unidentified-87253b5ff8b4603e2c9c.jpg",
+      "sha256": "87253b5ff8b4603e2c9c330440babc0bf690978aa25742f7459f2ce729db4209",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img055C1 (2) .jpg",
+          "entryId": "media-unidentified-stara-sil-87253b5ff8b4603e2c9c"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-faff61cc07e18f53e21a",
+      "path": "assets/photos/stara-sil-unidentified-faff61cc07e18f53e21a.jpg",
+      "sha256": "faff61cc07e18f53e21acf708e32368bdbf61cde3fc02af947a4c82f38515c86",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img055C1.jpg",
+          "entryId": "media-unidentified-stara-sil-faff61cc07e18f53e21a"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-f8d2a8e5d7c93d8e59ae",
+      "path": "assets/photos/stara-sil-unidentified-f8d2a8e5d7c93d8e59ae.jpg",
+      "sha256": "f8d2a8e5d7c93d8e59aefa701354e5209df337b87dcb4e76b7376270848981d8",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img056C1 (1) .jpg",
+          "entryId": "media-unidentified-stara-sil-f8d2a8e5d7c93d8e59ae"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-e942c7e308b623153f38",
+      "path": "assets/photos/stara-sil-unidentified-e942c7e308b623153f38.jpg",
+      "sha256": "e942c7e308b623153f386daabe6fcf0ad521a775ef7120cdc35faf90240bb450",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img057C1.jpg",
+          "entryId": "media-unidentified-stara-sil-e942c7e308b623153f38"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-64bab2daae4027e3957b",
+      "path": "assets/photos/stara-sil-unidentified-64bab2daae4027e3957b.jpg",
+      "sha256": "64bab2daae4027e3957b1f90043d1f56b307e9f2554a347207bba90fdf87048a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img654.jpg",
+          "entryId": "media-unidentified-stara-sil-64bab2daae4027e3957b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-28bda11d452b6a7bf1ab",
+      "path": "assets/photos/stara-sil-unidentified-28bda11d452b6a7bf1ab.jpg",
+      "sha256": "28bda11d452b6a7bf1abd3d403e09a026fe5455b8d89774c64210cc21bfd3776",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img655.jpg",
+          "entryId": "media-unidentified-stara-sil-28bda11d452b6a7bf1ab"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-6200fd5c036069a1456b",
+      "path": "assets/photos/stara-sil-unidentified-6200fd5c036069a1456b.jpg",
+      "sha256": "6200fd5c036069a1456b19fa27019a532be5df0578aa9e19b0ff006af31d0d2d",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img656.jpg",
+          "entryId": "media-unidentified-stara-sil-6200fd5c036069a1456b"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-7a459a7865fb923fada0",
+      "path": "assets/photos/stara-sil-unidentified-7a459a7865fb923fada0.jpg",
+      "sha256": "7a459a7865fb923fada00bf447b0416e66056c154fb55636fe59a6efb144110a",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img657.jpg",
+          "entryId": "media-unidentified-stara-sil-7a459a7865fb923fada0"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-0e54dc74784aa9ba04d7",
+      "path": "assets/photos/stara-sil-unidentified-0e54dc74784aa9ba04d7.jpg",
+      "sha256": "0e54dc74784aa9ba04d7626b7f97ff2cfcf8dafd0bea67e1ba9d04afe25b1676",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img658.jpg",
+          "entryId": "media-unidentified-stara-sil-0e54dc74784aa9ba04d7"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-34a9356bbb039876c5a9",
+      "path": "assets/photos/stara-sil-unidentified-34a9356bbb039876c5a9.jpg",
+      "sha256": "34a9356bbb039876c5a99493a2a944dba7b23dfcf17d51d9a55a2e3e5319b97c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img659.jpg",
+          "entryId": "media-unidentified-stara-sil-34a9356bbb039876c5a9"
+        }
+      ]
+    },
+    {
+      "id": "media-unidentified-stara-sil-710cc93c765d3cf3d03a",
+      "path": "assets/photos/stara-sil-unidentified-710cc93c765d3cf3d03a.jpg",
+      "sha256": "710cc93c765d3cf3d03a6c52a494248e2f7abba55f9aefb72ce14c6ed405da9c",
+      "mimeType": "image/jpeg",
+      "title": "Фотографія без опису",
+      "unidentifiedPhotoBranch": "kernytski",
+      "provenance": [
+        {
+          "kind": "supplement",
+          "file": "C:/WorkFoto/Скановані фото Chabani/FILTERED/unic/rest2/img660.jpg",
+          "entryId": "media-unidentified-stara-sil-710cc93c765d3cf3d03a"
+        }
+      ]
     }
   ],
   "evidenceLinks": [
